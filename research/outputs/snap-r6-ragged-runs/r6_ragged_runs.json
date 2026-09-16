@@ -1,0 +1,487 @@
+{
+ "design": "R6 what an unequal number of seeds per configuration does to the interval.\n\nDesign fixed before running (2026-09-16, written 18:45 EDT). Every run sweep so far has given each\nconfiguration the same number of seeds, either the shipped three or a uniform two, four or ten, and the\nestimator's divisor was the same everywhere. The release is not like that. Some configurations lose a seed\nbecause a branch stops early or a checkpoint is missing at the shared step, and a practitioner rebuilding\nthis design will find the same thing on their own runs. The sums that form the estimate then mix\nconfigurations measured with one degree of freedom and configurations measured with two, and nothing we\nhave run says whether that mixture is harmless or whether it quietly breaks the interval.\nThis run measures it. It draws a run count per configuration rather than fixing one, and it sweeps the\nshare of configurations cut to two seeds from none through a tenth, a quarter, a half and all of them, on\nthe margin-like population at 4,000 replicates per cell. Two of the cells make the loss lumpy instead of\nrandom, cutting whole recipes so the shortfall lines up with the clustering variable, which is the case a\nreviewer would worry about because the cluster bootstrap resamples exactly those units. One cell runs the\nquarter share on the accuracy-like population, where the interval already sits closest to its edge, and\none mixes two, three and four seeds at once so no single divisor is right anywhere. It reports coverage,\nthe exclusion rate at the true 1.2446, the median width and the undefined rate for the recipe-clustered\nand band-clustered intervals, so the cost shows up as either a coverage loss or a width the paper should\nquote. Seed 20260989 keeps the draws distinct.\n",
+ "seed": 20260989,
+ "reps": 4000,
+ "cells": {
+  "share0.00": {
+   "name": "share0.00",
+   "truth": 1.2445882853377657,
+   "mean_runs_per_config": 3.0,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "short_share": 0.0
+   },
+   "wild_recipe": {
+    "coverage": 0.94575,
+    "mc_se": 0.0035814430576235614,
+    "excludes_one_rate": 0.96825,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.0365,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24289574677571713
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94625,
+    "mc_se": 0.003565842729986839,
+    "excludes_one_rate": 0.96825,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.036,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24220569508728595
+   },
+   "wild_size": {
+    "coverage": 0.9505,
+    "mc_se": 0.0034296410161998,
+    "excludes_one_rate": 0.624,
+    "lower_miss": 0.01625,
+    "upper_miss": 0.028,
+    "undefined_or_unbounded": 0.00525,
+    "median_width": 0.3555940228692154
+   },
+   "cluster_t_size": {
+    "coverage": 0.93725,
+    "mc_se": 0.0038344633751021787,
+    "excludes_one_rate": 0.81275,
+    "lower_miss": 0.0245,
+    "upper_miss": 0.03825,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3005606286925874
+   }
+  },
+  "share0.10": {
+   "name": "share0.10",
+   "truth": 1.2445882853377657,
+   "mean_runs_per_config": 2.900054,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "short_share": 0.1
+   },
+   "wild_recipe": {
+    "coverage": 0.9455,
+    "mc_se": 0.0035892112643309253,
+    "excludes_one_rate": 0.95975,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.038,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.25118530608785117
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.946,
+    "mc_se": 0.0035736535926135893,
+    "excludes_one_rate": 0.95925,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.0375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24992614796032897
+   },
+   "wild_size": {
+    "coverage": 0.94875,
+    "mc_se": 0.0034865254014562986,
+    "excludes_one_rate": 0.589,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.02625,
+    "undefined_or_unbounded": 0.0075,
+    "median_width": 0.37465122788040917
+   },
+   "cluster_t_size": {
+    "coverage": 0.945,
+    "mc_se": 0.003604684452209376,
+    "excludes_one_rate": 0.7735,
+    "lower_miss": 0.02175,
+    "upper_miss": 0.03325,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3200614332998354
+   }
+  },
+  "share0.25": {
+   "name": "share0.25",
+   "truth": 1.2445882853377657,
+   "mean_runs_per_config": 2.749154,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "short_share": 0.25
+   },
+   "wild_recipe": {
+    "coverage": 0.94425,
+    "mc_se": 0.003627738189974573,
+    "excludes_one_rate": 0.92575,
+    "lower_miss": 0.012,
+    "upper_miss": 0.04375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26819411129319903
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9435,
+    "mc_se": 0.003650607826102387,
+    "excludes_one_rate": 0.92675,
+    "lower_miss": 0.01225,
+    "upper_miss": 0.04425,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2669714659711635
+   },
+   "wild_size": {
+    "coverage": 0.94425,
+    "mc_se": 0.003627738189974573,
+    "excludes_one_rate": 0.56125,
+    "lower_miss": 0.0115,
+    "upper_miss": 0.0295,
+    "undefined_or_unbounded": 0.01475,
+    "median_width": 0.3923405197070393
+   },
+   "cluster_t_size": {
+    "coverage": 0.9485,
+    "mc_se": 0.0034945582696529753,
+    "excludes_one_rate": 0.72725,
+    "lower_miss": 0.016,
+    "upper_miss": 0.0355,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.337083388200885
+   }
+  },
+  "share0.50": {
+   "name": "share0.50",
+   "truth": 1.2445882853377657,
+   "mean_runs_per_config": 2.500608,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "short_share": 0.5
+   },
+   "wild_recipe": {
+    "coverage": 0.9475,
+    "mc_se": 0.0035264624625820132,
+    "excludes_one_rate": 0.87325,
+    "lower_miss": 0.01275,
+    "upper_miss": 0.03975,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.29363631057387996
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9485,
+    "mc_se": 0.0034945582696529753,
+    "excludes_one_rate": 0.87525,
+    "lower_miss": 0.0125,
+    "upper_miss": 0.039,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.29226388873359443
+   },
+   "wild_size": {
+    "coverage": 0.9405,
+    "mc_se": 0.0037403124869454423,
+    "excludes_one_rate": 0.47675,
+    "lower_miss": 0.0145,
+    "upper_miss": 0.02375,
+    "undefined_or_unbounded": 0.02125,
+    "median_width": 0.4369195003832633
+   },
+   "cluster_t_size": {
+    "coverage": 0.947,
+    "mc_se": 0.003542280338990692,
+    "excludes_one_rate": 0.63325,
+    "lower_miss": 0.01925,
+    "upper_miss": 0.03375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3741294573449282
+   }
+  },
+  "share1.00": {
+   "name": "share1.00",
+   "truth": 1.2445882853377657,
+   "mean_runs_per_config": 2.0,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "short_share": 1.0
+   },
+   "wild_recipe": {
+    "coverage": 0.9475,
+    "mc_se": 0.0035264624625820132,
+    "excludes_one_rate": 0.74725,
+    "lower_miss": 0.012,
+    "upper_miss": 0.0405,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3431116784872806
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94775,
+    "mc_se": 0.0035185201967588594,
+    "excludes_one_rate": 0.74975,
+    "lower_miss": 0.0125,
+    "upper_miss": 0.03975,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3416123952019
+   },
+   "wild_size": {
+    "coverage": 0.91725,
+    "mc_se": 0.004356100248502093,
+    "excludes_one_rate": 0.385,
+    "lower_miss": 0.013,
+    "upper_miss": 0.02925,
+    "undefined_or_unbounded": 0.0405,
+    "median_width": 0.4997330562137174
+   },
+   "cluster_t_size": {
+    "coverage": 0.945,
+    "mc_se": 0.003604684452209376,
+    "excludes_one_rate": 0.5125,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.037,
+    "undefined_or_unbounded": 0.00025,
+    "median_width": 0.4262433995317213
+   }
+  },
+  "lumpy0.25": {
+   "name": "lumpy0.25",
+   "truth": 1.2445882853377657,
+   "mean_runs_per_config": 2.75114,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "short_share": 0.25,
+    "lumpy": true
+   },
+   "wild_recipe": {
+    "coverage": 0.94625,
+    "mc_se": 0.003565842729986839,
+    "excludes_one_rate": 0.9205,
+    "lower_miss": 0.01475,
+    "upper_miss": 0.039,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26921281417005594
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94575,
+    "mc_se": 0.0035814430576235614,
+    "excludes_one_rate": 0.918,
+    "lower_miss": 0.014,
+    "upper_miss": 0.04025,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2680089316835673
+   },
+   "wild_size": {
+    "coverage": 0.946,
+    "mc_se": 0.0035736535926135893,
+    "excludes_one_rate": 0.53875,
+    "lower_miss": 0.016,
+    "upper_miss": 0.025,
+    "undefined_or_unbounded": 0.013,
+    "median_width": 0.40047285311056113
+   },
+   "cluster_t_size": {
+    "coverage": 0.946,
+    "mc_se": 0.0035736535926135893,
+    "excludes_one_rate": 0.70725,
+    "lower_miss": 0.02125,
+    "upper_miss": 0.03275,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3404079388405905
+   }
+  },
+  "lumpy0.50": {
+   "name": "lumpy0.50",
+   "truth": 1.2445882853377657,
+   "mean_runs_per_config": 2.50285,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "short_share": 0.5,
+    "lumpy": true
+   },
+   "wild_recipe": {
+    "coverage": 0.9385,
+    "mc_se": 0.003798609943123932,
+    "excludes_one_rate": 0.87525,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.045,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.29458408919713297
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9385,
+    "mc_se": 0.003798609943123932,
+    "excludes_one_rate": 0.876,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.045,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.294044102196874
+   },
+   "wild_size": {
+    "coverage": 0.93475,
+    "mc_se": 0.0039048827607240663,
+    "excludes_one_rate": 0.49,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.028,
+    "undefined_or_unbounded": 0.02075,
+    "median_width": 0.42905601793038683
+   },
+   "cluster_t_size": {
+    "coverage": 0.943,
+    "mc_se": 0.003665753674212168,
+    "excludes_one_rate": 0.64825,
+    "lower_miss": 0.02125,
+    "upper_miss": 0.03575,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.36727383456843815
+   }
+  },
+  "mixed234": {
+   "name": "mixed234",
+   "truth": 1.2445882853377657,
+   "mean_runs_per_config": 3.0008879999999998,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "run_mix": [
+     2,
+     3,
+     4
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.94875,
+    "mc_se": 0.0034865254014562986,
+    "excludes_one_rate": 0.94275,
+    "lower_miss": 0.01375,
+    "upper_miss": 0.0375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26487449029337984
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94775,
+    "mc_se": 0.0035185201967588594,
+    "excludes_one_rate": 0.9425,
+    "lower_miss": 0.014,
+    "upper_miss": 0.03825,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26437508329153725
+   },
+   "wild_size": {
+    "coverage": 0.942,
+    "mc_se": 0.0036958084365940843,
+    "excludes_one_rate": 0.55025,
+    "lower_miss": 0.01475,
+    "upper_miss": 0.0305,
+    "undefined_or_unbounded": 0.01275,
+    "median_width": 0.399561740066833
+   },
+   "cluster_t_size": {
+    "coverage": 0.94725,
+    "mc_se": 0.0035343824602043273,
+    "excludes_one_rate": 0.739,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.035,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3344019420957993
+   }
+  },
+  "acc_share0.25": {
+   "name": "acc_share0.25",
+   "truth": 1.0779610382569493,
+   "mean_runs_per_config": 2.75001,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45,
+    "short_share": 0.25
+   },
+   "wild_recipe": {
+    "coverage": 0.949,
+    "mc_se": 0.003478469491026191,
+    "excludes_one_rate": 0.08325,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.0335,
+    "undefined_or_unbounded": 0.001,
+    "median_width": 0.4401636798756109
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.949,
+    "mc_se": 0.003478469491026191,
+    "excludes_one_rate": 0.08125,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.03225,
+    "undefined_or_unbounded": 0.001,
+    "median_width": 0.44230210110138113
+   },
+   "wild_size": {
+    "coverage": 0.78775,
+    "mc_se": 0.006465290741722294,
+    "excludes_one_rate": 0.06225,
+    "lower_miss": 0.02075,
+    "upper_miss": 0.02275,
+    "undefined_or_unbounded": 0.16875,
+    "median_width": 0.5841336246247949
+   },
+   "cluster_t_size": {
+    "coverage": 0.917,
+    "mc_se": 0.004362080925429971,
+    "excludes_one_rate": 0.0755,
+    "lower_miss": 0.02275,
+    "upper_miss": 0.02975,
+    "undefined_or_unbounded": 0.0305,
+    "median_width": 0.5504203572597681
+   }
+  },
+  "acc_lumpy0.50": {
+   "name": "acc_lumpy0.50",
+   "truth": 1.0779610382569493,
+   "mean_runs_per_config": 2.4993199999999995,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45,
+    "short_share": 0.5,
+    "lumpy": true
+   },
+   "wild_recipe": {
+    "coverage": 0.9465,
+    "mc_se": 0.0035580103288214327,
+    "excludes_one_rate": 0.06425,
+    "lower_miss": 0.016,
+    "upper_miss": 0.033,
+    "undefined_or_unbounded": 0.0045,
+    "median_width": 0.483145027534506
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9485,
+    "mc_se": 0.0034945582696529753,
+    "excludes_one_rate": 0.06375,
+    "lower_miss": 0.01575,
+    "upper_miss": 0.0315,
+    "undefined_or_unbounded": 0.00425,
+    "median_width": 0.4843683651438966
+   },
+   "wild_size": {
+    "coverage": 0.7535,
+    "mc_se": 0.00681428187705792,
+    "excludes_one_rate": 0.05075,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.02525,
+    "undefined_or_unbounded": 0.20375,
+    "median_width": 0.6352521879073728
+   },
+   "cluster_t_size": {
+    "coverage": 0.89075,
+    "mc_se": 0.004932404015791893,
+    "excludes_one_rate": 0.0575,
+    "lower_miss": 0.02075,
+    "upper_miss": 0.03075,
+    "undefined_or_unbounded": 0.05775,
+    "median_width": 0.6012185342914329
+   }
+  }
+ },
+ "shipped_check": {
+  "share0.00": 0.0,
+  "share0.10": 0.0,
+  "share0.25": 0.0,
+  "share0.50": 0.0,
+  "share1.00": 0.0,
+  "lumpy0.25": 2.220446049250313e-16,
+  "lumpy0.50": 0.0,
+  "mixed234": 0.0,
+  "acc_share0.25": 0.0,
+  "acc_lumpy0.50": 0.0
+ },
+ "wall_seconds": 2393.59343624115
+}

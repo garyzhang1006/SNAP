@@ -593,3 +593,5 @@ battery and fifteen on a noisier one. Both additions pushed the main text to ten
 clauses came out to pay for them, the repeated coverage sentence in the discussion, the duplicated
 paired-interval conclusion that Section 6 already states, and two wordy constructions. The build is back
 at nine main-text pages with a byte-identical style file and no unresolved citation.
+
+| snap-r6-ragged-runs | COMPLETE at 4,000 replicates under seed 20260989. Unequal seeds per configuration leave coverage between 0.939 and 0.949 on both scales, whether the shortfall is random or falls on whole recipes, with no undefined replicate on margins. | Written in. The cost lands on width and power, since width grows from 0.243 to 0.343 and power falls from 0.968 to 0.747 as every configuration drops to two seeds, and a two, three and four mix averaging exactly three still widens to 0.265, so an even spread buys precision rather than validity. |
