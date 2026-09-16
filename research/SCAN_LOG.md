@@ -26,6 +26,7 @@ Baseline before scan 1, carried from the independent reviewer pass earlier in th
 | scan | focus | defects found | defects fixed | rank after |
 |---|---|---|---|---|
 | 1 | mechanical correctness, all three tex files | 7 | 7 | 6.0 |
+| 2 | hostile claim audit, adversarial-reviewer | 4 | 4 | 6.1 |
 
 
 ## Scan 1, mechanical correctness, 20 sub-scans
@@ -63,3 +64,42 @@ unresolved citation, no unresolved reference, no unreferenced label outside the 
 
 Honest ranking after scan 1. Unchanged at 6.0 with acceptance near 0.55. Mechanical fixes remove one
 reviewer complaint that a figure was never discussed, and none of them changes what the paper argues.
+
+## Scan 2, hostile claim audit under the adversarial-reviewer skill, 20 sub-scans
+
+Scan 2 first re-read every scan 1 change in the built PDF, and all seven held.
+
+Sub-scans run. Traceability of every quantitative claim, verb strength, hedge adequacy on causal claims,
+abstract against body, introduction against body, novelty defensibility, generalisation scope, fidelity
+of claims about cited work, provenance claims, simulation attribution, unstated assumptions, selective
+reporting, reviewer-bait sentences, internal contradictions, undefined terms, appendix contradictions,
+symmetry between power and limitation, limitations in the abstract, support for the recommendation, and
+the accuracy of the AI and ethics statements.
+
+Defects found and fixed.
+
+1. `At accuracy $p=0.35$` carried no justification anywhere in the paper, and no stored result gives the
+   battery's mean accuracy, so the value is now labelled illustrative rather than empirical. Measuring
+   the real mean would need a run over the reductions, which is compute I did not have permission for.
+2. The abstract advertised simulated coverage of 0.933 to 0.953 while the discussion reports 0.821 under
+   the band-sharing violation that the paper itself calls its main clustering risk. The abstract now
+   carries that number, with the quarter-of-latent-variance condition attached.
+3. One abstract sentence ran 55 words and repeated `paired intervals` twice. It is now two sentences of
+   28 and 20 words that keep both findings.
+4. Two further abstract sentences at 40 and 37 words are now 35 and 34.
+
+One defect I created and caught inside the same scan. My first version of the coverage caveat said
+coverage falls to 0.821 whenever a run effect follows the size band, which overstates it, since 0.821 is
+the value at a quarter of latent variance. The condition is now in the sentence.
+
+Non-defects recorded rather than edited.
+
+- Verb strength came back clean. Every occurrence of prove, establish and confirm in the body sits in a
+  negative construction or describes the construction as established, so the paper does not oversell.
+- Seven numbers appear without an attached interval. Each is either a diagnostic the text labels as one
+  or a value whose interval sits in the table beside it.
+
+Honest ranking after scan 2. 6.1 with acceptance near 0.57. The abstract caveat is the first change today
+that a reviewer would actually weigh, because it moves the paper's main clustering risk from the back of
+the discussion into the first thing a reviewer reads, and papers that state their own worst number early
+read as more careful rather than less.
