@@ -1,2 +1,0 @@
-snap-r6-perm-power-acc
-snap-r6-band-noise
