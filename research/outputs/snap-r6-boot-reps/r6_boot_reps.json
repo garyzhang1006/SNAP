@@ -1,0 +1,101 @@
+{
+ "design": "R6 how many bootstrap draws the reported endpoints actually need.\n\nDesign fixed before running (2026-09-16, written 18:10 EDT). The shipped interval draws 4,999 bootstrap\nweights, which is a conventional number rather than a measured one. snap-r6-observed-intervals showed the\nendpoints move by no more than 0.0023 across twenty bootstrap seeds at 9,999 draws on the observed data,\nso the reported numbers are stable at that count. It never asked the cheaper question a replicator will\nface, which is whether a smaller count would have done, or the more careful one, which is whether the\ncoverage itself depends on the draw count.\nThis run sweeps the draws over 999, 2,499, 4,999 and 19,999 on the independent population and on the\nband-shared bound, scoring all four on identical replicates at 4,000 replicates each. Coverage that is\nflat across the sweep says 4,999 was already enough and that a replicator on a laptop can use 999. Seed\n20260980 keeps the draws distinct.\n",
+ "seed": 20260980,
+ "reps": 4000,
+ "cells": {
+  "independent": {
+   "name": "independent",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73
+   },
+   "boot_999": {
+    "coverage": 0.94525,
+    "mc_se": 0.0035969583504677936,
+    "excludes_one_rate": 0.97175,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.03625,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2402850416690976
+   },
+   "boot_2499": {
+    "coverage": 0.94575,
+    "mc_se": 0.0035814430576235614,
+    "excludes_one_rate": 0.97025,
+    "lower_miss": 0.018,
+    "upper_miss": 0.03625,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2412293312973764
+   },
+   "boot_4999": {
+    "coverage": 0.94575,
+    "mc_se": 0.0035814430576235614,
+    "excludes_one_rate": 0.9695,
+    "lower_miss": 0.01825,
+    "upper_miss": 0.036,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24129477301770474
+   },
+   "boot_19999": {
+    "coverage": 0.94625,
+    "mc_se": 0.003565842729986839,
+    "excludes_one_rate": 0.9705,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.035,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24187690083473556
+   }
+  },
+  "band_0.044": {
+   "name": "band_0.044",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "size_shared": 0.044
+   },
+   "boot_999": {
+    "coverage": 0.9405,
+    "mc_se": 0.0037403124869454423,
+    "excludes_one_rate": 0.96575,
+    "lower_miss": 0.0195,
+    "upper_miss": 0.04,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24025693800623782
+   },
+   "boot_2499": {
+    "coverage": 0.943,
+    "mc_se": 0.003665753674212168,
+    "excludes_one_rate": 0.96725,
+    "lower_miss": 0.019,
+    "upper_miss": 0.038,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24082568287760953
+   },
+   "boot_4999": {
+    "coverage": 0.94275,
+    "mc_se": 0.0036732967991982357,
+    "excludes_one_rate": 0.967,
+    "lower_miss": 0.01925,
+    "upper_miss": 0.038,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24097995403811123
+   },
+   "boot_19999": {
+    "coverage": 0.9425,
+    "mc_se": 0.0036808202210920327,
+    "excludes_one_rate": 0.96675,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.03875,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2414485706429509
+   }
+  }
+ },
+ "shipped_check": {
+  "independent": 0.0,
+  "band_0.044": 0.0
+ },
+ "wall_seconds": 632.9242010116577
+}

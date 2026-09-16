@@ -16,7 +16,7 @@
     "uncontracted_negatives": 0
   },
   "appendices_bcd.tex": {
-    "sentence_count": 864,
+    "sentence_count": 867,
     "minimum_words": 8,
     "maximum_observed_not_a_limit": 61,
     "below_minimum": 0,
@@ -24,7 +24,7 @@
     "uncontracted_negatives": 5
   },
   "pdf": {
-    "pages": 49,
+    "pages": 50,
     "main_text_pages": 9,
     "statements_begin": 10,
     "empty_author_metadata": true,
@@ -37,8 +37,8 @@
     "missing_characters": 0,
     "font_substitution_warnings": 0,
     "undefined_references_or_citations": false,
-    "underfull_boxes": 16,
-    "remaining_warnings": "16 underfull spacing diagnostics, visually inspected"
+    "underfull_boxes": 19,
+    "remaining_warnings": "19 underfull spacing diagnostics, visually inspected"
   },
   "official_style_unchanged": true,
   "bibliography": {

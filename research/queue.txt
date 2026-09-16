@@ -1,4 +1,2 @@
-snap-r7-availability-recheck
-snap-r6-truth-sweep
 snap-r6-band-shared-acc
 snap-r6-recipe-shared-acc

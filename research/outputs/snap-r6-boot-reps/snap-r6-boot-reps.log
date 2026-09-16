@@ -1,0 +1,11 @@
+[{"stream_name":"stdout","time":1.099569952,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":324.505029732,"data":"[independent] 310s check 0 {\"boot_999\": 0.9453, \"boot_2499\": 0.9457, \"boot_4999\": 0.9457, \"boot_19999\": 0.9463}\n"}
+,{"stream_name":"stdout","time":634.020764393,"data":"[band_0.044] 310s check 0 {\"boot_999\": 0.9405, \"boot_2499\": 0.943, \"boot_4999\": 0.9427, \"boot_19999\": 0.9425}\n"}
+,{"stream_name":"stdout","time":634.02464976,"data":"[done] 633s\n"}
+,{"stream_name":"stderr","time":636.351708547,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":636.351764107,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":636.712257574,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":636.712290034,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":637.675714646,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":639.031502904,"data":"[NbConvertApp] Writing 340213 bytes to __results__.html\n"}
+]

@@ -1,0 +1,1539 @@
+{
+ "design": "R7 whether the availability census the manuscript reports still holds a day later.\n\nDesign fixed before running (2026-09-16, written 18:30 EDT). The main text carries a hard count from a\nnetwork census, that 80 of the 125 model repositories answer an unauthenticated request with HTTP 401\nwhile 40 resolve without one. Every other number in this paper comes from files that cannot change under\nus, but that one describes a remote service whose gating a maintainer can flip at any time, and a\nreviewer reading in three months may check it and find something else. A count that moves is not a\nreason to drop the claim, since the paper's point is that provenance depends on a third party, but it is\na reason to know the drift rate rather than to assume none.\nThis run repeats the identical census, constructing the same repository names from the shipped reduced\nruns crossed with all five size bands, issuing the same unauthenticated HEAD against each, and recording\nthe same status codes and branch lists. It fetches no weights, so it stays a network census rather than\ncompute. Agreement with the first census lets the manuscript report the count as stable across two\nreadings, and a difference gets reported as a difference with both dates named.\n",
+ "sizes": [
+  "150M",
+  "300M",
+  "530M",
+  "750M",
+  "1B"
+ ],
+ "recipes_present": [
+  "Falcon-with-cc-top-orig-10p",
+  "Falcon-with-cc-top-tulu-10p",
+  "c4",
+  "dclm-baseline",
+  "dclm-baseline-25p-dolma1.7-75p",
+  "dclm-baseline-50p-dolma1.7-50p",
+  "dclm-baseline-75p-dolma1.7-25p",
+  "dclm-baseline-top-10p",
+  "dclm-baseline-top-20p",
+  "dclm-baseline-top-fw-10p",
+  "dclm-baseline-top-fw-3p",
+  "dclm-baseline-top-fw2-7p",
+  "dclm-baseline-top-fw3-7p",
+  "dolma1.6++",
+  "dolma1.7",
+  "dolma1.7-no-code",
+  "dolma1.7-no-flan",
+  "dolma1.7-no-math-no-code",
+  "dolma1.7-no-reddit",
+  "falcon",
+  "falcon-with-cc",
+  "falcon-with-cc-top-10p",
+  "falcon-with-cc-top-20p",
+  "fineweb-edu",
+  "fineweb-pro"
+ ],
+ "namespace_listing_ok": true,
+ "namespace_repos": [
+  "allenai/DataDecide-c4-10M",
+  "allenai/DataDecide-c4-14M",
+  "allenai/DataDecide-c4-150M",
+  "allenai/DataDecide-c4-16M",
+  "allenai/DataDecide-c4-1B",
+  "allenai/DataDecide-c4-20M",
+  "allenai/DataDecide-c4-300M",
+  "allenai/DataDecide-c4-4M",
+  "allenai/DataDecide-c4-530M",
+  "allenai/DataDecide-c4-60M",
+  "allenai/DataDecide-c4-6M",
+  "allenai/DataDecide-c4-750M",
+  "allenai/DataDecide-c4-8M",
+  "allenai/DataDecide-c4-90M",
+  "allenai/DataDecide-dclm-baseline-10M",
+  "allenai/DataDecide-dclm-baseline-14M",
+  "allenai/DataDecide-dclm-baseline-150M",
+  "allenai/DataDecide-dclm-baseline-16M",
+  "allenai/DataDecide-dclm-baseline-1B",
+  "allenai/DataDecide-dclm-baseline-20M",
+  "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-10M",
+  "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-14M",
+  "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-150M",
+  "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-16M",
+  "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-1B",
+  "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-20M",
+  "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-300M",
+  "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-4M",
+  "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-530M",
+  "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-60M",
+  "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-6M",
+  "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-750M",
+  "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-8M",
+  "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-90M",
+  "allenai/DataDecide-dclm-baseline-300M",
+  "allenai/DataDecide-dclm-baseline-4M",
+  "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-10M",
+  "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-14M",
+  "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-150M",
+  "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-16M",
+  "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-1B",
+  "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-20M",
+  "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-300M",
+  "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-4M",
+  "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-530M",
+  "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-60M",
+  "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-6M",
+  "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-750M",
+  "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-8M",
+  "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-90M",
+  "allenai/DataDecide-dclm-baseline-530M",
+  "allenai/DataDecide-dclm-baseline-60M",
+  "allenai/DataDecide-dclm-baseline-6M",
+  "allenai/DataDecide-dclm-baseline-750M",
+  "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-10M",
+  "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-14M",
+  "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-150M",
+  "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-16M",
+  "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-1B",
+  "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-20M",
+  "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-300M",
+  "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-4M",
+  "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-530M",
+  "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-60M",
+  "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-6M",
+  "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-750M",
+  "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-8M",
+  "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-90M",
+  "allenai/DataDecide-dclm-baseline-8M",
+  "allenai/DataDecide-dclm-baseline-90M",
+  "allenai/DataDecide-dclm-baseline-qc-10p-10M",
+  "allenai/DataDecide-dclm-baseline-qc-10p-14M",
+  "allenai/DataDecide-dclm-baseline-qc-10p-150M",
+  "allenai/DataDecide-dclm-baseline-qc-10p-16M",
+  "allenai/DataDecide-dclm-baseline-qc-10p-1B",
+  "allenai/DataDecide-dclm-baseline-qc-10p-20M",
+  "allenai/DataDecide-dclm-baseline-qc-10p-300M",
+  "allenai/DataDecide-dclm-baseline-qc-10p-4M",
+  "allenai/DataDecide-dclm-baseline-qc-10p-530M",
+  "allenai/DataDecide-dclm-baseline-qc-10p-60M",
+  "allenai/DataDecide-dclm-baseline-qc-10p-6M",
+  "allenai/DataDecide-dclm-baseline-qc-10p-750M",
+  "allenai/DataDecide-dclm-baseline-qc-10p-8M",
+  "allenai/DataDecide-dclm-baseline-qc-10p-90M",
+  "allenai/DataDecide-dclm-baseline-qc-20p-10M",
+  "allenai/DataDecide-dclm-baseline-qc-20p-14M",
+  "allenai/DataDecide-dclm-baseline-qc-20p-150M",
+  "allenai/DataDecide-dclm-baseline-qc-20p-16M",
+  "allenai/DataDecide-dclm-baseline-qc-20p-1B",
+  "allenai/DataDecide-dclm-baseline-qc-20p-20M",
+  "allenai/DataDecide-dclm-baseline-qc-20p-300M",
+  "allenai/DataDecide-dclm-baseline-qc-20p-4M",
+  "allenai/DataDecide-dclm-baseline-qc-20p-530M",
+  "allenai/DataDecide-dclm-baseline-qc-20p-60M",
+  "allenai/DataDecide-dclm-baseline-qc-20p-6M",
+  "allenai/DataDecide-dclm-baseline-qc-20p-750M",
+  "allenai/DataDecide-dclm-baseline-qc-20p-8M",
+  "allenai/DataDecide-dclm-baseline-qc-20p-90M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw2-10M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw2-14M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw2-150M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw2-16M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw2-1B",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw2-20M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw2-300M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw2-4M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw2-530M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw2-60M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw2-6M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw2-750M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw2-8M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw2-90M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw3-10M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw3-14M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw3-150M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw3-16M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw3-1B",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw3-20M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw3-300M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw3-4M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw3-530M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw3-60M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw3-6M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw3-750M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw3-8M",
+  "allenai/DataDecide-dclm-baseline-qc-7p-fw3-90M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-10p-10M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-10p-14M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-10p-150M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-10p-16M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-10p-1B",
+  "allenai/DataDecide-dclm-baseline-qc-fw-10p-20M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-10p-300M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-10p-4M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-10p-530M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-10p-60M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-10p-6M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-10p-750M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-10p-8M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-10p-90M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-3p-10M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-3p-14M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-3p-150M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-3p-16M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-3p-1B",
+  "allenai/DataDecide-dclm-baseline-qc-fw-3p-20M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-3p-300M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-3p-4M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-3p-530M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-3p-60M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-3p-6M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-3p-750M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-3p-8M",
+  "allenai/DataDecide-dclm-baseline-qc-fw-3p-90M",
+  "allenai/DataDecide-dolma1_6plus-10M",
+  "allenai/DataDecide-dolma1_6plus-14M",
+  "allenai/DataDecide-dolma1_6plus-150M",
+  "allenai/DataDecide-dolma1_6plus-16M",
+  "allenai/DataDecide-dolma1_6plus-1B",
+  "allenai/DataDecide-dolma1_6plus-20M",
+  "allenai/DataDecide-dolma1_6plus-300M",
+  "allenai/DataDecide-dolma1_6plus-4M",
+  "allenai/DataDecide-dolma1_6plus-530M",
+  "allenai/DataDecide-dolma1_6plus-60M",
+  "allenai/DataDecide-dolma1_6plus-6M",
+  "allenai/DataDecide-dolma1_6plus-750M",
+  "allenai/DataDecide-dolma1_6plus-8M",
+  "allenai/DataDecide-dolma1_6plus-90M",
+  "allenai/DataDecide-dolma1_7-10M",
+  "allenai/DataDecide-dolma1_7-14M",
+  "allenai/DataDecide-dolma1_7-150M",
+  "allenai/DataDecide-dolma1_7-16M",
+  "allenai/DataDecide-dolma1_7-1B",
+  "allenai/DataDecide-dolma1_7-20M",
+  "allenai/DataDecide-dolma1_7-300M",
+  "allenai/DataDecide-dolma1_7-4M",
+  "allenai/DataDecide-dolma1_7-530M",
+  "allenai/DataDecide-dolma1_7-60M",
+  "allenai/DataDecide-dolma1_7-6M",
+  "allenai/DataDecide-dolma1_7-750M",
+  "allenai/DataDecide-dolma1_7-8M",
+  "allenai/DataDecide-dolma1_7-90M",
+  "allenai/DataDecide-dolma1_7-no-code-10M",
+  "allenai/DataDecide-dolma1_7-no-code-14M",
+  "allenai/DataDecide-dolma1_7-no-code-150M",
+  "allenai/DataDecide-dolma1_7-no-code-16M",
+  "allenai/DataDecide-dolma1_7-no-code-1B",
+  "allenai/DataDecide-dolma1_7-no-code-20M",
+  "allenai/DataDecide-dolma1_7-no-code-300M",
+  "allenai/DataDecide-dolma1_7-no-code-4M",
+  "allenai/DataDecide-dolma1_7-no-code-530M",
+  "allenai/DataDecide-dolma1_7-no-code-60M",
+  "allenai/DataDecide-dolma1_7-no-code-6M",
+  "allenai/DataDecide-dolma1_7-no-code-750M",
+  "allenai/DataDecide-dolma1_7-no-code-8M",
+  "allenai/DataDecide-dolma1_7-no-code-90M",
+  "allenai/DataDecide-dolma1_7-no-flan-10M",
+  "allenai/DataDecide-dolma1_7-no-flan-14M",
+  "allenai/DataDecide-dolma1_7-no-flan-150M",
+  "allenai/DataDecide-dolma1_7-no-flan-16M",
+  "allenai/DataDecide-dolma1_7-no-flan-1B",
+  "allenai/DataDecide-dolma1_7-no-flan-20M",
+  "allenai/DataDecide-dolma1_7-no-flan-300M",
+  "allenai/DataDecide-dolma1_7-no-flan-4M",
+  "allenai/DataDecide-dolma1_7-no-flan-530M",
+  "allenai/DataDecide-dolma1_7-no-flan-60M",
+  "allenai/DataDecide-dolma1_7-no-flan-6M",
+  "allenai/DataDecide-dolma1_7-no-flan-750M",
+  "allenai/DataDecide-dolma1_7-no-flan-8M",
+  "allenai/DataDecide-dolma1_7-no-flan-90M",
+  "allenai/DataDecide-dolma1_7-no-math-code-10M",
+  "allenai/DataDecide-dolma1_7-no-math-code-14M",
+  "allenai/DataDecide-dolma1_7-no-math-code-150M",
+  "allenai/DataDecide-dolma1_7-no-math-code-16M",
+  "allenai/DataDecide-dolma1_7-no-math-code-1B",
+  "allenai/DataDecide-dolma1_7-no-math-code-20M",
+  "allenai/DataDecide-dolma1_7-no-math-code-300M",
+  "allenai/DataDecide-dolma1_7-no-math-code-4M",
+  "allenai/DataDecide-dolma1_7-no-math-code-530M",
+  "allenai/DataDecide-dolma1_7-no-math-code-60M",
+  "allenai/DataDecide-dolma1_7-no-math-code-6M",
+  "allenai/DataDecide-dolma1_7-no-math-code-750M",
+  "allenai/DataDecide-dolma1_7-no-math-code-8M",
+  "allenai/DataDecide-dolma1_7-no-math-code-90M",
+  "allenai/DataDecide-dolma1_7-no-reddit-10M",
+  "allenai/DataDecide-dolma1_7-no-reddit-14M",
+  "allenai/DataDecide-dolma1_7-no-reddit-150M",
+  "allenai/DataDecide-dolma1_7-no-reddit-16M",
+  "allenai/DataDecide-dolma1_7-no-reddit-1B",
+  "allenai/DataDecide-dolma1_7-no-reddit-20M",
+  "allenai/DataDecide-dolma1_7-no-reddit-300M",
+  "allenai/DataDecide-dolma1_7-no-reddit-4M",
+  "allenai/DataDecide-dolma1_7-no-reddit-530M",
+  "allenai/DataDecide-dolma1_7-no-reddit-60M",
+  "allenai/DataDecide-dolma1_7-no-reddit-6M",
+  "allenai/DataDecide-dolma1_7-no-reddit-750M",
+  "allenai/DataDecide-dolma1_7-no-reddit-8M",
+  "allenai/DataDecide-dolma1_7-no-reddit-90M",
+  "allenai/DataDecide-falcon-10M",
+  "allenai/DataDecide-falcon-14M",
+  "allenai/DataDecide-falcon-150M",
+  "allenai/DataDecide-falcon-16M",
+  "allenai/DataDecide-falcon-1B",
+  "allenai/DataDecide-falcon-20M",
+  "allenai/DataDecide-falcon-300M",
+  "allenai/DataDecide-falcon-4M",
+  "allenai/DataDecide-falcon-530M",
+  "allenai/DataDecide-falcon-60M",
+  "allenai/DataDecide-falcon-6M",
+  "allenai/DataDecide-falcon-750M",
+  "allenai/DataDecide-falcon-8M",
+  "allenai/DataDecide-falcon-90M",
+  "allenai/DataDecide-falcon-and-cc-10M",
+  "allenai/DataDecide-falcon-and-cc-14M",
+  "allenai/DataDecide-falcon-and-cc-150M",
+  "allenai/DataDecide-falcon-and-cc-16M",
+  "allenai/DataDecide-falcon-and-cc-1B",
+  "allenai/DataDecide-falcon-and-cc-20M",
+  "allenai/DataDecide-falcon-and-cc-300M",
+  "allenai/DataDecide-falcon-and-cc-4M",
+  "allenai/DataDecide-falcon-and-cc-530M",
+  "allenai/DataDecide-falcon-and-cc-60M",
+  "allenai/DataDecide-falcon-and-cc-6M",
+  "allenai/DataDecide-falcon-and-cc-750M",
+  "allenai/DataDecide-falcon-and-cc-8M",
+  "allenai/DataDecide-falcon-and-cc-90M",
+  "allenai/DataDecide-falcon-and-cc-qc-10p-10M",
+  "allenai/DataDecide-falcon-and-cc-qc-10p-14M",
+  "allenai/DataDecide-falcon-and-cc-qc-10p-150M",
+  "allenai/DataDecide-falcon-and-cc-qc-10p-16M",
+  "allenai/DataDecide-falcon-and-cc-qc-10p-1B",
+  "allenai/DataDecide-falcon-and-cc-qc-10p-20M",
+  "allenai/DataDecide-falcon-and-cc-qc-10p-300M",
+  "allenai/DataDecide-falcon-and-cc-qc-10p-4M",
+  "allenai/DataDecide-falcon-and-cc-qc-10p-530M",
+  "allenai/DataDecide-falcon-and-cc-qc-10p-60M",
+  "allenai/DataDecide-falcon-and-cc-qc-10p-6M",
+  "allenai/DataDecide-falcon-and-cc-qc-10p-750M",
+  "allenai/DataDecide-falcon-and-cc-qc-10p-8M",
+  "allenai/DataDecide-falcon-and-cc-qc-10p-90M",
+  "allenai/DataDecide-falcon-and-cc-qc-20p-10M",
+  "allenai/DataDecide-falcon-and-cc-qc-20p-14M",
+  "allenai/DataDecide-falcon-and-cc-qc-20p-150M",
+  "allenai/DataDecide-falcon-and-cc-qc-20p-16M",
+  "allenai/DataDecide-falcon-and-cc-qc-20p-1B",
+  "allenai/DataDecide-falcon-and-cc-qc-20p-20M",
+  "allenai/DataDecide-falcon-and-cc-qc-20p-300M",
+  "allenai/DataDecide-falcon-and-cc-qc-20p-4M",
+  "allenai/DataDecide-falcon-and-cc-qc-20p-530M",
+  "allenai/DataDecide-falcon-and-cc-qc-20p-60M",
+  "allenai/DataDecide-falcon-and-cc-qc-20p-6M",
+  "allenai/DataDecide-falcon-and-cc-qc-20p-750M",
+  "allenai/DataDecide-falcon-and-cc-qc-20p-8M",
+  "allenai/DataDecide-falcon-and-cc-qc-20p-90M",
+  "allenai/DataDecide-falcon-and-cc-qc-orig-10p-10M",
+  "allenai/DataDecide-falcon-and-cc-qc-orig-10p-14M",
+  "allenai/DataDecide-falcon-and-cc-qc-orig-10p-150M",
+  "allenai/DataDecide-falcon-and-cc-qc-orig-10p-16M",
+  "allenai/DataDecide-falcon-and-cc-qc-orig-10p-1B",
+  "allenai/DataDecide-falcon-and-cc-qc-orig-10p-20M",
+  "allenai/DataDecide-falcon-and-cc-qc-orig-10p-300M",
+  "allenai/DataDecide-falcon-and-cc-qc-orig-10p-4M",
+  "allenai/DataDecide-falcon-and-cc-qc-orig-10p-530M",
+  "allenai/DataDecide-falcon-and-cc-qc-orig-10p-60M",
+  "allenai/DataDecide-falcon-and-cc-qc-orig-10p-6M",
+  "allenai/DataDecide-falcon-and-cc-qc-orig-10p-750M",
+  "allenai/DataDecide-falcon-and-cc-qc-orig-10p-8M",
+  "allenai/DataDecide-falcon-and-cc-qc-orig-10p-90M",
+  "allenai/DataDecide-falcon-and-cc-qc-tulu-10p-10M",
+  "allenai/DataDecide-falcon-and-cc-qc-tulu-10p-14M",
+  "allenai/DataDecide-falcon-and-cc-qc-tulu-10p-150M",
+  "allenai/DataDecide-falcon-and-cc-qc-tulu-10p-16M",
+  "allenai/DataDecide-falcon-and-cc-qc-tulu-10p-1B",
+  "allenai/DataDecide-falcon-and-cc-qc-tulu-10p-20M",
+  "allenai/DataDecide-falcon-and-cc-qc-tulu-10p-300M",
+  "allenai/DataDecide-falcon-and-cc-qc-tulu-10p-4M",
+  "allenai/DataDecide-falcon-and-cc-qc-tulu-10p-530M",
+  "allenai/DataDecide-falcon-and-cc-qc-tulu-10p-60M",
+  "allenai/DataDecide-falcon-and-cc-qc-tulu-10p-6M",
+  "allenai/DataDecide-falcon-and-cc-qc-tulu-10p-750M",
+  "allenai/DataDecide-falcon-and-cc-qc-tulu-10p-8M",
+  "allenai/DataDecide-falcon-and-cc-qc-tulu-10p-90M",
+  "allenai/DataDecide-fineweb-edu-10M",
+  "allenai/DataDecide-fineweb-edu-14M",
+  "allenai/DataDecide-fineweb-edu-150M",
+  "allenai/DataDecide-fineweb-edu-16M",
+  "allenai/DataDecide-fineweb-edu-1B",
+  "allenai/DataDecide-fineweb-edu-20M",
+  "allenai/DataDecide-fineweb-edu-300M",
+  "allenai/DataDecide-fineweb-edu-4M",
+  "allenai/DataDecide-fineweb-edu-530M",
+  "allenai/DataDecide-fineweb-edu-60M",
+  "allenai/DataDecide-fineweb-edu-6M",
+  "allenai/DataDecide-fineweb-edu-750M",
+  "allenai/DataDecide-fineweb-edu-8M",
+  "allenai/DataDecide-fineweb-edu-90M",
+  "allenai/DataDecide-fineweb-pro-10M",
+  "allenai/DataDecide-fineweb-pro-14M",
+  "allenai/DataDecide-fineweb-pro-150M",
+  "allenai/DataDecide-fineweb-pro-16M",
+  "allenai/DataDecide-fineweb-pro-1B",
+  "allenai/DataDecide-fineweb-pro-20M",
+  "allenai/DataDecide-fineweb-pro-300M",
+  "allenai/DataDecide-fineweb-pro-4M",
+  "allenai/DataDecide-fineweb-pro-530M",
+  "allenai/DataDecide-fineweb-pro-60M",
+  "allenai/DataDecide-fineweb-pro-6M",
+  "allenai/DataDecide-fineweb-pro-750M",
+  "allenai/DataDecide-fineweb-pro-8M",
+  "allenai/DataDecide-fineweb-pro-90M"
+ ],
+ "rows": [
+  {
+   "recipe": "Falcon-with-cc-top-orig-10p",
+   "size": "150M",
+   "repo": "allenai/DataDecide-Falcon-with-cc-top-orig-10p-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "Falcon-with-cc-top-orig-10p",
+   "size": "300M",
+   "repo": "allenai/DataDecide-Falcon-with-cc-top-orig-10p-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "Falcon-with-cc-top-orig-10p",
+   "size": "530M",
+   "repo": "allenai/DataDecide-Falcon-with-cc-top-orig-10p-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "Falcon-with-cc-top-orig-10p",
+   "size": "750M",
+   "repo": "allenai/DataDecide-Falcon-with-cc-top-orig-10p-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "Falcon-with-cc-top-orig-10p",
+   "size": "1B",
+   "repo": "allenai/DataDecide-Falcon-with-cc-top-orig-10p-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "Falcon-with-cc-top-tulu-10p",
+   "size": "150M",
+   "repo": "allenai/DataDecide-Falcon-with-cc-top-tulu-10p-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "Falcon-with-cc-top-tulu-10p",
+   "size": "300M",
+   "repo": "allenai/DataDecide-Falcon-with-cc-top-tulu-10p-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "Falcon-with-cc-top-tulu-10p",
+   "size": "530M",
+   "repo": "allenai/DataDecide-Falcon-with-cc-top-tulu-10p-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "Falcon-with-cc-top-tulu-10p",
+   "size": "750M",
+   "repo": "allenai/DataDecide-Falcon-with-cc-top-tulu-10p-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "Falcon-with-cc-top-tulu-10p",
+   "size": "1B",
+   "repo": "allenai/DataDecide-Falcon-with-cc-top-tulu-10p-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "c4",
+   "size": "150M",
+   "repo": "allenai/DataDecide-c4-150M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 366,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "c4",
+   "size": "300M",
+   "repo": "allenai/DataDecide-c4-300M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 140,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "c4",
+   "size": "530M",
+   "repo": "allenai/DataDecide-c4-530M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 135,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "c4",
+   "size": "750M",
+   "repo": "allenai/DataDecide-c4-750M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 101,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "c4",
+   "size": "1B",
+   "repo": "allenai/DataDecide-c4-1B",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 104,
+   "seed_branch_suffixes": [
+    "default",
+    "large-aux-2",
+    "large-aux-3",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dclm-baseline-150M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 407,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dclm-baseline-300M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 247,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dclm-baseline-530M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 135,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dclm-baseline-750M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 101,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dclm-baseline-1B",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 104,
+   "seed_branch_suffixes": [
+    "default",
+    "large-aux-2",
+    "large-aux-3",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-25p-dolma1.7-75p",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-150M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 717,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-25p-dolma1.7-75p",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-300M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 181,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-25p-dolma1.7-75p",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-530M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 135,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-25p-dolma1.7-75p",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-750M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 101,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-25p-dolma1.7-75p",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-1B",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 104,
+   "seed_branch_suffixes": [
+    "default",
+    "large-aux-2",
+    "large-aux-3",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-50p-dolma1.7-50p",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-150M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 272,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-50p-dolma1.7-50p",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-300M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 183,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-50p-dolma1.7-50p",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-530M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 135,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-50p-dolma1.7-50p",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-750M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 101,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-50p-dolma1.7-50p",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-1B",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 104,
+   "seed_branch_suffixes": [
+    "default",
+    "large-aux-2",
+    "large-aux-3",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-75p-dolma1.7-25p",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-150M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 341,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-75p-dolma1.7-25p",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-300M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 207,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-75p-dolma1.7-25p",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-530M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 135,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-75p-dolma1.7-25p",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-750M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 101,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-75p-dolma1.7-25p",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-1B",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 104,
+   "seed_branch_suffixes": [
+    "default",
+    "large-aux-2",
+    "large-aux-3",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "dclm-baseline-top-10p",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-10p-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-10p",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-10p-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-10p",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-10p-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-10p",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-10p-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-10p",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dclm-baseline-top-10p-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-20p",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-20p-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-20p",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-20p-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-20p",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-20p-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-20p",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-20p-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-20p",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dclm-baseline-top-20p-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw-10p",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw-10p-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw-10p",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw-10p-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw-10p",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw-10p-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw-10p",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw-10p-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw-10p",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw-10p-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw-3p",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw-3p-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw-3p",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw-3p-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw-3p",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw-3p-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw-3p",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw-3p-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw-3p",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw-3p-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw2-7p",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw2-7p-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw2-7p",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw2-7p-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw2-7p",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw2-7p-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw2-7p",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw2-7p-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw2-7p",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw2-7p-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw3-7p",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw3-7p-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw3-7p",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw3-7p-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw3-7p",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw3-7p-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw3-7p",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw3-7p-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dclm-baseline-top-fw3-7p",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dclm-baseline-top-fw3-7p-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.6++",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dolma1.6++-150M",
+   "status": null,
+   "classification": "invalid_repo_id",
+   "detail": "repo id carries a character the Hub forbids"
+  },
+  {
+   "recipe": "dolma1.6++",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dolma1.6++-300M",
+   "status": null,
+   "classification": "invalid_repo_id",
+   "detail": "repo id carries a character the Hub forbids"
+  },
+  {
+   "recipe": "dolma1.6++",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dolma1.6++-530M",
+   "status": null,
+   "classification": "invalid_repo_id",
+   "detail": "repo id carries a character the Hub forbids"
+  },
+  {
+   "recipe": "dolma1.6++",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dolma1.6++-750M",
+   "status": null,
+   "classification": "invalid_repo_id",
+   "detail": "repo id carries a character the Hub forbids"
+  },
+  {
+   "recipe": "dolma1.6++",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dolma1.6++-1B",
+   "status": null,
+   "classification": "invalid_repo_id",
+   "detail": "repo id carries a character the Hub forbids"
+  },
+  {
+   "recipe": "dolma1.7",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dolma1.7-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dolma1.7-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dolma1.7-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dolma1.7-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dolma1.7-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-code",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dolma1.7-no-code-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-code",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dolma1.7-no-code-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-code",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dolma1.7-no-code-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-code",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dolma1.7-no-code-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-code",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dolma1.7-no-code-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-flan",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dolma1.7-no-flan-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-flan",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dolma1.7-no-flan-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-flan",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dolma1.7-no-flan-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-flan",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dolma1.7-no-flan-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-flan",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dolma1.7-no-flan-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-math-no-code",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dolma1.7-no-math-no-code-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-math-no-code",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dolma1.7-no-math-no-code-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-math-no-code",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dolma1.7-no-math-no-code-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-math-no-code",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dolma1.7-no-math-no-code-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-math-no-code",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dolma1.7-no-math-no-code-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-reddit",
+   "size": "150M",
+   "repo": "allenai/DataDecide-dolma1.7-no-reddit-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-reddit",
+   "size": "300M",
+   "repo": "allenai/DataDecide-dolma1.7-no-reddit-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-reddit",
+   "size": "530M",
+   "repo": "allenai/DataDecide-dolma1.7-no-reddit-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-reddit",
+   "size": "750M",
+   "repo": "allenai/DataDecide-dolma1.7-no-reddit-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "dolma1.7-no-reddit",
+   "size": "1B",
+   "repo": "allenai/DataDecide-dolma1.7-no-reddit-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "falcon",
+   "size": "150M",
+   "repo": "allenai/DataDecide-falcon-150M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 407,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "falcon",
+   "size": "300M",
+   "repo": "allenai/DataDecide-falcon-300M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 181,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "falcon",
+   "size": "530M",
+   "repo": "allenai/DataDecide-falcon-530M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 135,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "falcon",
+   "size": "750M",
+   "repo": "allenai/DataDecide-falcon-750M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 101,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "falcon",
+   "size": "1B",
+   "repo": "allenai/DataDecide-falcon-1B",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 104,
+   "seed_branch_suffixes": [
+    "default",
+    "large-aux-2",
+    "large-aux-3",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "falcon-with-cc",
+   "size": "150M",
+   "repo": "allenai/DataDecide-falcon-with-cc-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "falcon-with-cc",
+   "size": "300M",
+   "repo": "allenai/DataDecide-falcon-with-cc-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "falcon-with-cc",
+   "size": "530M",
+   "repo": "allenai/DataDecide-falcon-with-cc-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "falcon-with-cc",
+   "size": "750M",
+   "repo": "allenai/DataDecide-falcon-with-cc-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "falcon-with-cc",
+   "size": "1B",
+   "repo": "allenai/DataDecide-falcon-with-cc-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "falcon-with-cc-top-10p",
+   "size": "150M",
+   "repo": "allenai/DataDecide-falcon-with-cc-top-10p-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "falcon-with-cc-top-10p",
+   "size": "300M",
+   "repo": "allenai/DataDecide-falcon-with-cc-top-10p-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "falcon-with-cc-top-10p",
+   "size": "530M",
+   "repo": "allenai/DataDecide-falcon-with-cc-top-10p-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "falcon-with-cc-top-10p",
+   "size": "750M",
+   "repo": "allenai/DataDecide-falcon-with-cc-top-10p-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "falcon-with-cc-top-10p",
+   "size": "1B",
+   "repo": "allenai/DataDecide-falcon-with-cc-top-10p-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "falcon-with-cc-top-20p",
+   "size": "150M",
+   "repo": "allenai/DataDecide-falcon-with-cc-top-20p-150M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "falcon-with-cc-top-20p",
+   "size": "300M",
+   "repo": "allenai/DataDecide-falcon-with-cc-top-20p-300M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "falcon-with-cc-top-20p",
+   "size": "530M",
+   "repo": "allenai/DataDecide-falcon-with-cc-top-20p-530M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "falcon-with-cc-top-20p",
+   "size": "750M",
+   "repo": "allenai/DataDecide-falcon-with-cc-top-20p-750M",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "falcon-with-cc-top-20p",
+   "size": "1B",
+   "repo": "allenai/DataDecide-falcon-with-cc-top-20p-1B",
+   "status": 401,
+   "classification": "refuses_unauthenticated"
+  },
+  {
+   "recipe": "fineweb-edu",
+   "size": "150M",
+   "repo": "allenai/DataDecide-fineweb-edu-150M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 105,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "fineweb-edu",
+   "size": "300M",
+   "repo": "allenai/DataDecide-fineweb-edu-300M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 115,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "fineweb-edu",
+   "size": "530M",
+   "repo": "allenai/DataDecide-fineweb-edu-530M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 135,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "fineweb-edu",
+   "size": "750M",
+   "repo": "allenai/DataDecide-fineweb-edu-750M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 101,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "fineweb-edu",
+   "size": "1B",
+   "repo": "allenai/DataDecide-fineweb-edu-1B",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 104,
+   "seed_branch_suffixes": [
+    "default",
+    "large-aux-2",
+    "large-aux-3",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "fineweb-pro",
+   "size": "150M",
+   "repo": "allenai/DataDecide-fineweb-pro-150M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 235,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "fineweb-pro",
+   "size": "300M",
+   "repo": "allenai/DataDecide-fineweb-pro-300M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 174,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "fineweb-pro",
+   "size": "530M",
+   "repo": "allenai/DataDecide-fineweb-pro-530M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 135,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "fineweb-pro",
+   "size": "750M",
+   "repo": "allenai/DataDecide-fineweb-pro-750M",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 101,
+   "seed_branch_suffixes": [
+    "default",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  },
+  {
+   "recipe": "fineweb-pro",
+   "size": "1B",
+   "repo": "allenai/DataDecide-fineweb-pro-1B",
+   "status": 200,
+   "classification": "resolves_anonymously",
+   "branch_count": 105,
+   "seed_branch_suffixes": [
+    "default",
+    "large-aux-2",
+    "large-aux-3",
+    "small-aux-2",
+    "small-aux-3"
+   ]
+  }
+ ],
+ "summary": {
+  "total_repositories": 125,
+  "by_classification": {
+   "refuses_unauthenticated": 80,
+   "resolves_anonymously": 40,
+   "invalid_repo_id": 5
+  },
+  "recipes": 25,
+  "sizes": 5
+ },
+ "wall_seconds": 9.40491247177124
+}
