@@ -1,5 +1,3 @@
-snap-r6-missing-acc
-snap-r6-structured-precise
 snap-r7-availability-recheck
 snap-r6-truth-sweep
 snap-r6-band-shared-acc

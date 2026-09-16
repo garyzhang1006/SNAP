@@ -48,3 +48,5 @@ snap-r6-estimator-bias	COMPLETE	2026-09-16 15:45	2026-09-16 16:37	51	r6_estimato
 snap-r6-logscale-repair	COMPLETE	2026-09-16 17:31	2026-09-16 17:47	16	r6_logscale_repair.json,snap-r6-logscale-repair.log	]
 snap-r6-noise-level	COMPLETE	2026-09-16 17:32	2026-09-16 17:48	16	r6_noise_level.json,snap-r6-noise-level.log	]
 snap-r6-size-count	COMPLETE	2026-09-16 17:32	2026-09-16 17:48	16	r6_size_count.json,snap-r6-size-count.log	]
+snap-r6-missing-configs	COMPLETE	2026-09-16 17:31	2026-09-16 17:52	21	r6_missing_configs.json,snap-r6-missing-configs.log	]
+snap-r6-two-runs-only	COMPLETE	2026-09-16 17:31	2026-09-16 17:53	22	r6_two_runs_only.json,snap-r6-two-runs-only.log	]

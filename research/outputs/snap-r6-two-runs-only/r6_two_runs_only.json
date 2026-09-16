@@ -1,0 +1,339 @@
+{
+ "design": "R6 the design a practitioner can actually afford, which is two runs and fewer recipes.\n\nDesign fixed before running (2026-09-16, written 17:40 EDT). The paper recommends measuring the\ndependence ratio locally rather than carrying ours, and the run sweeps so far have varied one dimension at\na time while holding the other at the shipped value. Someone acting on that recommendation will be short\non both at once, with maybe ten recipes and two runs, because that is what a small lab can train. The\ninteraction is the question, since two runs leave one degree of freedom per configuration and ten clusters\nsit near the cliff the cluster-count sweep found between five and ten.\nThis run crosses them. It pairs two, three and four runs with ten, fifteen and 25 recipes, at 4,000\nreplicates per combination on the margin-like population, and reports coverage, the exclusion rate at a\ntrue 1.2446 and the median width. The cell a reader most wants is ten recipes at two runs, which is the\ncheapest design anyone would try, and the paper should say plainly whether it works. Seed 20260975 keeps\nthe draws distinct.\n",
+ "seed": 20260975,
+ "reps": 4000,
+ "cells": {
+  "r10_runs2": {
+   "name": "r10_runs2",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 10,
+    "runs": 2
+   },
+   "wild_recipe": {
+    "coverage": 0.93625,
+    "mc_se": 0.0038628337234470752,
+    "excludes_one_rate": 0.26625,
+    "lower_miss": 0.01125,
+    "upper_miss": 0.0525,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.586371365881545
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.93575,
+    "mc_se": 0.003876916864597435,
+    "excludes_one_rate": 0.2825,
+    "lower_miss": 0.011,
+    "upper_miss": 0.053,
+    "undefined_or_unbounded": 0.00025,
+    "median_width": 0.5785774902764818
+   },
+   "wild_size": {
+    "coverage": 0.75875,
+    "mc_se": 0.0067647697207665535,
+    "excludes_one_rate": 0.16,
+    "lower_miss": 0.011,
+    "upper_miss": 0.03925,
+    "undefined_or_unbounded": 0.191,
+    "median_width": 0.7312401218838188
+   },
+   "cluster_t_size": {
+    "coverage": 0.9165,
+    "mc_se": 0.004374007030172678,
+    "excludes_one_rate": 0.2125,
+    "lower_miss": 0.0135,
+    "upper_miss": 0.04725,
+    "undefined_or_unbounded": 0.02275,
+    "median_width": 0.6789050882444594
+   }
+  },
+  "r10_runs3": {
+   "name": "r10_runs3",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 10,
+    "runs": 3
+   },
+   "wild_recipe": {
+    "coverage": 0.946,
+    "mc_se": 0.0035736535926135893,
+    "excludes_one_rate": 0.54225,
+    "lower_miss": 0.01225,
+    "upper_miss": 0.04175,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.41255472874973864
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94225,
+    "mc_se": 0.003688324060464318,
+    "excludes_one_rate": 0.55875,
+    "lower_miss": 0.01325,
+    "upper_miss": 0.0445,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.4073799515623768
+   },
+   "wild_size": {
+    "coverage": 0.8925,
+    "mc_se": 0.004897544027367188,
+    "excludes_one_rate": 0.292,
+    "lower_miss": 0.0115,
+    "upper_miss": 0.02675,
+    "undefined_or_unbounded": 0.06925,
+    "median_width": 0.5610600466121327
+   },
+   "cluster_t_size": {
+    "coverage": 0.94575,
+    "mc_se": 0.0035814430576235614,
+    "excludes_one_rate": 0.404,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.0385,
+    "undefined_or_unbounded": 0.00025,
+    "median_width": 0.485881189750875
+   }
+  },
+  "r10_runs4": {
+   "name": "r10_runs4",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 10,
+    "runs": 4
+   },
+   "wild_recipe": {
+    "coverage": 0.9445,
+    "mc_se": 0.0036200742395702326,
+    "excludes_one_rate": 0.746,
+    "lower_miss": 0.018,
+    "upper_miss": 0.0375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.33792034192836035
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94325,
+    "mc_se": 0.003658190724251538,
+    "excludes_one_rate": 0.75775,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.03825,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.33379394189584466
+   },
+   "wild_size": {
+    "coverage": 0.923,
+    "mc_se": 0.0042151808976602645,
+    "excludes_one_rate": 0.439,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.0285,
+    "undefined_or_unbounded": 0.033,
+    "median_width": 0.45651422867519253
+   },
+   "cluster_t_size": {
+    "coverage": 0.94525,
+    "mc_se": 0.0035969583504677936,
+    "excludes_one_rate": 0.57825,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.036,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.39522280674703736
+   }
+  },
+  "r15_runs2": {
+   "name": "r15_runs2",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 15,
+    "runs": 2
+   },
+   "wild_recipe": {
+    "coverage": 0.94525,
+    "mc_se": 0.0035969583504677936,
+    "excludes_one_rate": 0.4485,
+    "lower_miss": 0.01075,
+    "upper_miss": 0.044,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.45656312149673733
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94275,
+    "mc_se": 0.0036732967991982357,
+    "excludes_one_rate": 0.45625,
+    "lower_miss": 0.012,
+    "upper_miss": 0.04525,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.4518646745670628
+   },
+   "wild_size": {
+    "coverage": 0.85275,
+    "mc_se": 0.005602843864949299,
+    "excludes_one_rate": 0.23625,
+    "lower_miss": 0.01075,
+    "upper_miss": 0.0265,
+    "undefined_or_unbounded": 0.11,
+    "median_width": 0.6270941847649081
+   },
+   "cluster_t_size": {
+    "coverage": 0.94475,
+    "mc_se": 0.003612389704198594,
+    "excludes_one_rate": 0.30975,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.0355,
+    "undefined_or_unbounded": 0.00425,
+    "median_width": 0.5589441536063318
+   }
+  },
+  "r15_runs3": {
+   "name": "r15_runs3",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 15,
+    "runs": 3
+   },
+   "wild_recipe": {
+    "coverage": 0.94675,
+    "mc_se": 0.0035501562465615516,
+    "excludes_one_rate": 0.79275,
+    "lower_miss": 0.01125,
+    "upper_miss": 0.042,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3223229803751954
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.947,
+    "mc_se": 0.003542280338990692,
+    "excludes_one_rate": 0.793,
+    "lower_miss": 0.01075,
+    "upper_miss": 0.04225,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3212905386824697
+   },
+   "wild_size": {
+    "coverage": 0.92775,
+    "mc_se": 0.004093590645753433,
+    "excludes_one_rate": 0.4335,
+    "lower_miss": 0.01325,
+    "upper_miss": 0.02925,
+    "undefined_or_unbounded": 0.02975,
+    "median_width": 0.46627224748945906
+   },
+   "cluster_t_size": {
+    "coverage": 0.946,
+    "mc_se": 0.0035736535926135893,
+    "excludes_one_rate": 0.58375,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.0365,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.39576185053683527
+   }
+  },
+  "r25_runs2": {
+   "name": "r25_runs2",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 25,
+    "runs": 2
+   },
+   "wild_recipe": {
+    "coverage": 0.9415,
+    "mc_se": 0.003710719269899031,
+    "excludes_one_rate": 0.736,
+    "lower_miss": 0.016,
+    "upper_miss": 0.0425,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.34154698174583026
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.93975,
+    "mc_se": 0.0037623110417667497,
+    "excludes_one_rate": 0.741,
+    "lower_miss": 0.01675,
+    "upper_miss": 0.0435,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.33911962109366744
+   },
+   "wild_size": {
+    "coverage": 0.91125,
+    "mc_se": 0.004496483000635052,
+    "excludes_one_rate": 0.38275,
+    "lower_miss": 0.01475,
+    "upper_miss": 0.03375,
+    "undefined_or_unbounded": 0.04025,
+    "median_width": 0.4940197262871324
+   },
+   "cluster_t_size": {
+    "coverage": 0.9435,
+    "mc_se": 0.003650607826102387,
+    "excludes_one_rate": 0.516,
+    "lower_miss": 0.01825,
+    "upper_miss": 0.03825,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.42718140954759776
+   }
+  },
+  "r25_runs4": {
+   "name": "r25_runs4",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 25,
+    "runs": 4
+   },
+   "wild_recipe": {
+    "coverage": 0.94875,
+    "mc_se": 0.0034865254014562986,
+    "excludes_one_rate": 0.9965,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.0325,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.1977271220972524
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9475,
+    "mc_se": 0.0035264624625820132,
+    "excludes_one_rate": 0.997,
+    "lower_miss": 0.019,
+    "upper_miss": 0.0335,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.197649319404665
+   },
+   "wild_size": {
+    "coverage": 0.96075,
+    "mc_se": 0.003070400523547376,
+    "excludes_one_rate": 0.77525,
+    "lower_miss": 0.01475,
+    "upper_miss": 0.02225,
+    "undefined_or_unbounded": 0.00225,
+    "median_width": 0.29174205373481055
+   },
+   "cluster_t_size": {
+    "coverage": 0.95375,
+    "mc_se": 0.0033208032725531938,
+    "excludes_one_rate": 0.93425,
+    "lower_miss": 0.01675,
+    "upper_miss": 0.0295,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24802503071651916
+   }
+  }
+ },
+ "shipped_check": {
+  "r10_runs2": 0.0,
+  "r10_runs3": 0.0,
+  "r10_runs4": 0.0,
+  "r15_runs2": 0.0,
+  "r15_runs3": 0.0,
+  "r25_runs2": 0.0,
+  "r25_runs4": 2.220446049250313e-16
+ },
+ "wall_seconds": 1291.5136802196503
+}
