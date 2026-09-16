@@ -550,3 +550,23 @@ snap-r6-weights failed at `TypeError: Object of type ndarray is not JSON seriali
 because the report echoes each cell's varied parameters and the item-count weighting arrives as a numpy
 array. The science had finished by then. The weights are now a list and the dump carries a default, and
 version 2 is queued.
+
+## 2026-09-16, 18:20 to 19:00 EDT, weighting and the audit pass
+
+| kernel | outcome | what it changed |
+|---|---|---|
+| snap-r6-weights (v2) | COMPLETE. Flat, item-count, four-fold ramp and concentrated weightings cover 0.941 to 0.951, while the true ratio falls from 1.2446 to 1.0975 and the exclusion rate from 0.962 to 0.509. | Written in. The weighting moves the quantity being estimated rather than the honesty of the interval around it. |
+| snap-r6-ragged-runs | RUNNING. Per-configuration run counts, with the shortfall random, lumpy by recipe, or mixed across two, three and four seeds. | The release loses seeds unevenly and every earlier sweep assumed it did not. |
+| snap-r6-perm-power-acc | QUEUED. The permutation band-sharing test measured at the accuracy battery's noise of 1.45 rather than the margin battery's 0.73. | The paper quotes that bound on all four batteries and has only measured the test's power on one scale. |
+| snap-r6-band-noise | QUEUED. Item noise that varies by size band over two-fold, four-fold and sixteen-fold ramps, plus one loud band and an alternating pattern. | Heteroscedasticity aligned with a variable the recipe clustering never models. |
+
+An independent verification pass read every simulation number written into the appendix today back to
+`research/results/simulation_cells.csv` and the kernel JSON, and it found five that did not match. The
+noise sweep's upper endpoint is 0.954 rather than 0.955. The log-scale cells agree within 0.006 rather
+than 0.004, because `recipe_0.114` and `band_0.25` separate by 0.0045 and 0.0058. The permutation
+exactness run under seed 20260969 used 500 replicates with 999 permutations rather than 4,000 replicates.
+The median widths of 0.357 and 0.246 belong to seed 20260955 on the margin scale rather than to the two
+accuracy sweeps they had been placed under. The 1B branch verification covers five of the eight recipes
+that resolve at 1B rather than all of them, since the run attempted three names that do not exist and
+never attempted falcon, fineweb-edu or fineweb-pro. Each of the five was re-verified against the source
+file before the appendix was edited, and all five are now corrected.
