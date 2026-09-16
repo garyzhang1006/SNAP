@@ -1,17 +1,16 @@
-"""R6 whether the interval survives a battery whose benchmarks are not weighted equally.
+"""R6 how many clusters the accuracy scale needs, given that five already failed it.
 
-Design fixed before running (2026-09-16, written 18:10 EDT). The estimand this paper reports uses flat
-weights over the ten benchmarks, because that is what the aggregate in the release implies, and every
-coverage cell we have run inherits that choice. A reader who weights by item count, or who drops to a
-weighted subset because two benchmarks matter more to them, is asking a question none of our simulations
-answer. Weights enter the estimator twice, once in the full quadratic form and once in the diagonal one,
-so an unequal weighting changes the true ratio as well as the estimate, and the two moves need not
-cancel.
-This run gives the ten benchmarks four weightings at the margin battery's correlation and item noise. It
-uses flat weights, weights proportional to the item counts the release ships, a four-fold linear ramp and
-a concentrated weighting that puts half the mass on two benchmarks. Each cell recomputes its own true
-ratio from the same weights the estimator uses, so coverage is scored against the truth that weighting
-implies rather than against the flat one. Seed 20260986 keeps the draws distinct.
+Design fixed before running (2026-09-16, written 18:35 EDT). snap-r6-cluster-count swept the recipe count
+on a margin-like population and found the wild interval collapsing only at five clusters, where it covers
+0.749 against 0.910 for the plain cluster-robust one. snap-r6-band-shared-acc has now shown the same
+inversion at the accuracy battery's noise with five size clusters, where the wild interval covers 0.832
+and its cluster-robust counterpart holds 0.935, even with no sharing present at all. That suggests the
+cluster count a reader needs depends on the item noise they carry, and the paper currently states the
+requirement once, from the margin sweep alone.
+This run repeats the recipe-count sweep at 5, 10, 15, 25, 40 and 60 clusters on an accuracy-like
+population, at 4,000 replicates per cell, scoring both the wild interval and the cluster-robust one. If
+the accuracy scale needs more clusters than the margin scale, a reader planning a noisier battery gets a
+number rather than a shrug. Seed 20260987 keeps the draws distinct.
 """
 import json, platform, shutil, subprocess, sys, time
 from pathlib import Path
@@ -37,25 +36,13 @@ from seednoise.estimator import estimate  # noqa: E402
 from seednoise.inference import cluster_t_interval, wild_bootstrap_t  # noqa: E402
 from seednoise.population import Phenotype, Population  # noqa: E402
 
-sel = [q for q in find_all("*.npz") if "__seed-" in q.name]
-assert len(sel) == 375, len(sel)
-runs_dir = W / "runs"; runs_dir.mkdir(exist_ok=True)
-for q in sel:
-    shutil.copy(q, runs_dir / q.name)
-pop, info = build_population(runs_dir, TRAITS, n_runs=3)
-print(f"[base] {json.dumps(info)}", flush=True)
-# The release ships the per-benchmark item counts, so we read them rather than retyping them.
-_ITEM_W = np.asarray(pop.n_items, float).tolist()
-assert len(_ITEM_W) == 10 and sum(_ITEM_W) > 0, _ITEM_W
-print(f"[items] {_ITEM_W} total {sum(_ITEM_W):.0f}", flush=True)
-
 CELLS = [
- {"name": "flat", "rho": 0.061, "noise_sd": 0.73},
- {"name": "item_count", "rho": 0.061, "noise_sd": 0.73, "weights": _ITEM_W},
- {"name": "ramp_4x", "rho": 0.061, "noise_sd": 0.73,
-  "weights": [1.0, 1.333, 1.667, 2.0, 2.333, 2.667, 3.0, 3.333, 3.667, 4.0]},
- {"name": "concentrated", "rho": 0.061, "noise_sd": 0.73,
-  "weights": [0.25, 0.25, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625]},
+ {"name": "acc_recipes_05", "rho": 0.018, "noise_sd": 1.45, "recipes": 5},
+ {"name": "acc_recipes_10", "rho": 0.018, "noise_sd": 1.45, "recipes": 10},
+ {"name": "acc_recipes_15", "rho": 0.018, "noise_sd": 1.45, "recipes": 15},
+ {"name": "acc_recipes_25", "rho": 0.018, "noise_sd": 1.45, "recipes": 25},
+ {"name": "acc_recipes_40", "rho": 0.018, "noise_sd": 1.45, "recipes": 40},
+ {"name": "acc_recipes_60", "rho": 0.018, "noise_sd": 1.45, "recipes": 60},
 ]
 def r6_simulate(cell, rng):
     k, r = cell.get("benchmarks", 10), cell.get("runs", 3)
@@ -84,9 +71,7 @@ def r6_simulate(cell, rng):
     ea = rng.normal(size=latent.shape) * noise
     eb = ec * ea + np.sqrt(1 - ec ** 2) * rng.normal(size=latent.shape) * noise
     a, b = latent + ea, latent + eb
-    # An explicit weighting replaces the flat one, normalised so the estimand stays a ratio.
-    w = np.asarray(cell.get("weights", [1.0] * k), float)
-    w = w / w.sum()
+    w = np.full(k, 1.0 / k)
     da = a - a.mean(1, keepdims=True)
     db = b - b.mean(1, keepdims=True)
     cross = np.einsum("crj,crk->cjk", da, db) / (r - 1)
@@ -152,7 +137,7 @@ def _cluster_t_cr1(T, U, cluster, alpha=0.05):
             float(np.sqrt(hi)) if hi >= 0 else float("nan"))
 
 
-SEED, REPS = 20260986, 4000
+SEED, REPS = 20260987, 4000
 SIZES_PER_RECIPE = 5
 METHODS = ("wild_recipe", "cluster_t_recipe", "wild_size", "cluster_t_size")
 report = {"design": __doc__, "seed": SEED, "reps": REPS, "cells": {}, "shipped_check": {}}
@@ -199,6 +184,6 @@ for ci, cell in enumerate(CELLS):
     print(f"[{cell['name']}] {time.time() - t1:.0f}s check {check:.3g} " + json.dumps({m: round(out[m]["coverage"], 4) for m in METHODS if m in out}), flush=True)
 
 report["wall_seconds"] = time.time() - t0
-(W / "r6_weights.json").write_text(json.dumps(report, indent=1, default=lambda o: o.tolist() if hasattr(o, "tolist") else str(o)))
+(W / "r6_cluster_count_acc.json").write_text(json.dumps(report, indent=1))
 shutil.rmtree(W / "seed-noise", ignore_errors=True)
 print(f"[done] {time.time() - t0:.0f}s", flush=True)

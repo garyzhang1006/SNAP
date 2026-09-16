@@ -512,3 +512,41 @@ The queue runner kept five slots busy without an agent for the whole batch, and 
 snap-r6-logscale-repair failed at version 1 with `KeyError: 'wild_size'`, because I replaced the method dictionary but left the trailing guard that adds a size-clustered interval when the band index has more than one level, and a single-size cell still produces five distinct band labels through the modulo. The guard is gone and version 2 is running.
 
 Running now with monitors attached: snap-r6-logscale-repair, snap-r6-two-runs-only, snap-r6-missing-configs, snap-r6-noise-level and snap-r6-size-count. Queued behind them, in order: snap-r6-logscale-full, snap-r6-alpha-levels, snap-r6-boot-reps, snap-r6-missing-acc, snap-r6-structured-precise and snap-r7-availability-recheck. The last of those repeats the availability census the main text quotes, because that count describes a remote service rather than a shipped file, and a number that can drift should be measured twice before a reviewer measures it for us.
+
+### 2026-09-16 18:35 EDT — the plan's compute is finished, and the package that was missing now exists
+
+An audit of the two planning documents against the repository found every compute gate from R0 through
+R15 satisfied by a result file or a dated ledger row, with only R16 and R17 open, and neither of those
+needs Kaggle. Both are now closed. Figure C is drawn by `research/figures/make_prediction_figure.py`
+from the frozen snap-r8-paired-log result and sits in the paired-uncertainty appendix. The scientific
+package is assembled under `research/`, with `manifest.csv` carrying all 375 runs with a SHA-256 each,
+`items.csv` carrying all 37,682 items with their BoolQ passage groups, `results/` carrying 806 frozen
+simulation cells and an index of 604 result files, `protocol.md` carrying the estimand decisions and the
+amendment history, `README.md` carrying both data contracts read off the fields actually on disk, and
+`tests/` carrying two suites that both pass.
+
+The tests paid for themselves during the first run. One caught that the results index was harvesting
+JSON out of the vendored package checkout inside each kernel's working directory, which would have
+credited a cancelled kernel with results it never produced. The other caught that a kernel which failed
+and was repushed carries both an ERROR row and a COMPLETE row, so the rule has to read the last state
+rather than any state.
+
+| kernel | result | disposition |
+|---|---|---|
+| snap-r6-logscale-repair | COMPLETE. Inside one size band the log-scale interval covers 0.902 against 0.930 for the plain one on margins, and on accuracy at three runs it is undefined in 0.090 of replicates and misses in 0.151, against 0.284 undefined and 0.017 missed. | The consequential result of the batch. The paper reports a log-scale interval at 1B, so the appendix now reads those endpoints as closer to a ninety percent statement and names the leverage correction as the better repair. |
+| snap-r6-logscale-full | COMPLETE. At the full 125-cell design the two constructions agree within 0.004 at every cell, including the corners, and the leverage correction beats both at 0.954. | Written in beside it. The transform is a device for keeping endpoints positive in a thin cell rather than a better interval. |
+| snap-r6-size-count | COMPLETE. Holding the cell count near 125, the recipe-clustered interval covers 0.938 to 0.948 across three, five, eight and twelve bands, while the size-clustered fallback covers 0.900 with three bands. | Written in. The fallback needs at least the five bands this release ships. |
+| snap-r6-noise-level | COMPLETE. The interval covers 0.944 to 0.955 from item noise 0.25 through 2.00 and collapses at 3.00 to 0.668 with 0.312 undefined. | Written in. The failure point sits near four times the margin battery's noise, far above the accuracy battery's 1.45. |
+| snap-r6-missing-configs and snap-r6-missing-acc | COMPLETE. Random drops of a tenth through a half leave margin coverage at 0.940 to 0.950 and accuracy coverage at 0.931 to 0.954, and six whole recipes removed leave 0.945 and 0.947. | Written in. Cluster balance costs nothing here, and the loss lands on width and power instead. |
+| snap-r6-two-runs-only | COMPLETE. Across ten to twenty five recipes by two to four runs, coverage stays between 0.936 and 0.949 while the exclusion rate runs 0.266 at the cheapest corner and 0.997 at twenty five by four. | Written in. A reader planning their own measurement should buy recipes before runs. |
+| snap-r6-boot-reps | COMPLETE. Bootstrap draws of 999, 2,499, 4,999 and 19,999 give coverage inside 0.002 of each other. | Written in. A replicator can use the cheapest count. |
+| snap-r6-alpha-levels | COMPLETE. Nominal levels of one in ten, one in twenty and one in a hundred return 0.896, 0.951 and 0.990, and a band-shared quarter breaks all three together. | Written in. The interval is calibrated rather than tuned at one level. |
+| snap-r6-truth-sweep | COMPLETE. Coverage runs 0.934 to 0.949 across true ratios from 1.00 to 1.60, and at a true ratio of exactly one the interval excludes one in 0.018 of replicates. | Written in. That 0.018 is the false positive rate a reader should assume on a battery with no dependence. |
+| snap-r6-structured-precise | COMPLETE. Flat covers 0.9471 and dominant covers 0.9429 at 12,000 replicates, reversing the 4,000-replicate ordering. | The correction is in the appendix. This is the second 4,000-replicate gap in this project that failed to survive a larger run. |
+| snap-r6-band-shared-acc and snap-r6-recipe-shared-acc | COMPLETE. On accuracy the recipe-clustered interval holds 0.936 to 0.950 under both sharing channels up to a quarter, while the size-clustered wild interval sits near 0.83 at every share including zero and its cluster-robust counterpart holds 0.935. | Written in. The fallback recommendation now names the cluster-robust version on the accuracy scale, because five clusters carrying that item noise are too few for the bootstrap. |
+| snap-r7-availability-recheck | COMPLETE in one minute. The census returns the same 80 refusals, 40 open repositories and 5 invalid names seven hours later. | Written in. The provenance count the main text quotes is now a two-reading measurement. |
+
+snap-r6-weights failed at `TypeError: Object of type ndarray is not JSON serializable` after 810 seconds,
+because the report echoes each cell's varied parameters and the item-count weighting arrives as a numpy
+array. The science had finished by then. The weights are now a list and the dump carries a default, and
+version 2 is queued.

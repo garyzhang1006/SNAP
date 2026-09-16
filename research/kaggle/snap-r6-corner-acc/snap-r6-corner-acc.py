@@ -1,17 +1,15 @@
-"""R6 whether the interval survives a battery whose benchmarks are not weighted equally.
+"""R6 the sharing corner the limitation rests on, measured on the scale the paper reports second.
 
-Design fixed before running (2026-09-16, written 18:10 EDT). The estimand this paper reports uses flat
-weights over the ten benchmarks, because that is what the aggregate in the release implies, and every
-coverage cell we have run inherits that choice. A reader who weights by item count, or who drops to a
-weighted subset because two benchmarks matter more to them, is asking a question none of our simulations
-answer. Weights enter the estimator twice, once in the full quadratic form and once in the diagonal one,
-so an unequal weighting changes the true ratio as well as the estimate, and the two moves need not
-cancel.
-This run gives the ten benchmarks four weightings at the margin battery's correlation and item noise. It
-uses flat weights, weights proportional to the item counts the release ships, a four-fold linear ramp and
-a concentrated weighting that puts half the mass on two benchmarks. Each cell recomputes its own true
-ratio from the same weights the estimator uses, so coverage is scored against the truth that weighting
-implies rather than against the flat one. Seed 20260986 keeps the draws distinct.
+Design fixed before running (2026-09-16, written 18:40 EDT). The corner that carries the paper's
+limitation puts band sharing at its 0.044 bound and recipe sharing at its 0.114 bound together, and we
+measured it at 12,000 replicates on a margin-like population, where it costs between half a point and a
+point of coverage. The accuracy battery has a different correlation, twice the item noise and a true
+ratio near 1.078, and none of the corner work has touched it. A limitation that applies to both reported
+scales should be measured on both rather than assumed to transfer.
+This run scores five cells at the accuracy battery's correlation and item noise, which are no sharing,
+band sharing alone at its bound, recipe sharing alone at its bound, both bounds together, and twice both
+bounds. It reports the recipe-clustered interval and its leverage-corrected version, so the remedy the
+appendix prices on margins gets a price on accuracy too. Seed 20260988 keeps the draws distinct.
 """
 import json, platform, shutil, subprocess, sys, time
 from pathlib import Path
@@ -37,25 +35,14 @@ from seednoise.estimator import estimate  # noqa: E402
 from seednoise.inference import cluster_t_interval, wild_bootstrap_t  # noqa: E402
 from seednoise.population import Phenotype, Population  # noqa: E402
 
-sel = [q for q in find_all("*.npz") if "__seed-" in q.name]
-assert len(sel) == 375, len(sel)
-runs_dir = W / "runs"; runs_dir.mkdir(exist_ok=True)
-for q in sel:
-    shutil.copy(q, runs_dir / q.name)
-pop, info = build_population(runs_dir, TRAITS, n_runs=3)
-print(f"[base] {json.dumps(info)}", flush=True)
-# The release ships the per-benchmark item counts, so we read them rather than retyping them.
-_ITEM_W = np.asarray(pop.n_items, float).tolist()
-assert len(_ITEM_W) == 10 and sum(_ITEM_W) > 0, _ITEM_W
-print(f"[items] {_ITEM_W} total {sum(_ITEM_W):.0f}", flush=True)
-
 CELLS = [
- {"name": "flat", "rho": 0.061, "noise_sd": 0.73},
- {"name": "item_count", "rho": 0.061, "noise_sd": 0.73, "weights": _ITEM_W},
- {"name": "ramp_4x", "rho": 0.061, "noise_sd": 0.73,
-  "weights": [1.0, 1.333, 1.667, 2.0, 2.333, 2.667, 3.0, 3.333, 3.667, 4.0]},
- {"name": "concentrated", "rho": 0.061, "noise_sd": 0.73,
-  "weights": [0.25, 0.25, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625]},
+ {"name": "acc_none", "rho": 0.018, "noise_sd": 1.45},
+ {"name": "acc_band_0.044", "rho": 0.018, "noise_sd": 1.45, "size_shared": 0.044},
+ {"name": "acc_recipe_0.114", "rho": 0.018, "noise_sd": 1.45, "recipe_shared": 0.114},
+ {"name": "acc_joint_bound", "rho": 0.018, "noise_sd": 1.45, "size_shared": 0.044,
+  "recipe_shared": 0.114},
+ {"name": "acc_joint_double", "rho": 0.018, "noise_sd": 1.45, "size_shared": 0.088,
+  "recipe_shared": 0.228},
 ]
 def r6_simulate(cell, rng):
     k, r = cell.get("benchmarks", 10), cell.get("runs", 3)
@@ -84,9 +71,7 @@ def r6_simulate(cell, rng):
     ea = rng.normal(size=latent.shape) * noise
     eb = ec * ea + np.sqrt(1 - ec ** 2) * rng.normal(size=latent.shape) * noise
     a, b = latent + ea, latent + eb
-    # An explicit weighting replaces the flat one, normalised so the estimand stays a ratio.
-    w = np.asarray(cell.get("weights", [1.0] * k), float)
-    w = w / w.sum()
+    w = np.full(k, 1.0 / k)
     da = a - a.mean(1, keepdims=True)
     db = b - b.mean(1, keepdims=True)
     cross = np.einsum("crj,crk->cjk", da, db) / (r - 1)
@@ -152,7 +137,7 @@ def _cluster_t_cr1(T, U, cluster, alpha=0.05):
             float(np.sqrt(hi)) if hi >= 0 else float("nan"))
 
 
-SEED, REPS = 20260986, 4000
+SEED, REPS = 20260988, 4000
 SIZES_PER_RECIPE = 5
 METHODS = ("wild_recipe", "cluster_t_recipe", "wild_size", "cluster_t_size")
 report = {"design": __doc__, "seed": SEED, "reps": REPS, "cells": {}, "shipped_check": {}}
@@ -199,6 +184,6 @@ for ci, cell in enumerate(CELLS):
     print(f"[{cell['name']}] {time.time() - t1:.0f}s check {check:.3g} " + json.dumps({m: round(out[m]["coverage"], 4) for m in METHODS if m in out}), flush=True)
 
 report["wall_seconds"] = time.time() - t0
-(W / "r6_weights.json").write_text(json.dumps(report, indent=1, default=lambda o: o.tolist() if hasattr(o, "tolist") else str(o)))
+(W / "r6_corner_acc.json").write_text(json.dumps(report, indent=1))
 shutil.rmtree(W / "seed-noise", ignore_errors=True)
 print(f"[done] {time.time() - t0:.0f}s", flush=True)

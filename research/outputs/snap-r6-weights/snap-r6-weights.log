@@ -1,14 +1,39 @@
-[{"stream_name":"stdout","time":1.267993118,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
-,{"stream_name":"stdout","time":24.028454519,"data":"[base] {\"n_config\": 125, \"n_runs_read\": 375, \"dropped_cells\": [], \"recipes\": [\"Falcon-with-cc-top-orig-10p\", \"Falcon-with-cc-top-tulu-10p\", \"c4\", \"dclm-baseline\", \"dclm-baseline-25p-dolma1.7-75p\", \"dclm-baseline-50p-dolma1.7-50p\", \"dclm-baseline-75p-dolma1.7-25p\", \"dclm-baseline-top-10p\", \"dclm-baseline-top-20p\", \"dclm-baseline-top-fw-10p\", \"dclm-baseline-top-fw-3p\", \"dclm-baseline-top-fw2-7p\", \"dclm-baseline-top-fw3-7p\", \"dolma1.6++\", \"dolma1.7\", \"dolma1.7-no-code\", \"dolma1.7-no-flan\", \"dolma1.7-no-math-no-code\", \"dolma1.7-no-reddit\", \"falcon\", \"falcon-with-cc\", \"falcon-with-cc-top-10p\", \"falcon-with-cc-top-20p\", \"fineweb-edu\", \"fineweb-pro\"], \"sizes\": [\"150M\", \"300M\", \"530M\", \"750M\", \"1B\"], \"half_A_items\": 18840, \"half_B_items\": 18842, \"split_seed\": 20260101}\n"}
-,{"stream_name":"stdout","time":74.144578091,"data":"[margin/dirichlet_flat] excl 0.8165 lam 0.976-1.991 50s\n"}
-,{"stream_name":"stdout","time":123.936575279,"data":"[margin/dirichlet_near_flat] excl 1.0000 lam 1.059-1.682 100s\n"}
-,{"stream_name":"stdout","time":172.606948195,"data":"[accuracy/dirichlet_flat] excl 0.3860 lam 0.416-3.792 49s\n"}
-,{"stream_name":"stdout","time":219.355328388,"data":"[accuracy/dirichlet_near_flat] excl 0.4020 lam 1.007-1.306 95s\n"}
-,{"stream_name":"stdout","time":219.375286578,"data":"[done] 218s\n"}
-,{"stream_name":"stderr","time":222.322285523,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
-,{"stream_name":"stderr","time":222.322340963,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
-,{"stream_name":"stderr","time":222.673044161,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
-,{"stream_name":"stderr","time":222.673074684,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
-,{"stream_name":"stderr","time":223.613374037,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
-,{"stream_name":"stderr","time":225.290154443,"data":"[NbConvertApp] Writing 315280 bytes to __results__.html\n"}
+[{"stream_name":"stdout","time":0.892727473,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":23.041875922,"data":"[base] {\"n_config\": 125, \"n_runs_read\": 375, \"dropped_cells\": [], \"recipes\": [\"Falcon-with-cc-top-orig-10p\", \"Falcon-with-cc-top-tulu-10p\", \"c4\", \"dclm-baseline\", \"dclm-baseline-25p-dolma1.7-75p\", \"dclm-baseline-50p-dolma1.7-50p\", \"dclm-baseline-75p-dolma1.7-25p\", \"dclm-baseline-top-10p\", \"dclm-baseline-top-20p\", \"dclm-baseline-top-fw-10p\", \"dclm-baseline-top-fw-3p\", \"dclm-baseline-top-fw2-7p\", \"dclm-baseline-top-fw3-7p\", \"dolma1.6++\", \"dolma1.7\", \"dolma1.7-no-code\", \"dolma1.7-no-flan\", \"dolma1.7-no-math-no-code\", \"dolma1.7-no-reddit\", \"falcon\", \"falcon-with-cc\", \"falcon-with-cc-top-10p\", \"falcon-with-cc-top-20p\", \"fineweb-edu\", \"fineweb-pro\"], \"sizes\": [\"150M\", \"300M\", \"530M\", \"750M\", \"1B\"], \"half_A_items\": 18840, \"half_B_items\": 18842, \"split_seed\": 20260101}\n"}
+,{"stream_name":"stdout","time":23.041933894,"data":"[items] [1172.0, 2376.0, 3270.0, 1221.0, 10042.0, 14042.0, 500.0, 1838.0, 1954.0, 1267.0] total 37682\n"}
+,{"stream_name":"stdout","time":216.485382065,"data":"[flat] 193s check 0 {\"wild_recipe\": 0.9467, \"cluster_t_recipe\": 0.9475, \"wild_size\": 0.9537, \"cluster_t_size\": 0.9495}\n"}
+,{"stream_name":"stdout","time":410.595602814,"data":"[item_count] 194s check 0 {\"wild_recipe\": 0.951, \"cluster_t_recipe\": 0.949, \"wild_size\": 0.956, \"cluster_t_size\": 0.9525}\n"}
+,{"stream_name":"stdout","time":610.294506635,"data":"[ramp_4x] 200s check 0 {\"wild_recipe\": 0.9405, \"cluster_t_recipe\": 0.939, \"wild_size\": 0.9483, \"cluster_t_size\": 0.9403}\n"}
+,{"stream_name":"stdout","time":810.813500039,"data":"[concentrated] 201s check 0 {\"wild_recipe\": 0.9467, \"cluster_t_recipe\": 0.9457, \"wild_size\": 0.954, \"cluster_t_size\": 0.9497}\n"}
+,{"stream_name":"stderr","time":810.813729164,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":810.813765716,"data":"  File \"/kaggle/src/script.py\", line 202, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":810.813972491,"data":"    (W / \"r6_weights.json\").write_text(json.dumps(report, indent=1))\n"}
+,{"stream_name":"stderr","time":810.814225302,"data":"                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":810.814255619,"data":"  File \"/usr/lib/python3.12/json/__init__.py\", line 238, in dumps\n"}
+,{"stream_name":"stderr","time":810.81535184,"data":"    **kw).encode(obj)\n"}
+,{"stream_name":"stderr","time":810.815404997,"data":"          ^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":810.815421976,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 202, in encode\n"}
+,{"stream_name":"stderr","time":810.816255067,"data":"    chunks = list(chunks)\n"}
+,{"stream_name":"stderr","time":810.816361133,"data":"             ^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":810.816369579,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 432, in _iterencode\n"}
+,{"stream_name":"stderr","time":810.816648031,"data":"    yield from _iterencode_dict(o, _current_indent_level)\n"}
+,{"stream_name":"stderr","time":810.816668792,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 406, in _iterencode_dict\n"}
+,{"stream_name":"stderr","time":810.816907767,"data":"    yield from chunks\n"}
+,{"stream_name":"stderr","time":810.816916644,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 406, in _iterencode_dict\n"}
+,{"stream_name":"stderr","time":810.817117821,"data":"    yield from chunks\n"}
+,{"stream_name":"stderr","time":810.817125931,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 406, in _iterencode_dict\n"}
+,{"stream_name":"stderr","time":810.81734091,"data":"    yield from chunks\n"}
+,{"stream_name":"stderr","time":810.817350177,"data":"  [Previous line repeated 1 more time]\n"}
+,{"stream_name":"stderr","time":810.817355446,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 439, in _iterencode\n"}
+,{"stream_name":"stderr","time":810.817548486,"data":"    o = _default(o)\n"}
+,{"stream_name":"stderr","time":810.817574597,"data":"        ^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":810.817587622,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 180, in default\n"}
+,{"stream_name":"stderr","time":810.817771733,"data":"    raise TypeError(f'Object of type {o.__class__.__name__} '\n"}
+,{"stream_name":"stderr","time":810.817778654,"data":"TypeError: Object of type ndarray is not JSON serializable\n"}
+,{"stream_name":"stderr","time":813.4993666,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":813.49940206,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":813.774954316,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":813.774982923,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":814.588377737,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":816.100469302,"data":"[NbConvertApp] Writing 341417 bytes to __results__.html\n"}
 ]
