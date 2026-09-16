@@ -1,0 +1,198 @@
+{
+ "design": "R6 whether five size bands is enough for the fallback clustering the paper recommends.\n\nDesign fixed before running (2026-09-16, written 17:50 EDT). The limitation section tells a doubtful\nreader to cluster on size bands instead of recipes, and the recipe-shared sweep showed that fallback holds\nits coverage at the sharing level these data bound. It holds that coverage with five clusters, and the\ncluster-count sweep found the wild bootstrap collapsing to 0.749 at five recipes. Those two results sit\nawkwardly together, and the difference is that the size fallback pools 25 configurations into each of its\nfive clusters while the five-recipe design pools five. A reader deserves to know which of the two effects\nis doing the work.\nThis run separates them. It sweeps the number of size bands over 3, 5, 8 and 12 while holding the total\nat roughly 125 configurations, so the cluster count moves and the information per cluster moves the other\nway, at 4,000 replicates each. It scores both clusterings on every replicate. Seed 20260977 keeps the\ndraws distinct.\n",
+ "seed": 20260977,
+ "reps": 4000,
+ "cells": {
+  "bands_03": {
+   "name": "bands_03",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 41,
+    "sizes": 3
+   },
+   "wild_recipe": {
+    "coverage": 0.948,
+    "mc_se": 0.0035105555115964213,
+    "excludes_one_rate": 0.97275,
+    "lower_miss": 0.01475,
+    "upper_miss": 0.03725,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2403695128952198
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94625,
+    "mc_se": 0.003565842729986839,
+    "excludes_one_rate": 0.97275,
+    "lower_miss": 0.01475,
+    "upper_miss": 0.039,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23943694566494428
+   },
+   "wild_size": {
+    "coverage": 0.8995,
+    "mc_se": 0.004753939156110436,
+    "excludes_one_rate": 0.7215,
+    "lower_miss": 0.042,
+    "upper_miss": 0.05725,
+    "undefined_or_unbounded": 0.00125,
+    "median_width": 0.2995245552307264
+   },
+   "cluster_t_size": {
+    "coverage": 0.943,
+    "mc_se": 0.003665753674212168,
+    "excludes_one_rate": 0.5065,
+    "lower_miss": 0.02375,
+    "upper_miss": 0.02925,
+    "undefined_or_unbounded": 0.004,
+    "median_width": 0.4433588482106602
+   }
+  },
+  "bands_05": {
+   "name": "bands_05",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 25,
+    "sizes": 5
+   },
+   "wild_recipe": {
+    "coverage": 0.93775,
+    "mc_se": 0.0038201746524210126,
+    "excludes_one_rate": 0.9635,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.04375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24064020921792095
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9375,
+    "mc_se": 0.0038273277230987156,
+    "excludes_one_rate": 0.96325,
+    "lower_miss": 0.019,
+    "upper_miss": 0.0435,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24021405922401584
+   },
+   "wild_size": {
+    "coverage": 0.944,
+    "mc_se": 0.0036353816856005655,
+    "excludes_one_rate": 0.61275,
+    "lower_miss": 0.019,
+    "upper_miss": 0.0295,
+    "undefined_or_unbounded": 0.0075,
+    "median_width": 0.36076834586534445
+   },
+   "cluster_t_size": {
+    "coverage": 0.93875,
+    "mc_se": 0.003791386207576327,
+    "excludes_one_rate": 0.79625,
+    "lower_miss": 0.0235,
+    "upper_miss": 0.03775,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.30521977789820387
+   }
+  },
+  "bands_08": {
+   "name": "bands_08",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 16,
+    "sizes": 8
+   },
+   "wild_recipe": {
+    "coverage": 0.94225,
+    "mc_se": 0.003688324060464318,
+    "excludes_one_rate": 0.963,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.039,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24464639291838708
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94375,
+    "mc_se": 0.0036430048551985223,
+    "excludes_one_rate": 0.96325,
+    "lower_miss": 0.01825,
+    "upper_miss": 0.038,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24385571320388466
+   },
+   "wild_size": {
+    "coverage": 0.943,
+    "mc_se": 0.003665753674212168,
+    "excludes_one_rate": 0.9105,
+    "lower_miss": 0.0205,
+    "upper_miss": 0.0365,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26896735017461754
+   },
+   "cluster_t_size": {
+    "coverage": 0.945,
+    "mc_se": 0.003604684452209376,
+    "excludes_one_rate": 0.924,
+    "lower_miss": 0.02,
+    "upper_miss": 0.035,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2666536152417055
+   }
+  },
+  "bands_12": {
+   "name": "bands_12",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 10,
+    "sizes": 12
+   },
+   "wild_recipe": {
+    "coverage": 0.948,
+    "mc_se": 0.0035105555115964213,
+    "excludes_one_rate": 0.92225,
+    "lower_miss": 0.01525,
+    "upper_miss": 0.03675,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26640128223177995
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.947,
+    "mc_se": 0.003542280338990692,
+    "excludes_one_rate": 0.92775,
+    "lower_miss": 0.017,
+    "upper_miss": 0.036,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26398943340758596
+   },
+   "wild_size": {
+    "coverage": 0.94725,
+    "mc_se": 0.0035343824602043273,
+    "excludes_one_rate": 0.931,
+    "lower_miss": 0.01725,
+    "upper_miss": 0.0355,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.25965739132439036
+   },
+   "cluster_t_size": {
+    "coverage": 0.94675,
+    "mc_se": 0.0035501562465615516,
+    "excludes_one_rate": 0.93175,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.03575,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.258750247311604
+   }
+  }
+ },
+ "shipped_check": {
+  "bands_03": 0.0,
+  "bands_05": 0.0,
+  "bands_08": 0.0,
+  "bands_12": 0.0
+ },
+ "wall_seconds": 937.5065159797668
+}

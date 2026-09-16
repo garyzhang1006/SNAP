@@ -45,3 +45,6 @@ snap-r6-logscale-repair	ERROR	2026-09-16 15:45	2026-09-16 15:46	1	snap-r6-logsca
 snap-r7-verify-1b	COMPLETE	2026-09-16 15:16	2026-09-16 16:00	43	r7_verify_1b.json,snap-r7-verify-1b.log	]
 snap-r6-detect-power-margin	COMPLETE	2026-09-16 15:26	2026-09-16 16:01	35	r6_detect_power_margin.json,snap-r6-detect-power-margin.log	]
 snap-r6-estimator-bias	COMPLETE	2026-09-16 15:45	2026-09-16 16:37	51	r6_estimator_bias.json,snap-r6-estimator-bias.log	]
+snap-r6-logscale-repair	COMPLETE	2026-09-16 17:31	2026-09-16 17:47	16	r6_logscale_repair.json,snap-r6-logscale-repair.log	]
+snap-r6-noise-level	COMPLETE	2026-09-16 17:32	2026-09-16 17:48	16	r6_noise_level.json,snap-r6-noise-level.log	]
+snap-r6-size-count	COMPLETE	2026-09-16 17:32	2026-09-16 17:48	16	r6_size_count.json,snap-r6-size-count.log	]

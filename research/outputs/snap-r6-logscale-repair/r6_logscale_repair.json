@@ -1,0 +1,346 @@
+{
+ "design": "R6 whether the log-scale interval repairs a single band, where the plain one falls apart.\n\nDesign fixed before running (2026-09-16, written 15:55 EDT). snap-r6-single-size and its accuracy twin\nfound that one size band at the three runs the release ships covers 0.930 on margins and only 0.707 on\naccuracy, which matters because the paper prints a per-size table with both columns. The paper already\nreaches for a different construction in exactly this situation, since the 1B margin row has a squared\nratio whose lower bound falls below zero and gets a log-scale interval instead. Nobody has asked whether\nthat transform fixes the coverage or merely keeps the endpoint printable.\nThis run asks. At a single band of 25 configurations it compares five constructions on identical\nreplicates, the plain wild bootstrap-t, the same with the cr3 leverage correction, a bootstrap-t\nstudentised on the log of the squared ratio, that log version with cr3, and the cluster-robust t. It\nsweeps three and six and ten runs on a margin-like population and on an accuracy-like one, at 4,000\nreplicates each. A log-scale interval that lifts the accuracy band from 0.707 toward nominal would mean\nthe per-size table should be printed that way throughout. Seed 20260972 keeps the draws distinct.\n",
+ "seed": 20260972,
+ "reps": 4000,
+ "cells": {
+  "margin_runs_03": {
+   "name": "margin_runs_03",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "sizes": 1,
+    "runs": 3
+   },
+   "wild_recipe": {
+    "coverage": 0.92975,
+    "mc_se": 0.004040882870735059,
+    "excludes_one_rate": 0.31475,
+    "lower_miss": 0.01,
+    "upper_miss": 0.06025,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.5430367484405532
+   },
+   "wild_cr3": {
+    "coverage": 0.9415,
+    "mc_se": 0.003710719269899031,
+    "excludes_one_rate": 0.27,
+    "lower_miss": 0.006,
+    "upper_miss": 0.0525,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.5741391464757302
+   },
+   "wild_log": {
+    "coverage": 0.9015,
+    "mc_se": 0.004711627903389656,
+    "excludes_one_rate": 0.38225,
+    "lower_miss": 0.01575,
+    "upper_miss": 0.08275,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.4954344338481984
+   },
+   "wild_log_cr3": {
+    "coverage": 0.91175,
+    "mc_se": 0.004485028915737334,
+    "excludes_one_rate": 0.347,
+    "lower_miss": 0.0105,
+    "upper_miss": 0.07775,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.5187677548358958
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.925,
+    "mc_se": 0.00416458281223942,
+    "excludes_one_rate": 0.331,
+    "lower_miss": 0.013,
+    "upper_miss": 0.062,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.5347372273298776
+   }
+  },
+  "margin_runs_06": {
+   "name": "margin_runs_06",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "sizes": 1,
+    "runs": 6
+   },
+   "wild_recipe": {
+    "coverage": 0.9395,
+    "mc_se": 0.003769607075014583,
+    "excludes_one_rate": 0.736,
+    "lower_miss": 0.01475,
+    "upper_miss": 0.04575,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.34045314386719516
+   },
+   "wild_cr3": {
+    "coverage": 0.951,
+    "mc_se": 0.003413173010557773,
+    "excludes_one_rate": 0.699,
+    "lower_miss": 0.01025,
+    "upper_miss": 0.03875,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3571210338306089
+   },
+   "wild_log": {
+    "coverage": 0.9325,
+    "mc_se": 0.003966854862482367,
+    "excludes_one_rate": 0.77075,
+    "lower_miss": 0.018,
+    "upper_miss": 0.0495,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3290018576677799
+   },
+   "wild_log_cr3": {
+    "coverage": 0.94175,
+    "mc_se": 0.0037032734674879203,
+    "excludes_one_rate": 0.74025,
+    "lower_miss": 0.013,
+    "upper_miss": 0.04525,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.34357045268545994
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.93925,
+    "mc_se": 0.0037768848771176484,
+    "excludes_one_rate": 0.738,
+    "lower_miss": 0.01475,
+    "upper_miss": 0.046,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3378596413381253
+   }
+  },
+  "margin_runs_10": {
+   "name": "margin_runs_10",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "sizes": 1,
+    "runs": 10
+   },
+   "wild_recipe": {
+    "coverage": 0.9465,
+    "mc_se": 0.0035580103288214327,
+    "excludes_one_rate": 0.945,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.036,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2545339924169445
+   },
+   "wild_cr3": {
+    "coverage": 0.957,
+    "mc_se": 0.0032074522599720807,
+    "excludes_one_rate": 0.934,
+    "lower_miss": 0.01425,
+    "upper_miss": 0.02875,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2661191669611983
+   },
+   "wild_log": {
+    "coverage": 0.9435,
+    "mc_se": 0.003650607826102387,
+    "excludes_one_rate": 0.956,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.03775,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24982120695425147
+   },
+   "wild_log_cr3": {
+    "coverage": 0.95275,
+    "mc_se": 0.0033547517605629186,
+    "excludes_one_rate": 0.9415,
+    "lower_miss": 0.01625,
+    "upper_miss": 0.031,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26058874745603133
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.948,
+    "mc_se": 0.0035105555115964213,
+    "excludes_one_rate": 0.94575,
+    "lower_miss": 0.017,
+    "upper_miss": 0.035,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.25411416589348157
+   }
+  },
+  "accuracy_runs_03": {
+   "name": "accuracy_runs_03",
+   "truth": 1.078,
+   "varied": {
+    "rho": 0.018009333333333346,
+    "noise_sd": 1.45,
+    "sizes": 1,
+    "runs": 3
+   },
+   "wild_recipe": {
+    "coverage": 0.69975,
+    "mc_se": 0.007247412253694418,
+    "excludes_one_rate": 0.024,
+    "lower_miss": 0.01075,
+    "upper_miss": 0.00575,
+    "undefined_or_unbounded": 0.28375,
+    "median_width": 0.8669649848547945
+   },
+   "wild_cr3": {
+    "coverage": 0.65375,
+    "mc_se": 0.007522648095916756,
+    "excludes_one_rate": 0.0165,
+    "lower_miss": 0.0065,
+    "upper_miss": 0.004,
+    "undefined_or_unbounded": 0.33575,
+    "median_width": 0.9113318313762784
+   },
+   "wild_log": {
+    "coverage": 0.7585,
+    "mc_se": 0.006767158746475511,
+    "excludes_one_rate": 0.04825,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.13375,
+    "undefined_or_unbounded": 0.09025,
+    "median_width": 0.6593222055672495
+   },
+   "wild_log_cr3": {
+    "coverage": 0.75875,
+    "mc_se": 0.0067647697207665535,
+    "excludes_one_rate": 0.037,
+    "lower_miss": 0.0145,
+    "upper_miss": 0.126,
+    "undefined_or_unbounded": 0.10075,
+    "median_width": 0.6838656048062066
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.6855,
+    "mc_se": 0.007341487417410725,
+    "excludes_one_rate": 0.0245,
+    "lower_miss": 0.011,
+    "upper_miss": 0.0045,
+    "undefined_or_unbounded": 0.299,
+    "median_width": 0.8699318085353758
+   }
+  },
+  "accuracy_runs_06": {
+   "name": "accuracy_runs_06",
+   "truth": 1.078,
+   "varied": {
+    "rho": 0.018009333333333346,
+    "noise_sd": 1.45,
+    "sizes": 1,
+    "runs": 6
+   },
+   "wild_recipe": {
+    "coverage": 0.936,
+    "mc_se": 0.0038698837191833025,
+    "excludes_one_rate": 0.0555,
+    "lower_miss": 0.0145,
+    "upper_miss": 0.02975,
+    "undefined_or_unbounded": 0.01975,
+    "median_width": 0.5660205218484965
+   },
+   "wild_cr3": {
+    "coverage": 0.94275,
+    "mc_se": 0.0036732967991982357,
+    "excludes_one_rate": 0.04825,
+    "lower_miss": 0.01025,
+    "upper_miss": 0.02325,
+    "undefined_or_unbounded": 0.02375,
+    "median_width": 0.5959692845824556
+   },
+   "wild_log": {
+    "coverage": 0.8825,
+    "mc_se": 0.005091506407734357,
+    "excludes_one_rate": 0.07325,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.096,
+    "undefined_or_unbounded": 0.00275,
+    "median_width": 0.4942609322175753
+   },
+   "wild_log_cr3": {
+    "coverage": 0.8875,
+    "mc_se": 0.0049960922229278365,
+    "excludes_one_rate": 0.062,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.094,
+    "undefined_or_unbounded": 0.003,
+    "median_width": 0.511930553811732
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.93725,
+    "mc_se": 0.0038344633751021787,
+    "excludes_one_rate": 0.05675,
+    "lower_miss": 0.01375,
+    "upper_miss": 0.0285,
+    "undefined_or_unbounded": 0.0205,
+    "median_width": 0.5697274301127778
+   }
+  },
+  "accuracy_runs_10": {
+   "name": "accuracy_runs_10",
+   "truth": 1.078,
+   "varied": {
+    "rho": 0.018009333333333346,
+    "noise_sd": 1.45,
+    "sizes": 1,
+    "runs": 10
+   },
+   "wild_recipe": {
+    "coverage": 0.9415,
+    "mc_se": 0.003710719269899031,
+    "excludes_one_rate": 0.09025,
+    "lower_miss": 0.02025,
+    "upper_miss": 0.038,
+    "undefined_or_unbounded": 0.00025,
+    "median_width": 0.418173692841894
+   },
+   "wild_cr3": {
+    "coverage": 0.9515,
+    "mc_se": 0.0033966067626382654,
+    "excludes_one_rate": 0.0765,
+    "lower_miss": 0.01475,
+    "upper_miss": 0.033,
+    "undefined_or_unbounded": 0.00075,
+    "median_width": 0.43783923478824427
+   },
+   "wild_log": {
+    "coverage": 0.919,
+    "mc_se": 0.004313901946034471,
+    "excludes_one_rate": 0.10475,
+    "lower_miss": 0.0245,
+    "upper_miss": 0.0565,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.38926191226592255
+   },
+   "wild_log_cr3": {
+    "coverage": 0.92725,
+    "mc_se": 0.004106623841429842,
+    "excludes_one_rate": 0.0915,
+    "lower_miss": 0.01975,
+    "upper_miss": 0.053,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.4051975235494349
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9435,
+    "mc_se": 0.003650607826102387,
+    "excludes_one_rate": 0.09075,
+    "lower_miss": 0.01925,
+    "upper_miss": 0.037,
+    "undefined_or_unbounded": 0.00025,
+    "median_width": 0.41974145144084607
+   }
+  }
+ },
+ "shipped_check": {
+  "margin_runs_03": 0.0,
+  "margin_runs_06": 0.0,
+  "margin_runs_10": 0.0,
+  "accuracy_runs_03": 0.0,
+  "accuracy_runs_06": 0.0,
+  "accuracy_runs_10": 0.0
+ },
+ "wall_seconds": 901.0396776199341
+}

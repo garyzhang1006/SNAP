@@ -1,0 +1,325 @@
+{
+ "design": "R6 how loud the item noise can get before the estimator stops recovering the ratio.\n\nDesign fixed before running (2026-09-16, written 17:45 EDT). The two populations this paper simulates sit\nat item noise of 0.73 and 1.45, which are the values the margin and accuracy batteries imply. A reader\napplying the method to a smaller battery, a harder task, or fewer items per benchmark will sit further\nout, and the cross-half construction has to divide a shrinking signal by a growing denominator. Nothing\nwe have run says where that stops working, and the accuracy case at 1.45 already covers less well inside a\nsingle band than the margin case at 0.73.\nThis run sweeps the item noise over 0.25, 0.5, 0.73, 1.0, 1.45, 2.0 and 3.0 at the full 125-cell design,\nholding the true ratio at 1.2446, with 4,000 replicates each. It reports coverage, the exclusion rate and\nthe median width, so a reader can see both where the interval fails and where it merely becomes useless\nthrough width. Seed 20260976 keeps the draws distinct.\n",
+ "seed": 20260976,
+ "reps": 4000,
+ "cells": {
+  "noise_0.25": {
+   "name": "noise_0.25",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.25
+   },
+   "wild_recipe": {
+    "coverage": 0.94725,
+    "mc_se": 0.0035343824602043273,
+    "excludes_one_rate": 0.9975,
+    "lower_miss": 0.014,
+    "upper_miss": 0.03875,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.20543034889028555
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.947,
+    "mc_se": 0.003542280338990692,
+    "excludes_one_rate": 0.9975,
+    "lower_miss": 0.01425,
+    "upper_miss": 0.03875,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.20476944907225836
+   },
+   "wild_size": {
+    "coverage": 0.96225,
+    "mc_se": 0.0030135086485689713,
+    "excludes_one_rate": 0.73375,
+    "lower_miss": 0.013,
+    "upper_miss": 0.022,
+    "undefined_or_unbounded": 0.00275,
+    "median_width": 0.3075472200445475
+   },
+   "cluster_t_size": {
+    "coverage": 0.95325,
+    "mc_se": 0.0033378300398612254,
+    "excludes_one_rate": 0.91525,
+    "lower_miss": 0.019,
+    "upper_miss": 0.02775,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.25970349416808824
+   }
+  },
+  "noise_0.50": {
+   "name": "noise_0.50",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.5
+   },
+   "wild_recipe": {
+    "coverage": 0.9455,
+    "mc_se": 0.0035892112643309253,
+    "excludes_one_rate": 0.99025,
+    "lower_miss": 0.017,
+    "upper_miss": 0.0375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.21945054602389302
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94525,
+    "mc_se": 0.0035969583504677936,
+    "excludes_one_rate": 0.991,
+    "lower_miss": 0.01625,
+    "upper_miss": 0.0385,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.21883034778551702
+   },
+   "wild_size": {
+    "coverage": 0.96,
+    "mc_se": 0.003098386676965935,
+    "excludes_one_rate": 0.69775,
+    "lower_miss": 0.01225,
+    "upper_miss": 0.0245,
+    "undefined_or_unbounded": 0.00325,
+    "median_width": 0.32929145978167185
+   },
+   "cluster_t_size": {
+    "coverage": 0.95075,
+    "mc_se": 0.003421419204803762,
+    "excludes_one_rate": 0.88175,
+    "lower_miss": 0.018,
+    "upper_miss": 0.03125,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2752380909141299
+   }
+  },
+  "noise_0.73": {
+   "name": "noise_0.73",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73
+   },
+   "wild_recipe": {
+    "coverage": 0.944,
+    "mc_se": 0.0036353816856005655,
+    "excludes_one_rate": 0.967,
+    "lower_miss": 0.01625,
+    "upper_miss": 0.03975,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24216504549643347
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9425,
+    "mc_se": 0.0036808202210920327,
+    "excludes_one_rate": 0.96525,
+    "lower_miss": 0.017,
+    "upper_miss": 0.0405,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24179748701641068
+   },
+   "wild_size": {
+    "coverage": 0.9485,
+    "mc_se": 0.0034945582696529753,
+    "excludes_one_rate": 0.6185,
+    "lower_miss": 0.01325,
+    "upper_miss": 0.03025,
+    "undefined_or_unbounded": 0.008,
+    "median_width": 0.35929819048871603
+   },
+   "cluster_t_size": {
+    "coverage": 0.94225,
+    "mc_se": 0.003688324060464318,
+    "excludes_one_rate": 0.79825,
+    "lower_miss": 0.019,
+    "upper_miss": 0.03875,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3038291559777657
+   }
+  },
+  "noise_1.00": {
+   "name": "noise_1.00",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 1.0
+   },
+   "wild_recipe": {
+    "coverage": 0.95425,
+    "mc_se": 0.003303669834441691,
+    "excludes_one_rate": 0.89725,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.03025,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2815051470441169
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9545,
+    "mc_se": 0.003295062594246124,
+    "excludes_one_rate": 0.89825,
+    "lower_miss": 0.01525,
+    "upper_miss": 0.03025,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.281027334158491
+   },
+   "wild_size": {
+    "coverage": 0.94875,
+    "mc_se": 0.0034865254014562986,
+    "excludes_one_rate": 0.53125,
+    "lower_miss": 0.013,
+    "upper_miss": 0.02375,
+    "undefined_or_unbounded": 0.0145,
+    "median_width": 0.41093469884861816
+   },
+   "cluster_t_size": {
+    "coverage": 0.95325,
+    "mc_se": 0.0033378300398612254,
+    "excludes_one_rate": 0.68325,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.03125,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.35084894738367983
+   }
+  },
+  "noise_1.45": {
+   "name": "noise_1.45",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 1.45
+   },
+   "wild_recipe": {
+    "coverage": 0.94375,
+    "mc_se": 0.0036430048551985223,
+    "excludes_one_rate": 0.6295,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.0385,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.38222775712214985
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94425,
+    "mc_se": 0.003627738189974573,
+    "excludes_one_rate": 0.62775,
+    "lower_miss": 0.017,
+    "upper_miss": 0.03875,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3810962620439769
+   },
+   "wild_size": {
+    "coverage": 0.89525,
+    "mc_se": 0.004841937564136902,
+    "excludes_one_rate": 0.31575,
+    "lower_miss": 0.017,
+    "upper_miss": 0.0235,
+    "undefined_or_unbounded": 0.06425,
+    "median_width": 0.5568949528531677
+   },
+   "cluster_t_size": {
+    "coverage": 0.94825,
+    "mc_se": 0.0035025682541529424,
+    "excludes_one_rate": 0.43225,
+    "lower_miss": 0.01925,
+    "upper_miss": 0.031,
+    "undefined_or_unbounded": 0.0015,
+    "median_width": 0.4831647849647941
+   }
+  },
+  "noise_2.00": {
+   "name": "noise_2.00",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 2.0
+   },
+   "wild_recipe": {
+    "coverage": 0.94575,
+    "mc_se": 0.0035814430576235614,
+    "excludes_one_rate": 0.32575,
+    "lower_miss": 0.01975,
+    "upper_miss": 0.028,
+    "undefined_or_unbounded": 0.0065,
+    "median_width": 0.5684065942776129
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94875,
+    "mc_se": 0.0034865254014562986,
+    "excludes_one_rate": 0.32175,
+    "lower_miss": 0.018,
+    "upper_miss": 0.02675,
+    "undefined_or_unbounded": 0.0065,
+    "median_width": 0.5761082640917361
+   },
+   "wild_size": {
+    "coverage": 0.73725,
+    "mc_se": 0.006959030778420226,
+    "excludes_one_rate": 0.16725,
+    "lower_miss": 0.01575,
+    "upper_miss": 0.01975,
+    "undefined_or_unbounded": 0.22725,
+    "median_width": 0.7332339576073525
+   },
+   "cluster_t_size": {
+    "coverage": 0.88275,
+    "mc_se": 0.005086807385285981,
+    "excludes_one_rate": 0.2185,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.023,
+    "undefined_or_unbounded": 0.07775,
+    "median_width": 0.7155374614654787
+   }
+  },
+  "noise_3.00": {
+   "name": "noise_3.00",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 3.0
+   },
+   "wild_recipe": {
+    "coverage": 0.668,
+    "mc_se": 0.0074460727904043485,
+    "excludes_one_rate": 0.119,
+    "lower_miss": 0.01825,
+    "upper_miss": 0.002,
+    "undefined_or_unbounded": 0.31175,
+    "median_width": 0.9949723739635564
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.625,
+    "mc_se": 0.007654655446197431,
+    "excludes_one_rate": 0.092,
+    "lower_miss": 0.01175,
+    "upper_miss": 0.00175,
+    "undefined_or_unbounded": 0.3615,
+    "median_width": 1.0460310867039277
+   },
+   "wild_size": {
+    "coverage": 0.39125,
+    "mc_se": 0.0077164343692537165,
+    "excludes_one_rate": 0.0865,
+    "lower_miss": 0.02475,
+    "upper_miss": 0.013,
+    "undefined_or_unbounded": 0.571,
+    "median_width": 0.9813846033612299
+   },
+   "cluster_t_size": {
+    "coverage": 0.41825,
+    "mc_se": 0.007799309865302186,
+    "excludes_one_rate": 0.07325,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.011,
+    "undefined_or_unbounded": 0.55325,
+    "median_width": 1.051854146483319
+   }
+  }
+ },
+ "shipped_check": {
+  "noise_0.25": 0.0,
+  "noise_0.50": 0.0,
+  "noise_0.73": 0.0,
+  "noise_1.00": 0.0,
+  "noise_1.45": 0.0,
+  "noise_2.00": 0.0,
+  "noise_3.00": 2.220446049250313e-16
+ },
+ "wall_seconds": 935.3766674995422
+}
