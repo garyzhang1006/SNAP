@@ -1,6 +1,6 @@
 {
   "main.tex": {
-    "sentence_count": 250,
+    "sentence_count": 251,
     "minimum_words": 8,
     "maximum_observed_not_a_limit": 65,
     "below_minimum": 0,
@@ -16,7 +16,7 @@
     "uncontracted_negatives": 0
   },
   "appendices_bcd.tex": {
-    "sentence_count": 908,
+    "sentence_count": 915,
     "minimum_words": 8,
     "maximum_observed_not_a_limit": 61,
     "below_minimum": 0,

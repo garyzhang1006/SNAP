@@ -583,3 +583,13 @@ and a half.
 | snap-r6-cheap-acc | QUEUED. The ten to 25 recipe by two to four run grid priced at the accuracy battery's noise, with twenty recipes added because the floor sits between ten and fifteen. | The appendix tells a reader to buy recipes before runs, and that advice was measured only on margins. |
 
 | snap-r6-perm-power-acc | COMPLETE at 500 replicates with 999 permutations under seed 20260990. At the accuracy battery's noise the permutation test rejects 0.048 at a true share of zero, and its power runs 0.308 at the 0.044 bound, 0.602 at a tenth and 0.950 at a quarter, against 0.490, 0.838 and 0.992 on margins. | Written in. The bound keeps its size on both scales and loses roughly a third of its power on accuracy, so the appendix now names the accuracy bound as the weaker of the two. |
+
+| snap-r6-band-noise | COMPLETE at 4,000 replicates under seed 20260991. A two-fold noise spread across bands holds coverage at 0.945 while width grows from 0.241 to 0.310 and power falls from 0.968 to 0.825, a four-fold spread holds 0.935, and the accuracy-scale four-fold ramp collapses to 0.208 with 0.776 undefined. | Written in. The loudest band decides the outcome rather than the unevenness, since the failures all sit past the 3.00 noise level where the earlier sweep already found collapse. |
+
+Main text updated in the same pass. The limitation paragraph now records that the permutation bound keeps
+its size on both scales and rejects a true 0.044 share in 0.308 of replicates on accuracy against 0.490 on
+margins, and the practice recommendation now carries the cluster floor of ten recipes on a margin-like
+battery and fifteen on a noisier one. Both additions pushed the main text to ten pages, so three redundant
+clauses came out to pay for them, the repeated coverage sentence in the discussion, the duplicated
+paired-interval conclusion that Section 6 already states, and two wordy constructions. The build is back
+at nine main-text pages with a byte-identical style file and no unresolved citation.

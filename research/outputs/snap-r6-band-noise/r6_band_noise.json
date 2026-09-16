@@ -1,0 +1,530 @@
+{
+ "design": "R6 what happens when the item noise is louder in some size bands than in others.\n\nDesign fixed before running (2026-09-16, written 18:56 EDT). Every simulation this appendix reports gives\nall 125 configurations the same item noise, and the noise sweep moved that single number rather than\nspreading it. Real batteries are not like that, because a 150M model and a 1B model do not score with the\nsame consistency, and the shipped design pairs each recipe with all five bands. Noise that tracks the band\nis therefore heteroscedasticity aligned with a variable the recipe clustering never models, which is the\nshape cluster-robust inference is usually warned about. The estimator sums numerator and denominator over\nconfigurations with flat weights, so a loud band contributes as much as a quiet one while carrying several\ntimes its sampling variance, and nothing we have run says what that costs.\nThis run measures it. It multiplies the item noise by a per-band factor rather than a single constant, and\nit sweeps the spread of that factor from none through a two-fold, four-fold and sixteen-fold ramp across\nthe five bands, with a matching pair that puts the loud band at one end and then at the other so a reader\ncan see whether the direction matters. Two further cells scramble the ramp so the loud bands are not\nadjacent, and two run the four-fold ramp on the accuracy-like population, where the base noise is already\ndouble. Each cell runs 4,000 replicates and reports coverage, the exclusion rate at the true 1.2446, the\nmedian width and the undefined rate for the recipe-clustered and band-clustered intervals. Because the\ntrue ratio is a property of the latent covariance rather than of the noise, the truth stays fixed across\nthe whole sweep and the cells are directly comparable. Seed 20260991 keeps the draws distinct.\n",
+ "seed": 20260991,
+ "reps": 4000,
+ "cells": {
+  "flat": {
+   "name": "flat",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "band_noise": [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.94475,
+    "mc_se": 0.003612389704198594,
+    "excludes_one_rate": 0.96825,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.03775,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24132359769326273
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.944,
+    "mc_se": 0.0036353816856005655,
+    "excludes_one_rate": 0.96775,
+    "lower_miss": 0.01825,
+    "upper_miss": 0.03775,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24019252018422688
+   },
+   "wild_size": {
+    "coverage": 0.95675,
+    "mc_se": 0.003216342546278304,
+    "excludes_one_rate": 0.6185,
+    "lower_miss": 0.01425,
+    "upper_miss": 0.021,
+    "undefined_or_unbounded": 0.008,
+    "median_width": 0.3642767398002586
+   },
+   "cluster_t_size": {
+    "coverage": 0.95275,
+    "mc_se": 0.0033547517605629186,
+    "excludes_one_rate": 0.81475,
+    "lower_miss": 0.018,
+    "upper_miss": 0.02925,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.30349077334471397
+   }
+  },
+  "ramp2_up": {
+   "name": "ramp2_up",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "band_noise": [
+     1.0,
+     1.25,
+     1.5,
+     1.75,
+     2.0
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.94525,
+    "mc_se": 0.0035969583504677936,
+    "excludes_one_rate": 0.82475,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.037,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.31007381446569376
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94375,
+    "mc_se": 0.0036430048551985223,
+    "excludes_one_rate": 0.82525,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.0375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3094695354746929
+   },
+   "wild_size": {
+    "coverage": 0.9285,
+    "mc_se": 0.0040739339096259285,
+    "excludes_one_rate": 0.46375,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.02525,
+    "undefined_or_unbounded": 0.0275,
+    "median_width": 0.44936728158799844
+   },
+   "cluster_t_size": {
+    "coverage": 0.9485,
+    "mc_se": 0.0034945582696529753,
+    "excludes_one_rate": 0.61725,
+    "lower_miss": 0.02125,
+    "upper_miss": 0.03025,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.38247423923667
+   }
+  },
+  "ramp4_up": {
+   "name": "ramp4_up",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "band_noise": [
+     1.0,
+     1.75,
+     2.5,
+     3.25,
+     4.0
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.9345,
+    "mc_se": 0.003911833010239573,
+    "excludes_one_rate": 0.2645,
+    "lower_miss": 0.017,
+    "upper_miss": 0.0265,
+    "undefined_or_unbounded": 0.022,
+    "median_width": 0.6376366127655413
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9365,
+    "mc_se": 0.0038557667849598992,
+    "excludes_one_rate": 0.25075,
+    "lower_miss": 0.016,
+    "upper_miss": 0.023,
+    "undefined_or_unbounded": 0.0245,
+    "median_width": 0.6492955711884872
+   },
+   "wild_size": {
+    "coverage": 0.77225,
+    "mc_se": 0.006630986681859646,
+    "excludes_one_rate": 0.203,
+    "lower_miss": 0.0145,
+    "upper_miss": 0.01475,
+    "undefined_or_unbounded": 0.1985,
+    "median_width": 0.7220080599854286
+   },
+   "cluster_t_size": {
+    "coverage": 0.82875,
+    "mc_se": 0.005956581181768616,
+    "excludes_one_rate": 0.23625,
+    "lower_miss": 0.0125,
+    "upper_miss": 0.01425,
+    "undefined_or_unbounded": 0.1445,
+    "median_width": 0.6946754105484447
+   }
+  },
+  "ramp4_down": {
+   "name": "ramp4_down",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "band_noise": [
+     4.0,
+     3.25,
+     2.5,
+     1.75,
+     1.0
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.93825,
+    "mc_se": 0.0038058158619407732,
+    "excludes_one_rate": 0.28275,
+    "lower_miss": 0.01975,
+    "upper_miss": 0.01925,
+    "undefined_or_unbounded": 0.02275,
+    "median_width": 0.6281502859670537
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94025,
+    "mc_se": 0.0037476638556572803,
+    "excludes_one_rate": 0.27125,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.0165,
+    "undefined_or_unbounded": 0.02575,
+    "median_width": 0.638272332545122
+   },
+   "wild_size": {
+    "coverage": 0.77825,
+    "mc_se": 0.00656842708530741,
+    "excludes_one_rate": 0.1975,
+    "lower_miss": 0.0115,
+    "upper_miss": 0.01825,
+    "undefined_or_unbounded": 0.192,
+    "median_width": 0.7282722627931245
+   },
+   "cluster_t_size": {
+    "coverage": 0.83725,
+    "mc_se": 0.005836575140868144,
+    "excludes_one_rate": 0.231,
+    "lower_miss": 0.012,
+    "upper_miss": 0.01875,
+    "undefined_or_unbounded": 0.132,
+    "median_width": 0.7070966668410398
+   }
+  },
+  "ramp16_up": {
+   "name": "ramp16_up",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "band_noise": [
+     1.0,
+     4.75,
+     8.5,
+     12.25,
+     16.0
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.11125,
+    "mc_se": 0.0049717561660845766,
+    "excludes_one_rate": 0.01425,
+    "lower_miss": 0.0035,
+    "upper_miss": 0.0,
+    "undefined_or_unbounded": 0.88525,
+    "median_width": 2.1571073634764546
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.00725,
+    "mc_se": 0.0013414020184120792,
+    "excludes_one_rate": 0.0005,
+    "lower_miss": 0.0,
+    "upper_miss": 0.0,
+    "undefined_or_unbounded": 0.99275,
+    "median_width": 1.8928487511477976
+   },
+   "wild_size": {
+    "coverage": 0.0975,
+    "mc_se": 0.004690249193806231,
+    "excludes_one_rate": 0.08575,
+    "lower_miss": 0.05825,
+    "upper_miss": 0.00525,
+    "undefined_or_unbounded": 0.839,
+    "median_width": 1.1928741215299632
+   },
+   "cluster_t_size": {
+    "coverage": 0.049,
+    "mc_se": 0.003413173010557771,
+    "excludes_one_rate": 0.02475,
+    "lower_miss": 0.016,
+    "upper_miss": 0.0055,
+    "undefined_or_unbounded": 0.9335,
+    "median_width": 1.2130545076950847
+   }
+  },
+  "one_loud": {
+   "name": "one_loud",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "band_noise": [
+     1.0,
+     1.0,
+     4.0,
+     1.0,
+     1.0
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.94725,
+    "mc_se": 0.0035343824602043273,
+    "excludes_one_rate": 0.40825,
+    "lower_miss": 0.017,
+    "upper_miss": 0.034,
+    "undefined_or_unbounded": 0.00175,
+    "median_width": 0.49954153503416776
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.951,
+    "mc_se": 0.003413173010557773,
+    "excludes_one_rate": 0.40125,
+    "lower_miss": 0.01625,
+    "upper_miss": 0.031,
+    "undefined_or_unbounded": 0.00175,
+    "median_width": 0.5049297749289265
+   },
+   "wild_size": {
+    "coverage": 0.8955,
+    "mc_se": 0.0048368313491375745,
+    "excludes_one_rate": 0.36925,
+    "lower_miss": 0.0145,
+    "upper_miss": 0.0145,
+    "undefined_or_unbounded": 0.0755,
+    "median_width": 0.5527979723075651
+   },
+   "cluster_t_size": {
+    "coverage": 0.8945,
+    "mc_se": 0.004857204700236547,
+    "excludes_one_rate": 0.40925,
+    "lower_miss": 0.01275,
+    "upper_miss": 0.0175,
+    "undefined_or_unbounded": 0.07525,
+    "median_width": 0.4951665064954668
+   }
+  },
+  "alternating": {
+   "name": "alternating",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "band_noise": [
+     1.0,
+     4.0,
+     1.0,
+     4.0,
+     1.0
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.91875,
+    "mc_se": 0.0043199663627162665,
+    "excludes_one_rate": 0.238,
+    "lower_miss": 0.01925,
+    "upper_miss": 0.02425,
+    "undefined_or_unbounded": 0.03775,
+    "median_width": 0.6677919598287347
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.919,
+    "mc_se": 0.004313901946034471,
+    "excludes_one_rate": 0.22225,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.02,
+    "undefined_or_unbounded": 0.04325,
+    "median_width": 0.6816369270121924
+   },
+   "wild_size": {
+    "coverage": 0.77825,
+    "mc_se": 0.00656842708530741,
+    "excludes_one_rate": 0.222,
+    "lower_miss": 0.00825,
+    "upper_miss": 0.01025,
+    "undefined_or_unbounded": 0.20325,
+    "median_width": 0.7081306509490439
+   },
+   "cluster_t_size": {
+    "coverage": 0.78625,
+    "mc_se": 0.006481915949393359,
+    "excludes_one_rate": 0.238,
+    "lower_miss": 0.00825,
+    "upper_miss": 0.01325,
+    "undefined_or_unbounded": 0.19225,
+    "median_width": 0.6963766524713516
+   }
+  },
+  "acc_flat": {
+   "name": "acc_flat",
+   "truth": 1.0779610382569493,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45,
+    "band_noise": [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.95325,
+    "mc_se": 0.0033378300398612254,
+    "excludes_one_rate": 0.0915,
+    "lower_miss": 0.01475,
+    "upper_miss": 0.032,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3942943039338989
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.95275,
+    "mc_se": 0.0033547517605629186,
+    "excludes_one_rate": 0.08575,
+    "lower_miss": 0.01525,
+    "upper_miss": 0.032,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3955572287845254
+   },
+   "wild_size": {
+    "coverage": 0.8395,
+    "mc_se": 0.005803872629546586,
+    "excludes_one_rate": 0.05825,
+    "lower_miss": 0.01625,
+    "upper_miss": 0.021,
+    "undefined_or_unbounded": 0.12325,
+    "median_width": 0.5533221525825658
+   },
+   "cluster_t_size": {
+    "coverage": 0.9485,
+    "mc_se": 0.0034945582696529753,
+    "excludes_one_rate": 0.0775,
+    "lower_miss": 0.01975,
+    "upper_miss": 0.023,
+    "undefined_or_unbounded": 0.00875,
+    "median_width": 0.5060899666745642
+   }
+  },
+  "acc_ramp4": {
+   "name": "acc_ramp4",
+   "truth": 1.0779610382569493,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45,
+    "band_noise": [
+     1.0,
+     1.75,
+     2.5,
+     3.25,
+     4.0
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.2075,
+    "mc_se": 0.006411781148791652,
+    "excludes_one_rate": 0.0265,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.0,
+    "undefined_or_unbounded": 0.776,
+    "median_width": 1.4706783189320318
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.09425,
+    "mc_se": 0.004619711503438283,
+    "excludes_one_rate": 0.00775,
+    "lower_miss": 0.0045,
+    "upper_miss": 0.0,
+    "undefined_or_unbounded": 0.90125,
+    "median_width": 1.4943930033417085
+   },
+   "wild_size": {
+    "coverage": 0.18025,
+    "mc_se": 0.006077827274199226,
+    "excludes_one_rate": 0.0425,
+    "lower_miss": 0.029,
+    "upper_miss": 0.0035,
+    "undefined_or_unbounded": 0.78725,
+    "median_width": 1.0851675990344491
+   },
+   "cluster_t_size": {
+    "coverage": 0.12575,
+    "mc_se": 0.005242540831982141,
+    "excludes_one_rate": 0.01725,
+    "lower_miss": 0.00875,
+    "upper_miss": 0.00175,
+    "undefined_or_unbounded": 0.86375,
+    "median_width": 1.0599716134352608
+   }
+  },
+  "acc_one_loud": {
+   "name": "acc_one_loud",
+   "truth": 1.0779610382569493,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45,
+    "band_noise": [
+     1.0,
+     1.0,
+     4.0,
+     1.0,
+     1.0
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.291,
+    "mc_se": 0.007181904343556798,
+    "excludes_one_rate": 0.0315,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.0,
+    "undefined_or_unbounded": 0.6915,
+    "median_width": 1.2634981180212046
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.19375,
+    "mc_se": 0.006249218701165771,
+    "excludes_one_rate": 0.0125,
+    "lower_miss": 0.007,
+    "upper_miss": 0.0,
+    "undefined_or_unbounded": 0.79925,
+    "median_width": 1.3065355093895727
+   },
+   "wild_size": {
+    "coverage": 0.367,
+    "mc_se": 0.0076208759339068104,
+    "excludes_one_rate": 0.033,
+    "lower_miss": 0.01125,
+    "upper_miss": 0.0115,
+    "undefined_or_unbounded": 0.61025,
+    "median_width": 0.8019300429363195
+   },
+   "cluster_t_size": {
+    "coverage": 0.34225,
+    "mc_se": 0.00750191538042119,
+    "excludes_one_rate": 0.025,
+    "lower_miss": 0.0085,
+    "upper_miss": 0.00925,
+    "undefined_or_unbounded": 0.64,
+    "median_width": 0.7219728884384433
+   }
+  }
+ },
+ "shipped_check": {
+  "flat": 0.0,
+  "ramp2_up": 0.0,
+  "ramp4_up": 2.220446049250313e-16,
+  "ramp4_down": 0.0,
+  "ramp16_up": NaN,
+  "one_loud": 0.0,
+  "alternating": 1.1102230246251565e-16,
+  "acc_flat": 0.0,
+  "acc_ramp4": NaN,
+  "acc_one_loud": NaN
+ },
+ "wall_seconds": 1379.1870412826538
+}
