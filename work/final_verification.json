@@ -1,6 +1,6 @@
 {
   "main.tex": {
-    "sentence_count": 253,
+    "sentence_count": 250,
     "minimum_words": 8,
     "maximum_observed_not_a_limit": 65,
     "below_minimum": 0,
@@ -37,8 +37,8 @@
     "missing_characters": 0,
     "font_substitution_warnings": 0,
     "undefined_references_or_citations": false,
-    "underfull_boxes": 20,
-    "remaining_warnings": "20 underfull spacing diagnostics, visually inspected"
+    "underfull_boxes": 23,
+    "remaining_warnings": "23 underfull spacing diagnostics, visually inspected"
   },
   "official_style_unchanged": true,
   "bibliography": {

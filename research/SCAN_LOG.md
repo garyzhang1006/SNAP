@@ -27,6 +27,7 @@ Baseline before scan 1, carried from the independent reviewer pass earlier in th
 |---|---|---|---|---|
 | 1 | mechanical correctness, all three tex files | 7 | 7 | 6.0 |
 | 2 | hostile claim audit, adversarial-reviewer | 4 | 4 | 6.1 |
+| 3 | framing, positioning and first-page impression | 3 | 3 | 6.1 |
 
 
 ## Scan 1, mechanical correctness, 20 sub-scans
@@ -103,3 +104,55 @@ Honest ranking after scan 2. 6.1 with acceptance near 0.57. The abstract caveat 
 that a reviewer would actually weigh, because it moves the paper's main clustering risk from the back of
 the discussion into the first thing a reviewer reads, and papers that state their own worst number early
 read as more careful rather than less.
+
+## Scan 3, framing and positioning, 20 sub-scans
+
+Scan 3 re-read every scan 2 change in the built PDF first. The illustrative accuracy label, the abstract
+coverage caveat with its quarter-of-latent-variance condition, and the four shortened abstract sentences
+all held, and the sentence gate stayed clean.
+
+Sub-scans run. Introduction paragraph order, contribution-statement placement, contribution verbs,
+novelty language, positioning against the closest prior work, related-work coverage, section length
+balance, paragraph length distribution, section openers, forward pointers, abstract length, abstract
+sentence load, first-page impression, ordering of caveats against findings, roadmap adequacy, agency of
+sentence subjects, recap detection, redundancy between related work and discussion, internal consistency
+between main text and appendix on the provenance census, and overclaiming vocabulary.
+
+Defects found and fixed.
+
+1. The provenance census contradicted itself across files. The stored result classifies the 125 model
+   repositories as 80 refusing an unauthenticated request, 40 resolving anonymously, and five carrying a
+   name the Hub rejects as malformed. The appendix called all 85 non-resolving repositories HTTP 401,
+   which the census does not support, and the main text gave 80 and 40 while leaving five unexplained to
+   anyone who subtracts. Both sentences now carry all three categories.
+2. The limitations paragraph ran 329 words over eleven sentences, the longest block in the paper. It is
+   now two paragraphs, splitting the data and measurement caveats from the clustering caveats.
+3. The discussion opened by restating what the estimator does, which Section 2 already establishes. That
+   recap is gone and the section now opens on the finding.
+
+One change I made and then reverted inside the same scan. I reordered the introduction so the contribution
+paragraph came before the two caveat paragraphs, and the build held at nine pages. I reverted it because
+contributions-last is the convention I can actually name, and I have no evidence yet that this population
+of venues does otherwise. The twenty-paper style study this goal requires is the right evidence base for
+that decision, so the ordering question is deferred to it rather than settled by preference.
+
+Page budget. The paragraph split and the census clause cost two lines, which I paid for with seven
+compressions rather than by dropping content. The abstract lost its BoolQ passage-split sentence, which
+is a robustness detail the body and appendix both still carry, taking it from 307 words to 280. Related
+work lost a calibration clause that duplicated the discussion, and four wordy passages in results and
+related work were tightened. Main text is nine pages, body 4,902 words.
+
+Non-defects recorded rather than edited.
+
+- Related work runs 214 words, which is short for this venue. It names the gap in one explicit sentence
+  and positions against the four closest papers, and expanding it would cost main-text lines that the
+  results need more. Recorded as a known weakness rather than fixed.
+- The Results section has no lead-in text before its first subsection. Adding one would cost a line and
+  the subsection titles already carry the itinerary.
+- No overclaiming vocabulary anywhere in the body. The single occurrence of `first` is ordinal, in
+  `the first scale`, and nothing in the paper calls itself novel, comprehensive or state of the art.
+
+Honest ranking after scan 3. Unchanged at 6.1 with acceptance near 0.57. The census fix removes a real
+internal contradiction, but it sits in a limitation sentence that most reviewers will not check against
+the appendix, so it protects against a downside rather than adding upside. The clarity changes make the
+discussion easier to skim without changing what the paper argues or what it can support.
