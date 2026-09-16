@@ -16,7 +16,7 @@
     "uncontracted_negatives": 0
   },
   "appendices_bcd.tex": {
-    "sentence_count": 885,
+    "sentence_count": 890,
     "minimum_words": 8,
     "maximum_observed_not_a_limit": 61,
     "below_minimum": 0,
@@ -24,7 +24,7 @@
     "uncontracted_negatives": 5
   },
   "pdf": {
-    "pages": 50,
+    "pages": 51,
     "main_text_pages": 9,
     "statements_begin": 10,
     "empty_author_metadata": true,

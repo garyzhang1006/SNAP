@@ -1,160 +1,226 @@
 {
- "design": "R6 sensitivity of both conclusions to the equal weighting of the ten benchmarks.\n\nDesign fixed before running (2026-09-15, written 23:35 EDT). The estimator aggregates the ten benchmarks\nwith a flat weight of one tenth each, and every interval in the paper inherits that choice. Dropping one\nbenchmark at a time is already covered by snap-r6-leave-one-out, which is the coarsest possible probe of\nthe weighting, since it moves one weight to zero and leaves the other nine flat. A reader who thinks the\nflat weight is doing work will ask the finer question, which is what happens across the whole simplex of\nweightings rather than at its ten corners. This run answers that directly. It rebuilds the numerator and\nthe denominator under arbitrary weights from the same contrast projections the shipped estimator uses,\nchecks that flat weights reproduce the shipped statistic to machine precision, and then draws 2,000\nweightings from a flat Dirichlet and 2,000 more from a Dirichlet concentrated near the flat point. Each\nweighting gets its own recipe-clustered wild interval at 4,999 draws, and the run reports the share of\nweightings whose interval still excludes one, the range of the point estimate, and the weighting that\nminimises it. A conclusion that survives the flat simplex is not resting on the equal weighting, and one\nthat doesn't is a limitation the paper has to state in the same sentence as the estimate.\n",
- "traits": [
-  "arc_challenge",
-  "arc_easy",
-  "boolq",
-  "csqa",
-  "hellaswag",
-  "mmlu",
-  "openbookqa",
-  "piqa",
-  "socialiqa",
-  "winogrande"
- ],
- "draws_per_family": 2000,
- "seed": 20260935,
- "batteries": {
-  "margin": {
-   "flat_check_max_abs_gap": 1.0842021724855044e-19,
-   "flat": {
-    "lambda_hat": 1.2439499117191135,
-    "lo": 1.1429001912272694,
-    "hi": 1.3376841038790923
+ "design": "R6 whether the interval survives a battery whose benchmarks are not weighted equally.\n\nDesign fixed before running (2026-09-16, written 18:10 EDT). The estimand this paper reports uses flat\nweights over the ten benchmarks, because that is what the aggregate in the release implies, and every\ncoverage cell we have run inherits that choice. A reader who weights by item count, or who drops to a\nweighted subset because two benchmarks matter more to them, is asking a question none of our simulations\nanswer. Weights enter the estimator twice, once in the full quadratic form and once in the diagonal one,\nso an unequal weighting changes the true ratio as well as the estimate, and the two moves need not\ncancel.\nThis run gives the ten benchmarks four weightings at the margin battery's correlation and item noise. It\nuses flat weights, weights proportional to the item counts the release ships, a four-fold linear ramp and\na concentrated weighting that puts half the mass on two benchmarks. Each cell recomputes its own true\nratio from the same weights the estimator uses, so coverage is scored against the truth that weighting\nimplies rather than against the flat one. Seed 20260986 keeps the draws distinct.\n",
+ "seed": 20260986,
+ "reps": 4000,
+ "cells": {
+  "flat": {
+   "name": "flat",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73
    },
-   "shipped": {
-    "lo": 1.1429001912272696,
-    "hi": 1.3376841038790925
+   "wild_recipe": {
+    "coverage": 0.94675,
+    "mc_se": 0.0035501562465615516,
+    "excludes_one_rate": 0.962,
+    "lower_miss": 0.01575,
+    "upper_miss": 0.0375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24279464139238272
    },
-   "families": {
-    "dirichlet_flat": {
-     "concentration": 1.0,
-     "share_excluding_one": 0.8165,
-     "undefined": 0.0,
-     "lambda_mean": 1.2786742152204242,
-     "lambda_p05": 0.998650040613674,
-     "lambda_p95": 1.6909851425785338,
-     "lambda_min": 0.9758550126438125,
-     "lambda_max": 1.9914293052702612,
-     "lowest_estimate": {
-      "lambda_hat": 0.9758550126438125,
-      "lo": 0.9172790563449131,
-      "hi": 1.0295075233440605,
-      "excludes_one": false,
-      "weights": [
-       0.0283,
-       0.31311,
-       0.2651,
-       0.01855,
-       0.15037,
-       0.03487,
-       0.03089,
-       0.10558,
-       0.03207,
-       0.02118
-      ]
-     }
-    },
-    "dirichlet_near_flat": {
-     "concentration": 20.0,
-     "share_excluding_one": 1.0,
-     "undefined": 0.0,
-     "lambda_mean": 1.2520089844598983,
-     "lambda_p05": 1.125459873223792,
-     "lambda_p95": 1.3984663986249053,
-     "lambda_min": 1.0588335836745433,
-     "lambda_max": 1.6822452511146249,
-     "lowest_estimate": {
-      "lambda_hat": 1.0588335836745433,
-      "lo": 1.0273527659431692,
-      "hi": 1.089442196251242,
-      "excludes_one": true,
-      "weights": [
-       0.06939,
-       0.06256,
-       0.17069,
-       0.05625,
-       0.08091,
-       0.13577,
-       0.11788,
-       0.11964,
-       0.09358,
-       0.09332
-      ]
-     }
-    }
+   "cluster_t_recipe": {
+    "coverage": 0.9475,
+    "mc_se": 0.0035264624625820132,
+    "excludes_one_rate": 0.96025,
+    "lower_miss": 0.01525,
+    "upper_miss": 0.03725,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24181584227757336
+   },
+   "wild_size": {
+    "coverage": 0.95375,
+    "mc_se": 0.0033208032725531938,
+    "excludes_one_rate": 0.62075,
+    "lower_miss": 0.01425,
+    "upper_miss": 0.025,
+    "undefined_or_unbounded": 0.007,
+    "median_width": 0.36815078139248114
+   },
+   "cluster_t_size": {
+    "coverage": 0.9495,
+    "mc_se": 0.003462287899640929,
+    "excludes_one_rate": 0.809,
+    "lower_miss": 0.019,
+    "upper_miss": 0.0315,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3035870374977625
    }
   },
-  "accuracy": {
-   "flat_check_max_abs_gap": 5.421010862427522e-20,
-   "flat": {
-    "lambda_hat": 1.0783733870898096,
-    "lo": 0.9926044567949307,
-    "hi": 1.1566521851337637
+  "item_count": {
+   "name": "item_count",
+   "truth": 1.097483476930602,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "weights": [
+     1172.0,
+     2376.0,
+     3270.0,
+     1221.0,
+     10042.0,
+     14042.0,
+     500.0,
+     1838.0,
+     1954.0,
+     1267.0
+    ]
    },
-   "shipped": {
-    "lo": 0.992604456794931,
-    "hi": 1.1566521851337639
+   "wild_recipe": {
+    "coverage": 0.951,
+    "mc_se": 0.003413173010557773,
+    "excludes_one_rate": 0.50875,
+    "lower_miss": 0.02375,
+    "upper_miss": 0.02525,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.18054025976217436
    },
-   "families": {
-    "dirichlet_flat": {
-     "concentration": 1.0,
-     "share_excluding_one": 0.386,
-     "undefined": 0.018,
-     "lambda_mean": 1.1223724918871878,
-     "lambda_p05": 0.973608239906561,
-     "lambda_p95": 1.4179367714962274,
-     "lambda_min": 0.41576493141929716,
-     "lambda_max": 3.7918203419613046,
-     "lowest_estimate": {
-      "lambda_hat": 0.7842339099530728,
-      "lo": 0.5242423247458169,
-      "hi": 0.9828821271412024,
-      "excludes_one": true,
-      "weights": [
-       0.01525,
-       0.14214,
-       0.08095,
-       0.00428,
-       0.05071,
-       0.14136,
-       0.0244,
-       0.12907,
-       0.02571,
-       0.38613
-      ]
-     }
-    },
-    "dirichlet_near_flat": {
-     "concentration": 20.0,
-     "share_excluding_one": 0.402,
-     "undefined": 0.0,
-     "lambda_mean": 1.0855729771802463,
-     "lambda_p05": 1.0313382003316796,
-     "lambda_p95": 1.1633854498044358,
-     "lambda_min": 1.0073710700233245,
-     "lambda_max": 1.306119833961707,
-     "lowest_estimate": {
-      "lambda_hat": 1.0073710700233245,
-      "lo": 0.9402187588868925,
-      "hi": 1.0700571428003873,
-      "excludes_one": false,
-      "weights": [
-       0.07735,
-       0.14217,
-       0.14049,
-       0.08105,
-       0.07424,
-       0.13737,
-       0.07347,
-       0.08815,
-       0.04772,
-       0.13799
-      ]
-     }
-    }
+   "cluster_t_recipe": {
+    "coverage": 0.949,
+    "mc_se": 0.003478469491026191,
+    "excludes_one_rate": 0.51925,
+    "lower_miss": 0.02475,
+    "upper_miss": 0.02625,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.1780820864311891
+   },
+   "wild_size": {
+    "coverage": 0.956,
+    "mc_se": 0.0032428382630035695,
+    "excludes_one_rate": 0.28875,
+    "lower_miss": 0.01675,
+    "upper_miss": 0.02375,
+    "undefined_or_unbounded": 0.0035,
+    "median_width": 0.2566400919054496
+   },
+   "cluster_t_size": {
+    "coverage": 0.9525,
+    "mc_se": 0.0033631737243264726,
+    "excludes_one_rate": 0.3625,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.029,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2205246596175463
+   }
+  },
+  "ramp_4x": {
+   "name": "ramp_4x",
+   "truth": 1.2128362588011108,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "weights": [
+     1.0,
+     1.333,
+     1.667,
+     2.0,
+     2.333,
+     2.667,
+     3.0,
+     3.333,
+     3.667,
+     4.0
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.9405,
+    "mc_se": 0.0037403124869454423,
+    "excludes_one_rate": 0.928,
+    "lower_miss": 0.01925,
+    "upper_miss": 0.04025,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23200970959904332
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.939,
+    "mc_se": 0.003784144553264319,
+    "excludes_one_rate": 0.929,
+    "lower_miss": 0.0205,
+    "upper_miss": 0.0405,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23090166632146114
+   },
+   "wild_size": {
+    "coverage": 0.94825,
+    "mc_se": 0.0035025682541529424,
+    "excludes_one_rate": 0.55775,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.027,
+    "undefined_or_unbounded": 0.00625,
+    "median_width": 0.34404295065155677
+   },
+   "cluster_t_size": {
+    "coverage": 0.94025,
+    "mc_se": 0.0037476638556572803,
+    "excludes_one_rate": 0.7385,
+    "lower_miss": 0.0225,
+    "upper_miss": 0.03725,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2871853350260557
+   }
+  },
+  "concentrated": {
+   "name": "concentrated",
+   "truth": 1.1529960971312954,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "weights": [
+     0.25,
+     0.25,
+     0.0625,
+     0.0625,
+     0.0625,
+     0.0625,
+     0.0625,
+     0.0625,
+     0.0625,
+     0.0625
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.94675,
+    "mc_se": 0.0035501562465615516,
+    "excludes_one_rate": 0.7885,
+    "lower_miss": 0.0215,
+    "upper_miss": 0.03175,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.20545757243401674
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94575,
+    "mc_se": 0.0035814430576235614,
+    "excludes_one_rate": 0.79625,
+    "lower_miss": 0.0215,
+    "upper_miss": 0.03275,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.20327969587763628
+   },
+   "wild_size": {
+    "coverage": 0.954,
+    "mc_se": 0.003312249990565327,
+    "excludes_one_rate": 0.4485,
+    "lower_miss": 0.0205,
+    "upper_miss": 0.02075,
+    "undefined_or_unbounded": 0.00475,
+    "median_width": 0.2994754458151043
+   },
+   "cluster_t_size": {
+    "coverage": 0.94975,
+    "mc_se": 0.0034541618918342556,
+    "excludes_one_rate": 0.57675,
+    "lower_miss": 0.02325,
+    "upper_miss": 0.027,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2585588521219975
    }
   }
  },
- "wall_seconds": 218.0918846130371
+ "shipped_check": {
+  "flat": 0.0,
+  "item_count": 0.0,
+  "ramp_4x": 0.0,
+  "concentrated": 0.0
+ },
+ "wall_seconds": 424.1120533943176
 }
