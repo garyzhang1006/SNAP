@@ -1,1 +1,1 @@
-snap-r6-cheap-acc
+# Queue closed 2026-09-16 19:07 EDT at the user's instruction. The four kernels in flight finish and nothing follows them.
