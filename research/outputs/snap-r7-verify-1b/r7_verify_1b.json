@@ -1,0 +1,572 @@
+{
+ "design": "R7 whether the seed naming holds at 1B, where the release changes both the seeds and the branches.\n\nDesign fixed before running (2026-09-16, written 15:30 EDT). Two runs have now matched the branch names\nto the released seeds in 24 cells across eight recipes, and every one of those cells sits at 150M. The\n1B band is the one place the release does something different, because it ships seeds 2, 4 and 5 instead\nof 2, 14 and 15, and its repositories carry large-aux-2 and large-aux-3 rather than the small ones. Our\nevidence there is a single cell, the default branch of one recipe at 0.99999996. The clustering argument\nleans on the seed labels of every band, so a naming that silently differs at 1B would matter, and one\ncell is not a check.\nThis run rescores the first 150 ARC-Easy documents at 1B for all three branches of every recipe whose\nrepository resolves, which the availability census says is eight, and matches each branch against all\nthree released 1B seeds. It uses the same loader, the same request file and the same margin construction\nas the 150M runs, so the two are directly comparable. The report flushes after every branch, and the\nbudget stops it cleanly with partial results rather than losing the session's work.\n",
+ "n_docs": 150,
+ "size": "1B",
+ "branches": [
+  "default",
+  "large-aux-2",
+  "large-aux-3"
+ ],
+ "recipes_present": [
+  "Falcon-with-cc-top-orig-10p",
+  "Falcon-with-cc-top-tulu-10p",
+  "c4",
+  "dclm-baseline",
+  "dclm-baseline-25p-dolma1.7-75p",
+  "dclm-baseline-50p-dolma1.7-50p",
+  "dclm-baseline-75p-dolma1.7-25p",
+  "dclm-baseline-top-10p",
+  "dclm-baseline-top-20p",
+  "dclm-baseline-top-fw-10p",
+  "dclm-baseline-top-fw-3p",
+  "dclm-baseline-top-fw2-7p",
+  "dclm-baseline-top-fw3-7p",
+  "dolma1.6++",
+  "dolma1.7",
+  "dolma1.7-no-code",
+  "dolma1.7-no-flan",
+  "dolma1.7-no-math-no-code",
+  "dolma1.7-no-reddit",
+  "falcon",
+  "falcon-with-cc",
+  "falcon-with-cc-top-10p",
+  "falcon-with-cc-top-20p",
+  "fineweb-edu",
+  "fineweb-pro"
+ ],
+ "recipes_attempted": [
+  "Falcon-with-cc-top-orig-10p",
+  "Falcon-with-cc-top-tulu-10p",
+  "c4",
+  "dclm-baseline",
+  "dclm-baseline-25p-dolma1.7-75p",
+  "dclm-baseline-50p-dolma1.7-50p",
+  "dclm-baseline-75p-dolma1.7-25p",
+  "dclm-baseline-top-10p"
+ ],
+ "cells": {
+  "c4/default": {
+   "repo": "allenai/DataDecide-c4-1B",
+   "revision": "step69369-seed-default",
+   "step": 69369,
+   "load_seconds": 62.38267731666565,
+   "score_seconds": 98.53274869918823,
+   "variants": {
+    "0": {
+     "5": {
+      "corr": 0.8860309707709324,
+      "max_abs_diff": 0.3405832290649413,
+      "median_abs_diff": 0.05957566455558494
+     },
+     "2": {
+      "corr": 0.9998600467700597,
+      "max_abs_diff": 0.043902805873325845,
+      "median_abs_diff": 2.01338654631511e-05
+     },
+     "4": {
+      "corr": 0.8566552376555963,
+      "max_abs_diff": 0.5090125719706218,
+      "median_abs_diff": 0.05568776083812671
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "2",
+     "corr": 0.9998600467700597,
+     "median_abs_diff": 2.01338654631511e-05,
+     "runner_up_corr": 0.8860309707709324
+    }
+   }
+  },
+  "c4/large-aux-2": {
+   "repo": "allenai/DataDecide-c4-1B",
+   "revision": "step69369-seed-large-aux-2",
+   "step": 69369,
+   "load_seconds": 47.35382390022278,
+   "score_seconds": 110.90222644805908,
+   "variants": {
+    "0": {
+     "5": {
+      "corr": 0.8611951298649246,
+      "max_abs_diff": 0.415956585747855,
+      "median_abs_diff": 0.06808162120350625
+     },
+     "2": {
+      "corr": 0.855758800653744,
+      "max_abs_diff": 0.5090740839640299,
+      "median_abs_diff": 0.055702484393588436
+     },
+     "4": {
+      "corr": 0.9999999744077351,
+      "max_abs_diff": 0.00022242069244382545,
+      "median_abs_diff": 1.8553383700492532e-05
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "4",
+     "corr": 0.9999999744077351,
+     "median_abs_diff": 1.8553383700492532e-05,
+     "runner_up_corr": 0.8611951298649246
+    }
+   }
+  },
+  "c4/large-aux-3": {
+   "repo": "allenai/DataDecide-c4-1B",
+   "revision": "step69369-seed-large-aux-3",
+   "step": 69369,
+   "load_seconds": 54.78046536445618,
+   "score_seconds": 111.192223072052,
+   "variants": {
+    "0": {
+     "5": {
+      "corr": 0.9999999768871788,
+      "max_abs_diff": 0.00018472141689729327,
+      "median_abs_diff": 1.2514145687397837e-05
+     },
+     "2": {
+      "corr": 0.8847249860318717,
+      "max_abs_diff": 0.3406796693801879,
+      "median_abs_diff": 0.059668249233001805
+     },
+     "4": {
+      "corr": 0.8612007891533661,
+      "max_abs_diff": 0.41607177598135814,
+      "median_abs_diff": 0.06807845790483802
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "5",
+     "corr": 0.9999999768871788,
+     "median_abs_diff": 1.2514145687397837e-05,
+     "runner_up_corr": 0.8847249860318717
+    }
+   }
+  },
+  "dclm-baseline/default": {
+   "repo": "allenai/DataDecide-dclm-baseline-1B",
+   "revision": "step69369-seed-default",
+   "step": 69369,
+   "load_seconds": 51.52780890464783,
+   "score_seconds": 111.20690298080444,
+   "variants": {
+    "0": {
+     "2": {
+      "corr": 0.9999999611240681,
+      "max_abs_diff": 0.00040604490222362344,
+      "median_abs_diff": 2.1022274380666506e-05
+     },
+     "4": {
+      "corr": 0.889493636840373,
+      "max_abs_diff": 0.4671665827433269,
+      "median_abs_diff": 0.062215752031280755
+     },
+     "5": {
+      "corr": 0.9097626878683673,
+      "max_abs_diff": 0.3953892389933269,
+      "median_abs_diff": 0.05986471723305667
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "2",
+     "corr": 0.9999999611240681,
+     "median_abs_diff": 2.1022274380666506e-05,
+     "runner_up_corr": 0.9097626878683673
+    }
+   }
+  },
+  "dclm-baseline/large-aux-2": {
+   "repo": "allenai/DataDecide-dclm-baseline-1B",
+   "revision": "step69369-seed-large-aux-2",
+   "step": 69369,
+   "load_seconds": 57.19153046607971,
+   "score_seconds": 111.09222769737244,
+   "variants": {
+    "0": {
+     "2": {
+      "corr": 0.8895091854205311,
+      "max_abs_diff": 0.4671754240989685,
+      "median_abs_diff": 0.06227532657479412
+     },
+     "4": {
+      "corr": 0.9999999655450118,
+      "max_abs_diff": 0.0004036113469287894,
+      "median_abs_diff": 2.2095149638606815e-05
+     },
+     "5": {
+      "corr": 0.902457078040765,
+      "max_abs_diff": 0.4888685771397182,
+      "median_abs_diff": 0.056542450666068
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "4",
+     "corr": 0.9999999655450118,
+     "median_abs_diff": 2.2095149638606815e-05,
+     "runner_up_corr": 0.902457078040765
+    }
+   }
+  },
+  "dclm-baseline/large-aux-3": {
+   "repo": "allenai/DataDecide-dclm-baseline-1B",
+   "revision": "step69369-seed-large-aux-3",
+   "step": 69369,
+   "load_seconds": 56.23582148551941,
+   "score_seconds": 111.13153338432312,
+   "variants": {
+    "0": {
+     "2": {
+      "corr": 0.9097668985597787,
+      "max_abs_diff": 0.3956071866883173,
+      "median_abs_diff": 0.059801893121076144
+     },
+     "4": {
+      "corr": 0.9024630987884533,
+      "max_abs_diff": 0.4890802247183663,
+      "median_abs_diff": 0.05657362034826563
+     },
+     "5": {
+      "corr": 0.9999999681047741,
+      "max_abs_diff": 0.00024117103644782922,
+      "median_abs_diff": 2.2943453355267485e-05
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "5",
+     "corr": 0.9999999681047741,
+     "median_abs_diff": 2.2943453355267485e-05,
+     "runner_up_corr": 0.9097668985597787
+    }
+   }
+  },
+  "dclm-baseline-25p-dolma1.7-75p/default": {
+   "repo": "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-1B",
+   "revision": "step69369-seed-default",
+   "step": 69369,
+   "load_seconds": 56.63857173919678,
+   "score_seconds": 111.17641186714172,
+   "variants": {
+    "0": {
+     "4": {
+      "corr": 0.8909745548538917,
+      "max_abs_diff": 0.5585067325168185,
+      "median_abs_diff": 0.04631564926200804
+     },
+     "5": {
+      "corr": 0.8519946342360809,
+      "max_abs_diff": 0.446624501546224,
+      "median_abs_diff": 0.06894476298773422
+     },
+     "2": {
+      "corr": 0.9998900983470451,
+      "max_abs_diff": 0.04555470602852951,
+      "median_abs_diff": 1.8031339275831337e-05
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "2",
+     "corr": 0.9998900983470451,
+     "median_abs_diff": 1.8031339275831337e-05,
+     "runner_up_corr": 0.8909745548538917
+    }
+   }
+  },
+  "dclm-baseline-25p-dolma1.7-75p/large-aux-2": {
+   "repo": "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-1B",
+   "revision": "step69369-seed-large-aux-2",
+   "step": 69369,
+   "load_seconds": 57.412583351135254,
+   "score_seconds": 111.14903855323792,
+   "variants": {
+    "0": {
+     "4": {
+      "corr": 0.9999999795244165,
+      "max_abs_diff": 0.0002030611038208452,
+      "median_abs_diff": 2.0226916396387518e-05
+     },
+     "5": {
+      "corr": 0.8625710099910511,
+      "max_abs_diff": 0.5221322576204936,
+      "median_abs_diff": 0.06551434497038522
+     },
+     "2": {
+      "corr": 0.890779445094471,
+      "max_abs_diff": 0.5586050351460775,
+      "median_abs_diff": 0.046889475884137444
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "4",
+     "corr": 0.9999999795244165,
+     "median_abs_diff": 2.0226916396387518e-05,
+     "runner_up_corr": 0.890779445094471
+    }
+   }
+  },
+  "dclm-baseline-25p-dolma1.7-75p/large-aux-3": {
+   "repo": "allenai/DataDecide-dclm-baseline-25p-dolma1.7-75p-1B",
+   "revision": "step69369-seed-large-aux-3",
+   "step": 69369,
+   "load_seconds": 57.02174139022827,
+   "score_seconds": 111.22722959518433,
+   "variants": {
+    "0": {
+     "4": {
+      "corr": 0.8625583054326331,
+      "max_abs_diff": 0.5220493674278259,
+      "median_abs_diff": 0.06554941203859116
+     },
+     "5": {
+      "corr": 0.9999999783796977,
+      "max_abs_diff": 0.00034561753273010254,
+      "median_abs_diff": 2.054969469707235e-05
+     },
+     "2": {
+      "corr": 0.8528328273129254,
+      "max_abs_diff": 0.4464314324515206,
+      "median_abs_diff": 0.06890775278994912
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "5",
+     "corr": 0.9999999783796977,
+     "median_abs_diff": 2.054969469707235e-05,
+     "runner_up_corr": 0.8625583054326331
+    }
+   }
+  },
+  "dclm-baseline-50p-dolma1.7-50p/default": {
+   "repo": "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-1B",
+   "revision": "step69369-seed-default",
+   "step": 69369,
+   "load_seconds": 54.83804893493652,
+   "score_seconds": 111.32191252708435,
+   "variants": {
+    "0": {
+     "2": {
+      "corr": 0.9999512949548995,
+      "max_abs_diff": 0.032852649688720814,
+      "median_abs_diff": 1.6195928099885237e-05
+     },
+     "4": {
+      "corr": 0.897900782377897,
+      "max_abs_diff": 0.4889557007700205,
+      "median_abs_diff": 0.05684343963081333
+     },
+     "5": {
+      "corr": 0.8813353079565025,
+      "max_abs_diff": 0.4327831396034786,
+      "median_abs_diff": 0.06637109603200642
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "2",
+     "corr": 0.9999512949548995,
+     "median_abs_diff": 1.6195928099885237e-05,
+     "runner_up_corr": 0.897900782377897
+    }
+   }
+  },
+  "dclm-baseline-50p-dolma1.7-50p/large-aux-2": {
+   "repo": "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-1B",
+   "revision": "step69369-seed-large-aux-2",
+   "step": 69369,
+   "load_seconds": 54.13055992126465,
+   "score_seconds": 111.16656970977783,
+   "variants": {
+    "0": {
+     "2": {
+      "corr": 0.8975792288619437,
+      "max_abs_diff": 0.4894440174102783,
+      "median_abs_diff": 0.057021743021658494
+     },
+     "4": {
+      "corr": 0.9999999720121072,
+      "max_abs_diff": 0.0002446870009105151,
+      "median_abs_diff": 1.6347614545692002e-05
+     },
+     "5": {
+      "corr": 0.8441799403582847,
+      "max_abs_diff": 0.7326080799102783,
+      "median_abs_diff": 0.062362591873733025
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "4",
+     "corr": 0.9999999720121072,
+     "median_abs_diff": 1.6347614545692002e-05,
+     "runner_up_corr": 0.8975792288619437
+    }
+   }
+  },
+  "dclm-baseline-50p-dolma1.7-50p/large-aux-3": {
+   "repo": "allenai/DataDecide-dclm-baseline-50p-dolma1.7-50p-1B",
+   "revision": "step69369-seed-large-aux-3",
+   "step": 69369,
+   "load_seconds": 59.18828868865967,
+   "score_seconds": 111.05740475654602,
+   "variants": {
+    "0": {
+     "2": {
+      "corr": 0.8825263005060668,
+      "max_abs_diff": 0.4328629289354597,
+      "median_abs_diff": 0.06630451106405877
+     },
+     "4": {
+      "corr": 0.8442066870718015,
+      "max_abs_diff": 0.7323077358305454,
+      "median_abs_diff": 0.06230664537066505
+     },
+     "5": {
+      "corr": 0.9999999784972635,
+      "max_abs_diff": 0.00021071093423019605,
+      "median_abs_diff": 1.8026014961314285e-05
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "5",
+     "corr": 0.9999999784972635,
+     "median_abs_diff": 1.8026014961314285e-05,
+     "runner_up_corr": 0.8825263005060668
+    }
+   }
+  },
+  "dclm-baseline-75p-dolma1.7-25p/default": {
+   "repo": "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-1B",
+   "revision": "step69369-seed-default",
+   "step": 69369,
+   "load_seconds": 52.43573236465454,
+   "score_seconds": 111.3352370262146,
+   "variants": {
+    "0": {
+     "2": {
+      "corr": 0.99995895924872,
+      "max_abs_diff": 0.028846876961844292,
+      "median_abs_diff": 1.5894659272930323e-05
+     },
+     "5": {
+      "corr": 0.87704093558516,
+      "max_abs_diff": 0.4571996246065413,
+      "median_abs_diff": 0.0634967036287248
+     },
+     "4": {
+      "corr": 0.8903744719018806,
+      "max_abs_diff": 0.47516727553946625,
+      "median_abs_diff": 0.05013304898094123
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "2",
+     "corr": 0.99995895924872,
+     "median_abs_diff": 1.5894659272930323e-05,
+     "runner_up_corr": 0.8903744719018806
+    }
+   }
+  },
+  "dclm-baseline-75p-dolma1.7-25p/large-aux-2": {
+   "repo": "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-1B",
+   "revision": "step69369-seed-large-aux-2",
+   "step": 69369,
+   "load_seconds": 55.800400257110596,
+   "score_seconds": 111.1597592830658,
+   "variants": {
+    "0": {
+     "2": {
+      "corr": 0.8906824756971904,
+      "max_abs_diff": 0.47516021558216637,
+      "median_abs_diff": 0.05013717027514862
+     },
+     "5": {
+      "corr": 0.8851022901874002,
+      "max_abs_diff": 0.46507887406782666,
+      "median_abs_diff": 0.06062352825003815
+     },
+     "4": {
+      "corr": 0.9999999651694396,
+      "max_abs_diff": 0.0004691246784094272,
+      "median_abs_diff": 2.0563352007813007e-05
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "4",
+     "corr": 0.9999999651694396,
+     "median_abs_diff": 2.0563352007813007e-05,
+     "runner_up_corr": 0.8906824756971904
+    }
+   }
+  },
+  "dclm-baseline-75p-dolma1.7-25p/large-aux-3": {
+   "repo": "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-1B",
+   "revision": "step69369-seed-large-aux-3",
+   "step": 69369,
+   "load_seconds": 66.79473114013672,
+   "score_seconds": 111.0343108177185,
+   "variants": {
+    "0": {
+     "2": {
+      "corr": 0.8765668351061293,
+      "max_abs_diff": 0.45735724199385874,
+      "median_abs_diff": 0.06350947695570591
+     },
+     "5": {
+      "corr": 0.9999999779234131,
+      "max_abs_diff": 0.0002216498057047156,
+      "median_abs_diff": 1.978252396914182e-05
+     },
+     "4": {
+      "corr": 0.8851032413441271,
+      "max_abs_diff": 0.46507522609684027,
+      "median_abs_diff": 0.06062867370383837
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "5",
+     "corr": 0.9999999779234131,
+     "median_abs_diff": 1.978252396914182e-05,
+     "runner_up_corr": 0.8851032413441271
+    }
+   }
+  }
+ },
+ "unavailable": {
+  "Falcon-with-cc-top-orig-10p/default": "OSError: allenai/DataDecide-Falcon-with-cc-top-orig-10p-1B is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "Falcon-with-cc-top-orig-10p/large-aux-2": "OSError: allenai/DataDecide-Falcon-with-cc-top-orig-10p-1B is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "Falcon-with-cc-top-orig-10p/large-aux-3": "OSError: allenai/DataDecide-Falcon-with-cc-top-orig-10p-1B is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "Falcon-with-cc-top-tulu-10p/default": "OSError: allenai/DataDecide-Falcon-with-cc-top-tulu-10p-1B is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "Falcon-with-cc-top-tulu-10p/large-aux-2": "OSError: allenai/DataDecide-Falcon-with-cc-top-tulu-10p-1B is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "Falcon-with-cc-top-tulu-10p/large-aux-3": "OSError: allenai/DataDecide-Falcon-with-cc-top-tulu-10p-1B is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-10p/default": "OSError: allenai/DataDecide-dclm-baseline-top-10p-1B is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-10p/large-aux-2": "OSError: allenai/DataDecide-dclm-baseline-top-10p-1B is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-10p/large-aux-3": "OSError: allenai/DataDecide-dclm-baseline-top-10p-1B is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`"
+ },
+ "stopped_early": false,
+ "wall_seconds": 2560.5775492191315
+}

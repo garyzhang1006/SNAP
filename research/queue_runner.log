@@ -15,3 +15,46 @@
 2026-09-16 15:18:40 pushed snap-r6-perm-exact (busy was 3)
 2026-09-16 15:26:32 pushed snap-r6-detect-power-margin (busy was 3)
 2026-09-16 15:26:53 pushed snap-r6-single-size-acc (busy was 4)
+2026-09-16 15:45:17 pushed snap-r6-logscale-repair (busy was 3)
+2026-09-16 15:45:39 pushed snap-r6-estimator-bias (busy was 3)
+2026-09-16 16:37:00 queue empty, idling
+2026-09-16 16:38:30 queue empty, idling
+2026-09-16 16:40:01 queue empty, idling
+2026-09-16 16:41:31 queue empty, idling
+2026-09-16 16:43:01 queue empty, idling
+2026-09-16 16:44:31 queue empty, idling
+2026-09-16 16:46:01 queue empty, idling
+2026-09-16 16:47:31 queue empty, idling
+2026-09-16 16:49:01 queue empty, idling
+2026-09-16 16:50:31 queue empty, idling
+2026-09-16 16:52:01 queue empty, idling
+2026-09-16 16:53:31 queue empty, idling
+2026-09-16 16:55:01 queue empty, idling
+2026-09-16 16:56:31 queue empty, idling
+2026-09-16 16:58:01 queue empty, idling
+2026-09-16 16:59:31 queue empty, idling
+2026-09-16 17:01:01 queue empty, idling
+2026-09-16 17:02:31 queue empty, idling
+2026-09-16 17:04:01 queue empty, idling
+2026-09-16 17:05:31 queue empty, idling
+2026-09-16 17:07:01 queue empty, idling
+2026-09-16 17:08:32 queue empty, idling
+2026-09-16 17:10:02 queue empty, idling
+2026-09-16 17:11:32 queue empty, idling
+2026-09-16 17:13:02 queue empty, idling
+2026-09-16 17:14:32 queue empty, idling
+2026-09-16 17:16:02 queue empty, idling
+2026-09-16 17:17:32 queue empty, idling
+2026-09-16 17:19:02 queue empty, idling
+2026-09-16 17:20:32 queue empty, idling
+2026-09-16 17:22:02 queue empty, idling
+2026-09-16 17:23:33 queue empty, idling
+2026-09-16 17:25:04 queue empty, idling
+2026-09-16 17:26:34 queue empty, idling
+2026-09-16 17:28:04 queue empty, idling
+2026-09-16 17:29:34 queue empty, idling
+2026-09-16 17:31:06 pushed snap-r6-logscale-repair (busy was 1)
+2026-09-16 17:31:28 pushed snap-r6-two-runs-only (busy was 2)
+2026-09-16 17:31:50 pushed snap-r6-missing-configs (busy was 3)
+2026-09-16 17:32:11 pushed snap-r6-noise-level (busy was 3)
+2026-09-16 17:32:33 pushed snap-r6-size-count (busy was 4)

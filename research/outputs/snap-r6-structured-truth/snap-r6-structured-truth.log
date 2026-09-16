@@ -1,0 +1,14 @@
+[{"stream_name":"stdout","time":1.757331752,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":262.387236017,"data":"[flat_compound_symmetry] 243s check 2.22e-16 {\"wild_recipe\": 0.9357, \"cluster_t_recipe\": 0.936, \"wild_size\": 0.9503, \"cluster_t_size\": 0.9447}\n"}
+,{"stream_name":"stdout","time":495.61794566,"data":"[dominant_benchmark] 233s check 0 {\"wild_recipe\": 0.943, \"cluster_t_recipe\": 0.9435, \"wild_size\": 0.9485, \"cluster_t_size\": 0.9467}\n"}
+,{"stream_name":"stdout","time":728.590466238,"data":"[negative_links] 233s check 0 {\"wild_recipe\": 0.9455, \"cluster_t_recipe\": 0.947, \"wild_size\": 0.9407, \"cluster_t_size\": 0.945}\n"}
+,{"stream_name":"stdout","time":962.462273945,"data":"[two_blocks] 234s check 0 {\"wild_recipe\": 0.9463, \"cluster_t_recipe\": 0.9467, \"wild_size\": 0.9487, \"cluster_t_size\": 0.9455}\n"}
+,{"stream_name":"stdout","time":1197.692669285,"data":"[dominant_negative_blocks] 235s check 0 {\"wild_recipe\": 0.944, \"cluster_t_recipe\": 0.9443, \"wild_size\": 0.9417, \"cluster_t_size\": 0.954}\n"}
+,{"stream_name":"stdout","time":1197.69721124,"data":"[done] 1196s\n"}
+,{"stream_name":"stderr","time":1200.886193224,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1200.886283852,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1201.363732914,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1201.363765663,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1202.599276816,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1204.568180244,"data":"[NbConvertApp] Writing 344512 bytes to __results__.html\n"}
+]

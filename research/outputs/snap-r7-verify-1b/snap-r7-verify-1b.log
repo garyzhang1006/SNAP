@@ -1,0 +1,52 @@
+[{"stream_name":"stdout","time":1.383992378,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":43.085083308,"data":"[env] torch 2.10.0+cu128 transformers 5.0.0 Tesla T4\n"}
+,{"stream_name":"stdout","time":43.992367392,"data":"[requests] rows 19002 docs 150\n"}
+,{"stream_name":"stdout","time":44.437048716,"data":"[recipes] present 25 attempting ['Falcon-with-cc-top-orig-10p', 'Falcon-with-cc-top-tulu-10p', 'c4', 'dclm-baseline', 'dclm-baseline-25p-dolma1.7-75p', 'dclm-baseline-50p-dolma1.7-50p', 'dclm-baseline-75p-dolma1.7-25p', 'dclm-baseline-top-10p']\n"}
+,{"stream_name":"stdout","time":44.756744424,"data":"[Falcon-with-cc-top-orig-10p default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":44.922615347,"data":"[Falcon-with-cc-top-orig-10p large-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":45.086939855,"data":"[Falcon-with-cc-top-orig-10p large-aux-3] unavailable OSError\n"}
+,{"stream_name":"stdout","time":45.306087352,"data":"[Falcon-with-cc-top-tulu-10p default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":45.470055381,"data":"[Falcon-with-cc-top-tulu-10p large-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":45.632625778,"data":"[Falcon-with-cc-top-tulu-10p large-aux-3] unavailable OSError\n"}
+,{"stream_name":"stderr","time":45.783861549,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":46.044313572,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":206.616141992,"data":"[c4 default] load 62s score 99s {\"0\": {\"seed\": \"2\", \"corr\": 0.9998600467700597, \"median_abs_diff\": 2.01338654631511e-05, \"runner_up_corr\": 0.8860309707709324}}\n"}
+,{"stream_name":"stderr","time":207.95171461,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":365.757659805,"data":"[c4 large-aux-2] load 47s score 111s {\"0\": {\"seed\": \"4\", \"corr\": 0.9999999744077351, \"median_abs_diff\": 1.8553383700492532e-05, \"runner_up_corr\": 0.8611951298649246}}\n"}
+,{"stream_name":"stderr","time":367.191868049,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":532.64664058,"data":"[c4 large-aux-3] load 55s score 111s {\"0\": {\"seed\": \"5\", \"corr\": 0.9999999768871788, \"median_abs_diff\": 1.2514145687397837e-05, \"runner_up_corr\": 0.8847249860318717}}\n"}
+,{"stream_name":"stderr","time":534.52265062,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":696.874168169,"data":"[dclm-baseline default] load 52s score 111s {\"0\": {\"seed\": \"2\", \"corr\": 0.9999999611240681, \"median_abs_diff\": 2.1022274380666506e-05, \"runner_up_corr\": 0.9097626878683673}}\n"}
+,{"stream_name":"stderr","time":698.240257135,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":866.132660762,"data":"[dclm-baseline large-aux-2] load 57s score 111s {\"0\": {\"seed\": \"4\", \"corr\": 0.9999999655450118, \"median_abs_diff\": 2.2095149638606815e-05, \"runner_up_corr\": 0.902457078040765}}\n"}
+,{"stream_name":"stderr","time":867.559653575,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":1034.431362802,"data":"[dclm-baseline large-aux-3] load 56s score 111s {\"0\": {\"seed\": \"5\", \"corr\": 0.9999999681047741, \"median_abs_diff\": 2.2943453355267485e-05, \"runner_up_corr\": 0.9097668985597787}}\n"}
+,{"stream_name":"stderr","time":1036.445814319,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":1203.853898489,"data":"[dclm-baseline-25p-dolma1.7-75p default] load 57s score 111s {\"0\": {\"seed\": \"2\", \"corr\": 0.9998900983470451, \"median_abs_diff\": 1.8031339275831337e-05, \"runner_up_corr\": 0.8909745548538917}}\n"}
+,{"stream_name":"stderr","time":1205.282070998,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":1373.416271843,"data":"[dclm-baseline-25p-dolma1.7-75p large-aux-2] load 57s score 111s {\"0\": {\"seed\": \"4\", \"corr\": 0.9999999795244165, \"median_abs_diff\": 2.0226916396387518e-05, \"runner_up_corr\": 0.890779445094471}}\n"}
+,{"stream_name":"stderr","time":1374.850980509,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":1542.667577244,"data":"[dclm-baseline-25p-dolma1.7-75p large-aux-3] load 57s score 111s {\"0\": {\"seed\": \"5\", \"corr\": 0.9999999783796977, \"median_abs_diff\": 2.054969469707235e-05, \"runner_up_corr\": 0.8625583054326331}}\n"}
+,{"stream_name":"stderr","time":1544.629932955,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":1710.367510847,"data":"[dclm-baseline-50p-dolma1.7-50p default] load 55s score 111s {\"0\": {\"seed\": \"2\", \"corr\": 0.9999512949548995, \"median_abs_diff\": 1.6195928099885237e-05, \"runner_up_corr\": 0.897900782377897}}\n"}
+,{"stream_name":"stderr","time":1711.790119162,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":1876.668312987,"data":"[dclm-baseline-50p-dolma1.7-50p large-aux-2] load 54s score 111s {\"0\": {\"seed\": \"4\", \"corr\": 0.9999999720121072, \"median_abs_diff\": 1.6347614545692002e-05, \"runner_up_corr\": 0.8975792288619437}}\n"}
+,{"stream_name":"stderr","time":1878.072817558,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":2047.833078619,"data":"[dclm-baseline-50p-dolma1.7-50p large-aux-3] load 59s score 111s {\"0\": {\"seed\": \"5\", \"corr\": 0.9999999784972635, \"median_abs_diff\": 1.8026014961314285e-05, \"runner_up_corr\": 0.8825263005060668}}\n"}
+,{"stream_name":"stderr","time":2049.526342198,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":2212.866965508,"data":"[dclm-baseline-75p-dolma1.7-25p default] load 52s score 111s {\"0\": {\"seed\": \"2\", \"corr\": 0.99995895924872, \"median_abs_diff\": 1.5894659272930323e-05, \"runner_up_corr\": 0.8903744719018806}}\n"}
+,{"stream_name":"stderr","time":2214.307396187,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":2380.827456522,"data":"[dclm-baseline-75p-dolma1.7-25p large-aux-2] load 56s score 111s {\"0\": {\"seed\": \"4\", \"corr\": 0.9999999651694396, \"median_abs_diff\": 2.0563352007813007e-05, \"runner_up_corr\": 0.8906824756971904}}\n"}
+,{"stream_name":"stderr","time":2382.320509983,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":2559.605371821,"data":"[dclm-baseline-75p-dolma1.7-25p large-aux-3] load 67s score 111s {\"0\": {\"seed\": \"5\", \"corr\": 0.9999999779234131, \"median_abs_diff\": 1.978252396914182e-05, \"runner_up_corr\": 0.8851032413441271}}\n"}
+,{"stream_name":"stdout","time":2561.645834202,"data":"[dclm-baseline-top-10p default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":2561.798617061,"data":"[dclm-baseline-top-10p large-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":2561.958123285,"data":"[dclm-baseline-top-10p large-aux-3] unavailable OSError\n"}
+,{"stream_name":"stdout","time":2561.962427354,"data":"[done] 2561s cells 15 unavailable 9\n"}
+,{"stream_name":"stderr","time":2567.394825187,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2567.394857849,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2567.659325688,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2567.65935472,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2568.300249252,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2569.655558019,"data":"[NbConvertApp] Writing 336615 bytes to __results__.html\n"}
+]
