@@ -597,3 +597,10 @@ at nine main-text pages with a byte-identical style file and no unresolved citat
 | snap-r6-ragged-runs | COMPLETE at 4,000 replicates under seed 20260989. Unequal seeds per configuration leave coverage between 0.939 and 0.949 on both scales, whether the shortfall is random or falls on whole recipes, with no undefined replicate on margins. | Written in. The cost lands on width and power, since width grows from 0.243 to 0.343 and power falls from 0.968 to 0.747 as every configuration drops to two seeds, and a two, three and four mix averaging exactly three still widens to 0.265, so an even spread buys precision rather than validity. |
 
 | snap-r6-cr3-acc | COMPLETE at 12,000 replicates under seed 20260992. On accuracy the leverage correction lifts the recipe-clustered interval from 0.944 to 0.954 at the joint corner, 0.950 to 0.959 at the band bound and 0.949 to 0.956 with no sharing, for five percent of width. | Written in, including the honest half, since the correction overshoots where nothing needs correcting and it damages the five-cluster fallback, taking it from 0.841 to 0.751 with the undefined share rising from 0.119 to 0.229. |
+
+| snap-r6-cheap-acc | COMPLETE at 4,000 replicates under seed 20260993. At the accuracy battery's noise, ten recipes with two runs cover 0.602 with 0.369 undefined, ten with three reach 0.859, and coverage returns at 0.933 for ten by four, 0.942 for fifteen by three, 0.951 for twenty by three and 0.943 for 25 by two. | Written in, and the main-text floor now says three runs explicitly, because the requirement is joint rather than a recipe count on its own. Power never passes 0.142 anywhere in the grid at a true 1.078. |
+
+That closes the batch the user authorised. The queue stays empty, five kernels ran after the close
+instruction only because they were already in flight, and every one of them is now written into the
+appendix with its seed and replicate count attached. The build sits at nine main-text pages with a
+byte-identical style file, no unresolved citation, and six verified checksums.
