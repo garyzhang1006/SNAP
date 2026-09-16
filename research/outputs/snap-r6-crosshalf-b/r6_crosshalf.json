@@ -1,0 +1,95 @@
+{
+ "design": "R6 how much cross-half item-noise correlation would be needed to manufacture the observed result.\n\nDesign fixed before running (2026-09-15, written 23:56 EDT). The whole estimator rests on one\nassumption, which is that the item-sampling noise on half A is independent of the noise on half B given\nthe run. The paper checks the one concrete threat to that assumption, which is BoolQ's shared passages,\nand it reports a passage-aware split. It never says what a violation would cost, so a reviewer has no way\nto judge how close to the edge the design sits. This run answers the question in the form the reviewer\nwould ask it. It simulates a population whose true ratio is exactly one, with the fitted noise scale of\n0.73, and sweeps a correlation between the two halves' item noise from zero to 0.2 with 2,000 replicates\nat each value. Each cell reports the mean estimate, the share of recipe-clustered intervals that exclude\none, and the implied bias, so the curve says how much correlation it takes to move a null population to\nthe observed 1.244. Seed 20260937 and a cell offset of one thousand keep the draws distinct. A\ncorrelation that has to exceed a tenth to explain the result is a different finding from one that only\nneeds a hundredth, and the paper should quote whichever number this returns.\n",
+ "seed": 20260937,
+ "reps": 2000,
+ "observed_margin_estimate": 1.2439,
+ "cells": {
+  "ec_0.0": {
+   "name": "ec_0.0",
+   "cross_half_error_correlation": 0.0,
+   "true_lambda": 1.0,
+   "mean_estimate": 0.9983979932526482,
+   "sd_estimate": 0.0548634362190087,
+   "median_estimate": 0.9993864004257502,
+   "share_excluding_one": 0.054,
+   "coverage_of_one": 0.946,
+   "undefined": 0.0,
+   "mean_gap_to_observed": -0.2455020067473518
+  },
+  "ec_0.01": {
+   "name": "ec_0.01",
+   "cross_half_error_correlation": 0.01,
+   "true_lambda": 1.0,
+   "mean_estimate": 0.9976155969519617,
+   "sd_estimate": 0.0555868520782972,
+   "median_estimate": 0.9987845945112439,
+   "share_excluding_one": 0.058,
+   "coverage_of_one": 0.942,
+   "undefined": 0.0,
+   "mean_gap_to_observed": -0.24628440304803834
+  },
+  "ec_0.02": {
+   "name": "ec_0.02",
+   "cross_half_error_correlation": 0.02,
+   "true_lambda": 1.0,
+   "mean_estimate": 0.9987613456078661,
+   "sd_estimate": 0.054789601587951285,
+   "median_estimate": 1.0005544499156618,
+   "share_excluding_one": 0.0535,
+   "coverage_of_one": 0.9465,
+   "undefined": 0.0,
+   "mean_gap_to_observed": -0.2451386543921339
+  },
+  "ec_0.05": {
+   "name": "ec_0.05",
+   "cross_half_error_correlation": 0.05,
+   "true_lambda": 1.0,
+   "mean_estimate": 0.9995228400960586,
+   "sd_estimate": 0.05505354496588789,
+   "median_estimate": 0.9982903389177242,
+   "share_excluding_one": 0.0615,
+   "coverage_of_one": 0.9385,
+   "undefined": 0.0,
+   "mean_gap_to_observed": -0.24437715990394138
+  },
+  "ec_0.1": {
+   "name": "ec_0.1",
+   "cross_half_error_correlation": 0.1,
+   "true_lambda": 1.0,
+   "mean_estimate": 0.9986319495371867,
+   "sd_estimate": 0.05319346079245247,
+   "median_estimate": 0.9966849239309779,
+   "share_excluding_one": 0.047,
+   "coverage_of_one": 0.953,
+   "undefined": 0.0,
+   "mean_gap_to_observed": -0.2452680504628133
+  },
+  "ec_0.15": {
+   "name": "ec_0.15",
+   "cross_half_error_correlation": 0.15,
+   "true_lambda": 1.0,
+   "mean_estimate": 1.0000069077922606,
+   "sd_estimate": 0.05112578844234104,
+   "median_estimate": 0.9999476009092734,
+   "share_excluding_one": 0.0445,
+   "coverage_of_one": 0.9555,
+   "undefined": 0.0,
+   "mean_gap_to_observed": -0.24389309220773936
+  },
+  "ec_0.2": {
+   "name": "ec_0.2",
+   "cross_half_error_correlation": 0.2,
+   "true_lambda": 1.0,
+   "mean_estimate": 0.9980820768746921,
+   "sd_estimate": 0.05123224509164365,
+   "median_estimate": 0.9977356970614095,
+   "share_excluding_one": 0.051,
+   "coverage_of_one": 0.949,
+   "undefined": 0.0,
+   "mean_gap_to_observed": -0.24581792312530792
+  }
+ },
+ "correlation_matching_observed": null,
+ "note": "the observed estimate lies outside the simulated range of mean estimates",
+ "wall_seconds": 152.46950268745422
+}

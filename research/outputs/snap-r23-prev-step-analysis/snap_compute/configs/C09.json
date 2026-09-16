@@ -1,0 +1,12 @@
+{
+  "template_only": true,
+  "seed": 20260914,
+  "dataset": "../inputs/scores.json",
+  "split_mode": "original",
+  "bootstrap_draws": 0,
+  "gain_sd": [
+    0,
+    0.05,
+    0.1
+  ]
+}

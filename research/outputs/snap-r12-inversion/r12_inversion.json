@@ -1,0 +1,162 @@
+{
+ "design": "R12 addition: PolyPythias transport intervals under the cluster test-inversion construction.\n\nDesign fixed before running (2026-09-15, written 19:08 EDT). The manuscript reports configuration-bootstrap\nintervals for the PolyPythias rescore, and the three-size accuracy interval has no defined lower endpoint.\nWith three or five configurations of nine runs, each configuration is its own cluster, so the centred and\nrestricted inversions of snap-r6-fieller use t(2) and t(4) critical values. Estimates must reproduce\nsnap-r12-analysis (margin 1.41372 and 1.26199, accuracy 2.28589 and 1.71085), and the configuration\nbootstrap (4,999 draws, seed 0) is recomputed beside them. Per-configuration T and U are saved.\n",
+ "transport": {
+  "three_sizes": {
+   "N": 3,
+   "R": 9,
+   "margin": {
+    "Lambda": 1.4137201433906592,
+    "T": [
+     2.1918016609175582e-05,
+     0.00010987233581220849,
+     6.282171911959613e-05
+    ],
+    "U": [
+     2.4857796615391137e-05,
+     3.4620284862006566e-05,
+     3.789588997909974e-05
+    ],
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.0,
+       2.1055631355273388
+      ]
+     ]
+    },
+    "restricted": {
+     "kind": "all",
+     "lambda_sets": [
+      [
+       0.0,
+       null
+      ]
+     ]
+    },
+    "config": [
+     0.939008039725714,
+     1.7814714233453306
+    ]
+   },
+   "accuracy": {
+    "Lambda": 2.2858883052946526,
+    "T": [
+     2.3334720172995665e-05,
+     0.00017492093467665065,
+     -1.1601810362685193e-05
+    ],
+    "U": [
+     1.2288387324136426e-05,
+     2.9674293467197274e-05,
+     -6.241407752879508e-06
+    ],
+    "centred": {
+     "kind": "all",
+     "lambda_sets": [
+      [
+       0.0,
+       null
+      ]
+     ]
+    },
+    "restricted": {
+     "kind": "all",
+     "lambda_sets": [
+      [
+       0.0,
+       null
+      ]
+     ]
+    },
+    "config": [
+     NaN,
+     2.9707148363695604
+    ]
+   }
+  },
+  "five_sizes": {
+   "N": 5,
+   "R": 9,
+   "margin": {
+    "Lambda": 1.2619855939956985,
+    "T": [
+     1.3710882362527816e-05,
+     2.1918016609175582e-05,
+     9.057841084477511e-05,
+     0.00010987233581220849,
+     6.282171911959613e-05
+    ],
+    "U": [
+     3.187944050610801e-05,
+     2.4857796615391137e-05,
+     5.8427067110699195e-05,
+     3.4620284862006566e-05,
+     3.789588997909974e-05
+    ],
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.5188808513085197,
+       1.6637266356842515
+      ]
+     ]
+    },
+    "restricted": {
+     "kind": "all",
+     "lambda_sets": [
+      [
+       0.0,
+       null
+      ]
+     ]
+    },
+    "config": [
+     0.9266236847341515,
+     1.5370107623795897
+    ]
+   },
+   "accuracy": {
+    "Lambda": 1.7108480412944274,
+    "T": [
+     1.45344851142958e-05,
+     2.3334720172995665e-05,
+     9.14262856294397e-05,
+     0.00017492093467665065,
+     -1.1601810362685193e-05
+    ],
+    "U": [
+     1.94444792478607e-05,
+     1.2288387324136426e-05,
+     4.480504143435503e-05,
+     2.9674293467197274e-05,
+     -6.241407752879508e-06
+    ],
+    "centred": {
+     "kind": "all",
+     "lambda_sets": [
+      [
+       0.0,
+       null
+      ]
+     ]
+    },
+    "restricted": {
+     "kind": "all",
+     "lambda_sets": [
+      [
+       0.0,
+       null
+      ]
+     ]
+    },
+    "config": [
+     0.8686946646268198,
+     2.427899473655094
+    ]
+   }
+  }
+ },
+ "wall_seconds": 14.980827808380127
+}

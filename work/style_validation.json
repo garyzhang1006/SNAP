@@ -1,0 +1,26 @@
+{
+  "main.tex": {
+    "sentences": 208,
+    "minimum": 8,
+    "maximum_observed": 42,
+    "below8": [],
+    "prohibited_punctuation": [],
+    "uncontracted_negatives": []
+  },
+  "appendix_a.tex": {
+    "sentences": 81,
+    "minimum": 9,
+    "maximum_observed": 31,
+    "below8": [],
+    "prohibited_punctuation": [],
+    "uncontracted_negatives": []
+  },
+  "appendices_bcd.tex": {
+    "sentences": 395,
+    "minimum": 8,
+    "maximum_observed": 36,
+    "below8": [],
+    "prohibited_punctuation": [],
+    "uncontracted_negatives": []
+  }
+}

@@ -1,0 +1,262 @@
+{
+ "design": "R6 completion of the residual-scaled comparison, all twelve cells at one precision.\n\nDesign fixed before running (2026-09-15, written 22:10 EDT). The paper reports the shipped wild interval\nat 10,000 replicates across all twelve populations, covering 0.933 to 0.953, and reports the\nresidual-scaled alternative at 4,000 replicates across the twelve and at 10,000 across four of them. A\nreader comparing 0.943 to 0.958 against 0.933 to 0.953 is therefore comparing ranges measured at\ndifferent precisions, where the coarser one carries a Monte Carlo standard error of 0.0035 against\n0.0022. This run removes that mismatch. It scores the shipped Rademacher version and the residual-scaled\nversion on all twelve cells with 10,000 replicates each, seed 20260928 and a cell index offset of four\nhundred, so both ranges in that sentence come from the same replicate count on the same fresh datasets.\nIt adds no new construction and tests no new question, and its purpose is to let the paper quote one\nprecision for both sides of the comparison.\n",
+ "seed": 20260928,
+ "reps": 10000,
+ "cells": {
+  "margin_like": {
+   "name": "margin_like",
+   "truth": 1.2445882853377657,
+   "wild_rademacher": {
+    "coverage": 0.9472,
+    "mc_se": 0.002236339866835986,
+    "lower_miss": 0.0164,
+    "upper_miss": 0.0364,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24204263406907833
+   },
+   "wild_cr3": {
+    "coverage": 0.9556,
+    "mc_se": 0.00205982135147687,
+    "lower_miss": 0.0131,
+    "upper_miss": 0.0313,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.25298942060296215
+   }
+  },
+  "accuracy_like": {
+   "name": "accuracy_like",
+   "truth": 1.0779610382569493,
+   "wild_rademacher": {
+    "coverage": 0.9504,
+    "mc_se": 0.0021711711125565387,
+    "lower_miss": 0.0171,
+    "upper_miss": 0.0323,
+    "undefined_or_unbounded": 0.0002,
+    "median_width": 0.3972306317413991
+   },
+   "wild_cr3": {
+    "coverage": 0.9594,
+    "mc_se": 0.0019736169841182453,
+    "lower_miss": 0.0133,
+    "upper_miss": 0.0271,
+    "undefined_or_unbounded": 0.0002,
+    "median_width": 0.415911922028805
+   }
+  },
+  "margin_like_cross_half_error_corr_0.1": {
+   "name": "margin_like_cross_half_error_corr_0.1",
+   "truth": 1.2445882853377657,
+   "wild_rademacher": {
+    "coverage": 0.9292,
+    "mc_se": 0.002564904676591315,
+    "lower_miss": 0.011,
+    "upper_miss": 0.0598,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23493396069063444
+   },
+   "wild_cr3": {
+    "coverage": 0.9401,
+    "mc_se": 0.0023730147492166996,
+    "lower_miss": 0.0084,
+    "upper_miss": 0.0515,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24558060355346145
+   }
+  },
+  "margin_like_one_dominant_recipe": {
+   "name": "margin_like_one_dominant_recipe",
+   "truth": 1.2445882853377657,
+   "wild_rademacher": {
+    "coverage": 0.9424,
+    "mc_se": 0.0023298549311062265,
+    "lower_miss": 0.0181,
+    "upper_miss": 0.0395,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2644540125821226
+   },
+   "wild_cr3": {
+    "coverage": 0.9567,
+    "mc_se": 0.002035315945989713,
+    "lower_miss": 0.0131,
+    "upper_miss": 0.0302,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.29812090358320587
+   }
+  },
+  "null_margin_noise": {
+   "name": "null_margin_noise",
+   "truth": 1.0,
+   "wild_rademacher": {
+    "coverage": 0.9484,
+    "mc_se": 0.0022121808244354706,
+    "lower_miss": 0.014,
+    "upper_miss": 0.0376,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2236872123699416
+   },
+   "wild_cr3": {
+    "coverage": 0.9562,
+    "mc_se": 0.0020464984730021165,
+    "lower_miss": 0.0105,
+    "upper_miss": 0.0333,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2335418285368973
+   }
+  },
+  "null_accuracy_noise": {
+   "name": "null_accuracy_noise",
+   "truth": 1.0,
+   "wild_rademacher": {
+    "coverage": 0.9474,
+    "mc_se": 0.0022323359962156232,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.0341,
+    "undefined_or_unbounded": 0.001,
+    "median_width": 0.40479454970900475
+   },
+   "wild_cr3": {
+    "coverage": 0.9547,
+    "mc_se": 0.00207961318518613,
+    "lower_miss": 0.0142,
+    "upper_miss": 0.0299,
+    "undefined_or_unbounded": 0.0012,
+    "median_width": 0.4235222846260167
+   }
+  },
+  "margin_like_boolq_trace": {
+   "name": "margin_like_boolq_trace",
+   "truth": 1.1519072321506927,
+   "wild_rademacher": {
+    "coverage": 0.9451,
+    "mc_se": 0.002277849643852727,
+    "lower_miss": 0.0214,
+    "upper_miss": 0.0335,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.17222726131084454
+   },
+   "wild_cr3": {
+    "coverage": 0.9542,
+    "mc_se": 0.0020905109423296486,
+    "lower_miss": 0.0173,
+    "upper_miss": 0.0285,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.18050259722189244
+   }
+  },
+  "accuracy_like_boolq_trace": {
+   "name": "accuracy_like_boolq_trace",
+   "truth": 1.0308411390725625,
+   "wild_rademacher": {
+    "coverage": 0.9447,
+    "mc_se": 0.002285648923172586,
+    "lower_miss": 0.0202,
+    "upper_miss": 0.0351,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.15492867181175862
+   },
+   "wild_cr3": {
+    "coverage": 0.9542,
+    "mc_se": 0.0020905109423296486,
+    "lower_miss": 0.0166,
+    "upper_miss": 0.0292,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.16248381755963415
+   }
+  },
+  "margin_like_recipe_shared": {
+   "name": "margin_like_recipe_shared",
+   "truth": 1.2445882853377657,
+   "wild_rademacher": {
+    "coverage": 0.9434,
+    "mc_se": 0.0023107669722410348,
+    "lower_miss": 0.0096,
+    "upper_miss": 0.047,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.31046831678052306
+   },
+   "wild_cr3": {
+    "coverage": 0.9512,
+    "mc_se": 0.002154496692965667,
+    "lower_miss": 0.0076,
+    "upper_miss": 0.0412,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3252924266932423
+   }
+  },
+  "margin_like_heavy_tails": {
+   "name": "margin_like_heavy_tails",
+   "truth": 1.2445882853377657,
+   "wild_rademacher": {
+    "coverage": 0.9357,
+    "mc_se": 0.0024528658748492554,
+    "lower_miss": 0.0118,
+    "upper_miss": 0.0494,
+    "undefined_or_unbounded": 0.0031,
+    "median_width": 0.3208215853399936
+   },
+   "wild_cr3": {
+    "coverage": 0.9452,
+    "mc_se": 0.002275894549402497,
+    "lower_miss": 0.0078,
+    "upper_miss": 0.0399,
+    "undefined_or_unbounded": 0.0071,
+    "median_width": 0.3406419373034856
+   }
+  },
+  "accuracy_like_cross_half_error_corr_0.1": {
+   "name": "accuracy_like_cross_half_error_corr_0.1",
+   "truth": 1.0779610382569493,
+   "wild_rademacher": {
+    "coverage": 0.9423,
+    "mc_se": 0.0023317527742022733,
+    "lower_miss": 0.0115,
+    "upper_miss": 0.0462,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3357157898682951
+   },
+   "wild_cr3": {
+    "coverage": 0.9504,
+    "mc_se": 0.0021711711125565387,
+    "lower_miss": 0.0102,
+    "upper_miss": 0.0394,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.35124595411887255
+   }
+  },
+  "rho_0.2_margin_noise": {
+   "name": "rho_0.2_margin_noise",
+   "truth": 1.6733200530681511,
+   "wild_rademacher": {
+    "coverage": 0.9454,
+    "mc_se": 0.002271977992851163,
+    "lower_miss": 0.0196,
+    "upper_miss": 0.035,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2616484682470305
+   },
+   "wild_cr3": {
+    "coverage": 0.9535,
+    "mc_se": 0.0021056531053333543,
+    "lower_miss": 0.0161,
+    "upper_miss": 0.0304,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2737278532732723
+   }
+  }
+ },
+ "shipped_check": {
+  "margin_like": 0.0,
+  "accuracy_like": 0.0,
+  "margin_like_cross_half_error_corr_0.1": 0.0,
+  "margin_like_one_dominant_recipe": 0.0,
+  "null_margin_noise": 1.1102230246251565e-16,
+  "null_accuracy_noise": 2.220446049250313e-16,
+  "margin_like_boolq_trace": 0.0,
+  "accuracy_like_boolq_trace": 0.0,
+  "margin_like_recipe_shared": 0.0,
+  "margin_like_heavy_tails": 0.0,
+  "accuracy_like_cross_half_error_corr_0.1": 0.0,
+  "rho_0.2_margin_noise": 0.0
+ },
+ "wall_seconds": 6257.916839838028
+}

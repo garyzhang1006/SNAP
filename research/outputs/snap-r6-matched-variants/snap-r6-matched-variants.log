@@ -1,0 +1,56 @@
+[{"stream_name":"stdout","time":1.147279229,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":23.513766777,"data":"[setup] truth_margin 1.2436 observed {\"margin\": {\"lambda\": 1.2439499117191137, \"max_recipe_influence_share\": 0.5199019718929418}, \"accuracy\": {\"lambda\": 1.0783733870898096, \"max_recipe_influence_share\": 0.25538550666472665}} clipped [1.5318422139172766e-06, 1.7303572714972133e-06, 2.132326519412189e-06, 1.844463074896418e-06, 3.308645606382728e-07]\n"}
+,{"stream_name":"stdout","time":23.513815342,"data":"[scenario] size\n"}
+,{"stream_name":"stdout","time":25.033330229,"data":"[rep 0] 24s\n"}
+,{"stream_name":"stdout","time":178.734214899,"data":"[rep 100] 178s\n"}
+,{"stream_name":"stdout","time":332.363663637,"data":"[rep 200] 331s\n"}
+,{"stream_name":"stdout","time":486.547229019,"data":"[rep 300] 485s\n"}
+,{"stream_name":"stdout","time":640.977218455,"data":"[rep 400] 640s\n"}
+,{"stream_name":"stdout","time":794.373541695,"data":"[rep 500] 793s\n"}
+,{"stream_name":"stdout","time":947.772489072,"data":"[rep 600] 947s\n"}
+,{"stream_name":"stdout","time":1101.412021749,"data":"[rep 700] 1100s\n"}
+,{"stream_name":"stdout","time":1254.466296394,"data":"[rep 800] 1253s\n"}
+,{"stream_name":"stdout","time":1408.183739099,"data":"[rep 900] 1407s\n"}
+,{"stream_name":"stdout","time":1562.851019602,"data":"[rep 1000] 1562s\n"}
+,{"stream_name":"stdout","time":1717.721310109,"data":"[rep 1100] 1717s\n"}
+,{"stream_name":"stdout","time":1872.141334988,"data":"[rep 1200] 1871s\n"}
+,{"stream_name":"stdout","time":2026.8514611,"data":"[rep 1300] 2026s\n"}
+,{"stream_name":"stdout","time":2180.371017083,"data":"[rep 1400] 2179s\n"}
+,{"stream_name":"stdout","time":2334.253925962,"data":"[rep 1500] 2333s\n"}
+,{"stream_name":"stdout","time":2487.590953274,"data":"[rep 1600] 2486s\n"}
+,{"stream_name":"stdout","time":2640.172796733,"data":"[rep 1700] 2639s\n"}
+,{"stream_name":"stdout","time":2792.581481573,"data":"[rep 1800] 2791s\n"}
+,{"stream_name":"stdout","time":2944.648458367,"data":"[rep 1900] 2944s\n"}
+,{"stream_name":"stdout","time":3095.282519642,"data":"[margin] truth 1.2436 {\"estimate\": {\"mean\": 1.244194595147098, \"bias\": 0.0005716048688693132, \"sd\": 0.0528202141364728, \"undefined\": 0}, \"max_recipe_influence_share\": {\"p05\": 0.1392079548475704, \"median\": 0.22552836745914487, \"p95\": 0.39099659851289775, \"share_at_or_above_observed\": 0.009}, \"wild\": {\"coverage\": 0.946, \"lower_miss\": 0.0185, \"upper_miss\": 0.0355, \"undefined\": 0.0, \"median_width\": 0.2131573807514433, \"mc_se\": 0.005053909377897473}, \"cluster_t\": {\"coverage\": 0.9345, \"lower_miss\": 0.023, \"upper_miss\": 0.0425, \"undefined\": 0.0, \"median_width\": 0.2050297166746572, \"mc_se\": 0.005532167296819575}, \"wild_cr3\": {\"coverage\": 0.9595, \"lower_miss\": 0.0135, \"upper_miss\": 0.027, \"undefined\": 0.0, \"median_width\": 0.2241580627546893, \"mc_se\": 0.004407933189148855}, \"cluster_t_cr1\": {\"coverage\": 0.939, \"lower_miss\": 0.0205, \"upper_miss\": 0.0405, \"undefined\": 0.0, \"median_width\": 0.20928830355000283, \"mc_se\": 0.005351588549206677}, \"centred\": {\"coverage\": 0.9515, \"lower_miss\": 0.022, \"upper_miss\": 0.0265, \"unbounded\": 0.0, \"median_width\": 0.21137334870779134, \"mc_se\": 0.004803527349771207}, \"restricted\": {\"coverage\": 0.9685, \"lower_miss\": 0.012, \"upper_miss\": 0.0195, \"unbounded\": 0.0, \"median_width\": 0.22783505836114715, \"mc_se\": 0.0039056209493497944}}\n"}
+,{"stream_name":"stdout","time":3095.299752368,"data":"[accuracy] truth 1.2630 {\"estimate\": {\"mean\": 1.262596684575803, \"bias\": -0.00044267835500466646, \"sd\": 0.054261644722314664, \"undefined\": 0}, \"max_recipe_influence_share\": {\"p05\": 0.14121127921681603, \"median\": 0.223222833508805, \"p95\": 0.39732204599454607, \"share_at_or_above_observed\": 0.338}, \"wild\": {\"coverage\": 0.9445, \"lower_miss\": 0.0175, \"upper_miss\": 0.038, \"undefined\": 0.0, \"median_width\": 0.22308819993436302, \"mc_se\": 0.005119558086397692}, \"cluster_t\": {\"coverage\": 0.939, \"lower_miss\": 0.0185, \"upper_miss\": 0.0425, \"undefined\": 0.0, \"median_width\": 0.21580084707251634, \"mc_se\": 0.005351588549206677}, \"wild_cr3\": {\"coverage\": 0.9545, \"lower_miss\": 0.013, \"upper_miss\": 0.0325, \"undefined\": 0.0, \"median_width\": 0.2342477887191523, \"mc_se\": 0.004659922209651143}, \"cluster_t_cr1\": {\"coverage\": 0.9415, \"lower_miss\": 0.0175, \"upper_miss\": 0.041, \"undefined\": 0.0, \"median_width\": 0.2202858301581171, \"mc_se\": 0.0052477495176503994}, \"centred\": {\"coverage\": 0.947, \"lower_miss\": 0.019, \"upper_miss\": 0.034, \"unbounded\": 0.0, \"median_width\": 0.22206141262124912, \"mc_se\": 0.005009540897128201}, \"restricted\": {\"coverage\": 0.963, \"lower_miss\": 0.0115, \"upper_miss\": 0.0255, \"unbounded\": 0.0, \"median_width\": 0.23937140106717025, \"mc_se\": 0.004220841148396847}}\n"}
+,{"stream_name":"stdout","time":3095.299817747,"data":"[scenario] size_recipe\n"}
+,{"stream_name":"stdout","time":3096.80625233,"data":"[rep 0] 3096s\n"}
+,{"stream_name":"stdout","time":3248.990085396,"data":"[rep 100] 3248s\n"}
+,{"stream_name":"stdout","time":3401.249950907,"data":"[rep 200] 3400s\n"}
+,{"stream_name":"stdout","time":3557.521841905,"data":"[rep 300] 3556s\n"}
+,{"stream_name":"stdout","time":3711.227807968,"data":"[rep 400] 3710s\n"}
+,{"stream_name":"stdout","time":3865.134873511,"data":"[rep 500] 3864s\n"}
+,{"stream_name":"stdout","time":4020.123444907,"data":"[rep 600] 4019s\n"}
+,{"stream_name":"stdout","time":4174.22999481,"data":"[rep 700] 4173s\n"}
+,{"stream_name":"stdout","time":4328.307086164,"data":"[rep 800] 4327s\n"}
+,{"stream_name":"stdout","time":4481.306467685,"data":"[rep 900] 4480s\n"}
+,{"stream_name":"stdout","time":4634.833018399,"data":"[rep 1000] 4634s\n"}
+,{"stream_name":"stdout","time":4787.133878569,"data":"[rep 1100] 4786s\n"}
+,{"stream_name":"stdout","time":4939.261344429,"data":"[rep 1200] 4938s\n"}
+,{"stream_name":"stdout","time":5091.404954689,"data":"[rep 1300] 5090s\n"}
+,{"stream_name":"stdout","time":5244.290110552,"data":"[rep 1400] 5243s\n"}
+,{"stream_name":"stdout","time":5397.409838119,"data":"[rep 1500] 5396s\n"}
+,{"stream_name":"stdout","time":5552.093054608,"data":"[rep 1600] 5551s\n"}
+,{"stream_name":"stdout","time":5705.804053454,"data":"[rep 1700] 5705s\n"}
+,{"stream_name":"stdout","time":5859.037986941,"data":"[rep 1800] 5858s\n"}
+,{"stream_name":"stdout","time":6013.241745369,"data":"[rep 1900] 6012s\n"}
+,{"stream_name":"stdout","time":6165.631249731,"data":"[margin] truth 1.2436 {\"estimate\": {\"mean\": 1.244402560238178, \"bias\": 0.0007795699599493222, \"sd\": 0.07641072363603904, \"undefined\": 0}, \"max_recipe_influence_share\": {\"p05\": 0.24487766498625532, \"median\": 0.45778415533006334, \"p95\": 0.7648294724158926, \"share_at_or_above_observed\": 0.3695}, \"wild\": {\"coverage\": 0.942, \"lower_miss\": 0.022, \"upper_miss\": 0.036, \"undefined\": 0.0, \"median_width\": 0.3184387262601851, \"mc_se\": 0.005226662414964259}, \"cluster_t\": {\"coverage\": 0.9035, \"lower_miss\": 0.041, \"upper_miss\": 0.0555, \"undefined\": 0.0, \"median_width\": 0.2531824707876148, \"mc_se\": 0.006602565789145914}, \"wild_cr3\": {\"coverage\": 0.964, \"lower_miss\": 0.013, \"upper_miss\": 0.0215, \"undefined\": 0.0015, \"median_width\": 0.37148632680071136, \"mc_se\": 0.0041655731898503495}, \"cluster_t_cr1\": {\"coverage\": 0.909, \"lower_miss\": 0.0385, \"upper_miss\": 0.0525, \"undefined\": 0.0, \"median_width\": 0.25846612943501923, \"mc_se\": 0.0064311352030570765}, \"centred\": {\"coverage\": 0.9655, \"lower_miss\": 0.017, \"upper_miss\": 0.0175, \"unbounded\": 0.0005, \"median_width\": 0.3065792739903146, \"mc_se\": 0.00408103847078167}, \"restricted\": {\"coverage\": 0.978, \"lower_miss\": 0.01, \"upper_miss\": 0.012, \"unbounded\": 0.0005, \"median_width\": 0.3395484517910685, \"mc_se\": 0.0032799390238234627}}\n"}
+,{"stream_name":"stdout","time":6165.652717025,"data":"[accuracy] truth 1.2636 {\"estimate\": {\"mean\": 1.2628687168917125, \"bias\": -0.0007727628469607062, \"sd\": 0.06595358211999165, \"undefined\": 0}, \"max_recipe_influence_share\": {\"p05\": 0.20128142342375827, \"median\": 0.34153338068943395, \"p95\": 0.6040765466758475, \"share_at_or_above_observed\": 0.803}, \"wild\": {\"coverage\": 0.942, \"lower_miss\": 0.017, \"upper_miss\": 0.041, \"undefined\": 0.0, \"median_width\": 0.2761499437811057, \"mc_se\": 0.005226662414964259}, \"cluster_t\": {\"coverage\": 0.92, \"lower_miss\": 0.025, \"upper_miss\": 0.055, \"undefined\": 0.0, \"median_width\": 0.24630843440110883, \"mc_se\": 0.006066300355241239}, \"wild_cr3\": {\"coverage\": 0.958, \"lower_miss\": 0.0125, \"upper_miss\": 0.0295, \"undefined\": 0.0, \"median_width\": 0.3030071449948907, \"mc_se\": 0.00448530935387962}, \"cluster_t_cr1\": {\"coverage\": 0.926, \"lower_miss\": 0.023, \"upper_miss\": 0.051, \"undefined\": 0.0, \"median_width\": 0.25143920460756264, \"mc_se\": 0.005853375094763702}, \"centred\": {\"coverage\": 0.9565, \"lower_miss\": 0.016, \"upper_miss\": 0.0275, \"unbounded\": 0.0, \"median_width\": 0.26757275181210927, \"mc_se\": 0.004561126505590477}, \"restricted\": {\"coverage\": 0.967, \"lower_miss\": 0.0115, \"upper_miss\": 0.0215, \"unbounded\": 0.0, \"median_width\": 0.2911447889474297, \"mc_se\": 0.003994433626936366}}\n"}
+,{"stream_name":"stdout","time":6165.672499299,"data":"[done] 6165s\n"}
+,{"stream_name":"stderr","time":6168.743772651,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":6168.745963976,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":6169.12945114,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":6169.129481207,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":6170.236804752,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":6172.028462885,"data":"[NbConvertApp] Writing 371862 bytes to __results__.html\n"}
+]

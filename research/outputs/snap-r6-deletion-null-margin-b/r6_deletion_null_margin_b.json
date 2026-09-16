@@ -1,0 +1,24 @@
+{
+ "design": "R6 precision run for the margin-like null, at 8,000 replicates.\n\nDesign fixed before running (2026-09-16, written 00:50 EDT). The first pass at 2,000 replicates put the\nMonte Carlo standard error of a tail share near 0.003 for the accuracy count and near 0.008 for the band\ncount. Both of those tails now carry a sentence in the paper, and the accuracy one sits close enough to\nfive percent that its own noise could move the reading. This run repeats the identical calibration on\none cell at 8,000 replicates with a fresh seed, which cuts the Monte Carlo standard error by half. The\ngenerator, the deletion sweep, the clustering and the conditioning are unchanged from the first pass, so\nthe two runs can be compared directly and pooled if they agree. Seed 20260943 keeps the draws distinct.\n",
+ "seed": 20260943,
+ "reps": 8000,
+ "cells": {
+  "margin_like": {
+   "name": "margin_like",
+   "truth": 1.2445882853377657,
+   "n_rep": 8000,
+   "share_full_excludes_one": 0.969,
+   "recipe_losses_mean": 0.288312693498452,
+   "recipe_losses_median": 0.0,
+   "recipe_losses_p95": 0.0,
+   "recipe_losses_max": 19.0,
+   "share_recipe_losses_at_least_1": 0.03934468524251806,
+   "size_losses_mean": 0.25515995872033026,
+   "share_size_losses_at_least_1": 0.16408668730650156,
+   "share_size_losses_at_least_2": 0.06308049535603716,
+   "size_worst_margin_median": 0.057682847392036773,
+   "seconds": 6633.876011133194
+  }
+ },
+ "wall_seconds": 6650.251121044159
+}

@@ -1,0 +1,69 @@
+{
+ "design": "R6 item-sharing permutation test, asking whether item-level clustering feeds the estimate.\n\nDesign fixed before running (2026-09-15, written 22:30 EDT). snap-r6-sharednoise shows that a half\neffect shared across benchmarks inflates the estimate, and snap-r6-shared-fit shows that regressing\nthe off-diagonal seed covariance on the item-noise outer product can't detect it. This run tests the\none channel that item-level data can identify. Write the per-item phenotype of run r in\nconfiguration c as x_cri. Let mu_ci be the mean of x over the three runs of that configuration, so\nd_cri = x_cri - mu_ci holds everything specific to the run, which is the seed effect plus item noise.\nPermuting d within a group, separately for every run, leaves every group mean untouched and therefore\nleaves each run's trait score untouched, and it leaves a component shared by every item of the group\nuntouched as well, since permuting a constant returns the constant. What it destroys is the\nassociation between particular items and particular runs, which is exactly the channel a shared\npassage or a shared source document travels through. An estimate that sits above the permutation\ndistribution has item-level sharing in it. An estimate inside the distribution bounds that channel.\nThe run also re-draws the item half split 200 times on the real data and on permuted data, so the\nspread of the estimate over splits can be compared against the spread the null produces.\nGroups rather than traits are the permutation blocks, because a trait score is the macro-average over\nits groups and permuting across groups would move mass between the 57 MMLU subjects.\n",
+ "observed": {
+  "margin": 1.2439499117191137,
+  "accuracy": 1.0783733870898096
+ },
+ "n_config": 125,
+ "n_items": 37682,
+ "n_groups": 66,
+ "observed_interval": {
+  "margin": [
+   1.1429001912272696,
+   1.3376841038790925
+  ],
+  "accuracy": [
+   0.992604456794931,
+   1.1566521851337639
+  ]
+ },
+ "resplit": {
+  "margin": {
+   "n": 200,
+   "mean": 1.2457622670559132,
+   "sd": 0.0017939725164988255,
+   "p05": 1.2429615628316395,
+   "median": 1.2455355950910254,
+   "p95": 1.2489109129517129,
+   "min": 1.2419710206805483,
+   "max": 1.2535076152858704
+  },
+  "accuracy": {
+   "n": 200,
+   "mean": 1.0826547910038127,
+   "sd": 0.00833586581198095,
+   "p05": 1.0675601659928575,
+   "median": 1.0832579929583703,
+   "p95": 1.0937685412299043,
+   "min": 1.059210644401305,
+   "max": 1.1032846866666273
+  }
+ },
+ "permutation": {
+  "margin": {
+   "n": 200,
+   "mean": 1.2428053375521464,
+   "sd": 0.0008365800380698873,
+   "p05": 1.2412707462624377,
+   "median": 1.2428378966249518,
+   "p95": 1.2440288238192332,
+   "share_at_or_above_observed": 0.075,
+   "observed_minus_mean": 0.0011445741669673382,
+   "null_split_sd_mean": 0.0009206533587901052,
+   "real_split_sd": 0.0017939725164988255
+  },
+  "accuracy": {
+   "n": 200,
+   "mean": 1.0764224480549662,
+   "sd": 0.005422912587388265,
+   "p05": 1.0671992119137927,
+   "median": 1.076153496451614,
+   "p95": 1.0861895511860258,
+   "share_at_or_above_observed": 0.34,
+   "observed_minus_mean": 0.0019509390348433353,
+   "null_split_sd_mean": 0.005465879370240259,
+   "real_split_sd": 0.00833586581198095
+  }
+ },
+ "wall_seconds": 588.2006661891937
+}

@@ -1,0 +1,93 @@
+{
+ "design": "Recomputation of the figures the paper still takes from the original analysis record.\n\nDesign fixed before running (2026-09-16, written 00:50 EDT). snap-r6-influence showed that one figure\ncarried from the original record, the largest recipe's share of squared margin influence, doesn't\nreproduce under the definition the paper names. A single failure of that kind is a reason to check the\nother numbers the paper still attributes to the record rather than to a run in this revision. Three\nremain. The first is the seed-label permutation experiment, reported as coverage 0.925 for margins and\n0.954 for accuracy with the margin interval falling below the null in 0.049 of replicates. The second is\nthe pair of numerator design effects, reported as 2.06 and 1.26 from one plus four times the intraclass\ncorrelation. The third is the pair of squared standard error ratios, reported as 0.24 and 0.53 from\n0.045 against 0.093 and 0.038 against 0.052. This run recomputes all three from the 125 shipped\nconfigurations, with the permutation experiment at 2,000 replicates and seed 0, which are the defaults\nthe record used. Every recomputed value is printed beside the reported one with its gap, and nothing\nhere is a new analysis, so a gap means the paper needs a correction rather than a new result.\n",
+ "reported": {
+  "permutation_coverage": {
+   "margin": 0.925,
+   "accuracy": 0.954
+  },
+  "permutation_below_null_margin": 0.049,
+  "design_effect": {
+   "margin": 2.06,
+   "accuracy": 1.26
+  },
+  "se_ratio": {
+   "margin": 0.24,
+   "accuracy": 0.53
+  },
+  "se_terms": {
+   "margin": [
+    0.045,
+    0.093
+   ],
+   "accuracy": [
+    0.038,
+    0.052
+   ]
+  }
+ },
+ "recomputed": {
+  "permutation": {
+   "margin": {
+    "coverage": 0.9435,
+    "interval_below_null": 0.039,
+    "interval_above_null": 0.0175,
+    "undefined": 0.0,
+    "mean_estimate": 0.9986346835189074,
+    "sd_estimate": 0.04674799863863628,
+    "mc_se": 0.005162739098579358,
+    "seconds": 67.97752356529236
+   },
+   "accuracy": {
+    "coverage": 0.9485,
+    "interval_below_null": 0.0335,
+    "interval_above_null": 0.018,
+    "undefined": 0.0,
+    "mean_estimate": 0.9982426498058475,
+    "sd_estimate": 0.03886542715432565,
+    "mc_se": 0.004942051699446293,
+    "seconds": 66.06411409378052
+   }
+  },
+  "design_effect": {
+   "margin": {
+    "rho_icc": 0.26412642924563146,
+    "one_plus_four_rho": 2.056505716982526,
+    "one_plus_m_minus_one_rho": 2.056505716982526,
+    "mean_cluster_size": 5.0,
+    "reported": 2.06
+   },
+   "accuracy": {
+    "rho_icc": 0.06404002334150563,
+    "one_plus_four_rho": 1.2561600933660224,
+    "one_plus_m_minus_one_rho": 1.2561600933660224,
+    "mean_cluster_size": 5.0,
+    "reported": 1.26
+   }
+  },
+  "standard_errors": {
+   "margin": {
+    "lambda_hat": 1.2439499117191137,
+    "se_config_cluster": 0.0936852855541888,
+    "se_recipe_cluster": 0.04500996929632816,
+    "squared_ratio_config_over_recipe": 4.332367970064567,
+    "reported_terms": [
+     0.045,
+     0.093
+    ],
+    "reported_ratio": 0.24
+   },
+   "accuracy": {
+    "lambda_hat": 1.0783733870898096,
+    "se_config_cluster": 0.051802290583554844,
+    "se_recipe_cluster": 0.03770200091015883,
+    "squared_ratio_config_over_recipe": 1.8878571464873621,
+    "reported_terms": [
+     0.038,
+     0.052
+    ],
+    "reported_ratio": 0.53
+   }
+  }
+ },
+ "wall_seconds": 158.70240998268127
+}

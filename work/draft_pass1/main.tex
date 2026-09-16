@@ -1,0 +1,220 @@
+\documentclass{article}
+\usepackage{iclr2027_conference,times}
+\usepackage{amsmath,amssymb,booktabs,graphicx,hyperref,url}
+\hypersetup{pdfauthor={},pdftitle={Estimating run-to-run covariance across language model benchmarks}}
+\title{Estimating run-to-run covariance across language model benchmarks}
+\author{Anonymous authors}
+\newcommand{\Lam}{\Lambda}
+\newcommand{\Sig}{\Sigma_E}
+\begin{document}
+\maketitle
+\begin{abstract}
+Benchmark averages reduce training variability according to the covariance between benchmark scores, which per-benchmark standard deviations leave unspecified. We study this covariance with SNAP, a cross-half estimator that separates item-general run variation from item-sampling noise under conditional independence assumptions. We analyse 375 DataDecide runs across 125 configurations and ten benchmarks, scoring replicates at a common checkpoint step. Relative to independent benchmark deviations, the estimated standard deviation of the average increases by a factor of 1.244 for per-byte margins and 1.078 for accuracy, with nominal 95\% recipe-cluster intervals of [1.143, 1.338] and [0.993, 1.157]. These estimates depend on the chosen battery. Removing BoolQ raises the factors to 1.786 and 1.558, and shared passages remain an unresolved source of bias. Margin covariance concentrates within scoring formats, while gain simulations demonstrate sensitivity to score scale. A full covariance model has no lower prediction error than a rank-one model on margins, but the ordering reverses on accuracy, without uncertainty estimates for either difference. The planned recipe holdout was never implemented, so all empirical analyses are exploratory. These results support reporting replicate uncertainty and sensitivity to benchmark composition, while leaving a general independence approximation and a causal interpretation of margin covariance unresolved.
+\end{abstract}
+
+\section{Introduction}
+A benchmark average can hide uncertainty from the training runs behind its component scores. For an equally weighted average of $K$ benchmarks, independent run deviations give variance $K^{-2}\operatorname{tr}\Sig$, where $\Sig$ is their cross-benchmark covariance matrix. Covariance adds the off-diagonal terms, so a collection of marginal standard deviations doesn't determine the uncertainty of the average. Researchers need paired benchmark scores from replicate runs to estimate that contribution.
+
+We estimate item-general covariance with two disjoint item halves for each benchmark. Within each configuration, we centre both half scores across replicate runs, then take their cross-half products. Under zero-mean item noise and conditional independence across halves, these products estimate run covariance, including its diagonal. The construction uses the logic of repeated measurements and variance components, rather than a new identity for correlated averages. We call its application to benchmark replicates SNAP, Seed Noise Across Phenotypes, and use phenotype to mean the measured score.
+
+Our empirical study uses DataDecide (Magnusson et al., 2025), with 25 data recipes and five model sizes that each have three released replicates. The resulting 125 configurations supply 375 runs across ten benchmarks. We read released item scores, so the primary analysis requires no model inference. We compare per-byte log-likelihood margins with accuracy on the same items, because these scales respond differently to changes in confidence.
+
+The distinction between a seed effect and run variation matters in this population. Auxiliary replicates use different training budgets below 1B parameters, and 92 configurations have mismatched final checkpoint steps. We compare the largest step shared by all three runs, but this rule doesn't align their training schedules. We therefore interpret the full estimate as covariance among the released runs at the selected steps, and report an auxiliary-run contrast that removes the default-versus-auxiliary batch component.
+
+The accuracy estimate is close to independence for the full battery, but that result changes with benchmark composition. BoolQ contributes 84\% of the estimated accuracy variance trace, and questions from a shared passage can cross our item halves. Removing BoolQ increases the accuracy inflation factor from 1.078 to 1.558. This sensitivity prevents us from treating a small full-battery estimate as evidence that benchmark noise is independent in general.
+
+Our contribution is an explicit estimand, a cross-half covariance construction with stated assumptions, and an empirical account of its limits on released language model runs. We compare score scales, examine batch and gain mechanisms, and test covariance models on held-out recipe folds. The initial analysis plan specified a separate screening set that we never formed. Its date has no independent timestamp, and none of the analyses supports a confirmatory interpretation.
+
+\section{Estimand and estimator}
+\subsection{Runs and score scales}
+Let $c$ index configurations, $r$ index their $R$ replicate runs, and $j$ index benchmarks. A configuration fixes a data recipe, model size, and nominal hyperparameters. In DataDecide, the seed controls initialisation and data order together, while auxiliary training schedules introduce an additional source of run variation. For item $i$, define the per-byte margin and corresponding correctness indicator by
+\begin{equation}
+m_{crji}=\frac{\ell(\mathrm{gold}_i)}{\mathrm{bytes}(\mathrm{gold}_i)}-
+\max_{v\ne\mathrm{gold}_i}\frac{\ell(v_i)}{\mathrm{bytes}(v_i)},
+\qquad a_{crji}=\mathbf{1}\{m_{crji}>0\}.
+\label{eq:scores}
+\end{equation}
+Here $\ell$ is the summed answer log-likelihood, and $v$ ranges over alternatives. This definition treats a zero margin as incorrect. We average items within each benchmark, with MMLU macro-averaged over its 57 subjects, and denote the resulting margin and accuracy scores by $y^M$ and $y^A$.
+
+For each half $H\in\{A,B\}$, our measurement model is
+\begin{equation}
+y^H_{crj}=\mu^H_{cj}+E_{crj}+\varepsilon^H_{crj}.
+\end{equation}
+The half-specific mean allows the two item sets to differ in difficulty. The component $E_{crj}$ is the run deviation that generalises across items, while $\varepsilon^H_{crj}$ contains the remaining item-dependent variation. We assume independent, identically distributed run effects within a configuration when deriving unbiasedness, and write their covariance as $\Sigma_{E,c}$. The schedule differences in the actual population limit that interpretation.
+
+\subsection{Cross-half covariance}
+We partition each benchmark's items into disjoint halves with a frozen random seed, using the same assignment for its replicate runs. Define $d^H_{crj}=y^H_{crj}-R^{-1}\sum_s y^H_{csj}$. If the item errors have conditional mean zero and zero covariance between the two halves across the relevant runs and benchmarks, then
+\begin{equation}
+\mathbb{E}[d^A_{crj}d^B_{crk}]=(1-1/R)\Sigma_{E,c}(j,k).
+\label{eq:identity}
+\end{equation}
+The result includes diagonal entries, and doesn't require Gaussian run effects. Disjoint item identifiers alone don't establish the required independence, because passages, duplicate content, and other shared item effects can connect the halves.
+
+Writing $g^H_{cr}=K^{-1}\sum_j d^H_{crj}$, we compute
+\begin{equation}
+T_c=\frac{1}{R-1}\sum_r g^A_{cr}g^B_{cr},\qquad
+U_c=\frac{1}{K^2(R-1)}\sum_{j,r}d^A_{crj}d^B_{crj}.
+\label{eq:tu}
+\end{equation}
+Their expectations are $K^{-2}\mathbf{1}^{\mathsf T}\Sigma_{E,c}\mathbf{1}$ and $K^{-2}\operatorname{tr}\Sigma_{E,c}$. We pool before dividing, defining
+\begin{equation}
+\widehat\Lam=\sqrt{\frac{\sum_c T_c}{\sum_c U_c}},\qquad
+\Lam^2=\frac{\mathbf{1}^{\mathsf T}\Sig\mathbf{1}}{\operatorname{tr}\Sig}
+=1+(K-1)\bar r_E,\qquad K_{\mathrm{eff}}=\frac{K}{\Lam^2},
+\label{eq:lambda}
+\end{equation}
+where $\Sig=N^{-1}\sum_c\Sigma_{E,c}$ is the design-average covariance. We define
+\begin{equation}
+\bar r_E=\frac{\sum_{j\ne k}\Sigma_E(j,k)}{(K-1)\operatorname{tr}\Sig}.
+\label{eq:effective}
+\end{equation}
+This effective covariance coefficient equals the mean off-diagonal correlation when the marginal variances are equal. With unequal variances, it differs from a normalised weighted mean correlation, as Appendix A explains. The effective count compares the battery with independent benchmarks at the same root-mean-square marginal deviation, rather than measuring its number of independent information sources.
+
+The population inflation factor equals one when the aggregate off-diagonal covariance is zero. Unbiased estimates of $T_c$ and $U_c$ don't make their ratio or square root unbiased, and either pooled sum can be nonpositive in a finite sample. Calibration therefore checks the implemented estimator in specified populations, rather than proving an exact finite-sample null mean.
+
+\subsection{Resolution and inference}
+For an additive shift in item margins with a Gaussian margin distribution, the ratio of accuracy to margin noise per unit squared sensitivity is
+\begin{equation}
+\frac{p(1-p)}{\phi(z_0)^2},\qquad z_0=\Phi^{-1}(1-p).
+\label{eq:information}
+\end{equation}
+At $p=0.35$, the ratio is about 1.66. Its minimum is $\pi/2$, so the planned lower threshold of 1.4 couldn't falsify this model. This calculation describes the assumed location-shift model, and doesn't establish an empirical information advantage for arbitrary margin distributions. The aggregate reliability calculation uses $\rho_g=\Lam^2/(\Lam^2+\bar v)$, with $\bar v$ the item-noise contribution on that scale.
+
+We report nominal 95\% wild cluster bootstrap-$t$ intervals over the 25 recipe clusters, using 4,999 Rademacher draws and a linearisation of the squared ratio. Appendix D states the implementation, including its fixed observed denominator during resampling. We also report a configuration percentile bootstrap, which resamples both sums but ignores recipe dependence. These procedures make different assumptions, and neither interval width alone identifies a design effect.
+
+Reported permutation experiments give coverage of 0.925 for margins and 0.954 for accuracy under the permutation reference distribution. The margin interval falls below the null in 0.049 of replicates, above the nominal one-sided rate of 0.025. This result weakens a claim that its upper endpoint excludes the planned substantive threshold. It doesn't establish coverage at nonzero effects or under unmodelled passage dependence.
+
+\section{Data and analysis scope}
+DataDecide supplies the ten benchmarks ARC-Challenge, ARC-Easy, BoolQ, CommonsenseQA, HellaSwag, MMLU, OpenBookQA, PIQA, Social IQa, and WinoGrande. We analyse 37,682 items per run across 25 recipes at 150M, 300M, 530M, 750M, and 1B parameters. Replicate seed labels are $\{2,14,15\}$ below 1B and $\{2,4,5\}$ at 1B. Smaller released models lack the required per-item replicate coverage.
+
+We select the largest checkpoint step available for all three runs in each configuration. In 26 configurations, the largest final step exceeds the smallest by more than a factor of 1.5. The selected steps at 530M and 750M average 18\% and 89\% of the default run's final step, respectively. Conclusions from those bands concern truncated trajectories, rather than the released final models.
+
+The author-reported plan assigned eight recipes to screening and seventeen to estimation, but no stage of the pipeline drew that partition. Analysis choices therefore used all 125 configurations, and the plan has neither a supplied original file nor an independently corroborated date. We retain its thresholds as historical targets, not as evidence of preregistration. An enumeration over the $\binom{25}{17}=1{,}081{,}575$ possible estimation sets produces margin estimates from 1.037 to 1.317 and accuracy estimates from 0.963 to 1.191. None reaches the planned thresholds of 1.349 and 1.40, but this retrospective calculation can't restore a holdout or account for choices made after viewing the data.
+
+We retain the full ten-benchmark battery for the primary estimand, including benchmarks with negative estimated diagonal covariance. An unbiased moment estimate can be negative near zero, and deleting a benchmark after observing that sign changes both selection and the estimand. Standardised diagnostics use only defined positive-variance traits, so they carry this selection limitation.
+
+We use PolyPythias (van der Wal et al., 2025) for an exploratory transfer check, scoring nine seeds at each of 70M, 160M, and 410M on 4,755 nested items. Its three configurations can't support a precise population comparison. A later five-size analysis adds 14M and 31M under a different scoring batch budget. We also examine released run-level scores from Heineman et al. (2025), whose single-configuration panels lack item-level outputs for the cross-half correction.
+
+\section{Sensitivity to batch and score scale}
+The default and auxiliary runs come from different batches. We decompose within-configuration contrasts into a default-versus-auxiliary component and an auxiliary-versus-auxiliary component. The latter removes an offset shared by both auxiliary runs, while retaining one contrast per configuration. It doesn't establish matching software provenance or remove differences shared with the selected checkpoint schedules. A simulated batch offset provides a separate sensitivity check.
+
+A positive multiplicative gain changes margin magnitudes while preserving their signs, so it leaves threshold accuracy unchanged by construction. We examine this mechanism with a gain covariate $s_{cr}$, the mean per-byte answer log-likelihood, and with simulations that vary the gain scale and margin distribution. We also fit a leave-one-benchmark-out competence proxy $x_{cr}^{(-j)}$ on the opposite item half, using
+\begin{equation}
+y_{crj}=\alpha_{cj}+\beta_jx_{cr}^{(-j)}+\gamma_js_{cr}+u_{crj}.
+\end{equation}
+The pooled fit uses one slope per benchmark over 250 run contrasts. These adjustments are descriptive, because the gain covariate shares item noise with the outcomes and the competence proxy uses unstable estimated variance normalisation. In particular, the implementation floors negative seed standard deviations at $10^{-6}$, making WinoGrande dominate the margin proxy by factors of about 800 to 38,000. A small change after this adjustment can't establish that general competence fails to explain the covariance.
+
+\section{Results}
+\subsection{Full-battery estimates and composition}
+Table~\ref{tab:primary} reports the full-battery inflation estimates on both score scales. The raw margin interval excludes one, while the accuracy interval includes it. The accuracy upper endpoint maps to $\bar r_E<0.038$ and $K_{\mathrm{eff}}>7.47$ under the stated measurement model and fixed battery. Shared-passage bias prevents reading those values as unconditional bounds on item-general covariance.
+
+\begin{table}[t]
+\centering
+\caption{Inflation estimates across 125 configurations with nominal 95\% recipe-cluster intervals. The auxiliary contrast compares the two auxiliary runs, and the adjustment includes the gain covariate alone.}
+\label{tab:primary}
+\begin{tabular}{llrrrr}
+\toprule
+Score & Estimate & $\widehat\Lam$ & Interval & $K_{\mathrm{eff}}$ & $\sigma_{\mathrm{agg}}$\\
+\midrule
+Margin & Raw & 1.244 & [1.143,1.338] & 6.46 & 0.00572\\
+Margin & Gain adjusted & 1.275 & [1.111,1.421] & 6.15 & 0.00514\\
+Margin & Auxiliary contrast & 1.256 & [1.090,1.400] & 6.34 & 0.00562\\
+Accuracy & Raw & 1.078 & [0.993,1.157] & 8.60 & 0.00514\\
+Accuracy & Gain adjusted & 1.097 & [0.980,1.198] & 8.31 & 0.00503\\
+Accuracy & Auxiliary contrast & 1.084 & [0.939,1.207] & 8.51 & 0.00516\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Per-benchmark reliability averages 0.652 on margins and 0.324 on accuracy. Seven accuracy benchmarks and three margin benchmarks have reliability below 0.50. WinoGrande has a negative estimated margin variance, while PIQA and WinoGrande have negative accuracy estimates. The accuracy correlation estimate also contains an entry of 1.296 and an eigenvalue of $-0.55$, so it isn't a valid correlation matrix without further regularisation. The primary ratio uses covariance products directly, and doesn't require this normalised matrix to be positive semidefinite.
+
+Removing BoolQ raises margin inflation to 1.786 with interval [1.689,1.877], and accuracy inflation to 1.558 with interval [1.412,1.687]. Removing CommonsenseQA instead gives 1.096 and 1.014. BoolQ contributes 68\% of the margin covariance trace and 84\% of the accuracy trace, while its covariance with other benchmarks is small. Its variance therefore has substantial weight in the denominator of Equation~\ref{eq:lambda}. Questions that share a BoolQ passage can enter different halves, and the analysis hasn't reconstructed passage groups from the public data. We can't separate that dependence from BoolQ's variance contribution with the reported outputs.
+
+Recipe removal moves margin inflation between 1.207 and 1.256, while size removal moves it between 1.178 and 1.289. The corresponding accuracy ranges are [1.065,1.099] and [1.047,1.115]. Benchmark-removal sensitivity is larger, but comparing that spread with a sampling standard error doesn't turn it into a probability distribution over benchmark collections. The design treats this battery as fixed, and supplies no sampling model for a wider benchmark population.
+
+The defined-trait standardisation diagnostic gives inflation of 1.803 on nine margin traits and 1.707 on eight accuracy traits, without intervals. The latter maps to 2.75 effective benchmarks, compared with the full-battery accuracy count of 8.60. Both the weights and retained trait set change, so this contrast describes a different aggregate. Unstable denominators and selection on positive estimated variance limit its interpretation.
+
+\subsection{Format structure and mechanism checks}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/covariance.pdf}
+\caption{Cross-half correlation estimates from the supplied analysis, with undefined variances shown in grey. The accuracy estimate has a negative eigenvalue, so its spectrum is a diagnostic of the moment estimate rather than a valid population correlation spectrum.}
+\label{fig:covariance}
+\end{figure}
+
+Among the nine defined margin traits, mean estimated correlations are 0.624 within scoring formats and 0.007 across formats. Retaining only cross-format off-diagonal covariance gives a diagnostic inflation of 0.921 with interval [0.801,1.035], compared with 1.244 for the full matrix. The accuracy diagnostic is 0.965 with interval [0.848,1.063]. Removing BoolQ gives a cross-format margin diagnostic of 1.006, compared with 1.786 without the restriction. Masking covariance entries needn't preserve positive semidefiniteness, so this diagnostic isn't the variance of a separately observed aggregate. Each benchmark appears in one format, which also prevents a causal separation of format from task content.
+
+The auxiliary-only point estimates retain the full-battery inflation, but their intervals remain wide. Adjusting for gain increases margin inflation to 1.275 and accuracy inflation to 1.097. Joint adjustment gives 1.276 and 1.094, while competence adjustment alone gives 1.244 and 1.076. These results don't match the planned signature of margin inflation collapsing after gain adjustment, although the proxy limitations restrict any interpretation of that failure.
+
+The default gain simulation at gain standard deviation 0.05 produces margin inflation of 1.148, about 61\% of the observed excess above one. At the estimated gain standard deviation of 0.042, the default and distribution-matched simulators produce about 44\% and 6\% of that excess. These outcomes describe sensitivity to simulator choices, not a causal interval for the fraction explained by sharpness. Accuracy remains unchanged under positive scaling by definition, so its simulated invariance supplies no independent validation. The calibrated batch-offset simulation gives factors of 1.004 and 1.003, corresponding to about 1.5\% of the observed margin excess.
+
+\subsection{Calibration and external checks}
+The reported independent-noise simulation gives mean inflation of 1.0009 on margins and 1.0004 on accuracy. Independent per-trait run-label permutation gives 1.0010 and 0.9984. Across simulated effective covariance coefficients from zero to 0.50, the reported recovery slope is 0.998 with intercept 0.003. Fifty item re-splits have standard deviations of 0.002 and 0.008. These checks assess selected reference distributions, and can't rule out shared-passage dependence or training-schedule confounding.
+
+The 500-permutation accuracy tail fraction is 0.028, while a later 1,000-permutation run gives 0.021. Both differ from the primary cluster interval, which contains one. Permutation exchangeability is stronger than a zero aggregate covariance condition, and the permutation and cluster procedures condition on different aspects of the design. We therefore report the disagreement without selecting the result with a smaller tail probability.
+
+PolyPythias gives margin inflation of 1.406 on the three planned sizes, compared with 1.244 for DataDecide. The ratio of excesses above one is 1.66, but the ratio of inflation factors is about 1.13. The reported transfer gate used the first scale after the plan left the comparison ambiguous, so it can't establish failure of a 20\% aggregate-standard-deviation criterion. A five-size rescore gives margin inflation of 1.262, with interval [0.927,1.537], while its same-job three-size estimate is 1.414 with interval [0.939,1.781]. Accuracy factors are 2.286 and 1.711 without intervals, which further limits a general independence recommendation.
+
+The Heineman et al. (2025) initialisation panel gives likelihood inflation of 1.705 and accuracy inflation of 0.989. Its data-order panel gives 1.625 and 0.868. These are single-configuration estimates on different likelihood and accuracy batteries, without cross-half correction or uncertainty intervals. They suggest a score-scale difference, but don't independently confirm the DataDecide estimand.
+
+\subsection{Predicting aggregate uncertainty}
+We compare five covariance models on five held-out recipe folds, giving each model the held-out marginal seed standard deviations. Table~\ref{tab:prediction} therefore isolates the correlation component conditional on variance estimates that a practitioner would still need replicate runs to obtain. Negative variance estimates are clipped before the model branch, while the target retains the original covariance contributions, introducing a further evaluation convention.
+
+\begin{table}[t]
+\centering
+\caption{Mean squared prediction error of log aggregate standard deviation across five recipe folds. No interval for a paired error difference accompanies these reported means.}
+\label{tab:prediction}
+\begin{tabular}{lrr}
+\toprule
+Model & Margin & Accuracy\\
+\midrule
+Independence & 0.0358 & 0.0143\\
+Rank-one competence & 0.0057 & 0.0140\\
+Rank-one plus gain & 0.0063 & 0.0260\\
+Phenotypic correlation plug-in & 0.1073 & 0.1682\\
+Full covariance & 0.0068 & 0.0105\\
+Rescaled plug-in, added after the initial comparison & 0.0131 & 0.0342\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The rank-one model has the lowest margin point error, while full covariance has the lowest accuracy point error. Without paired uncertainty estimates, these rankings don't establish equivalence or a reliable gain from the extra parameters. The unrescaled phenotypic plug-in has the largest error on both scales. Rescaling its off-diagonals on training folds reduces that error, but requires replicate information and still has higher point error than the best model on either scale.
+
+Under independent Gaussian run errors with a common aggregate standard deviation, a true score gap $\Delta$ reverses sign with probability
+\begin{equation}
+P_{\mathrm{flip}}(\Delta)=\Phi\left(-\frac{\Delta}{\sqrt{2}\sigma_{\mathrm{agg}}}\right).
+\end{equation}
+Using the reported accuracy deviation of 0.00514 gives probabilities of about 0.246 for a half-point gap and 0.085 for a one-point gap. The independence approximation gives about 0.229 for a half-point gap. These are model-based calculations, rather than observed reversal rates, and paired training errors or unequal variances require a different denominator. The reported census places 455 of 1,500 observed same-size gaps below the corresponding 5\% risk threshold, but noisy observed gaps don't provide a lower bound on the fraction of small true gaps.
+
+\section{Related work}
+Bouthillier et al. (2021) derive variance inflation from correlated repeated trainings and estimate its scalar correlation in case studies. We apply covariance accounting across benchmarks within a replicate run. Reimers and Gurevych (2017) and Madaan et al. (2024) study seed-related evaluation variability, while Dodge et al. (2020) examine whether favourable initialisations transfer across tasks. Jordan (2024) separates example-specific training variance from distribution-level variation and compares accuracies across related evaluation sets. These precedents motivate a narrower contribution than a first measurement of any cross-dataset training dependence.
+
+The cross-half construction follows repeated-measurement and variance-component ideas, including Spearman (1904), Cronbach (1951), and Searle et al. (1992). The quantitative-genetics distinction between phenotypic and residual covariance provides an analogy, but our model doesn't identify separate genetic or shared-environment components. Cheverud (1988) motivates the phenotypic plug-in comparison, and its empirical failure here concerns this transfer of correlation structure between two sources of variation.
+
+Heineman et al. (2025) study evaluation signal and noise, while Magnusson et al. (2025) and van der Wal et al. (2025) provide the replicate populations used here. Dehghani et al. (2021) show the consequences of benchmark composition, which our variance-weighted estimates also expose. Few-cluster inference follows the concerns studied by Cameron et al. (2008) and MacKinnon and Webb (2017), with calibration remaining specific to the implemented procedure and reference population. Appendix B discusses further related approaches and their different units of replication.
+
+\section{Discussion and limitations}
+SNAP estimates cross-half covariance under a measurement model that separates item-general run effects from item-dependent noise. The empirical results show why both the model and benchmark weights need attention. Accuracy inflation is small for the full DataDecide battery, while a single benchmark removal produces a larger estimate. Margin covariance also changes with scoring format and gain simulation assumptions, so neither score scale supports an unqualified statement about independent benchmark noise.
+
+The principal unresolved issues concern identification and inference. Shared BoolQ passages can bias the dominant diagonal term, common-step scoring leaves training-schedule differences, and the competence adjustment is dominated by variance flooring. The margin interval has imperfect coverage under the reported permutation reference, and prediction rankings lack paired uncertainty estimates. A held-out text loss would help assess score-scale mechanisms, but wouldn't by itself identify a causal competence component. The original screening split was never implemented, which leaves the empirical study exploratory throughout.
+
+The reported adjacent-checkpoint experiment also limits a seed-only interpretation. Across nine PolyPythias 160M runs, moving 1,000 steps changes aggregate scores by 0.89 between-seed standard deviations on margins and 1.57 on accuracy. This narrow experiment doesn't quantify the corresponding effect at DataDecide's selected steps, but demonstrates that checkpoint choice can matter at the scale of the variation under study.
+
+For evaluation practice, we recommend paired replicate scores across the chosen battery, an aggregate seed standard deviation, and a benchmark-removal sensitivity check. A small estimated covariance contribution doesn't make a small score gap stable across runs. The present evidence supports a conditional description of this battery, while additional passage-aware splits and reproducible paired model comparisons are needed before recommending an independence approximation more broadly.
+
+\clearpage
+\section*{AI use statement}
+We used generative AI tools to propose and refine hypotheses, critique the estimator and simulation design, assist with analysis code, revise manuscript text, and survey literature. AI assistance also contributed to the technical and editorial review of this version. The study includes synthetic calibration and sensitivity simulations, whose role differs from the released model outputs used for the empirical analysis. The authors remain responsible for verifying AI-assisted claims, code, citations, and the final submission, including an accurate disclosure of AI involvement in generating simulation data.
+
+\section*{Ethics statement}
+This study analyses released model outputs and introduces no new participant recruitment or data collection. Its intended use is to improve uncertainty reporting in model evaluation. An independence approximation used outside the studied battery could understate uncertainty, so the recommendations remain conditional on the measured population and score definition. Use of derived artifacts must retain the applicable source attribution and licensing requirements.
+
+\section*{Reproducibility statement}
+The empirical values in this manuscript come from the supplied analysis and its reported released artifacts. This editorial reconstruction hasn't rerun the data pipeline or verified a supplementary archive. The original manuscript describes 48 MB of derived per-item arrays for 375 DataDecide runs, item-half assignments, analysis scripts, and additional PolyPythias score files. It also describes a pipeline run with 4,999 bootstrap draws, 2,000 calibration replicates, 500 permutation replicates, 50 item re-splits, and master seed 20260101. Appendix D preserves the reported implementation details, while Appendix C distinguishes later analyses from that pipeline execution. The original plan and a complete per-configuration checkpoint table weren't supplied with the reported release. Reproduction requires those artifact paths, source versions, and execution records to be checked against the final supplement before submission.
+
+\input{references.tex}
+\clearpage
+\appendix
+\input{appendix_a.tex}
+\input{appendices_bcd.tex}
+\end{document}

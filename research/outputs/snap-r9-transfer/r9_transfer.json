@@ -1,0 +1,441 @@
+{
+ "design": "R9 what the plug-in correction costs when it is carried to a comparison it was not measured on.\n\nDesign fixed before running (2026-09-16, written 11:05 EDT). snap-r9-decision showed that multiplying an\nindependence standard error by an estimate of Lambda returns a decision rule to nominal size, and\nsnap-r9-runs showed that extra runs never repair the uncorrected rule. Both of those measured the\ncorrection on the same population the comparison was drawn from, which is the friendly case and not the\none a practitioner is in. Anyone using this correction will estimate Lambda once, on one battery and one\nmodel family, and then apply it to a comparison whose own dependence they have not measured. A reviewer\nshould ask what that transfer costs, and the paper should answer before they do.\nThis run measures it. The correction is estimated from the shipped design on a margin-like population\nwhose true Lambda is near 1.2446, exactly as in the first decision run, and it is then applied to\ncomparisons whose own true Lambda is swept from 1.00 to 1.60. For each target it reports the declare rate\nat a true gap of zero for four rules, an uncorrected independence rule, the transferred plug-in rule, a\nmatched plug-in rule that is re-estimated on the target population, and an oracle that knows the target\nLambda. The transferred rule is the honest one, and the gap between it and the matched rule is the price\nof transfer. It also reports the same rates at a one standard deviation gap so the power side is visible.\nSeed 20260946 with an offset of eighteen hundred keeps the draws distinct. A transferred rule that holds\nnear 0.05 across the sweep makes the recommendation portable, and one that fails at the ends tells a\nreader to re-estimate on their own battery, which is a useful instruction either way.\n",
+ "seed": 20260946,
+ "reps": 8000,
+ "z": 1.959963984540054,
+ "source": {
+  "name": "margin_like",
+  "rho": 0.061,
+  "noise_sd": 0.73,
+  "lambda_true": 1.2445882853377659,
+  "lambda_hat_mean": 1.2432891419983594,
+  "lambda_hat_sd": 0.05950650017962229,
+  "undefined": 0.0
+ },
+ "targets": {
+  "lambda1.0": {
+   "lambda_target": 1.0,
+   "lambda_target_check": 1.0,
+   "rho_target": 0.0,
+   "matched_hat_mean": 0.9992147395798749,
+   "matched_hat_sd": 0.05521134036907448,
+   "matched_undefined": 0.0,
+   "rules": {
+    "gap0.0": {
+     "independence": {
+      "declare_rate": 0.04825,
+      "mc_se": 0.0023958802531637512
+     },
+     "transferred": {
+      "declare_rate": 0.0145,
+      "mc_se": 0.0013364949494854069
+     },
+     "matched": {
+      "declare_rate": 0.051625,
+      "mc_se": 0.0024738598226001
+     },
+     "oracle": {
+      "declare_rate": 0.04825,
+      "mc_se": 0.0023958802531637512
+     }
+    },
+    "gap1.0": {
+     "independence": {
+      "declare_rate": 0.11275,
+      "mc_se": 0.0035361956517562768
+     },
+     "transferred": {
+      "declare_rate": 0.043375,
+      "mc_se": 0.002277433022478378
+     },
+     "matched": {
+      "declare_rate": 0.1135,
+      "mc_se": 0.003546437473014292
+     },
+     "oracle": {
+      "declare_rate": 0.11275,
+      "mc_se": 0.0035361956517562768
+     }
+    }
+   },
+   "seconds": 11.254660367965698
+  },
+  "lambda1.05": {
+   "lambda_target": 1.05,
+   "lambda_target_check": 1.05,
+   "rho_target": 0.011388888888888893,
+   "matched_hat_mean": 1.0491256855896247,
+   "matched_hat_sd": 0.056678438315583765,
+   "matched_undefined": 0.0,
+   "rules": {
+    "gap0.0": {
+     "independence": {
+      "declare_rate": 0.063875,
+      "mc_se": 0.00273392996378382
+     },
+     "transferred": {
+      "declare_rate": 0.023,
+      "mc_se": 0.0016759698684642274
+     },
+     "matched": {
+      "declare_rate": 0.05325,
+      "mc_se": 0.0025103395562154534
+     },
+     "oracle": {
+      "declare_rate": 0.050375,
+      "mc_se": 0.0024453363617046634
+     }
+    },
+    "gap1.0": {
+     "independence": {
+      "declare_rate": 0.125,
+      "mc_se": 0.00369754986443726
+     },
+     "transferred": {
+      "declare_rate": 0.051875,
+      "mc_se": 0.0024795156879671076
+     },
+     "matched": {
+      "declare_rate": 0.107625,
+      "mc_se": 0.003464856767872952
+     },
+     "oracle": {
+      "declare_rate": 0.1065,
+      "mc_se": 0.0034488720982373353
+     }
+    }
+   },
+   "seconds": 10.390297412872314
+  },
+  "lambda1.1": {
+   "lambda_target": 1.1,
+   "lambda_target_check": 1.1,
+   "rho_target": 0.023333333333333355,
+   "matched_hat_mean": 1.0985997368512326,
+   "matched_hat_sd": 0.05663941285078974,
+   "matched_undefined": 0.0,
+   "rules": {
+    "gap0.0": {
+     "independence": {
+      "declare_rate": 0.07275,
+      "mc_se": 0.002903821566057391
+     },
+     "transferred": {
+      "declare_rate": 0.028125,
+      "mc_se": 0.0018484447643559707
+     },
+     "matched": {
+      "declare_rate": 0.04825,
+      "mc_se": 0.0023958802531637512
+     },
+     "oracle": {
+      "declare_rate": 0.04875,
+      "mc_se": 0.0024076294747115887
+     }
+    },
+    "gap1.0": {
+     "independence": {
+      "declare_rate": 0.14575,
+      "mc_se": 0.00394504336953347
+     },
+     "transferred": {
+      "declare_rate": 0.068875,
+      "mc_se": 0.0028313255370718145
+     },
+     "matched": {
+      "declare_rate": 0.1085,
+      "mc_se": 0.0034772070329504396
+     },
+     "oracle": {
+      "declare_rate": 0.107,
+      "mc_se": 0.00345599117475725
+     }
+    }
+   },
+   "seconds": 10.98850131034851
+  },
+  "lambda1.2": {
+   "lambda_target": 1.2,
+   "lambda_target_check": 1.1999999999999997,
+   "rho_target": 0.048888888888888885,
+   "matched_hat_mean": 1.1981390576825375,
+   "matched_hat_sd": 0.058417265450837856,
+   "matched_undefined": 0.0,
+   "rules": {
+    "gap0.0": {
+     "independence": {
+      "declare_rate": 0.0985,
+      "mc_se": 0.003331624040914581
+     },
+     "transferred": {
+      "declare_rate": 0.041125,
+      "mc_se": 0.002220183955638586
+     },
+     "matched": {
+      "declare_rate": 0.047625,
+      "mc_se": 0.0023810937448733513
+     },
+     "oracle": {
+      "declare_rate": 0.046875,
+      "mc_se": 0.0023632005409772146
+     }
+    },
+    "gap1.0": {
+     "independence": {
+      "declare_rate": 0.18975,
+      "mc_se": 0.004383847304309309
+     },
+     "transferred": {
+      "declare_rate": 0.094375,
+      "mc_se": 0.003268569246914466
+     },
+     "matched": {
+      "declare_rate": 0.109125,
+      "mc_se": 0.003485985054023468
+     },
+     "oracle": {
+      "declare_rate": 0.10675,
+      "mc_se": 0.0034524346029287797
+     }
+    }
+   },
+   "seconds": 10.985929012298584
+  },
+  "lambda1.2446": {
+   "lambda_target": 1.2446,
+   "lambda_target_check": 1.2446,
+   "rho_target": 0.061003239999999986,
+   "matched_hat_mean": 1.2415531936585533,
+   "matched_hat_sd": 0.059781368035965336,
+   "matched_undefined": 0.0,
+   "rules": {
+    "gap0.0": {
+     "independence": {
+      "declare_rate": 0.11725,
+      "mc_se": 0.003596915996725528
+     },
+     "transferred": {
+      "declare_rate": 0.052875,
+      "mc_se": 0.0025019800752354125
+     },
+     "matched": {
+      "declare_rate": 0.052,
+      "mc_se": 0.0024823376079816375
+     },
+     "oracle": {
+      "declare_rate": 0.052125,
+      "mc_se": 0.00248515553776318
+     }
+    },
+    "gap1.0": {
+     "independence": {
+      "declare_rate": 0.201,
+      "mc_se": 0.004480499414127849
+     },
+     "transferred": {
+      "declare_rate": 0.10975,
+      "mc_se": 0.0034947270547926916
+     },
+     "matched": {
+      "declare_rate": 0.110125,
+      "mc_se": 0.003499955077836714
+     },
+     "oracle": {
+      "declare_rate": 0.1065,
+      "mc_se": 0.0034488720982373353
+     }
+    }
+   },
+   "seconds": 11.096354722976685
+  },
+  "lambda1.3": {
+   "lambda_target": 1.3,
+   "lambda_target_check": 1.2999999999999998,
+   "rho_target": 0.07666666666666669,
+   "matched_hat_mean": 1.2978380161894874,
+   "matched_hat_sd": 0.06063222461817152,
+   "matched_undefined": 0.0,
+   "rules": {
+    "gap0.0": {
+     "independence": {
+      "declare_rate": 0.129625,
+      "mc_se": 0.0037553688130295537
+     },
+     "transferred": {
+      "declare_rate": 0.061625,
+      "mc_se": 0.0026885720972060615
+     },
+     "matched": {
+      "declare_rate": 0.052625,
+      "mc_se": 0.0024963876245236837
+     },
+     "oracle": {
+      "declare_rate": 0.051125,
+      "mc_se": 0.002462499603426364
+     }
+    },
+    "gap1.0": {
+     "independence": {
+      "declare_rate": 0.23925,
+      "mc_se": 0.00476981967033346
+     },
+     "transferred": {
+      "declare_rate": 0.135625,
+      "mc_se": 0.003828035713244457
+     },
+     "matched": {
+      "declare_rate": 0.11825,
+      "mc_se": 0.003610175506467795
+     },
+     "oracle": {
+      "declare_rate": 0.115625,
+      "mc_se": 0.003575189844172614
+     }
+    }
+   },
+   "seconds": 11.206762075424194
+  },
+  "lambda1.4": {
+   "lambda_target": 1.4,
+   "lambda_target_check": 1.4,
+   "rho_target": 0.10666666666666663,
+   "matched_hat_mean": 1.397977916670959,
+   "matched_hat_sd": 0.06227843606036348,
+   "matched_undefined": 0.0,
+   "rules": {
+    "gap0.0": {
+     "independence": {
+      "declare_rate": 0.159375,
+      "mc_se": 0.004092288622748278
+     },
+     "transferred": {
+      "declare_rate": 0.079875,
+      "mc_se": 0.0030309854910367025
+     },
+     "matched": {
+      "declare_rate": 0.050375,
+      "mc_se": 0.0024453363617046634
+     },
+     "oracle": {
+      "declare_rate": 0.049375,
+      "mc_se": 0.0024222177176866245
+     }
+    },
+    "gap1.0": {
+     "independence": {
+      "declare_rate": 0.261125,
+      "mc_se": 0.004910941029667837
+     },
+     "transferred": {
+      "declare_rate": 0.1585,
+      "mc_se": 0.004083162836576568
+     },
+     "matched": {
+      "declare_rate": 0.108,
+      "mc_se": 0.0034701584978211013
+     },
+     "oracle": {
+      "declare_rate": 0.10575,
+      "mc_se": 0.003438148802408063
+     }
+    }
+   },
+   "seconds": 12.492487668991089
+  },
+  "lambda1.5": {
+   "lambda_target": 1.5,
+   "lambda_target_check": 1.5000000000000002,
+   "rho_target": 0.1388888888888889,
+   "matched_hat_mean": 1.4979269983790282,
+   "matched_hat_sd": 0.0633488664191577,
+   "matched_undefined": 0.0,
+   "rules": {
+    "gap0.0": {
+     "independence": {
+      "declare_rate": 0.188125,
+      "mc_se": 0.004369410491917073
+     },
+     "transferred": {
+      "declare_rate": 0.10075,
+      "mc_se": 0.003365253287272743
+     },
+     "matched": {
+      "declare_rate": 0.049875,
+      "mc_se": 0.002433810910254739
+     },
+     "oracle": {
+      "declare_rate": 0.04975,
+      "mc_se": 0.002430919000604504
+     }
+    },
+    "gap1.0": {
+     "independence": {
+      "declare_rate": 0.298375,
+      "mc_se": 0.005115507787294923
+     },
+     "transferred": {
+      "declare_rate": 0.1905,
+      "mc_se": 0.004390469080861406
+     },
+     "matched": {
+      "declare_rate": 0.110375,
+      "mc_se": 0.0035034333048989245
+     },
+     "oracle": {
+      "declare_rate": 0.108875,
+      "mc_se": 0.0034824781832590132
+     }
+    }
+   },
+   "seconds": 11.990953207015991
+  },
+  "lambda1.6": {
+   "lambda_target": 1.6,
+   "lambda_target_check": 1.6,
+   "rho_target": 0.1733333333333334,
+   "matched_hat_mean": 1.5981607431319647,
+   "matched_hat_sd": 0.06420632119590179,
+   "matched_undefined": 0.0,
+   "rules": {
+    "gap0.0": {
+     "independence": {
+      "declare_rate": 0.215625,
+      "mc_se": 0.004597973186293609
+     },
+     "transferred": {
+      "declare_rate": 0.123,
+      "mc_se": 0.0036720396239692185
+     },
+     "matched": {
+      "declare_rate": 0.04975,
+      "mc_se": 0.002430919000604504
+     },
+     "oracle": {
+      "declare_rate": 0.04875,
+      "mc_se": 0.0024076294747115887
+     }
+    },
+    "gap1.0": {
+     "independence": {
+      "declare_rate": 0.3325,
+      "mc_se": 0.005267159457430542
+     },
+     "transferred": {
+      "declare_rate": 0.219,
+      "mc_se": 0.004623837691788067
+     },
+     "matched": {
+      "declare_rate": 0.109875,
+      "mc_se": 0.0034964711563053113
+     },
+     "oracle": {
+      "declare_rate": 0.108125,
+      "mc_se": 0.0034719228169524446
+     }
+    }
+   },
+   "seconds": 11.278566122055054
+  }
+ },
+ "wall_seconds": 113.34530639648438
+}

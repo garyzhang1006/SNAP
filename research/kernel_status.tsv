@@ -1,0 +1,40 @@
+kernel	status	started	ended	minutes	output_files	detail
+snap-r6-power	COMPLETE	2026-09-16 00:15	2026-09-16 00:15	0	r6_power.json,snap-r6-power.log	ok
+snap-r6-deletion-null-margin	COMPLETE	2026-09-16 00:15	2026-09-16 00:15	0	r6_deletion_null_margin.json,snap-r6-deletion-null-margin.log	ok
+snap-r6-leave-one-run	ERROR	2026-09-16 00:15	2026-09-16 00:16	0	runs,snap-r6-leave-one-run.log	,{"stream_name":"stderr","time":23.233453653,"data":"ValueError: gainA must be (N, R) = (125, 2), got (125, 3)\n"}
+snap-r6-leave-one-run	COMPLETE	2026-09-16 00:16	2026-09-16 00:17	1	r6_leave_one_run.json,runs,snap-r6-leave-one-run.log	ok
+snap-r9-decision	COMPLETE	2026-09-16 00:19	2026-09-16 00:20	1	r9_decision.json,snap-r9-decision.log	ok
+snap-r9-runs	COMPLETE	2026-09-16 00:36	2026-09-16 00:37	1	r9_runs.json,snap-r9-runs.log	ok
+snap-r6-deletion-null-a	COMPLETE	2026-09-16 00:20	2026-09-16 01:36	75	r6_deletion_null_a.json,snap-r6-deletion-null-a.log	ok
+snap-r6-deletion-null-margin-b	COMPLETE	2026-09-16 00:20	2026-09-16 02:12	111	r6_deletion_null_margin_b.json,snap-r6-deletion-null-margin-b.log	ok
+snap-r6-deletion-null-b	COMPLETE	2026-09-16 00:20	2026-09-16 02:17	116	r6_deletion_null_b.json,snap-r6-deletion-null-b.log	ok
+snap-r7-pilot	CANCEL	2026-09-16 00:16	2026-09-16 04:52	275	seed-noise,snap-r7-pilot.log	no log line captured
+snap-r7-pilot	CANCEL	2026-09-16 00:15	2026-09-16 04:52	276	seed-noise,snap-r7-pilot.log	no log line captured
+snap-r9-runs-b	COMPLETE	2026-09-16 10:44	2026-09-16 10:45	1	r9_runs_b.json,snap-r9-runs-b.log	ok
+snap-r9-transfer	COMPLETE	2026-09-16 10:44	2026-09-16 10:47	3	r9_transfer.json,snap-r9-transfer.log	ok
+snap-r6-twoway-cov	COMPLETE	2026-09-16 10:44	2026-09-16 10:48	4	r6_twoway_cov.json,snap-r6-twoway-cov.log	ok
+snap-r7-verify	COMPLETE	2026-09-16 10:44	2026-09-16 10:51	7	r7_verify.json,snap-r7-verify.log	ok
+snap-r9-runs-quarter	COMPLETE	2026-09-16 10:56	2026-09-16 10:57	1	r9_runs_quarter.json,snap-r9-runs-quarter.log	ok
+snap-r9-transfer-b	COMPLETE	2026-09-16 10:56	2026-09-16 10:59	3	r9_transfer_b.json,snap-r9-transfer-b.log	ok
+snap-r7-verify-b	COMPLETE	2026-09-16 10:56	2026-09-16 11:03	7	r7_verify_b.json,snap-r7-verify-b.log	ok
+snap-r6-boolq-sweep	ERROR	2026-09-16 11:01	2026-09-16 11:04	3	runs,seed-noise,snap-r6-boolq-sweep.log	,{"stream_name":"stderr","time":22.427758404,"data":"ValueError: too many values to unpack (expected 2)\n"}
+snap-r6-joint-share-c	COMPLETE	2026-09-16 10:44	2026-09-16 11:09	24	r6_joint_share_c.json,snap-r6-joint-share-c.log	ok
+snap-r6-share-power	COMPLETE	2026-09-16 10:57	2026-09-16 11:11	14	r6_share_power.json,snap-r6-share-power.log	ok
+snap-r6-size-shared-b	COMPLETE	2026-09-16 10:59	2026-09-16 11:24	25	r6_size_shared_b.json,snap-r6-size-shared-b.log	ok
+snap-r6-boolq-sweep	COMPLETE	-	2026-09-16 11:31	1	r6_boolq_sweep.json,snap-r6-boolq-sweep.log	[done] 18s
+snap-r7-availability	COMPLETE	-	2026-09-16 11:31	1	r7_availability.json,snap-r7-availability.log	[done] 12s
+garyzhang11111/snap-r6-battery-width	ERROR	-	2026-09-16 11:44	-	seed-noise,snap-r6-battery-width.log	KeyError: 'size_shared' at /kaggle/src/script.py line 169
+garyzhang11111/snap-r6-run-count-cov	ERROR	-	2026-09-16 11:45	-	seed-noise/,snap-r6-run-count-cov.log	KeyError: 'size_shared' at /kaggle/src/script.py line 167
+snap-r6-recipe-shared-cov	COMPLETE	2026-09-16 11:47	2026-09-16 12:02	15	r6_recipe_shared_cov.json,snap-r6-recipe-shared-cov.log	]
+snap-r6-run-count-cov	COMPLETE	2026-09-16 11:47	2026-09-16 12:07	20	r6_run_count_cov.json,snap-r6-run-count-cov.log	]
+snap-r6-battery-width	COMPLETE	2026-09-16 11:47	2026-09-16 12:12	25	r6_battery_width.json,snap-r6-battery-width.log	]
+snap-r6-mirror-power	COMPLETE	2026-09-16 11:47	2026-09-16 12:25	37	r6_mirror_power.json,snap-r6-mirror-power.log	]
+snap-r6-corner-remedy	COMPLETE	2026-09-16 11:47	2026-09-16 12:28	40	r6_corner_remedy.json,snap-r6-corner-remedy.log	]
+snap-r6-single-size	COMPLETE	2026-09-16 14:43	2026-09-16 14:51	8	r6_single_size.json,snap-r6-single-size.log	]
+snap-r6-crosshalf-bias	COMPLETE	2026-09-16 14:39	2026-09-16 14:53	14	r6_crosshalf_bias.json,snap-r6-crosshalf-bias.log	]
+snap-r6-detect-power	COMPLETE	2026-09-16 14:39	2026-09-16 14:59	20	r6_detect_power.json,snap-r6-detect-power.log	]
+snap-r6-observed-truth	COMPLETE	2026-09-16 14:52	2026-09-16 14:59	7	r6_observed_truth.json,snap-r6-observed-truth.log	]
+snap-r6-heavy-tails	COMPLETE	2026-09-16 14:39	2026-09-16 15:07	27	r6_heavy_tails.json,snap-r6-heavy-tails.log	]
+snap-r6-cluster-count	COMPLETE	2026-09-16 14:38	2026-09-16 15:07	29	r6_cluster_count.json,snap-r6-cluster-count.log	]
+snap-r6-unequal-noise	COMPLETE	2026-09-16 15:00	2026-09-16 15:17	16	r6_unequal_noise.json,snap-r6-unequal-noise.log	]
+snap-r6-webb-weights	COMPLETE	2026-09-16 14:54	2026-09-16 15:17	23	r6_webb_weights.json,snap-r6-webb-weights.log	]

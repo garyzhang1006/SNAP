@@ -1,0 +1,12 @@
+[{"stream_name":"stdout","time":1.085075687,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":148.666455991,"data":"[size_shared_0.02] 134s check 0 {\"wild_recipe\": 0.9455, \"wild_size\": 0.9527, \"cluster_t_recipe\": 0.9445, \"cluster_t_size\": 0.9455}\n"}
+,{"stream_name":"stdout","time":282.4552024,"data":"[size_shared_0.05] 134s check 0 {\"wild_recipe\": 0.9405, \"wild_size\": 0.951, \"cluster_t_recipe\": 0.9395, \"cluster_t_size\": 0.945}\n"}
+,{"stream_name":"stdout","time":415.94075907,"data":"[size_shared_0.10] 133s check 0 {\"wild_recipe\": 0.9285, \"wild_size\": 0.9433, \"cluster_t_recipe\": 0.929, \"cluster_t_size\": 0.946}\n"}
+,{"stream_name":"stdout","time":415.94435442,"data":"[done] 415s\n"}
+,{"stream_name":"stderr","time":418.286271683,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":418.286324413,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":418.657722972,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":418.657761612,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":419.675010317,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":421.107472931,"data":"[NbConvertApp] Writing 333258 bytes to __results__.html\n"}
+]

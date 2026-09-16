@@ -1,0 +1,517 @@
+{
+ "design": "R7 the remaining recipes, after the first six reproduced without an exception.\n\nDesign fixed before running (2026-09-16, written 12:05 EDT). snap-r7-verify rescored the first six\nrecipes in sorted order at 150M and matched every branch it could load. The default branch reproduced\nreleased seed 2, small-aux-2 reproduced seed 14 and small-aux-3 reproduced seed 15, in all four recipes\nwhose repositories resolved, with eleven of the twelve correlations at 0.99999997 or better and the best\nwrong seed never above 0.897. Two recipes failed to resolve, and the error was a missing identifier\nrather than a refused request, so the names built from the released run files don't match the repository\nnames for those two. Twelve cells in three hundred and seventy three seconds is cheap enough to finish\nthe census, so this run takes the remaining nineteen recipes and settles two things at once. It says\nwhether the seed mapping holds across the whole battery rather than across a convenience sample, and it\nrecords exactly which repositories a reader can and cannot fetch, which is the provenance question the\npaper currently answers with an aggregate count. The scoring and checkpoint mapping are unchanged.\n",
+ "n_docs": 150,
+ "size": "150M",
+ "branches": [
+  "default",
+  "small-aux-2",
+  "small-aux-3"
+ ],
+ "recipes_present": [
+  "Falcon-with-cc-top-orig-10p",
+  "Falcon-with-cc-top-tulu-10p",
+  "c4",
+  "dclm-baseline",
+  "dclm-baseline-25p-dolma1.7-75p",
+  "dclm-baseline-50p-dolma1.7-50p",
+  "dclm-baseline-75p-dolma1.7-25p",
+  "dclm-baseline-top-10p",
+  "dclm-baseline-top-20p",
+  "dclm-baseline-top-fw-10p",
+  "dclm-baseline-top-fw-3p",
+  "dclm-baseline-top-fw2-7p",
+  "dclm-baseline-top-fw3-7p",
+  "dolma1.6++",
+  "dolma1.7",
+  "dolma1.7-no-code",
+  "dolma1.7-no-flan",
+  "dolma1.7-no-math-no-code",
+  "dolma1.7-no-reddit",
+  "falcon",
+  "falcon-with-cc",
+  "falcon-with-cc-top-10p",
+  "falcon-with-cc-top-20p",
+  "fineweb-edu",
+  "fineweb-pro"
+ ],
+ "recipes_attempted": [
+  "dclm-baseline-75p-dolma1.7-25p",
+  "dclm-baseline-top-10p",
+  "dclm-baseline-top-20p",
+  "dclm-baseline-top-fw-10p",
+  "dclm-baseline-top-fw-3p",
+  "dclm-baseline-top-fw2-7p",
+  "dclm-baseline-top-fw3-7p",
+  "dolma1.6++",
+  "dolma1.7",
+  "dolma1.7-no-code",
+  "dolma1.7-no-flan",
+  "dolma1.7-no-math-no-code",
+  "dolma1.7-no-reddit",
+  "falcon",
+  "falcon-with-cc",
+  "falcon-with-cc-top-10p",
+  "falcon-with-cc-top-20p",
+  "fineweb-edu",
+  "fineweb-pro"
+ ],
+ "cells": {
+  "dclm-baseline-75p-dolma1.7-25p/default": {
+   "repo": "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-150M",
+   "revision": "step37500-seed-default",
+   "step": 37500,
+   "load_seconds": 15.345274209976196,
+   "score_seconds": 14.11362600326538,
+   "variants": {
+    "0": {
+     "15": {
+      "corr": 0.8465108450520348,
+      "max_abs_diff": 0.5989160007900662,
+      "median_abs_diff": 0.07277453092026714
+     },
+     "2": {
+      "corr": 0.9999999812952298,
+      "max_abs_diff": 0.00021709714617046405,
+      "median_abs_diff": 2.0077011801900024e-05
+     },
+     "14": {
+      "corr": 0.880297002365453,
+      "max_abs_diff": 0.44840468300713443,
+      "median_abs_diff": 0.052659188376532634
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "2",
+     "corr": 0.9999999812952298,
+     "median_abs_diff": 2.0077011801900024e-05,
+     "runner_up_corr": 0.880297002365453
+    }
+   }
+  },
+  "dclm-baseline-75p-dolma1.7-25p/small-aux-2": {
+   "repo": "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-150M",
+   "revision": "step37500-seed-small-aux-2",
+   "step": 37500,
+   "load_seconds": 13.911886215209961,
+   "score_seconds": 14.00898289680481,
+   "variants": {
+    "0": {
+     "15": {
+      "corr": 0.8701715504208594,
+      "max_abs_diff": 0.5795690483517117,
+      "median_abs_diff": 0.05788272496733493
+     },
+     "2": {
+      "corr": 0.8802921021043245,
+      "max_abs_diff": 0.4486104382408991,
+      "median_abs_diff": 0.05264005116636211
+     },
+     "14": {
+      "corr": 0.9999999805391263,
+      "max_abs_diff": 0.00019633167921884187,
+      "median_abs_diff": 1.633838141634758e-05
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "14",
+     "corr": 0.9999999805391263,
+     "median_abs_diff": 1.633838141634758e-05,
+     "runner_up_corr": 0.8802921021043245
+    }
+   }
+  },
+  "dclm-baseline-75p-dolma1.7-25p/small-aux-3": {
+   "repo": "allenai/DataDecide-dclm-baseline-75p-dolma1.7-25p-150M",
+   "revision": "step37500-seed-small-aux-3",
+   "step": 37500,
+   "load_seconds": 13.603254079818726,
+   "score_seconds": 14.443871974945068,
+   "variants": {
+    "0": {
+     "15": {
+      "corr": 0.9999999752178597,
+      "max_abs_diff": 0.0004086721511114,
+      "median_abs_diff": 1.7488469197218803e-05
+     },
+     "2": {
+      "corr": 0.8465164188754246,
+      "max_abs_diff": 0.5989653799268935,
+      "median_abs_diff": 0.07274464911287723
+     },
+     "14": {
+      "corr": 0.8701673166370179,
+      "max_abs_diff": 0.5796782705518935,
+      "median_abs_diff": 0.05788438221020342
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "15",
+     "corr": 0.9999999752178597,
+     "median_abs_diff": 1.7488469197218803e-05,
+     "runner_up_corr": 0.8701673166370179
+    }
+   }
+  },
+  "falcon/default": {
+   "repo": "allenai/DataDecide-falcon-150M",
+   "revision": "step37500-seed-default",
+   "step": 37500,
+   "load_seconds": 14.084023237228394,
+   "score_seconds": 15.0028076171875,
+   "variants": {
+    "0": {
+     "14": {
+      "corr": 0.8567816106830249,
+      "max_abs_diff": 0.41350099018641884,
+      "median_abs_diff": 0.055186305253062506
+     },
+     "15": {
+      "corr": 0.8762858780345745,
+      "max_abs_diff": 0.40611777305603025,
+      "median_abs_diff": 0.06222373097162878
+     },
+     "2": {
+      "corr": 0.9999810330601758,
+      "max_abs_diff": 0.016841752188546444,
+      "median_abs_diff": 1.7370253626719512e-05
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "2",
+     "corr": 0.9999810330601758,
+     "median_abs_diff": 1.7370253626719512e-05,
+     "runner_up_corr": 0.8762858780345745
+    }
+   }
+  },
+  "falcon/small-aux-2": {
+   "repo": "allenai/DataDecide-falcon-150M",
+   "revision": "step37500-seed-small-aux-2",
+   "step": 37500,
+   "load_seconds": 14.004848957061768,
+   "score_seconds": 15.602689743041992,
+   "variants": {
+    "0": {
+     "14": {
+      "corr": 0.9999999848974969,
+      "max_abs_diff": 0.00024172465006500055,
+      "median_abs_diff": 1.0190691266787066e-05
+     },
+     "15": {
+      "corr": 0.8765105292556536,
+      "max_abs_diff": 0.4034896161821153,
+      "median_abs_diff": 0.053458438767084726
+     },
+     "2": {
+      "corr": 0.8568878990869067,
+      "max_abs_diff": 0.4128503118242536,
+      "median_abs_diff": 0.0552347414421312
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "14",
+     "corr": 0.9999999848974969,
+     "median_abs_diff": 1.0190691266787066e-05,
+     "runner_up_corr": 0.8765105292556536
+    }
+   }
+  },
+  "falcon/small-aux-3": {
+   "repo": "allenai/DataDecide-falcon-150M",
+   "revision": "step37500-seed-small-aux-3",
+   "step": 37500,
+   "load_seconds": 14.0380859375,
+   "score_seconds": 16.662373304367065,
+   "variants": {
+    "0": {
+     "14": {
+      "corr": 0.8764884528104793,
+      "max_abs_diff": 0.4035784668392606,
+      "median_abs_diff": 0.05345453546758289
+     },
+     "15": {
+      "corr": 0.9999999770607835,
+      "max_abs_diff": 0.000235808016073924,
+      "median_abs_diff": 1.9395663501786675e-05
+     },
+     "2": {
+      "corr": 0.8761026204486273,
+      "max_abs_diff": 0.40605902671813965,
+      "median_abs_diff": 0.062214522422489565
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "15",
+     "corr": 0.9999999770607835,
+     "median_abs_diff": 1.9395663501786675e-05,
+     "runner_up_corr": 0.8764884528104793
+    }
+   }
+  },
+  "fineweb-edu/default": {
+   "repo": "allenai/DataDecide-fineweb-edu-150M",
+   "revision": "step37500-seed-default",
+   "step": 37500,
+   "load_seconds": 13.948350191116333,
+   "score_seconds": 16.149303674697876,
+   "variants": {
+    "0": {
+     "14": {
+      "corr": 0.8766805792839116,
+      "max_abs_diff": 0.29669466548495815,
+      "median_abs_diff": 0.05714209032488296
+     },
+     "2": {
+      "corr": 0.9999352509780046,
+      "max_abs_diff": 0.030661492120652056,
+      "median_abs_diff": 1.5342748293345476e-05
+     },
+     "15": {
+      "corr": 0.8471175062606427,
+      "max_abs_diff": 0.5172331446693056,
+      "median_abs_diff": 0.05777258861909479
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "2",
+     "corr": 0.9999352509780046,
+     "median_abs_diff": 1.5342748293345476e-05,
+     "runner_up_corr": 0.8766805792839116
+    }
+   }
+  },
+  "fineweb-edu/small-aux-2": {
+   "repo": "allenai/DataDecide-fineweb-edu-150M",
+   "revision": "step37500-seed-small-aux-2",
+   "step": 37500,
+   "load_seconds": 13.859990119934082,
+   "score_seconds": 16.340165615081787,
+   "variants": {
+    "0": {
+     "14": {
+      "corr": 0.9999999819570204,
+      "max_abs_diff": 0.00021769783713598834,
+      "median_abs_diff": 1.4578897213540776e-05
+     },
+     "2": {
+      "corr": 0.8774510242759046,
+      "max_abs_diff": 0.29669031831953263,
+      "median_abs_diff": 0.057125563406729474
+     },
+     "15": {
+      "corr": 0.8393694651134318,
+      "max_abs_diff": 0.6531312919798351,
+      "median_abs_diff": 0.06910420702649403
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "14",
+     "corr": 0.9999999819570204,
+     "median_abs_diff": 1.4578897213540776e-05,
+     "runner_up_corr": 0.8774510242759046
+    }
+   }
+  },
+  "fineweb-edu/small-aux-3": {
+   "repo": "allenai/DataDecide-fineweb-edu-150M",
+   "revision": "step37500-seed-small-aux-3",
+   "step": 37500,
+   "load_seconds": 13.943249940872192,
+   "score_seconds": 16.26302170753479,
+   "variants": {
+    "0": {
+     "14": {
+      "corr": 0.8393722338895823,
+      "max_abs_diff": 0.652878034682501,
+      "median_abs_diff": 0.06909215267778712
+     },
+     "2": {
+      "corr": 0.8480459286322589,
+      "max_abs_diff": 0.517135847182501,
+      "median_abs_diff": 0.05782224179421849
+     },
+     "15": {
+      "corr": 0.9999999804981257,
+      "max_abs_diff": 0.00024160146713247954,
+      "median_abs_diff": 1.9464798814011752e-05
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "15",
+     "corr": 0.9999999804981257,
+     "median_abs_diff": 1.9464798814011752e-05,
+     "runner_up_corr": 0.8480459286322589
+    }
+   }
+  },
+  "fineweb-pro/default": {
+   "repo": "allenai/DataDecide-fineweb-pro-150M",
+   "revision": "step37500-seed-default",
+   "step": 37500,
+   "load_seconds": 13.939871549606323,
+   "score_seconds": 16.160349130630493,
+   "variants": {
+    "0": {
+     "15": {
+      "corr": 0.8502693994384262,
+      "max_abs_diff": 0.5656506653988,
+      "median_abs_diff": 0.058651674784220204
+     },
+     "14": {
+      "corr": 0.8361288048270272,
+      "max_abs_diff": 0.6963441901736789,
+      "median_abs_diff": 0.06549957873135212
+     },
+     "2": {
+      "corr": 0.9999437011083482,
+      "max_abs_diff": 0.029685906001499673,
+      "median_abs_diff": 1.9225025745389646e-05
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "2",
+     "corr": 0.9999437011083482,
+     "median_abs_diff": 1.9225025745389646e-05,
+     "runner_up_corr": 0.8502693994384262
+    }
+   }
+  },
+  "fineweb-pro/small-aux-2": {
+   "repo": "allenai/DataDecide-fineweb-pro-150M",
+   "revision": "step37500-seed-small-aux-2",
+   "step": 37500,
+   "load_seconds": 14.90151858329773,
+   "score_seconds": 16.41842484474182,
+   "variants": {
+    "0": {
+     "15": {
+      "corr": 0.8115963608088973,
+      "max_abs_diff": 0.44017146813749064,
+      "median_abs_diff": 0.06712618368352938
+     },
+     "14": {
+      "corr": 0.9999999766796083,
+      "max_abs_diff": 0.00023097991943366036,
+      "median_abs_diff": 1.6516582532377644e-05
+     },
+     "2": {
+      "corr": 0.8361432366404399,
+      "max_abs_diff": 0.6963302294413249,
+      "median_abs_diff": 0.06547988272120811
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "14",
+     "corr": 0.9999999766796083,
+     "median_abs_diff": 1.6516582532377644e-05,
+     "runner_up_corr": 0.8361432366404399
+    }
+   }
+  },
+  "fineweb-pro/small-aux-3": {
+   "repo": "allenai/DataDecide-fineweb-pro-150M",
+   "revision": "step37500-seed-small-aux-3",
+   "step": 37500,
+   "load_seconds": 13.644537687301636,
+   "score_seconds": 16.16583251953125,
+   "variants": {
+    "0": {
+     "15": {
+      "corr": 0.9999999816822089,
+      "max_abs_diff": 0.00023804392133441876,
+      "median_abs_diff": 1.5676021575927734e-05
+     },
+     "14": {
+      "corr": 0.8115950222809508,
+      "max_abs_diff": 0.4403521749708388,
+      "median_abs_diff": 0.06711331749638769
+     },
+     "2": {
+      "corr": 0.8495114617513375,
+      "max_abs_diff": 0.5658404562208388,
+      "median_abs_diff": 0.05868204172189767
+     }
+    }
+   },
+   "best_match": {
+    "0": {
+     "seed": "15",
+     "corr": 0.9999999816822089,
+     "median_abs_diff": 1.5676021575927734e-05,
+     "runner_up_corr": 0.8495114617513375
+    }
+   }
+  }
+ },
+ "unavailable": {
+  "dclm-baseline-top-10p/default": "OSError: allenai/DataDecide-dclm-baseline-top-10p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-10p/small-aux-2": "OSError: allenai/DataDecide-dclm-baseline-top-10p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-10p/small-aux-3": "OSError: allenai/DataDecide-dclm-baseline-top-10p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-20p/default": "OSError: allenai/DataDecide-dclm-baseline-top-20p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-20p/small-aux-2": "OSError: allenai/DataDecide-dclm-baseline-top-20p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-20p/small-aux-3": "OSError: allenai/DataDecide-dclm-baseline-top-20p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-fw-10p/default": "OSError: allenai/DataDecide-dclm-baseline-top-fw-10p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-fw-10p/small-aux-2": "OSError: allenai/DataDecide-dclm-baseline-top-fw-10p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-fw-10p/small-aux-3": "OSError: allenai/DataDecide-dclm-baseline-top-fw-10p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-fw-3p/default": "OSError: allenai/DataDecide-dclm-baseline-top-fw-3p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-fw-3p/small-aux-2": "OSError: allenai/DataDecide-dclm-baseline-top-fw-3p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-fw-3p/small-aux-3": "OSError: allenai/DataDecide-dclm-baseline-top-fw-3p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-fw2-7p/default": "OSError: allenai/DataDecide-dclm-baseline-top-fw2-7p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-fw2-7p/small-aux-2": "OSError: allenai/DataDecide-dclm-baseline-top-fw2-7p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-fw2-7p/small-aux-3": "OSError: allenai/DataDecide-dclm-baseline-top-fw2-7p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-fw3-7p/default": "OSError: allenai/DataDecide-dclm-baseline-top-fw3-7p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-fw3-7p/small-aux-2": "OSError: allenai/DataDecide-dclm-baseline-top-fw3-7p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dclm-baseline-top-fw3-7p/small-aux-3": "OSError: allenai/DataDecide-dclm-baseline-top-fw3-7p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dolma1.6++/default": "OSError: Repo id must use alphanumeric chars, '-', '_' or '.'. The name cannot start or end with '-' or '.' and the maximum length is 96: 'allenai/DataDecide-dolma1.6++-150M'.",
+  "dolma1.6++/small-aux-2": "OSError: Repo id must use alphanumeric chars, '-', '_' or '.'. The name cannot start or end with '-' or '.' and the maximum length is 96: 'allenai/DataDecide-dolma1.6++-150M'.",
+  "dolma1.6++/small-aux-3": "OSError: Repo id must use alphanumeric chars, '-', '_' or '.'. The name cannot start or end with '-' or '.' and the maximum length is 96: 'allenai/DataDecide-dolma1.6++-150M'.",
+  "dolma1.7/default": "OSError: allenai/DataDecide-dolma1.7-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dolma1.7/small-aux-2": "OSError: allenai/DataDecide-dolma1.7-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dolma1.7/small-aux-3": "OSError: allenai/DataDecide-dolma1.7-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dolma1.7-no-code/default": "OSError: allenai/DataDecide-dolma1.7-no-code-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dolma1.7-no-code/small-aux-2": "OSError: allenai/DataDecide-dolma1.7-no-code-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dolma1.7-no-code/small-aux-3": "OSError: allenai/DataDecide-dolma1.7-no-code-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dolma1.7-no-flan/default": "OSError: allenai/DataDecide-dolma1.7-no-flan-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dolma1.7-no-flan/small-aux-2": "OSError: allenai/DataDecide-dolma1.7-no-flan-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dolma1.7-no-flan/small-aux-3": "OSError: allenai/DataDecide-dolma1.7-no-flan-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dolma1.7-no-math-no-code/default": "OSError: allenai/DataDecide-dolma1.7-no-math-no-code-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dolma1.7-no-math-no-code/small-aux-2": "OSError: allenai/DataDecide-dolma1.7-no-math-no-code-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dolma1.7-no-math-no-code/small-aux-3": "OSError: allenai/DataDecide-dolma1.7-no-math-no-code-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dolma1.7-no-reddit/default": "OSError: allenai/DataDecide-dolma1.7-no-reddit-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dolma1.7-no-reddit/small-aux-2": "OSError: allenai/DataDecide-dolma1.7-no-reddit-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "dolma1.7-no-reddit/small-aux-3": "OSError: allenai/DataDecide-dolma1.7-no-reddit-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "falcon-with-cc/default": "OSError: allenai/DataDecide-falcon-with-cc-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "falcon-with-cc/small-aux-2": "OSError: allenai/DataDecide-falcon-with-cc-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "falcon-with-cc/small-aux-3": "OSError: allenai/DataDecide-falcon-with-cc-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "falcon-with-cc-top-10p/default": "OSError: allenai/DataDecide-falcon-with-cc-top-10p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "falcon-with-cc-top-10p/small-aux-2": "OSError: allenai/DataDecide-falcon-with-cc-top-10p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "falcon-with-cc-top-10p/small-aux-3": "OSError: allenai/DataDecide-falcon-with-cc-top-10p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "falcon-with-cc-top-20p/default": "OSError: allenai/DataDecide-falcon-with-cc-top-20p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "falcon-with-cc-top-20p/small-aux-2": "OSError: allenai/DataDecide-falcon-with-cc-top-20p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
+  "falcon-with-cc-top-20p/small-aux-3": "OSError: allenai/DataDecide-falcon-with-cc-top-20p-150M is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`"
+ },
+ "stopped_early": false,
+ "wall_seconds": 411.22160053253174
+}

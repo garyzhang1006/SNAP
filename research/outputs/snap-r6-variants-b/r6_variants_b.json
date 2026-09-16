@@ -1,0 +1,434 @@
+{
+ "design": "R6 interval variants part b, confirming the leave-one-cluster-out result on the other eight cells.\n\nDesign fixed before running (2026-09-15, written 21:45 EDT). Part a found that the wild bootstrap-t with\nleave-one-cluster-out residual scaling covers 0.947, 0.958, 0.953 and 0.955 in the four hard cells, where\nthe shipped Rademacher interval covers 0.940, 0.940, 0.946 and 0.946. That construction was chosen after\nseeing part a's cells, so it needs the remaining eight cells before anyone recommends it. The design,\nthe six constructions and the 4,000 replicates follow part a, with the cell index offset by forty so no\ndataset is shared with any earlier run.\n",
+ "seed": 20260918,
+ "reps": 4000,
+ "cells": {
+  "null_margin_noise": {
+   "name": "null_margin_noise",
+   "truth": 1.0,
+   "wild_rademacher": {
+    "coverage": 0.937,
+    "mc_se": 0.003841581705495796,
+    "lower_miss": 0.017,
+    "upper_miss": 0.046,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.22327951391300171
+   },
+   "wild_mammen": {
+    "coverage": 0.9285,
+    "mc_se": 0.0040739339096259285,
+    "lower_miss": 0.02425,
+    "upper_miss": 0.04725,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.21390804713578992
+   },
+   "wild_webb": {
+    "coverage": 0.93475,
+    "mc_se": 0.0039048827607240663,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.04775,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.22277304405328158
+   },
+   "wild_cr3": {
+    "coverage": 0.94725,
+    "mc_se": 0.0035343824602043273,
+    "lower_miss": 0.01275,
+    "upper_miss": 0.04,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23303896591470685
+   },
+   "cluster_t_cr1": {
+    "coverage": 0.93625,
+    "mc_se": 0.0038628337234470752,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.046,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.22291343486102683
+   },
+   "centred": {
+    "coverage": 0.937,
+    "mc_se": 0.003841581705495796,
+    "lower_miss": 0.01725,
+    "upper_miss": 0.04575,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2235309036638965
+   }
+  },
+  "null_accuracy_noise": {
+   "name": "null_accuracy_noise",
+   "truth": 1.0,
+   "wild_rademacher": {
+    "coverage": 0.951,
+    "mc_se": 0.003413173010557773,
+    "lower_miss": 0.017,
+    "upper_miss": 0.03175,
+    "undefined_or_unbounded": 0.00025,
+    "median_width": 0.4077353537797491
+   },
+   "wild_mammen": {
+    "coverage": 0.94225,
+    "mc_se": 0.003688324060464318,
+    "lower_miss": 0.0235,
+    "upper_miss": 0.03425,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.38838976981089485
+   },
+   "wild_webb": {
+    "coverage": 0.95025,
+    "mc_se": 0.003437838619685338,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.032,
+    "undefined_or_unbounded": 0.00025,
+    "median_width": 0.4068962468072551
+   },
+   "wild_cr3": {
+    "coverage": 0.95775,
+    "mc_se": 0.003180602832011567,
+    "lower_miss": 0.014,
+    "upper_miss": 0.028,
+    "undefined_or_unbounded": 0.00025,
+    "median_width": 0.42718867966821394
+   },
+   "cluster_t_cr1": {
+    "coverage": 0.94975,
+    "mc_se": 0.0034541618918342556,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.03225,
+    "undefined_or_unbounded": 0.00025,
+    "median_width": 0.4085324299661929
+   },
+   "centred": {
+    "coverage": 0.95075,
+    "mc_se": 0.003421419204803762,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.03275,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.41267650641518877
+   }
+  },
+  "margin_like_boolq_trace": {
+   "name": "margin_like_boolq_trace",
+   "truth": 1.1519072321506927,
+   "wild_rademacher": {
+    "coverage": 0.94625,
+    "mc_se": 0.003565842729986839,
+    "lower_miss": 0.018,
+    "upper_miss": 0.03575,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.17207728323490168
+   },
+   "wild_mammen": {
+    "coverage": 0.9365,
+    "mc_se": 0.0038557667849598992,
+    "lower_miss": 0.02675,
+    "upper_miss": 0.03675,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.16442269819961775
+   },
+   "wild_webb": {
+    "coverage": 0.94575,
+    "mc_se": 0.0035814430576235614,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.0355,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.171396441262334
+   },
+   "wild_cr3": {
+    "coverage": 0.95575,
+    "mc_se": 0.0032516125807051494,
+    "lower_miss": 0.0145,
+    "upper_miss": 0.02975,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.18028449951639747
+   },
+   "cluster_t_cr1": {
+    "coverage": 0.9445,
+    "mc_se": 0.0036200742395702326,
+    "lower_miss": 0.01925,
+    "upper_miss": 0.03625,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.17046793176869623
+   },
+   "centred": {
+    "coverage": 0.94725,
+    "mc_se": 0.0035343824602043273,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.03525,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.17203379324947188
+   }
+  },
+  "accuracy_like_boolq_trace": {
+   "name": "accuracy_like_boolq_trace",
+   "truth": 1.0308411390725625,
+   "wild_rademacher": {
+    "coverage": 0.949,
+    "mc_se": 0.003478469491026191,
+    "lower_miss": 0.01725,
+    "upper_miss": 0.03375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.15619657333163317
+   },
+   "wild_mammen": {
+    "coverage": 0.9365,
+    "mc_se": 0.0038557667849598992,
+    "lower_miss": 0.0245,
+    "upper_miss": 0.039,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.14933484197712932
+   },
+   "wild_webb": {
+    "coverage": 0.94825,
+    "mc_se": 0.0035025682541529424,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.03425,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.15576254250631388
+   },
+   "wild_cr3": {
+    "coverage": 0.957,
+    "mc_se": 0.0032074522599720807,
+    "lower_miss": 0.0145,
+    "upper_miss": 0.0285,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.16399480209572276
+   },
+   "cluster_t_cr1": {
+    "coverage": 0.94575,
+    "mc_se": 0.0035814430576235614,
+    "lower_miss": 0.01925,
+    "upper_miss": 0.035,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.15521327941965335
+   },
+   "centred": {
+    "coverage": 0.9465,
+    "mc_se": 0.0035580103288214327,
+    "lower_miss": 0.01825,
+    "upper_miss": 0.03525,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.15737691045276742
+   }
+  },
+  "margin_like_recipe_shared": {
+   "name": "margin_like_recipe_shared",
+   "truth": 1.2445882853377657,
+   "wild_rademacher": {
+    "coverage": 0.93875,
+    "mc_se": 0.003791386207576327,
+    "lower_miss": 0.00975,
+    "upper_miss": 0.0515,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3084127423574919
+   },
+   "wild_mammen": {
+    "coverage": 0.932,
+    "mc_se": 0.003980452235613435,
+    "lower_miss": 0.022,
+    "upper_miss": 0.046,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.29427475322367785
+   },
+   "wild_webb": {
+    "coverage": 0.93775,
+    "mc_se": 0.0038201746524210126,
+    "lower_miss": 0.01,
+    "upper_miss": 0.05225,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.30812790230977144
+   },
+   "wild_cr3": {
+    "coverage": 0.9475,
+    "mc_se": 0.0035264624625820132,
+    "lower_miss": 0.008,
+    "upper_miss": 0.0445,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3230473092092063
+   },
+   "cluster_t_cr1": {
+    "coverage": 0.93725,
+    "mc_se": 0.0038344633751021787,
+    "lower_miss": 0.0115,
+    "upper_miss": 0.05125,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.30805537807336714
+   },
+   "centred": {
+    "coverage": 0.937,
+    "mc_se": 0.003841581705495796,
+    "lower_miss": 0.01075,
+    "upper_miss": 0.05225,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3098537711419328
+   }
+  },
+  "margin_like_heavy_tails": {
+   "name": "margin_like_heavy_tails",
+   "truth": 1.2445882853377657,
+   "wild_rademacher": {
+    "coverage": 0.9315,
+    "mc_se": 0.00399398766898447,
+    "lower_miss": 0.0115,
+    "upper_miss": 0.05425,
+    "undefined_or_unbounded": 0.00275,
+    "median_width": 0.32174955857299103
+   },
+   "wild_mammen": {
+    "coverage": 0.9155,
+    "mc_se": 0.004397719579509363,
+    "lower_miss": 0.022,
+    "upper_miss": 0.06025,
+    "undefined_or_unbounded": 0.00225,
+    "median_width": 0.299962036882889
+   },
+   "wild_webb": {
+    "coverage": 0.93025,
+    "mc_se": 0.004027559357104498,
+    "lower_miss": 0.01175,
+    "upper_miss": 0.05525,
+    "undefined_or_unbounded": 0.00275,
+    "median_width": 0.3204418120292518
+   },
+   "wild_cr3": {
+    "coverage": 0.9425,
+    "mc_se": 0.0036808202210920327,
+    "lower_miss": 0.00925,
+    "upper_miss": 0.043,
+    "undefined_or_unbounded": 0.00525,
+    "median_width": 0.3415696801273227
+   },
+   "cluster_t_cr1": {
+    "coverage": 0.923,
+    "mc_se": 0.0042151808976602645,
+    "lower_miss": 0.01325,
+    "upper_miss": 0.063,
+    "undefined_or_unbounded": 0.00075,
+    "median_width": 0.31080383638347575
+   },
+   "centred": {
+    "coverage": 0.9425,
+    "mc_se": 0.0036808202210920327,
+    "lower_miss": 0.00925,
+    "upper_miss": 0.04825,
+    "undefined_or_unbounded": 0.00175,
+    "median_width": 0.31722405373983475
+   }
+  },
+  "accuracy_like_cross_half_error_corr_0.1": {
+   "name": "accuracy_like_cross_half_error_corr_0.1",
+   "truth": 1.0779610382569493,
+   "wild_rademacher": {
+    "coverage": 0.94225,
+    "mc_se": 0.003688324060464318,
+    "lower_miss": 0.00975,
+    "upper_miss": 0.048,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.33854892215991866
+   },
+   "wild_mammen": {
+    "coverage": 0.93725,
+    "mc_se": 0.0038344633751021787,
+    "lower_miss": 0.01375,
+    "upper_miss": 0.049,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3237971622070515
+   },
+   "wild_webb": {
+    "coverage": 0.94275,
+    "mc_se": 0.0036732967991982357,
+    "lower_miss": 0.01,
+    "upper_miss": 0.04725,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3378617583385381
+   },
+   "wild_cr3": {
+    "coverage": 0.951,
+    "mc_se": 0.003413173010557773,
+    "lower_miss": 0.00825,
+    "upper_miss": 0.04075,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3546059260208111
+   },
+   "cluster_t_cr1": {
+    "coverage": 0.943,
+    "mc_se": 0.003665753674212168,
+    "lower_miss": 0.00975,
+    "upper_miss": 0.04725,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3397846166253977
+   },
+   "centred": {
+    "coverage": 0.94475,
+    "mc_se": 0.003612389704198594,
+    "lower_miss": 0.00975,
+    "upper_miss": 0.0455,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.34235941079629506
+   }
+  },
+  "rho_0.2_margin_noise": {
+   "name": "rho_0.2_margin_noise",
+   "truth": 1.6733200530681511,
+   "wild_rademacher": {
+    "coverage": 0.94675,
+    "mc_se": 0.0035501562465615516,
+    "lower_miss": 0.02075,
+    "upper_miss": 0.0325,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26219118179114986
+   },
+   "wild_mammen": {
+    "coverage": 0.9365,
+    "mc_se": 0.0038557667849598992,
+    "lower_miss": 0.02925,
+    "upper_miss": 0.03425,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.25072923542476133
+   },
+   "wild_webb": {
+    "coverage": 0.94475,
+    "mc_se": 0.003612389704198594,
+    "lower_miss": 0.02125,
+    "upper_miss": 0.034,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26132977189136974
+   },
+   "wild_cr3": {
+    "coverage": 0.9555,
+    "mc_se": 0.003260358492558755,
+    "lower_miss": 0.01675,
+    "upper_miss": 0.02775,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2740345975666223
+   },
+   "cluster_t_cr1": {
+    "coverage": 0.9445,
+    "mc_se": 0.0036200742395702326,
+    "lower_miss": 0.021,
+    "upper_miss": 0.0345,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26020157496689666
+   },
+   "centred": {
+    "coverage": 0.944,
+    "mc_se": 0.0036353816856005655,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.0375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26187071176536647
+   }
+  }
+ },
+ "shipped_check": {
+  "null_margin_noise": 0.0,
+  "null_accuracy_noise": 1.6653345369377348e-16,
+  "margin_like_boolq_trace": 0.0,
+  "accuracy_like_boolq_trace": 0.0,
+  "margin_like_recipe_shared": 0.0,
+  "margin_like_heavy_tails": 0.0,
+  "accuracy_like_cross_half_error_corr_0.1": 0.0,
+  "rho_0.2_margin_noise": 0.0
+ },
+ "wall_seconds": 3721.8506422042847
+}

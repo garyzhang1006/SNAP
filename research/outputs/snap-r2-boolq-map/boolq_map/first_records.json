@@ -1,0 +1,1256 @@
+{
+ "arc_challenge": {
+  "doc_id": 0,
+  "native_id": "Mercury_7175875",
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 2,
+   "correct_choice": 2,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 1
+  },
+  "model_output": "<4 choices>",
+  "label": 2,
+  "task_hash": "da4d61b1b678cfae04369e8a9c4bed3a",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "arc_easy": {
+  "doc_id": 0,
+  "native_id": "Mercury_417466",
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 1,
+   "correct_choice": 0,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "c90b1e74fd08b92cb197198ea6975132",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "boolq": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": null,
+   "correct_choice": 1,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": null
+  },
+  "model_output": "<2 choices>",
+  "label": 1,
+  "task_hash": "5b86a4682d32a0910ea2c16249b7ba18",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "csqa": {
+  "doc_id": 0,
+  "native_id": "1afa02df02c908a558b4036e80242fac",
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 0,
+   "correct_choice": 0,
+   "acc_raw": 1,
+   "acc_per_token": 1,
+   "acc_per_char": 0,
+   "acc_uncond": 1
+  },
+  "model_output": "<5 choices>",
+  "label": 0,
+  "task_hash": "c87d2fe0708bbd8c65131f5c5fbdc154",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "hellaswag": {
+  "doc_id": 0,
+  "native_id": 24,
+  "metrics": {
+   "predicted_index_raw": 1,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 0,
+   "correct_choice": 3,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 1,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 3,
+  "task_hash": "b54ef63d6e18924ff3fd0ea32df9f19e",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_abstract_algebra": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 0,
+   "correct_choice": 1,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 1,
+  "task_hash": "758e30dfe9f183f4a5ac5b8a5d78194f",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_anatomy": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 3,
+   "correct_choice": 0,
+   "acc_raw": 1,
+   "acc_per_token": 0,
+   "acc_per_char": 1,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "0dae1455538ed010ef135c8f2558d50f",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_astronomy": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 1,
+   "correct_choice": 0,
+   "acc_raw": 1,
+   "acc_per_token": 1,
+   "acc_per_char": 1,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "fcf8938b59d6d785e5e9193ba3bf52c1",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_business_ethics": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 1,
+   "correct_choice": 2,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 2,
+  "task_hash": "26a6335864d23d55f1073181b2208e59",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_clinical_knowledge": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 2,
+   "predicted_index_per_token": 2,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 0,
+   "correct_choice": 0,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 1
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "efa231e87ce903c2474ee5633f3b9bbf",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_college_biology": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 3,
+   "correct_choice": 2,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 2,
+  "task_hash": "89ec5b066c6799ae0332898785756a73",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_college_chemistry": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 0,
+   "correct_choice": 3,
+   "acc_raw": 1,
+   "acc_per_token": 0,
+   "acc_per_char": 1,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 3,
+  "task_hash": "86aa19ce477c30ba07cfab9c2d01b57d",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_college_computer_science": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 1,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 1,
+   "predicted_index_uncond": 0,
+   "correct_choice": 0,
+   "acc_raw": 0,
+   "acc_per_token": 1,
+   "acc_per_char": 0,
+   "acc_uncond": 1
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "f30558fa5894a0f92eff3fd4def91142",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_college_mathematics": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 1,
+   "correct_choice": 1,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 1
+  },
+  "model_output": "<4 choices>",
+  "label": 1,
+  "task_hash": "8a5694c7abd990ba4a08ff2493eb6e7f",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_college_medicine": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 0,
+   "correct_choice": 1,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 1,
+  "task_hash": "a9bc28367ee798db954a428168952ca1",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_college_physics": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 1,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 1,
+   "predicted_index_uncond": 3,
+   "correct_choice": 1,
+   "acc_raw": 1,
+   "acc_per_token": 0,
+   "acc_per_char": 1,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 1,
+  "task_hash": "6c8bca9ef14a7a72dcd35872fbaaeff5",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_computer_security": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 3,
+   "correct_choice": 2,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 2,
+  "task_hash": "61d559c3ee5cfee7e6ddce09ab74a72f",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_conceptual_physics": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 2,
+   "predicted_index_per_token": 2,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 2,
+   "correct_choice": 0,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "8d680741b097bd7afbb2d13efd2908d5",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_econometrics": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 2,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 1,
+   "predicted_index_uncond": 1,
+   "correct_choice": 0,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "4e7f362df61282177194fdc4e77519c8",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_electrical_engineering": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 3,
+   "correct_choice": 3,
+   "acc_raw": 1,
+   "acc_per_token": 1,
+   "acc_per_char": 0,
+   "acc_uncond": 1
+  },
+  "model_output": "<4 choices>",
+  "label": 3,
+  "task_hash": "692c103a5e8c6163f5ce9f49d6217b67",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_elementary_mathematics": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 1,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 1,
+   "correct_choice": 2,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 1,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 2,
+  "task_hash": "571298222f20d798da797be567f33132",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_formal_logic": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 1,
+   "predicted_index_uncond": 0,
+   "correct_choice": 3,
+   "acc_raw": 1,
+   "acc_per_token": 1,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 3,
+  "task_hash": "704df4c46dfbc1f40ad67424e474cc0c",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_global_facts": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 3,
+   "correct_choice": 2,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 2,
+  "task_hash": "899ac97c7bf96dd3dd20f073cd0fff9e",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_high_school_biology": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 2,
+   "predicted_index_per_token": 2,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 2,
+   "correct_choice": 0,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 1,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "dd530de2878670a01e4b0703ee50a6a6",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_high_school_chemistry": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 1,
+   "predicted_index_uncond": 2,
+   "correct_choice": 0,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "03920fe3a0f8c0329b52002caaf9944f",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_high_school_computer_science": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 3,
+   "correct_choice": 2,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 2,
+  "task_hash": "bd46eaecf6129f1361aa8938bae18a24",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_high_school_european_history": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 3,
+   "correct_choice": 2,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 2,
+  "task_hash": "6947c19838d0a42865433ae76c6a65c2",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_high_school_geography": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 2,
+   "predicted_index_per_token": 2,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 1,
+   "correct_choice": 1,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 1
+  },
+  "model_output": "<4 choices>",
+  "label": 1,
+  "task_hash": "cd6dda9d014db93c5ed4ac628af42e54",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_high_school_government_and_politics": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 2,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 0,
+   "correct_choice": 3,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 3,
+  "task_hash": "b66c01fd9d8ada4e311bce63cea22aa4",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_high_school_macroeconomics": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 2,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 2,
+   "correct_choice": 1,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 1,
+  "task_hash": "439b96d804b07afbed83491393370024",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_high_school_mathematics": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 2,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 0,
+   "correct_choice": 3,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 3,
+  "task_hash": "2410f1803fc44ac0b13e021ee87407cb",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_high_school_microeconomics": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 1,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 1,
+   "correct_choice": 0,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 1,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "2d5e90772a9152cad8a43b72cc540b43",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_high_school_physics": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 2,
+   "predicted_index_per_token": 2,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 2,
+   "correct_choice": 1,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 1,
+  "task_hash": "f321ee94d700b39b0a6d01518d2fb280",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_high_school_psychology": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 1,
+   "predicted_index_uncond": 3,
+   "correct_choice": 0,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "2cd10b544c61fecf301ec373e9d97e9c",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_high_school_statistics": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 0,
+   "correct_choice": 1,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 1,
+  "task_hash": "fcda4e9aed6122791b9bce0e85f31796",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_high_school_us_history": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 1,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 1,
+   "predicted_index_uncond": 2,
+   "correct_choice": 3,
+   "acc_raw": 0,
+   "acc_per_token": 1,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 3,
+  "task_hash": "5c5a59ea0fd685cf151cc23aaa577eb8",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_high_school_world_history": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 2,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 3,
+   "correct_choice": 0,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "8e1b05c5c3db3f709e766568e39400c9",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_human_aging": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 2,
+   "correct_choice": 0,
+   "acc_raw": 1,
+   "acc_per_token": 0,
+   "acc_per_char": 1,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "3379d7083f28a52e9b844574cabc052d",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_human_sexuality": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 0,
+   "correct_choice": 1,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 1,
+  "task_hash": "5c9a4998a7e0d6e104abfa6b364eedb3",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_international_law": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 1,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 1,
+   "correct_choice": 1,
+   "acc_raw": 1,
+   "acc_per_token": 1,
+   "acc_per_char": 0,
+   "acc_uncond": 1
+  },
+  "model_output": "<4 choices>",
+  "label": 1,
+  "task_hash": "b3947fc580e6162cb3f40b58d00c78da",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_jurisprudence": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 2,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 2,
+   "correct_choice": 3,
+   "acc_raw": 1,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 3,
+  "task_hash": "83426a03fe99a2fe744cdce3cdef4d26",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_logical_fallacies": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 1,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 0,
+   "correct_choice": 0,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 1,
+   "acc_uncond": 1
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "de41489bcdf73069ab623aa938e6ee89",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_machine_learning": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 1,
+   "predicted_index_uncond": 2,
+   "correct_choice": 3,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 3,
+  "task_hash": "93fe1b256b65ae6e2428d28bd0ccddcd",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_management": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 2,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 1,
+   "correct_choice": 1,
+   "acc_raw": 0,
+   "acc_per_token": 1,
+   "acc_per_char": 0,
+   "acc_uncond": 1
+  },
+  "model_output": "<4 choices>",
+  "label": 1,
+  "task_hash": "adb1c2b11fc08de94fc757094762d3ff",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_marketing": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 0,
+   "correct_choice": 1,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 1,
+  "task_hash": "b573843872cd4fe4ccdfb8555e1e3379",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_medical_genetics": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 2,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 1,
+   "correct_choice": 1,
+   "acc_raw": 0,
+   "acc_per_token": 1,
+   "acc_per_char": 0,
+   "acc_uncond": 1
+  },
+  "model_output": "<4 choices>",
+  "label": 1,
+  "task_hash": "dc89a23c5ed83cf8299804874533019d",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_miscellaneous": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 1,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 0,
+   "correct_choice": 2,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 2,
+  "task_hash": "f1b449b24b27f5936a7adeca00216b31",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_moral_disputes": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 2,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 2,
+   "correct_choice": 0,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "356fa584230549a7ef4e75aa467e81f4",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_moral_scenarios": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 1,
+   "correct_choice": 3,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 3,
+  "task_hash": "23328fde3288c91d1a0b01302214a1db",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_nutrition": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 2,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 3,
+   "correct_choice": 2,
+   "acc_raw": 0,
+   "acc_per_token": 1,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 2,
+  "task_hash": "d7a63f999218370596088d73f3d078d4",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_philosophy": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 0,
+   "correct_choice": 2,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 2,
+  "task_hash": "6e7d1277515398a98f71983079c2299e",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_prehistory": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 1,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 1,
+   "correct_choice": 3,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 1,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 3,
+  "task_hash": "cd82f2449f8924bdc7d31b9ff951bdf7",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_professional_accounting": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 0,
+   "correct_choice": 0,
+   "acc_raw": 1,
+   "acc_per_token": 1,
+   "acc_per_char": 1,
+   "acc_uncond": 1
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "817f87487852461c6a597399f114ed2c",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_professional_law": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 2,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 3,
+   "correct_choice": 2,
+   "acc_raw": 1,
+   "acc_per_token": 0,
+   "acc_per_char": 1,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 2,
+  "task_hash": "63d411410b3caedab455ec06df963d75",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_professional_medicine": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 0,
+   "correct_choice": 2,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 2,
+  "task_hash": "4d8d8d4ba22fa65fb77bcf04d3422ac7",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_professional_psychology": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 2,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 2,
+   "correct_choice": 3,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 3,
+  "task_hash": "d9b77ca995a07724c2b4aca0bbce0521",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_public_relations": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 1,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 1,
+   "correct_choice": 1,
+   "acc_raw": 1,
+   "acc_per_token": 1,
+   "acc_per_char": 0,
+   "acc_uncond": 1
+  },
+  "model_output": "<4 choices>",
+  "label": 1,
+  "task_hash": "5ceb5b9be09fd10e22f6f4180eecf468",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_security_studies": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 3,
+   "correct_choice": 2,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 1,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 2,
+  "task_hash": "df13efc4587e631687fceddf2f41b5ce",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_sociology": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 3,
+   "correct_choice": 2,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 2,
+  "task_hash": "b2e3e36d53d49939ed683d7e192bd677",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_us_foreign_policy": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 3,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 3,
+   "correct_choice": 0,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "bf7865011230500787d76284c93e0c3a",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_virology": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 2,
+   "predicted_index_per_token": 2,
+   "predicted_index_per_char": 3,
+   "predicted_index_uncond": 2,
+   "correct_choice": 0,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 0,
+  "task_hash": "c4951ef3607a0fcb96bf8c89752bc832",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "mmlu_world_religions": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 0,
+   "predicted_index_uncond": 0,
+   "correct_choice": 3,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 3,
+  "task_hash": "6594d303ddfbf976414951bf2deac1ba",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "openbookqa": {
+  "doc_id": 0,
+  "native_id": "8-343",
+  "metrics": {
+   "predicted_index_raw": 3,
+   "predicted_index_per_token": 2,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 2,
+   "correct_choice": 1,
+   "acc_raw": 0,
+   "acc_per_token": 0,
+   "acc_per_char": 0,
+   "acc_uncond": 0
+  },
+  "model_output": "<4 choices>",
+  "label": 1,
+  "task_hash": "535d7f5a02fd65b26d2d365ee8a2ceb0",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "piqa": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 0,
+   "predicted_index_per_token": 0,
+   "predicted_index_per_char": 1,
+   "predicted_index_uncond": 0,
+   "correct_choice": 0,
+   "acc_raw": 1,
+   "acc_per_token": 1,
+   "acc_per_char": 0,
+   "acc_uncond": 1
+  },
+  "model_output": "<2 choices>",
+  "label": 0,
+  "task_hash": "1508dd66298b04b6698a03f073a958c0",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "socialiqa": {
+  "doc_id": 0,
+  "native_id": 0,
+  "metrics": {
+   "predicted_index_raw": 2,
+   "predicted_index_per_token": 2,
+   "predicted_index_per_char": 2,
+   "predicted_index_uncond": 2,
+   "correct_choice": 2,
+   "acc_raw": 1,
+   "acc_per_token": 1,
+   "acc_per_char": 1,
+   "acc_uncond": 1
+  },
+  "model_output": "<3 choices>",
+  "label": 2,
+  "task_hash": "8f3fa3be1546d30ed913a4a5dedfbef7",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ },
+ "winogrande": {
+  "doc_id": 0,
+  "native_id": null,
+  "metrics": {
+   "predicted_index_raw": 1,
+   "predicted_index_per_token": 1,
+   "predicted_index_per_char": 1,
+   "predicted_index_uncond": null,
+   "correct_choice": 1,
+   "acc_raw": 1,
+   "acc_per_token": 1,
+   "acc_per_char": 1,
+   "acc_uncond": null
+  },
+  "model_output": "<2 choices>",
+  "label": 1,
+  "task_hash": "f8a5c25e76d94a777333ba31cff67668",
+  "model_hash": "275aafcf6a67cb7e43492d291b8b4013"
+ }
+}

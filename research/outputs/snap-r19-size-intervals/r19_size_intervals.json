@@ -1,0 +1,930 @@
+{
+ "draws": 4999,
+ "seed": 0,
+ "alpha": 0.05,
+ "cells": {
+  "margin/full/all": {
+   "n": 125,
+   "lambda": 1.2439499117191135,
+   "theta": 1.5474113828659906,
+   "negative_T_count": 3,
+   "wild_theta": {
+    "lo": 1.1429001912272698,
+    "hi": 1.3376841038790925,
+    "se": 0.04500996929632814,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 1.1472991823302265,
+    "hi": 1.3336143940271394,
+    "se": 0.04500996929632814,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 1.0693822391016938,
+    "hi": 1.4255381896468478,
+    "se": 0.0928081557738457,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 1.1544378007415168,
+    "hi": 1.3404025594727231,
+    "se_log_theta": 0.07236620843378697,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 1.145099631102894,
+    "hi": 1.3377377160235169,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "margin/full/150M": {
+   "n": 25,
+   "lambda": 1.1011417989779246,
+   "theta": 1.2125132614563403,
+   "negative_T_count": 1,
+   "wild_theta": {
+    "lo": 0.7814055176425302,
+    "hi": 1.3438557981652068,
+    "se": 0.1168596046382683,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 0.8254407761428131,
+    "hi": 1.320482505750618,
+    "se": 0.1168596046382683,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 0.8461578616634773,
+    "hi": 1.3209984084077735,
+    "se": 0.11874948113341287,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 0.8845419489761014,
+    "hi": 1.3707809594105527,
+    "se_log_theta": 0.21225169137478372,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 0.8213536064328621,
+    "hi": 1.3268954863875022,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "margin/full/300M": {
+   "n": 25,
+   "lambda": 1.3502509815001627,
+   "theta": 1.8231777130421525,
+   "negative_T_count": 1,
+   "wild_theta": {
+    "lo": 0.6380373911355129,
+    "hi": 1.8027182209999555,
+    "se": 0.20210894016089861,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 0.8346921472208257,
+    "hi": 1.717452894682178,
+    "se": 0.20210894016089861,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 0.9398359832662122,
+    "hi": 1.649940175605229,
+    "se": 0.19167522155652944,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 0.9913982035570692,
+    "hi": 1.8389963856104592,
+    "se_log_theta": 0.2993649964784333,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 0.8446809497926329,
+    "hi": 1.7796312313387652,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "margin/full/530M": {
+   "n": 25,
+   "lambda": 1.5139107095732445,
+   "theta": 2.2919256365605647,
+   "negative_T_count": 0,
+   "wild_theta": {
+    "lo": 1.0640041259437911,
+    "hi": 1.8366773365873976,
+    "se": 0.13968660519959045,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 1.1912211377612898,
+    "hi": 1.7790006953545092,
+    "se": 0.13968660519959045,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 1.133748207311519,
+    "hi": 1.7463001978403017,
+    "se": 0.1487095435146164,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 1.251399963959696,
+    "hi": 1.831489294045066,
+    "se_log_theta": 0.1845374424215106,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 1.1319836702934236,
+    "hi": 1.8365177424599683,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "margin/full/750M": {
+   "n": 25,
+   "lambda": 1.1102274905258391,
+   "theta": 1.232605080719302,
+   "negative_T_count": 0,
+   "wild_theta": {
+    "lo": 0.6862251443387856,
+    "hi": 1.4065691637574496,
+    "se": 0.1270346913592333,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 0.806493198666118,
+    "hi": 1.34713729142352,
+    "se": 0.1270346913592333,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 0.8714694666521763,
+    "hi": 1.3549280212792225,
+    "se": 0.12687119430029514,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 0.8766995713671065,
+    "hi": 1.4059606289041573,
+    "se_log_theta": 0.22884443493479992,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 0.7685720424647361,
+    "hi": 1.3914519769542095,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "margin/full/1B": {
+   "n": 25,
+   "lambda": 1.1489756099981305,
+   "theta": 1.320144952370576,
+   "negative_T_count": 1,
+   "wild_theta": {
+    "lo": NaN,
+    "hi": 1.7512822111802118,
+    "se": 0.19410746389094868,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 0.6320949810317111,
+    "hi": 1.4969121015262294,
+    "se": 0.19410746389094868,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 0.8337101230288462,
+    "hi": 1.6433633532247434,
+    "se": 0.22285688678134052,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 0.8107436248612314,
+    "hi": 1.6283137010131097,
+    "se_log_theta": 0.3378791720239641,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 0.490867874316534,
+    "hi": 1.6562747935547535,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "margin/noboolq/all": {
+   "n": 125,
+   "lambda": 1.785617464617265,
+   "theta": 3.188429729946189,
+   "negative_T_count": 11,
+   "wild_theta": {
+    "lo": 1.6891033385766654,
+    "hi": 1.8765174171308665,
+    "se": 0.035834554826928024,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 1.7100599908630312,
+    "hi": 1.8581050259718657,
+    "se": 0.035834554826928024,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 1.6749393766132572,
+    "hi": 1.8617297726894584,
+    "se": 0.0466022826646266,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 1.7131693086657445,
+    "hi": 1.8611293780586176,
+    "se_log_theta": 0.04013687762021181,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 1.6908519975994327,
+    "hi": 1.8776584355699337,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "margin/noboolq/150M": {
+   "n": 25,
+   "lambda": 1.5478607800892943,
+   "theta": 2.395872994538639,
+   "negative_T_count": 7,
+   "wild_theta": {
+    "lo": 1.3250085201441433,
+    "hi": 1.7424712816158496,
+    "se": 0.07603030690068932,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 1.3820622110072585,
+    "hi": 1.6975423511603491,
+    "se": 0.07603030690068932,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 1.1712692178997193,
+    "hi": 1.6512748916479079,
+    "se": 0.11067438489159032,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 1.3986338768360311,
+    "hi": 1.7130094116971821,
+    "se_log_theta": 0.09823920584938294,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 1.33782067197236,
+    "hi": 1.7449162774227585,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "margin/noboolq/300M": {
+   "n": 25,
+   "lambda": 1.8641968464219005,
+   "theta": 3.475229882209359,
+   "negative_T_count": 2,
+   "wild_theta": {
+    "lo": 1.7628420504333575,
+    "hi": 1.9612677350652825,
+    "se": 0.05393167061522404,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 1.7493496660519847,
+    "hi": 1.9723679956596658,
+    "se": 0.05393167061522404,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 1.5787241533006575,
+    "hi": 1.9869673787873336,
+    "se": 0.09042577888057107,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 1.7561452793793273,
+    "hi": 1.978896577074538,
+    "se_log_theta": 0.05786048905590559,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 1.7632396696621975,
+    "hi": 1.9605503542572376,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "margin/noboolq/530M": {
+   "n": 25,
+   "lambda": 1.8737802265303878,
+   "theta": 3.511052337336271,
+   "negative_T_count": 0,
+   "wild_theta": {
+    "lo": 1.6935537167649384,
+    "hi": 2.0391324081183275,
+    "se": 0.06849850625501583,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 1.7266281718332586,
+    "hi": 2.0101890037765804,
+    "se": 0.06849850625501583,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 1.5243184861636752,
+    "hi": 2.000859744792452,
+    "se": 0.10740317348517582,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 1.737607851369199,
+    "hi": 2.0206241210119043,
+    "se_log_theta": 0.07311263646094941,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 1.701104761249098,
+    "hi": 2.043059380360522,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "margin/noboolq/750M": {
+   "n": 25,
+   "lambda": 1.8880728572045422,
+   "theta": 3.5648191141125234,
+   "negative_T_count": 1,
+   "wild_theta": {
+    "lo": 1.6600820658917477,
+    "hi": 2.0824828705099505,
+    "se": 0.08026318275975598,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 1.7144332711111179,
+    "hi": 2.0470360981507576,
+    "se": 0.08026318275975598,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 1.5949202213003268,
+    "hi": 2.0006910297454774,
+    "se": 0.09716451433202858,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 1.7294769311819642,
+    "hi": 2.0612122947926483,
+    "se_log_theta": 0.08502127706935281,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 1.671904913549638,
+    "hi": 2.0868233213522926,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "margin/noboolq/1B": {
+   "n": 25,
+   "lambda": 1.6487896889315354,
+   "theta": 2.7185074383269496,
+   "negative_T_count": 1,
+   "wild_theta": {
+    "lo": 1.2152854095767633,
+    "hi": 2.0006350067214655,
+    "se": 0.10060917753973235,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 1.4261046673043458,
+    "hi": 1.8447873467006055,
+    "se": 0.10060917753973235,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 1.3154228747304755,
+    "hi": 1.8045881415362595,
+    "se": 0.11678860215314811,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 1.4536859540661966,
+    "hi": 1.870078905779368,
+    "se_log_theta": 0.12204003726506814,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 1.2807778966947394,
+    "hi": 2.026279918342677,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "accuracy/full/all": {
+   "n": 125,
+   "lambda": 1.0783733870898096,
+   "theta": 1.1628891619835482,
+   "negative_T_count": 23,
+   "wild_theta": {
+    "lo": 0.992604456794931,
+    "hi": 1.1566521851337639,
+    "se": 0.037702000910158816,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 0.9975299483311629,
+    "hi": 1.1535650506796415,
+    "se": 0.037702000910158816,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 0.9755457229741982,
+    "hi": 1.1824104939632454,
+    "se": 0.05182277883969228,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 1.0033013699705144,
+    "hi": 1.1590626672997804,
+    "se_log_theta": 0.06992383410333346,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 0.9938354486577469,
+    "hi": 1.156676241569199,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "accuracy/full/150M": {
+   "n": 25,
+   "lambda": 1.0278809589361417,
+   "theta": 1.0565392657434824,
+   "negative_T_count": 3,
+   "wild_theta": {
+    "lo": 0.8779815142284924,
+    "hi": 1.1648108947209173,
+    "se": 0.06830577356015789,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 0.8756287955143653,
+    "hi": 1.160324413236672,
+    "se": 0.06830577356015789,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 0.8963609663205623,
+    "hi": 1.1890473425789054,
+    "se": 0.07470816007037678,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 0.8961451423628171,
+    "hi": 1.1789823052075727,
+    "se_log_theta": 0.13290600038131742,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 0.8840299013379124,
+    "hi": 1.1609648966985768,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "accuracy/full/300M": {
+   "n": 25,
+   "lambda": 1.0803786551072816,
+   "theta": 1.1672180384114184,
+   "negative_T_count": 2,
+   "wild_theta": {
+    "lo": 0.8358003478987633,
+    "hi": 1.2878072602676003,
+    "se": 0.09389426902543366,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 0.8651523955543193,
+    "hi": 1.2593440392876996,
+    "se": 0.09389426902543366,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 0.9132424848200814,
+    "hi": 1.2919006982274441,
+    "se": 0.09911982731860466,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 0.9029761959089587,
+    "hi": 1.2926343393099826,
+    "se_log_theta": 0.17381733447169959,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 0.8579625261082371,
+    "hi": 1.2813590192573903,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "accuracy/full/530M": {
+   "n": 25,
+   "lambda": 1.2193598898281042,
+   "theta": 1.4868385409216065,
+   "negative_T_count": 7,
+   "wild_theta": {
+    "lo": 1.0834245247107992,
+    "hi": 1.3378639250815185,
+    "se": 0.06526857443273643,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 1.0762546944225704,
+    "hi": 1.3473503310485335,
+    "se": 0.06526857443273643,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 1.067511193107608,
+    "hi": 1.3698705577739658,
+    "se": 0.07530843351914233,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 1.0918264275746306,
+    "hi": 1.3617902107612936,
+    "se_log_theta": 0.10705383205927411,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 1.0864864497325142,
+    "hi": 1.3350115316440827,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "accuracy/full/750M": {
+   "n": 25,
+   "lambda": 0.9869864176617353,
+   "theta": 0.9741421886487456,
+   "negative_T_count": 2,
+   "wild_theta": {
+    "lo": 0.31013178361156885,
+    "hi": 1.320079725283657,
+    "se": 0.13190755712402624,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 0.6608632903139008,
+    "hi": 1.2294486930380528,
+    "se": 0.13190755712402624,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 0.7249571862499532,
+    "hi": 1.2351521902560685,
+    "se": 0.1325122704911083,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 0.7490628411399389,
+    "hi": 1.3004812615805053,
+    "se_log_theta": 0.26729356101278023,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 0.568065410637417,
+    "hi": 1.2984607411039721,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "accuracy/full/1B": {
+   "n": 25,
+   "lambda": 1.2045431821199357,
+   "theta": 1.4509242775916205,
+   "negative_T_count": 9,
+   "wild_theta": {
+    "lo": 0.8051970604762821,
+    "hi": 1.4967971092345838,
+    "se": 0.15330898995505468,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 0.829852477033013,
+    "hi": 1.4876805509064819,
+    "se": 0.15330898995505468,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 0.7603937374343277,
+    "hi": 1.4729812941213347,
+    "se": 0.16670182695060667,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 0.9262754814014392,
+    "hi": 1.566406870012792,
+    "se_log_theta": 0.25455125599605083,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 0.8637512478258718,
+    "hi": 1.4673620837810952,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0022004400880176033
+  },
+  "accuracy/noboolq/all": {
+   "n": 125,
+   "lambda": 1.557829136326662,
+   "theta": 2.426831617988274,
+   "negative_T_count": 39,
+   "wild_theta": {
+    "lo": 1.4119121961052712,
+    "hi": 1.6870177418636012,
+    "se": 0.06591654353436374,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 1.4152602952291988,
+    "hi": 1.68840206488985,
+    "se": 0.06591654353436374,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 1.39839991018082,
+    "hi": 1.7216510270367678,
+    "se": 0.08329346098127922,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 1.4275552630366206,
+    "hi": 1.6999913634348873,
+    "se_log_theta": 0.08462615314769882,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 1.4148074359871827,
+    "hi": 1.6861197093645937,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "accuracy/noboolq/150M": {
+   "n": 25,
+   "lambda": 1.8416840238227816,
+   "theta": 3.391800043604072,
+   "negative_T_count": 8,
+   "wild_theta": {
+    "lo": 0.9890516308044198,
+    "hi": 2.4084461361267633,
+    "se": 0.33019910805908015,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 0.9389324041240227,
+    "hi": 2.4294044594702684,
+    "se": 0.33019910805908015,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 1.3238059708262528,
+    "hi": 3.3814928450737445,
+    "se": 69.23985005236982,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 1.2720630088638694,
+    "hi": 2.6663773885174327,
+    "se_log_theta": 0.3585838871248785,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 1.1672053137459646,
+    "hi": 2.2506052495452686,
+    "finite_draws": 4989,
+    "nonpositive_theta_draws": 10,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.005201040208041608
+  },
+  "accuracy/noboolq/300M": {
+   "n": 25,
+   "lambda": 1.8995344652495818,
+   "theta": 3.608231184671015,
+   "negative_T_count": 8,
+   "wild_theta": {
+    "lo": 1.173573635131927,
+    "hi": 2.417066901079827,
+    "se": 0.3713398247156502,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 0.8346229023526499,
+    "hi": 2.553403019542835,
+    "se": 0.3713398247156502,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 1.0785937184957588,
+    "hi": 4.025389044500108,
+    "se": 25.208140770063576,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 1.2688836402427575,
+    "hi": 2.8436265314136313,
+    "se_log_theta": 0.39097982322406505,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 1.273990892781726,
+    "hi": 2.2690498111112833,
+    "finite_draws": 4981,
+    "nonpositive_theta_draws": 18,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.024004800960192037
+  },
+  "accuracy/noboolq/530M": {
+   "n": 25,
+   "lambda": 1.5477621270534294,
+   "theta": 2.395567601940956,
+   "negative_T_count": 10,
+   "wild_theta": {
+    "lo": 1.2624707420991121,
+    "hi": 1.7924798801972535,
+    "se": 0.1756611119534096,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 1.1284039384919564,
+    "hi": 1.8755905084739986,
+    "se": 0.1756611119534096,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 0.708756103990475,
+    "hi": 2.088064975092548,
+    "se": 9.53918314696921,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 1.2245467790532882,
+    "hi": 1.9562891699351803,
+    "se_log_theta": 0.22698722094696366,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 1.2705823559775324,
+    "hi": 1.7546414184534649,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.013602720544108821
+  },
+  "accuracy/noboolq/750M": {
+   "n": 25,
+   "lambda": 1.5944350481042742,
+   "theta": 2.542223122623279,
+   "negative_T_count": 3,
+   "wild_theta": {
+    "lo": 1.3407602974969386,
+    "hi": 1.811495421145587,
+    "se": 0.11075570951649498,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 1.3465823155624588,
+    "hi": 1.8086354836342797,
+    "se": 0.11075570951649498,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 1.335570979736136,
+    "hi": 1.8077011880600524,
+    "se": 0.11923636088931287,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 1.3814766812654717,
+    "hi": 1.8402215231707935,
+    "se_log_theta": 0.13892784111611134,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 1.3511379293420922,
+    "hi": 1.8047804945331125,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.0
+  },
+  "accuracy/noboolq/1B": {
+   "n": 25,
+   "lambda": 1.221816939713325,
+   "theta": 1.4928366341704349,
+   "negative_T_count": 10,
+   "wild_theta": {
+    "lo": 0.4290809575734661,
+    "hi": 1.6740799184966333,
+    "se": 0.2268366691239355,
+    "method": "wild cluster bootstrap-t (G=25)"
+   },
+   "cluster_t_theta": {
+    "lo": 0.5905977931258232,
+    "hi": 1.6238434392193655,
+    "se": 0.2268366691239355,
+    "method": "cluster-robust t(24)"
+   },
+   "config_pct_theta": {
+    "lo": 0.48049880644130466,
+    "hi": 1.5487315002193218,
+    "se": 0.23197396321482672,
+    "method": "configuration percentile bootstrap"
+   },
+   "cluster_t_log": {
+    "lo": 0.832906026980016,
+    "hi": 1.7923230062138242,
+    "se_log_theta": 0.37131040133910437,
+    "method": "cluster-robust t(24) on log theta"
+   },
+   "wild_log": {
+    "lo": 0.7043154144285094,
+    "hi": 1.5851916170836597,
+    "finite_draws": 4999,
+    "nonpositive_theta_draws": 0,
+    "method": "wild cluster bootstrap-t on log theta (G=25)"
+   },
+   "config_pct_nonpositive_theta_share": 0.009001800360072015
+  }
+ },
+ "checks": {
+  "margin": {
+   "all": 1.2439499117191135,
+   "1B": 1.1489756099981305
+  },
+  "accuracy": {
+   "all": 1.0783733870898096,
+   "1B": 1.2045431821199357
+  }
+ },
+ "wall_seconds": 21.381211280822754
+}

@@ -1,0 +1,20 @@
+[{"stream_name":"stdout","time":1.215846334,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":31.21463514,"data":"[base] {\"n_config\": 125, \"n_runs_read\": 375, \"dropped_cells\": [], \"recipes\": [\"Falcon-with-cc-top-orig-10p\", \"Falcon-with-cc-top-tulu-10p\", \"c4\", \"dclm-baseline\", \"dclm-baseline-25p-dolma1.7-75p\", \"dclm-baseline-50p-dolma1.7-50p\", \"dclm-baseline-75p-dolma1.7-25p\", \"dclm-baseline-top-10p\", \"dclm-baseline-top-20p\", \"dclm-baseline-top-fw-10p\", \"dclm-baseline-top-fw-3p\", \"dclm-baseline-top-fw2-7p\", \"dclm-baseline-top-fw3-7p\", \"dolma1.6++\", \"dolma1.7\", \"dolma1.7-no-code\", \"dolma1.7-no-flan\", \"dolma1.7-no-math-no-code\", \"dolma1.7-no-reddit\", \"falcon\", \"falcon-with-cc\", \"falcon-with-cc-top-10p\", \"falcon-with-cc-top-20p\", \"fineweb-edu\", \"fineweb-pro\"], \"sizes\": [\"150M\", \"300M\", \"530M\", \"750M\", \"1B\"], \"half_A_items\": 18840, \"half_B_items\": 18842, \"split_seed\": 20260101}\n"}
+,{"stream_name":"stdout","time":31.214700273,"data":"[batch] shape (125, 3) unique [0, 1, 2]\n"}
+,{"stream_name":"stdout","time":31.246183619,"data":"[base/margin] {\"lambda_hat\": 1.2439499117191137, \"lo\": 1.1429001912272696, \"hi\": 1.3376841038790925, \"width\": 0.19478391265182293, \"excludes_one\": true}\n"}
+,{"stream_name":"stdout","time":31.273342201,"data":"[base/accuracy] {\"lambda_hat\": 1.0783733870898096, \"lo\": 0.992604456794931, \"hi\": 1.1566521851337639, \"width\": 0.16404772833883285, \"excludes_one\": false}\n"}
+,{"stream_name":"stdout","time":31.300419909,"data":"[run/0/margin] {\"lambda_hat\": 1.2555842071680108, \"lo\": 1.0899322550806705, \"hi\": 1.4001776870684166, \"width\": 0.3102454319877461, \"excludes_one\": true, \"kept_run_slots\": [1, 2]}\n"}
+,{"stream_name":"stdout","time":31.327798969,"data":"[run/0/accuracy] {\"lambda_hat\": 1.0837870401377363, \"lo\": 0.9385925924504341, \"hi\": 1.2070186154337523, \"width\": 0.2684260229833182, \"excludes_one\": false, \"kept_run_slots\": [1, 2]}\n"}
+,{"stream_name":"stdout","time":31.354223407,"data":"[run/1/margin] {\"lambda_hat\": 1.2415557296376574, \"lo\": 1.1383623360955906, \"hi\": 1.3388928303678314, \"width\": 0.2005304942722408, \"excludes_one\": true, \"kept_run_slots\": [0, 2]}\n"}
+,{"stream_name":"stdout","time":31.381884842,"data":"[run/1/accuracy] {\"lambda_hat\": 1.1144465843694378, \"lo\": 0.9857722861303483, \"hi\": 1.2361971926212545, \"width\": 0.2504249064909062, \"excludes_one\": false, \"kept_run_slots\": [0, 2]}\n"}
+,{"stream_name":"stdout","time":31.410334209,"data":"[run/2/margin] {\"lambda_hat\": 1.2345582806480158, \"lo\": 1.0473397102805888, \"hi\": 1.4031929036033228, \"width\": 0.355853193322734, \"excludes_one\": true, \"kept_run_slots\": [0, 1]}\n"}
+,{"stream_name":"stdout","time":31.43816227,"data":"[run/2/accuracy] {\"lambda_hat\": 1.0300912102988484, \"lo\": 0.9120925758689417, \"hi\": 1.139362225108654, \"width\": 0.22726964923971227, \"excludes_one\": false, \"kept_run_slots\": [0, 1]}\n"}
+,{"stream_name":"stdout","time":31.438213661,"data":"[label] skipped, batch holds slot indices\n"}
+,{"stream_name":"stdout","time":31.458992785,"data":"[done] 30s\n"}
+,{"stream_name":"stderr","time":34.947116242999996,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":34.947181892,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":35.401217806,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":35.401259633,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":36.625486286,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":38.853680674,"data":"[NbConvertApp] Writing 308833 bytes to __results__.html\n"}
+]

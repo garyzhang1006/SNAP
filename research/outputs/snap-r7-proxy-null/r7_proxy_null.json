@@ -1,0 +1,233 @@
+{
+ "design": "R7 CPU part 2: what the competence adjustments return when the truth is known.\n\nDesign fixed after reading r7_proxy_audit.json and before running this kernel\n(2026-09-15, 17:20 EDT). The audit found that the regularised proxy moves margin\ninflation below one, and a proxy built from the same seed deviations can remove\nshared covariance by construction, so no adjusted value is interpretable without\nthis calibration. Populations are simulated as null N4 simulates them, with the\nobserved item counts and item noise, 125 configurations, 3 runs, 25 recipes and\n5 sizes, under three seed covariances per phenotype.\n  independence   diagonal, observed pooled seed variances (floor 1e-9), true Lambda 1\n  equicorrelated one correlation r chosen so that the population Lambda equals the observed\n                 unadjusted estimate for those variances\n  matched        nearest PSD matrix to the observed estimate, the N4 target\nEach replicate reports Lambda before adjustment, after the shipped adjustment, after the\nin-sample regularised adjustment, and after the 5-fold recipe cross-fitted regularised\nadjustment (alpha 0.5), all as in snap-r7-proxy-audit. 300 replicates per cell.\n",
+ "n_rep": 300,
+ "alpha": 0.5,
+ "folds": 5,
+ "observed": {
+  "margin": {
+   "before": 1.2439499117191137,
+   "shipped": 1.243994265941912,
+   "insample_regularised": 0.7322096923005131,
+   "crossfit_regularised": 0.7307216447059117
+  },
+  "accuracy": {
+   "before": 1.0783733870898096,
+   "shipped": 1.0759504530047193,
+   "insample_regularised": 1.0190322720126492,
+   "crossfit_regularised": 1.0041410032891818
+  }
+ },
+ "cells": {
+  "margin/independence": {
+   "before": {
+    "n_finite": 300,
+    "mean": 0.9999576188300429,
+    "sd": 0.032281571065336995,
+    "p05": 0.9528151804222478,
+    "median": 0.9967681333034846,
+    "p95": 1.0589893676775934
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 1.0003191401816165,
+    "sd": 0.029993409269425838,
+    "p05": 0.9534110028034595,
+    "median": 0.9983704398756477,
+    "p95": 1.0547533975728107
+   },
+   "insample_regularised": {
+    "n_finite": 300,
+    "mean": 1.002153521584027,
+    "sd": 0.01946852057060617,
+    "p05": 0.9710297650518704,
+    "median": 1.000865220968186,
+    "p95": 1.0348110049923842
+   },
+   "crossfit_regularised": {
+    "n_finite": 300,
+    "mean": 1.0023413317269212,
+    "sd": 0.019876287587566217,
+    "p05": 0.9690350345890829,
+    "median": 1.0013686568175761,
+    "p95": 1.0338028801094485
+   },
+   "r": null
+  },
+  "margin/equicorrelated": {
+   "before": {
+    "n_finite": 300,
+    "mean": 1.2421170903866217,
+    "sd": 0.03653074638196605,
+    "p05": 1.1886130339538794,
+    "median": 1.2392363135295064,
+    "p95": 1.3075307208210565
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 1.1695327659043186,
+    "sd": 0.09047294894996688,
+    "p05": 1.0207162497189681,
+    "median": 1.1943035936592745,
+    "p95": 1.2938081816429299
+   },
+   "insample_regularised": {
+    "n_finite": 300,
+    "mean": 0.8755787689454292,
+    "sd": 0.023038051467343473,
+    "p05": 0.8384662413228011,
+    "median": 0.8751728838559387,
+    "p95": 0.9133659674583707
+   },
+   "crossfit_regularised": {
+    "n_finite": 300,
+    "mean": 0.8749696624842576,
+    "sd": 0.023299852301278193,
+    "p05": 0.8381723703876774,
+    "median": 0.8748930486717016,
+    "p95": 0.912944687428275
+   },
+   "r": 0.1779555494603412
+  },
+  "margin/matched": {
+   "before": {
+    "n_finite": 300,
+    "mean": 1.2430845709373444,
+    "sd": 0.0511434895165933,
+    "p05": 1.1578344186856637,
+    "median": 1.2406201157654961,
+    "p95": 1.330529529600829
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 1.0926592018477368,
+    "sd": 0.09847393693735194,
+    "p05": 0.9686130179295307,
+    "median": 1.0698137584109724,
+    "p95": 1.2708216098412721
+   },
+   "insample_regularised": {
+    "n_finite": 300,
+    "mean": 0.7468168814079879,
+    "sd": 0.022045129114402123,
+    "p05": 0.7116361357222748,
+    "median": 0.7455960443075136,
+    "p95": 0.7823780020020318
+   },
+   "crossfit_regularised": {
+    "n_finite": 300,
+    "mean": 0.7448386957751395,
+    "sd": 0.022339811675818017,
+    "p05": 0.7096234600660348,
+    "median": 0.74384195630039,
+    "p95": 0.7831568779917509
+   },
+   "r": null
+  },
+  "accuracy/independence": {
+   "before": {
+    "n_finite": 300,
+    "mean": 0.997976727449564,
+    "sd": 0.05776874228411645,
+    "p05": 0.9071253876820774,
+    "median": 0.99925138451596,
+    "p95": 1.090137680282273
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 0.9985833698662591,
+    "sd": 0.05756918574142203,
+    "p05": 0.9054957017513073,
+    "median": 1.0008578103646895,
+    "p95": 1.0866638655312848
+   },
+   "insample_regularised": {
+    "n_finite": 300,
+    "mean": 0.9993144811562229,
+    "sd": 0.041753940704826,
+    "p05": 0.9319234708515126,
+    "median": 0.9971092164123749,
+    "p95": 1.0641191283170968
+   },
+   "crossfit_regularised": {
+    "n_finite": 300,
+    "mean": 0.9993734841909505,
+    "sd": 0.0411922071055368,
+    "p05": 0.9350142841399965,
+    "median": 0.996665391705146,
+    "p95": 1.062761359374944
+   },
+   "r": null
+  },
+  "accuracy/equicorrelated": {
+   "before": {
+    "n_finite": 300,
+    "mean": 1.0926348967039765,
+    "sd": 0.057536163146474736,
+    "p05": 1.0007340283232233,
+    "median": 1.0924504962729849,
+    "p95": 1.1842761068224839
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 1.0923598301787136,
+    "sd": 0.056579925376411724,
+    "p05": 0.9983503264229212,
+    "median": 1.091604479286151,
+    "p95": 1.179510705591211
+   },
+   "insample_regularised": {
+    "n_finite": 300,
+    "mean": 1.0609779721118215,
+    "sd": 0.038104726632069194,
+    "p05": 0.9996862849255378,
+    "median": 1.0584179500645,
+    "p95": 1.1247803243870835
+   },
+   "crossfit_regularised": {
+    "n_finite": 300,
+    "mean": 1.060204718379696,
+    "sd": 0.037562753546397085,
+    "p05": 1.0004249634362872,
+    "median": 1.0586409226014033,
+    "p95": 1.1214204166979256
+   },
+   "r": 0.07118216252506011
+  },
+  "accuracy/matched": {
+   "before": {
+    "n_finite": 300,
+    "mean": 1.115695655889787,
+    "sd": 0.06042601099745555,
+    "p05": 1.0074922768677343,
+    "median": 1.1144002451044561,
+    "p95": 1.20995990496742
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 1.1088530102844383,
+    "sd": 0.05867359588897809,
+    "p05": 1.0101414847833023,
+    "median": 1.104999424430536,
+    "p95": 1.2065091821092095
+   },
+   "insample_regularised": {
+    "n_finite": 300,
+    "mean": 1.0501525136240932,
+    "sd": 0.03689022123949505,
+    "p05": 0.9954808056847534,
+    "median": 1.0472400936240553,
+    "p95": 1.1121483094438478
+   },
+   "crossfit_regularised": {
+    "n_finite": 300,
+    "mean": 1.0485747072794778,
+    "sd": 0.03591904147577755,
+    "p05": 0.9949527826598216,
+    "median": 1.0475463789475503,
+    "p95": 1.1090729849578826
+   },
+   "r": null
+  }
+ },
+ "wall_seconds": 2586.5481889247894
+}

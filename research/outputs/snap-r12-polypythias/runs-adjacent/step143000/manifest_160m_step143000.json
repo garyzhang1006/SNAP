@@ -1,0 +1,133 @@
+{
+ "runs": [
+  {
+   "recipe": "pythia-160m",
+   "size": "160m",
+   "seed": 1,
+   "step": 143000,
+   "batch": 0,
+   "gain": -1.1738605460805307,
+   "n_items": 1800,
+   "arm": 2,
+   "model": "EleutherAI/pythia-160m-seed1",
+   "revision": "step143000",
+   "path": "/kaggle/working/runs-adjacent/step143000/arm2__160m__seed-1.npz"
+  },
+  {
+   "recipe": "pythia-160m",
+   "size": "160m",
+   "seed": 2,
+   "step": 143000,
+   "batch": 1,
+   "gain": -1.174690263815967,
+   "n_items": 1800,
+   "arm": 2,
+   "model": "EleutherAI/pythia-160m-seed2",
+   "revision": "step143000",
+   "path": "/kaggle/working/runs-adjacent/step143000/arm2__160m__seed-2.npz"
+  },
+  {
+   "recipe": "pythia-160m",
+   "size": "160m",
+   "seed": 3,
+   "step": 143000,
+   "batch": 2,
+   "gain": -1.1665786608466544,
+   "n_items": 1800,
+   "arm": 2,
+   "model": "EleutherAI/pythia-160m-seed3",
+   "revision": "step143000",
+   "path": "/kaggle/working/runs-adjacent/step143000/arm2__160m__seed-3.npz"
+  },
+  {
+   "recipe": "pythia-160m",
+   "size": "160m",
+   "seed": 4,
+   "step": 143000,
+   "batch": 3,
+   "gain": -1.1710451368541839,
+   "n_items": 1800,
+   "arm": 2,
+   "model": "EleutherAI/pythia-160m-seed4",
+   "revision": "step143000",
+   "path": "/kaggle/working/runs-adjacent/step143000/arm2__160m__seed-4.npz"
+  },
+  {
+   "recipe": "pythia-160m",
+   "size": "160m",
+   "seed": 5,
+   "step": 143000,
+   "batch": 4,
+   "gain": -1.1546924336656006,
+   "n_items": 1800,
+   "arm": 2,
+   "model": "EleutherAI/pythia-160m-seed5",
+   "revision": "step143000",
+   "path": "/kaggle/working/runs-adjacent/step143000/arm2__160m__seed-5.npz"
+  },
+  {
+   "recipe": "pythia-160m",
+   "size": "160m",
+   "seed": 6,
+   "step": 143000,
+   "batch": 5,
+   "gain": -1.199325405079116,
+   "n_items": 1800,
+   "arm": 2,
+   "model": "EleutherAI/pythia-160m-seed6",
+   "revision": "step143000",
+   "path": "/kaggle/working/runs-adjacent/step143000/arm2__160m__seed-6.npz"
+  },
+  {
+   "recipe": "pythia-160m",
+   "size": "160m",
+   "seed": 7,
+   "step": 143000,
+   "batch": 6,
+   "gain": -1.1761269421390055,
+   "n_items": 1800,
+   "arm": 2,
+   "model": "EleutherAI/pythia-160m-seed7",
+   "revision": "step143000",
+   "path": "/kaggle/working/runs-adjacent/step143000/arm2__160m__seed-7.npz"
+  },
+  {
+   "recipe": "pythia-160m",
+   "size": "160m",
+   "seed": 8,
+   "step": 143000,
+   "batch": 7,
+   "gain": -1.2036813325251565,
+   "n_items": 1800,
+   "arm": 2,
+   "model": "EleutherAI/pythia-160m-seed8",
+   "revision": "step143000",
+   "path": "/kaggle/working/runs-adjacent/step143000/arm2__160m__seed-8.npz"
+  },
+  {
+   "recipe": "pythia-160m",
+   "size": "160m",
+   "seed": 9,
+   "step": 143000,
+   "batch": 8,
+   "gain": -1.199324341119613,
+   "n_items": 1800,
+   "arm": 2,
+   "model": "EleutherAI/pythia-160m-seed9",
+   "revision": "step143000",
+   "path": "/kaggle/working/runs-adjacent/step143000/arm2__160m__seed-9.npz"
+  }
+ ],
+ "n_items": 1800,
+ "tasks": [
+  "arc_challenge",
+  "arc_easy",
+  "boolq",
+  "csqa",
+  "hellaswag",
+  "openbookqa",
+  "piqa",
+  "socialiqa",
+  "winogrande"
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "design": "R6 precision run for the accuracy null calibrated to the observed 1.078, at 8,000 replicates.\n\nDesign fixed before running (2026-09-16, written 00:50 EDT). The first pass at 2,000 replicates put the\nMonte Carlo standard error of a tail share near 0.003 for the accuracy count and near 0.008 for the band\ncount. Both of those tails now carry a sentence in the paper, and the accuracy one sits close enough to\nfive percent that its own noise could move the reading. This run repeats the identical calibration on\none cell at 8,000 replicates with a fresh seed, which cuts the Monte Carlo standard error by half. The\ngenerator, the deletion sweep, the clustering and the conditioning are unchanged from the first pass, so\nthe two runs can be compared directly and pooled if they agree. Seed 20260942 keeps the draws distinct.\n",
+ "seed": 20260942,
+ "reps": 8000,
+ "cells": {
+  "accuracy_like": {
+   "name": "accuracy_like",
+   "truth": 1.0779610382569493,
+   "n_rep": 8000,
+   "share_full_includes_one": 0.89575,
+   "recipe_flips_mean": 0.4072006698297516,
+   "recipe_flips_median": 0.0,
+   "recipe_flips_p95": 3.0,
+   "recipe_flips_max": 16.0,
+   "share_recipe_flips_at_least_5": 0.03237510466089869,
+   "share_recipe_flips_at_least_1": 0.12754674853474743,
+   "size_flips_mean": 0.1569913480323751,
+   "share_size_flips_at_least_1": 0.12824448785933576,
+   "seconds": 6962.494967699051
+  }
+ },
+ "wall_seconds": 6977.691072702408
+}

@@ -1,0 +1,9 @@
+{
+  "template_only": true,
+  "seed": 20260914,
+  "inputs": [
+    "../inputs/scores.json",
+    "../inputs/scores.npz",
+    "../inputs/models.json"
+  ]
+}

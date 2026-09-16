@@ -1,0 +1,30 @@
+{
+  "dataset": {
+    "benchmarks": 10,
+    "configs": 125,
+    "phenotype": "margin"
+  },
+  "inputs": [
+    {
+      "bytes": 2111386,
+      "exists": true,
+      "path": "/kaggle/working/datasets/margin/scores.json",
+      "sha256": "77a63f38e47c6ba7923dc5808be7e2ecc0aeece8b53dea80a51d7cedc2edcf9e"
+    },
+    {
+      "bytes": 35665322,
+      "exists": true,
+      "path": "/kaggle/working/datasets/margin/scores.npz",
+      "sha256": "c5280ff55e02a0d14a9b4d93f19773fa60566ab79259f9892ff9268155a6f54d"
+    }
+  ],
+  "missing": [],
+  "platform": "Linux-6.12.90+-x86_64-with-glibc2.35",
+  "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+  "versions": {
+    "numpy": "2.0.2",
+    "scipy": "1.16.3",
+    "torch": "2.10.0+cpu",
+    "transformers": "5.0.0"
+  }
+}

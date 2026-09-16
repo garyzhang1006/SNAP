@@ -1,0 +1,39 @@
+[{"stream_name":"stdout","time":1.423172275,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":11.406919277,"data":"[margin_like/runs100/gap0.0] {\"independence\": 0.1222, \"plug_in\": 0.0578, \"oracle\": 0.0551}\n"}
+,{"stream_name":"stdout","time":11.407410792,"data":"[margin_like/runs100/gap0.25] {\"independence\": 0.5764, \"plug_in\": 0.4241, \"oracle\": 0.4211}\n"}
+,{"stream_name":"stdout","time":11.408431881,"data":"[margin_like/runs140/gap0.0] {\"independence\": 0.1116, \"plug_in\": 0.0496, \"oracle\": 0.0473}\n"}
+,{"stream_name":"stdout","time":11.40844756,"data":"[margin_like/runs140/gap0.25] {\"independence\": 0.7059, \"plug_in\": 0.5613, \"oracle\": 0.5623}\n"}
+,{"stream_name":"stdout","time":11.408782257,"data":"[margin_like/runs180/gap0.0] {\"independence\": 0.1177, \"plug_in\": 0.0546, \"oracle\": 0.0537}\n"}
+,{"stream_name":"stdout","time":11.409399553,"data":"[margin_like/runs180/gap0.25] {\"independence\": 0.7845, \"plug_in\": 0.6556, \"oracle\": 0.6554}\n"}
+,{"stream_name":"stdout","time":11.409862664,"data":"[margin_like/runs220/gap0.0] {\"independence\": 0.1164, \"plug_in\": 0.0531, \"oracle\": 0.0504}\n"}
+,{"stream_name":"stdout","time":11.410464739,"data":"[margin_like/runs220/gap0.25] {\"independence\": 0.8522, \"plug_in\": 0.7434, \"oracle\": 0.7434}\n"}
+,{"stream_name":"stdout","time":11.410895115,"data":"[margin_like/runs252/gap0.0] {\"independence\": 0.1141, \"plug_in\": 0.051, \"oracle\": 0.0478}\n"}
+,{"stream_name":"stdout","time":11.411391865,"data":"[margin_like/runs252/gap0.25] {\"independence\": 0.8869, \"plug_in\": 0.8007, \"oracle\": 0.8011}\n"}
+,{"stream_name":"stdout","time":11.411851725,"data":"[margin_like/runs300/gap0.0] {\"independence\": 0.1168, \"plug_in\": 0.0535, \"oracle\": 0.0539}\n"}
+,{"stream_name":"stdout","time":11.412342824,"data":"[margin_like/runs300/gap0.25] {\"independence\": 0.9297, \"plug_in\": 0.8645, \"oracle\": 0.8638}\n"}
+,{"stream_name":"stdout","time":11.412741389,"data":"[margin_like/runs360/gap0.0] {\"independence\": 0.1158, \"plug_in\": 0.0495, \"oracle\": 0.0485}\n"}
+,{"stream_name":"stdout","time":11.41314357,"data":"[margin_like/runs360/gap0.25] {\"independence\": 0.9609, \"plug_in\": 0.918, \"oracle\": 0.9159}\n"}
+,{"stream_name":"stdout","time":11.413695944,"data":"[margin_like/need] swept {\"gap0.25\": 252} closed {\"gap0.25\": 252}\n"}
+,{"stream_name":"stdout","time":20.483807656,"data":"[accuracy_like/runs100/gap0.0] {\"independence\": 0.0635, \"plug_in\": 0.0484, \"oracle\": 0.0449}\n"}
+,{"stream_name":"stdout","time":20.484183259,"data":"[accuracy_like/runs100/gap0.25] {\"independence\": 0.4768, \"plug_in\": 0.4288, \"oracle\": 0.424}\n"}
+,{"stream_name":"stdout","time":20.484635782,"data":"[accuracy_like/runs140/gap0.0] {\"independence\": 0.0705, \"plug_in\": 0.056, \"oracle\": 0.0525}\n"}
+,{"stream_name":"stdout","time":20.485069119,"data":"[accuracy_like/runs140/gap0.25] {\"independence\": 0.6042, \"plug_in\": 0.5497, \"oracle\": 0.5536}\n"}
+,{"stream_name":"stdout","time":20.485534075,"data":"[accuracy_like/runs180/gap0.0] {\"independence\": 0.0641, \"plug_in\": 0.0519, \"oracle\": 0.046}\n"}
+,{"stream_name":"stdout","time":20.485958969,"data":"[accuracy_like/runs180/gap0.25] {\"independence\": 0.7124, \"plug_in\": 0.6619, \"oracle\": 0.6617}\n"}
+,{"stream_name":"stdout","time":20.48644958,"data":"[accuracy_like/runs220/gap0.0] {\"independence\": 0.0683, \"plug_in\": 0.0544, \"oracle\": 0.049}\n"}
+,{"stream_name":"stdout","time":20.48692799,"data":"[accuracy_like/runs220/gap0.25] {\"independence\": 0.7917, \"plug_in\": 0.7444, \"oracle\": 0.7465}\n"}
+,{"stream_name":"stdout","time":20.487373169,"data":"[accuracy_like/runs252/gap0.0] {\"independence\": 0.0717, \"plug_in\": 0.0579, \"oracle\": 0.0537}\n"}
+,{"stream_name":"stdout","time":20.487810899,"data":"[accuracy_like/runs252/gap0.25] {\"independence\": 0.8354, \"plug_in\": 0.7925, \"oracle\": 0.7995}\n"}
+,{"stream_name":"stdout","time":20.488270694,"data":"[accuracy_like/runs300/gap0.0] {\"independence\": 0.0671, \"plug_in\": 0.0526, \"oracle\": 0.0495}\n"}
+,{"stream_name":"stdout","time":20.48870908,"data":"[accuracy_like/runs300/gap0.25] {\"independence\": 0.892, \"plug_in\": 0.86, \"oracle\": 0.8618}\n"}
+,{"stream_name":"stdout","time":20.489149036,"data":"[accuracy_like/runs360/gap0.0] {\"independence\": 0.0696, \"plug_in\": 0.0534, \"oracle\": 0.0504}\n"}
+,{"stream_name":"stdout","time":20.48958356,"data":"[accuracy_like/runs360/gap0.25] {\"independence\": 0.9355, \"plug_in\": 0.9159, \"oracle\": 0.9181}\n"}
+,{"stream_name":"stdout","time":20.490176618,"data":"[accuracy_like/need] swept {\"gap0.25\": 300} closed {\"gap0.25\": 252}\n"}
+,{"stream_name":"stdout","time":20.491287177,"data":"[done] 19s\n"}
+,{"stream_name":"stderr","time":23.394534451,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":23.394587586,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":23.845382457,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":23.845411038,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":25.863507643,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":27.57195361,"data":"[NbConvertApp] Writing 305996 bytes to __results__.html\n"}
+]

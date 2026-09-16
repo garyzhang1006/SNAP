@@ -1,0 +1,14 @@
+[{"stream_name":"stdout","time":0.713291812,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":547.085794535,"data":"[dclm-baseline-50p-dolma1.7-50p] 15 runs reduced at the previous shared step in 535s; gaps {'150M': 1250, '1B': 1869, '300M': 1250, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":1055.395382702,"data":"[dclm-baseline-75p-dolma1.7-25p] 12 runs reduced at the previous shared step in 508s; gaps {'150M': 1250, '1B': 1869, '300M': 1250, '530M': 1250, '750M': None}\n"}
+,{"stream_name":"stdout","time":1384.809894392,"data":"[dclm-baseline-top-10p] 15 runs reduced at the previous shared step in 329s; gaps {'150M': 657, '1B': 1869, '300M': 787, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":1707.209511729,"data":"[dclm-baseline-top-20p] 15 runs reduced at the previous shared step in 322s; gaps {'150M': 657, '1B': 1869, '300M': 787, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":2020.443708231,"data":"[dclm-baseline-top-fw-10p] 15 runs reduced at the previous shared step in 312s; gaps {'150M': 657, '1B': 1869, '300M': 787, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":2021.271458172,"data":"[done] 5 of 5 recipes in 2021s\n"}
+,{"stream_name":"stderr","time":2023.82717066,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2023.82738989,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2024.159479814,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2024.159514214,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2024.971349696,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2026.419522697,"data":"[NbConvertApp] Writing 300107 bytes to __results__.html\n"}
+]

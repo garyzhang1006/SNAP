@@ -1,0 +1,220 @@
+{
+ "design": "R6 how many runs per configuration the interval needs before it can be trusted.\n\nDesign fixed before running (2026-09-16, written 13:15 EDT). DataDecide ships three runs per\nconfiguration, and every coverage number in this paper inherits that three. The cross-half covariance\ndivides by the number of runs minus one, so two runs leave a single degree of freedom per configuration\nand the estimator's variance has to climb. A practitioner who can afford only two runs, or who can\nafford six, gets no guidance from anything we have measured, and snap-r9-runs answers a different\nquestion, which is how many runs a decision rule needs rather than whether the interval covers.\nThis run sweeps the runs per configuration over 2, 3, 4, 6 and 10 on the margin-like population at 4,000\nreplicates each, holding everything else at the shipped design. It scores the wild bootstrap-t and the\ncluster-robust t under both clusterings on every replicate and records the median width beside the\ncoverage, so a reader can see what a fourth run buys and what a second run costs. Seed 20260957 with a\ncell offset of five hundred keeps the draws distinct.\n",
+ "seed": 20260957,
+ "reps": 4000,
+ "cells": {
+  "runs_02": {
+   "name": "runs_02",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "runs": 2
+   },
+   "wild_recipe": {
+    "coverage": 0.94225,
+    "mc_se": 0.003688324060464318,
+    "lower_miss": 0.015,
+    "upper_miss": 0.04275,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.343029898246454
+   },
+   "wild_size": {
+    "coverage": 0.9145,
+    "mc_se": 0.0044212484096689255,
+    "lower_miss": 0.015,
+    "upper_miss": 0.02875,
+    "undefined_or_unbounded": 0.04175,
+    "median_width": 0.502641129063817
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.942,
+    "mc_se": 0.0036958084365940843,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.0425,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3415089105037846
+   },
+   "cluster_t_size": {
+    "coverage": 0.949,
+    "mc_se": 0.003478469491026191,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.03325,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.42912675626257324
+   }
+  },
+  "runs_03": {
+   "name": "runs_03",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "runs": 3
+   },
+   "wild_recipe": {
+    "coverage": 0.95125,
+    "mc_se": 0.003404902256306338,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.031,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24233397678260826
+   },
+   "wild_size": {
+    "coverage": 0.952,
+    "mc_se": 0.0033799408278844187,
+    "lower_miss": 0.016,
+    "upper_miss": 0.02425,
+    "undefined_or_unbounded": 0.00775,
+    "median_width": 0.35327268094401965
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9525,
+    "mc_se": 0.0033631737243264726,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.03,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24142005718406834
+   },
+   "cluster_t_size": {
+    "coverage": 0.95025,
+    "mc_se": 0.003437838619685338,
+    "lower_miss": 0.02,
+    "upper_miss": 0.02975,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3004593977534771
+   }
+  },
+  "runs_04": {
+   "name": "runs_04",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "runs": 4
+   },
+   "wild_recipe": {
+    "coverage": 0.94675,
+    "mc_se": 0.0035501562465615516,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.03475,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.19674358551812898
+   },
+   "wild_size": {
+    "coverage": 0.9565,
+    "mc_se": 0.0032252034819527276,
+    "lower_miss": 0.01675,
+    "upper_miss": 0.025,
+    "undefined_or_unbounded": 0.00175,
+    "median_width": 0.2962409933716261
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94525,
+    "mc_se": 0.0035969583504677936,
+    "lower_miss": 0.0195,
+    "upper_miss": 0.03525,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.19671393731989018
+   },
+   "cluster_t_size": {
+    "coverage": 0.9495,
+    "mc_se": 0.003462287899640929,
+    "lower_miss": 0.01825,
+    "upper_miss": 0.03225,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24908084014596132
+   }
+  },
+  "runs_06": {
+   "name": "runs_06",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "runs": 6
+   },
+   "wild_recipe": {
+    "coverage": 0.94925,
+    "mc_se": 0.003470390377896987,
+    "lower_miss": 0.01925,
+    "upper_miss": 0.0315,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.15244370361965842
+   },
+   "wild_size": {
+    "coverage": 0.96475,
+    "mc_se": 0.002915794810167547,
+    "lower_miss": 0.0145,
+    "upper_miss": 0.02075,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.22590551073243503
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9485,
+    "mc_se": 0.0034945582696529753,
+    "lower_miss": 0.019,
+    "upper_miss": 0.0325,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.15250922468488604
+   },
+   "cluster_t_size": {
+    "coverage": 0.94875,
+    "mc_se": 0.0034865254014562986,
+    "lower_miss": 0.02075,
+    "upper_miss": 0.0305,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.19111910296979429
+   }
+  },
+  "runs_10": {
+   "name": "runs_10",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "runs": 10
+   },
+   "wild_recipe": {
+    "coverage": 0.9515,
+    "mc_se": 0.0033966067626382654,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.02975,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.1142349324679437
+   },
+   "wild_size": {
+    "coverage": 0.965,
+    "mc_se": 0.0029058131392090594,
+    "lower_miss": 0.017,
+    "upper_miss": 0.018,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.17135867570712982
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.95175,
+    "mc_se": 0.0033882863478460618,
+    "lower_miss": 0.01925,
+    "upper_miss": 0.029,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.11406735660306289
+   },
+   "cluster_t_size": {
+    "coverage": 0.954,
+    "mc_se": 0.003312249990565327,
+    "lower_miss": 0.02375,
+    "upper_miss": 0.02225,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.14566620553858822
+   }
+  }
+ },
+ "shipped_check": {
+  "runs_02": 0.0,
+  "runs_03": 0.0,
+  "runs_04": 0.0,
+  "runs_06": 2.220446049250313e-16,
+  "runs_10": 0.0
+ },
+ "wall_seconds": 1248.2785949707031
+}

@@ -1,0 +1,487 @@
+\section{Design details}
+\label{app:design}
+
+\subsection{Common step rule}
+For each of the 125 configurations, we selected the largest released checkpoint step available for all three runs. The analysis records that step in each reduced filename, although the supplement described in the source manuscript omits the fetch stage's complete configuration table. In 92 configurations, the three runs have different maximum steps. DataDecide stops the two auxiliary runs below 1B at 25 percent of the 1B compute budget and trains three complete runs only at 1B (Magnusson et al., 2025). The per-instance release contains auxiliary runs from 150M upward, so the five replicated sizes used here begin at 150M rather than 4M. This availability rule explains the difference from DataDecide's fourteen-size ladder.
+
+In 26 configurations, all at 530M and 750M, the largest maximum step exceeds the smallest by more than a factor of 1.5. The 18 and 89 percent truncation figures reported for those sizes describe aggregates over 25 configurations per band, rather than individual configurations. We assess the resulting sensitivity through the auxiliary-run contrast and the estimates by size in Table~\ref{tab:original7}.
+
+\subsection{Reliability phenotypes}
+The item halves contain 18,840 and 18,842 items across the battery. The fetch stage creates a balanced split within each trait and records the split for reuse across runs. The planning document proposed estimating reliability on eight screening recipes before inspecting seventeen estimation recipes. We didn't implement that separation, and Table~\ref{tab:original3} instead uses all 25 recipes. The reliability checks and the decisions based on them therefore remain exploratory.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Cross-half reliability of seed deviations across all 25 recipes. Reliability equals $\widehat\sigma_E^2/(\widehat\sigma_E^2+\widehat\sigma_{\mathrm{noise}}^2)$ and can be negative when the estimated seed component is negative.}
+\label{tab:original3}
+\begin{tabular}{llrr}\hline
+Trait & Format & Accuracy & Margin\\\hline
+ARC-Easy & MC & 0.602 & 0.927\\
+ARC-Challenge & MC & 0.203 & 0.584\\
+BoolQ & yes/no & 0.970 & 0.993\\
+CommonsenseQA & MC & 0.615 & 0.930\\
+HellaSwag & cloze & 0.450 & 0.757\\
+MMLU & MC & 0.022 & 0.860\\
+OpenBookQA & MC & 0.091 & 0.392\\
+PIQA & cloze & $-0.028$ & 0.273\\
+Social IQa & MC & 0.416 & 0.888\\
+WinoGrande & cloze & $-0.102$ & $-0.086$\\
+Battery mean & & 0.324 & 0.652\\\hline
+\end{tabular}
+\end{table}
+
+Two accuracy traits have negative reliability estimates, and two others fall below 0.10. The pipeline summary reports an information-ratio median of 1.61, a minimum of 1.571, and a maximum of 1.732, without releasing the individual ratios. The battery-level $\rho_g$ estimate is 0.73, compared with the planning value of 0.49 at $\Lambda^2=1.819$. The reported matrices contain the mean variance used to reconcile those quantities.
+
+\subsection{Power calculations}
+Table~\ref{tab:original4} reproduces the planning arithmetic for 85 configurations and seventeen recipe clusters. The completed analysis instead uses 125 configurations and 25 clusters. On the $\Lambda$ scale, the reported linearised standard errors are 0.045 for margins and 0.038 for accuracy, compared with planning values of 0.0935 and 0.1232. The corresponding variance-ratio standard errors, 0.112 and 0.081, belong to the $\Lambda^2$ scale and aren't comparable with the planning column.
+
+The realised standard errors are smaller by factors of 2.1 and 3.3. Increasing the configuration count alone would predict a factor of approximately 1.21 under otherwise fixed assumptions. Interpolation of the N1 simulation grid gives dispersion at the planned $\bar r_E=0.0911$ that is 1.04 times the dispersion at the observed margin value of 0.061, and 1.13 times the dispersion at the accuracy value of 0.0181. Differences in the design effect and reliability also affect this comparison, but we haven't separated their contributions. We retain the original planning calculations rather than calculating power from the estimated effect after observing the results.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Planning calculations at $\Lambda^2=1.819$ and $N=85$ configurations. The calculations use $t(16)$, a design effect of $1+4\rho_{\mathrm{ICC}}=1.60$ at $\rho_{\mathrm{ICC}}=0.15$, and $\rho_g=0.61$ for margins or $0.49$ for accuracy.}
+\label{tab:original4}
+\begin{tabular}{llrrr}\hline
+Phenotype & Aggregation & Planned SE$(\Lambda)$ & MDE$(\Lambda)$ & Power\\\hline
+Margin & Cross-half & 0.0935 & 1.300 & 0.89\\
+Margin & Battery mean & 0.0845 & n/a & 0.94\\
+Accuracy & Cross-half & 0.1232 & 1.412 & 0.68\\
+Accuracy & Battery mean & 0.1076 & n/a & 0.79\\
+Accuracy & Cross-half, $\bar r_E=0.115$ & 0.1232 & n/a & 0.82\\\hline
+\end{tabular}
+\end{table}
+
+\subsection{Decision checks and deviations}
+The planning document lists nine checks with proposed responses. Its claimed date is September 5, 2026, but we haven't established that date through an independent timestamp. We consequently describe the document as a reported plan and treat its checks as exploratory assessments.
+
+A batch offset can contribute to the same cross-trait products as run-level variation. The auxiliary-run contrast removes the shared default-versus-auxiliary contrast from that estimate, while the estimate using all three runs remains exposed. Check G8 passes on point estimates, although the intervals cross the decision boundaries. We haven't corrected the full-set estimate for this exposure.
+
+Under the default gain simulator, $\sigma_g=0.05$ produces approximately 61 percent of the observed margin excess. An empirically matched simulator produces approximately eight percent at the same gain scale and six percent at the estimated scale of 0.042. These results describe sensitivity to simulator assumptions and aren't causal bounds on the contribution of gain. The accuracy result offers no independent protection against this mechanism because multiplying a margin by a positive factor leaves its sign unchanged. Partialling the gain covariate increases $\Lambda_M$, and adding gain to the rank-one predictor worsens held-out point error relative to the scalar predictor alone. These observations don't identify a unique causal explanation.
+
+\begin{table}[htbp]
+\centering\scriptsize
+\caption{Planning checks, proposed responses, and observed outcomes in the source analysis. Four checks fail, while the lower threshold in G2 can't distinguish admissible outcomes.}
+\label{tab:original5}
+\begin{tabular}{p{0.04\linewidth}p{0.29\linewidth}p{0.29\linewidth}p{0.29\linewidth}}\hline
+Check & Condition and timing & Proposed response & Reported outcome\\\hline
+G0 & Outputs parse at the common step, day 1 & Drop unavailable configurations, report reduced $N$ below 70 estimation configurations & Pass, 125 of 125 configurations\\
+G1 & Accuracy power at $\bar r_E=0.115$ at least 0.80, day 2 & Make accuracy secondary and report margin in the abstract & Pass, power 1.00 at $\Lambda_{\rm alt}=1.427$, $\rho_g=0.73$\\
+G2 & Median information ratio at least 1.4, day 2 & Remove comparative information claim & Ratio 1.61, threshold below the ratio's floor\\
+G3 & Symmetric cross-half covariance and positive diagonal, day 3 & Split by source document, then report leakage if asymmetry persists & Fail, one negative margin diagonal and two accuracy diagonals\\
+G4 & $|\widehat\Lambda-1|\leq0.02$ under N1 and N2, day 4 & Subtract calibrated offset and report both estimates & Pass, offset at most 0.002\\
+G5 & N5 accounts for less than 50 percent of excess, day 5 & Lead with sharpness and report accuracy alone & Fail, default simulator share 0.61\\
+G6 & PolyPythias transport error within 20 percent, day 6 & Report transport failure and its ratio & Fail upward under the excess-ratio reading\\
+G7 & Held-out loss available in metadata, day 1 & Use leave-one-trait-out competence covariate & Fail, no required field\\
+G8 & Auxiliary-run $\Lambda\geq1+0.5(\Lambda_{\rm full}-1)$, day 5 & Lead with auxiliary-run estimate if condition fails & Pass on both point estimates, margin 1.256 versus 1.122, intervals cross their boundaries\\\hline
+\end{tabular}
+\end{table}
+
+The source analysis didn't execute the proposed responses for G3 and G5. G3 combines asymmetry with negative variance estimates, although a negative moment estimate doesn't establish leakage. The available records also lack a usable source-document identifier for the proposed alternative split. We retain the margin analysis after the G5 failure with the simulator sensitivity disclosed, which departs from the proposed response. The source gate table contains seven rows, with transport and the auxiliary-run contrast supplying G6 and G8 separately.
+
+\subsection{Reported planning predictions}
+The planning document specifies eleven predictions and their rejection conditions. Table~\ref{tab:original6} records the outcomes without treating the document as verified preregistration.
+\begin{enumerate}
+\item Both $\Lambda_M>1.349$ and $\Lambda_A>1.40$, with lower confidence limits above one, constitute the first planned prediction.
+\item The accuracy estimate retains at least 80 percent of the margin estimate, expressed as $\Lambda_A\geq0.8\Lambda_M$.
+\item Accuracy retains more than 70 percent of its excess after gain adjustment, and N5 generates less than 30 percent of the margin excess.
+\item At measured token-budget ratios, N6 generates less than 50 percent of the full-set excess.
+\item The independence calculation underpredicts aggregate seed standard deviation by $\Lambda$ in at least four of five size bands.
+\item DataDecide's $R_E$ predicts PolyPythias aggregate seed standard deviation within 20 percent, while independence misses by more than 20 percent.
+\item At least one seed mechanism in the external panel gives $\Lambda>1$ and a bootstrap lower limit above one.
+\item At least eight traits have an information ratio between 1.4 and 3.0 in the planned assessment.
+\item The cross-format diagnostic exceeds 1.2, with its lower confidence limit also exceeding one.
+\item The Frobenius distance $\|R_E-R_P\|_F$ exceeds 0.5 in the comparison between the two correlation matrices.
+\item More than ten percent of same-size configuration pairs have $P_{\rm flip}>0.05$ at the measured aggregate noise scale.
+\end{enumerate}
+
+\subsection{Excluded populations}
+MultiBERTs provides 25 seeds for one configuration (Sellam et al., 2022), whereas the 100 BERT runs of McCoy et al. (2020) vary fine-tuning from one pretrained checkpoint. Pythia's size ladder lacks seed replicates (Biderman et al., 2023), and the OLMo-2 checkpoints considered here lack replicates at matched steps (Team OLMo et al., 2025). The signal-and-noise panel lacks per-item outputs, which limits its use to the external check. These restrictions concern the replication required for this estimator.
+
+\subsection{Relation to prior measurement work}
+Reimers and Gurevych (2017) compare score distributions across seeds within datasets, while Madaan et al. (2024) report benchmark-level seed variance. Hagmann et al. (2023) model nondeterminism with scalar variance components and their interactions with data properties. Our target adds covariance between benchmark-specific run deviations to that measurement problem.
+
+Jordan (2024) attributes much test-set variance to per-example variation across seeds, and Appendix C compares run accuracy across five ImageNet evaluation sets with $R^2$ at most 0.14. Those comparisons concern shifted versions of one benchmark. Bui et al. (2025) vary fine-tuning seeds, and Hochlehnert et al. (2025) vary decoding seeds, which address different variance components from the pretraining-run variation examined here. Dodge et al. (2020, Section 4.3) ask whether a seed performs well across datasets and compare four GLUE task rankings without estimating a covariance matrix.
+
+Zhou et al. (2020, Figure 3) report a $15\times15$ Spearman matrix across datasets. Their standard block has correlations at least 0.95, while standard-to-analysis entries include 0.97 for STR-L and 0.30 for STR-O. These correlations compare checkpoints within runs and average across seeds, so they combine changes in checkpoint performance rather than isolating within-configuration seed deviations. Dufour et al. (2026) separate training and sampling variation in FID, while Miller (2024) estimates item-level uncertainty for one model. Zhao et al. (2026) report the three-seed standard deviation of a twelve-task average and combine twelve per-task Welch tests in Appendix E.4 without estimating cross-task covariance.
+
+Haupt et al. (2026) use the PolyPythias 410M panel to estimate per-item variation and prioritize items by welfare weight and improvability. Their per-item variance estimates and approximate item-independence assumption address a different quantity from the off-diagonal covariance of benchmark run effects. This distinction concerns the estimand, even where the underlying model panel overlaps.
+
+Cheverud (2001), Nyholt (2004), and Li and Ji (2005) estimate effective numbers of independent tests from observed correlation matrices. Cheverud uses eigenvalue variance, Nyholt uses spectral decomposition of linkage disequilibrium, and Li and Ji revise the effective-count approximation. Their application adjusts significance thresholds, whereas ours converts an estimated noise covariance into an aggregate standard deviation and an effective benchmark count. Searle et al. (1992) explain negative variance-component estimates from moment methods when the true component lies near zero.
+
+Schaeffer et al. (2023) show how discontinuous metrics can change the appearance of performance trends. Accuracy thresholds our margin at zero, so we report both scales while retaining their separate noise properties. Low estimated seed signal relative to item noise provides a measurement limitation for accuracy in this study. Dehghani et al. (2021) show that benchmark selection can reorder methods, which concerns the composition sensitivity examined here.
+
+Dem\v{s}ar (2006) and Dror et al. (2017) develop inference across datasets, while Card et al. (2020) examine statistical power and Gorman and Bedrick (2019) examine dependence on a single split. Burnell et al. (2023) advocate per-instance reporting alongside aggregate scores. Henderson et al. (2018) and Agarwal et al. (2021) address seed sensitivity and uncertainty in reinforcement learning. Agarwal et al. resample runs within tasks, with an additional task-resampling variant in Appendix A.5, while our application requires preservation of paired run effects across benchmarks.
+
+Hardy et al. (2026) apply generalizability theory to 4,000 released models, which places replication across models rather than training seeds. Kohli (2026) estimates roughly two independent votes among nine frontier judges, and Messing (2026) reports naive standard errors that are 40 to 60 percent too small after accounting for judge and prompt variation. These examples involve related dependence calculations on different measurement axes.
+
+The cross-half identity builds on the repeated-measurement approach to attenuation described by Spearman (1904). Under independent errors between halves, paired measurements remove the item-noise contribution from covariance estimates, including diagonal entries. Cronbach (1951) relates split-half reliability to random halves of an item population, which motivates the reliability table and the 50 re-splits in N3. Those re-splits change the margin estimate by a reported standard deviation of 0.002.
+
+The Brown (1910) and Spearman (1910) test-length formula contains $1+(k-1)\rho$, the same algebraic form used for $\Lambda^2$. Its correlation concerns parallel items, whereas ours concerns benchmark run effects. Substituting the reliability means in Table~\ref{tab:original3} at $k=10$ would produce 6.87 and 3.91, which aren't estimates of our variance inflation.
+
+Campbell and Fiske (1959) compare traits and measurement methods in a crossed matrix. The within-format and cross-format summaries here resemble heterotrait blocks, but no benchmark appears in multiple formats. This design therefore can't separate benchmark content from scoring format or establish format as the cause of the association. Brennan (2001) provides the variance-component framework for these distinctions.
+
+Hofmann et al. (2025) fit benchmark-specific item-response models to an overlapping evaluation panel, with seven authors shared with Heineman et al. (2025). Kipnis et al. (2024) estimate a factor across six benchmarks that correlates 0.94 with total score. Those ability structures describe performance differences rather than the within-configuration noise covariance estimated here. Hedges et al. (2010) estimate uncertainty for dependent effect sizes without requiring their complete covariance matrix, while our application estimates the covariance needed for an effective-count point estimate.
+
+\section{Supplementary results}
+\label{app:supplementary}
+
+\paragraph{Covariance diagnostics}
+The largest discrepancy between opposite cross-half covariance entries is 2.44 bootstrap standard errors. This maximum across multiple pairs doesn't by itself establish leakage. The available item records provide 57 MMLU subject groups but only one group for each other trait, so they don't support the proposed source-document split.
+
+Among the eight accuracy traits with positive estimated seed variance, estimated correlations range from $-0.216$ to 1.296, with the maximum occurring for ARC-Easy and MMLU. The symmetrised matrix has a negative eigenvalue of $-0.55$ and a leading eigenvalue of 3.85. These estimates don't form a valid correlation matrix, a possible finite-sample outcome of noise-corrected moment estimation. We retain the unprojected matrix because a positive-semidefinite projection would change the reported values without an established correction target. The primary ratio uses cross-half sums directly and doesn't require this correlation-matrix transformation. The nine-trait margin matrix has correlations from $-0.157$ to 0.802 and nine positive eigenvalues.
+
+\begin{table}[htbp]
+\centering\scriptsize
+\caption{Exploratory scorecard for the eleven reported planning predictions. Several outcomes depend on interpretations absent from the planning document, and the table records those limitations.}
+\label{tab:original6}
+\begin{tabular}{rp{0.33\linewidth}p{0.26\linewidth}p{0.29\linewidth}}\hline
+No. & Criterion & Measured result & Assessment\\\hline
+1 & Margin above 1.349, accuracy above 1.40, lower limits above 1 & 1.244 and 1.078 & Neither point threshold reached\\
+2 & Accuracy-to-margin ratio at least 0.8 & 0.867 & Point criterion met\\
+3 & Retained excess above 0.70 and N5 share below 0.30 & 1.23 and 0.61 & Default N5 criterion fails\\
+4 & N6 share below 0.50 & 0.015 & Point criterion met\\
+5 & Underprediction in at least four bands & Intervals exclude 1 in one band & Fails interval reading, meets point reading\\
+6 & Transport within 20 percent, independence error above 20 percent & $+66\%$, $-28.9\%$, three units & Excess-scale criterion fails, raw scale differs\\
+7 & External estimate and lower limit above 1 & 1.705 for likelihood & Required interval unavailable\\
+8 & At least eight ratios in $[1.4,3.0]$ & Ten, range 1.571 to 1.732 & Lower threshold can't discriminate\\
+9 & Cross-format diagnostic above 1.2, lower limit above 1 & 0.921 and 0.965 & Neither criterion met\\
+10 & Frobenius distance above 0.5 & 5.59 and 6.49 & Criterion met with fill convention\\
+11 & More than ten percent of pairs with predicted flip probability above 0.05 & 455 of 1,500, or 30.3 percent & Observed-gap calculation meets criterion\\\hline
+\end{tabular}
+\end{table}
+
+The original scorecard counted five failures, four passes, and two predictions that couldn't be tested as written. Predictions 9 and 11 came from a separate analysis of the per-run reductions, rather than the original pipeline. Prediction 7 lacks its required lower confidence limit, and prediction 6 depends on a post hoc choice to compare excess inflation. We retain the numerical results while distinguishing these qualifications from tests of verified prospective hypotheses.
+
+\paragraph{Variation across model sizes}
+Each size band contains 25 configurations, one per recipe. Its clusters are therefore singletons, without within-band replication of sizes inside recipes. Only the 530M interval excludes one in either phenotype, and the intervals don't support a ranking of model sizes. All five margin point estimates and four accuracy point estimates exceed one, so prediction 5 passes a point-estimate interpretation and fails the stricter interval interpretation used in the original scorecard.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Inflation estimates by model size across the 25 recipes. The intervals use the wild cluster bootstrap-t calculation described in Appendix D.}
+\label{tab:original7}
+\begin{tabular}{lrrrr}\hline
+Size & $\Lambda_M$ & 95\% interval & $\Lambda_A$ & 95\% interval\\\hline
+150M & 1.101 & 0.781 to 1.344 & 1.028 & 0.878 to 1.165\\
+300M & 1.350 & 0.638 to 1.803 & 1.080 & 0.836 to 1.288\\
+530M & 1.514 & 1.064 to 1.837 & 1.219 & 1.083 to 1.338\\
+750M & 1.110 & 0.686 to 1.407 & 0.987 & 0.310 to 1.320\\
+1B & 1.149 & missing to 1.751 & 1.205 & 0.805 to 1.497\\
+Pooled, $N=125$ & 1.244 & 1.143 to 1.338 & 1.078 & 0.993 to 1.157\\\hline
+\end{tabular}
+\end{table}
+
+The lower squared-ratio bound for 1B margins falls below zero, so its square-root endpoint is unavailable. Figure~\ref{fig:calibration} reports N1 calibration at six effect sizes with 2,000 replicates each, using the 2.5th and 97.5th percentiles of estimates as dispersion bands. Those bands describe simulated estimator dispersion rather than confidence-interval coverage.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/calibration.pdf}
+\caption{Reported simulation recovery across six specified covariance settings for both score scales. The shaded bands describe replicate dispersion and don't establish interval coverage under other data-generating assumptions.}
+\label{fig:calibration}
+\end{figure}
+
+\paragraph{Permutation comparison}
+N2 was proposed as an estimator-bias check rather than the primary inferential procedure. In the reported 500 permutations, none reaches the observed margin estimate, and 0.028 reach the accuracy estimate. This reassignment holds the observed configurations fixed while independently permuting trait-specific run labels. The primary bootstrap instead targets variation across recipe clusters, so the two procedures use different randomisation and sampling assumptions. The accuracy permutation result and the interval containing one should therefore remain separate reported findings.
+
+\paragraph{Associations with scoring format}
+The cross-format diagnostic retains the diagonal sum and only those off-diagonal terms whose traits have different formats. It has a null reference of one when those retained covariances vanish, but the masked sum needn't represent the variance of a realizable benchmark average. Because each benchmark has only one format, the comparison can't identify a causal effect of format.
+
+The separate calculation reproduces the full estimate to four decimal places before retaining 54 of the 90 ordered off-diagonal pairs. It gives 0.921 with interval 0.801 to 1.035 for margins, and 0.965 with interval 0.848 to 1.063 for accuracy. Both fall below the proposed 1.2 threshold, and the margin result falls below the 1.153 expected from uniformly distributed covariance contributions under the comparison used here.
+
+BoolQ is the only yes/no benchmark, so all its off-diagonal pairs cross a format boundary. Its margin seed variance is $1.43\times10^{-3}$, compared with $4.34\times10^{-4}$ for the next-largest trait. Excluding BoolQ gives a cross-format margin diagnostic of 1.006 with interval 0.972 to 1.039, compared with an unrestricted nine-trait estimate of 1.786 with interval 1.689 to 1.877.
+
+Among the nine traits with defined margin correlations, excluding WinoGrande, the mean correlation is 0.624 across sixteen within-format pairs and 0.007 across twenty cross-format pairs. The three cloze traits give margin inflation of 1.225 with interval 1.064 to 1.367. Excluding ARC-Easy and ARC-Challenge from the multiple-choice block leaves inflation of 1.479 with interval 1.416 to 1.541. These associations show concentration within the larger format groups, while benchmark content and format remain confounded. A rank-one model with trait-specific loadings can also produce uneven contributions across those groups.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Accuracy-point calculations at the median 300M configuration. The four- and seven-trait rows evaluate the same ten-trait quantities at different $K$ values and aren't additional measured batteries.}
+\label{tab:original8}
+\begin{tabular}{rrrrr}\hline
+$K$ & Independent $\sigma_{\rm agg}$ & Adjusted $\sigma_{\rm agg}$ & $K_{\rm eff}$ & $P_{\rm flip}$, one-point gap\\\hline
+4 & 0.754 & 0.774 & 3.79 & 0.181\\
+7 & 0.570 & 0.600 & 6.31 & 0.119\\
+10 & 0.477 & 0.514 & 8.60 & 0.085\\\hline
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:original8} applies $\bar r_E=0.0181$ while holding trait standard deviations fixed. Its adjusted column applies to the weighting of this battery, with flip probabilities interpreted under the stated Gaussian comparison model. The held-out accuracy point errors favor the full matrix over independence, 0.0105 versus 0.0143, without an interval for their difference. Every predictor also receives held-out seed standard deviations unavailable without replication, so these results don't establish an operational replacement for replicated runs. The three-unit PolyPythias accuracy estimate of 2.286 differs from 1.078 and lacks an interval, which further limits transport of this calculation.
+
+\begin{table}[htbp]
+\centering\scriptsize
+\caption{Reported null and sensitivity results with replicate standard deviations. N3 and N4 use the observed correlation and therefore describe sensitivity rather than a zero-correlation null.}
+\label{tab:original9}
+\begin{tabular}{lp{0.49\linewidth}rrrr}\hline
+Test & Structure & $\widehat\Lambda_M$ & SD & $\widehat\Lambda_A$ & SD\\\hline
+N1 & Zero correlation with observed counts and reliabilities & 1.0009 & 0.046 & 1.0004 & 0.048\\
+N2 & Independent trait-specific run-label permutations & 1.0010 & 0.048 & 0.9984 & 0.039\\
+N1 & $\bar r_E=0.05$, true $\Lambda=1.2042$ & 1.2048 & 0.051 & 1.2044 & 0.053\\
+N1 & $\bar r_E=0.10$, true $\Lambda=1.3784$ & 1.3788 & 0.055 & 1.3782 & 0.057\\
+N1 & $\bar r_E=0.20$, true $\Lambda=1.6733$ & 1.6730 & 0.059 & 1.6724 & 0.061\\
+N1 & $\bar r_E=0.30$, true $\Lambda=1.9235$ & 1.9226 & 0.059 & 1.9220 & 0.061\\
+N1 & $\bar r_E=0.50$, true $\Lambda=2.3452$ & 2.3433 & 0.052 & 2.3429 & 0.053\\
+N3 & Fifty independent item re-splits & 1.2459 & 0.002 & 1.0843 & 0.008\\
+N4 & Zero mediation with pooled-slope regression & 1.0910 & 0.096 & 1.1045 & 0.062\\
+N5 & Zero correlation plus gain, $\sigma_g=0.05$ & 1.1477 & 0.050 & 0.9986 & 0.048\\
+N6 & Zero correlation plus default-versus-auxiliary offset & 1.0038 & 0.044 & 1.0030 & 0.047\\
+N6 & Same offset with auxiliary-run contrast & 1.0004 & 0.062 & 1.0003 & 0.065\\\hline
+\end{tabular}
+\end{table}
+
+\paragraph{Performance correlation as a noise proxy}
+The reported Frobenius distances between $R_E$ and $R_P$ are 5.59 for margins and 6.49 for accuracy. Negative estimated variances leave eighteen margin and 34 accuracy ordered off-diagonal correlations undefined. The source implementation fills these entries with zero before differencing, including undefined diagonal entries compared with unit diagonals in $R_P$. Those diagonal substitutions contribute 1.0 and 2.0 to the squared distances.
+
+Repairing only those diagonals gives distances of 5.499 and 6.339. Restricting the comparison to jointly defined entries gives 4.374 and 4.593, which still exceed the planned threshold of 0.5. The threshold alone offers limited discrimination between different ten-trait matrices, so the entrywise comparisons provide a more useful description.
+
+The off-diagonal association between the matrices is 0.756 for margins and 0.345 for accuracy. Mean defined $R_E$ entries are 0.281 and 0.273, compared with all-pair $R_P$ means of 0.750 and 0.754. On matching pairs, the $R_P$ means are 0.743 and 0.769. The all-pair comparison therefore differs in scale by factors of approximately 2.7 and 2.8. The unadjusted proxy predicts a mean margin aggregate standard deviation of 0.0072, compared with the reported 0.0057.
+
+An additional exploratory baseline, P2 R, rescales $R_P$ off-diagonals by the training-fold ratio of mean noise correlation to mean performance correlation. Its mean factors are 0.366 for margins and 0.370 for accuracy, compared with whole-population ratios of 0.375 and 0.362. On the same five recipe folds, its squared prediction errors are 0.0131 and 0.0342. It improves on P2 but remains 2.3 times worse than P1 on margins and worse than independence on accuracy. The direction relative to independence repeats across three fold seeds, although five folds don't establish uncertainty for that ranking. This rescaling also requires replicated runs to estimate its factor.
+
+\paragraph{Recipe, size, and trait sensitivity}
+Removing each recipe in turn gives margin estimates from 1.207 to 1.256 and accuracy estimates from 1.065 to 1.099. The maximum changes from the complete battery are 0.037 and 0.021. Removing each size gives ranges of 1.178 to 1.289 and 1.047 to 1.115, compared with individual-band ranges of 1.101 to 1.514 and 0.987 to 1.219. These overlapping intervals don't establish a size trend in the effect.
+
+Trait removal changes the estimates more than recipe or size removal. Excluding BoolQ gives 1.786 with interval 1.689 to 1.877 for margins, and 1.558 with interval 1.412 to 1.687 for accuracy. Excluding CommonsenseQA gives the smallest point estimates, 1.096 and 1.014. BoolQ contributes 68 percent of the estimated margin variance trace and 84 percent of the accuracy trace, while its average covariance with other traits is near zero. It therefore contributes mainly to the denominator of the excess ratio.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Trait-removal estimates across all 125 configurations in both phenotypes. Each removal row uses the nine remaining traits in the battery.}
+\label{tab:original10}
+\begin{tabular}{lrr}\hline
+Removed trait & $\Lambda_M$ & $\Lambda_A$\\\hline
+BoolQ & 1.786 & 1.558\\
+WinoGrande & 1.246 & 1.102\\
+HellaSwag & 1.244 & 1.076\\
+PIQA & 1.243 & 1.073\\
+MMLU & 1.205 & 1.068\\
+ARC-Challenge & 1.195 & 1.039\\
+OpenBookQA & 1.178 & 1.074\\
+ARC-Easy & 1.161 & 1.046\\
+Social IQa & 1.139 & 1.032\\
+CommonsenseQA & 1.096 & 1.014\\
+None & 1.244 & 1.078\\\hline
+\end{tabular}
+\end{table}
+
+The variance-share participation ratios are 1.97 for margins and 1.42 for accuracy on traits with defined seed variance. These quantities measure concentration of variance across traits, while the noise-correlation participation ratio of 3.57 measures concentration across matrix directions. They describe different aspects of the same battery's weighting.
+
+Standardising traits by estimated seed standard deviation gives 1.803 on nine margin traits and 1.707 on eight accuracy traits. These point diagnostics omit traits with nonpositive variance estimates and divide by uncertain standard deviations, with seven accuracy traits at or below item noise. The source analysis supplies no resampling distribution for these quantities, so we don't attach confidence intervals or score them against the planning thresholds.
+
+Removing defined traits from the standardised batteries gives margin estimates from 1.625 to 1.910 and accuracy estimates from 1.388 to 1.780. BoolQ removal gives 1.910 and 1.761 under this standardisation. Selecting traits by positive estimated variance can change the target, and it could raise the mean correlation if excluded low-signal traits also have low true correlations. We haven't tested that additional assumption, and subset stability doesn't resolve uncertain denominators.
+
+The raw trait-removal spans are 0.690 for margins and 0.544 for accuracy, compared with interval widths of 0.195 and 0.164. The resulting ratios of 3.5 and 3.3 compare different measures of spread and aren't uncertainty decompositions. Applying the delete-one-trait jackknife formula produces scales of 0.554 and 0.456, compared with sampling standard errors of 0.045 and 0.038. Their ratios are 12.3 and 12.1, partly because the jackknife multiplier is 2.85. Comparing the unscaled dispersion instead gives ratios of 4.33 and 4.25.
+
+Omitting the BoolQ removal value from that calculation gives scales of 0.138 and 0.073, or 3.07 and 1.93 times the reported sampling standard errors. These are descriptive composition diagnostics, because the ten fixed benchmarks aren't established exchangeable draws from a benchmark population. Adding the original jackknife scales and sampling standard errors in quadrature gives 0.556 and 0.457. A normal calculation then gives ranges of 0.15 to 2.33 and 0.18 to 1.974, both including one. Repeating that arithmetic without the BoolQ removal value gives 0.959 to 1.529 and 0.917 to 1.239.
+
+Those calculations aren't validated confidence intervals for a benchmark population. They can double-count sampling variation, and their normal approximation behaves poorly near the parameter boundary. For example, $\Lambda=0.15$ corresponds to $\bar r_E=-0.109$, only approximately 0.003 above $-1/9$. We retain the fixed-battery target and report composition sensitivity without treating these scales as an identified decomposition of total uncertainty.
+
+Changing trait count also changes $\Lambda$ at fixed effective covariance coefficient. At $\bar r_E=0.061$, the nine-trait reference is 1.219 rather than the ten-trait 1.244, while the corresponding accuracy values are 1.070 and 1.078. Four margin removals and five accuracy removals exceed those mechanical references. On eight traits, standardised accuracy inflation of 1.707 implies 2.75 effective benchmarks, while the raw accuracy effective coefficient of 0.0181 implies 7.10 effective benchmarks. Comparing 2.75 with 7.10 holds trait count fixed, unlike comparison with the ten-trait value of 8.60.
+
+The ARC pair has an estimated margin correlation of 0.801. Removing both benchmarks gives margin inflation of 1.118 with interval 1.059 to 1.174, and accuracy inflation of 1.012 with interval 0.929 to 1.086. The pair affects the estimate, although the remaining margin interval still excludes one.
+
+\paragraph{Interval construction and cluster sensitivity}
+A percentile bootstrap over 125 configurations gives intervals of 1.069 to 1.426 for margins and 0.976 to 1.182 for accuracy. Both preserve the qualitative finding of margin separation and accuracy non-separation from one. Comparing squared standard errors, using 0.045 versus 0.093 and 0.038 versus 0.052, gives ratios of 0.24 and 0.53. The source implementation separately reports numerator-based design effects of 2.06 and 1.26 from $1+4\rho_{\rm ICC}$, compared with the planned 1.60.
+
+These ratios describe different quantities and aren't contradictory estimates of one design effect. The numerator calculation uses $T_c$, while linearisation uses $T_c-\widehat\Lambda^2U_c$. The interval procedures also change resampling unit, studentisation, and denominator treatment together. We consequently don't infer a single intraclass correlation from their relative widths. The bootstrap-t addresses concerns associated with few-cluster approximations, as discussed by Bell and McCaffrey (2002), but it doesn't guarantee coverage at 25 clusters.
+
+\paragraph{Observed gaps and predicted rank reversals}
+Using accuracy noise $\sigma_{\rm agg}=0.00514$, the Gaussian calculation gives $P_{\rm flip}>0.05$ for a true gap below 0.01196. Among the $5\binom{25}{2}=1{,}500$ observed same-size pairs, 455 have observed gaps below this threshold, or 30.3 percent. The proportions range from 28.7 to 33.3 percent across bands. Substituting observed gaps meets the stated numerical criterion, but noisy observed gaps can move pairs across the threshold in either direction. This count therefore isn't a lower bound on the fraction of true gaps below the threshold, and it doesn't directly measure realised reversal frequency.
+
+\paragraph{Adjacent-checkpoint variation}
+We compare all nine 160M PolyPythias runs at steps 143000 and 142000 on a nested 1,800-item sample. The check includes nine non-MMLU traits and fixes items, scoring code, and batching. MMLU's 57 subjects would increase the forward passes approximately threefold to include one additional trait, so this check excludes it.
+
+The margin battery's between-run standard deviation is 0.00513, while the root-mean-square checkpoint shift is 0.00456, a ratio of 0.890. Accuracy gives 0.00451 and 0.00710, a ratio of 1.573. Across the nine runs, final and preceding checkpoint scores correlate 0.573 for margins and $-0.070$ for accuracy. These results show substantial checkpoint sensitivity in this restricted sample, without separating stochastic trajectory variation from systematic progress across 1,000 steps.
+
+The estimator describes run variation at the scored checkpoint, which can include trajectory effects correlated across traits. It doesn't isolate initialization from these effects in the available design. This comparison uses 1,800 rather than 4,755 items, nine runs, and a final checkpoint, whereas DataDecide uses common steps during training. We haven't measured the corresponding checkpoint sensitivity in DataDecide. BoolQ has the largest trait-level values in this check, with between-run standard deviation 0.0438 and root-mean-square shift 0.0370.
+
+\paragraph{Simulation and permutation calibration}
+The linearised margin standard error of 0.045 is close to the N1 null dispersion of 0.046. Accuracy gives 0.038 against the simulated 0.048, a difference of approximately 21 percent. The reported interval half-widths are 0.0974 and 0.082, approximately 2.2 standard errors compared with the $t(24)$ critical value of 2.06. Substituting the accuracy simulation dispersion gives a descriptive interval of 0.979 to 1.178, which also includes one. This substitution isn't a calibrated alternative interval because the simulated and observed populations differ.
+
+A separate implementation of the interval definitions uses 25 clusters of five configurations, three runs, and ten traits. It assumes exchangeable seed covariance, independent item noise across halves, and recipe heterogeneity in seed variance. Across sixteen cells formed from four true correlations between zero and 0.10 and four noise settings, 200 datasets per cell give empirical coverage from 0.920 to 0.975. Each cell lies within two Monte Carlo standard errors of 0.95, and estimated inflation is within 0.01 of truth in fifteen cells. Four cells with dispersion 0.044, compared with observed null dispersions 0.046 and 0.048, have coverage 0.950, 0.935, 0.975, and 0.960. Their interval widths range from 0.203 to 0.238, compared with the reported margin width of 0.195. This limited simulation checks the procedure under its specified populations and doesn't validate all departures present in the study.
+
+The source analysis also reports 1,000 trait-specific run-label permutations, each using 4,999 bootstrap draws. The resulting intervals contain the reference value one in 0.925 of margin permutations and 0.954 of accuracy permutations. Margin intervals fall below one in 0.049 and above one in 0.026 of permutations, compared with nominal tail probabilities of 0.025. The lower-tail imbalance matters for interpreting an upper bound below the proposed threshold of 1.349, where the reported upper endpoint leaves only 0.011 of separation, approximately one quarter of a margin standard error.
+
+These are conditional randomisation calibration results, contingent on the exchangeability assumed by the permutations. They aren't coverage measurements for the unknown nonzero covariance of the original population. The cluster-t comparator has reported coverage of 0.881 and 0.941, with above-one rates of 0.044 and 0.023. In the same permutations, no margin estimate reaches the observation, while the accuracy upper-tail fraction is 0.021, close to 0.028 in the earlier 500 draws. With a plus-one correction, zero exceedances among 1,000 draws give a Monte Carlo value of $1/1001$, rather than zero.
+
+The reported delete-one-recipe jackknife standard errors are 0.049 and 0.039. Applying a two-sided 95 percent $t(24)$ critical value to those rounded inputs gives approximate intervals of 1.143 to 1.345 for margins and 0.998 to 1.159 for accuracy. The source manuscript's narrower intervals, 1.160 to 1.328 and 1.012 to 1.145, use a multiplier close to a 90 percent interval and shouldn't be presented as 95 percent comparisons. The corrected accuracy interval includes one, consistent with the primary interval.
+
+Across the 1,000 permutations, estimator standard deviations are 0.0488 for margins and 0.0382 for accuracy. The earlier 500-draw values are 0.048 and 0.039, compared with N1 values of 0.046 and 0.048. The accuracy discrepancy therefore concerns simulated versus conditional permutation populations, rather than establishing an error in the observed bootstrap scale.
+
+\paragraph{Availability of a separate competence measurement}
+The desired gain control requires per-run loss on held-out text separate from the benchmark items. The DataDecide fields inspected in the source analysis don't supply it. The PolyPythias evaluation files considered there cover three sizes at early and final checkpoints, but contain accuracies, likelihood differences, and LAMBADA perplexity on the same benchmark items. That perplexity doesn't provide the required independent measurement scale.
+
+The Mistral release of Karamcheti et al. (2021) provides five GPT-2 Small and five GPT-2 Medium runs with 610 checkpoints each, including WikiText-103 and OpenWebText validation perplexity. The source search didn't find the corresponding per-run benchmark battery. This search limitation leaves the gain interpretation unresolved and doesn't turn simulator shares into causal bounds.
+
+\paragraph{Transport to PolyPythias}
+The planned transport analysis scores nine runs per configuration on a nested 4,755-item battery. For three sizes, the source pipeline gives margin inflation of 1.40574 compared with 1.24395 for DataDecide, an excess ratio of 1.66323. A scoring-kernel rewrite retains the margin estimate to five decimals, with the preceding excess ratio reported as 1.66321. The configuration table requires the second-arm output rather than inspection of the DataDecide reduction alone.
+
+On excess inflation, the DataDecide prediction falls approximately 40 percent below PolyPythias, while the raw inflation difference is approximately twelve percent. The planning document names aggregate standard deviation without resolving this scale choice. The excess-based failure assessment is therefore post hoc, and the raw inflation comparison falls inside the proposed twenty-percent band.
+
+A later exploratory extension includes the 14M and 31M configurations, each with nine runs at step 143000 on the same 4,755 items. Within that rescore, margin inflation changes from 1.41372 at three sizes to 1.26199 at five sizes, while the excess ratio changes from 1.69592 to 1.07395. Accuracy changes from 2.28589 to 1.71085, compared with DataDecide's 1.07837. Only the three-size accuracy point estimate exceeds the stated detection threshold of approximately 2.05, and the analysis supplies no interval for either accuracy estimate.
+
+The margin configuration-bootstrap intervals are 0.939 to 1.781 at three sizes and 0.927 to 1.537 at five sizes. Both contain one and DataDecide's 1.24395, while the standard error falls from 0.190 to 0.150. These intervals limit conclusions about transport under either point-estimate assessment. The rescore used one T4 with a 6,000-token cap instead of 30,000 tokens, and its three-size margin value of 1.41372 differs from the pipeline's 1.40574 by 0.6 percent. The excess-ratio difference is approximately two percent, with hardware and batching changed together. The three-versus-five comparison holds those conditions fixed within one job, and the source supplement describes 45 per-run score files from that job.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Five-fold prediction error for log aggregate seed standard deviation. Every model receives held-out trait standard deviations, so the comparison measures correlation prediction with variance estimation fixed.}
+\label{tab:original11}
+\begin{tabular}{lrrr}\hline
+Model & Parameters & Margin error & Accuracy error\\\hline
+P0 independence & $K$ & 0.0358 & 0.0143\\
+P1 rank-one competence & $K+1$ & 0.0057 & 0.0140\\
+P1 G rank-one plus gain & $2K+2$ & 0.0063 & 0.0260\\
+P2 performance correlation & $K$ & 0.1073 & 0.1682\\
+P3 full covariance & $K(K+1)/2$ & 0.0068 & 0.0105\\\hline
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:original11} gives fold-mean point errors without uncertainty intervals. P1 and P1 G have lower point errors than P3 on margins and higher errors on accuracy, while P0 and P2 have higher errors on both scales. P2 uses performance correlation from the held-out fold itself because its calculation needs no seed replication. Negative held-out variance estimates are clipped to zero before model selection, which also applies to independence. On the complete population this clips one margin and two accuracy traits, increasing the aggregate covariance sum by 0.3 and 4.8 percent, while the scored target retains the original estimates. Shared clipping doesn't guarantee that it leaves model rankings unchanged.
+
+\paragraph{External random-seed panel}
+The signal-and-noise runs don't share models with the DataDecide analysis, although the releases come from one laboratory, use a shared scoring harness, and overlap in all ten study traits. The check averages estimates over twenty released checkpoints and uses ten initialization runs or nine data-order runs. It supplies single-unit estimates without cross-half correction or uncertainty intervals, which limits comparison with the corrected primary estimator.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Inflation estimates in the external random-seed panel across twenty checkpoints. The leave-one-out adjustment controls each trait deviation with the mean deviation of the other traits.}
+\label{tab:original12}
+\begin{tabular}{llrrrr}\hline
+Seed variation & Phenotype & $K$ & $\Lambda$ & Adjusted $\Lambda$ & $\bar r_E$\\\hline
+Initialization & bits per byte & 18 & 1.705 & 1.464 & 0.112\\
+Initialization & accuracy per char & 8 & 0.989 & 1.105 & $-0.003$\\
+Data order & bits per byte & 18 & 1.625 & 1.763 & 0.096\\
+Data order & accuracy per char & 8 & 0.868 & 1.059 & $-0.035$\\\hline
+\end{tabular}
+\end{table}
+
+The likelihood estimates exceed one under both seed mechanisms, while the unadjusted accuracy values lie near or below one. Adjustment increases three of the four estimates and reduces only initialization likelihood, from 1.705 to 1.464. That pattern doesn't support a stable interpretation of the adjustment at one unit. Independent item noise would attenuate covariance ratios toward one under the relevant assumptions, but this arm doesn't measure the amount of attenuation or verify those assumptions. The external comparison remains suggestive rather than independent confirmation of the primary magnitude.
+
+\subsection{Gain calibration and recipe split sensitivity}
+The default gain simulator applies a shared margin scale across traits. The matched simulator instead samples each trait's margins from its empirical distribution. At $\sigma_g=0.05$, the two reported excess shares differ by approximately a factor of seven. Subtracting estimated leakage variance $1.91\times10^{-3}$ from total gain variance $3.67\times10^{-3}$ gives a gain standard deviation of approximately 0.042. This subtraction depends on the variance decomposition assumed for the covariate.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Gain-simulator sensitivity relative to the observed margin excess of 0.244. These shares compare specified simulations and don't bound a causal contribution in the observed runs.}
+\label{tab:original13}
+\begin{tabular}{lrrrr}\hline
+$\sigma_g$ & Default $\widehat\Lambda_M$ & Excess share & Matched $\widehat\Lambda_M$ & Excess share\\\hline
+0.01 & 1.007 & 0.029 & 1.001 & 0.003\\
+0.02 & 1.026 & 0.108 & 1.003 & 0.014\\
+0.03 & 1.058 & 0.236 & 1.008 & 0.031\\
+0.042, estimated & 1.108 & 0.443 & 1.014 & 0.059\\
+0.05, default & 1.149 & 0.609 & 1.020 & 0.081\\
+0.10 & 1.465 & 1.905 & 1.062 & 0.256\\\hline
+\end{tabular}
+\end{table}
+
+The default 0.05 cell differs by approximately 0.0009 from the corresponding Table~\ref{tab:original9} result before rounding, less than half the reported Monte Carlo standard error for 500 replicates. The G5 assessment uses that default specification, which fails its threshold. Accuracy estimates stay within 0.004 of one in these simulations, but positive multiplication preserves signs by construction. Their proximity to one therefore doesn't establish absence of a gain mechanism for observed accuracy variation.
+
+For a recipe subset $S$, the estimator is $\widehat\Lambda_S=\sqrt{\sum_{c\in S}T_c/\sum_{c\in S}U_c}$, because each configuration's components require no other configurations. The source analysis enumerates all $\binom{25}{17}=1{,}081{,}575$ possible seventeen-recipe estimation sets. It reports completing this sweep in thirteen seconds on one CPU core. The reconstructed split uses the plan's master seed under the released implementation, but the plan didn't specify a complete reconstruction rule and no contemporaneous split artifact was recovered.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Exhaustive sensitivity to the choice of seventeen estimation recipes. Every admissible subset gives a finite point estimate under both phenotypes.}
+\label{tab:original14}
+\begin{tabular}{lrr}\hline
+Quantity & Margin & Accuracy\\\hline
+All 25 recipes & 1.244 & 1.078\\
+Reconstructed planned partition & 1.199 & 1.099\\
+Minimum & 1.037 & 0.963\\
+5th percentile & 1.176 & 1.035\\
+Median & 1.246 & 1.078\\
+95th percentile & 1.285 & 1.124\\
+Maximum & 1.317 & 1.191\\
+Effective-count range & 5.77 to 9.31 & 7.05 to 10.77\\
+Planned threshold & 1.349 & 1.40\\
+Subsets reaching threshold & 0 & 0\\
+Subsets below one & 0 & 1,393, or 0.13\%\\\hline
+\end{tabular}
+\end{table}
+
+No subset reaches either proposed point threshold in this enumeration. The sweep addresses sensitivity to recipe selection for the reported estimator, while it can't restore the absent prospective screening separation or remove other analysis choices made with the data visible.
+
+\section{Implementation details}
+\label{app:implementation}
+
+\subsection{Data streaming}
+The source implementation streams 122.9 GB of gzipped JSONL tarballs from the Hugging Face release. It retains the item identifier, correct-answer margin, and accuracy bit for the ten traits at the common checkpoint. Each run contains 37,682 items and approximately 30 MB of compressed output. Reduction of 375 runs produces approximately 48 MB of NumPy archives, with one array per run.
+
+A frozen master seed generates a balanced permutation of item order within each trait. The split uses that permutation rather than a hash of item identifiers, and all runs within an arm reuse the same trait-specific assignment. The PolyPythias subsample therefore has its own split, rather than an item-hash split shared across arms. Regenerating the split requires the recorded item ordering and randomisation specification, without downloading the full tarballs.
+
+\subsection{Interval calculation}
+We state the source calculation in terms of the squared ratio,
+\[
+\widehat\theta=\frac{\sum_cT_c}{\sum_cU_c},\qquad
+\widehat\Lambda=\sqrt{\widehat\theta}.
+\]
+For each recipe $g$ among $G=25$, the linearised contribution and standard error are
+\begin{equation}
+\psi_g=\frac{\sum_{c\in g}(T_c-\widehat\theta U_c)}{\sum_cU_c},
+\qquad
+\widehat{\mathrm{SE}}=\left(\sum_{g=1}^{G}\psi_g^2\right)^{1/2}.
+\label{eq:bootstrap}
+\end{equation}
+This standard error belongs to the squared-ratio scale used for studentisation. A reported standard error on the $\Lambda$ scale instead requires the corresponding delta-method conversion.
+
+For draw $b$, independent recipe signs satisfy $v_{bg}\in\{-1,+1\}$ with equal probabilities. Every configuration takes the sign assigned to its recipe, and the pseudo-numerator becomes
+\[
+T_c^*=\widehat\theta U_c+v_{bg(c)}(T_c-\widehat\theta U_c).
+\]
+The denominator remains fixed at the observed $\sum_cU_c$. We recompute $\widehat\theta_b^*=\sum_cT_c^*/\sum_cU_c$ and the bootstrap standard error from the residuals $T_c^*-\widehat\theta_b^*U_c$. The bootstrap statistic is $t_b^*=(\widehat\theta_b^*-\widehat\theta)/\widehat{\mathrm{SE}}_b^*$, and the source calculation uses 4,999 draws with bootstrap seed zero.
+
+Writing $q_\alpha$ for the empirical quantile of these statistics, the interval on $\theta$ is
+\[
+\left[\widehat\theta-q_{0.975}\widehat{\mathrm{SE}},
+\widehat\theta-q_{0.025}\widehat{\mathrm{SE}}\right].
+\]
+Square-root transformation gives endpoints on the inflation scale when both endpoints are nonnegative. Monotonicity preserves the ordering of available endpoints, but it doesn't establish the original interval's coverage.
+
+A draw with zero bootstrap standard error has no finite studentised statistic and is discarded. The routine requires at least $\max(100,0.9B)$ surviving draws before reporting an interval. A negative lower squared-ratio endpoint is recorded as missing rather than truncated, which explains the absent 1B margin lower endpoint in Table~\ref{tab:original7}. The configuration percentile bootstrap instead resamples all 125 configurations with replacement and recomputes both sums, while ignoring recipe membership.
+
+The planning document specified wild cluster bootstrap-t inference with $t(16)$ critical values for seventeen estimation recipes. The realised analysis uses empirical bootstrap quantiles over all 25 recipes, following the failure to implement the planned split. The source manuscript states that a $t(G-1)$ variant accompanies the bootstrap implementation. These alternatives differ in more than a change of cluster count.
+
+\subsection{Practical considerations}
+Within-configuration centring removes the shared performance mean before forming cross-half products. With only three runs, raw products would include a large contribution from mean competence rather than measuring covariance of deviations. The contrast representation in Appendix D.7 enforces that centring at the estimator input.
+
+The permutation procedure reassigns run labels independently within each trait. Applying one joint permutation to all traits preserves cross-trait pairing and therefore doesn't generate this independence null. Identity permutations remain valid members of the randomisation distribution and shouldn't be excluded. For three runs, independent identities across all $K$ traits have probability $6^{-K}$ within one configuration.
+
+Gzipped tarball members require sequential reading from their starts. The reduction therefore extracts the required fields on one pass, since an omitted field requires another complete stream. The default-versus-auxiliary step mismatch at 530M and 750M motivates the auxiliary-two-versus-auxiliary-three contrast, with checkpoint agreement checked separately for both auxiliary runs.
+
+The source pipeline lists the 375 checkpoint directories once, applies exponential backoff to rate limits, and caches the listing. Before estimation, it regenerates the common-step table from that cache and compares it with the initial version. This check can detect changes in the recorded step selection, but a cached listing alone can't detect new remote changes without a refreshed comparison.
+
+\subsection{Compute}
+\begin{table}[htbp]
+\centering\small
+\caption{Compute budget reported in the planning document for both analysis arms. These figures describe the plan rather than measured costs for every listed operation.}
+\label{tab:original15}
+\begin{tabular}{p{0.48\linewidth}rp{0.28\linewidth}}\hline
+Operation & Budget & Scope\\\hline
+Arm 2 held-out bits per byte & 6.0 GPU hours & 27 runs, 4,755 items\\
+Calibration simulations N1, N5, N6 & 1.0 GPU hours & 2,000 replicates, six effects\\
+160M checkpoint check & 0.5 GPU hours & Adjacent checkpoints\\
+Contingency & 2.5 GPU hours & Reserved capacity\\
+Total GPU & 10.0 GPU hours & Planned total\\
+Streaming and reduction & 18 CPU hours & 122.9 GB, one pass\\
+Estimation, bootstrap, permutation & 7 CPU hours & Includes 200 planned splits\\\hline
+\end{tabular}
+\end{table}
+
+The source run used one Kaggle CPU core for Arm 1, reporting 6.0 hours for estimation and null checks. Four sensitivity tasks took another 1.6 hours, including gain calibration and fifty re-splits rather than the 200 budgeted. The exact recipe sweep took thirteen seconds, and the later 160M checkpoint check took 423 seconds of scoring on one T4. Arm 1 performs no forward passes and reports no GPU use.
+
+The transfer procedure streams 25 monolithic tarballs totaling 122.9 GB while keeping peak disk use below 10 GB. Arm 2 performs teacher-forced fp16 scoring with zero-shot contexts and no exemplars. Most items use one context, while WinoGrande uses one per choice. Reported context lengths include 199 tokens for ARC-Challenge and 937 for BoolQ.
+
+The budget assumed two 16 GB cards, but the reported scoring jobs instead received one 46 GB L40S each on a Slurm cluster. Each of 27 jobs finished in under two minutes, with aggregate reported use below one card-hour rather than the budgeted six. Gold-token scoring materialises a float32 log-softmax tensor over a 50,304-token vocabulary. A 30,000-token batch requires approximately 6 GB for that tensor alone.
+
+A configuration rescore fit on a 23 GB card at the planned token budget, while the 16 GB T4 checkpoint check used 6,000 tokens. Changing the budget changes batch grouping, which can affect floating-point results even when the mathematical scoring rule stays fixed. The transport rescore changed hardware and token budget together and shifted inflation by 0.6 percent. CPU handles the reduction and statistical analysis, with model scoring and calibration kernels as the reported exceptions.
+
+\subsection{Release provenance}
+The null checks examine mechanisms that can affect covariance estimates, but they don't independently establish the provenance of the three released runs. Differences in tokenizer builds, harness revisions, or other training conditions could contribute to the default-versus-auxiliary contrast if those conditions weren't held fixed. The auxiliary-run contrast also relies on documentation that the relevant settings match between its two runs.
+
+The step table and disagreement checks expose some inconsistencies without replacing a release-side audit. Attribution of the observed contrasts to the documented seed changes therefore depends on the release documentation. This limitation applies independently of the estimator's behavior on simulated or permuted data.
+
+\subsection{Sensitivity to GPU architecture}
+The primary Arm 2 scores use one card type. A separate Turing-versus-Ada comparison on one configuration reports mostly identical item scores, a mean absolute margin difference of $1.0\times10^{-3}$, and a largest difference of $3.5\times10^{-2}$. Relative to a margin standard deviation of 0.391, the mean difference has ratio $2.6\times10^{-3}$.
+
+Eighteen of 4,755 accuracy bits change, or 0.38 percent. Their median absolute margin is $1.3\times10^{-3}$, and battery accuracy changes from 0.430074 to 0.430494, a difference of $4.2\times10^{-4}$. That difference is approximately eight percent of the reported accuracy seed standard deviation. This single comparison demonstrates sensitivity at that scale, but it doesn't establish a universal portability threshold for fp16 kernels.
+
+Arm 1 uses released per-item outputs without recomputing forward passes, so this study doesn't add the same hardware variation to those scores. Shared hardware across Arm 2's 27 runs reduces one source of variation but doesn't independently validate accuracy across architectures.
+
+\subsection{Centring through run contrasts}
+Raw cross-half battery products contain the squared configuration mean, $\mu_c^2$, which can dominate the run-deviation contribution. The source manuscript reports that omitting centring inflates the resulting ratio by roughly three orders of magnitude. Its described implementation projects scores onto an orthonormal basis of the mean-zero run-contrast space.
+
+Every basis row must annihilate the all-ones run vector. Under that property, projecting raw scores equals projecting centred scores, so a constant configuration offset has no effect. The source manuscript describes runtime checks of row sums and invariance of $\sum_cT_c$ after adding a shared configuration constant to both halves. Those checks are implementation claims from the supplied manuscript, rather than independent execution evidence in this revision.

@@ -1,0 +1,72 @@
+{
+ "design": "R6 test for the run effect the shipped clustering assumes, shared across sizes inside one recipe.\n\nDesign fixed before running (2026-09-15, written 23:10 EDT). snap-r6-band-share asks whether a run effect\nis shared across recipes inside a size band, which is the violation that breaks the shipped interval.\nThis run asks the mirror question, which is whether the sharing the shipped interval assumes is present\nat all. The interval clusters on the 25 recipes because a recipe's seed effects plausibly repeat across\nthe five sizes trained on it. snap-r6-twoway already gave a reason to doubt that, since the component\nthat puts every configuration in its own cluster gives 0.233 on the full-battery margin and exceeds the\nrecipe component of 0.112, which is what happens when the recipe sums cancel rather than reinforce. The\nstatistic here is the one from the size-band run with the grouping swapped. Line each configuration's\nruns up by batch slot, average the run deviations over the five sizes of a recipe, and take the weighted\ncross-half covariance of those recipe means summed over the 25 recipes. The null permutes each\nconfiguration's runs among its own batch slots, which preserves every configuration's own deviations and\ndestroys only the alignment across sizes. A statistic above the null says the recipe clustering answers\nto something real in the data. A statistic inside the null says the clustering is a precaution rather\nthan a correction, which is worth saying plainly beside the coverage results.\n",
+ "traits": [
+  "arc_challenge",
+  "arc_easy",
+  "boolq",
+  "csqa",
+  "hellaswag",
+  "mmlu",
+  "openbookqa",
+  "piqa",
+  "socialiqa",
+  "winogrande"
+ ],
+ "n_perm": 2000,
+ "seed": 20260932,
+ "batteries": {
+  "full/margin": {
+   "observed": 0.00015271581828683767,
+   "per_config_total": 0.004083877356163356,
+   "observed_over_per_config": 0.037394810119936665,
+   "independence_expectation": 0.04,
+   "null_mean": 0.00016368517587991247,
+   "null_sd": 4.359584093615927e-05,
+   "null_p05": 0.00010030184292541647,
+   "null_p95": 0.00024125114663239858,
+   "z": -0.2516147723618424,
+   "share_at_or_above_observed": 0.556,
+   "seconds": 2.141138792037964
+  },
+  "full/accuracy": {
+   "observed": 0.00016886038771423857,
+   "per_config_total": 0.00330499535460678,
+   "observed_over_per_config": 0.05109247354277421,
+   "independence_expectation": 0.04,
+   "null_mean": 0.00013197586614214783,
+   "null_sd": 3.0468997700652495e-05,
+   "null_p05": 8.384745536793315e-05,
+   "null_p95": 0.00018650990058664545,
+   "z": 1.2105590716986683,
+   "share_at_or_above_observed": 0.1155,
+   "seconds": 2.1213834285736084
+  },
+  "without_boolq/margin": {
+   "observed": 0.0001806965140102617,
+   "per_config_total": 0.003334278651727164,
+   "observed_over_per_config": 0.05419358514521889,
+   "independence_expectation": 0.04,
+   "null_mean": 0.00013370509439381586,
+   "null_sd": 4.6557845077552304e-05,
+   "null_p05": 6.55291872884488e-05,
+   "null_p95": 0.0002190519934473902,
+   "z": 1.0093125989437723,
+   "share_at_or_above_observed": 0.1575,
+   "seconds": 2.0662784576416016
+  },
+  "without_boolq/accuracy": {
+   "observed": 7.887689131128974e-05,
+   "per_config_total": 0.001328968563001426,
+   "observed_over_per_config": 0.05935196174479043,
+   "independence_expectation": 0.04,
+   "null_mean": 5.362001377137979e-05,
+   "null_sd": 1.806976638796337e-05,
+   "null_p05": 2.6622824401548943e-05,
+   "null_p95": 8.456453074911387e-05,
+   "z": 1.3977423392000277,
+   "share_at_or_above_observed": 0.0855,
+   "seconds": 2.12498140335083
+  }
+ },
+ "wall_seconds": 30.74161195755005
+}

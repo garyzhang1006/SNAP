@@ -1,0 +1,23 @@
+{
+ "design": "R6 precision run for the true-ratio-one accuracy null, at 8,000 replicates.\n\nDesign fixed before running (2026-09-16, written 00:50 EDT). The first pass at 2,000 replicates put the\nMonte Carlo standard error of a tail share near 0.003 for the accuracy count and near 0.008 for the band\ncount. Both of those tails now carry a sentence in the paper, and the accuracy one sits close enough to\nfive percent that its own noise could move the reading. This run repeats the identical calibration on\none cell at 8,000 replicates with a fresh seed, which cuts the Monte Carlo standard error by half. The\ngenerator, the deletion sweep, the clustering and the conditioning are unchanged from the first pass, so\nthe two runs can be compared directly and pooled if they agree. Seed 20260941 keeps the draws distinct.\n",
+ "seed": 20260941,
+ "reps": 8000,
+ "cells": {
+  "true_one_accuracy_noise": {
+   "name": "true_one_accuracy_noise",
+   "truth": 1.0,
+   "n_rep": 8000,
+   "share_full_includes_one": 0.947125,
+   "recipe_flips_mean": 0.26831199683251944,
+   "recipe_flips_median": 0.0,
+   "recipe_flips_p95": 2.0,
+   "recipe_flips_max": 14.0,
+   "share_recipe_flips_at_least_5": 0.016893229510360302,
+   "share_recipe_flips_at_least_1": 0.10201926883991025,
+   "size_flips_mean": 0.1092780783951432,
+   "share_size_flips_at_least_1": 0.094892437640227,
+   "seconds": 4476.261315107346
+  }
+ },
+ "wall_seconds": 4494.860320329666
+}

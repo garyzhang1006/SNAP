@@ -1,0 +1,262 @@
+{
+ "design": "R6 whether the interval holds up on a battery that isn't ten benchmarks wide.\n\nDesign fixed before running (2026-09-16, written 13:10 EDT). Everything the paper measures sits at ten\nbenchmarks, because that is what the release ships. The recommendation it makes is meant for anyone\ncomparing training recipes, and those readers will have batteries of four, six or twenty tasks. The\nestimator's own target moves with battery width, since flat weights over a compound-symmetric truth put\nLambda squared at one plus k minus one times rho, so a wider battery raises the quantity being estimated\nwhile leaving each configuration's item noise where it was. Nothing we have run says whether the\ninterval still covers when k changes, and a reviewer reading the recommendation will ask.\nThis run sweeps the battery width over 4, 6, 8, 10, 12 and 20 benchmarks on the margin-like population at\n4,000 replicates each, holding the correlation and the item noise fixed so that only the width moves. It\nscores the same four intervals on every replicate and reports the true ratio alongside the coverage, so a\nreader can see both what the estimand becomes and whether the interval tracks it. Seed 20260956 with a\ncell offset of five hundred keeps the draws distinct.\n",
+ "seed": 20260956,
+ "reps": 4000,
+ "cells": {
+  "benchmarks_04": {
+   "name": "benchmarks_04",
+   "truth": 1.087658034494298,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "benchmarks": 4
+   },
+   "wild_recipe": {
+    "coverage": 0.94725,
+    "mc_se": 0.0035343824602043273,
+    "lower_miss": 0.01975,
+    "upper_miss": 0.033,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.20500340629593328
+   },
+   "wild_size": {
+    "coverage": 0.94625,
+    "mc_se": 0.003565842729986839,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.0265,
+    "undefined_or_unbounded": 0.0095,
+    "median_width": 0.3030871220364797
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.945,
+    "mc_se": 0.003604684452209376,
+    "lower_miss": 0.0205,
+    "upper_miss": 0.0345,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2030720642142732
+   },
+   "cluster_t_size": {
+    "coverage": 0.94225,
+    "mc_se": 0.003688324060464318,
+    "lower_miss": 0.023,
+    "upper_miss": 0.03475,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2538588729342933
+   }
+  },
+  "benchmarks_06": {
+   "name": "benchmarks_06",
+   "truth": 1.1423659658795862,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "benchmarks": 6
+   },
+   "wild_recipe": {
+    "coverage": 0.943,
+    "mc_se": 0.003665753674212168,
+    "lower_miss": 0.01925,
+    "upper_miss": 0.03775,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.22110634634197224
+   },
+   "wild_size": {
+    "coverage": 0.95025,
+    "mc_se": 0.003437838619685338,
+    "lower_miss": 0.016,
+    "upper_miss": 0.02475,
+    "undefined_or_unbounded": 0.009,
+    "median_width": 0.3280013197418457
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9415,
+    "mc_se": 0.003710719269899031,
+    "lower_miss": 0.0195,
+    "upper_miss": 0.039,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.22019673266386952
+   },
+   "cluster_t_size": {
+    "coverage": 0.949,
+    "mc_se": 0.003478469491026191,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.0325,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.27925669223498856
+   }
+  },
+  "benchmarks_08": {
+   "name": "benchmarks_08",
+   "truth": 1.194571052721436,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "benchmarks": 8
+   },
+   "wild_recipe": {
+    "coverage": 0.95025,
+    "mc_se": 0.003437838619685338,
+    "lower_miss": 0.015,
+    "upper_miss": 0.03475,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23283610602780425
+   },
+   "wild_size": {
+    "coverage": 0.95575,
+    "mc_se": 0.0032516125807051494,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.0215,
+    "undefined_or_unbounded": 0.00725,
+    "median_width": 0.3425285293065241
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.95025,
+    "mc_se": 0.003437838619685338,
+    "lower_miss": 0.01525,
+    "upper_miss": 0.0345,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23213261726836798
+   },
+   "cluster_t_size": {
+    "coverage": 0.95175,
+    "mc_se": 0.0033882863478460618,
+    "lower_miss": 0.01675,
+    "upper_miss": 0.0315,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.29034450182085314
+   }
+  },
+  "benchmarks_10": {
+   "name": "benchmarks_10",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "benchmarks": 10
+   },
+   "wild_recipe": {
+    "coverage": 0.94125,
+    "mc_se": 0.003718145959345866,
+    "lower_miss": 0.01725,
+    "upper_miss": 0.0415,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.241795059544047
+   },
+   "wild_size": {
+    "coverage": 0.9515,
+    "mc_se": 0.0033966067626382654,
+    "lower_miss": 0.015,
+    "upper_miss": 0.027,
+    "undefined_or_unbounded": 0.0065,
+    "median_width": 0.35497852529060825
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94075,
+    "mc_se": 0.003732942455356097,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.04275,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24128246282533294
+   },
+   "cluster_t_size": {
+    "coverage": 0.944,
+    "mc_se": 0.0036353816856005655,
+    "lower_miss": 0.0205,
+    "upper_miss": 0.0355,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3053561330116896
+   }
+  },
+  "benchmarks_12": {
+   "name": "benchmarks_12",
+   "truth": 1.29267165204471,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "benchmarks": 12
+   },
+   "wild_recipe": {
+    "coverage": 0.94225,
+    "mc_se": 0.003688324060464318,
+    "lower_miss": 0.015,
+    "upper_miss": 0.04275,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2495481167137542
+   },
+   "wild_size": {
+    "coverage": 0.946,
+    "mc_se": 0.0035736535926135893,
+    "lower_miss": 0.01425,
+    "upper_miss": 0.029,
+    "undefined_or_unbounded": 0.01075,
+    "median_width": 0.37151416800795833
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94125,
+    "mc_se": 0.003718145959345866,
+    "lower_miss": 0.015,
+    "upper_miss": 0.04375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24891500100306918
+   },
+   "cluster_t_size": {
+    "coverage": 0.945,
+    "mc_se": 0.003604684452209376,
+    "lower_miss": 0.018,
+    "upper_miss": 0.037,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3154748192776645
+   }
+  },
+  "benchmarks_20": {
+   "name": "benchmarks_20",
+   "truth": 1.4693535993762699,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "benchmarks": 20
+   },
+   "wild_recipe": {
+    "coverage": 0.951,
+    "mc_se": 0.003413173010557773,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.0335,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.27691068676347896
+   },
+   "wild_size": {
+    "coverage": 0.95575,
+    "mc_se": 0.0032516125807051494,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.02125,
+    "undefined_or_unbounded": 0.00525,
+    "median_width": 0.41214179448908417
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9515,
+    "mc_se": 0.0033966067626382654,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.033,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.27671706327649137
+   },
+   "cluster_t_size": {
+    "coverage": 0.94925,
+    "mc_se": 0.003470390377896987,
+    "lower_miss": 0.02025,
+    "upper_miss": 0.0305,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.34572992504524647
+   }
+  }
+ },
+ "shipped_check": {
+  "benchmarks_04": 0.0,
+  "benchmarks_06": 0.0,
+  "benchmarks_08": 0.0,
+  "benchmarks_10": 0.0,
+  "benchmarks_12": 0.0,
+  "benchmarks_20": 0.0
+ },
+ "wall_seconds": 1593.3587970733643
+}

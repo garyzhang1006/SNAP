@@ -1,0 +1,14 @@
+[{"stream_name":"stdout","time":1.147979603,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":113.176702562,"data":"[dclm-baseline-top-fw-3p] 15 runs reduced at the previous shared step in 97s; gaps {'150M': 657, '1B': 1869, '300M': 787, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":244.726127868,"data":"[dclm-baseline-top-fw2-7p] 15 runs reduced at the previous shared step in 131s; gaps {'150M': 657, '1B': 1869, '300M': 787, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":351.544487527,"data":"[dclm-baseline-top-fw3-7p] 15 runs reduced at the previous shared step in 106s; gaps {'150M': 657, '1B': 1869, '300M': 787, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":449.858653101,"data":"[dolma1.6++] 15 runs reduced at the previous shared step in 98s; gaps {'150M': 1250, '1B': 1869, '300M': 1250, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":539.10533888,"data":"[dolma1.7] 15 runs reduced at the previous shared step in 88s; gaps {'150M': 1250, '1B': 1869, '300M': 1250, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":539.83483888,"data":"[done] 5 of 5 recipes in 539s\n"}
+,{"stream_name":"stderr","time":543.129380286,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":543.129531485,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":543.522615805,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":543.522652209,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":544.541675313,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":546.284905622,"data":"[NbConvertApp] Writing 300070 bytes to __results__.html\n"}
+]

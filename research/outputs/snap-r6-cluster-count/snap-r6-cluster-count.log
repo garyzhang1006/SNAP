@@ -1,0 +1,15 @@
+[{"stream_name":"stdout","time":1.718411863,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":92.489169519,"data":"[recipes_05] 69s check 2.22e-16 {\"wild_recipe\": 0.7492, \"cluster_t_recipe\": 0.9103, \"wild_size\": 0.7555, \"cluster_t_size\": 0.9153}\n"}
+,{"stream_name":"stdout","time":219.834696451,"data":"[recipes_10] 127s check 0 {\"wild_recipe\": 0.9463, \"cluster_t_recipe\": 0.9455, \"wild_size\": 0.893, \"cluster_t_size\": 0.951}\n"}
+,{"stream_name":"stdout","time":423.408268026,"data":"[recipes_15] 204s check 0 {\"wild_recipe\": 0.9415, \"cluster_t_recipe\": 0.9417, \"wild_size\": 0.9315, \"cluster_t_size\": 0.9445}\n"}
+,{"stream_name":"stdout","time":694.522317073,"data":"[recipes_25] 271s check 0 {\"wild_recipe\": 0.9423, \"cluster_t_recipe\": 0.9417, \"wild_size\": 0.954, \"cluster_t_size\": 0.9493}\n"}
+,{"stream_name":"stdout","time":1127.278885341,"data":"[recipes_40] 433s check 0 {\"wild_recipe\": 0.9463, \"cluster_t_recipe\": 0.9473, \"wild_size\": 0.9597, \"cluster_t_size\": 0.9495}\n"}
+,{"stream_name":"stdout","time":1706.927298018,"data":"[recipes_60] 580s check 0 {\"wild_recipe\": 0.946, \"cluster_t_recipe\": 0.9463, \"wild_size\": 0.9577, \"cluster_t_size\": 0.9453}\n"}
+,{"stream_name":"stdout","time":1706.932197402,"data":"[done] 1705s\n"}
+,{"stream_name":"stderr","time":1710.696443749,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1710.696527784,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1711.255543332,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1711.255580488,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1712.728941672,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1715.018947549,"data":"[NbConvertApp] Writing 336841 bytes to __results__.html\n"}
+]

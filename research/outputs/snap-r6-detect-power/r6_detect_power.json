@@ -1,0 +1,370 @@
+{
+ "design": "R6 the smallest dependence this design could have found.\n\nDesign fixed before running (2026-09-16, written 15:05 EDT). The paper reports that the margin interval\nexcludes one and the accuracy interval does not, and it never says what the study was able to detect. A\nnull result carries no information until a reader knows the power behind it, and the accuracy conclusion\nis a null result. Someone reading that the accuracy interval runs from 0.993 to 1.157 deserves to know\nwhether a true ratio of 1.05 would have shown up or sailed past unnoticed.\nThis run measures it. It sweeps the true ratio over 1.00, 1.03, 1.05, 1.08, 1.10, 1.15, 1.25 and 1.40 by\nsetting the compound-symmetric correlation to the value each ratio implies, at the item noise of the\naccuracy battery, with 4,000 replicates per cell. It reports the rate at which the recipe-clustered\ninterval excludes one, which is size at a ratio of exactly one and power above it, alongside coverage so\nthe two can be read together. The smallest ratio whose exclusion rate passes four fifths is the smallest\ndependence the accuracy battery could reliably have found. Seed 20260964 keeps the draws distinct.\n",
+ "seed": 20260964,
+ "reps": 4000,
+ "cells": {
+  "lambda_1.00": {
+   "name": "lambda_1.00",
+   "truth": 1.0,
+   "varied": {
+    "rho": 0.0,
+    "noise_sd": 1.45
+   },
+   "wild_recipe": {
+    "coverage": 0.947,
+    "mc_se": 0.003542280338990692,
+    "excludes_one_rate": 0.01775,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.03525,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.4052850408385551
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9475,
+    "mc_se": 0.0035264624625820132,
+    "excludes_one_rate": 0.01725,
+    "lower_miss": 0.01725,
+    "upper_miss": 0.035,
+    "undefined_or_unbounded": 0.00025,
+    "median_width": 0.4063810192783659
+   },
+   "wild_size": {
+    "coverage": 0.78975,
+    "mc_se": 0.006442921260965402,
+    "excludes_one_rate": 0.01775,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.0225,
+    "undefined_or_unbounded": 0.17,
+    "median_width": 0.551782107505131
+   },
+   "cluster_t_size": {
+    "coverage": 0.9185,
+    "mc_se": 0.004326018666164075,
+    "excludes_one_rate": 0.0205,
+    "lower_miss": 0.0205,
+    "upper_miss": 0.0325,
+    "undefined_or_unbounded": 0.0285,
+    "median_width": 0.511979061494013
+   }
+  },
+  "lambda_1.03": {
+   "name": "lambda_1.03",
+   "truth": 1.03,
+   "varied": {
+    "rho": 0.006766666666666661,
+    "noise_sd": 1.45
+   },
+   "wild_recipe": {
+    "coverage": 0.94925,
+    "mc_se": 0.003470390377896987,
+    "excludes_one_rate": 0.0325,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.03175,
+    "undefined_or_unbounded": 0.0005,
+    "median_width": 0.4023386695873935
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94725,
+    "mc_se": 0.0035343824602043273,
+    "excludes_one_rate": 0.03125,
+    "lower_miss": 0.02,
+    "upper_miss": 0.03225,
+    "undefined_or_unbounded": 0.0005,
+    "median_width": 0.4032331472569951
+   },
+   "wild_size": {
+    "coverage": 0.8135,
+    "mc_se": 0.006158687969040159,
+    "excludes_one_rate": 0.0245,
+    "lower_miss": 0.012,
+    "upper_miss": 0.025,
+    "undefined_or_unbounded": 0.1495,
+    "median_width": 0.5475402280265125
+   },
+   "cluster_t_size": {
+    "coverage": 0.92925,
+    "mc_se": 0.004054147182207374,
+    "excludes_one_rate": 0.032,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.02875,
+    "undefined_or_unbounded": 0.0245,
+    "median_width": 0.5041990523626426
+   }
+  },
+  "lambda_1.05": {
+   "name": "lambda_1.05",
+   "truth": 1.05,
+   "varied": {
+    "rho": 0.011388888888888893,
+    "noise_sd": 1.45
+   },
+   "wild_recipe": {
+    "coverage": 0.94825,
+    "mc_se": 0.0035025682541529424,
+    "excludes_one_rate": 0.06275,
+    "lower_miss": 0.019,
+    "upper_miss": 0.03275,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.40038745942365656
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.95025,
+    "mc_se": 0.003437838619685338,
+    "excludes_one_rate": 0.063,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.031,
+    "undefined_or_unbounded": 0.00025,
+    "median_width": 0.4003974166272918
+   },
+   "wild_size": {
+    "coverage": 0.83025,
+    "mc_se": 0.0059358010727280945,
+    "excludes_one_rate": 0.043,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.0205,
+    "undefined_or_unbounded": 0.1305,
+    "median_width": 0.5556664606717828
+   },
+   "cluster_t_size": {
+    "coverage": 0.936,
+    "mc_se": 0.0038698837191833025,
+    "excludes_one_rate": 0.05175,
+    "lower_miss": 0.02,
+    "upper_miss": 0.0285,
+    "undefined_or_unbounded": 0.0155,
+    "median_width": 0.5065778403427841
+   }
+  },
+  "lambda_1.08": {
+   "name": "lambda_1.08",
+   "truth": 1.08,
+   "varied": {
+    "rho": 0.018488888888888902,
+    "noise_sd": 1.45
+   },
+   "wild_recipe": {
+    "coverage": 0.951,
+    "mc_se": 0.003413173010557773,
+    "excludes_one_rate": 0.09325,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.031,
+    "undefined_or_unbounded": 0.0005,
+    "median_width": 0.39691446411921105
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.95225,
+    "mc_se": 0.0033715700163277035,
+    "excludes_one_rate": 0.09375,
+    "lower_miss": 0.017,
+    "upper_miss": 0.03025,
+    "undefined_or_unbounded": 0.0005,
+    "median_width": 0.397356326789524
+   },
+   "wild_size": {
+    "coverage": 0.82975,
+    "mc_se": 0.005942746366369677,
+    "excludes_one_rate": 0.0605,
+    "lower_miss": 0.01925,
+    "upper_miss": 0.02725,
+    "undefined_or_unbounded": 0.12375,
+    "median_width": 0.5578085481007757
+   },
+   "cluster_t_size": {
+    "coverage": 0.9365,
+    "mc_se": 0.0038557667849598992,
+    "excludes_one_rate": 0.0745,
+    "lower_miss": 0.0215,
+    "upper_miss": 0.029,
+    "undefined_or_unbounded": 0.013,
+    "median_width": 0.505199122772031
+   }
+  },
+  "lambda_1.10": {
+   "name": "lambda_1.10",
+   "truth": 1.1,
+   "varied": {
+    "rho": 0.023333333333333355,
+    "noise_sd": 1.45
+   },
+   "wild_recipe": {
+    "coverage": 0.9475,
+    "mc_se": 0.0035264624625820132,
+    "excludes_one_rate": 0.13525,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.03475,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.39303333457891493
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9475,
+    "mc_se": 0.0035264624625820132,
+    "excludes_one_rate": 0.138,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.03475,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3934925353396712
+   },
+   "wild_size": {
+    "coverage": 0.8485,
+    "mc_se": 0.00566894500767118,
+    "excludes_one_rate": 0.08625,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.02725,
+    "undefined_or_unbounded": 0.10775,
+    "median_width": 0.5423040325032046
+   },
+   "cluster_t_size": {
+    "coverage": 0.93725,
+    "mc_se": 0.0038344633751021787,
+    "excludes_one_rate": 0.104,
+    "lower_miss": 0.0235,
+    "upper_miss": 0.03025,
+    "undefined_or_unbounded": 0.009,
+    "median_width": 0.5000272859689079
+   }
+  },
+  "lambda_1.15": {
+   "name": "lambda_1.15",
+   "truth": 1.15,
+   "varied": {
+    "rho": 0.03583333333333331,
+    "noise_sd": 1.45
+   },
+   "wild_recipe": {
+    "coverage": 0.946,
+    "mc_se": 0.0035736535926135893,
+    "excludes_one_rate": 0.2805,
+    "lower_miss": 0.022,
+    "upper_miss": 0.032,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3878731815951598
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94775,
+    "mc_se": 0.0035185201967588594,
+    "excludes_one_rate": 0.2825,
+    "lower_miss": 0.02175,
+    "upper_miss": 0.0305,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.38812014989273075
+   },
+   "wild_size": {
+    "coverage": 0.86825,
+    "mc_se": 0.005347708329275261,
+    "excludes_one_rate": 0.14825,
+    "lower_miss": 0.01625,
+    "upper_miss": 0.0265,
+    "undefined_or_unbounded": 0.089,
+    "median_width": 0.5473691018391754
+   },
+   "cluster_t_size": {
+    "coverage": 0.94725,
+    "mc_se": 0.0035343824602043273,
+    "excludes_one_rate": 0.1925,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.031,
+    "undefined_or_unbounded": 0.003,
+    "median_width": 0.49248323539555583
+   }
+  },
+  "lambda_1.25": {
+   "name": "lambda_1.25",
+   "truth": 1.25,
+   "varied": {
+    "rho": 0.0625,
+    "noise_sd": 1.45
+   },
+   "wild_recipe": {
+    "coverage": 0.95175,
+    "mc_se": 0.0033882863478460618,
+    "excludes_one_rate": 0.668,
+    "lower_miss": 0.016,
+    "upper_miss": 0.03225,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3811976114352079
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94975,
+    "mc_se": 0.0034541618918342556,
+    "excludes_one_rate": 0.6675,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.03375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.38150451948596337
+   },
+   "wild_size": {
+    "coverage": 0.895,
+    "mc_se": 0.004847035176270129,
+    "excludes_one_rate": 0.35075,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.0255,
+    "undefined_or_unbounded": 0.063,
+    "median_width": 0.5488439859373176
+   },
+   "cluster_t_size": {
+    "coverage": 0.95025,
+    "mc_se": 0.003437838619685338,
+    "excludes_one_rate": 0.45925,
+    "lower_miss": 0.0195,
+    "upper_miss": 0.02925,
+    "undefined_or_unbounded": 0.001,
+    "median_width": 0.479854503238197
+   }
+  },
+  "lambda_1.40": {
+   "name": "lambda_1.40",
+   "truth": 1.4,
+   "varied": {
+    "rho": 0.10666666666666663,
+    "noise_sd": 1.45
+   },
+   "wild_recipe": {
+    "coverage": 0.95,
+    "mc_se": 0.003446012188022557,
+    "excludes_one_rate": 0.968,
+    "lower_miss": 0.017,
+    "upper_miss": 0.033,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.37886098895419995
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9505,
+    "mc_se": 0.0034296410161998,
+    "excludes_one_rate": 0.9685,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.033,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.37788020657304444
+   },
+   "wild_size": {
+    "coverage": 0.92275,
+    "mc_se": 0.004221446360549901,
+    "excludes_one_rate": 0.6365,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.0235,
+    "undefined_or_unbounded": 0.03625,
+    "median_width": 0.5470245565237841
+   },
+   "cluster_t_size": {
+    "coverage": 0.94675,
+    "mc_se": 0.0035501562465615516,
+    "excludes_one_rate": 0.81275,
+    "lower_miss": 0.0195,
+    "upper_miss": 0.03325,
+    "undefined_or_unbounded": 0.0005,
+    "median_width": 0.4678876798030243
+   }
+  }
+ },
+ "shipped_check": {
+  "lambda_1.00": 1.1102230246251565e-16,
+  "lambda_1.03": 0.0,
+  "lambda_1.05": 0.0,
+  "lambda_1.08": 0.0,
+  "lambda_1.10": 0.0,
+  "lambda_1.15": 0.0,
+  "lambda_1.25": 0.0,
+  "lambda_1.40": 0.0
+ },
+ "wall_seconds": 1159.8745594024658
+}

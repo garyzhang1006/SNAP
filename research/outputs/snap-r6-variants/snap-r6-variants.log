@@ -1,0 +1,13 @@
+[{"stream_name":"stdout","time":0.957837841,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":501.383934227,"data":"[margin_like_cross_half_error_corr_0.1] 485s check 0 {\"wild_rademacher\": 0.9405, \"wild_mammen\": 0.937, \"wild_webb\": 0.9407, \"wild_cr3\": 0.9473, \"cluster_t_cr1\": 0.94, \"centred\": 0.9407}\n"}
+,{"stream_name":"stdout","time":987.988325992,"data":"[margin_like_one_dominant_recipe] 487s check 2.22e-16 {\"wild_rademacher\": 0.9395, \"wild_mammen\": 0.923, \"wild_webb\": 0.9375, \"wild_cr3\": 0.9575, \"cluster_t_cr1\": 0.927, \"centred\": 0.9565}\n"}
+,{"stream_name":"stdout","time":1476.11930255,"data":"[margin_like] 488s check 0 {\"wild_rademacher\": 0.9455, \"wild_mammen\": 0.9407, \"wild_webb\": 0.944, \"wild_cr3\": 0.9525, \"cluster_t_cr1\": 0.9453, \"centred\": 0.946}\n"}
+,{"stream_name":"stdout","time":1961.154366357,"data":"[accuracy_like] 485s check 0 {\"wild_rademacher\": 0.946, \"wild_mammen\": 0.9385, \"wild_webb\": 0.9465, \"wild_cr3\": 0.9553, \"cluster_t_cr1\": 0.9475, \"centred\": 0.947}\n"}
+,{"stream_name":"stdout","time":1961.158166617,"data":"[done] 1960s\n"}
+,{"stream_name":"stderr","time":1963.927664217,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1963.927718653,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1964.230944701,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1964.231000743,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1965.100659286,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1966.697168795,"data":"[NbConvertApp] Writing 351464 bytes to __results__.html\n"}
+]

@@ -1,0 +1,33 @@
+SNAP REFERENCE CODE VALIDATION
+Audited September 15, 2026
+
+Executed locally after the final source-code change
+
+python3 -m unittest discover -s tests -v
+
+Result: 41 tests passed, no skipped tests. The recorded run took 16.633 seconds in the local environment. This is test-suite time, not an estimate of research compute time. Full output is in TEST_RESULTS.txt.
+
+The rebuilt code ZIP was then extracted into a fresh temporary directory and its full suite rerun. All 41 tests passed there in 16.713 seconds. The source code was unchanged after that verification. The archive run is recorded in FRESH_ARCHIVE_TEST_RESULTS.txt.
+
+New regression cases first reproduced failures in the previous package. Fixes reject fractional split labels and simulation dimensions, missing group IDs, duplicate array keys, empty campaigns, unhashed results, changed simulation shards, invalid likelihood reductions, mismatched corpora, and unowned output files. Cached C11 audits now recheck their upstream artifacts. Scientific-library versions are included in execution identities, and GPU shards include hardware identity.
+
+Scoring now scans record counts and metadata before loading each model. Launcher tests exercised process configuration and coverage with mocked devices/processes, and verified that no worker launches when CUDA devices are absent. Mocked tests do not establish physical GPU compatibility.
+
+Verified properties include hand-calculated cross-half moments, run centering, diagonal reference behavior, negative moment handling, passage-group integrity, recipe-fold isolation, Monte Carlo moment agreement under declared assumptions, CPU job integration, output hash checking, changed-configuration rejection, missing-input failure records, target shifting, sliding-window accounting, likelihood normalization, complete score joins, document aggregation, and local-tokenizer preparation.
+
+All four GPU job execution paths were tested using a tiny randomly initialized local model on CPU, including reference comparison, shard reduction, and resume. That test used no downloaded model and produced no empirical paper result.
+
+Static checks passed for 39 Python files. All 16 generated notebooks passed nbformat validation and every code cell compiled. All 16 production configurations retained template_only=true, and all 16 job entry points were present. The full run guide is embedded in Section 24 of SNAP_Kaggle_compute_handoff.txt and was checked for exact text equality with RUN_GUIDE.txt.
+
+NOT VERIFIED
+
+Physical T4 execution and two-GPU concurrency.
+Runtime or memory requirements for the real checkpoint campaign.
+Availability of the original scores, source repository, checkpoint revisions, or passage mapping.
+Reproduction of any reported manuscript value.
+Validity of the proposed grouping estimand beyond its stated sensitivity interpretation.
+Calibration of the reference interval procedure on the production design.
+Equivalence between the new operational prediction experiment and the paper's conditional prediction experiment.
+Completion of every broader research-plan proposal.
+
+Read RUN_GUIDE.txt for implementation scope and the exact commands. Passing these tests is evidence about this code, not an acceptance prediction or a scientific endorsement of unrun results.

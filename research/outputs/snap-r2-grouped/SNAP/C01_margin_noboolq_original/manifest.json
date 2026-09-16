@@ -1,0 +1,73 @@
+{
+  "artifacts": {
+    "moments.npz": "72974a7efe20d781da8e8256029437ea5b7f7bf93089b46d485fe419e1e2972a",
+    "result.json": "973b7f0d9ee01ecd386facde257cd65dd358c0864890886f35e1b20e0dc19ece"
+  },
+  "code": {
+    "make_demo.py": "e119e7d3b5a5a4d5bc520f10a725a817e5afe524e330473f1096d143080e4d32",
+    "make_notebooks.py": "0f954f1fd3d1b8fc523dcd329c2c9bcb44c7d783f8c1f8694c7ebea695bc6461",
+    "make_proxy.py": "ef4cf2bd3caf9852e7d8fb1605dbe34a8bdb1505c83f7b77da2ae0bd30ae4d70",
+    "pack_scores.py": "5ad437ded33480ba0f18002dd2bcb44a32d06a1ede21dd3590b967637b447177",
+    "prepare_choices.py": "8f31e2ca086e797553a72e30dc6518e9a08d09b1bc007c30fbf8ecd0a7eacddc",
+    "prepare_text.py": "c1a51ac12eb23eac3efc30bb2c6a21626a956bbd3182f1c4b0c883167037df47",
+    "reduce_scores.py": "7f812397d43685b1a0110015366503a0cf6af9ce7b8e999e96484c99ea6f4d0a",
+    "run.py": "a9a9659caf1a0a0ec1062dc8a1b0e49dbe3034fb24f8ab107a659ee6d862eae5",
+    "run_two_gpus.py": "adcba0aa713ea99a5973e5fcf95d3faca532f518cf6b54c534b90b6812ca9d37",
+    "runs/C00.py": "3e310984702c53af9cc3b6c3778529c0b9b3e37a421f73cc18c6f6a5450be82b",
+    "runs/C01.py": "268773c63562fee960a0e8197710bba9c93f72d17159b7da9e805d8babe905a4",
+    "runs/C02.py": "1f3d032c1c58e9f9a19871b888c6a4e6fac8056d7aceb58720fc0161a0d69523",
+    "runs/C03.py": "a746b2db887bfd3a82f70ba96b3d8ff400454e4cdd03473172308f8120a1ce9f",
+    "runs/C04.py": "f3fe3c5d217bbf709fb9effe0c51eb8167fa57e0fcad50c81389102cef4587a7",
+    "runs/C05.py": "68b507338b3546daf550404e992d2ea00beb29ff31c386d6c3e54d701a1f26fd",
+    "runs/C06.py": "14d98c7ff7d7150079560c42a35ee3fc33dd4f263cf19f48553a2a5e868445d7",
+    "runs/C07.py": "7a4894bed5075556030fe05b5c87c8418bb35fe27aea60026125fe9c03787eee",
+    "runs/C08.py": "4c3dea483b37c87cab2a6498e65611bd2c8678ef908269feab8562418ad7a743",
+    "runs/C09.py": "12f25cd609c9d177c7842943d7dcc892602a1d6419320e38f46f7f748a918f4b",
+    "runs/C10.py": "5115b95044c50299aa229b141446b4debf6efef66e5649d7488dca007481d4a0",
+    "runs/C11.py": "dac6aa4936b2c2aaa30247d497a150572afd2702e88c4009adc1d13449451b37",
+    "runs/G00.py": "d49aa322524868fef412ca1ba7c5592f45f517450adb3b85e3d0e590538d66d7",
+    "runs/G01.py": "b0623852f7f6d1e7ce58d4e16f8a888404ff37f9e5712c669285f1652317bbe7",
+    "runs/G02.py": "6d13161017e9ab982756c517cf33346c3642d7c71f8650041fb2a71dc65c086e",
+    "runs/G03.py": "e35878a70adc3223e3743c666c39111d5340e3229de72396b7009a6bea802faa",
+    "snap/__init__.py": "7e01f07bbb94605bcafd89ee2ba7386ec4de9c37dcfa73fb725ebe032bce73b9",
+    "snap/core.py": "1b536714586721e730ba73b6e4240df0df781940989e46e546c01bdb9c6d602e",
+    "snap/gpu.py": "715f182780b7d190f823b33c0ebc060112cb7a4668dc373761344002c3ca6fbd",
+    "snap/jobs.py": "e66de7b8f3c6df7032a9b8c92b0fc113645534c87149514ea33234cc0a4256ac",
+    "tests/test_adapters.py": "5b74b6463b5cea2322fec027faf5bda0c9d0c2e3f07015cd29c04a9dc01b4d43",
+    "tests/test_audit_regressions.py": "dfaa80b8e594efd0a49dccfa29744add0a6150c852f5ee84144d2987cc114307",
+    "tests/test_core.py": "6675ae4437d333e2230f94909d95f0e510360efc439a32df7301f71c2c0389cd",
+    "tests/test_end_to_end_scoring.py": "c7f5cffe9c52a55dabe59f4e1218c6907773fdb6b6984d99f48adc2490fd0286",
+    "tests/test_gpu.py": "58fb71649e4ae295331bd4c36a5d2fb7e7bfc07e9dcfc02f4eaea37d5046bda5",
+    "tests/test_jobs.py": "306c9e0238ea14928f76618e2a87b65fbf7705c658ebab0ec04c6c33c70e57fb",
+    "tests/test_launcher.py": "d1b8bebf3ec7a5888116eacfb75e8dfb73cb1912ef51d2e6022c16aa52233514",
+    "tests/test_preparation.py": "62d738bc1d46a3d7ed1d3bd2cf29308b9ad00333b664dcb17c5659e7a22e3060",
+    "tests/test_provenance.py": "b481b8adda8ca55e9b85ae3a0834fe555263c38bb9ca925347993291a7f11e4c",
+    "tests/test_runtime_guards.py": "ee6b1efc3cdac312ac9ba43105c86c60c3ff44e8961f396df15a2021ff94d8c5"
+  },
+  "config_hash": "a78b0e07f14909f7c34168b522f2a2ee13d4ce3e7ee9658364d72d00134e46fb",
+  "configuration": {
+    "bootstrap_draws": 4999,
+    "dataset": "/kaggle/working/datasets/noboolq/margin/scores.json",
+    "seed": 20260914,
+    "split_mode": "original",
+    "template_only": false
+  },
+  "environment": {
+    "packages": {
+      "numpy": "2.0.2",
+      "tokenizers": "0.22.2",
+      "torch": "2.10.0+cpu",
+      "transformers": "5.0.0"
+    },
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]"
+  },
+  "finished_unix": 1789482962.0562248,
+  "implementation": "independent reference, not original pipeline",
+  "inputs": {
+    "/kaggle/working/datasets/noboolq/margin/scores.json": "72a8e12264fb0f5c58c1f9b8204073475c356418c69176c015255dd10f747442",
+    "/kaggle/working/datasets/noboolq/margin/scores.npz": "a5905b534d5bcb38eb2c52ddc4f91aa69897c48f8383bf942cc9bac395c6dd64"
+  },
+  "job": "C01",
+  "started_unix": 1789482961.4339674,
+  "status": "FINISHED_UNCHECKED"
+}

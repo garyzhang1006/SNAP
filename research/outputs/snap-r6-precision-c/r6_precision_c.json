@@ -1,0 +1,94 @@
+{
+ "design": "R6 precision run for the two constructions that matter, at 10,000 replicates on the four hard cells.\n\nDesign fixed before running (2026-09-15, written 22:40 EDT). snap-r6-variants ran 4,000 replicates and\nfound that the wild bootstrap-t with leave-one-cluster-out residual scaling reaches nominal coverage in\nthe four cells where the shipped Rademacher version falls short. A 4,000-replicate cell carries a Monte\nCarlo standard error of 0.0035, and the gap between the two constructions is about 0.012, so the\ncomparison rests on roughly three standard errors. This run repeats the same four cells at 10,000\nreplicates with fresh datasets, seed 20260922 and a cell index offset of sixty, and keeps only the two\nconstructions under comparison so the wall clock stays reasonable. The construction was chosen after\nseeing these four cells, so this run settles precision rather than selection, and snap-r6-variants-b\nsettles whether the advantage holds in the other eight populations.\n",
+ "seed": 20260922,
+ "reps": 10000,
+ "cells": {
+  "margin_like_cross_half_error_corr_0.1": {
+   "name": "margin_like_cross_half_error_corr_0.1",
+   "truth": 1.2445882853377657,
+   "wild_rademacher": {
+    "coverage": 0.9365,
+    "mc_se": 0.0024386010333795893,
+    "lower_miss": 0.0084,
+    "upper_miss": 0.0551,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23463241459881967
+   },
+   "wild_cr3": {
+    "coverage": 0.9464,
+    "mc_se": 0.002252266414081602,
+    "lower_miss": 0.0063,
+    "upper_miss": 0.0473,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24512347654289834
+   }
+  },
+  "margin_like_one_dominant_recipe": {
+   "name": "margin_like_one_dominant_recipe",
+   "truth": 1.2445882853377657,
+   "wild_rademacher": {
+    "coverage": 0.935,
+    "mc_se": 0.002465258607124209,
+    "lower_miss": 0.022,
+    "upper_miss": 0.043,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26212193231708136
+   },
+   "wild_cr3": {
+    "coverage": 0.9529,
+    "mc_se": 0.002118527554694534,
+    "lower_miss": 0.0157,
+    "upper_miss": 0.0314,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.29502096383220616
+   }
+  },
+  "margin_like": {
+   "name": "margin_like",
+   "truth": 1.2445882853377657,
+   "wild_rademacher": {
+    "coverage": 0.9508,
+    "mc_se": 0.002162853670501082,
+    "lower_miss": 0.016,
+    "upper_miss": 0.0332,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24223325750276725
+   },
+   "wild_cr3": {
+    "coverage": 0.9572,
+    "mc_se": 0.0020240592876692113,
+    "lower_miss": 0.0137,
+    "upper_miss": 0.0291,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2530489799880947
+   }
+  },
+  "accuracy_like": {
+   "name": "accuracy_like",
+   "truth": 1.0779610382569493,
+   "wild_rademacher": {
+    "coverage": 0.9472,
+    "mc_se": 0.002236339866835986,
+    "lower_miss": 0.0181,
+    "upper_miss": 0.0347,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.39598062848183796
+   },
+   "wild_cr3": {
+    "coverage": 0.9567,
+    "mc_se": 0.002035315945989713,
+    "lower_miss": 0.0142,
+    "upper_miss": 0.0291,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.41474535167222054
+   }
+  }
+ },
+ "shipped_check": {
+  "margin_like_cross_half_error_corr_0.1": 2.220446049250313e-16,
+  "margin_like_one_dominant_recipe": 0.0,
+  "margin_like": 0.0,
+  "accuracy_like": 0.0
+ },
+ "wall_seconds": 2522.4663710594177
+}

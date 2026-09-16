@@ -1,0 +1,3 @@
+{"id": "garyzhang11111/snap-r11-removal", "title": "snap-r11-removal", "code_file": "snap-r11-removal.py", "language": "python", "kernel_type": "script",
+ "is_private": true, "enable_gpu": false, "enable_tpu": false, "enable_internet": true,
+ "dataset_sources": ["garyzhang11111/snap-compute-src"], "competition_sources": [], "kernel_sources": ["garyzhang11111/snap-r2-grouped"], "model_sources": []}

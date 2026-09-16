@@ -1,0 +1,197 @@
+{
+ "design": "R9 whether correcting a decision rule for covariance helps once the correction is estimated.\n\nDesign fixed before running (2026-09-16, written 00:45 EDT). The paper reports a flip probability under\nthe fitted model and a census of 1,500 observed gaps, and it recommends paired replicate scores. It\nnever asks the question a practitioner actually faces, which is whether applying our correction to their\nown decision rule makes that rule better or worse once the correction carries the noise of a three-run\ndesign. A practitioner who measures per-benchmark run variances and assumes independence uses a standard\nerror that is too small by the factor Lambda, so their nominal five percent test rejects more often than\nfive percent. Multiplying by an estimated Lambda repairs that in expectation, and it also injects the\nestimate's own sampling error into every decision. This run measures both effects together. Each\nreplicate simulates the shipped design of 125 configurations with three runs, estimates Lambda from it\nwith the cross-half estimator, and then applies three rules to a fresh comparison of two model averages,\nwhich are the uncorrected independence rule, the plug-in rule using the estimate, and an oracle rule\nusing the true value. It reports the false declaration rate at a true gap of zero and the power at gaps\nof half and one aggregate standard deviation, for one run and for three runs per model, on a margin-like\nand an accuracy-like population at 4,000 replicates each. Seed 20260940 keeps the draws distinct. A\nplug-in rule that lands near five percent is a usable recommendation, and one that overshoots because of\nits own noise is a finding that the correction needs more runs than this design gives.\n",
+ "seed": 20260940,
+ "reps": 4000,
+ "z": 1.959963984540054,
+ "cells": {
+  "margin_like": {
+   "name": "margin_like",
+   "lambda_true": 1.2445882853377657,
+   "lambda_hat_mean": 1.2432338930595959,
+   "lambda_hat_sd": 0.059220056152267594,
+   "undefined_estimates": 0.0,
+   "rules": {
+    "runs1/gap0.0": {
+     "independence": {
+      "declare_rate": 0.11325,
+      "mc_se": 0.005010599702131472
+     },
+     "plug_in": {
+      "declare_rate": 0.05075,
+      "mc_se": 0.0034703903778969883
+     },
+     "oracle": {
+      "declare_rate": 0.05025,
+      "mc_se": 0.003454161891834255
+     }
+    },
+    "runs1/gap0.5": {
+     "independence": {
+      "declare_rate": 0.1415,
+      "mc_se": 0.0055108472579087145
+     },
+     "plug_in": {
+      "declare_rate": 0.07375,
+      "mc_se": 0.00413252155166794
+     },
+     "oracle": {
+      "declare_rate": 0.07,
+      "mc_se": 0.004034228550788862
+     }
+    },
+    "runs1/gap1.0": {
+     "independence": {
+      "declare_rate": 0.21225,
+      "mc_se": 0.006465290741722292
+     },
+     "plug_in": {
+      "declare_rate": 0.11625,
+      "mc_se": 0.005067936895325356
+     },
+     "oracle": {
+      "declare_rate": 0.1135,
+      "mc_se": 0.00501541997244498
+     }
+    },
+    "runs3/gap0.0": {
+     "independence": {
+      "declare_rate": 0.1145,
+      "mc_se": 0.005034623868771132
+     },
+     "plug_in": {
+      "declare_rate": 0.05275,
+      "mc_se": 0.0035343824602043286
+     },
+     "oracle": {
+      "declare_rate": 0.05125,
+      "mc_se": 0.0034865254014562978
+     }
+    },
+    "runs3/gap0.5": {
+     "independence": {
+      "declare_rate": 0.18375,
+      "mc_se": 0.0061234373006506726
+     },
+     "plug_in": {
+      "declare_rate": 0.10225,
+      "mc_se": 0.004790483730793791
+     },
+     "oracle": {
+      "declare_rate": 0.1015,
+      "mc_se": 0.004774875652831182
+     }
+    },
+    "runs3/gap1.0": {
+     "independence": {
+      "declare_rate": 0.363,
+      "mc_se": 0.007603140798380627
+     },
+     "plug_in": {
+      "declare_rate": 0.23125,
+      "mc_se": 0.006666585285961622
+     },
+     "oracle": {
+      "declare_rate": 0.23,
+      "mc_se": 0.006653946197558258
+     }
+    }
+   },
+   "seconds": 2.578791379928589
+  },
+  "accuracy_like": {
+   "name": "accuracy_like",
+   "lambda_true": 1.0779610382569493,
+   "lambda_hat_mean": 1.073037498626161,
+   "lambda_hat_sd": 0.09884238386913384,
+   "undefined_estimates": 0.0,
+   "rules": {
+    "runs1/gap0.0": {
+     "independence": {
+      "declare_rate": 0.06725,
+      "mc_se": 0.003960032749233269
+     },
+     "plug_in": {
+      "declare_rate": 0.052,
+      "mc_se": 0.003510555511596419
+     },
+     "oracle": {
+      "declare_rate": 0.047,
+      "mc_se": 0.003346303931205293
+     }
+    },
+    "runs1/gap0.5": {
+     "independence": {
+      "declare_rate": 0.07975,
+      "mc_se": 0.004283396359782737
+     },
+     "plug_in": {
+      "declare_rate": 0.064,
+      "mc_se": 0.003869883719183304
+     },
+     "oracle": {
+      "declare_rate": 0.0625,
+      "mc_se": 0.0038273277230987156
+     }
+    },
+    "runs1/gap1.0": {
+     "independence": {
+      "declare_rate": 0.13725,
+      "mc_se": 0.005440873953235822
+     },
+     "plug_in": {
+      "declare_rate": 0.115,
+      "mc_se": 0.005044179814399959
+     },
+     "oracle": {
+      "declare_rate": 0.1065,
+      "mc_se": 0.0048774416962173925
+     }
+    },
+    "runs3/gap0.0": {
+     "independence": {
+      "declare_rate": 0.06425,
+      "mc_se": 0.0038769168645974342
+     },
+     "plug_in": {
+      "declare_rate": 0.05325,
+      "mc_se": 0.003550156246561551
+     },
+     "oracle": {
+      "declare_rate": 0.05,
+      "mc_se": 0.0034460121880225555
+     }
+    },
+    "runs3/gap0.5": {
+     "independence": {
+      "declare_rate": 0.11675,
+      "mc_se": 0.005077387061767105
+     },
+     "plug_in": {
+      "declare_rate": 0.0955,
+      "mc_se": 0.0046470353452497
+     },
+     "oracle": {
+      "declare_rate": 0.0895,
+      "mc_se": 0.004513583664894227
+     }
+    },
+    "runs3/gap1.0": {
+     "independence": {
+      "declare_rate": 0.2795,
+      "mc_se": 0.007095416654432634
+     },
+     "plug_in": {
+      "declare_rate": 0.2415,
+      "mc_se": 0.0067671587464755096
+     },
+     "oracle": {
+      "declare_rate": 0.2325,
+      "mc_se": 0.006679141973337593
+     }
+    }
+   },
+   "seconds": 2.5233259201049805
+  }
+ },
+ "wall_seconds": 17.165103673934937
+}

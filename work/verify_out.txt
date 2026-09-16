@@ -1,0 +1,56 @@
+{
+  "main.tex": {
+    "sentence_count": 230,
+    "minimum_words": 8,
+    "maximum_observed_not_a_limit": 42,
+    "below_minimum": 0,
+    "prose_colons_semicolons_dashes": 0,
+    "uncontracted_negatives": 0
+  },
+  "appendix_a.tex": {
+    "sentence_count": 96,
+    "minimum_words": 9,
+    "maximum_observed_not_a_limit": 62,
+    "below_minimum": 0,
+    "prose_colons_semicolons_dashes": 0,
+    "uncontracted_negatives": 0
+  },
+  "appendices_bcd.tex": {
+    "sentence_count": 400,
+    "minimum_words": 8,
+    "maximum_observed_not_a_limit": 44,
+    "below_minimum": 0,
+    "prose_colons_semicolons_dashes": 0,
+    "uncontracted_negatives": 0
+  },
+  "pdf": {
+    "pages": 32,
+    "main_text_pages": 8,
+    "statements_begin": 8,
+    "empty_author_metadata": true,
+    "personal_identifiers_found": false
+  },
+  "build": {
+    "engine": "pdfLaTeX (TeX Live 2026)",
+    "exit_code": 0,
+    "overfull_boxes": 0,
+    "missing_characters": 0,
+    "font_substitution_warnings": 0,
+    "undefined_references_or_citations": false,
+    "underfull_boxes": 5,
+    "remaining_warnings": "5 underfull spacing diagnostics, visually inspected"
+  },
+  "official_style_unchanged": true,
+  "bibliography": {
+    "entries": 53,
+    "unique_keys": 53,
+    "unresolved_citation_keys": []
+  },
+  "table_numeric_tokens_preserved": false,
+  "rendered_review": {
+    "all_pages_contact_sheets_inspected": true,
+    "enlarged_key_pages_inspected": true,
+    "original_figures_preserved": true
+  }
+}
+SHORT SENTENCES []

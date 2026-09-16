@@ -1,0 +1,472 @@
+SNAP RESEARCH IMPROVEMENT PLAN
+A detailed handoff for the author and the next LLM
+Prepared 14 September 2026
+
+PURPOSE AND LIMITS
+
+Bring the current paper as close as the evidence permits to the realistic ceilings previously discussed for ICLR main-track competitiveness. Work personally, without spawning agents or delegating to agent workflows. The present deliverable is a plan for research and revision. It isn't a claim that the new analyses have been performed.
+
+The five targets are importance of the question at roughly 85–90/100, clarity at 90–95, novelty at 60–70, empirical evidence at 80–85, and support for general conclusions at 65–75. These are subjective assessments, not official ICLR scores or measurable optimization targets. The earlier estimate of an overall 75–80 ceiling assumed successful substantive validation. Neither completing a checklist nor obtaining favorable p-values guarantees those ratings or acceptance.
+
+The current paper was assessed at roughly 55/100 overall, with a subjective acceptance estimate around 10–20%. The 47/50 stop-slop score concerns prose alone. Don't convert it into research quality, human-authorship probability, or acceptance probability.
+
+The objective is defensible new knowledge. If corrected analyses weaken or reverse a result, revise the research claim. Don't preserve a favorable headline by selecting a split, dropping a benchmark, narrowing an interval, or relabeling a post hoc analysis as prospective. A useful negative finding can support a paper if it establishes something new and consequential.
+
+This is a plain UTF-8 file for TextEdit. Section numbers and task identifiers provide stable references for another LLM. Statistical notation is explained in words. Commands and future filenames are identified as existing or proposed. The prose requirements for the manuscript don't restrict the explanatory punctuation in this planning document.
+
+CONTENTS
+
+01. Existing materials and evidence status
+02. Execution rules for the next LLM
+03. Map from the five ceilings to concrete evidence
+04. Artifact recovery and exact baseline reproduction
+05. Define the estimand before changing the method
+06. Resolve BoolQ passage dependence
+07. Check dependence elsewhere in the battery
+08. Separate seed variation from training conditions
+09. Verify the mathematical implementation
+10. Repair interval inference and calibration
+11. Replace the unstable competence proxy
+12. Redesign the covariance prediction comparison
+13. Establish practical importance through decisions
+14. Test gain and format mechanisms honestly
+15. Evaluate benchmark composition without false population inference
+16. Obtain meaningful external replication
+17. Establish the novelty boundary
+18. Create a genuinely prospective validation stage
+19. Rebuild the main argument and paper structure
+20. Figures, tables, language, and typography
+21. Reproducibility package and data contracts
+22. Compute planning and experiment order
+23. Evidence gates and outcome-dependent decisions
+24. Deadline strategy and submission compliance
+25. Adversarial self-review questions
+26. Final completion requirements
+27. Source map
+28. First instructions for the next LLM
+
+01. EXISTING MATERIALS AND EVIDENCE STATUS
+
+The project root is /Users/garyzhang/Documents/ChatGPT/iclr main track.
+
+The original supplied manuscript is /Users/garyzhang/Desktop/iclr main seed noise.pdf. Preserve it. It is a historical input, not the current submission candidate.
+
+The current editable paper is in deliverables/main.tex, deliverables/appendix_a.tex, deliverables/appendices_bcd.tex, and deliverables/references.tex. Read those files before editing. The current rendered version is deliverables/SNAP_revised_draft.pdf. The editable archive is deliverables/SNAP_editable_source.zip. The conference style is deliverables/iclr2027_conference.sty. It must remain byte-identical to the official style under work/template/iclr2027/iclr2027_conference.sty unless an actual official update is downloaded and documented.
+
+The current audits are deliverables/READ_ME_FIRST.md, deliverables/STYLE_AUDIT.md, and deliverables/verification.json. Historical technical findings are in work/technical_audit.md. That audit refers to the ORIGINAL PDF's pages and contains errors already corrected in the current prose. Don't accidentally reintroduce them or report them as still present without inspecting the current source. work/original.txt is the extracted original text.
+
+Observed editorial evidence includes a 31-page PDF, eight main-text pages, a successful source-archive rebuild, unchanged table numbers during prose and formatting edits, and no overfull boxes, missing characters, font substitutions, or unresolved references in the final checked build. Recheck after future edits. The verification script is work/verify_final.py. Its visual-review booleans were manually asserted during the earlier review. Running it again doesn't perform a visual inspection. Its historical table-number comparison also isn't a permanent scientific invariant once legitimate reruns change results.
+
+The supplied research material was a PDF. The empirical pipeline, underlying per-item scores, checkpoint manifest, and complete supplement weren't independently reproduced during the editorial work. A successful LaTeX build verifies document production only. Several toy algebra and simulation checks were performed, but they aren't reproductions of the reported empirical experiments.
+
+Treat these numerical facts as reported baseline targets, pending reproduction. DataDecide contributes 375 runs in 125 configurations, comprising 25 recipes and five sizes with three runs each. The battery contains ten benchmarks and 37,682 items per run. Reported full-battery inflation is 1.244 on margins and 1.078 on accuracy. Removing BoolQ gives 1.786 and 1.558. BoolQ contributes 84% of the accuracy covariance trace. The manuscript reports schedule mismatches, an unimplemented screening split, negative variance estimates, a floored competence proxy, and prediction rankings without paired uncertainty.
+
+Don't interpret those admissions as proof of misconduct. They identify limitations and missing verification. Establish provenance through artifacts before drawing stronger conclusions.
+
+02. EXECUTION RULES FOR THE NEXT LLM
+
+Use one working process and no subagents. Read the current state rather than relying on earlier conversational scores. Preserve a dated baseline copy and file hashes before changes. Maintain a task ledger with status values NOT STARTED, RUNNING, VERIFIED, BLOCKED, or DROPPED WITH REASON. “Code written” and “job submitted” aren't VERIFIED.
+
+Each research task must state its scientific question, inputs, analysis population, estimand, assumptions, output files, verification method, and consequence for the manuscript. Record proposed choices before inspecting their new outcomes. Distinguish exploratory reanalysis of already viewed data from evaluation on genuinely unseen data.
+
+Separate four evidence labels. OBSERVED means checked in the current run or inspected in an original source. REPORTED means asserted by the manuscript or another author. PROPOSED means part of this plan but not implemented. INFERRED means a conclusion conditional on stated observations and assumptions. Never silently upgrade REPORTED to OBSERVED.
+
+Don't invent missing releases, filenames, repository URLs, API signatures, dependency versions, compute times, results, or preregistration timestamps. Find resources through the original papers and their official release links. If an input is missing, name the input and explain which tasks depend on it. Continue independent tasks such as derivations and artifact design. Ask the author for the actual research repository and reductions when local discovery fails.
+
+Don't publish, send messages to collaborators, submit a paper, or launch paid compute without the relevant authorization. Local preparation and bounded checks can proceed. Heavy inference or training needs an explicit resource plan. Avoid accidentally downloading hundreds of gigabytes to the laptop when compact reductions would suffice.
+
+03. MAP FROM THE FIVE CEILINGS TO CONCRETE EVIDENCE
+
+IMPORTANCE. Explain a real decision that changes when covariance is accounted for. Candidate decisions include whether a model improvement exceeds a meaningful margin, how many training replicates are needed, or whether a benchmark aggregate supports a stable ranking. A diagram or anecdote isn't enough. Compare the decision's performance with and without covariance on evaluation data and report error, uncertainty, and cost. A result that covariance rarely changes decisions is still informative if estimated precisely, but doesn't support exaggerated impact.
+
+CLARITY. A reviewer must understand the target quantity, why cross-half products help, the main result, and its largest limitation from the main paper alone. Use consistent terms for runs, configurations, recipes, item groups, and benchmarks. Remove appendix history that obscures the argument while retaining the evidence needed to audit deviations. Improve readability after deciding the final scientific claim, not before.
+
+NOVELTY. Establish exactly what prior methods already do. The identity for covariance of an average and the repeated-measurement construction aren't new. The realistic contribution may be a carefully validated empirical discovery, a documented failure of standard uncertainty practice, or a useful estimation procedure with proven and tested advantages under the specific data constraints. Don't claim novelty from the acronym, an application-specific name, or the number of sensitivity tables.
+
+EMPIRICAL EVIDENCE. Reproduce the baseline, resolve passage dependence, verify matched-run comparisons, calibrate inference under plausible alternatives, repair the proxy, and compare predictive methods with paired uncertainty. The evidence ceiling also requires accessible provenance and a fresh rebuild of the scientific outputs, not just the paper.
+
+GENERAL CONCLUSIONS. Define the population to which each finding applies. A fixed ten-benchmark battery doesn't become representative because it contains many items. Evaluate transfer across genuinely different training populations and benchmark compositions, and quantify uncertainty in that transfer. If evidence remains narrow, the correct endpoint is a narrow conclusion. Broader wording can't compensate for broader data that don't exist.
+
+04. ARTIFACT RECOVERY AND EXACT BASELINE REPRODUCTION
+
+Task R0 is mandatory before interpreting a new numerical result.
+
+Locate the research repository, environment specification, data acquisition code, reductions, item-order mapping, split assignments, run metadata, and outputs behind every reported table. Search the project first. If absent, ask for the repository and compact reductions. The current editorial source archive doesn't contain the experimental pipeline.
+
+Create a claim-to-artifact inventory. For each result, record the manuscript location, generating function or command, input hashes, run population, random seed, output path, rounding convention, and whether it has been reproduced. Include the primary estimates, reliability table, all calibration cells, transport analyses, checkpoint comparison, GPU comparison, recipe enumeration, and prediction errors. Unsupported supplementary assertions must be removed or clearly labeled as unverified until recovered.
+
+Define a canonical row key for scores using release revision, recipe, size, run identifier, checkpoint, benchmark, and item identifier. Confirm uniqueness. Test joins with adversarial cases such as duplicated IDs, missing runs, altered item order, and mismatched benchmark aliases. A same-length array is insufficient evidence that two runs score the same items in the same order.
+
+Verify scores against source definitions. Confirm that margin normalization is per byte, how zero margins are treated, how answer alternatives are scored, how multiple contexts are handled, and how MMLU subjects are averaged. Test the original release's accuracy bit against the paper's margin-derived indicator. If they differ because of scoring conventions, expose and resolve that difference before pooling them.
+
+Run a small complete case first, then the full baseline. Match the reported population counts exactly or explain the discrepancy. Compare unrounded output where available. An initial proposed reproduction tolerance is that a value must round to the manuscript's printed value; this isn't enough when raw outputs exist, in which case compare against justified numerical tolerances. Record stochastic tolerances before rerunning random procedures and compare using Monte Carlo error. Don't rerun seeds until a target appears.
+
+Reproduce the selection of common checkpoints and the exact item order used by the master seed. A seed alone doesn't determine a split when item ordering, generator, library behavior, or preprocessing changes. Recover all four. Produce a discrepancy report rather than modifying the reconstruction until it resembles the PDF.
+
+Reconstruct the historical nine-check and eleven-prediction records as an audit table. Record each original criterion, planned response, implemented response, numerical outcome, uncertainty requirement, and deviation. Distinguish missing tests from failed tests. A point estimate satisfying a criterion with a required lower confidence bound is not a pass without that bound. Preserve the original scoring rule beside any corrected exploratory interpretation, including the transport scale discrepancy and unimplemented responses to failed checks.
+
+R0 passes when every central number has a traceable input and generating command, the primary result reproduces within justified tolerance, and deviations are explained. If it fails, scientific repair starts with the failure. No later stylistic edit should hide it.
+
+05. DEFINE THE ESTIMAND BEFORE CHANGING THE METHOD
+
+Task R1 fixes what the estimator is supposed to measure.
+
+Let c denote configuration, r denote run, and j denote benchmark. For half H, the working model is y_H(c,r,j) = mu_H(c,j) + E(c,r,j) + epsilon_H(c,r,j). E is the component of run performance that generalizes across the chosen item populations. epsilon contains item-dependent deviations. The cross-half argument requires zero conditional mean errors and zero relevant cross-half error covariance, including terms across different runs and benchmarks. Run effects must satisfy the assumptions used in the centering calculation.
+
+Write a short estimand specification distinguishing three quantities. First, run variance on this fixed item bank. Second, item-general run covariance under an item-population model. Third, variation over a population of benchmark batteries. These are different targets. Repeated item splits don't automatically identify the third, and grouping passages changes the item sampling design without by itself proving independence.
+
+For fixed weights w, define V_full = w' Sigma_E w and V_diag = sum_j w_j^2 Sigma_E(j,j). Define theta = V_full/V_diag and Lambda = sqrt(theta) only where the relevant quantities are defined. The original equal-weight construction is a special case. State configuration weights too. Pooling equal-weight configuration moments differs from weighting configurations by precision or number of items.
+
+For the original equal benchmark weights, retain r_eff = sum_{j != k} Sigma_E(j,k) / [(K-1) trace(Sigma_E)]. This is an effective covariance coefficient, not a normalized weighted mean correlation. K_eff = K/Lambda^2 is an equal-weight variance-equivalent count at the specified marginal RMS scale. Don't reuse that formula without derivation for arbitrary weights, interpret it as a count of independent knowledge dimensions, or assume it cannot exceed K under negative aggregate covariance.
+
+Predefine how unequal run counts and missing cells are handled. If pooling per-configuration unbiased covariance estimates equally, normalize each by its own R_c-1 before averaging. Pooling raw products over total degrees of freedom changes weighting. Both can be reasonable, but they answer different questions. Don't let missingness silently choose the target.
+
+R1 passes when an independent reader can identify exactly what is random, what is fixed, which population is averaged, and which quantities the reported interval covers.
+
+06. RESOLVE BOOLQ PASSAGE DEPENDENCE
+
+Task R2 is the highest-priority empirical repair. It can alter the main result.
+
+Recover the source passage for every retained BoolQ item through the official dataset version corresponding to the score release. Prefer stable source identifiers. If matching by passage text is necessary, specify normalization explicitly, preserve the raw text hash, and inspect collisions and unmatched cases. Don't use question similarity or row order as an undocumented substitute for passage identity. Report mapping coverage, ambiguous joins, excluded items, unique passage counts, group-size distribution, and examples of join failures without exposing restricted data.
+
+Build splits at the passage level so no passage contributes items to both halves. Use the same assignment for all runs of a configuration and, where item sets match, across compared populations. Balance halves using information available before examining scores. Approximate item-count balance can be desirable, but splitting a large group to achieve exact balance would defeat the purpose.
+
+Choose weighting deliberately. Averaging passage means gives equal passage weights and changes the target relative to averaging questions. If retaining the question-weighted target, derive the estimator for the group assignment and unequal half denominators, including any inclusion-probability weighting or ratio approximation. Don't apply the old equal-half derivation automatically. Simulate the chosen procedure to quantify finite-sample effects of unequal group sizes and content imbalance. A half-specific mean absorbs mean differences, not arbitrary run-by-content interactions.
+
+Run at least these comparisons on the same recoverable item universe: the exact original item split, a new random item split under the new machinery, the passage-group split, and the battery without BoolQ. Keep a matched universe so a difference isn't secretly caused by dropping unmatched items. If matching loses observations, separately quantify the change caused by item restriction and the change caused by grouping.
+
+For every comparison report the BoolQ diagonal, total diagonal sum, aggregate off-diagonal contribution, aggregate standard deviation, Lambda, and paired changes between split procedures. Give configuration or recipe contributions and uncertainty, not only a headline ratio. If grouped splitting reduces a passage-dependent diagonal term, Lambda may move away from one under a restricted diagonal-contamination model. Don't assume that direction in advance because off-diagonal dependence and changed weights can alter it.
+
+Use repeated prespecified group splits to measure assignment sensitivity. An initial proposed budget is 50, followed by a Monte Carlo precision check. Split variation isn't a confidence interval over runs, passages, or recipes by itself. If inference averages over splits, account for that algorithmic randomness consistently within resampling, or explicitly condition on the chosen assignments.
+
+Construct a simulation with known run covariance, passage effects, heterogeneous passage sizes, and question-level errors. Compare original and grouped splitting as passage effects increase. Include a zero-passage-effect control. Verify that grouping fixes the dependence it is designed to address and document what it cannot fix, including dependence across distinct passages or documents.
+
+R2 passes when mappings and no-overlap assertions are verified, weights and target are explicit, the paired empirical change is quantified, and simulations support the implementation. Passing doesn't mean recovering a desired Lambda. If the headline result disappears, rebuild the paper around the corrected result and any demonstrable failure mode of naive splitting.
+
+07. CHECK DEPENDENCE ELSEWHERE IN THE BATTERY
+
+Task R3 extends the same reasoning beyond BoolQ. Inventory repeated source passages, exact and near-duplicate items, shared answer contexts, and overlap across benchmarks. In particular, examine related ARC subsets and source relationships rather than assuming benchmark names imply independence. Use official provenance where available, with text matching as a documented diagnostic.
+
+For cross-benchmark overlap, consider assigning connected components of linked source items to the same half across all affected benchmarks. This prevents a source from appearing in half A of one benchmark and half B of another. Check whether this produces empty strata, severely imbalanced halves, or a giant component that makes the desired split infeasible. Don't force a split that violates its stated grouping rule. Report any remaining unidentified source relationships.
+
+MMLU subjects are strata, not automatically independent source documents. Preserve its subject-macro weighting and ensure each subject contributes appropriately to both halves when possible. If a subject cannot be divided at the chosen grouping level, predefine an exclusion or alternative estimator and show the effect on the target.
+
+R3 passes when dependence risks have an item-level audit, the implemented grouping matches the intended sampling model, and unresolved grouping is explicit. It doesn't require pretending all semantic dependence can be detected by a duplicate search.
+
+08. SEPARATE SEED VARIATION FROM TRAINING CONDITIONS
+
+Task R4 reconstructs the run manifest. For every run record model architecture, size, data recipe, initialization seed, data-order seed, checkpoint step, tokens seen, total planned training budget, learning-rate schedule and warmup, batch settings, optimizer, tokenizer revision, code revision, precision, hardware where known, and release provenance. Mark unavailable fields as unavailable.
+
+Equal checkpoint steps don't imply equal training histories or equal learning rates. The manuscript reports that auxiliary runs below 1B have shortened schedules and that 92 configurations have different maximum steps. Compare actual training conditions before calling any contrast a seed-only contrast.
+
+Estimate and report the full released-run covariance, the auxiliary-pair contrast where conditions can be matched, and a strictly matched subset if one exists. With two auxiliary runs there is one within-configuration contrast degree of freedom. The estimator must reflect that loss of information, and broad claims need correspondingly honest intervals. Don't claim a significant difference between panels simply because one interval crosses one and another doesn't. Estimate the paired difference where the design permits it.
+
+Use the adjacent-checkpoint experiment as a sensitivity study of observation time. Keep items, scoring implementation, batching, and hardware fixed within that comparison. Evaluate more than one checkpoint pair or configuration if available, predefining the selection. A large checkpoint effect in PolyPythias doesn't numerically establish the effect in DataDecide. Avoid treating multiple nearby checkpoints as independent training runs.
+
+If the release cannot isolate initialization from data order, retain the combined run effect. A genuine decomposition needs a crossed design that changes initialization and data order separately, or an appropriate existing release. New controlled training is optional and expensive, not a prerequisite for a narrowly phrased released-run study. It becomes necessary if the intended claim specifically attributes covariance to initialization or data-order mechanisms.
+
+R4 passes when the labels seed-only, schedule-matched, auxiliary contrast, and released-run variation each correspond to verified design facts. Missing provenance restricts interpretation even if all estimates look stable.
+
+09. VERIFY THE MATHEMATICAL IMPLEMENTATION
+
+Task R5 connects proof, code, and tests. Retain the corrected cross-half identity and explicitly test configuration centering, symmetrization, and degrees-of-freedom factors. Compare a small transparent loop implementation against the optimized implementation on identical synthetic arrays. The two implementations should be written through different algebraic paths and compared numerically.
+
+Required tests include a single positive-variance benchmark with Lambda equal to one, diagonal covariance with population Lambda one, equal marginal variances with known correlation, unequal variances where r_eff differs from mean correlation, valid negative covariance, and deterministic shifts added to both halves. Permuting item order jointly with its metadata must leave results unchanged. Reordering configurations or runs consistently must leave results unchanged. A global positive scaling of all scores leaves Lambda unchanged but scales aggregate deviation. Scaling individual benchmarks changes weights and can change Lambda.
+
+Test zero and negative estimated denominators, negative aggregate moments, undefined correlations, missing replicates, singleton configurations, zero bootstrap standard errors, and inconsistent item sets. Represent undefined values explicitly. Never force a result into the parameter space by clipping without recording the changed estimator and its justification.
+
+Verify that symmetrization yields symmetry but doesn't guarantee positive semidefiniteness. A moment estimate outside the PSD cone can occur in finite samples. Separate raw moment diagnostics from any regularized covariance used for prediction. Report how projection or shrinkage changes the covariance sum, diagonal, and target, and fit tuning parameters without test-set leakage.
+
+For the permutation identity, verify that permuting each trait's run labels jointly across its two halves preserves its diagonal contribution. Independent trait permutations remove expected off-diagonal terms under the specified randomization. A single common permutation across all traits preserves their pairing and can't generate this null. Include the identity transformation in the appropriate uniform sample space. Retain the statement that expected squared ratio can equal one while expected square root need not.
+
+Verify the information-ratio calculation separately from covariance estimation. For Gaussian item margins and an infinitesimal additive shift, the ratio of accuracy noise to margin noise per unit squared local sensitivity is p(1-p)/phi(z)^2, where z = Phi^{-1}(1-p). Its minimum is pi/2, so a proposed lower threshold of 1.4 cannot falsify that model. Derive the local approximation, check the minimum analytically or with a proof supported by numerical checks, and distinguish the plug-in model quantity from measured information in arbitrary margin distributions. If retaining a claim about empirical relative information, test departures from Gaussian margins and finite shifts rather than treating accuracy alone as a measurement of the needed density at zero.
+
+Retain the finite-K variance decomposition without promising an asymptotic floor from bounded variances alone. A limiting floor needs appropriate convergence of average variance and covariance structure. Also verify the diagonal-contamination example, where adding nonnegative diagonal covariance pulls the squared inflation toward one when the denominators are positive. That restricted example is not a general bias bound when contamination also enters off-diagonal terms.
+
+R5 passes through executed property tests and derivations that state their assumptions. Passing synthetic tests doesn't validate the real-data sampling model.
+
+10. REPAIR INTERVAL INFERENCE AND CALIBRATION
+
+Task R6 first reproduces the actual interval implementation. Recover why it fixes the observed denominator during wild resampling, how it studentizes, what finite-cluster factors it uses, which draws it discards, and how it transforms endpoints. Don't silently substitute a more familiar bootstrap and call it a reproduction.
+
+State the stochastic sampling model for inference. If recipes are treated as independent clusters drawn from a wider recipe population, justify that interpretation. The released 25 recipes may be a designed collection. A cluster bootstrap can model uncertainty under assumptions but doesn't make that collection a random representative sample. Distinguish run randomness conditional on configurations from generalization across recipes and model sizes.
+
+Compare plausible candidate procedures on the SAME target. Candidates may include the current wild cluster method, a jointly resampled numerator-and-denominator cluster procedure, or a ratio interval obtained by test inversion when the denominator is uncertain. These are proposed families, not guaranteed solutions. Verify the relevant statistical derivation and authoritative implementation before using a named method. An interval can legitimately be unbounded or disconnected near a denominator boundary. Don't hide that by reporting only convenient finite endpoints.
+
+Design simulation cells that vary nonzero covariance, recipe-level heterogeneity, unequal marginal variances, trace domination like BoolQ, few effective influences, negative or near-zero covariance moments, skewed or heavy-tailed run effects, group-size imbalance, and cross-half dependence. Separate cells satisfying the estimator's model from deliberate violations. Include a documented estimate of the real influence concentration as one scenario, without presenting that fitted scenario as independent confirmation.
+
+Use enough simulated datasets to measure coverage to useful precision. For nominal coverage p and B datasets, Monte Carlo standard error is approximately sqrt[p(1-p)/B]. At p=0.95, B=2,000 gives roughly 0.0049; B=10,000 gives roughly 0.0022. These are planning calculations. Select B based on desired resolution and budget, and report binomial uncertainty on empirical coverage. For broad exploratory grids, a smaller pilot is acceptable if decisive cells receive adequate replication. Don't claim calibration from 200 datasets because the result happens to be close to 0.95.
+
+Record coverage, lower-tail and upper-tail errors separately, interval width, bias, root mean squared error, undefined-estimate rate, unbounded-interval rate, and discarded-draw fraction. A nominal 95% two-sided interval may fail a proposed upper-bound claim if the relevant tail is miscalibrated even when total coverage looks acceptable. Predefine an application-driven tolerance for coverage error and Monte Carlo precision; don't choose the tolerance after seeing the grid.
+
+Use separate simulation seeds for tuning a candidate procedure and evaluating the chosen procedure. Keep all methods in the final comparison, including unsuccessful candidates with concise explanations. Track power or precision under scientifically relevant alternatives, but don't compute observed-effect power as evidence that the completed study was adequate.
+
+Permutation experiments answer a conditional exchangeability question. Independently relabeling runs within each recipe-size cell can destroy cross-size dependence even while preserving cluster membership. Specify which alignments are randomized. Don't treat a permutation reference as coverage evidence for every nonzero population covariance. Use a plus-one Monte Carlo convention where appropriate and document it, rather than interpreting zero sampled exceedances as probability zero.
+
+Recompute jackknife intervals from unrounded data and the intended confidence level. Keep confidence intervals, simulation dispersion bands, prediction intervals, standard errors, and descriptive removal ranges separately labeled. R6 passes when the chosen interval has a defensible target, its code matches the derivation, and its failures across plausible conditions are quantified. If no interval performs adequately, report the limitation and avoid equivalence or upper-bound claims.
+
+11. REPLACE THE UNSTABLE COMPETENCE PROXY
+
+Task R7 addresses the 10^-6 standard-deviation floor that lets WinoGrande dominate the margin proxy by reported factors around 800–38,000. Don't replace that floor with a different arbitrary constant and declare the mechanism repaired.
+
+Start with an audit of the current proxy. Output each benchmark's estimated variance, denominator used, resulting coefficient, contribution to the proxy, and sensitivity to its removal. Plot these by configuration or recipe where possible. Reproduce the dominance before changing the method.
+
+Choose a measurement strategy based on the claim. The preferred descriptive control is per-run loss on a separate text set, scored consistently at the same checkpoint and disjoint from benchmark items. Verify data provenance and possible overlap. This is a separate observable, not automatically a pure measurement of general competence. Independent items reduce shared measurement noise but don't establish causal mediation or remove all confounding.
+
+If such losses are unavailable, evaluate a prespecified regularized proxy using other benchmarks. Candidate designs include a latent-factor measurement model that accounts for noise or training-fold estimates of stable scales with shrinkage. State what identifies the factor, how signs and scale are fixed, and how uncertainty is propagated. Learn transformations, variances, loadings, exclusions, and hyperparameters using training recipes only. Leave the target benchmark out and preserve passage grouping across measurement splits.
+
+Cross-fitting means training a proxy or nuisance estimate without using the evaluation unit whose error is assessed. Merely using the opposite item half doesn't prevent leakage from held-out recipes into tuning. Keep recipe folds and item partitions distinct. Recompute the entire fitted proxy inside uncertainty calculations where required.
+
+Report proxy reliability, stability across folds, benchmark contribution concentration, and uncertainty in adjusted covariance. Examine whether conclusions depend on one shrinkage choice, the treatment of negative moments, or one benchmark. Include an unadjusted baseline. If measurement error attenuates the regression or adjustments share noisy scores with outcomes, describe the direction only where derived or demonstrated.
+
+R7 passes when one trait no longer dominates through an arbitrary numerical artifact and the proxy has a stated measurement interpretation supported by held-out checks. It doesn't pass merely because adjusted Lambda changes little. If no defensible proxy is possible, remove the mechanism claim and retain the failed proxy as a concise limitation or supplementary diagnostic.
+
+12. REDESIGN THE COVARIANCE PREDICTION COMPARISON
+
+Task R8 distinguishes two prediction problems. Conditional correlation prediction supplies held-out marginal run variances to every model and asks whether learned correlations help. End-to-end uncertainty prediction must estimate those marginal variances from information genuinely available at deployment. The first can be scientifically useful, but isn't a substitute for the second and doesn't eliminate the need for replicates.
+
+Freeze folds at the recipe level for recipe-generalization claims. All sizes and runs belonging to a held-out recipe stay out of training. Use nested training-only selection for shrinkage, factor rank, proxy construction, and regularization. The existing five held-out folds share overlapping training sets, so five fold means aren't five independent observations suitable for an automatic t-test.
+
+Compare the original independence, rank-one competence, rank-one-plus-gain, phenotypic plug-in, and full covariance models. Add a simple shrinkage estimator toward the diagonal as a strong baseline, and a low-rank regularized model only if its tuning and complexity can be evaluated fairly. Keep resource budgets comparable. A complicated estimator beating an unstable unregularized full covariance matrix may demonstrate regularization rather than a new covariance principle.
+
+Specify exactly what each method sees at train and test time. The between-configuration correlation plug-in using held-out scores has an information advantage or different information set that must be explicit. Negative held-out variance clipping is not neutral merely because every model receives it. Report unclipped feasibility, clipped inputs, changes to the scored target, and a sensitivity analysis under a justified alternative.
+
+Compute paired losses for the same held-out configurations. Save predictions, targets, and losses rather than only rounded fold means. Report paired differences, uncertainty, and practical effect sizes. Prefer resampling at the independent design unit with the full fitting pipeline rerun when feasible. If bootstrapping duplicated recipe IDs, prevent copies of one original recipe from leaking across train and test partitions. Alternatively derive and justify a valid design-specific procedure. Label any cheaper conditional interval according to the uncertainty it omits.
+
+The observed covariance target is itself noisy and can share estimates with the predicted diagonal. Quantify that issue. Independent run groups for target estimation are preferable where enough runs exist. With only three runs, a fully independent target may be infeasible. Use simulations with known covariance and transparent conditional evaluation rather than pretending noisy target loss is exact population prediction error.
+
+R8 passes when the comparison has no hidden test information, includes credible simple baselines, and quantifies paired differences. If rankings are unresolved, say so. A claimed gain should exceed a prespecified practically meaningful amount with supporting uncertainty, not simply have the smallest fourth decimal place.
+
+13. ESTABLISH PRACTICAL IMPORTANCE THROUGH DECISIONS
+
+Task R9 supplies the strongest route toward the importance ceiling. Pick a concrete deployment decision before evaluating outcomes. For example, assess whether a measured accuracy improvement is large enough to justify changing a training recipe under a fixed replicate budget. Define the minimum useful improvement from the application or present a transparent sensitivity range if no application-specific threshold exists.
+
+Compare independence-based uncertainty, covariance-aware uncertainty, and a direct replicate-based estimate where available. Evaluate interval calibration, false declarations of improvement, abstention rate, ranking stability, and the number of runs needed for a stated precision. Include runtime and data requirements. The comparison must use the same information budget or clearly disclose differences.
+
+For a score difference between model averages, the variance is V_A + V_B - 2 Cov(A,B). The familiar sqrt(2) times aggregate deviation assumes equal variances and independent run errors. If the two models share seeds or data-order randomness, paired covariance matters. If the score averages n independent runs, its run variance changes with n; derive the relevant unequal-n or paired formula rather than copying a single-run expression.
+
+Observed gaps are noisy. The existing count of 455 among 1,500 pairs below a threshold doesn't identify the fraction of true small gaps. Those 1,500 pairs also share models and aren't independent observations. Evaluate reversals on independent run groups or suitable external replicated data. If that isn't possible, present model-based decision calculations and sensitivity to noise assumptions, with no claim to directly observed reversal frequencies.
+
+For an adequacy claim, predefine the largest acceptable error in the independence approximation. If the concern is only underestimating standard deviation, a valid upper bound on Lambda below 1 plus that tolerance can support a scoped one-sided statement under the model. If both underestimation and overestimation matter, define a two-sided equivalence region and use an appropriate validated procedure. Failure to reject Lambda equal to one is neither test. Derive any replicate-budget recommendation from the variance of the actual single-run or multi-run decision, and check it against independent outcomes or calibrated simulation.
+
+R9 passes when a reviewer can see what decision changes, how often, at what uncertainty, and at what cost. If decisions don't improve, that constrains the practical claim and may still support a useful finding about when covariance estimation is unnecessary.
+
+14. TEST GAIN AND FORMAT MECHANISMS HONESTLY
+
+Task R10 keeps descriptive association separate from causal attribution. Multiplying margins by a positive number leaves their signs unchanged. Accuracy invariance in that simulator is a construction check, not evidence that real training changes accuracy through no gain mechanism.
+
+Validate simulator choices against observed score distributions, heterogeneity, and the way the actual covariate is measured. Report residual discrepancies instead of declaring a simulator realistic because one average matches. Propagate uncertainty in the estimated gain scale. The shares obtained under selected simulator settings aren't identified causal bounds, and changing settings until a preferred share appears is invalid.
+
+A stronger scoring-scale experiment can apply prespecified transformations to the same saved scores, holding items and runs fixed. Such an intervention tests a scoring mechanism, not a training mechanism. To isolate scoring format from content, evaluate the same underlying content under multiple scoring rules or formats where this is scientifically meaningful. A transformation that changes semantics or answer difficulty cannot be treated as a pure format intervention.
+
+The current within-format association compares different benchmarks, each with one format. Keep that as an association unless a crossed content-by-format design is obtained. A causal account of training gain or competence needs stronger identification, such as controlled interventions and validated measurements. If those resources are unavailable, don't pursue causal wording merely to increase novelty.
+
+R10 passes when every mechanism statement is labeled according to what was manipulated or observed, and the empirical checks can distinguish the proposed explanation from at least one plausible alternative.
+
+15. EVALUATE BENCHMARK COMPOSITION WITHOUT FALSE POPULATION INFERENCE
+
+Task R11 separates weighting, trait count, and content changes. Report fixed equal-benchmark weights as the main baseline, followed by scientifically motivated prespecified alternatives. Standardizing by estimated seed standard deviation changes weights and can exclude traits with nonpositive moments. Treat it as a separate target, not the same average with a cosmetic rescaling.
+
+For each removal analysis report which benchmarks remain, K, weights, trace, off-diagonal sum, Lambda, and aggregate deviation. Comparing K_eff after removal without acknowledging the change in K can exaggerate differences. Use fixed-K subsets or derived references where the scientific question requires them. Don't choose subsets based on the desired inflation.
+
+The current leave-one-benchmark-out ranges are sensitivity summaries. A benchmark jackknife and quadrature addition to a sampling standard error don't produce a valid population interval unless a sampling model and covariance structure justify them. Retain informative removal plots while dropping unsupported uncertainty decompositions. Label illustrative arithmetic as illustrative if there is a compelling reason to keep it.
+
+If generalizing over benchmark batteries, define a sampling frame. Explain which tasks could have been selected, what weights they represent, and why the chosen batteries cover that frame. More items from the same benchmark don't provide new independent benchmark replication. If no sampling frame is defensible, report results for named batteries and avoid a numerical population-wide independence claim.
+
+R11 passes when readers can separate changes caused by weights, benchmark identities, and benchmark count. A stable ratio over selected subsets isn't proof of general independence.
+
+16. OBTAIN MEANINGFUL EXTERNAL REPLICATION
+
+Task R12 targets the support-for-general-conclusions ceiling. Build a table of available populations and what they independently vary. Record laboratory or source, model family, tokenizer, pretraining data, size range, training recipe, number of genuinely independent runs, available item outputs, and evaluation harness. Another size from the same experiment adds useful information but less independence than a genuinely different training population.
+
+Prioritize an external population with enough matched runs and per-item outputs for the SAME estimator. Existing PolyPythias and signal-and-noise panels are starting points, not automatically adequate confirmation. Follow their official releases to verify current availability. A panel without item outputs supports raw run covariance but can't directly reproduce item-noise correction.
+
+Freeze the transfer task. If predicting aggregate standard deviation, evaluate predicted and observed aggregate standard deviation on matched units. Lambda, Lambda minus one, and aggregate standard deviation aren't interchangeable. The old excess-ratio comparison was post hoc. Use absolute and relative errors with intervals, with ratios near zero or one handled explicitly. Define a meaningful tolerance in advance.
+
+Use identical scoring code and matched hardware or a quantified numerical comparison where possible. Record token budget, precision, context construction, and batching. If hardware and batch budget change together, their effects aren't separately identified. Preserve a within-job comparison that changes only the intended factor.
+
+Report each external population separately before pooling. With few populations, avoid unstable meta-regression and overconfident between-population variance estimates. Explain which dimensions of transfer were tested and which remain untested. A successful transfer in one closely related population supports that transfer, not universal language-model behavior.
+
+R12 passes when the external test uses frozen decisions, has sufficient provenance and uncertainty, and supports the specific scope claimed. If no suitable population exists, narrow the conclusion and acknowledge that the upper generalization ceiling isn't currently reachable.
+
+17. ESTABLISH THE NOVELTY BOUNDARY
+
+Task R13 is an exhaustive primary-source audit of the literature actually needed for the contribution. Verify all 60 current bibliography entries for existence and metadata, and verify every substantive interpretation that the manuscript attaches to a citation. The earlier audit checked only a selected subset. Metadata verification alone doesn't establish that a paper supports the claimed interpretation.
+
+Create a comparison matrix. For each closest study record its unit of replication, target covariance or variance, measurement-error correction, handling of item dependence, use of paired benchmark runs, inference method, external validation, and practical decision evidence. Read the methods and relevant appendices rather than relying on titles or abstracts. Record exact section or page locations and the limits of the comparison.
+
+Prioritize repeated-measurement and variance-component foundations, correlated training variance, benchmark composition, generalizability theory, effective test counts, cross-dataset seed dependence, and recent language-model evaluation-noise methods. Start with the current citations, including Bouthillier, Jordan, Heineman, Hardy, Hofmann, and the classical references. Verify their relevance rather than assuming any name is the closest baseline.
+
+Search forward citations and recent primary sources through the submission date. Record search terms and cutoff date. “We didn't find it” doesn't justify “nobody has done it.” Replace broad first-ever claims with a precise contrast supported by the comparison matrix.
+
+There are three possible routes, conditional on evidence. Route A is an empirical measurement paper establishing a reproducible, consequential pattern across replicated training populations. Route B is a measurement-failure paper showing when naive cross-half evaluation is biased and demonstrating a defensible repair. Route C is a methodological paper with a genuinely distinct estimator or inference result, proofs under explicit assumptions, and comparisons showing its advantage. Don't invent a new method solely to fill a novelty paragraph. If the best route is A or B, state the established algebra openly.
+
+Choose one main route after the core repairs. Explain the contribution in two sentences that specify the new knowledge and the evidence supporting it. If the difference from the closest prior work is only a renamed standard formula plus a larger table, the novelty ceiling remains low. A more ambitious route may require a new research project rather than revision within the deadline.
+
+R13 passes when the novelty claim survives direct comparison with the closest work and every critical citation supports the attached sentence. The absence of an identified fabrication in a partial audit isn't an exhaustive citation audit.
+
+18. CREATE A GENUINELY PROSPECTIVE VALIDATION STAGE
+
+Task R14 preserves the history of the unimplemented eight-versus-seventeen recipe split. The full existing population has already influenced decisions. You can't recover prospective status by drawing a partition now, enumerating all possible subsets, or timestamping a reconstructed document.
+
+Before using genuinely unseen runs, items, or an external population for a new validation claim, freeze a dated protocol. State hypotheses, estimands, populations, exclusions, group assignments, primary endpoints, practical thresholds, inference method, failure handling, multiplicity strategy, sample-size or precision rationale, and stopping rule. Commit a hash and preserve a verifiable timestamp, while protecting submission anonymity. Label this as a new prospective validation stage, not a correction to the old plan's date.
+
+Preselect the small set of primary claims. Treat the rest as sensitivity analyses, with uncertainty and multiplicity handled according to their use. If you examine dozens of variants, report their scope and avoid presenting the favorable one as uniquely planned. Don't use repeated peeking to decide when enough runs have accumulated unless the stopping procedure accounts for it.
+
+Reusing old data remains legitimate for exploratory development. Cross-validation can assess predictive behavior under its assumptions, but it doesn't erase earlier analyst exposure. R14 passes when the newly claimed validation was genuinely insulated from development choices and departures are recorded.
+
+19. REBUILD THE MAIN ARGUMENT AND PAPER STRUCTURE
+
+Task R15 starts after the central results have been verified. Write a claim ledger before rewriting paragraphs. Each claim needs a direct empirical output or derivation, its uncertainty, its scope, its strongest alternative explanation, and the figure or table that supports it. Mark claims as supported, narrowed, removed, or awaiting evidence.
+
+Choose a title that names the measured quantity and the actual discovery. Keep “run” rather than “seed” if training conditions aren't matched. Avoid “free of item noise” unless the evidence supports the assumptions and their application. Don't put a desired conclusion into the title before reruns.
+
+The abstract should state the problem, the target and method, the studied population, the corrected main numerical result with uncertainty, the most consequential sensitivity, and the practical implication. Use updated generated values. If the contribution becomes passage dependence or a measurement failure, make that the main result rather than hiding it behind the old near-independence estimate.
+
+A proposed nine-page maximum allocation is 1.25 pages for introduction and contribution, 1.5 for target and estimator, 1.0 for data and provenance, 1.25 for dependence repair and primary findings, 1.25 for calibration and prediction validation, 0.75 for practical decisions, 0.75 for external replication and positioning, and 0.75 for limitations and discussion. This totals 8.5 pages and leaves half a page for layout flexibility. It is a planning allocation, not a mandate to force content into these exact lengths.
+
+Integrate related work near the relevant contribution and keep a concise dedicated comparison if needed. The main paper must contain the key assumptions, repaired result, strongest baseline, and principal failure mode. Reviewers needn't read appendices, so don't move decisive caveats or essential evidence there to make the main story appear stronger.
+
+Reorganize the appendix into derivations, data provenance and preprocessing, prespecified methods, additional results, and reproducibility details. Keep the historical plan and deviations in one clearly labeled place. Remove duplicate numeric retellings that add no interpretation. Preserve legitimate null results and unsuccessful checks with concise explanations.
+
+R15 passes when a technically informed reader can summarize the contribution accurately without needing the conversation or editorial audit. The revised manuscript should describe the study, not narrate the assistant's editing history.
+
+20. FIGURES, TABLES, LANGUAGE, AND TYPOGRAPHY
+
+Task R16 prioritizes a small set of high-information exhibits. Figure A should show full-battery results before and after dependence repair with uncertainty, beside the BoolQ diagonal and off-diagonal contributions. Figure B should show calibration including tail error and failure rates across meaningful scenarios. Figure C should show paired prediction differences or practical decision performance. Figure D can summarize external populations if the comparison is informative. A heatmap is useful only if its interpretation and matrix validity are clear.
+
+Use common axes where comparisons require them. Clearly distinguish SD, SE, confidence intervals, and simulated dispersion. Show units, population counts, and resampling units in captions. Never plot a missing endpoint as zero or silently omit failed cells. Mark a non-PSD correlation estimate as a diagnostic rather than a valid population correlation matrix.
+
+Generate tables and figures directly from frozen machine-readable results. Create one source of truth for every number repeated in the abstract, text, tables, and captions. Verify rounding and convert accuracy fractions to percentage points explicitly. A difference of 0.005 is half a percentage point, not five percent. Carry enough precision in analysis to avoid reconstructing intervals from rounded quantities.
+
+Preserve the user's manuscript style choices. Use contractions for negative auxiliaries, no prose colons or semicolons, no prose em or en dashes, and no maximum sentence length. The working minimum is eight words because no other minimum was specified. Apply the documented exclusions for headings, table cells, references, and display mathematics, and inspect equation introductions. Don't add filler merely to meet a count.
+
+Apply stop-slop and humanizer after the scientific rewrite. Replace generic transitions and repetitive qualification with the exact assumption or limitation. Keep scientific adverbs and distinctions when needed for accuracy. Don't invent an author's personal voice, add casual humor to technical prose, or claim “100% not AI.” Retain truthful AI disclosure. Requested contractions and lack of a sentence maximum conflict with literal ASD-STE100 requirements, so describe the result as an STE-informed house style rather than certified conformity.
+
+Use the existing T1 font encoding and verified pdfLaTeX route. Keep margins, official style, and font sizes compliant. Inspect all rendered pages for clipped content, excessive white space, detached captions, table width, equation breaks, hanging headings, and bibliography entry splits. Check font embedding and substitutions. A zero exit code isn't proof of correct typography.
+
+The verified build command, run from the deliverables directory, is /opt/homebrew/bin/pdflatex -interaction=nonstopmode -halt-on-error -output-directory=../work main.tex. Repeat until labels stabilize. This path is specific to the present machine and must be rediscovered elsewhere. Run PYTHONPATH=work/python /opt/homebrew/bin/python3 work/verify_final.py from the project root for its documented checks, while remembering that its visual flags aren't automated inspections and that its old numeric-preservation baseline must be revised after genuine research updates.
+
+R16 passes only after the final source change, final build, automated checks, and visual review. Don't certify the edited PDF using a log from an earlier version.
+
+21. REPRODUCIBILITY PACKAGE AND DATA CONTRACTS
+
+Task R17 builds a scientific package separate from the editorial materials. The following paths are PROPOSED deliverables, not claims that they already exist.
+
+research/manifest.csv should map runs to release revisions, checkpoints, conditions, and hashes. research/items.parquet or an equivalent documented table should map score IDs to benchmark strata and dependence groups. research/splits.json should preserve assignments and their generation specification. research/protocol.md should preserve the new prospective protocol and amendment history. research/claims.csv should link manuscript claims to outputs. research/results/ should hold unrounded estimates and diagnostics. research/figures/ should contain generated publication exhibits. research/tests/ should contain executable mathematical, data-integrity, and pipeline checks. Reuse existing repository structure when available rather than inventing parallel infrastructure.
+
+The score-table contract must specify key fields, score units, missing-value representation, byte normalization, tie handling, and weighting. The estimate-table contract must include analysis ID, population ID, split ID, phenotype, target, weights, method, estimate, uncertainty type, lower and upper endpoints, interval status, number of independent clusters, replicate counts, random seed, and input hash. Distinguish a missing bound, an unbounded interval, and an analysis failure with explicit status fields. Never encode all three as zero.
+
+Prediction outputs need training-fold identifiers, held-out recipe IDs, model specification, supplied test information, predicted quantity, observed or estimated target, target uncertainty where available, paired loss, and exclusion reason. Simulation outputs need the known truth, generator specification, method, replication count, failure rate, coverage, tail errors, and Monte Carlo uncertainty. Save generator parameters so the simulation can be reproduced without reverse-engineering a figure.
+
+Provide a dependency lock or equivalent exact environment record, code revision, random-generator details, hardware and precision, expected input sizes, runtime measurements, and licenses. Include a small authorized test fixture for quick verification and a separate full-reproduction entry point. Proposed command names must be implemented and tested before documenting them as usable. Avoid requiring a reader to run enormous inference merely to regenerate a table from released reductions.
+
+Test cold-start reproduction in a fresh directory with empty caches where practical. Confirm that a small fixture exercises the same estimation path as the full analysis. Hash verified outputs and show that figure generation, tables, and manuscript values derive from them. Check failure paths for missing data, duplicate items, interrupted downloads, invalid group maps, rate limits, and numerical boundary cases. Cache downloads with checksums and resumable behavior where supported by the actual tools.
+
+Before submission, remove author names, personal paths, credentials, identifying repository links, and revealing metadata from the anonymous package. Check license obligations and attribution without falsely claiming rights to redistribute data. Include retrieval instructions when redistribution is restricted. Keep this planning file and the editorial audits out of the research supplement unless there is a deliberate reason to include them.
+
+R17 passes when a clean extraction reproduces the scientific outputs with documented inputs and no undocumented intervention. A tiny synthetic test alone can't verify the full empirical pipeline.
+
+22. COMPUTE PLANNING AND EXPERIMENT ORDER
+
+Task R18 prevents expensive work from preceding basic falsification. Measure a small complete case for disk use, memory, time, and network traffic. Estimate total cost from that measurement and document uncertainty. The manuscript's historical resource numbers aren't validated budgets for the repaired pipeline.
+
+The execution order is R0 artifact recovery, R1 estimand specification, R5 small mathematical tests, R2 BoolQ repair, R3 broader dependence audit, R4 matched-run reconstruction, then R6 inference calibration. R7 proxy work and R8 prediction comparisons depend on the cleaned data and declared target. R9 practical decisions and R12 transfer depend on usable uncertainty estimates. Literature audit R13 can proceed between these steps in the same single-agent process. R14 freezes genuinely new validation before its outcomes are opened. R15–R17 produce the final paper and package.
+
+Separate CPU reduction and resampling from GPU model scoring. Prefer existing authorized per-item outputs where they answer the question. Held-out text loss and new external rescoring may require GPU work, while passage mapping often doesn't. Use a small representative shard before streaming the reported 122.9 GB archive. Ensure the shard contains group structure and multiple matched runs, not just convenient independent items.
+
+For long jobs, save job IDs, configuration hashes, intermediate checkpoints, status, and logs. Poll the actual process or service before restarting a seemingly stalled job. Don't launch duplicate runs because an observation timed out. Keep crash recovery distinct from choosing a new statistical seed. Record failed cells and complete them under the same planned rules.
+
+Full calibration with many cells and thousands of resamples can be costly. Use a prespecified pilot to eliminate coding failures, then allocate precision to decision-relevant cells. Don't shrink replication after seeing favorable results. Reduce scope transparently if resources are insufficient and identify the claim that can no longer be supported.
+
+23. EVIDENCE GATES AND OUTCOME-DEPENDENT DECISIONS
+
+Gate A is baseline credibility. R0 and R5 must pass before numerical discrepancies can be interpreted as science. If the baseline cannot be reproduced, investigate and correct it before adding new claims.
+
+Gate B is measurement validity. R1–R4 must establish the target, grouping, and training conditions sufficiently for the main interpretation. If passage-aware estimates differ substantially, show the paired change and revise the headline. If grouping barely changes estimates with sufficiently precise uncertainty, that supports stability against this measured dependence, not absence of all dependence.
+
+Gate C is inference. R6 must support the uncertainty claims used in conclusions. If denominator instability or influence concentration prevents reliable bounds, stop claiming equivalence or exclusion of a meaningful threshold. A null interval including one doesn't establish adequacy of independence.
+
+Gate D is mechanism and prediction. R7, R8, and R10 determine whether competence, gain, format, and predictive superiority claims survive. If the proxy remains unstable, remove its explanatory role. If a simple shrinkage baseline matches or outperforms the proposed predictor, report that and reposition the contribution. Uncertain rankings must remain uncertain.
+
+Gate E is importance and generalization. R9, R11, and R12 determine what decisions and populations the paper supports. A covariance correction with little practical effect can support a scoped adequacy result if assessed against a prespecified tolerance and valid uncertainty. A large but inconsistent effect supports a conditional warning, not a universal rule.
+
+Gate F is novelty and communication. R13–R17 establish that the supported result adds knowledge, is presented clearly, and can be audited. If the remaining claim is already known and the experiments add little, acknowledge that the current research direction hasn't reached the intended ceiling.
+
+Every gate needs an artifact, an executed or inspected check, and a written consequence. Thresholds such as “substantial,” “adequate,” or “useful” must be operationalized before they decide an outcome. Use application-grounded tolerances and display sensitivity if no single tolerance is defensible. A gate evaluates evidence quality, not whether the hypothesis wins.
+
+24. DEADLINE STRATEGY AND SUBMISSION COMPLIANCE
+
+Official ICLR 2027 pages checked on 14 September 2026 list the abstract deadline as 18 September and the full-paper deadline as 25 September, both at 23:59 AoE. They require an informative abstract, timely author-list decisions, anonymity, and at most nine initial main-text pages. References and appendices are excluded; reviewers needn't read appendices. Use the official template. AI disclosure is required. Check the actual author list against reciprocal-reviewing eligibility and submission quotas, plus dual-submission rules. Reverify the live policies before upload because this file isn't an official policy document. See sources S1–S3.
+
+With that timetable, begin artifact recovery immediately. By the abstract deadline, choose a truthful description of the work that doesn't promise unseen results. Before the full-paper deadline, prioritize measurement validity and reproducibility over optional new model training. Reserve time for a frozen full analysis, manuscript regeneration, anonymous package review, and upload verification. Don't assume all tasks in this plan fit eleven days or that review-phase updates can repair a fundamentally unsupported initial submission.
+
+There are two distinct endpoints. A defensible submission by the current deadline may have narrower claims and a lower ceiling. Reaching the full research ceiling may require another cycle with new data. If central repairs aren't finished, explicitly record which claims remain unsupported and recommend an appropriate decision rather than disguising unfinished research with better prose. Don't change venue or submit anything without the author's decision.
+
+25. ADVERSARIAL SELF-REVIEW QUESTIONS
+
+Conduct this review personally after the implementation is frozen. Answer each question with an output path, a derivation, or a precise limitation.
+
+Can the estimator distinguish run covariance from passage-dependent measurement noise in this dataset? What grouping remains unknown? Did grouping change the target or item universe? What happens with unequal groups and empty strata?
+
+Which run conditions are actually matched? Does the seed label change initialization, data order, both, or undocumented settings? Are checkpoint comparisons being mistaken for independent training replication?
+
+What is the denominator estimating, how often is it unstable, and what happens to the interval at its boundary? Does the chosen method cover the intended target under influential recipes and nonzero covariance? Are confidence bands being confused with simulation dispersion?
+
+Does the competence proxy contain the target, test-fold information, or an arbitrary dominating scale? Does its reliability support interpretation? Would a different defensible proxy reverse the explanation?
+
+Do prediction comparisons use the same information and evaluate paired uncertainty? Are five overlapping-training folds being treated as independent? Is the target noisy and shared with predictor inputs? Does a diagonal-shrinkage baseline erase the claimed advantage?
+
+What changes for a practitioner? Does the decision study validate real outcomes or only plug numbers into a Gaussian formula? Are pairwise comparisons dependent? Is a practical tolerance justified?
+
+What is new relative to the closest work? Which result survives every central repair? Is the external test genuinely independent along the dimensions claimed? Are recipe and benchmark populations defined rather than assumed?
+
+Can another researcher reproduce the result from the supplied package? Does every citation support its sentence? Does every statement of completion have corresponding evidence? Are deviations and AI contributions described accurately?
+
+26. FINAL COMPLETION REQUIREMENTS
+
+The research goal is complete only when the supported contribution and its limitations are established. Don't mark research complete merely because the implementation compiles or this plan has been followed mechanically.
+
+Required outputs are a reproduced baseline with discrepancy resolution, a declared estimand, verified item-group and run manifests, a paired dependence-repair analysis, a calibrated uncertainty study, defensible proxy results or removal of the proxy claim, a fair prediction comparison with paired uncertainty, a practical decision analysis or explicit narrowing of impact, external validation commensurate with the claimed scope, a primary-source novelty audit, a record of prospective versus exploratory work, and a clean scientific reproduction package.
+
+The final manuscript must derive every empirical number from frozen outputs, describe the new results rather than the old desired story, and retain uncertainties that remain. Rebuild the PDF after the final source change, inspect all pages, verify official-style compliance and anonymity, and test the extracted source and scientific package separately.
+
+Reassess all five dimensions using the resulting evidence. A dimension can remain below its proposed ceiling despite excellent execution. Explain why, cite the limiting result, and identify whether overcoming it requires new data, a new method, or a different research question. Don't convert the reassessment into a false acceptance probability.
+
+The author-facing handoff should state what was performed, what changed scientifically, which claims strengthened or weakened, what remains unverified, where the outputs are, and the recommended next decision. Include actual commands and resource costs only after verifying them.
+
+27. SOURCE MAP
+
+Local source L1 is the current manuscript under deliverables/main.tex, appendix_a.tex, and appendices_bcd.tex. It supports the description of the present study and reported numerical problems. It doesn't independently validate those experiments.
+
+Local source L2 is deliverables/READ_ME_FIRST.md and work/technical_audit.md. These document the earlier editorial and technical audit. Historical page references in the latter belong to the original PDF. Local source L3 is deliverables/verification.json, which records document checks rather than empirical reproduction.
+
+S1. ICLR 2027 Author Guidelines
+https://iclr.cc/Conferences/2027/AuthorGuidelines
+Use for current submission requirements and deadlines. Recheck before submission.
+
+S2. ICLR 2027 Reviewer Guidelines
+https://iclr.cc/Conferences/2027/ReviewerGuidelines
+Use for the emphasis on scientific rigor, supported claims, contribution, clarity, and reproducibility. The numerical ceiling ratings in this plan aren't from ICLR.
+
+S3. ICLR 2027 AI Policy for Authors
+https://iclr.cc/Conferences/2027/AIPolicyForAuthors
+Use for truthful paper and submission-form disclosure. Verify the full current requirements before submission.
+
+S4. DataDecide primary paper
+https://arxiv.org/abs/2504.11393
+Follow the paper's official release links to locate data and code. The landing page was checked during plan preparation; this plan doesn't certify the contents or availability of every linked artifact.
+
+S5. PolyPythias primary paper
+https://arxiv.org/abs/2503.09543
+Follow the primary release for matched-run provenance and per-item availability. Verify the exact revision and usable outputs before designing the external analysis.
+
+The proposed statistical repairs are research designs grounded in the manuscript's identified problems, not quotations from these sources. Before adopting a named statistical method or implementation, read its original derivation and confirm that its assumptions match this design. Preserve a source record for that choice.
+
+28. FIRST INSTRUCTIONS FOR THE NEXT LLM
+
+Read this file and the current manuscript. Work without agents. Preserve the current PDF and editable source. Create the task ledger and claim-to-artifact inventory. Locate the actual empirical code, compact reductions, item-order mapping, and checkpoint manifest. If they aren't available, ask the author for those specific assets and continue with derivation and test design that doesn't depend on missing data.
+
+First reproduce a small complete baseline, then the full primary estimate. Resolve discrepancies before running the passage-aware BoolQ analysis. Freeze the target, grouping rule, weighting, and comparison set before looking at the grouped results. Continue through the dependencies in Section 22, preserving negative outcomes and updating the claim ledger after each verified step.
+
+Don't spend the first work session rephrasing the introduction, adding an acronym, fabricating missing outputs, or repeatedly raising a self-assigned prose score. The immediate scientific question is whether the central covariance estimate survives a defensible dependence-aware analysis of the same runs. Answer that question with evidence, then let the result determine the next version of the paper.

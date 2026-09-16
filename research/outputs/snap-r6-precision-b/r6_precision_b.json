@@ -1,0 +1,296 @@
+{
+ "design": "R6 precision replication part b, the remaining eight coverage cells at 10,000 replicates.\n\nDesign fixed before running (2026-09-15, written 19:40 EDT). Part a covered the two cells calibrated\nto the observed estimates and the two with the lowest wild coverage. This part covers the other eight\ncells of the coverage table so every cell has a Monte Carlo standard error near 0.0022 rather than\n0.005. The generator, the seed 20260917 and the four interval procedures are those of part a, with\nthe cell index offset by ten so no dataset is shared with part a.\n",
+ "seed": 20260917,
+ "reps": 10000,
+ "cells": {
+  "null_margin_noise": {
+   "name": "null_margin_noise",
+   "truth": 1.0,
+   "wild": {
+    "coverage": 0.945,
+    "mc_se": 0.0022798026230356006,
+    "lower_miss": 0.0157,
+    "upper_miss": 0.0393,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.22323884705279923
+   },
+   "cluster_t": {
+    "coverage": 0.9396,
+    "mc_se": 0.0023822644689454613,
+    "lower_miss": 0.0179,
+    "upper_miss": 0.0425,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.21851572378904027
+   },
+   "centred": {
+    "coverage": 0.9459,
+    "mc_se": 0.0022621491993235114,
+    "lower_miss": 0.0157,
+    "upper_miss": 0.0384,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.22374963359803018
+   },
+   "restricted": {
+    "coverage": 0.9612,
+    "mc_se": 0.0019311799501858947,
+    "lower_miss": 0.0098,
+    "upper_miss": 0.029,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24103757040050816
+   }
+  },
+  "null_accuracy_noise": {
+   "name": "null_accuracy_noise",
+   "truth": 1.0,
+   "wild": {
+    "coverage": 0.9527,
+    "mc_se": 0.0021227979178433352,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.0294,
+    "undefined_or_unbounded": 0.0004,
+    "median_width": 0.405773879003371
+   },
+   "cluster_t": {
+    "coverage": 0.9486,
+    "mc_se": 0.002208122279222779,
+    "lower_miss": 0.0198,
+    "upper_miss": 0.0313,
+    "undefined_or_unbounded": 0.0003,
+    "median_width": 0.39913836853933393
+   },
+   "centred": {
+    "coverage": 0.9532,
+    "mc_se": 0.0021121022702511342,
+    "lower_miss": 0.0176,
+    "upper_miss": 0.0292,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.4117548576120518
+   },
+   "restricted": {
+    "coverage": 0.9674,
+    "mc_se": 0.001775872743188542,
+    "lower_miss": 0.0112,
+    "upper_miss": 0.0214,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.4452710483667808
+   }
+  },
+  "margin_like_boolq_trace": {
+   "name": "margin_like_boolq_trace",
+   "truth": 1.1519072321506927,
+   "wild": {
+    "coverage": 0.949,
+    "mc_se": 0.0021999772726098796,
+    "lower_miss": 0.0199,
+    "upper_miss": 0.0311,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.1736094346273973
+   },
+   "cluster_t": {
+    "coverage": 0.9425,
+    "mc_se": 0.002327955111251074,
+    "lower_miss": 0.0225,
+    "upper_miss": 0.035,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.16872955499998243
+   },
+   "centred": {
+    "coverage": 0.9499,
+    "mc_se": 0.002181513007066427,
+    "lower_miss": 0.0197,
+    "upper_miss": 0.0304,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.17377550875864295
+   },
+   "restricted": {
+    "coverage": 0.9639,
+    "mc_se": 0.0018653897716027078,
+    "lower_miss": 0.0138,
+    "upper_miss": 0.0223,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.1873439394506573
+   }
+  },
+  "accuracy_like_boolq_trace": {
+   "name": "accuracy_like_boolq_trace",
+   "truth": 1.0308411390725625,
+   "wild": {
+    "coverage": 0.9437,
+    "mc_se": 0.002305001301518071,
+    "lower_miss": 0.0221,
+    "upper_miss": 0.0342,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.1551210963236675
+   },
+   "cluster_t": {
+    "coverage": 0.9391,
+    "mc_se": 0.002391467959225044,
+    "lower_miss": 0.0239,
+    "upper_miss": 0.037,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.15087929976078834
+   },
+   "centred": {
+    "coverage": 0.9463,
+    "mc_se": 0.002254247324496582,
+    "lower_miss": 0.0208,
+    "upper_miss": 0.0329,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.15602489753702292
+   },
+   "restricted": {
+    "coverage": 0.9611,
+    "mc_se": 0.0019335663939984075,
+    "lower_miss": 0.0149,
+    "upper_miss": 0.024,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.16829697420083956
+   }
+  },
+  "margin_like_recipe_shared": {
+   "name": "margin_like_recipe_shared",
+   "truth": 1.2445882853377657,
+   "wild": {
+    "coverage": 0.9385,
+    "mc_se": 0.002402451872566857,
+    "lower_miss": 0.0125,
+    "upper_miss": 0.049,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3097335397115803
+   },
+   "cluster_t": {
+    "coverage": 0.9322,
+    "mc_se": 0.0025140238662351632,
+    "lower_miss": 0.0143,
+    "upper_miss": 0.0535,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3018515456970471
+   },
+   "centred": {
+    "coverage": 0.9408,
+    "mc_se": 0.002359986440639014,
+    "lower_miss": 0.0111,
+    "upper_miss": 0.0481,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3099436354224746
+   },
+   "restricted": {
+    "coverage": 0.9566,
+    "mc_se": 0.002037558342722976,
+    "lower_miss": 0.0066,
+    "upper_miss": 0.0368,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3342111256717928
+   }
+  },
+  "margin_like_heavy_tails": {
+   "name": "margin_like_heavy_tails",
+   "truth": 1.2445882853377657,
+   "wild": {
+    "coverage": 0.9371,
+    "mc_se": 0.002427830101139698,
+    "lower_miss": 0.0116,
+    "upper_miss": 0.0485,
+    "undefined_or_unbounded": 0.0028,
+    "median_width": 0.3208167709344581
+   },
+   "cluster_t": {
+    "coverage": 0.9256,
+    "mc_se": 0.0026242073088839613,
+    "lower_miss": 0.0153,
+    "upper_miss": 0.0589,
+    "undefined_or_unbounded": 0.0002,
+    "median_width": 0.3035300820745662
+   },
+   "centred": {
+    "coverage": 0.947,
+    "mc_se": 0.0022403347964087875,
+    "lower_miss": 0.0085,
+    "upper_miss": 0.0445,
+    "undefined_or_unbounded": 0.0019,
+    "median_width": 0.31593117477042987
+   },
+   "restricted": {
+    "coverage": 0.961,
+    "mc_se": 0.0019359493795035043,
+    "lower_miss": 0.0056,
+    "upper_miss": 0.0334,
+    "undefined_or_unbounded": 0.0026,
+    "median_width": 0.34111097163752246
+   }
+  },
+  "accuracy_like_cross_half_error_corr_0.1": {
+   "name": "accuracy_like_cross_half_error_corr_0.1",
+   "truth": 1.0779610382569493,
+   "wild": {
+    "coverage": 0.9359,
+    "mc_se": 0.0024493099028093618,
+    "lower_miss": 0.0139,
+    "upper_miss": 0.0502,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.33658989561301417
+   },
+   "cluster_t": {
+    "coverage": 0.9333,
+    "mc_se": 0.0024950172344094133,
+    "lower_miss": 0.0143,
+    "upper_miss": 0.0524,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3296089467071378
+   },
+   "centred": {
+    "coverage": 0.9383,
+    "mc_se": 0.002406098709529598,
+    "lower_miss": 0.0134,
+    "upper_miss": 0.0483,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.33916952248854215
+   },
+   "restricted": {
+    "coverage": 0.9544,
+    "mc_se": 0.0020861601089082298,
+    "lower_miss": 0.0093,
+    "upper_miss": 0.0363,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3659492905833168
+   }
+  },
+  "rho_0.2_margin_noise": {
+   "name": "rho_0.2_margin_noise",
+   "truth": 1.6733200530681511,
+   "wild": {
+    "coverage": 0.9491,
+    "mc_se": 0.002197935167378691,
+    "lower_miss": 0.0167,
+    "upper_miss": 0.0342,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26199942498683526
+   },
+   "cluster_t": {
+    "coverage": 0.9433,
+    "mc_se": 0.0023126848034265277,
+    "lower_miss": 0.0189,
+    "upper_miss": 0.0378,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.25463560029478916
+   },
+   "centred": {
+    "coverage": 0.9475,
+    "mc_se": 0.002230330692969094,
+    "lower_miss": 0.0149,
+    "upper_miss": 0.0376,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2614546528956557
+   },
+   "restricted": {
+    "coverage": 0.9603,
+    "mc_se": 0.001952534506737332,
+    "lower_miss": 0.0104,
+    "upper_miss": 0.0293,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.28171077602984507
+   }
+  }
+ },
+ "wall_seconds": 2609.790610551834
+}

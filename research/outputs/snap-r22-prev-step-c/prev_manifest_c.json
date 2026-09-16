@@ -1,0 +1,1167 @@
+{
+ "part": "c",
+ "recipes": {
+  "dclm-baseline-top-fw-3p": {
+   "cells": {
+    "150M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 38157,
+     "max_step_by_seed": {
+      "14": 38157,
+      "15": 38157,
+      "2": 38157
+     },
+     "previous_step": 37500,
+     "gap": 657
+    },
+    "1B": {
+     "seeds": [
+      2,
+      4,
+      5
+     ],
+     "common_step": 69369,
+     "max_step_by_seed": {
+      "2": 69369,
+      "4": 69369,
+      "5": 69369
+     },
+     "previous_step": 67500,
+     "gap": 1869
+    },
+    "300M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 45787,
+     "max_step_by_seed": {
+      "14": 45787,
+      "15": 45787,
+      "2": 45787
+     },
+     "previous_step": 45000,
+     "gap": 787
+    },
+    "530M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 51250,
+     "max_step_by_seed": {
+      "14": 51411,
+      "15": 51411,
+      "2": 57776
+     },
+     "previous_step": 50000,
+     "gap": 1250
+    },
+    "750M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 27500,
+     "max_step_by_seed": {
+      "14": 28257,
+      "15": 28257,
+      "2": 63589
+     },
+     "previous_step": 26250,
+     "gap": 1250
+    }
+   },
+   "runs": [
+    {
+     "recipe": "dclm-baseline-top-fw-3p",
+     "size": "150M",
+     "seed": 14,
+     "step": 37500,
+     "batch": 1,
+     "gain": -0.7483648195600796,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw-3p",
+     "size": "150M",
+     "seed": 15,
+     "step": 37500,
+     "batch": 2,
+     "gain": -0.7431133182349713,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw-3p",
+     "size": "150M",
+     "seed": 2,
+     "step": 37500,
+     "batch": 0,
+     "gain": -0.7420525910752088,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw-3p",
+     "size": "1B",
+     "seed": 2,
+     "step": 67500,
+     "batch": 0,
+     "gain": -0.6871837879115169,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw-3p",
+     "size": "1B",
+     "seed": 4,
+     "step": 67500,
+     "batch": 1,
+     "gain": -0.6875621317399762,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw-3p",
+     "size": "1B",
+     "seed": 5,
+     "step": 67500,
+     "batch": 2,
+     "gain": -0.6856690460140034,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw-3p",
+     "size": "300M",
+     "seed": 14,
+     "step": 45000,
+     "batch": 1,
+     "gain": -0.70848203918588,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw-3p",
+     "size": "300M",
+     "seed": 15,
+     "step": 45000,
+     "batch": 2,
+     "gain": -0.7050328850654337,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw-3p",
+     "size": "300M",
+     "seed": 2,
+     "step": 45000,
+     "batch": 0,
+     "gain": -0.7138821180633413,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw-3p",
+     "size": "530M",
+     "seed": 14,
+     "step": 50000,
+     "batch": 1,
+     "gain": -0.6898518809028945,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw-3p",
+     "size": "530M",
+     "seed": 15,
+     "step": 50000,
+     "batch": 2,
+     "gain": -0.6943072649255849,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw-3p",
+     "size": "530M",
+     "seed": 2,
+     "step": 50000,
+     "batch": 0,
+     "gain": -0.6917492412529306,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw-3p",
+     "size": "750M",
+     "seed": 14,
+     "step": 26250,
+     "batch": 1,
+     "gain": -0.7020549098097414,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw-3p",
+     "size": "750M",
+     "seed": 15,
+     "step": 26250,
+     "batch": 2,
+     "gain": -0.7039229584910568,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw-3p",
+     "size": "750M",
+     "seed": 2,
+     "step": 26250,
+     "batch": 0,
+     "gain": -0.7029853992562771,
+     "n_tasks": 66,
+     "n_items": 37682
+    }
+   ],
+   "seconds": 97.04076266288757
+  },
+  "dclm-baseline-top-fw2-7p": {
+   "cells": {
+    "150M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 38157,
+     "max_step_by_seed": {
+      "14": 38157,
+      "15": 38157,
+      "2": 38157
+     },
+     "previous_step": 37500,
+     "gap": 657
+    },
+    "1B": {
+     "seeds": [
+      2,
+      4,
+      5
+     ],
+     "common_step": 69369,
+     "max_step_by_seed": {
+      "2": 69369,
+      "4": 69369,
+      "5": 69369
+     },
+     "previous_step": 67500,
+     "gap": 1869
+    },
+    "300M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 45787,
+     "max_step_by_seed": {
+      "14": 45787,
+      "15": 45787,
+      "2": 45787
+     },
+     "previous_step": 45000,
+     "gap": 787
+    },
+    "530M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 51250,
+     "max_step_by_seed": {
+      "14": 51411,
+      "15": 51411,
+      "2": 57776
+     },
+     "previous_step": 50000,
+     "gap": 1250
+    },
+    "750M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 27500,
+     "max_step_by_seed": {
+      "14": 28257,
+      "15": 28257,
+      "2": 63589
+     },
+     "previous_step": 26250,
+     "gap": 1250
+    }
+   },
+   "runs": [
+    {
+     "recipe": "dclm-baseline-top-fw2-7p",
+     "size": "150M",
+     "seed": 14,
+     "step": 37500,
+     "batch": 1,
+     "gain": -0.7270491143576788,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw2-7p",
+     "size": "150M",
+     "seed": 15,
+     "step": 37500,
+     "batch": 2,
+     "gain": -0.7351182800560677,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw2-7p",
+     "size": "150M",
+     "seed": 2,
+     "step": 37500,
+     "batch": 0,
+     "gain": -0.7334733094275144,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw2-7p",
+     "size": "1B",
+     "seed": 2,
+     "step": 67500,
+     "batch": 0,
+     "gain": -0.6451170532683845,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw2-7p",
+     "size": "1B",
+     "seed": 4,
+     "step": 67500,
+     "batch": 1,
+     "gain": -0.6427509368235553,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw2-7p",
+     "size": "1B",
+     "seed": 5,
+     "step": 67500,
+     "batch": 2,
+     "gain": -0.6447783903277096,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw2-7p",
+     "size": "300M",
+     "seed": 14,
+     "step": 45000,
+     "batch": 1,
+     "gain": -0.692634829554604,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw2-7p",
+     "size": "300M",
+     "seed": 15,
+     "step": 45000,
+     "batch": 2,
+     "gain": -0.6883069988617996,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw2-7p",
+     "size": "300M",
+     "seed": 2,
+     "step": 45000,
+     "batch": 0,
+     "gain": -0.6939559271999522,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw2-7p",
+     "size": "530M",
+     "seed": 14,
+     "step": 50000,
+     "batch": 1,
+     "gain": -0.6669484711596652,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw2-7p",
+     "size": "530M",
+     "seed": 15,
+     "step": 50000,
+     "batch": 2,
+     "gain": -0.6638450743924942,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw2-7p",
+     "size": "530M",
+     "seed": 2,
+     "step": 50000,
+     "batch": 0,
+     "gain": -0.6716371783859723,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw2-7p",
+     "size": "750M",
+     "seed": 14,
+     "step": 26250,
+     "batch": 1,
+     "gain": -0.6858605550915282,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw2-7p",
+     "size": "750M",
+     "seed": 15,
+     "step": 26250,
+     "batch": 2,
+     "gain": -0.6865424496377072,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw2-7p",
+     "size": "750M",
+     "seed": 2,
+     "step": 26250,
+     "batch": 0,
+     "gain": -0.6871462074884723,
+     "n_tasks": 66,
+     "n_items": 37682
+    }
+   ],
+   "seconds": 130.9273645877838
+  },
+  "dclm-baseline-top-fw3-7p": {
+   "cells": {
+    "150M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 38157,
+     "max_step_by_seed": {
+      "14": 38157,
+      "15": 38157,
+      "2": 38157
+     },
+     "previous_step": 37500,
+     "gap": 657
+    },
+    "1B": {
+     "seeds": [
+      2,
+      4,
+      5
+     ],
+     "common_step": 69369,
+     "max_step_by_seed": {
+      "2": 69369,
+      "4": 69369,
+      "5": 69369
+     },
+     "previous_step": 67500,
+     "gap": 1869
+    },
+    "300M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 45787,
+     "max_step_by_seed": {
+      "14": 45787,
+      "15": 45787,
+      "2": 45787
+     },
+     "previous_step": 45000,
+     "gap": 787
+    },
+    "530M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 51250,
+     "max_step_by_seed": {
+      "14": 51411,
+      "15": 51411,
+      "2": 57776
+     },
+     "previous_step": 50000,
+     "gap": 1250
+    },
+    "750M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 27500,
+     "max_step_by_seed": {
+      "14": 28257,
+      "15": 28257,
+      "2": 63589
+     },
+     "previous_step": 26250,
+     "gap": 1250
+    }
+   },
+   "runs": [
+    {
+     "recipe": "dclm-baseline-top-fw3-7p",
+     "size": "150M",
+     "seed": 14,
+     "step": 37500,
+     "batch": 1,
+     "gain": -0.7392072223666243,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw3-7p",
+     "size": "150M",
+     "seed": 15,
+     "step": 37500,
+     "batch": 2,
+     "gain": -0.7313880874672651,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw3-7p",
+     "size": "150M",
+     "seed": 2,
+     "step": 37500,
+     "batch": 0,
+     "gain": -0.7338532791533297,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw3-7p",
+     "size": "1B",
+     "seed": 2,
+     "step": 67500,
+     "batch": 0,
+     "gain": -0.6608153810377648,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw3-7p",
+     "size": "1B",
+     "seed": 4,
+     "step": 67500,
+     "batch": 1,
+     "gain": -0.6622530188991722,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw3-7p",
+     "size": "1B",
+     "seed": 5,
+     "step": 67500,
+     "batch": 2,
+     "gain": -0.6679520665116615,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw3-7p",
+     "size": "300M",
+     "seed": 14,
+     "step": 45000,
+     "batch": 1,
+     "gain": -0.6954741357412723,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw3-7p",
+     "size": "300M",
+     "seed": 15,
+     "step": 45000,
+     "batch": 2,
+     "gain": -0.6935881140997429,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw3-7p",
+     "size": "300M",
+     "seed": 2,
+     "step": 45000,
+     "batch": 0,
+     "gain": -0.697532182820243,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw3-7p",
+     "size": "530M",
+     "seed": 14,
+     "step": 50000,
+     "batch": 1,
+     "gain": -0.6777145749861626,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw3-7p",
+     "size": "530M",
+     "seed": 15,
+     "step": 50000,
+     "batch": 2,
+     "gain": -0.6754430531243562,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw3-7p",
+     "size": "530M",
+     "seed": 2,
+     "step": 50000,
+     "batch": 0,
+     "gain": -0.6759653895478633,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw3-7p",
+     "size": "750M",
+     "seed": 14,
+     "step": 26250,
+     "batch": 1,
+     "gain": -0.694930470965222,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw3-7p",
+     "size": "750M",
+     "seed": 15,
+     "step": 26250,
+     "batch": 2,
+     "gain": -0.6942307987453449,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dclm-baseline-top-fw3-7p",
+     "size": "750M",
+     "seed": 2,
+     "step": 26250,
+     "batch": 0,
+     "gain": -0.6892290210107432,
+     "n_tasks": 66,
+     "n_items": 37682
+    }
+   ],
+   "seconds": 106.06328010559082
+  },
+  "dolma1.6++": {
+   "cells": {
+    "150M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 37500,
+     "max_step_by_seed": {
+      "14": 38750,
+      "15": 38750,
+      "2": 38157
+     },
+     "previous_step": 36250,
+     "gap": 1250
+    },
+    "1B": {
+     "seeds": [
+      2,
+      4,
+      5
+     ],
+     "common_step": 69369,
+     "max_step_by_seed": {
+      "2": 69369,
+      "4": 69369,
+      "5": 69369
+     },
+     "previous_step": 67500,
+     "gap": 1869
+    },
+    "300M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 45000,
+     "max_step_by_seed": {
+      "14": 46250,
+      "15": 45787,
+      "2": 45787
+     },
+     "previous_step": 43750,
+     "gap": 1250
+    },
+    "530M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 51250,
+     "max_step_by_seed": {
+      "14": 51411,
+      "15": 51411,
+      "2": 57776
+     },
+     "previous_step": 50000,
+     "gap": 1250
+    },
+    "750M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 27500,
+     "max_step_by_seed": {
+      "14": 28257,
+      "15": 28257,
+      "2": 63589
+     },
+     "previous_step": 26250,
+     "gap": 1250
+    }
+   },
+   "runs": [
+    {
+     "recipe": "dolma1.6++",
+     "size": "150M",
+     "seed": 14,
+     "step": 36250,
+     "batch": 1,
+     "gain": -0.8229424316767594,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.6++",
+     "size": "150M",
+     "seed": 15,
+     "step": 36250,
+     "batch": 2,
+     "gain": -0.8129712270043598,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.6++",
+     "size": "150M",
+     "seed": 2,
+     "step": 36250,
+     "batch": 0,
+     "gain": -0.8101181182034243,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.6++",
+     "size": "1B",
+     "seed": 2,
+     "step": 67500,
+     "batch": 0,
+     "gain": -0.7451778685262248,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.6++",
+     "size": "1B",
+     "seed": 4,
+     "step": 67500,
+     "batch": 1,
+     "gain": -0.7710119623678969,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.6++",
+     "size": "1B",
+     "seed": 5,
+     "step": 67500,
+     "batch": 2,
+     "gain": -0.7636040705003448,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.6++",
+     "size": "300M",
+     "seed": 14,
+     "step": 43750,
+     "batch": 1,
+     "gain": -0.7531166129262318,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.6++",
+     "size": "300M",
+     "seed": 15,
+     "step": 43750,
+     "batch": 2,
+     "gain": -0.7667541229339532,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.6++",
+     "size": "300M",
+     "seed": 2,
+     "step": 43750,
+     "batch": 0,
+     "gain": -0.7632747341204339,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.6++",
+     "size": "530M",
+     "seed": 14,
+     "step": 50000,
+     "batch": 1,
+     "gain": -0.745335001102033,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.6++",
+     "size": "530M",
+     "seed": 15,
+     "step": 50000,
+     "batch": 2,
+     "gain": -0.7540110510390956,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.6++",
+     "size": "530M",
+     "seed": 2,
+     "step": 50000,
+     "batch": 0,
+     "gain": -0.7763125990185983,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.6++",
+     "size": "750M",
+     "seed": 14,
+     "step": 26250,
+     "batch": 1,
+     "gain": -0.745287653211528,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.6++",
+     "size": "750M",
+     "seed": 15,
+     "step": 26250,
+     "batch": 2,
+     "gain": -0.7390947871990994,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.6++",
+     "size": "750M",
+     "seed": 2,
+     "step": 26250,
+     "batch": 0,
+     "gain": -0.7439257284713449,
+     "n_tasks": 66,
+     "n_items": 37682
+    }
+   ],
+   "seconds": 97.54222273826599
+  },
+  "dolma1.7": {
+   "cells": {
+    "150M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 37500,
+     "max_step_by_seed": {
+      "14": 38750,
+      "15": 38750,
+      "2": 38157
+     },
+     "previous_step": 36250,
+     "gap": 1250
+    },
+    "1B": {
+     "seeds": [
+      2,
+      4,
+      5
+     ],
+     "common_step": 69369,
+     "max_step_by_seed": {
+      "2": 69369,
+      "4": 69369,
+      "5": 69369
+     },
+     "previous_step": 67500,
+     "gap": 1869
+    },
+    "300M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 45000,
+     "max_step_by_seed": {
+      "14": 45787,
+      "15": 46250,
+      "2": 45787
+     },
+     "previous_step": 43750,
+     "gap": 1250
+    },
+    "530M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 51250,
+     "max_step_by_seed": {
+      "14": 51411,
+      "15": 51411,
+      "2": 57776
+     },
+     "previous_step": 50000,
+     "gap": 1250
+    },
+    "750M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 27500,
+     "max_step_by_seed": {
+      "14": 28257,
+      "15": 28257,
+      "2": 63589
+     },
+     "previous_step": 26250,
+     "gap": 1250
+    }
+   },
+   "runs": [
+    {
+     "recipe": "dolma1.7",
+     "size": "150M",
+     "seed": 14,
+     "step": 36250,
+     "batch": 1,
+     "gain": -1.0214060332936843,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.7",
+     "size": "150M",
+     "seed": 15,
+     "step": 36250,
+     "batch": 2,
+     "gain": -0.8748784503920586,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.7",
+     "size": "150M",
+     "seed": 2,
+     "step": 36250,
+     "batch": 0,
+     "gain": -0.9226266988885323,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.7",
+     "size": "1B",
+     "seed": 2,
+     "step": 67500,
+     "batch": 0,
+     "gain": -0.9953658638775338,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.7",
+     "size": "1B",
+     "seed": 4,
+     "step": 67500,
+     "batch": 1,
+     "gain": -0.8920704135892754,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.7",
+     "size": "1B",
+     "seed": 5,
+     "step": 67500,
+     "batch": 2,
+     "gain": -0.9417079767690602,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.7",
+     "size": "300M",
+     "seed": 14,
+     "step": 43750,
+     "batch": 1,
+     "gain": -0.9212408721207166,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.7",
+     "size": "300M",
+     "seed": 15,
+     "step": 43750,
+     "batch": 2,
+     "gain": -0.9481619863225863,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.7",
+     "size": "300M",
+     "seed": 2,
+     "step": 43750,
+     "batch": 0,
+     "gain": -0.8877164402389854,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.7",
+     "size": "530M",
+     "seed": 14,
+     "step": 50000,
+     "batch": 1,
+     "gain": -0.8046123669722581,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.7",
+     "size": "530M",
+     "seed": 15,
+     "step": 50000,
+     "batch": 2,
+     "gain": -0.8909595871350927,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.7",
+     "size": "530M",
+     "seed": 2,
+     "step": 50000,
+     "batch": 0,
+     "gain": -0.9889069991076939,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.7",
+     "size": "750M",
+     "seed": 14,
+     "step": 26250,
+     "batch": 1,
+     "gain": -0.8790396914253376,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.7",
+     "size": "750M",
+     "seed": 15,
+     "step": 26250,
+     "batch": 2,
+     "gain": -0.8883662951913118,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "dolma1.7",
+     "size": "750M",
+     "seed": 2,
+     "step": 26250,
+     "batch": 0,
+     "gain": -0.87826810365384,
+     "n_tasks": 66,
+     "n_items": 37682
+    }
+   ],
+   "seconds": 88.46189856529236
+  }
+ },
+ "failures": {},
+ "wall_seconds": 538.6923494338989
+}

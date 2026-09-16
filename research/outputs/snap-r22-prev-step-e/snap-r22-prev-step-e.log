@@ -1,0 +1,14 @@
+[{"stream_name":"stdout","time":1.091580919,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":541.931585492,"data":"[falcon-with-cc] 15 runs reduced at the previous shared step in 525s; gaps {'150M': 1250, '1B': 1869, '300M': 787, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":1052.801097561,"data":"[falcon-with-cc-top-10p] 15 runs reduced at the previous shared step in 510s; gaps {'150M': 1250, '1B': 1869, '300M': 1250, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":1629.914183699,"data":"[falcon-with-cc-top-20p] 15 runs reduced at the previous shared step in 576s; gaps {'150M': 1250, '1B': 1869, '300M': 1250, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":2157.846256164,"data":"[fineweb-edu] 15 runs reduced at the previous shared step in 527s; gaps {'150M': 1250, '1B': 1869, '300M': 787, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":2740.14831594,"data":"[fineweb-pro] 15 runs reduced at the previous shared step in 582s; gaps {'150M': 1250, '1B': 1869, '300M': 1250, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":2741.04127445,"data":"[done] 5 of 5 recipes in 2740s\n"}
+,{"stream_name":"stderr","time":2746.208253987,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2746.208552524,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2746.933921738,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2746.933985758,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2748.705695425,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2751.269857479,"data":"[NbConvertApp] Writing 300313 bytes to __results__.html\n"}
+]

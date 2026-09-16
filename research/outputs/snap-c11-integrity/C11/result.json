@@ -1,0 +1,187 @@
+{
+  "checks": [
+    {
+      "artifact_integrity": "passed",
+      "job": "C00",
+      "path": "/kaggle/working/audit/snap-r0-adapter/SNAP/C00_accuracy"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C00",
+      "path": "/kaggle/working/audit/snap-r0-adapter/SNAP/C00_margin"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r0-adapter/SNAP/C01_accuracy_item_seed20260914"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r0-adapter/SNAP/C01_accuracy_original"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r0-adapter/SNAP/C01_margin_item_seed20260914"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r0-adapter/SNAP/C01_margin_original"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C02",
+      "path": "/kaggle/working/audit/snap-r0-adapter/SNAP/C02_tests"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r10-scale-transform/SNAP/C01_margin_global_x10"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r10-scale-transform/SNAP/C01_margin_identity"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r10-scale-transform/SNAP/C01_margin_sign"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r10-scale-transform/SNAP/C01_margin_standardised"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r10-scale-transform/SNAP/C01_margin_tanh"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r10-scale-transform/SNAP/C01_margin_tanh_half"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r10-scale-transform/SNAP/C01_margin_winsorised"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r2-grouped/SNAP/C01_accuracy_group"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r2-grouped/SNAP/C01_accuracy_item"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r2-grouped/SNAP/C01_accuracy_noboolq_original"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r2-grouped/SNAP/C01_accuracy_original"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r2-grouped/SNAP/C01_margin_group"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r2-grouped/SNAP/C01_margin_item"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r2-grouped/SNAP/C01_margin_noboolq_original"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r2-grouped/SNAP/C01_margin_original"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C03",
+      "path": "/kaggle/working/audit/snap-r2-grouped/SNAP/C03_accuracy"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C03",
+      "path": "/kaggle/working/audit/snap-r2-grouped/SNAP/C03_margin"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C09",
+      "path": "/kaggle/working/audit/snap-r2-grouped/SNAP/C09_accuracy"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C09",
+      "path": "/kaggle/working/audit/snap-r2-grouped/SNAP/C09_margin"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r23-prev-step-analysis/SNAP/C01_accuracy_prev"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r23-prev-step-analysis/SNAP/C01_accuracy_sel"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r23-prev-step-analysis/SNAP/C01_margin_prev"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r23-prev-step-analysis/SNAP/C01_margin_sel"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r8-prediction/SNAP/C01_accuracy"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C01",
+      "path": "/kaggle/working/audit/snap-r8-prediction/SNAP/C01_margin"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C07",
+      "path": "/kaggle/working/audit/snap-r8-prediction/SNAP/C07_accuracy"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C07",
+      "path": "/kaggle/working/audit/snap-r8-prediction/SNAP/C07_margin"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C08",
+      "path": "/kaggle/working/audit/snap-r8-prediction/SNAP/C08_accuracy"
+    },
+    {
+      "artifact_integrity": "passed",
+      "job": "C08",
+      "path": "/kaggle/working/audit/snap-r8-prediction/SNAP/C08_margin"
+    }
+  ],
+  "interpretation": "Integrity verification cannot certify assumptions, calibration, or completeness of the broader research plan",
+  "scientific_claims_verified": false,
+  "status": "artifact_integrity_verified"
+}

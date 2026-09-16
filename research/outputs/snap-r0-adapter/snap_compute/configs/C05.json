@@ -1,0 +1,26 @@
+{
+  "template_only": true,
+  "seed": 20260914,
+  "replicate_start": 0,
+  "replicate_stop": 2000,
+  "bootstrap_draws": 4999,
+  "cells": [
+    {
+      "rho": 0
+    },
+    {
+      "rho": 0.1
+    },
+    {
+      "rho": 0.3
+    },
+    {
+      "rho": 0.1,
+      "student_df": 4
+    },
+    {
+      "rho": 0.1,
+      "cross_half_error_correlation": 0.3
+    }
+  ]
+}

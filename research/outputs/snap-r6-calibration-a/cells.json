@@ -1,0 +1,56 @@
+[
+ {
+  "name": "null_margin_noise",
+  "rho": 0.0,
+  "noise_sd": 0.73
+ },
+ {
+  "name": "null_accuracy_noise",
+  "rho": 0.0,
+  "noise_sd": 1.45
+ },
+ {
+  "name": "margin_like",
+  "rho": 0.061,
+  "noise_sd": 0.73
+ },
+ {
+  "name": "accuracy_like",
+  "rho": 0.018,
+  "noise_sd": 1.45
+ },
+ {
+  "name": "margin_like_boolq_trace",
+  "rho": 0.061,
+  "noise_sd": 0.73,
+  "trait_scales": [
+   4.373213921133976,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "accuracy_like_boolq_trace",
+  "rho": 0.018,
+  "noise_sd": 1.45,
+  "trait_scales": [
+   6.873863542433759,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ]
+ }
+]

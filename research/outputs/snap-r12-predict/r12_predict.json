@@ -1,0 +1,446 @@
+{
+ "design": "R12 held-out prediction, testing whether the decomposition predicts a directly observed ratio.\n\nDesign fixed before running (2026-09-15, written 21:20 EDT). Every other check compares the estimator\nwith itself or with a simulation. PolyPythias carries nine seeds per configuration, which is enough to\nmeasure the quantity the estimator is about, so this run predicts it out of sample from disjoint runs.\n\nFor a set of runs, the observed ratio is the standard deviation of the battery mean over those runs,\ndivided by the square root of the weighted sum of per-benchmark variances over the same runs. That\nratio is measurable and it includes item noise, so it sits below the item-general inflation. From a\nfitting triple we form three predictions of it. The independence prediction is one. The plug-in of the\ninflation estimate is Lambda hat itself, which ignores item noise. The decomposition prediction adds\neach benchmark's estimated half-score item noise to both sides, at half its per-half variance because\nthe score averages two halves, and it is the prediction the measurement model actually implies.\n\nEach configuration contributes the 84 ways of choosing three of its nine runs, and each fitting triple\nis scored against the six runs it leaves out. We report the mean absolute log error of each prediction,\nthe paired differences between them, and the same quantities per configuration, on both phenotypes and\non the three-size and five-size sets. With three or five configurations the comparison is descriptive,\nso we report per-configuration values rather than an interval across configurations.\n",
+ "sets": {
+  "three_sizes": {
+   "N": 3,
+   "R": 9,
+   "phenotypes": {
+    "margin": {
+     "n_rows": 252,
+     "observed": {
+      "n_finite": 252,
+      "mean": 1.2940649091746532,
+      "p05": 0.7013127601752677,
+      "median": 1.3380250684812804,
+      "p95": 1.8507744691329082
+     },
+     "errors": {
+      "independence": {
+       "n": 252,
+       "mean_abs_log_error": 0.3391689398088537,
+       "median_abs_log_error": 0.3386394811015005,
+       "mean_prediction": 1.0
+      },
+      "plug_in": {
+       "n": 235,
+       "mean_abs_log_error": 0.5362380687719541,
+       "median_abs_log_error": 0.4403385271745687,
+       "mean_prediction": 1.2349464515459174
+      },
+      "decomposition": {
+       "n": 243,
+       "mean_abs_log_error": 0.5124817096899685,
+       "median_abs_log_error": 0.43289605923288127,
+       "mean_prediction": 1.2029010948646683
+      },
+      "decomposition_minus_independence": {
+       "mean": 0.17110121995272204,
+       "median": 0.18256521710978982,
+       "share_below_zero": 0.345679012345679
+      },
+      "decomposition_minus_plug_in": {
+       "mean": -0.05652010799369082,
+       "median": -0.019840168154950488,
+       "share_below_zero": 0.8085106382978723
+      },
+      "plug_in_minus_independence": {
+       "mean": 0.19641307979142528,
+       "median": 0.18092597616404837,
+       "share_below_zero": 0.34893617021276596
+      }
+     },
+     "by_config": {
+      "['pythia-160m', '160m']": {
+       "observed_median": 0.9544581266122635,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.14493900446800323
+       },
+       "plug_in": {
+        "mean_prediction": 0.9800037789798941,
+        "mean_abs_log_error": 0.46391387224759095
+       },
+       "decomposition": {
+        "mean_prediction": 0.9619938694226969,
+        "mean_abs_log_error": 0.43480717043246725
+       }
+      },
+      "['pythia-410m', '410m']": {
+       "observed_median": 1.740200406371809,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.5449963051973358
+       },
+       "plug_in": {
+        "mean_prediction": 1.6006408958247138,
+        "mean_abs_log_error": 0.3758136098833083
+       },
+       "decomposition": {
+        "mean_prediction": 1.5499449546097965,
+        "mean_abs_log_error": 0.359149400996671
+       }
+      },
+      "['pythia-70m', '70m']": {
+       "observed_median": 1.3793322485420987,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.3275715097612223
+       },
+       "plug_in": {
+        "mean_prediction": 1.1018860015709797,
+        "mean_abs_log_error": 0.7912166789651114
+       },
+       "decomposition": {
+        "mean_prediction": 1.0808583450939013,
+        "mean_abs_log_error": 0.7624716596815543
+       }
+      }
+     }
+    },
+    "accuracy": {
+     "n_rows": 252,
+     "observed": {
+      "n_finite": 252,
+      "mean": 1.4633884481955164,
+      "p05": 0.8974722695532561,
+      "median": 1.3393272413440434,
+      "p95": 2.1419222680836163
+     },
+     "errors": {
+      "independence": {
+       "n": 252,
+       "mean_abs_log_error": 0.36970893361826745,
+       "median_abs_log_error": 0.2951087195415368,
+       "mean_prediction": 1.0
+      },
+      "plug_in": {
+       "n": 127,
+       "mean_abs_log_error": 0.44708085381389284,
+       "median_abs_log_error": 0.35496034780688335,
+       "mean_prediction": 2.0801689433189976
+      },
+      "decomposition": {
+       "n": 220,
+       "mean_abs_log_error": 0.38428934773585793,
+       "median_abs_log_error": 0.2822636121182414,
+       "mean_prediction": 1.4707893196175565
+      },
+      "decomposition_minus_independence": {
+       "mean": 0.004640106536187005,
+       "median": -0.04016582761929925,
+       "share_below_zero": 0.5045454545454545
+      },
+      "decomposition_minus_plug_in": {
+       "mean": -0.17312438599686625,
+       "median": -0.10875509364505609,
+       "share_below_zero": 0.8503937007874016
+      },
+      "plug_in_minus_independence": {
+       "mean": 0.07079811385456047,
+       "median": 0.04351595640481809,
+       "share_below_zero": 0.47244094488188976
+      }
+     },
+     "by_config": {
+      "['pythia-160m', '160m']": {
+       "observed_median": 1.2039449861299913,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.20700567123461516
+       },
+       "plug_in": {
+        "mean_prediction": 1.487182756430256,
+        "mean_abs_log_error": 0.5090383584335791
+       },
+       "decomposition": {
+        "mean_prediction": 1.1978939397740775,
+        "mean_abs_log_error": 0.3948448514466908
+       }
+      },
+      "['pythia-410m', '410m']": {
+       "observed_median": 2.0744987435184927,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.6689406331640254
+       },
+       "plug_in": {
+        "mean_prediction": 2.8208997242826483,
+        "mean_abs_log_error": 0.3371980542338481
+       },
+       "decomposition": {
+        "mean_prediction": 1.7711839620614767,
+        "mean_abs_log_error": 0.29026319848420107
+       }
+      },
+      "['pythia-70m', '70m']": {
+       "observed_median": 1.26633494233851,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.23318049645616176
+       },
+       "plug_in": {
+        "mean_prediction": 3.0279315693280453,
+        "mean_abs_log_error": 0.9220160370621006
+       },
+       "decomposition": {
+        "mean_prediction": 1.4225008662912957,
+        "mean_abs_log_error": 0.5026635536284311
+       }
+      }
+     }
+    }
+   }
+  },
+  "five_sizes": {
+   "N": 5,
+   "R": 9,
+   "phenotypes": {
+    "margin": {
+     "n_rows": 420,
+     "observed": {
+      "n_finite": 420,
+      "mean": 1.1706319123286006,
+      "p05": 0.6165297601290796,
+      "median": 1.130694825875314,
+      "p95": 1.8338989730343778
+     },
+     "errors": {
+      "independence": {
+       "n": 420,
+       "mean_abs_log_error": 0.3100714952478466,
+       "median_abs_log_error": 0.280400872133488,
+       "mean_prediction": 1.0
+      },
+      "plug_in": {
+       "n": 395,
+       "mean_abs_log_error": 0.5039441512780748,
+       "median_abs_log_error": 0.36187779385846713,
+       "mean_prediction": 1.1436010393970537
+      },
+      "decomposition": {
+       "n": 410,
+       "mean_abs_log_error": 0.48408632532982193,
+       "median_abs_log_error": 0.3489153076021142,
+       "mean_prediction": 1.1123795615511605
+      },
+      "decomposition_minus_independence": {
+       "mean": 0.17268065699533194,
+       "median": 0.1399450772819744,
+       "share_below_zero": 0.36585365853658536
+      },
+      "decomposition_minus_plug_in": {
+       "mean": -0.062250810389857726,
+       "median": -0.019585761129825463,
+       "share_below_zero": 0.7544303797468355
+      },
+      "plug_in_minus_independence": {
+       "mean": 0.19100280928019425,
+       "median": 0.14807396093400552,
+       "share_below_zero": 0.3670886075949367
+      }
+     },
+     "by_config": {
+      "['pythia-14m', '14m']": {
+       "observed_median": 0.7376451400047377,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.3338902739570703
+       },
+       "plug_in": {
+        "mean_prediction": 0.7870273519035234,
+        "mean_abs_log_error": 0.640851652560099
+       },
+       "decomposition": {
+        "mean_prediction": 0.7713345960250672,
+        "mean_abs_log_error": 0.612481381296582
+       }
+      },
+      "['pythia-160m', '160m']": {
+       "observed_median": 0.9544581266122635,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.14493900446800323
+       },
+       "plug_in": {
+        "mean_prediction": 0.9800037789798941,
+        "mean_abs_log_error": 0.46391387224759095
+       },
+       "decomposition": {
+        "mean_prediction": 0.9619938694226969,
+        "mean_abs_log_error": 0.43480717043246725
+       }
+      },
+      "['pythia-31m', '31m']": {
+       "observed_median": 1.2650619970419528,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.19896038285560166
+       },
+       "plug_in": {
+        "mean_prediction": 1.2157697391804134,
+        "mean_abs_log_error": 0.2854989921241287
+       },
+       "decomposition": {
+        "mean_prediction": 1.1874986037354862,
+        "mean_abs_log_error": 0.27507599146367023
+       }
+      },
+      "['pythia-410m', '410m']": {
+       "observed_median": 1.740200406371809,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.5449963051973358
+       },
+       "plug_in": {
+        "mean_prediction": 1.6006408958247138,
+        "mean_abs_log_error": 0.3758136098833083
+       },
+       "decomposition": {
+        "mean_prediction": 1.5499449546097965,
+        "mean_abs_log_error": 0.359149400996671
+       }
+      },
+      "['pythia-70m', '70m']": {
+       "observed_median": 1.3793322485420987,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.3275715097612223
+       },
+       "plug_in": {
+        "mean_prediction": 1.1018860015709797,
+        "mean_abs_log_error": 0.7912166789651114
+       },
+       "decomposition": {
+        "mean_prediction": 1.0808583450939013,
+        "mean_abs_log_error": 0.7624716596815543
+       }
+      }
+     }
+    },
+    "accuracy": {
+     "n_rows": 420,
+     "observed": {
+      "n_finite": 420,
+      "mean": 1.2969130547424073,
+      "p05": 0.7126189236518619,
+      "median": 1.267258834365144,
+      "p95": 2.127067052936714
+     },
+     "errors": {
+      "independence": {
+       "n": 420,
+       "mean_abs_log_error": 0.3274933174935549,
+       "median_abs_log_error": 0.2729771549519691,
+       "mean_prediction": 1.0
+      },
+      "plug_in": {
+       "n": 252,
+       "mean_abs_log_error": 0.46831740320588977,
+       "median_abs_log_error": 0.36868690835550877,
+       "mean_prediction": 1.7505693798650532
+      },
+      "decomposition": {
+       "n": 388,
+       "mean_abs_log_error": 0.3412293875500683,
+       "median_abs_log_error": 0.2691884015126581,
+       "mean_prediction": 1.3218744075592819
+      },
+      "decomposition_minus_independence": {
+       "mean": 0.011581513479405153,
+       "median": 0.001644004414580319,
+       "share_below_zero": 0.49742268041237114
+      },
+      "decomposition_minus_plug_in": {
+       "mean": -0.1874202897128418,
+       "median": -0.08675538950205197,
+       "share_below_zero": 0.7817460317460317
+      },
+      "plug_in_minus_independence": {
+       "mean": 0.1449852421194985,
+       "median": 0.06632458253142295,
+       "share_below_zero": 0.44047619047619047
+      }
+     },
+     "by_config": {
+      "['pythia-14m', '14m']": {
+       "observed_median": 0.7949599143580552,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.2591699465362978
+       },
+       "plug_in": {
+        "mean_prediction": 1.1335825497116225,
+        "mean_abs_log_error": 0.5074284178713558
+       },
+       "decomposition": {
+        "mean_prediction": 0.9174877806846558,
+        "mean_abs_log_error": 0.26952266634753125
+       }
+      },
+      "['pythia-160m', '160m']": {
+       "observed_median": 1.2039449861299913,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.20700567123461516
+       },
+       "plug_in": {
+        "mean_prediction": 1.487182756430256,
+        "mean_abs_log_error": 0.5090383584335791
+       },
+       "decomposition": {
+        "mean_prediction": 1.1978939397740775,
+        "mean_abs_log_error": 0.3948448514466908
+       }
+      },
+      "['pythia-31m', '31m']": {
+       "observed_median": 1.3247379614812531,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.2691698400766748
+       },
+       "plug_in": {
+        "mean_prediction": 1.7023601176233623,
+        "mean_abs_log_error": 0.4720762394778131
+       },
+       "decomposition": {
+        "mean_prediction": 1.3362457885669978,
+        "mean_abs_log_error": 0.30016002255172775
+       }
+      },
+      "['pythia-410m', '410m']": {
+       "observed_median": 2.0744987435184927,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.6689406331640254
+       },
+       "plug_in": {
+        "mean_prediction": 2.8208997242826483,
+        "mean_abs_log_error": 0.3371980542338481
+       },
+       "decomposition": {
+        "mean_prediction": 1.7711839620614767,
+        "mean_abs_log_error": 0.29026319848420107
+       }
+      },
+      "['pythia-70m', '70m']": {
+       "observed_median": 1.26633494233851,
+       "independence": {
+        "mean_prediction": 1.0,
+        "mean_abs_log_error": 0.23318049645616176
+       },
+       "plug_in": {
+        "mean_prediction": 3.0279315693280453,
+        "mean_abs_log_error": 0.9220160370621006
+       },
+       "decomposition": {
+        "mean_prediction": 1.4225008662912957,
+        "mean_abs_log_error": 0.5026635536284311
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "wall_seconds": 15.618195056915283
+}

@@ -1,0 +1,6 @@
+{
+  "seed": 20260914,
+  "dataset": "/kaggle/working/datasets/full/margin/scores.json",
+  "splits": 50,
+  "template_only": false
+}

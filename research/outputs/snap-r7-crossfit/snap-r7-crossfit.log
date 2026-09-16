@@ -1,0 +1,17 @@
+[{"stream_name":"stdout","time":1.566581021,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stderr","time":24.739280401,"data":"/usr/local/lib/python3.12/dist-packages/numpy/lib/_function_base_impl.py:2922: RuntimeWarning: invalid value encountered in divide\n"}
+,{"stream_name":"stderr","time":24.739347764,"data":"  c /= stddev[:, None]\n"}
+,{"stream_name":"stdout","time":24.791194601,"data":"[margin] base 1.2439 {\"shipped\": 1.2454, \"shrunk\": 0.7307, \"factor\": 0.9725, \"clip_drop\": 0.889}\n"}
+,{"stream_name":"stdout","time":76.724820618,"data":"[margin/bootstrap] 52s {\"shipped\": [1.092, 1.328], \"shrunk\": [0.669, 0.866], \"factor\": [0.935, 1.018], \"clip_drop\": [0.846, 1.086], \"unadjusted\": [1.134, 1.323]}\n"}
+,{"stream_name":"stdout","time":325.117341719,"data":"[margin/null] 248s {\"unadjusted\": 0.9996, \"shipped\": 0.9996, \"shrunk\": 1.003, \"factor\": 0.9982, \"clip_drop\": 1.0008}\n"}
+,{"stream_name":"stdout","time":325.187824171,"data":"[accuracy] base 1.0784 {\"shipped\": 1.0728, \"shrunk\": 1.0041, \"factor\": 1.0167, \"clip_drop\": 0.9936}\n"}
+,{"stream_name":"stdout","time":375.237103421,"data":"[accuracy/bootstrap] 50s {\"shipped\": [1.002, 1.153], \"shrunk\": [0.97, 1.068], \"factor\": [0.97, 1.104], \"clip_drop\": [0.941, 1.081], \"unadjusted\": [1.002, 1.156]}\n"}
+,{"stream_name":"stdout","time":621.582761815,"data":"[accuracy/null] 246s {\"unadjusted\": 0.9986, \"shipped\": 0.9991, \"shrunk\": 1.0001, \"factor\": 0.9999, \"clip_drop\": 0.9993}\n"}
+,{"stream_name":"stdout","time":621.602853377,"data":"[done] 620s\n"}
+,{"stream_name":"stderr","time":624.574722369,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":624.574779546,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":624.991199429,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":624.99123259,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":626.127635989,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":627.884049099,"data":"[NbConvertApp] Writing 342640 bytes to __results__.html\n"}
+]

@@ -1,0 +1,42 @@
+[{"stream_name":"stdout","time":0.887628622,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":18.010578383,"data":"[base] {\"n_config\": 125, \"n_runs_read\": 375, \"dropped_cells\": [], \"recipes\": [\"Falcon-with-cc-top-orig-10p\", \"Falcon-with-cc-top-tulu-10p\", \"c4\", \"dclm-baseline\", \"dclm-baseline-25p-dolma1.7-75p\", \"dclm-baseline-50p-dolma1.7-50p\", \"dclm-baseline-75p-dolma1.7-25p\", \"dclm-baseline-top-10p\", \"dclm-baseline-top-20p\", \"dclm-baseline-top-fw-10p\", \"dclm-baseline-top-fw-3p\", \"dclm-baseline-top-fw2-7p\", \"dclm-baseline-top-fw3-7p\", \"dolma1.6++\", \"dolma1.7\", \"dolma1.7-no-code\", \"dolma1.7-no-flan\", \"dolma1.7-no-math-no-code\", \"dolma1.7-no-reddit\", \"falcon\", \"falcon-with-cc\", \"falcon-with-cc-top-10p\", \"falcon-with-cc-top-20p\", \"fineweb-edu\", \"fineweb-pro\"], \"sizes\": [\"150M\", \"300M\", \"530M\", \"750M\", \"1B\"], \"half_A_items\": 18840, \"half_B_items\": 18842, \"split_seed\": 20260101}\n"}
+,{"stream_name":"stdout","time":18.02780028,"data":"[margin/w0.1] lam 1.2439 ci 1.1413 1.3401 excl True\n"}
+,{"stream_name":"stdout","time":18.042390374,"data":"[margin/w0.093333] lam 1.2721 ci 1.1609 1.3748 excl True\n"}
+,{"stream_name":"stdout","time":18.055409537,"data":"[margin/w0.086667] lam 1.3032 ci 1.1842 1.4091 excl True\n"}
+,{"stream_name":"stdout","time":18.068226359,"data":"[margin/w0.08] lam 1.3374 ci 1.2114 1.4506 excl True\n"}
+,{"stream_name":"stdout","time":18.081180762,"data":"[margin/w0.073333] lam 1.3747 ci 1.2525 1.4926 excl True\n"}
+,{"stream_name":"stdout","time":18.094088515,"data":"[margin/w0.066667] lam 1.4149 ci 1.2889 1.5354 excl True\n"}
+,{"stream_name":"stdout","time":18.107083277,"data":"[margin/w0.06] lam 1.4579 ci 1.3249 1.5791 excl True\n"}
+,{"stream_name":"stdout","time":18.11995359,"data":"[margin/w0.053333] lam 1.5030 ci 1.3674 1.6224 excl True\n"}
+,{"stream_name":"stdout","time":18.132994953,"data":"[margin/w0.046667] lam 1.5494 ci 1.4278 1.6670 excl True\n"}
+,{"stream_name":"stdout","time":18.145653545,"data":"[margin/w0.04] lam 1.5960 ci 1.4778 1.7071 excl True\n"}
+,{"stream_name":"stdout","time":18.158538357,"data":"[margin/w0.033333] lam 1.6412 ci 1.5281 1.7424 excl True\n"}
+,{"stream_name":"stdout","time":18.17206016,"data":"[margin/w0.026667] lam 1.6833 ci 1.5801 1.7766 excl True\n"}
+,{"stream_name":"stdout","time":18.185539253,"data":"[margin/w0.02] lam 1.7204 ci 1.6293 1.8110 excl True\n"}
+,{"stream_name":"stdout","time":18.198425736,"data":"[margin/w0.013333] lam 1.7507 ci 1.6611 1.8380 excl True\n"}
+,{"stream_name":"stdout","time":18.211708619,"data":"[margin/w0.006667] lam 1.7728 ci 1.6841 1.8579 excl True\n"}
+,{"stream_name":"stdout","time":18.224856091,"data":"[margin/w0.0] lam 1.7856 ci 1.6902 1.8752 excl True\n"}
+,{"stream_name":"stdout","time":18.239196916,"data":"[accuracy/w0.1] lam 1.0784 ci 0.9921 1.1564 excl False\n"}
+,{"stream_name":"stdout","time":18.252610629,"data":"[accuracy/w0.093333] lam 1.0909 ci 0.9999 1.1734 excl False\n"}
+,{"stream_name":"stdout","time":18.265500971,"data":"[accuracy/w0.086667] lam 1.1056 ci 1.0145 1.1917 excl True\n"}
+,{"stream_name":"stdout","time":18.278520514,"data":"[accuracy/w0.08] lam 1.1231 ci 1.0297 1.2073 excl True\n"}
+,{"stream_name":"stdout","time":18.291474147,"data":"[accuracy/w0.073333] lam 1.1438 ci 1.0511 1.2329 excl True\n"}
+,{"stream_name":"stdout","time":18.304545029,"data":"[accuracy/w0.066667] lam 1.1683 ci 1.0725 1.2608 excl True\n"}
+,{"stream_name":"stdout","time":18.317737382,"data":"[accuracy/w0.06] lam 1.1972 ci 1.0964 1.2950 excl True\n"}
+,{"stream_name":"stdout","time":18.330627394,"data":"[accuracy/w0.053333] lam 1.2311 ci 1.1249 1.3259 excl True\n"}
+,{"stream_name":"stdout","time":18.343808127,"data":"[accuracy/w0.046667] lam 1.2704 ci 1.1634 1.3692 excl True\n"}
+,{"stream_name":"stdout","time":18.35667169,"data":"[accuracy/w0.04] lam 1.3149 ci 1.2039 1.4152 excl True\n"}
+,{"stream_name":"stdout","time":18.369532092,"data":"[accuracy/w0.033333] lam 1.3638 ci 1.2531 1.4643 excl True\n"}
+,{"stream_name":"stdout","time":18.382897865,"data":"[accuracy/w0.026667] lam 1.4152 ci 1.3043 1.5133 excl True\n"}
+,{"stream_name":"stdout","time":18.395899578,"data":"[accuracy/w0.02] lam 1.4653 ci 1.3535 1.5683 excl True\n"}
+,{"stream_name":"stdout","time":18.408850381,"data":"[accuracy/w0.013333] lam 1.5093 ci 1.3890 1.6219 excl True\n"}
+,{"stream_name":"stdout","time":18.422539534,"data":"[accuracy/w0.006667] lam 1.5416 ci 1.4064 1.6636 excl True\n"}
+,{"stream_name":"stdout","time":18.436407547,"data":"[accuracy/w0.0] lam 1.5578 ci 1.4098 1.6897 excl True\n"}
+,{"stream_name":"stdout","time":18.458189258,"data":"[done] 18s\n"}
+,{"stream_name":"stderr","time":20.674625582,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":20.674693173,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":20.98075485,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":20.98079545,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":21.749066747,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":23.078164398,"data":"[NbConvertApp] Writing 310807 bytes to __results__.html\n"}
+]

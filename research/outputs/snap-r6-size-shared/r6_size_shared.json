@@ -1,0 +1,162 @@
+{
+ "design": "R6 coverage when the shared run effect follows the size band rather than the recipe.\n\nDesign fixed before running (2026-09-15, written 22:55 EDT). The shipped interval clusters on the 25\nrecipes. snap-r6-leave-one-out showed the margin conclusion depends on the 530M band, and snap-r6-twoway\nshowed the two-way correction can't be estimated at this design, because the intersection component\nexceeds the sum of the recipe and size components and drives the two-way variance negative on the full\nbattery. Neither run answers what a reader actually wants to know, which is how badly a recipe-clustered\ninterval undercovers when the dependence runs along the size dimension instead. This run answers it by\nsimulation. It adds a size-band shared run effect to the margin-like population, built exactly as the\nexisting recipe-shared effect is built so that the true ratio doesn't move, and it sweeps that effect's\nshare of latent variance over 0, 0.25, 0.5 and 0.75 with 2,000 replicates at each value. It scores four\nintervals, which are the wild bootstrap-t clustered on recipes, the same clustered on size bands, the\ncluster-robust t on recipes, and the cluster-robust t on size bands. Recipe clustering that holds near\n0.95 across the sweep says the shipped choice is safe against this violation. Recipe clustering that\nfalls says the paper has to carry the size dimension as a stated limitation on the interval.\n",
+ "seed": 20260929,
+ "reps": 2000,
+ "cells": {
+  "size_shared_0.00": {
+   "name": "size_shared_0.00",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.0,
+   "wild_recipe": {
+    "coverage": 0.9445,
+    "mc_se": 0.005119558086397692,
+    "lower_miss": 0.017,
+    "upper_miss": 0.0385,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24242519432627008
+   },
+   "wild_size": {
+    "coverage": 0.9525,
+    "mc_se": 0.00475624589355933,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.0255,
+    "undefined_or_unbounded": 0.0055,
+    "median_width": 0.36164434282511526
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.946,
+    "mc_se": 0.005053909377897473,
+    "lower_miss": 0.018,
+    "upper_miss": 0.036,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24162362557818506
+   },
+   "cluster_t_size": {
+    "coverage": 0.949,
+    "mc_se": 0.004919298730510276,
+    "lower_miss": 0.0195,
+    "upper_miss": 0.0315,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3038394523073841
+   }
+  },
+  "size_shared_0.25": {
+   "name": "size_shared_0.25",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.25,
+   "wild_recipe": {
+    "coverage": 0.8095,
+    "mc_se": 0.008780938161722813,
+    "lower_miss": 0.0775,
+    "upper_miss": 0.113,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2364419468810014
+   },
+   "wild_size": {
+    "coverage": 0.912,
+    "mc_se": 0.0063346665263453285,
+    "lower_miss": 0.009,
+    "upper_miss": 0.045,
+    "undefined_or_unbounded": 0.034,
+    "median_width": 0.4767457629707341
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.808,
+    "mc_se": 0.008807269724494646,
+    "lower_miss": 0.079,
+    "upper_miss": 0.113,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23565941841711147
+   },
+   "cluster_t_size": {
+    "coverage": 0.937,
+    "mc_se": 0.00543281694887652,
+    "lower_miss": 0.013,
+    "upper_miss": 0.0495,
+    "undefined_or_unbounded": 0.0005,
+    "median_width": 0.40807232803828675
+   }
+  },
+  "size_shared_0.50": {
+   "name": "size_shared_0.50",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.5,
+   "wild_recipe": {
+    "coverage": 0.5785,
+    "mc_se": 0.01104168805029376,
+    "lower_miss": 0.1865,
+    "upper_miss": 0.235,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.21887542104347302
+   },
+   "wild_size": {
+    "coverage": 0.756,
+    "mc_se": 0.009603749267864087,
+    "lower_miss": 0.008,
+    "upper_miss": 0.0585,
+    "undefined_or_unbounded": 0.1775,
+    "median_width": 0.6980954303723619
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.5785,
+    "mc_se": 0.01104168805029376,
+    "lower_miss": 0.1875,
+    "upper_miss": 0.234,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.21827831357979044
+   },
+   "cluster_t_size": {
+    "coverage": 0.904,
+    "mc_se": 0.006587260432076448,
+    "lower_miss": 0.008,
+    "upper_miss": 0.073,
+    "undefined_or_unbounded": 0.015,
+    "median_width": 0.6297475513592732
+   }
+  },
+  "size_shared_0.75": {
+   "name": "size_shared_0.75",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.75,
+   "wild_recipe": {
+    "coverage": 0.3475,
+    "mc_se": 0.010647622974166581,
+    "lower_miss": 0.2755,
+    "upper_miss": 0.377,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.18884561292224689
+   },
+   "wild_size": {
+    "coverage": 0.5115,
+    "mc_se": 0.01117738229640554,
+    "lower_miss": 0.0045,
+    "upper_miss": 0.0675,
+    "undefined_or_unbounded": 0.4165,
+    "median_width": 0.8696769470980691
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.3465,
+    "mc_se": 0.010640435846336371,
+    "lower_miss": 0.2765,
+    "upper_miss": 0.377,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.18896915643522372
+   },
+   "cluster_t_size": {
+    "coverage": 0.7575,
+    "mc_se": 0.00958367753005077,
+    "lower_miss": 0.0055,
+    "upper_miss": 0.0925,
+    "undefined_or_unbounded": 0.1445,
+    "median_width": 0.8663013078458451
+   }
+  }
+ },
+ "shipped_check": {
+  "size_shared_0.00": 0.0,
+  "size_shared_0.25": 1.1102230246251565e-16,
+  "size_shared_0.50": 0.0,
+  "size_shared_0.75": 0.0
+ },
+ "wall_seconds": 465.6875705718994
+}

@@ -1,0 +1,102 @@
+{
+ "design": "R6 test of whether iterated-bootstrap calibration repairs the coverage shortfall in simulation.\n\nDesign fixed before running (2026-09-15, written 22:05 EDT). snap-r6-calibrated applied Beran\nprepivoting to the observed data and returned an implied coverage of 0.977 for the nominal levels on the\nfull margin battery, which says the shipped interval is conservative there. The twelve-population\nsimulation and ten repeats of the seed-label permutation both say the same interval sits below nominal,\nnear 0.933 and near 0.931. The appendix explains the disagreement by arguing that prepivoting measures\ncalibration inside the wild resampling model the interval already assumes, so it cannot see a violation\nthat the bootstrap shares with the estimator. That argument is currently an assertion, and this run\ntests it. It scores three intervals on the four cells that carry the shortfall, which are the two with\nthe lowest wild coverage and the two calibrated to the observed estimates, with 1,000 replicates each,\nseed 20260927 and a cell index offset of three hundred. The three are the shipped wild interval at 4,999\ndraws, an uncalibrated wild interval at 399 draws, and the prepivoted interval built from 399 outer\nresamples each carrying a 399-draw inner bootstrap. The middle one separates the effect of the draw\ncount from the effect of calibration. If the prepivoted interval covers near 0.95 then calibration\nrepairs the shortfall and the paper should report it as a remedy. If it tracks the uncalibrated one\nnear 0.93 then the appendix's explanation holds and prepivoting is blind to this error.\n",
+ "seed": 20260927,
+ "reps": 1000,
+ "b1": 399,
+ "b2": 399,
+ "cells": {
+  "margin_like_cross_half_error_corr_0.1": {
+   "name": "margin_like_cross_half_error_corr_0.1",
+   "truth": 1.2445882853377657,
+   "shipped_check": 0.0,
+   "wild_shipped": {
+    "coverage": 0.938,
+    "mc_se": 0.00762600813007697,
+    "undefined": 0.0,
+    "median_width": 0.23363238902687067
+   },
+   "wild_399": {
+    "coverage": 0.936,
+    "mc_se": 0.007739767438366605,
+    "undefined": 0.0,
+    "median_width": 0.23121362666291723
+   },
+   "prepivoted": {
+    "coverage": 0.924,
+    "mc_se": 0.008379976133617564,
+    "undefined": 0.0,
+    "median_width": 0.23184605718517848
+   }
+  },
+  "margin_like_one_dominant_recipe": {
+   "name": "margin_like_one_dominant_recipe",
+   "truth": 1.2445882853377657,
+   "shipped_check": 0.0,
+   "wild_shipped": {
+    "coverage": 0.931,
+    "mc_se": 0.008014923580421711,
+    "undefined": 0.0,
+    "median_width": 0.25397943468247774
+   },
+   "wild_399": {
+    "coverage": 0.928,
+    "mc_se": 0.00817410545564467,
+    "undefined": 0.0,
+    "median_width": 0.25170937434296303
+   },
+   "prepivoted": {
+    "coverage": 0.933,
+    "mc_se": 0.007906389820898028,
+    "undefined": 0.0,
+    "median_width": 0.2856200482153224
+   }
+  },
+  "margin_like": {
+   "name": "margin_like",
+   "truth": 1.2445882853377657,
+   "shipped_check": 0.0,
+   "wild_shipped": {
+    "coverage": 0.936,
+    "mc_se": 0.007739767438366605,
+    "undefined": 0.0,
+    "median_width": 0.2410138640733548
+   },
+   "wild_399": {
+    "coverage": 0.938,
+    "mc_se": 0.00762600813007697,
+    "undefined": 0.0,
+    "median_width": 0.2376594618468003
+   },
+   "prepivoted": {
+    "coverage": 0.931,
+    "mc_se": 0.008014923580421711,
+    "undefined": 0.0,
+    "median_width": 0.23692667461085393
+   }
+  },
+  "accuracy_like": {
+   "name": "accuracy_like",
+   "truth": 1.0779610382569493,
+   "shipped_check": 0.0,
+   "wild_shipped": {
+    "coverage": 0.953,
+    "mc_se": 0.00669260786241059,
+    "undefined": 0.0,
+    "median_width": 0.39345393738149187
+   },
+   "wild_399": {
+    "coverage": 0.949,
+    "mc_se": 0.006956938982052382,
+    "undefined": 0.0,
+    "median_width": 0.38909301443593464
+   },
+   "prepivoted": {
+    "coverage": 0.944,
+    "mc_se": 0.007270763371201131,
+    "undefined": 0.0,
+    "median_width": 0.38937589905756004
+   }
+  }
+ },
+ "wall_seconds": 3144.2244441509247
+}

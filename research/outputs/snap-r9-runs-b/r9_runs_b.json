@@ -1,0 +1,975 @@
+{
+ "design": "R9 the run count a comparison actually needs, past the ten the first sweep reached.\n\nDesign fixed before running (2026-09-16, written 10:55 EDT). snap-r9-runs swept one to ten runs per\nmodel and found two things. The size error of the independence rule sat between 0.112 and 0.122 on\nmargins at every run count, so buying runs does not repair it, and the corrected rule held nominal size\neverywhere. It also found that no run count up to ten reached four fifths power, since a one standard\ndeviation gap on margins reached only 0.614 at ten runs. That leaves the practitioner question open,\nbecause a paper that says a plug-in correction restores the decision rule should also say what the\ndecision costs. This run extends the same sweep to 12, 16, 20, 24, 32, 40, 60 and 80 runs per model at\ngaps of a quarter, a half and one aggregate standard deviation, with a zero gap carried through so the\nsize claim extends with it, on both populations at 8,000 replicates per combination. It reports the\nsmallest swept run count whose corrected rule reaches four fifths, and beside it the run count an oracle\nnormal calculation predicts, so a reader can see whether the simulation and the closed form agree. Seed\n20260945 and a cell offset of sixteen hundred keep the draws distinct from the first sweep.\n",
+ "seed": 20260945,
+ "reps": 8000,
+ "z": 1.959963984540054,
+ "runs_swept": [
+  12,
+  16,
+  20,
+  24,
+  32,
+  40,
+  60,
+  80
+ ],
+ "cells": {
+  "margin_like": {
+   "name": "margin_like",
+   "lambda_true": 1.2445882853377657,
+   "lambda_hat_mean": 1.2432711865158728,
+   "lambda_hat_sd": 0.06059857536315189,
+   "undefined_estimates": 0.0,
+   "rules": {
+    "runs12/gap0.0": {
+     "independence": {
+      "declare_rate": 0.11625,
+      "mc_se": 0.0035835725453100572
+     },
+     "plug_in": {
+      "declare_rate": 0.050625,
+      "mc_se": 0.0024510739833540317
+     },
+     "oracle": {
+      "declare_rate": 0.0485,
+      "mc_se": 0.002401763674885604
+     }
+    },
+    "runs12/gap0.25": {
+     "independence": {
+      "declare_rate": 0.176875,
+      "mc_se": 0.00426600273052831
+     },
+     "plug_in": {
+      "declare_rate": 0.093125,
+      "mc_se": 0.0032490909185301357
+     },
+     "oracle": {
+      "declare_rate": 0.089875,
+      "mc_se": 0.0031976062213591905
+     }
+    },
+    "runs12/gap0.5": {
+     "independence": {
+      "declare_rate": 0.358375,
+      "mc_se": 0.005361230728281987
+     },
+     "plug_in": {
+      "declare_rate": 0.229625,
+      "mc_se": 0.004702357910865038
+     },
+     "oracle": {
+      "declare_rate": 0.230125,
+      "mc_se": 0.004705946827884374
+     }
+    },
+    "runs12/gap1.0": {
+     "independence": {
+      "declare_rate": 0.80725,
+      "mc_se": 0.00441017909925436
+     },
+     "plug_in": {
+      "declare_rate": 0.68525,
+      "mc_se": 0.0051923313345259466
+     },
+     "oracle": {
+      "declare_rate": 0.686,
+      "mc_se": 0.005188978704909088
+     }
+    },
+    "runs16/gap0.0": {
+     "independence": {
+      "declare_rate": 0.11725,
+      "mc_se": 0.003596915996725528
+     },
+     "plug_in": {
+      "declare_rate": 0.04975,
+      "mc_se": 0.002430919000604504
+     },
+     "oracle": {
+      "declare_rate": 0.0475,
+      "mc_se": 0.0023781229467796654
+     }
+    },
+    "runs16/gap0.25": {
+     "independence": {
+      "declare_rate": 0.204375,
+      "mc_se": 0.004508406860729741
+     },
+     "plug_in": {
+      "declare_rate": 0.112,
+      "mc_se": 0.003525904139366242
+     },
+     "oracle": {
+      "declare_rate": 0.110125,
+      "mc_se": 0.003499955077836714
+     }
+    },
+    "runs16/gap0.5": {
+     "independence": {
+      "declare_rate": 0.438125,
+      "mc_se": 0.005547200694663481
+     },
+     "plug_in": {
+      "declare_rate": 0.301375,
+      "mc_se": 0.00513015727554965
+     },
+     "oracle": {
+      "declare_rate": 0.298875,
+      "mc_se": 0.005117967545508178
+     }
+    },
+    "runs16/gap1.0": {
+     "independence": {
+      "declare_rate": 0.894875,
+      "mc_se": 0.0034291714446605033
+     },
+     "plug_in": {
+      "declare_rate": 0.80225,
+      "mc_se": 0.004453158113911968
+     },
+     "oracle": {
+      "declare_rate": 0.804125,
+      "mc_se": 0.004437172303041094
+     }
+    },
+    "runs20/gap0.0": {
+     "independence": {
+      "declare_rate": 0.114625,
+      "mc_se": 0.0035617079711670638
+     },
+     "plug_in": {
+      "declare_rate": 0.0525,
+      "mc_se": 0.0024935855208915534
+     },
+     "oracle": {
+      "declare_rate": 0.053625,
+      "mc_se": 0.00251866431305861
+     }
+    },
+    "runs20/gap0.25": {
+     "independence": {
+      "declare_rate": 0.225625,
+      "mc_se": 0.004673306636833817
+     },
+     "plug_in": {
+      "declare_rate": 0.131875,
+      "mc_se": 0.0037829218927801036
+     },
+     "oracle": {
+      "declare_rate": 0.129125,
+      "mc_se": 0.0037491954866177624
+     }
+    },
+    "runs20/gap0.5": {
+     "independence": {
+      "declare_rate": 0.502,
+      "mc_se": 0.005590125222211037
+     },
+     "plug_in": {
+      "declare_rate": 0.352375,
+      "mc_se": 0.00534096034640541
+     },
+     "oracle": {
+      "declare_rate": 0.354125,
+      "mc_se": 0.005346967415916708
+     }
+    },
+    "runs20/gap1.0": {
+     "independence": {
+      "declare_rate": 0.94625,
+      "mc_se": 0.002521431575018445
+     },
+     "plug_in": {
+      "declare_rate": 0.8855,
+      "mc_se": 0.003560016678331719
+     },
+     "oracle": {
+      "declare_rate": 0.884875,
+      "mc_se": 0.0035684596532502655
+     }
+    },
+    "runs24/gap0.0": {
+     "independence": {
+      "declare_rate": 0.10975,
+      "mc_se": 0.0034947270547926916
+     },
+     "plug_in": {
+      "declare_rate": 0.0465,
+      "mc_se": 0.002354191740279453
+     },
+     "oracle": {
+      "declare_rate": 0.044375,
+      "mc_se": 0.0023023319530152465
+     }
+    },
+    "runs24/gap0.25": {
+     "independence": {
+      "declare_rate": 0.244,
+      "mc_se": 0.004801874633932043
+     },
+     "plug_in": {
+      "declare_rate": 0.137125,
+      "mc_se": 0.0038458050908587397
+     },
+     "oracle": {
+      "declare_rate": 0.1355,
+      "mc_se": 0.0038265478894167785
+     }
+    },
+    "runs24/gap0.5": {
+     "independence": {
+      "declare_rate": 0.5665,
+      "mc_se": 0.005540507084193648
+     },
+     "plug_in": {
+      "declare_rate": 0.41825,
+      "mc_se": 0.005514944894330315
+     },
+     "oracle": {
+      "declare_rate": 0.418875,
+      "mc_se": 0.005516098421608792
+     }
+    },
+    "runs24/gap1.0": {
+     "independence": {
+      "declare_rate": 0.9715,
+      "mc_se": 0.0018603679071624506
+     },
+     "plug_in": {
+      "declare_rate": 0.934625,
+      "mc_se": 0.0027636278099402232
+     },
+     "oracle": {
+      "declare_rate": 0.936375,
+      "mc_se": 0.0027289388820336386
+     }
+    },
+    "runs32/gap0.0": {
+     "independence": {
+      "declare_rate": 0.1115,
+      "mc_se": 0.003519015309713784
+     },
+     "plug_in": {
+      "declare_rate": 0.05025,
+      "mc_se": 0.0024424612970321558
+     },
+     "oracle": {
+      "declare_rate": 0.04875,
+      "mc_se": 0.0024076294747115887
+     }
+    },
+    "runs32/gap0.25": {
+     "independence": {
+      "declare_rate": 0.287125,
+      "mc_se": 0.005058214042216382
+     },
+     "plug_in": {
+      "declare_rate": 0.16975,
+      "mc_se": 0.004197245190300419
+     },
+     "oracle": {
+      "declare_rate": 0.168625,
+      "mc_se": 0.004186146936249969
+     }
+    },
+    "runs32/gap0.5": {
+     "independence": {
+      "declare_rate": 0.661625,
+      "mc_se": 0.0052900538675778154
+     },
+     "plug_in": {
+      "declare_rate": 0.510125,
+      "mc_se": 0.005589023666694838
+     },
+     "oracle": {
+      "declare_rate": 0.5085,
+      "mc_se": 0.005589362105822095
+     }
+    },
+    "runs32/gap1.0": {
+     "independence": {
+      "declare_rate": 0.992875,
+      "mc_se": 0.0009403612587059326
+     },
+     "plug_in": {
+      "declare_rate": 0.9805,
+      "mc_se": 0.0015459523763686886
+     },
+     "oracle": {
+      "declare_rate": 0.980875,
+      "mc_se": 0.0015313080346145234
+     }
+    },
+    "runs40/gap0.0": {
+     "independence": {
+      "declare_rate": 0.108125,
+      "mc_se": 0.0034719228169524446
+     },
+     "plug_in": {
+      "declare_rate": 0.048125,
+      "mc_se": 0.0023929318934886134
+     },
+     "oracle": {
+      "declare_rate": 0.047,
+      "mc_se": 0.002366194201666465
+     }
+    },
+    "runs40/gap0.25": {
+     "independence": {
+      "declare_rate": 0.329375,
+      "mc_se": 0.005254606424069742
+     },
+     "plug_in": {
+      "declare_rate": 0.203375,
+      "mc_se": 0.004500189015127587
+     },
+     "oracle": {
+      "declare_rate": 0.202875,
+      "mc_se": 0.004496064033893979
+     }
+    },
+    "runs40/gap0.5": {
+     "independence": {
+      "declare_rate": 0.749875,
+      "mc_se": 0.004842035785377365
+     },
+     "plug_in": {
+      "declare_rate": 0.61025,
+      "mc_se": 0.005452578948305105
+     },
+     "oracle": {
+      "declare_rate": 0.60925,
+      "mc_se": 0.005455094379339371
+     }
+    },
+    "runs40/gap1.0": {
+     "independence": {
+      "declare_rate": 0.997375,
+      "mc_se": 0.000572069639008223
+     },
+     "plug_in": {
+      "declare_rate": 0.99275,
+      "mc_se": 0.0009485144635165019
+     },
+     "oracle": {
+      "declare_rate": 0.993,
+      "mc_se": 0.0009321346469260762
+     }
+    },
+    "runs60/gap0.0": {
+     "independence": {
+      "declare_rate": 0.11925,
+      "mc_se": 0.003623351996080425
+     },
+     "plug_in": {
+      "declare_rate": 0.0515,
+      "mc_se": 0.002471025849723147
+     },
+     "oracle": {
+      "declare_rate": 0.049625,
+      "mc_se": 0.0024280228421238136
+     }
+    },
+    "runs60/gap0.25": {
+     "independence": {
+      "declare_rate": 0.42225,
+      "mc_se": 0.005522170514163792
+     },
+     "plug_in": {
+      "declare_rate": 0.28425,
+      "mc_se": 0.005042964622868179
+     },
+     "oracle": {
+      "declare_rate": 0.280125,
+      "mc_se": 0.0050206446843881515
+     }
+    },
+    "runs60/gap0.5": {
+     "independence": {
+      "declare_rate": 0.880375,
+      "mc_se": 0.0036282719608478906
+     },
+     "plug_in": {
+      "declare_rate": 0.78425,
+      "mc_se": 0.004598939245902255
+     },
+     "oracle": {
+      "declare_rate": 0.785,
+      "mc_se": 0.004593133462027856
+     }
+    },
+    "runs60/gap1.0": {
+     "independence": {
+      "declare_rate": 0.999875,
+      "mc_se": 0.000124992187255865
+     },
+     "plug_in": {
+      "declare_rate": 0.999625,
+      "mc_se": 0.00021646575219882191
+     },
+     "oracle": {
+      "declare_rate": 0.99975,
+      "mc_se": 0.00017675459682847447
+     }
+    },
+    "runs80/gap0.0": {
+     "independence": {
+      "declare_rate": 0.112375,
+      "mc_se": 0.0035310561340589023
+     },
+     "plug_in": {
+      "declare_rate": 0.052125,
+      "mc_se": 0.00248515553776318
+     },
+     "oracle": {
+      "declare_rate": 0.05075,
+      "mc_se": 0.002453936569575506
+     }
+    },
+    "runs80/gap0.25": {
+     "independence": {
+      "declare_rate": 0.504375,
+      "mc_se": 0.005589955940960089
+     },
+     "plug_in": {
+      "declare_rate": 0.36175,
+      "mc_se": 0.005372231118213363
+     },
+     "oracle": {
+      "declare_rate": 0.354625,
+      "mc_se": 0.005348669336561665
+     }
+    },
+    "runs80/gap0.5": {
+     "independence": {
+      "declare_rate": 0.939375,
+      "mc_se": 0.0026680894235154495
+     },
+     "plug_in": {
+      "declare_rate": 0.88075,
+      "mc_se": 0.0036233519960804247
+     },
+     "oracle": {
+      "declare_rate": 0.882125,
+      "mc_se": 0.0036052129683106096
+     }
+    },
+    "runs80/gap1.0": {
+     "independence": {
+      "declare_rate": 1.0,
+      "mc_se": 0.0
+     },
+     "plug_in": {
+      "declare_rate": 1.0,
+      "mc_se": 0.0
+     },
+     "oracle": {
+      "declare_rate": 1.0,
+      "mc_se": 0.0
+     }
+    }
+   },
+   "runs_for_four_fifths_plug_in": {
+    "gap0.25": null,
+    "gap0.5": 80,
+    "gap1.0": 16
+   },
+   "runs_for_four_fifths_closed_form": {
+    "gap0.25": 252,
+    "gap0.5": 63,
+    "gap1.0": 16
+   },
+   "size_at_zero_gap": {
+    "runs12": 0.11625,
+    "runs16": 0.11725,
+    "runs20": 0.114625,
+    "runs24": 0.10975,
+    "runs32": 0.1115,
+    "runs40": 0.108125,
+    "runs60": 0.11925,
+    "runs80": 0.112375
+   },
+   "seconds": 12.070812702178955
+  },
+  "accuracy_like": {
+   "name": "accuracy_like",
+   "lambda_true": 1.0779610382569493,
+   "lambda_hat_mean": 1.0745833586424969,
+   "lambda_hat_sd": 0.09761411419983161,
+   "undefined_estimates": 0.0,
+   "rules": {
+    "runs12/gap0.0": {
+     "independence": {
+      "declare_rate": 0.070875,
+      "mc_se": 0.002869053292791021
+     },
+     "plug_in": {
+      "declare_rate": 0.05425,
+      "mc_se": 0.002532462672479103
+     },
+     "oracle": {
+      "declare_rate": 0.052625,
+      "mc_se": 0.0024963876245236837
+     }
+    },
+    "runs12/gap0.25": {
+     "independence": {
+      "declare_rate": 0.123625,
+      "mc_se": 0.003680045165738459
+     },
+     "plug_in": {
+      "declare_rate": 0.10125,
+      "mc_se": 0.0033726554356322855
+     },
+     "oracle": {
+      "declare_rate": 0.09275,
+      "mc_se": 0.003243212864968934
+     }
+    },
+    "runs12/gap0.5": {
+     "independence": {
+      "declare_rate": 0.27525,
+      "mc_se": 0.004993588858476437
+     },
+     "plug_in": {
+      "declare_rate": 0.2355,
+      "mc_se": 0.004743940213577738
+     },
+     "oracle": {
+      "declare_rate": 0.231125,
+      "mc_se": 0.004713096571986935
+     }
+    },
+    "runs12/gap1.0": {
+     "independence": {
+      "declare_rate": 0.741,
+      "mc_se": 0.004897945998068987
+     },
+     "plug_in": {
+      "declare_rate": 0.6915,
+      "mc_se": 0.0051639102190103965
+     },
+     "oracle": {
+      "declare_rate": 0.693875,
+      "mc_se": 0.005152820639889865
+     }
+    },
+    "runs16/gap0.0": {
+     "independence": {
+      "declare_rate": 0.068875,
+      "mc_se": 0.0028313255370718145
+     },
+     "plug_in": {
+      "declare_rate": 0.05625,
+      "mc_se": 0.002575993437006391
+     },
+     "oracle": {
+      "declare_rate": 0.04975,
+      "mc_se": 0.002430919000604504
+     }
+    },
+    "runs16/gap0.25": {
+     "independence": {
+      "declare_rate": 0.142125,
+      "mc_se": 0.003903932062277083
+     },
+     "plug_in": {
+      "declare_rate": 0.11925,
+      "mc_se": 0.003623351996080425
+     },
+     "oracle": {
+      "declare_rate": 0.113875,
+      "mc_se": 0.0035515398838919156
+     }
+    },
+    "runs16/gap0.5": {
+     "independence": {
+      "declare_rate": 0.34575,
+      "mc_se": 0.005317505729898182
+     },
+     "plug_in": {
+      "declare_rate": 0.2975,
+      "mc_se": 0.005111185650120723
+     },
+     "oracle": {
+      "declare_rate": 0.29175,
+      "mc_se": 0.005082223154043907
+     }
+    },
+    "runs16/gap1.0": {
+     "independence": {
+      "declare_rate": 0.83525,
+      "mc_se": 0.004147400352931941
+     },
+     "plug_in": {
+      "declare_rate": 0.796125,
+      "mc_se": 0.004504303280960886
+     },
+     "oracle": {
+      "declare_rate": 0.79825,
+      "mc_se": 0.00448674349472978
+     }
+    },
+    "runs20/gap0.0": {
+     "independence": {
+      "declare_rate": 0.066375,
+      "mc_se": 0.0027831941940646182
+     },
+     "plug_in": {
+      "declare_rate": 0.048,
+      "mc_se": 0.0023899790794063448
+     },
+     "oracle": {
+      "declare_rate": 0.046375,
+      "mc_se": 0.002351179474620132
+     }
+    },
+    "runs20/gap0.25": {
+     "independence": {
+      "declare_rate": 0.154375,
+      "mc_se": 0.004039544519110416
+     },
+     "plug_in": {
+      "declare_rate": 0.128875,
+      "mc_se": 0.003746101880204942
+     },
+     "oracle": {
+      "declare_rate": 0.122875,
+      "mc_se": 0.0036704348239513804
+     }
+    },
+    "runs20/gap0.5": {
+     "independence": {
+      "declare_rate": 0.4025,
+      "mc_se": 0.005482856805534866
+     },
+     "plug_in": {
+      "declare_rate": 0.3545,
+      "mc_se": 0.005348244454959028
+     },
+     "oracle": {
+      "declare_rate": 0.351375,
+      "mc_se": 0.005337492498531028
+     }
+    },
+    "runs20/gap1.0": {
+     "independence": {
+      "declare_rate": 0.912375,
+      "mc_se": 0.0031612272018750874
+     },
+     "plug_in": {
+      "declare_rate": 0.88325,
+      "mc_se": 0.0035902548220843604
+     },
+     "oracle": {
+      "declare_rate": 0.8845,
+      "mc_se": 0.003573509304591217
+     }
+    },
+    "runs24/gap0.0": {
+     "independence": {
+      "declare_rate": 0.066875,
+      "mc_se": 0.002792909199539971
+     },
+     "plug_in": {
+      "declare_rate": 0.05325,
+      "mc_se": 0.0025103395562154534
+     },
+     "oracle": {
+      "declare_rate": 0.048125,
+      "mc_se": 0.0023929318934886134
+     }
+    },
+    "runs24/gap0.25": {
+     "independence": {
+      "declare_rate": 0.171625,
+      "mc_se": 0.004215593958373481
+     },
+     "plug_in": {
+      "declare_rate": 0.144125,
+      "mc_se": 0.003926719119936515
+     },
+     "oracle": {
+      "declare_rate": 0.137375,
+      "mc_se": 0.0038487515731565475
+     }
+    },
+    "runs24/gap0.5": {
+     "independence": {
+      "declare_rate": 0.461375,
+      "mc_se": 0.005573465140455711
+     },
+     "plug_in": {
+      "declare_rate": 0.411,
+      "mc_se": 0.005500897654019751
+     },
+     "oracle": {
+      "declare_rate": 0.406125,
+      "mc_se": 0.005490759104793708
+     }
+    },
+    "runs24/gap1.0": {
+     "independence": {
+      "declare_rate": 0.95175,
+      "mc_se": 0.0023958802531637517
+     },
+     "plug_in": {
+      "declare_rate": 0.931875,
+      "mc_se": 0.002817001605763653
+     },
+     "oracle": {
+      "declare_rate": 0.935125,
+      "mc_se": 0.0027537754623198677
+     }
+    },
+    "runs32/gap0.0": {
+     "independence": {
+      "declare_rate": 0.0675,
+      "mc_se": 0.0028049899732441115
+     },
+     "plug_in": {
+      "declare_rate": 0.054,
+      "mc_se": 0.0025269546889487354
+     },
+     "oracle": {
+      "declare_rate": 0.049625,
+      "mc_se": 0.0024280228421238136
+     }
+    },
+    "runs32/gap0.25": {
+     "independence": {
+      "declare_rate": 0.20525,
+      "mc_se": 0.004515562499567468
+     },
+     "plug_in": {
+      "declare_rate": 0.173625,
+      "mc_se": 0.004234963981177999
+     },
+     "oracle": {
+      "declare_rate": 0.16825,
+      "mc_se": 0.004182432568195212
+     }
+    },
+    "runs32/gap0.5": {
+     "independence": {
+      "declare_rate": 0.572625,
+      "mc_se": 0.005530886110911615
+     },
+     "plug_in": {
+      "declare_rate": 0.51975,
+      "mc_se": 0.005585807210018978
+     },
+     "oracle": {
+      "declare_rate": 0.5175,
+      "mc_se": 0.005586744915422576
+     }
+    },
+    "runs32/gap1.0": {
+     "independence": {
+      "declare_rate": 0.984125,
+      "mc_se": 0.0013974523415397739
+     },
+     "plug_in": {
+      "declare_rate": 0.974875,
+      "mc_se": 0.0017497762133698682
+     },
+     "oracle": {
+      "declare_rate": 0.9785,
+      "mc_se": 0.001621640758614557
+     }
+    },
+    "runs40/gap0.0": {
+     "independence": {
+      "declare_rate": 0.07125,
+      "mc_se": 0.0028760527963686616
+     },
+     "plug_in": {
+      "declare_rate": 0.054,
+      "mc_se": 0.0025269546889487354
+     },
+     "oracle": {
+      "declare_rate": 0.051375,
+      "mc_se": 0.0024681878315628656
+     }
+    },
+    "runs40/gap0.25": {
+     "independence": {
+      "declare_rate": 0.23725,
+      "mc_se": 0.004756080811708313
+     },
+     "plug_in": {
+      "declare_rate": 0.207375,
+      "mc_se": 0.0045328055519595145
+     },
+     "oracle": {
+      "declare_rate": 0.202625,
+      "mc_se": 0.004493997515784248
+     }
+    },
+    "runs40/gap0.5": {
+     "independence": {
+      "declare_rate": 0.66475,
+      "mc_se": 0.005277990118169984
+     },
+     "plug_in": {
+      "declare_rate": 0.61325,
+      "mc_se": 0.005444887940766091
+     },
+     "oracle": {
+      "declare_rate": 0.61175,
+      "mc_se": 0.005448760610221374
+     }
+    },
+    "runs40/gap1.0": {
+     "independence": {
+      "declare_rate": 0.996875,
+      "mc_se": 0.000624022673366125
+     },
+     "plug_in": {
+      "declare_rate": 0.99425,
+      "mc_se": 0.0008453503341810447
+     },
+     "oracle": {
+      "declare_rate": 0.995375,
+      "mc_se": 0.0007585849799956487
+     }
+    },
+    "runs60/gap0.0": {
+     "independence": {
+      "declare_rate": 0.07025,
+      "mc_se": 0.0028573356798773223
+     },
+     "plug_in": {
+      "declare_rate": 0.056625,
+      "mc_se": 0.0025840522773107745
+     },
+     "oracle": {
+      "declare_rate": 0.052625,
+      "mc_se": 0.0024963876245236837
+     }
+    },
+    "runs60/gap0.25": {
+     "independence": {
+      "declare_rate": 0.32875,
+      "mc_se": 0.005252064326291139
+     },
+     "plug_in": {
+      "declare_rate": 0.290375,
+      "mc_se": 0.00507515220676927
+     },
+     "oracle": {
+      "declare_rate": 0.284375,
+      "mc_se": 0.005043632859544299
+     }
+    },
+    "runs60/gap0.5": {
+     "independence": {
+      "declare_rate": 0.818875,
+      "mc_se": 0.004305791657392981
+     },
+     "plug_in": {
+      "declare_rate": 0.773625,
+      "mc_se": 0.0046788000514955755
+     },
+     "oracle": {
+      "declare_rate": 0.77575,
+      "mc_se": 0.004663179407603786
+     }
+    },
+    "runs60/gap1.0": {
+     "independence": {
+      "declare_rate": 0.999875,
+      "mc_se": 0.000124992187255865
+     },
+     "plug_in": {
+      "declare_rate": 0.99975,
+      "mc_se": 0.00017675459682847447
+     },
+     "oracle": {
+      "declare_rate": 0.999625,
+      "mc_se": 0.00021646575219882191
+     }
+    },
+    "runs80/gap0.0": {
+     "independence": {
+      "declare_rate": 0.06925,
+      "mc_se": 0.0028384511071181057
+     },
+     "plug_in": {
+      "declare_rate": 0.055125,
+      "mc_se": 0.00255162287512771
+     },
+     "oracle": {
+      "declare_rate": 0.049625,
+      "mc_se": 0.0024280228421238136
+     }
+    },
+    "runs80/gap0.25": {
+     "independence": {
+      "declare_rate": 0.41625,
+      "mc_se": 0.0055111924469664455
+     },
+     "plug_in": {
+      "declare_rate": 0.367125,
+      "mc_se": 0.0053891584961731276
+     },
+     "oracle": {
+      "declare_rate": 0.3645,
+      "mc_se": 0.005380982136190381
+     }
+    },
+    "runs80/gap0.5": {
+     "independence": {
+      "declare_rate": 0.912625,
+      "mc_se": 0.0031571468404043225
+     },
+     "plug_in": {
+      "declare_rate": 0.88325,
+      "mc_se": 0.0035902548220843604
+     },
+     "oracle": {
+      "declare_rate": 0.885625,
+      "mc_se": 0.0035583240327259407
+     }
+    },
+    "runs80/gap1.0": {
+     "independence": {
+      "declare_rate": 1.0,
+      "mc_se": 0.0
+     },
+     "plug_in": {
+      "declare_rate": 1.0,
+      "mc_se": 0.0
+     },
+     "oracle": {
+      "declare_rate": 1.0,
+      "mc_se": 0.0
+     }
+    }
+   },
+   "runs_for_four_fifths_plug_in": {
+    "gap0.25": null,
+    "gap0.5": 80,
+    "gap1.0": 20
+   },
+   "runs_for_four_fifths_closed_form": {
+    "gap0.25": 252,
+    "gap0.5": 63,
+    "gap1.0": 16
+   },
+   "size_at_zero_gap": {
+    "runs12": 0.070875,
+    "runs16": 0.068875,
+    "runs20": 0.066375,
+    "runs24": 0.066875,
+    "runs32": 0.0675,
+    "runs40": 0.07125,
+    "runs60": 0.07025,
+    "runs80": 0.06925
+   },
+   "seconds": 11.648416519165039
+  }
+ },
+ "wall_seconds": 23.72799825668335
+}

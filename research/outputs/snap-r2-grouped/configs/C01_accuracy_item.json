@@ -1,0 +1,7 @@
+{
+  "seed": 20260914,
+  "dataset": "/kaggle/working/datasets/full/accuracy/scores.json",
+  "split_mode": "item",
+  "bootstrap_draws": 4999,
+  "template_only": false
+}

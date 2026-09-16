@@ -1,0 +1,2820 @@
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+000
+001
+      H OW M UCH D OES B ENCHMARK N OISE AVERAGE
+002   O UT ? SNAP, AN E STIMATE OF S EED -N OISE C ORRELA -
+003
+004   TION F REE OF I TEM -S AMPLING E RROR
+005
+006
+       Anonymous authors
+007
+       Paper under double-blind review
+008
+009
+010
+011                                                A BSTRACT
+012
+013            Evaluation practice averages benchmarks as√if seed noise were independent, so a K-
+014            benchmark aggregate
+                             p        shrinks noise like 1/ K. Correlated seed noise inflates that
+015            floor by Λ = 1 + (K − 1)r̄E , with r̄E the variance-weighted mean off-diagonal
+016            of the nonshared-environmental correlation matrix RE , whose entries confound
+017
+               with measurement error when the unit cannot be rerun, so behaviour genetics
+               cannot estimate it cleanly, while a training run can. Runs of a configuration differ
+018
+               in seed and budget, so the cross-half covariance of within-configuration deviations,
+019
+               scored on disjoint item halves at a common step, estimates the item-general seed-
+020            noise covariance ΣE without bias, diagonal included. We call it SNAP, Seed Noise
+021            Across Phenotypes, and on DataDecide’s 125 three-seed configurations, per-byte
+022            margins give ΛM = 1.244 (1.143–1.338), short of the registered 1.349. Accuracy,
+023            the phenotype practitioners average, gives ΛA = 1.078 (0.993–1.157), which
+024            covers 1 and bounds this battery’s r̄E below 0.038, up to passage leakage we do not
+025            clean, so ten benchmarks buy 8.6 effective ones, or 7.47 at its conservative end and
+026            2.75 of eight on an equal-weight diagnostic we decline to headline. Both registered
+027            thresholds, 1.349 and 1.40, fail differently, and both headlines belong to this battery,
+028
+               since dropping BoolQ lifts them to 1.786 and 1.558. Composition moves them
+               12 times further than sampling error does, or 3.07 and 1.93 times with BoolQ
+029
+               set aside, and neither separates from 1 if composition counts as sampling too. A
+030
+               run-level multiplicative-gain null manufactures 6 to 61 percent of the margin excess
+031            across both simulators at the estimated and default gain SDs, with its accuracy
+032            side invariant by construction, so the margin side carries a scalar this population
+033            cannot split into sharpness and competence. In a pre-committed bake-off, the
+034            full matrix earns nothing over rank-one competence on margins, 0.0068 versus
+035            0.0057, and wins on accuracy, 0.0105 to rank-one’s 0.0140, while the unrescaled
+036            Cheverud plug-in is worst on both, 0.107 and 0.168. None of those gaps carries
+037            an interval. The registered recipe split was never implemented, and none of its
+038            1,081,575 enumerated splits reaches either threshold. The correlation tracks scoring
+039
+               format, since cross-format pairs alone drop ΛM to 0.921. For practice, average
+               raw accuracy across benchmarks like these as if independent and report a seed SD
+040
+               anyway, since a quarter of half-point comparisons flip on the seed either way.
+041
+042
+043   1   I NTRODUCTION
+044
+045   A practitioner averaging K benchmarks relies on their seed-induced deviations being mutually inde-
+046   pendent, giving the aggregate seed variance (1/K 2 ) tr ΣE , with ΣE the cross-benchmark covariance
+047   of the seed’s effect on a score. If they correlate positively with variance-weighted mean off-diagonal
+048   r̄E , the aggregate’s seed variance is Λ2 = 1 + (K − 1)r̄E times what independence predicts. K
+049   benchmarks act like Keff = K/Λ2 independent ones however many a practitioner adds. So the noise
+050
+      floor rises off zero. Bouthillier et al. (2021) derived this algebra for one pipeline on one task, but
+      nobody has measured the cross-benchmark object it needs. Averaging benchmark scores across a
+051
+      battery tacitly sets r̄E = 0 without evidence, which we call P0.
+052
+053   That object has a name outside machine learning, where multivariate behaviour genetics decomposes
+      a phenotype additively as P = A + C + E, additive genetic plus shared environment plus nonshared
+
+
+                                                          1
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+054
+      environment, and of the three correlation matrices, the nonshared-environmental RE has estimates
+055   inseparable from correlated measurement error (Plomin & Daniels, 1987; Turkheimer et al., 2014;
+056   Lynch et al., 2026). Within-pair residual covariance enters that same term. A full RE has been
+057   estimated there since Martin & Eaves (1977), and an interval excluding zero still carries that error. A
+058   twin study escapes it only by assuming a measurement model, because you cannot rerun a person.
+059
+      A population of replicate training runs inverts that. Two runs of one configuration differ in their seed,
+060
+      and below 1B in budget, which jointly are E, and scoring each run separately on disjoint item halves
+061   subtracts the measurement error. With dA            B
+                                                crj and dcrk , run r’s within-configuration deviations on the
+062                                     1
+      two halves, E[dA     B
+                      crj dcrk ] = (1 − R )ΣE (j, k), diagonal included. This holds when item-scoring noise
+063
+      on the halves is conditionally independent given the seed effect.
+064
+065   Averaging those deviations over the battery
+                                            pP givesP   Tc and Uc , the aggregate’s seed variance and the
+066   value independence predicts, so Λ̂ =       c Tc /  c Uc has null value 1, and we compute it twice
+067   through byte-identical code, on per-byte margins and accuracy, since a margin-only headline would
+068
+      describe a quantity nobody averages.
+069   Our population is DataDecide (Magnusson et al., 2025), whose per-instance outputs give 125 three-
+070   seed configurations over 25 data recipes and five replicated sizes, so 375 runs, ten benchmarks, and
+071   zero GPU-hours for the primary population. The three replicates are labelled default, aux 2 and aux 3,
+072   the last two from a later auxiliary batch, and 92 of the 125 cells share no maximum training step.
+073   Either one adds a run-level offset, the rank-one structure the estimator reads as r̄E > 0, so we score
+074
+      every cell at its seeds’ common step, report a within-batch Λ from the aux 2-versus-aux 3 contrast
+      beside the headline, and generate a null manufacturing the artifact, treating run-level sharpness
+075
+      identically.
+076
+077
+078
+      Contributions. Measurement. SNAP estimates the item-general ΣE without bias under item-
+      sampling noise, diagonal included, has null value 1 and no plug-in scale, and recovers true Λ at
+079
+      slope 0.998 across five nonzero simulated effect sizes (Sections 2, 5.3). Decomposition. We test
+080
+      the measured correlation against competence, sharpness, and batch mechanisms with two mediators,
+081   a within-batch contrast and two artifact-capable nulls, each carrying a pre-registered signature that
+082   would make that mechanism the headline. The gain null’s signature fires on margins, so the margin
+083   side ends bounded and unresolved (Sections 3, 5.3). Consequence. Five models predict held-out
+084   aggregate seed SD, and K(K − 1)/2 free correlations earn nothing over rank-one competence on
+085   margins. The accuracy order reverses and carries no interval (Section 5.4).
+086
+087   What we found, on both phenotypes, margins and accuracy. On per-byte margins, we find
+088   ΛM = 1.244 (1.143–1.338), so seed-induced deviations do correlate across benchmarks, while the
+089   interval’s upper end sits below the 1.349 we registered as substantively important. On accuracy
+090   ΛA = 1.078 (0.993–1.157) covers 1. On the phenotype practitioners average we cannot separate the
+091   aggregate’s seed noise from what independence predicts, and that side’s content is the bound, r̄E
+092
+      below 0.038 and ten benchmarks acting like 8.6 independent ones where the registered threshold
+      implied 5.1. Heineman et al. (2025)’s seed runs give 1.464 against 1.105 under the same control.
+093
+094   Our registered plan set 8 of the 25 recipes aside for screening and reserved every headline for the
+095   other 17. The partition was never drawn, so every number above uses all 25 recipes and all 125
+096   configurations, leaving the
+                                 registered predictions’ scoring exploratory, and Appendix C.1 bounds it
+097   by enumeration of all 25
+                             17 splits the plan could have drawn, none clearing either threshold.
+098
+099
+      2     T HE ESTIMAND AND AN ESTIMATOR WITH NULL VALUE ONE
+100
+101
+      2.1   C ONFIGURATIONS , SEEDS AND TWO PHENOTYPES
+102
+103   A configuration c = 1, . . . , N fixes data recipe, size, and hyperparameters, while replicate runs
+104   r = 1, . . . , R within it differ in the seed that jointly controls initialisation and data order, and below
+105   1B in budget deliberately,1 so configuration is A + C. E is the nonshared environment isolated by
+106
+         1
+107        DataDecide moves both with one seed. Arm 1 cannot separate the two channels. Section 5.2’s external
+      check has a panel for each and finds the same split between the phenotypes.
+
+
+                                                           2
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+108
+      within-configuration deviations. Trait j = 1, . . . , K is a benchmark (symbols in Table 2), and for run
+109   (c, r) and item i with gold choice goldi ,
+110
+111
+                                ℓ(goldi )                ℓ(vi )
+                    mcrji =                 − max                 ,     acrji = ⊮[[]mcrji > 0],            (1)
+112                           bytes(goldi )  v̸ = gold bytes(vi )
+113   with v running over the answer choices and ℓ the summed log-likelihood of one. Both phenotypes
+                       M          A
+114   are item means, ycrj and ycrj  , MMLU alone macro-averaged over its 57 subjects. The margin is
+115   continuous and defined at floor and ceiling. Accuracy is its thresholded image and what practitioners
+116   average, and we write ycrj = µcj + Ecrj + εcrj , with Cov(Ecr· ) = ΣE and ε the run-by-item
+117   scoring noise.
+118
+119   2.2   I TEM HALVES AND THE SNAP ESTIMATOR
+120
+      Each item set is randomly partitioned once into disjoint halves Aj , Bj , frozen by a master seed. Let
+121
+      dA                                                                              B
+       crj be run r’s deviation from trait j’s configuration mean on half A, and dcrj likewise on half B.
+122
+      Because ε on the two halves is conditionally independent given E,
+123
+                                           
+                   E dA      B             1
+                     
+124                     crj dcrk = 1 − R ΣE (j, k) for every (j, k), diagonal included.                  (2)
+125
+126   The factor 1 − 1/R arises from taking each deviation from a mean includingPthe Arun itself.B Summing
+                                                                       A     1
+127
+      over the R runs and dividing by R − 1 returns ΣE exactly. With gcr =K       j dcrj and gcr likewise,
+128                             1   X
+                                         A B                 1 X     1    X
+                       Tc =             gcr gcr ,   Uc = 2                     dA dB ,                  (3)
+129                          R−1 r                         K j R − 1 r crj crj
+130
+131   so E[Tc ] = K12 1⊤ ΣE 1 = σagg
+                                   2
+                                      , the aggregate’s true seed variance, and E[Uc ] = K12 tr ΣE = σindep
+                                                                                                      2
+                                                                                                            ,
+132   the value independence predicts. This gives the headline
+133          sP
+                    Tc                                              K                 √
+134     Λ̂ = P c ,           Λ2 = 1 + (K − 1) r̄E ,        Keff = 2 ,        σagg → r̄E σ̄E as K → ∞,
+135                 U
+                   c c                                              Λ
+136                                                                                                      (4)
+137   where r̄E is the seed-variance-weighted mean off-diagonal correlation and σ̄E the RMS per-trait seed
+138   SD (Appendix A). We call it SNAP (Appendix A.1), Λ its inflation factor. Our estimator standardises
+139
+      no trait, and no mean-zero numerator sits over an estimated denominator, so any ratio bias shifts
+      the null value 1 and shows directly on a calibration curve. We report ΛM and ΛA and pre-register
+140
+      ΛA ≥ 0.8 ΛM , the practitioner claim being ΛA if they diverge.
+141                                √         
+142   Here Pflip (∆) = Φ −∆/( 2 σagg ) is the probability two single-seed runs with true aggregate
+143   gap ∆ rank the wrong way. The secondary object is ΣˆE (j, k). It is symmetrised over the two
+144   half-orderings and converted to RE with no calibration offset, since G4 passed, beside RP , the same
+145   battery’s between-configuration phenotypic correlation, for the Cheverud question of Section 5.4.
+146
+147   2.3   W HY THE MARGIN CARRIES MORE INFORMATION , AND HOW MUCH
+148
+149   A seed that shifts every item’s per-byte margin uniformly by δ moves the mean margin by δ and
+150
+      accuracy by f (0)δ, with f (0) the item-margin density at the decision boundary. The margin scale
+      cancels algebraically from the two noise-to-signal terms’ ratio (Appendix A).
+151
+152                                                        p(1 − p)
+                                                 ratio =            ,                                      (5)
+153                                                         ϕ(z0 )2
+154
+      where p is the item accuracy rate and z0 = Φ−1 (1 − p), which at an illustrative p = 0.35 gives 1.66,
+155   within a pre-registered range of 1.4 to 3.0 whose lower edge sits below the π/2 this ratio cannot go
+156   under. Single-trait reliability falls below 0.50 for seven of the ten traits on accuracy and three on
+157   margins. Thus, the criterion is the aggregate one,
+158
+                                                           Λ2
+159                                                ρg =          ,                                     (6)
+160
+                                                         Λ2 + v̄
+161   with v̄ the battery’s noise-to-signal term, and at the threshold’s Λ2 = 1.819 the plan’s ρg was 0.61
+      (margin) and 0.49 (accuracy).
+
+
+                                                           3
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+162
+      2.4   I NFERENCE
+163
+164   Our unit is the configuration, and the five replicated sizes per recipe give a design effect (Kish, 1965)
+165   of 1 + 4ρICC = 1.60 at an illustrative ρICC = 0.15 (Appendix B), and the primary interval is a wild
+166   cluster bootstrap-t (Cameron et al., 2008; MacKinnon & Webb, 2017) over the 25 recipe clusters. It
+167   perturbs each cluster’s linearised residual by an independently drawn Rademacher sign over 4,999
+168   draws and reads critical values off the resulting t distribution, not off t(24), valid without knowing
+169   ρICC , with a configuration bootstrap beside it (Appendix D.2). Its cluster count is not the registered
+170
+      17 (Section 4). Prediction 1 is the only confirmatory test, and the other ten predictions, the five size
+171
+      bands, and RˆE ’s off-diagonal cells are scored as secondary with no multiplicity adjustment.
+172
+173   3     T WO CONFOUNDS THAT PRODUCE THE SIGNATURE WITHOUT SEED NOISE
+174
+175   Both confounds add a run-level term that enters all K traits equally, the rank-one structure Λ̂ reads as
+176   r̄E > 0, so each gets a contrast or covariate, a null manufacturing it, and a gate.
+177
+178   Run batch and token budget. The non-default replicates, aux 2 and aux 3, come from a later
+179
+      auxiliary batch. Any systematic difference between the sweeps in cluster, library version, tokeniser
+      build, dataloader, token budget or harness revision enters every configuration as a run-level offset,
+180
+      token budget being a measured instance of it (Section 4). We therefore split within-configuration
+181
+      deviations into the default-versus-aux component and the orthogonal one, living only in the aux 2-
+182   versus-aux 3 comparison, and report Λ from the orthogonal component alone as a co-headline at one
+183   degree of freedom per configuration. Null N6 generates r̄E = 0 populations with a batch-level offset
+184   on the two aux runs, empirically calibrated to the observed mean shift and token-budget ratios.
+185
+186   Run-level sharpness. A seed producing a slightly lower-entropy model than  √ its siblings has larger
+187   gold-minus-distractor margins on every benchmark, driving ΛM toward K = 3.16 while barely
+188   moving accuracy. Scaling every margin by one positive factor leaves each item on its own side of
+189   the boundary. Accuracy-space Λ is co-primary. We partial out a gain covariate scr , the run’s mean
+190   per-byte log-likelihood over items and answer choices. We report every headline before and after.
+191   Null N5 simulates r̄E = 0 with a run-level multiplicative gain and measures the Λ it manufactures
+                               (−j)
+192   in each space. Writing xcr for the leave-one-trait-out competence proxy on the opposite half, we
+                           (−j)
+193   fit ycrj = αcj + βj xcr + γj scr + ucrj with one slope per trait fitted jointly over all 250 contrasts,
+194   and recompute Λ on the residuals, and a sharpness artifact leaves one signature, ΛM collapsing when
+195   we remove s while ΛA does not move.
+196
+197   4     P OPULATIONS , BATTERIES AND THE ANALYSIS PLAN
+198
+199   We wrote down the gate list, step table, and power arithmetic before downloading the release, and
+200   Appendix B reproduces them. One part we did not carry out, the recipe-level held-out split, governs
+201   which data the headline uses.
+202
+203   Arm 1, DataDecide at zero GPU-hours. DataDecide (Magnusson et al., 2025) released per-
+204   instance output for every checkpoint of 25 data recipes across a size ladder, with per-choice byte-
+205   normalised log-likelihoods and correctness on the ten benchmarks ARC-Challenge, ARC-Easy,
+206
+      BoolQ, CommonsenseQA, HellaSwag, MMLU, OpenBookQA, PIQA, Social IQa and WinoGrande.
+      Sizes 4M to 90M appear there with one seed, 150M through 750M with {2, 14, 15} and 1B with
+207
+      {2, 4, 5}. The design is 25 recipes × 5 replicated sizes = 125 three-seed configurations, 375 runs,
+208
+      250 replicate contrasts, K = 10. The design effect takes the 5 sizes per recipe as cluster size. Arm 1
+209   therefore has no small-size band and every downward extrapolation is out of sample. MMLU enters
+210   as one trait, a macro-average over 57 subjects.
+211
+212   Common-step rule. Seeds within a cell have mismatched maxima in 92 of 125 cells. In 26 cells,
+213   the largest maximum exceeds the smallest by more than 1.5× (Appendix B). Since comparing runs at
+214   different token budgets injects that run-level offset, every cell is scored at the largest step present for
+215   all three seeds, and at 530M and 750M, that common step is 18 and 89 percent of seed 2’s maximum
+      step, with both bands at reduced token budgets, short of released final models.
+
+
+                                                          4
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+216
+      Why no number here uses the registered recipe split. The plan partitioned the 25 recipes once
+217   randomly by master seed into 8 screening and 17 estimation recipes, reserving every headline for the
+218   estimation set’s 85 configurations. That partition was never drawn. No stage of the released pipeline
+219   implements it. We compute every number here on all 25 recipes and all 125 configurations, with the
+220   wild cluster bootstrap over 25 clusters not the registered 17. We took every decision the screening set
+221   was meant to absorb with the whole population visible. We report the analysis uncorrected, since no
+222   subsetting now unlearns what the analyst already knows, and we score our frozen predictions against
+223   ourselves on both sides, pass and fail alike. No admissible estimation set reaches either registered
+224   threshold (Appendix C.1).
+225   We recover the headline’s range under any split the registration could have drawn, with each con-
+226   figuration’s Tc and Uc computed inside it. Λ is a ratio of two sums over any recipe subset, so all
+        25
+          
+227
+        17  = 1,081,575  estimation sets enumerate exactly. The margin sweep runs from 1.037 to 1.317
+228   and the accuracy sweep from 0.963 to 1.191, both maxima below the registered 1.349 and 1.40.
+229   No admissible split would have confirmed prediction 1 (Table 14). The reconstructed partition that
+230   master seed induces gives ΛM = 1.199 and ΛA = 1.099. Those values are conservative relative to
+231   the margin estimate and a looser accuracy bound (Appendix C.1).
+232   We retain all ten traits. Λ carries no per-trait standardisation and a low-reliability trait inflates Tc
+233   and Uc together. Dropping one changes the estimand instead of sharpening it. Reliabilities are a
+234   diagnostic (Table 3), never a filter. The rule binds hardest on traits with negative estimated seed
+235   variance, since Uc is unbiased for tr ΣE /K 2 . A negative realisation is sampling noise. Discarding it
+236   after seeing that sign would select on the denominator and move Λ̂ by an unknown amount.
+237
+238   Batteries and Arm 2. Arm 1 uses the full released item sets for all ten benchmarks, 37,682 items
+239   per run, while Arm 2 is PolyPythias (van der Wal et al., 2025), nine seeds at three of its five sizes, 70M,
+240   160M and 410M. Runs are scored on a frozen 4,755-item subsample of at most 500 items per trait
+241   inside Arm 1’s sets, so the battery and estimator code are identical across arms, while the scoring is
+242   not. Arm 2 rescores checkpoints where Arm 1 reads shipped outputs. Its role is one out-of-population
+243   prediction. We ask whether DataDecide’s fitted RE predicts PolyPythias’s σagg on another corpus,
+244   codebase, and architecture family. With Nunit = 3, its registered minimum detectable Λ is roughly
+245
+      2.05. Arm 2 is never a powered test. allenai/signal-and-noise releases per-run scores but
+      no per-item output, so it enters only as an external check at Nunit = 1.
+246
+247
+248   Power, and where the accuracy side falls short. Our pre-registered substantive threshold, the
+249   value making Keff < 6 for a twelve-benchmark aggregate, is r̄E = 0.091, which at this battery’s
+250   K = 10 is Λ = 1.349, and our realised analysis runs on 125 configurations in 25 clusters with Λ̂
+251   standard errors of 0.045 on margins and 0.038 on accuracy, both inside the planned Λ SEs of 0.0935
+252
+      and 0.1232, and therefore narrower by factors of 2.1 and 3.3 where the count alone predicts 1.21
+      (Table 4). Accuracy stays co-primary, its registered threshold ΛA > 1.40 carrying no derivation like
+253
+      the margin threshold’s. Its power alternative is r̄E = 0.115, that is Λ = 1.427. Reading the accuracy
+254
+      side at the margin threshold instead returns the same verdict.
+255
+256
+257
+      Gates and predictions. Table 5 lists nine gates, G0 through G8, each with its measured value
+      and a fallback leaving a complete paper standing, four of them failing. We execute each failure’s
+258
+      fallback where the result appears, except G3’s and G5’s. G3’s re-split has no source key in the release
+259
+      and targets a leg that did not fail. G5’s would report ΛA alone, dropping a margin bound we do
+260   report (Section 5.2). We froze eleven predictions with falsification conditions alongside the plan
+261   (Appendix B.5), and Table 6 scores them. Prediction 1 is primary, ΛM above 1.349 and ΛA above
+262   1.40 with wild-cluster lower bounds above 1, and it is falsified as registered if either interval covers 1,
+263   while both upper bounds fall short, and prediction 1’s registered fallback, this paper’s branch, reports
+264   that independence is close enough for practice and quantifies how close.
+265
+266
+267   5    R ESULTS
+268
+269   Each Λ on the full DataDecide population carries a wild cluster bootstrap-t interval over 25 clusters
+      at N = 125 (Section 4), and every other number here carries another interval or none.
+
+
+                                                          5
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+270
+271   Table 1: Primary estimates on all 125 configurations, both phenotypes, before and after partialling
+272   the gain mediator s. We omit the competence mediator x. Intervals are wild cluster bootstrap-t over
+273   25 recipe clusters, with critical values off the bootstrap draws rather than t(24). The batch-free row
+274   uses the aux 2-versus-aux 3 contrast only.
+275    Phenotype    Estimate               Λ̂       95% CI        r̄E     Keff   σagg (acc. fraction / margin units)
+276    Margin       Full set, raw         1.244   1.143–1.338    0.0608   6.46                0.00572
+277    Margin       After s               1.275   1.111–1.421    0.0695   6.15                0.00514
+278    Margin       Batch-free contrast   1.256   1.090–1.400    0.0641   6.34                0.00562
+279    Accuracy     Full set, raw         1.078   0.993–1.157    0.0181   8.60                0.00514
+280    Accuracy     After s               1.097   0.980–1.198    0.0225   8.31                0.00503
+       Accuracy     Batch-free contrast   1.084   0.939–1.207    0.0194   8.51                0.00516
+281
+282
+283
+      5.1   E1, SCREENING , RELIABILITY AND THE INFORMATION RATIO
+284
+285   Margins carry 1.61 times accuracy’s information, and two traits resolve no seed signal. The
+286   measured information ratio (5) is 1.61 on the battery median, so G2 clears its bar and prediction 8’s
+287   per-trait condition holds, all ten traits between 1.571 and 1.732. Neither is evidence, since (5) cannot
+288   go below π/2 = 1.571 at p = 0.5 and rises away from it. The registered floor of 1.4 sits under that
+289   global minimum. We count G2 and prediction 8’s lower leg as unfalsifiable, not held. G3 fails, since
+290   three cross-half diagonals are negative, one on margins and two on accuracy, and those traits carry no
+291   detectable seed signal (Figure 1). The registered fallback re-splits by source document, targets the
+292
+      asymmetry leg and leaves these diagonals untouched (Table 5). Margin reliability of 0.65 runs well
+      above accuracy’s 0.32 (Table 3). G1 passes, the measured ρg 0.73 where the plan assumed 0.49, on a
+293
+      v̄ of 0.42 against the plan’s 1.89. Run identifiers establish the three replicates are separately trained,
+294
+      and no held-out-loss field exists. G7 fails and we proxy competence with x(−j) .
+295
+296
+297
+      5.2   E2, THE PRIMARY ESTIMATE , ITS MEDIATORS AND ITS BATCH - FREE TWIN
+298
+      The headline is real on margins, bounded near zero on accuracy, below threshold in both.
+299   Table 1 gives the headline, ΛM = 1.244 (1.143–1.338) and ΛA = 1.078 (0.993–1.157), where we
+300   pre-registered 1.349 and 1.40. Our data falsify prediction 1 twice over, since on margins the interval
+301   excludes 1, while its upper bound falls below 1.349 on the raw row alone, with 1.421 and 1.400 on the
+302   adjusted and batch-free rows, so the effect clears zero correlation and misses the size we registered
+303   as important. On accuracy, the interval covers 1. At this size the phenotype practitioners average
+304   is statistically indistinguishable from independence, and we bound its content, r̄E below 0.038 and
+305   Keff above 7.47. ΛA /ΛM is 0.867 and we registered 0.8 (prediction 2). Both figures hold only up to
+306   Appendix A’s within-trait passage leakage, which our halves cannot remove. By size band, only the
+307
+      530M band, one of the two reduced-budget bands, separates from 1 where prediction 5 registered
+      four of five. That band is also where our common-step rule cuts deepest, leaving 18 percent of seed
+308
+      2’s trajectory. But nine of ten estimates sit above 1 (Table 7).
+309
+310
+      Neither mediator removes the effect, and partialling gain moves the estimate up. When we
+311
+      partial out the competence proxy x, ΛM stays at 1.244 and ΛA moves to 1.076. A floored seed SD
+312
+      leaves that proxy near one trait. Partialling the gain covariate s instead moves ΛM up to 1.275 and ΛA
+313   to 1.097, with the two mediators jointly leaving 1.276 and 1.094, and the retained accuracy-excess
+314   share after s is 1.23 where prediction 3 asked for 0.70, above one, consistent with a gain axis carrying
+315   variance against the correlation. Our registered sharpness signature, ΛM collapsing under s, while
+316   ΛA stands, appears nowhere in these numbers. That leaves the gain question to null N5.
+317
+318   The margin correlation tracks scoring format. Over the 54 cross-format ordered pairs, ΛM drops
+319   to 0.921 (0.801–1.035) and ΛA to 0.965, falsifying prediction 9, and over the nine traits with defined
+320   margin seed variance, mean off-diagonal RˆE is +0.624 over the 16 unordered within-format pairs,
+321   while the 20 that cross give +0.007. Dropping BoolQ, the one yes-or-no trait and 68 and 84 percent
+322   of the two seed traces, raises the headlines to 1.786 and 1.558. No recipe or size band moves further,
+323   and composition carries 12 times the sampling SE, or 3.07 and 1.93 with BoolQ set aside. On the
+      BoolQ-free nine, the restriction gives 1.006 (0.972–1.039) where the unrestricted nine give 1.786.
+
+
+                                                             6
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335   Figure 1: RˆE on all 125 configurations, margin (left) and accuracy (centre), traits ordered by scoring
+336   format with rules at the block boundaries and the unit diagonal suppressed. Grey marks traits of
+337   negative estimated seed variance, where no correlation is defined, namely WinoGrande on margins
+338   and PIQA and WinoGrande on accuracy, which is G3 failing. Right, the symmetrised defined
+339   submatrix’s eigenvalue spectrum, where neither phenotype collapses to one eigenvalue, the leading
+340
+      value 4.33 of 9 on margins and 3.85 of 8 on accuracy, participation ratio 3.57 and 3.12, the accuracy
+      figure reaching 3.62 only if we clip that negative eigenvalue to zero.
+341
+342
+343   The three cloze traits alone give 1.225 (1.064–1.367). No single block carries this, though the trace
+344   shares put both headlines near a two-trait statistic (Appendix C).
+345
+346   Batch-free estimates retain the full-set excess in both phenotypes, and G8 passes. Within-batch
+347   Λ is 1.256 (1.090–1.400) on margins and 1.084 (0.939–1.207) on accuracy, where G8’s line of
+348   1 + 0.5(Λfull − 1) sits at 1.122 and 1.039 respectively, so both point estimates exceed it. Neither
+349   interval excludes its line. The aux 2-versus-aux 3 contrast, alone clean of the step truncation, cannot
+350   contain a default-versus-aux offset, at one degree of freedom per configuration, down from two.
+351
+352   A       single-unit    independent        population       shows      the      same      split. From
+353   allenai/signal-and-noise’s random seeds split (Heineman et al., 2025), ten
+354
+      initialisation-seed 1B runs give Λ = 1.705 on bits-per-byte over 18 tasks at Nunit = 1, and
+      accuracy-per-character gives 0.989 over its own 8 tasks, seven of the 18 plus MMLU, while the
+355
+      release’s nine data-order runs give 1.625 and 0.868 (Table 12). Prediction 7 registered a lower bound
+356
+      above 1 this release cannot supply. We score it unfalsifiable. The same split reappears in runs sharing
+357   no models with ours, over a battery containing ours, and it narrows but does not close under the
+358   leave-one-out control on a common run-level shift, to 1.464 against 1.105 and 1.763 against 1.059,
+359   both pairs staying single-unit estimates attenuated toward 1.
+360
+361   Transport to PolyPythias fails upward, on a population the design leaves unpowered. RE
+362   fitted on DataDecide underpredicts PolyPythias’s observed σagg on the nested 4,755-item battery and
+363   misses G6’s 20-percent band conservatively, its margin Λ 1.406 where this population gives 1.244, an
+364   excess ratio of 1.66. Prediction 6’s second leg holds, since σindep alone recovers 71.1 percent of the
+365   same σagg , a shortfall of 28.9 where we registered 20. But the two legs together still fail. A correlation
+366   that is estimated on 150M-to-1B decoder models need not carry to another corpus, codebase, and
+367
+      architecture family. Two other sizes outside the registered design move the T4 rescore’s 1.414 to
+      1.262 and pass, though both intervals cover 1 (Appendix C), while accuracy transports the other way,
+368
+      2.286 on three units and 1.711 on five, above our 1.40 line but without intervals, so unscored.
+369
+370
+      5.3   E3, CALIBRATION AT ZERO , AT NONZERO EFFECT AND UNDER BOTH ARTIFACTS
+371
+372   SNAP centres empirically at one under the null and reads back its input. Under the permutation
+373   null N2 on real data, we observe 1.0010 (margin) and 0.9984 (accuracy), and the N1 simulation at
+374   r̄E = 0 gives 1.0009 and 1.0004, both within G4’s tolerance of 0.02 (Table 9). Read as a test, N2
+375   puts ΛA above 97.2 percent of its released replicates, a one-sided rejection of 1 that our registered
+376   interval does not deliver. We leave that disagreement open (Appendix C). Recovery across true r̄E
+377   from 0 to 0.50 has slope 0.998 and intercept 0.003 in both phenotypes (Figure 2). The estimates are
+      reported raw. Re-randomising the item split 50 times moves ΛM by an SD of 0.002 and ΛA by 0.008
+
+
+                                                          7
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+378
+      (N3). Null SD at r̄E = 0 is 0.046 and 0.048, which sets the resolution, so an estimator this well
+379   centred still cannot separate ΛA = 1.078 from 1 at 125 configurations.
+380
+381
+      Gain alone manufactures 61 percent of the margin excess at the default gain SD. Null N5,
+382   r̄E = 0 plus a run-level multiplicative gain at σg = 0.05, produces ΛM = 1.148 and ΛA = 0.999,
+383   and that margin figure is 0.61 of the observed 0.244 excess, above prediction 3’s 0.3 and G5’s one
+384   half, so G5 fails with its fallback unrun, and we left the gain SD and the simulator free at registration.
+385   At the 0.042 the data imply, the default simulator manufactures 0.44 of the excess, while a simulator
+386   that is matched to the observed margin distributions gives 0.06 (Table 13). We report the failed gate
+387   at the default simulator and do not claim the matched one rescues it, because the apparatus prevents
+388   choosing the friendlier simulator after the fact, and across both simulators at the estimated and default
+389   gain SDs, the mechanism spans 6 to 61 percent of that excess. This null’s accuracy side cannot move
+390
+      under a positive gain. Null N6, a batch offset on the two aux runs at the observed shift, gives 1.004
+      (margin) and 1.003 (accuracy), 1.5 percent of the margin excess. The artifact the design guarded
+391
+      hardest against is the smallest we measured (prediction 4).
+392
+393
+394
+      5.4   E4, THE BAKE - OFF , AND WHAT A PRACTITIONER SHOULD DO
+395
+      On margins, the free matrix buys nothing over rank-one competence. Five baselines predict
+396   the observed σagg on held-out recipes, each of which is handed the per-trait seed SDs so only the
+397   correlation matrix differs (Table 11). Mean squared prediction error of log σagg in margin space
+398   is 0.0358 for P0, 0.0057 for P1 and 0.0068 for P3. So 45 free correlations earn nothing and the
+399   pre-committed rule recommends rank-one competence. We charge each model for its own estimation
+400   error. This ranking says what is worth fitting at 125 configurations, not that the population matrix
+401   has rank one. The release ships fold means and no interval. The 0.0057-to-0.0068 gap carries no
+402   dispersion those five folds report. In accuracy space, the order reverses, P3 lowest at 0.0105 and
+403   P0 at 0.0143 indistinguishable from P1 at 0.0140. The margin recommendation does not transfer.
+404
+      Cheverud’s plug-in P2 is our sharpest negative, nineteen times worse than P1 and three times worse
+      than independence on margins. The mean off-diagonal RE is 0.281 over defined pairs where RP gives
+405
+      0.750 over all 90, the two correlating at 0.756 but differing in size by a factor of 2.7 (prediction 10).
+406
+      The failure is one of scale with the pattern intact. RP enters unrescaled, so the practitioner’s plug-in
+407   fails. Fitting one scale post hoc still loses to P1 by 2.3× (Appendix C).
+408
+409   A quarter of half-point comparisons on the ten-benchmark aggregate flip on the seed. At
+410   the measured accuracy-space σagg of 0.0051, Pflip is 0.246 at half an accuracy point and 0.085 at
+411   a full point (prediction 11, held at 30.3 percent of same-size pairs where we registered 10). Under
+412   independence, the same aggregate would have σagg = 0.0048 and Pflip = 0.229. The flip risk is a
+413   fact about seed noise, not about RE (Table 8).
+414
+415
+      6     R ELATED WORK
+416
+417
+      Bouthillier et al. (2021) derives an aggregate’s variance under correlated trainings, their Eq. 7,
+418
+      algebraically our Keff = K/(1 + (K − 1)ρ), and estimates that average correlation ρ on five case
+419
+      studies, where their ρ is between repeated trainings of one pipeline on one task, ours instead between
+420   benchmarks within one run. More randomisation cannot remove the cross-benchmark term. New here
+421   is the object, a K × K cross-benchmark matrix where they have a scalar. That matrix is measured
+422   free of item-sampling error, up to passage leakage. Heineman et al. (2025) define noise as the relative
+423   standard deviation that is computed across a run’s final n checkpoints and show that high-signal-to-
+424   noise subsets of MMLU and AutoBencher beat the full set on aggregate SNR, a gap they hypothesise
+425   comes from subtask quality and labelling error (Gema et al., 2025), and rank subtasks by their own
+426   SNR without ever estimating the covariance between subtasks’ noise terms.
+427   Seed variance is reported benchmark by benchmark, rarely as a covariance across them, whether the
+428   training (Reimers & Gurevych, 2017; Madaan et al., 2024; Hagmann et al., 2023), the fine-tuning
+429   (Bui et al., 2025), or the decoding one (Hochlehnert et al., 2025). Jordan (2024) attributes most
+430   test-set variance in standard trainings to per-example noise rather than distribution-level differences.
+431   Dufour et al. (2026) splits FID variance into training and sampling seeds on one metric. Miller (2024)
+      gives item-level error bars but not the training seed, and Zhao et al. (2026) computes a twelve-task
+
+
+                                                          8
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+432
+      average’s three-seed SD and combines per-task tests as independent evidence. None of those designs
+433   carries one, and Appendix B.7 separates the closest cases.
+434
+435   BenchScope (Sha & Zhao, 2026) reports an effective dimensionality of 1.7 over the six Open LLM
+436
+      Leaderboard scores, or 0.28 of a signal axis per benchmark, while the noise side carries 0.40 of our
+      3.57 over nine defined traits. Generalizability theory (Brennan, 2001) over released models (Hardy
+437
+      et al., 2026), judge agreement (Kohli, 2026), and the hidden variance of judge and prompt choice
+438
+      (Messing, 2026) carry correlated-error accounting to other pipeline axes. Maimon et al. (2025) factor
+439   a 60-model by 44-benchmark score matrix into a few skill dimensions. That is RP ’s structure and not
+440   RE ’s. We deliberately excluded the seed-replicate populations beyond DataDecide and PolyPythias
+441   (Appendix B). Few-cluster inference follows Cameron et al. (2008) on the wild cluster bootstrap and
+442   MacKinnon & Webb (2017) on cluster-size sensitivity. Cheverud’s conjecture asks whether the free
+443   phenotypic matrix substitutes for the expensive genetic one (Cheverud, 1988; Roff, 1995; Sodini
+444   et al., 2018). Section 5.4 asks that same question of RP for RE in our setting.
+445
+446
+447   7    D ISCUSSION
+448
+449
+      What is settled. Equation (2) is an identity about disjoint item halves, so a population of training
+450   runs needs no measurement model where a twin registry does, since it estimates RE with its
+451   diagonal, free of item-sampling error. The identity holds however the measurement came out, up to
+452   Appendix A’s shared-item assumption, and for the data-order seeds we also measure.
+453
+454
+455   Our outcome, against the one we predicted. We predicted rank one, P1 tying P3 with indepen-
+456   dence wrong by a factor near 1.5, and only half of that happened. On margins P3 does not improve
+457
+      on P1, while on accuracy the ordering reverses and rank-one is indistinguishable from independence,
+      and our accuracy side landed in the other branch we previously listed as publishable.
+458
+459
+460   What the margin excess is, and why we will not call it RE . The margin excess survives both
+461   mediators and the batch-free contrast but not null N5, where the default gain simulator manufactures
+462   0.61 of it at σg = 0.05 and a matched one 0.08 there and 0.06 at the 0.042 the data imply, between
+463   which we cannot choose after the fact. One latent scalar per run with a free loading per benchmark
+464   predicts held-out seed noise at least as well as the free matrix. The pure-gain reading is not complete
+465   either. A gain axis over that scalar predicts held-out noise worse than the scalar alone, 0.0063 next to
+466   0.0057, while ΛM rises when we partial out the observed gain covariate, so the defensible claim is a
+467
+      rank-one seed imprint on the log-likelihood scale, part of E since the seed is the entire nonshared
+      environment, two benchmarks carrying most of its loading. Over cross-format pairs alone, ΛM drops
+468
+      to 0.921. This reads as a seed moving each scoring format separately, and a per-run held-out loss
+469
+      would settle it, which we found in no release we could reach (Appendix C).
+470
+471
+472   Limitations. Our registered recipe split was never implemented, so the analysis is exploratory
+473   and the gate list records decisions, not a commitment honoured, which Section 4 and Appendix C.1
+474   bound, and no headline rests on one cluster, since removing any recipe or size band leaves Λ inside
+475   1.178–1.289 and 1.047–1.115, though margin influence concentrates to 2.88 of 25 effective clusters.
+476   Yet BoolQ’s removal lifts both to 1.786 and 1.558, the second above the 1.40 we registered, and
+477
+      standardised traits give 1.707, or 2.75 effective benchmarks of eight where the full ten give 8.60, so
+      we recommend raw accuracy alone (Appendix C). At PolyPythias 160M, a 1,000-step move shifts
+478
+      the battery 0.89 between-seed SD on margins and 1.57 on accuracy, with trajectory position in the
+479
+      measured range. Our accuracy side is underpowered for the effect it found, not the one it registered.
+480   Seven of its ten traits carry seed variance at or below their item noise, and two fall past SNAP’s
+481   resolution, as an unbiased estimator does near zero, and the registered interval covers 1 at 0.925 on
+482   margins, in the tail our exclusion of 1 spares and our 1.349 reading spends. Two of the five size bands
+483   are reduced in token budget, so nothing extrapolates below 150M or to final checkpoints. Transport
+484   there fails on three units and passes on five, blind below Λ ≈ 2. Accuracy bits are not portable across
+485   fp16 kernels (Appendix D.6), with provenance the failure mode no null sees (Appendix D.5). None
+      of it changes the recommendation at these scales, because the flip risk survives correction there.
+
+
+                                                         9
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+486
+      AI USE STATEMENT
+487
+488   We used generative AI tools to propose and refine hypotheses, design and critique the estimator
+489   and the null battery, implement and test the analysis code, draft and revise the text of every section,
+490   and survey and summarise related literature. We have not used generative AI tools to generate
+491   synthetic datasets that enter any reported number. Translation and third-party dataset cleaning are not
+492   applicable, since every population analysed is a released artifact read exactly as shipped. The authors
+493   reviewed all AI-assisted work, and we manually re-derived the estimator identities of Section 2 and
+494
+      Appendix A, checked the code against calibration nulls of Section 5.3 whose expected values are
+      known in closed form. We audited every citation against the cited source and corrected what that
+495
+      audit found. We take responsibility for the final content of this work, including text, claims, and
+496
+      artifacts produced with generative AI.
+497
+498
+      E THICS STATEMENT
+499
+500   This work analyses publicly released model outputs and involves no human subjects, no personal data,
+501   and no new data collection. The practical consequence of the work is a correction to how evaluation
+502   noise is reported. So we see no direct path from it to harmful applications. The authors declare no
+503   conflicts of interest.
+504
+505   R EPRODUCIBILITY STATEMENT
+506
+507   Every number here comes from released artifacts, and all but a few from released code. Our
+508   populations are the per-instance outputs of DataDecide and PolyPythias and the per-run scores of
+509
+      the signal-and-noise release, each named with its split in Section 4, and a common-step rule fixes
+      which checkpoint of each cell is scored, stated there, summarised in Appendix B, and carried per
+510
+      run in the released filenames. The estimator and its unbiasedness under item-sampling noise are
+511
+      derived in Section 2 and Appendix A. The streaming, caching, and hardware details needed to rerun
+512   the pipeline are in Appendix D. Every number comes from a single end-to-end execution of the
+513   released pipeline at one commit on one Kaggle CPU core, under the registered settings of 4,999
+514   bootstrap replicates, 2,000 replicates for the calibration nulls, 500 for the permutation null and 50
+515   of the 200 budgeted re-splits, and master seed 20260101. We altered no analysis code for that
+516   machine. Seven sets of numbers sit outside that execution, four of them with a script each, and
+517   we mark where all appear. The first is the coverage simulation of Appendix C, written against the
+518   definitions of Section 2, never against the pipeline, and run afterwards on synthetic populations. The
+519   pipeline ships a self-test of the estimator identities that passed all eight checks, and Appendix D.7
+520
+      states the failure mode they close. We supply as anonymised supplementary material the 48 MB of
+      per-item margin and correctness matrices for all 375 runs, the item-half split with its master seed,
+521
+      and the code that reproduces every table it writes. Our derived matrices attribute the DataDecide
+522
+      instances, released under Open Data Commons Attribution. They also attribute the PolyPythias
+523   checkpoints and signal-and-noise scores, both under Apache 2.0. The analysis plan is not a supplied
+524   file, and Appendix B restates its gates, power arithmetic, and eleven predictions. We wrote that
+525   document before the release was downloaded, never hashed it and left its asserted date of 2026-09-05
+526   uncorroborated. The recipe split it specifies was never implemented, which Section 4 and Appendix B
+527   state. So a reader has only our word for the plan’s date and should weigh the registration claims
+528   accordingly. Five registered checks are absent from the released pipeline and are all scored outside it,
+529   four by the second script on the per-run reduction above, which reproduces the released headline to
+530   four decimals before any restriction is applied. Those four are the information ratio of prediction 8,
+531
+      the cross-format restriction of prediction 9, the flip census of prediction 11, and the leave-one-trait-out
+      sweep, and Appendix C also applies the same restriction to that reduction by format block and by
+532
+      trait pair, outside any shipped script. The last check, an adjacent-checkpoint jitter test, needs a second
+533
+      checkpoint per run that the reduction does not carry, so we rescored the nine PolyPythias 160M
+534   seeds directly from the checkpoints on one T4 with a third script, and Appendix C reports what
+535   came back, its eighteen per-seed score files shipping with the supplement. The fourth script scores
+536   the rescaled Cheverud baseline of Appendix C, a sixth model added after the pre-committed five.
+537   It imports the released bake-off unchanged and reproduces all ten rows before any addition. The
+538   fifth is the PolyPythias transport, which the released pipeline scores itself under Arm 2, and whose
+539   per-configuration table is not in the released DataDecide directory. Section 5 quotes only its headline.
+      The sixth is the exploratory five-unit transport rescore of Appendix C, run in one job at a 6,000-token
+
+
+                                                         10
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+540
+      cap against the registered 30,000. The 45 per-seed score files ship with the supplement. The seventh
+541   is the permutation coverage run of Appendix C, which repeats null N2 1,000 times at the registered
+542   bootstrap depth against the 500 replicates the released pipeline carries, and its summary ships with
+543   the supplement.
+544
+545
+546
+      R EFERENCES
+547   Rishabh Agarwal, Max Schwarzer, Pablo Samuel Castro, Aaron Courville, and Marc Bellemare. Deep
+548     reinforcement learning at the edge of the statistical precipice. In Advances in Neural Information
+549     Processing Systems, volume 34, pp. 29304–29320, 2021.
+550
+      Robert M. Bell and Daniel F. McCaffrey. Bias reduction in standard errors for linear regression with
+551
+        multi-stage samples. Survey Methodology, 28(2):169–181, 2002.
+552
+553   Stella Biderman, Hailey Schoelkopf, Quentin Anthony, Herbie Bradley, Kyle O’Brien, Eric Hallahan,
+554     Mohammad Aflah Khan, Shivanshu Purohit, USVSN Sai Prashanth, Edward Raff, Aviya Skowron,
+555     Lintang Sutawika, and Oskar van der Wal. Pythia: A suite for analyzing large language models
+556     across training and scaling. In International Conference on Machine Learning, volume 202, pp.
+557     2397–2430, 2023.
+558
+      Xavier Bouthillier, Pierre Delaunay, Mirko Bronzi, Assya Trofimov, Brennan Nichyporuk, Justin
+559     Szeto, Naz Sepah, Edward Raff, Kanika Madan, Vikram Voleti, Samira Ebrahimi Kahou, Vincent
+560     Michalski, Dmitriy Serdyuk, Tal Arbel, Chris Pal, Gaël Varoquaux, and Pascal Vincent. Accounting
+561     for variance in machine learning benchmarks. In Proceedings of Machine Learning and Systems
+562    (MLSys), volume 3, 2021.
+563
+564   Robert L. Brennan. Generalizability Theory. Statistics for Social Science and Public Policy. Springer,
+565
+        New York, 2001.
+566   William Brown. Some experimental results in the correlation of mental abilities. British Journal of
+567    Psychology, 3(3):296–322, 1910.
+568
+569   Nghia Bui, Guergana Savova, and Lijing Wang. Assessing the macro and micro effects of random
+570     seeds on fine-tuning large language models. In Proceedings of the 14th International Joint
+571
+       Conference on Natural Language Processing, 2025. arXiv:2503.07329.
+572   Ryan Burnell, Wout Schellaert, John Burden, Tomer D. Ullman, Fernando Martinez-Plumed, Joshua B.
+573     Tenenbaum, Danaja Rutar, Lucy G. Cheke, Jascha Sohl-Dickstein, Melanie Mitchell, Douwe Kiela,
+574     Murray Shanahan, Ellen M. Voorhees, Anthony G. Cohn, Joel Z. Leibo, and Jose Hernandez-Orallo.
+575     Rethink reporting of evaluation results in AI. Science, 380(6641):136–138, 2023.
+576
+577
+      A. Colin Cameron, Jonah B. Gelbach, and Douglas L. Miller. Bootstrap-based improvements for
+        inference with clustered errors. Review of Economics and Statistics, 90(3):414–427, 2008.
+578
+579   Donald T. Campbell and Donald W. Fiske. Convergent and discriminant validation by the multitrait-
+580     multimethod matrix. Psychological Bulletin, 56(2):81–105, 1959.
+581
+582   Dallas Card, Peter Henderson, Urvashi Khandelwal, Robin Jia, Kyle Mahowald, and Dan Jurafsky.
+583
+       With little power comes great responsibility. In Proceedings of the 2020 Conference on Empirical
+        Methods in Natural Language Processing (EMNLP), pp. 9263–9274, 2020.
+584
+585   James M. Cheverud. A comparison of genetic and phenotypic correlations. Evolution, 42(5):958–968,
+586     1988.
+587
+588   James M. Cheverud. A simple correction for multiple comparisons in interval mapping genome scans.
+589
+        Heredity, 87(1):52–58, 2001.
+590   Lee J. Cronbach. Coefficient alpha and the internal structure of tests. Psychometrika, 16(3):297–334,
+591     1951.
+592
+593   Mostafa Dehghani, Yi Tay, Alexey A. Gritsenko, Zhe Zhao, Neil Houlsby, Fernando Diaz, Donald
+       Metzler, and Oriol Vinyals. The benchmark lottery. arXiv preprint arXiv:2107.07002, 2021.
+
+
+                                                       11
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+594
+      Janez Demšar. Statistical comparisons of classifiers over multiple data sets. Journal of Machine
+595     Learning Research, 7:1–30, 2006.
+596
+597   Jesse Dodge, Gabriel Ilharco, Roy Schwartz, Ali Farhadi, Hannaneh Hajishirzi, and Noah Smith.
+598     Fine-tuning pretrained language models: Weight initializations, data orders, and early stopping,
+599     2020. arXiv:2002.06305.
+600   Rotem Dror, Gili Baumer, Marina Bogomolov, and Roi Reichart. Replicability analysis for natural
+601     language processing: Testing significance with multiple datasets. Transactions of the Association
+602     for Computational Linguistics, 5:471–486, 2017.
+603
+604
+      Nicolas Dufour, Alexei A. Efros, and Patrick Pérez. The FID lottery: Quantifying hidden randomness
+        in generative-model evaluation. arXiv:2606.20536, 2026. arXiv:2606.20536.
+605
+606   Aryo Pradipta Gema, Joshua Ong Jun Leang, Giwon Hong, Alessio Devoto, et al. Are we done
+607     with MMLU? In Proceedings of the 2025 Conference of the Nations of the Americas Chapter
+608     of the Association for Computational Linguistics: Human Language Technologies (NAACL), pp.
+609     5069–5096, 2025.
+610
+      Kyle Gorman and Steven Bedrick. We need to talk about standard splits. In Proceedings of the 57th
+611
+       Annual Meeting of the Association for Computational Linguistics, pp. 2786–2791, 2019.
+612
+613   Michael Hagmann, Philipp Meier, and Stefan Riezler. Towards inferential reproducibility of machine
+614    learning research. In International Conference on Learning Representations, 2023.
+615
+      Michael Hardy, Anka Reuel, Lijin Zhang, Jodi M. Casabianca, Sang Truong, Yash Dave, Hansol Lee,
+616    Benjamin Domingue, and Sanmi Koyejo. AI cartography: Mapping the latent landscape of AI
+617    benchmark ecosystems. arXiv preprint arXiv:2605.25272, 2026.
+618
+619   Andreas Haupt, Justin Hartenstein, Anka Reuel, Mykel Kochenderfer, and Sanmi Koyejo. Welfare,
+620     improvability, and variance: A principal-agent approach to optimal benchmark item aggregation.
+621
+        arXiv preprint arXiv:2605.30916, 2026.
+622   Larry V. Hedges, Elizabeth Tipton, and Matthew C. Johnson. Robust variance estimation in meta-
+623     regression with dependent effect size estimates. Research Synthesis Methods, 1(1):39–65, 2010.
+624
+625
+      David Heineman, Valentin Hofmann, Ian Magnusson, Yuling Gu, Noah A. Smith, Hannaneh Ha-
+        jishirzi, Kyle Lo, and Jesse Dodge. Signal and noise: A framework for reducing uncertainty
+626
+        in language model evaluation. In Advances in Neural Information Processing Systems, 2025.
+627
+        arXiv:2508.13144.
+628
+629   Peter Henderson, Riashat Islam, Philip Bachman, Joelle Pineau, Doina Precup, and David Meger.
+630     Deep reinforcement learning that matters. Proceedings of the AAAI Conference on Artificial
+631     Intelligence, 32(1):3207–3214, 2018.
+632
+      Andreas Hochlehnert, Hardik Bhatnagar, Vishaal Udandarao, Samuel Albanie, Ameya Prabhu, and
+633     Matthias Bethge. A sober look at progress in language model reasoning: Pitfalls and paths to
+634     reproducibility. In Conference on Language Modeling (COLM), 2025.
+635
+636   Valentin Hofmann, David Heineman, Ian Magnusson, Kyle Lo, Jesse Dodge, Maarten Sap, Pang Wei
+637
+        Koh, Chun Wang, Hannaneh Hajishirzi, and Noah A. Smith. Fluid language model benchmarking,
+        2025. arXiv:2509.11106.
+638
+639   Keller Jordan. On the variance of neural network training with respect to test sets and distributions.
+640     In International Conference on Learning Representations, 2024.
+641
+642
+      Siddharth Karamcheti, Laurel Orr, Jason Bolton, Tianyi Zhang, Karan Goel, Avanika Narayan, Rishi
+        Bommasani, Deepak Narayanan, Tatsunori Hashimoto, Dan Jurafsky, Christopher D. Manning,
+643
+        Christopher Potts, Christopher Ré, and Percy Liang. Mistral: A Journey towards Reproducible
+644
+        Language Model Training. Stanford Center for Research on Foundation Models, 2021. https:
+645     //crfm.stanford.edu/2021/08/26/mistral.html.
+646
+647   Alex Kipnis, Konstantinos Voudouris, Luca M. Schulze Buschoff, and Eric Schulz. metabench, a
+        sparse benchmark of reasoning and knowledge in large language models, 2024. arXiv:2407.12844.
+
+
+                                                       12
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+648
+      Leslie Kish. Survey Sampling. John Wiley & Sons, New York, 1965.
+649
+650   Guneet Kohli. Nine judges, two effective votes: Correlated errors undermine LLM evaluation panels.
+651     arXiv preprint arXiv:2605.29800, 2026.
+652
+653   J. Li and L. Ji. Adjusting multiple testing in multilocus analyses using the eigenvalues of a correlation
+654      matrix. Heredity, 95(3):221–227, 2005.
+655
+      Morgan E. Lynch, Molly Gonenne, Colin D. Freilich, Thalida Em Arpawong, Deborah Finkel, Eric
+656
+       Turkheimer, Christopher R. Beam, and Deborah W. Davis. Genetic and environmental associations
+657    between depressive symptomatology and loneliness in adulthood. Behavior Genetics, 56(5):
+658    225–235, 2026.
+659
+660   James G. MacKinnon and Matthew D. Webb. Wild bootstrap inference for wildly different cluster
+661     sizes. Journal of Applied Econometrics, 32(2):233–254, 2017.
+662
+      Lovish Madaan, Aaditya K. Singh, Rylan Schaeffer, Andrew Poulton, Sanmi Koyejo, Pontus Stene-
+663
+        torp, Sharan Narang, and Dieuwke Hupkes. Quantifying variance in evaluation benchmarks. arXiv
+664
+        preprint arXiv:2406.10229, 2024.
+665
+666   Ian Magnusson, Nguyen Tai, Ben Bogin, David Heineman, Jena D. Hwang, Luca Soldaini, Akshita
+667     Bhagia, Jiacheng Liu, Dirk Groeneveld, Oyvind Tafjord, Noah A. Smith, Pang Wei Koh, and Jesse
+668     Dodge. DataDecide: How to predict best pretraining data with small experiments. In International
+669     Conference on Machine Learning, 2025. arXiv:2504.11393.
+670
+671
+      Aviya Maimon, Amir DN Cohen, Gal Vishne, Shauli Ravfogel, and Reut Tsarfaty. From benchmarks
+        to skills: Low-rank factors for LLM evaluation. arXiv preprint arXiv:2507.20208, 2025.
+672
+673   N. G. Martin and L. J. Eaves. The genetical analysis of covariance structure. Heredity, 38(1):79–95,
+674     1977.
+675
+676   R. Thomas McCoy, Junghyun Min, and Tal Linzen. BERTs of a feather do not generalize together:
+677     Large variability in generalization across models with similar test set performance. In Proceedings
+678     of the Third BlackboxNLP Workshop on Analyzing and Interpreting Neural Networks for NLP, pp.
+679     217–227, 2020.
+680
+      Solomon Messing. Hidden measurement error in LLM pipelines distorts annotation, evaluation, and
+681
+        benchmarking. arXiv preprint arXiv:2604.11581, 2026.
+682
+683   Evan Miller. Adding error bars to evals: A statistical approach to language model evaluations. arXiv
+684     preprint arXiv:2411.00640, 2024.
+685
+686   Dale R. Nyholt. A simple correction for multiple testing for single-nucleotide polymorphisms in
+687
+        linkage disequilibrium with each other. American Journal of Human Genetics, 74(4):765–769,
+        2004.
+688
+689   Robert Plomin and Denise Daniels. Why are children in the same family so different from one
+690     another? Behavioral and Brain Sciences, 10(1):1–16, 1987.
+691
+692   Nils Reimers and Iryna Gurevych. Reporting score distributions makes a difference: Performance
+693     study of LSTM-networks for sequence tagging. In Proceedings of the 2017 Conference on
+694     Empirical Methods in Natural Language Processing, pp. 338–348, 2017.
+695
+      Derek A. Roff. The estimation of genetic correlations from phenotypic correlations: a test of
+696
+        Cheverud’s conjecture. Heredity, 74(5):481–490, 1995.
+697
+698   Rylan Schaeffer, Brando Miranda, and Sanmi Koyejo. Are emergent abilities of large language
+699     models a mirage? In Advances in Neural Information Processing Systems, volume 36, 2023.
+700
+701   Shayle R. Searle, George Casella, and Charles E. McCulloch. Variance Components. John Wiley &
+        Sons, New York, 1992.
+
+
+                                                         13
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+702
+      Thibault Sellam, Steve Yadlowsky, Ian Tenney, Jason Wei, Naomi Saphra, Alexander D’Amour,
+703     Tal Linzen, Jasmijn Bastings, Iulia Turc, Jacob Eisenstein, Dipanjan Das, and Ellie Pavlick.
+704     The MultiBERTs: BERT reproductions for robustness analysis. In International Conference on
+705     Learning Representations, 2022.
+706
+707   Tommy Sha and Stella Zhao. BenchScope: How many independent signals does your benchmark
+708     provide? arXiv preprint arXiv:2603.29357, 2026.
+709   Sebastian M. Sodini, Kathryn E. Kemper, Naomi R. Wray, and Maciej Trzaskowski. Comparison
+710     of genotypic and phenotypic correlations: Cheverud’s conjecture in humans. Genetics, 209(3):
+711     941–948, 2018.
+712
+713   C. Spearman. The proof and measurement of association between two things. The American Journal
+714     of Psychology, 15(1):72–101, 1904.
+715   C. Spearman. Correlation calculated from faulty data. British Journal of Psychology, 3(3):271–295,
+716     1910.
+717
+718   Team OLMo, Pete Walsh, Luca Soldaini, Dirk Groeneveld, Kyle Lo, et al. 2 OLMo 2 furious. arXiv
+719     preprint arXiv:2501.00656, 2025. Shorter version in Conference on Language Modeling (COLM)
+720     2025.
+721
+      Eric Turkheimer, Erik Pettersson, and Erin E. Horn. A phenotypic null hypothesis for the genetics of
+722     personality. Annual Review of Psychology, 65:515–540, 2014.
+723
+724   Oskar van der Wal, Pietro Lesci, Max Müller-Eberstein, Naomi Saphra, Hailey Schoelkopf, Willem
+725     Zuidema, and Stella Biderman. PolyPythias: Stability and outliers across fifty language model pre-
+726     training runs. In International Conference on Learning Representations, 2025. arXiv:2503.09543.
+727
+      Yang Zhao, Jiahao Lu, Bin Huang, Guhua Zhang, and Jie Zhou. Most transformer modifications still
+728     do not transfer at 1–3b: A 2020–2026 update to Narang et al. (2021) with downstream evaluation
+729     and a noise floor. arXiv preprint arXiv:2605.20798, 2026.
+730
+731   Xiang Zhou, Yixin Nie, Hao Tan, and Mohit Bansal. The curse of performance instability in analysis
+732     datasets: consequences, source, and suggestions. In Proceedings of the 2020 Conference on
+733
+        Empirical Methods in Natural Language Processing (EMNLP), pp. 8215–8228, 2020.
+734
+735
+736
+      A     D ERIVATIONS
+737
+      A.1    W HAT SNAP NAMES
+738
+739   SNAP abbreviates Seed Noise Across Phenotypes. Each word carries a piece of the design.
+740
+741
+      Seed. Two runs of one DataDecide configuration share three things. Those are the data recipe, the
+      model size, and the hyperparameters. They differ in the seed, which sets initialisation and data order,
+742
+      and at every size below 1B the two nondefault seeds are trained by the suite to exactly a quarter of the
+743
+      1B compute budget. Their schedules are deliberately cut short. Within a configuration, the nonshared
+744   environment is therefore the seed taken jointly with that budget gap, where a difference between
+745   replicate runs stands in for that combination, and common-step scoring holds the evaluation point
+746   fixed, while nothing holds the training schedule fixed, so the shortened schedule enters our estimate
+747   as part of the nonshared environment, with no separate attribution to initialisation.
+748
+      Noise. Our estimand is the variance the seed leaves in a score. Our estimand is not the variance
+749
+      a benchmark has across models. The distinction matters because the second is dominated by real
+750   differences in capability, which is exactly the signal an evaluation wants to keep, while the first is the
+751   part that would move again under an exact repetition of the same training recipe.
+752
+753
+      Across. Our estimate is a property of a whole battery instead of one
+                                                                         √ benchmark in isolation. The
+754   average of K benchmarks shrinks independent noise by exactly K. The       poff-diagonal of ΣE
+755   says how much of that reduction a practitioner gets. It works through Λ = 1 + (K − 1)r̄E and
+      Keff = K/Λ2 . The square of Λ is the design-effect analogue of survey sampling and Keff the
+
+
+                                                         14
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+756
+      matching effective sample size (Kish, 1965), where a benchmark plays the role of a cluster member
+757   and r̄E the role of the homogeneity rate inside a cluster, though the analogy is not an identity, because
+758   cluster homogeneity in survey work is positive in nearly every application. It therefore holds Keff at
+759   or below K. Our r̄E is estimated without bias near zero and can come out negative. So Keff runs
+760   strictly above K wherever Λ̂ falls below 1. A single benchmark has no Λ, since the definition needs
+761   something to average across.
+762
+      Phenotypes. The same items are scored on two scales. Those are the per-byte log-likelihood margin
+763
+      and the binary correctness it thresholds. We report both because they answer to different readers.
+764
+      Accuracy is the number a practitioner averages. The margin is the continuous quantity underneath
+765   it that carries more information per item. We borrow the word from quantitative genetics, where a
+766   phenotype is any measured trait of a unit and the decomposition into A, C, and E runs separately per
+767   phenotype, and Section 2 imports that decomposition.
+768
+      Read together, SNAP names the cross-half estimator of how far a battery’s seed noise departs from
+769
+      the independent-benchmark idealisation, separately on each of the two scales. The null value is
+770
+      exactly 1 when the departure is nil.
+771
+772
+      A.2    N OTATION
+773
+774
+775   Table 2: Symbols used in the body, in order of first appearance. Configurations are indexed by c, runs
+776   within a configuration by r, traits by j and k, items by i, and answer choices by v. Greek letters carry
+777   the regression coefficients of Section 3. No Latin index is reused for a parameter.
+778       Symbol          Meaning
+779
+          A+C +E          additive genetic, shared and nonshared environmental components of a phenotype
+780       ΣE , RE         seed-noise covariance and correlation matrix across the K traits
+781       RP              between-configuration phenotypic correlation matrix of the same battery
+782       N , R, K        configurations (125), runs per configuration (3), traits (10)
+783       yM , yA         the two phenotypes: per-byte margin and accuracy
+784       dA       B
+            crj , dcrj    within-configuration deviation of run r on item half A and half B
+            A     B
+          gcr , gcr       battery means of those deviations
+785
+          Tc , Uc         observed      Pindependence-predicted aggregate seed variance in configuration c
+                                      and
+786                       pP
+          Λ, ΛM , ΛA            c T c /    c Uc , null value 1; margin and accuracy versions
+787       r̄E , σ̄E       seed-variance-weighted mean off-diagonal of RE , with Λ2 = 1 + (K − 1)r̄E ;
+788                       root-mean-square per-trait seed SD
+789       Keff            K/Λ2 , the number of independent benchmarks the battery acts like
+790       σagg , σindep   seed SD of the battery aggregate, observed and under independence
+791
+          Pflip (∆)       probability two single-seed runs with true gap ∆ rank the wrong way
+          p, z0           item accuracy rate and its normal cut point Φ−1 (1 − p), the two arguments of the
+792
+                          information ratio (5)
+793       ρICC            within-recipe intraclass correlation of configurations, entering the planned design effect
+794                       1 + 4ρICC
+                 (−j)
+795       scr , xcr       run-level gain and opposite-half leave-one-trait-out competence mediators
+796       ρg , v̄         aggregate reliability Λ2 /(Λ2 + v̄), the battery analogue of the per-trait
+                            2     2       2
+797                       σ̂E /(σ̂E   + σ̂noise ) of Table 3, with v̄ the battery’s noise term on that scale
+          P0–P3           bake-off models, independence, rank-one, Cheverud plug-in, full matrix, with P1 G
+798
+                          adding a gain axis and P2 R rescaling the plug-in
+799       N1–N6           registered nulls; N3 re-randomises the item split, N4 checks zero mediation, N5 is
+800                       run-level gain and N6 the batch offset
+801       G0–G8           registered gates, each with a fallback (Table 5)
+802
+803
+804   A.3    T HE CROSS - HALF IDENTITY
+805
+806   Fix a configuration with R runs, take either phenotype of (1), and write yrj = µj + Erj + εHrj on half
+807   H ∈ {A, B}, with εA and εB independent given E and mean zero, so the deviation dH      rj =   H
+                                                                                                  yrj      H
+                                                                                                      − ȳ·j
+808   equals (Erj − Ē·j ) + (εH      H                  A B
+                               rj − ε̄·j ). The product drj drk has expectation E[(Erj − Ē·j )(Erk − Ē·k )]
+809   because every term involving ε is a product of independent mean-zero quantities. For j ̸= k, that
+      asks for zero correlation between trait j’s item noise on half A and trait k’s on half B once the run
+
+
+                                                             15
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+810
+      is fixed. Two benchmarks can share items. They can also share an item-level scoring quirk the run
+811   does not already carry. Either case would break it. The assumption is not a free one. We probe the
+812   pair most exposed to that failure empirically through the ARC redundancy sweep of Appendix C,
+813   whose removal of both ARC traits is the closest the battery comes to isolating it. That sweep cannot
+814   separate leakage from composition, since single-trait removals over traits sharing no items move Λ
+815   further than the ARC pair does, so it bounds the channel rather than testing it. With Er· i.i.d. across
+816   runs, that expectation is (1 − 1/R)ΣE (j, k). The summation over r and the division by R − 1 give
+817   ΣE (j, k) exactly for every (j, k). The diagonal is included in that. That is (2), and nothing in the
+818   argument uses Gaussianity. A part of the seed effect can attach to particular items and not to the trait
+819
+      as a whole. That part enters εH and leaves both Tc and Uc . So ΣE is the item-general seed effect, and
+      not one fixed battery’s total run-to-run variance. Because the ten benchmarks share no items, such a
+820
+      component adds only to tr ΣE and adds nothing to the off-diagonal mass. By (4) that pulls Λ toward
+821
+      1. A practitioner rescoring one fixed battery across seeds meets an inflation factor no larger than
+822   the one we report. One violation of that independence sits inside a trait and not across two. BoolQ
+823   asks several questions of one passage. A run that reads the passage well is right about all of them.
+824   One passage can be divided between the two halves by the item assignment. No passage key we
+825   could cluster the split on is carried by the release, and we deliberately did not join BoolQ’s public
+826   passages back to the retained item identifiers to build one, so the leakage stands without correction
+827   here, and its contribution inflates the affected cross-half diagonal, which adds to Tc and Uc alike. It
+828   pulls Λ toward 1 the way the item-specific component does, and the two are nonetheless different
+829   failures that a reader should not merge. The item-specific part is excluded cleanly and never biases
+830
+      the estimator, so it moves the estimand alone, and against a fixed battery rescored across seeds our Λ
+      is an upper bound. The passage leakage instead biases the estimator itself, so against the item-general
+831
+      inflation our Λ is a lower bound, and that second gap matters most on the accuracy side. BoolQ alone
+832
+      carries 68 percent of the margin trace of ΣˆE and 84 percent of the accuracy trace. The one trait we
+833
+      cannot clean therefore sets most of the denominator that holds ΛA near 1. Its exclusion alone raises
+834
+      the accuracy estimate to 1.558, above the registered 1.40. We cannot say how much of that gap the
+835   passage leakage alone explains. The release offers no decomposition of that exclusion, so leakage
+836   and variance share stay tangled.
+837
+838
+      A.4    Λ2 AND THE WEIGHTED MEAN CORRELATION
+839
+840   With σj2 = ΣE (j, j) the per-trait seed variance and rjk the correlation between traits j and k,
+841
+      1⊤ ΣE 1 = j σj2 + j̸=k rjk σj σk , so Λ2 = 1 + j̸=k rjk σj σk / j σj2 . The definition r̄E         w
+                   P         P                              P                 P
+                                                                                                           =
+842   P                          P 2              2                  w
+             r   σ
+        j̸=k jk j k σ  /((K − 1)     σ
+                                    j j ) gives Λ   = 1 +  (K − 1)r̄ E , the identity (4) reports.  For equal
+843                                                                                             w
+      σj this is the plain mean off-diagonal correlation. Throughout the paper r̄E denotes r̄E    . The limit
+844             √                       2       1   ⊤            2
+      σagg → r̄E σ̄E follows from σagg = K 2 1 ΣE 1 → r̄E σ̄E as K → ∞ with bounded variances,
+845            2
+                  = K −1 j σj2 , the K diagonal terms vanishing against the K(K − 1) off-diagonal ones.
+                          P
+846
+      where σ̄E
+847
+848   A.5    W HY THE ESTIMATOR POOLS BEFORE IT DIVIDES
+849
+850   The estimand is one Λ for the whole design, so Λ̂ pools the Tc and Uc of (3) across configurations
+851   before division, and the per-configuration ratios Tc /Uc stay unaveraged, and our pooled form weights
+852             P c by Uc , its own
+      configuration
+      P                           2
+                                      independence-predicted aggregate seed variance. That is what makes
+                                        2
+853      c Tc /   c Uc estimate σagg /σindep for the population as a whole. The per-configuration ratio is
+      unusable at R = 3 for a reason the results make concrete. Its Uc carries only two degrees of freedom
+854
+      and averages cross-half diagonals that are unbiased for per-trait seed variances near zero. Three
+855
+      of those cross-half diagonals come out numerically negative in the realised data (Section 5.1). Its
+856   denominator can sit arbitrarily close to zero. The mean of such ratios has no numerical stability. What
+857   the pooled form gives up is any guarantee that a few configurations do not dominate the sums. So we
+858   bound that exposure with configuration-level leave-one-out sweeps, since leave-one-recipe-out moves
+859   Λ̂ by at most 0.037 in margin space and 0.021 in accuracy space, leave-one-size-out by at most 0.066
+860   and 0.037 (Appendix C). Those sweeps also say how concentrated that exposure is. The concentration
+861   there is real. With each dropped recipe’s shift in Λ read as its influence, the participation ratio of the
+862   squared influences is 2.88 of 25 clusters on margins, and 8.68 on accuracy. One recipe alone carries
+863   0.543 of the margin total. So the margin side behaves like roughly three clusters. Its heaviest one
+      moves the headline by 0.037, well inside the 0.195 the margin interval spans. That concentration
+
+
+                                                         16
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+864
+      reaches the interval as well, and not the point estimate alone. We registered a wild cluster bootstrap-t
+865   as the primary, which Cameron et al. (2008) and MacKinnon & Webb (2017) recommend for a
+866   few-cluster regime of this kind. This participation ratio reveals exactly that. It suits three effective
+867   clusters better than a cluster-t. The permutation check of Appendix C covers 1 on 0.925 of margin
+868   replicates at this concentration. So the margin interval runs narrower than a validated 95 percent. We
+869   read it as such.
+870
+871   A.6    W HY N2 MUST PERMUTE PER TRAIT
+872
+873   Within a configuration, apply a permutation πj of run labels to both halves of trait j. The permutation
+874   only reorders the diagonal cross-half products dA           B
+                                                              rj drj . It leaves the denominator Uc invariant. If
+875   each trait’s permutation πj is drawn independently and uniformly, then for j ̸= k the pairing of dA        rj
+876           B
+      with  d rk is  uniformly     spread over run pairs, and since  deviations  sum  to zero within configuration,
+877   E[ r dA            B
+         P
+                πj (r)j dπk (r)k ] = 0, so E[Tc ] = E[Uc ] and E[Λperm ] = 1. A single joint permutation applied
+878   to all traits preserves every cross-trait pairing and leaves Λperm centred on Λ, while excluding the
+879   identity and including it each give a degenerate ratio in the R = 3 case, so neither is a null.
+880
+881
+      A.7    P OWER ARITHMETIC
+882
+883   Let k = 2(1 − ρg )/ρg so that a half-score deviation is d = e + a with Var(a) = kVar(e). Under the
+884   assumption of approximately Gaussian deviations we have Var(dA dB ) = σ 4 [(1 + k)2 + 1]. There
+885   are R − 1 = 2 degrees of freedom per configuration, while Ū is comparable to   √T̄ . We assume a
+886   positive correlation of 0.7 between them. The design effect multiplies the SE by 1.60. The entries
+887   of Table 4 are given by evaluation at Λ2 = 1.819 and N = 85.
+888
+889   A.8    T HE INFORMATION RATIO
+890
+891   With the accuracy item noise written as p(1 − p)/n, the margin item noise as s2m /n and the boundary
+892   density as f (0) = ϕ(z0 )/sm , the margin scale sm cancels algebraically from the ratio of noise to
+893   squared sensitivity, so (5) depends on p alone. An item therefore contributes a factor 1/ratio as much
+894   noise per unit of seed signal in margin space as in accuracy space, which gives the margin battery the
+895
+      better resolution of the two at the same item count.
+896
+897   Why both mediators, and what N4 is for. Entering competence alone would report a sharpness
+898
+      artifact as “seed noise is one competence axis, use the rank-one model”. The second mediator exists to
+      prevent exactly that conflation. The zero-mediation null N4 measures the attenuation the pooled-slope
+899
+      regression itself induces, so a post-partialling Λ is compared against its own null, which already sits
+900
+      off 1. The competence proxy is the only mediator the halves separate, because the gain covariate is
+901   one per-byte likelihood per run over every item on both halves, so shared item noise can reach the
+902   gain slope where it cannot reach the competence slope. One weakness belongs to the proxy itself, and
+903   we state it here rather than leaving it in the code. Each trait’s deviation is divided by that trait’s own
+904   estimated seed SD, which is the standardisation the regression needs. WinoGrande’s unbiased margin
+905   estimate is negative, and that estimate reads −3.15 × 10−7 here, so that SD is floored by the pipeline
+906   at 10−6 . WinoGrande’s term after standardisation runs about 800 to 38,000 times the other nine. On
+907   accuracy, both WinoGrande and PIQA are likewise negative, and both are floored the same way by
+908   the pipeline. So the fitted proxy sits close to one trait’s deviation and not the battery average a reader
+909
+      pictures. The competence-partialled figures of Section 5.2 bound a single-trait axis. The simulator
+      for N4 builds the item-derived part of its gain on each half separately, while a run-level component
+910
+      at the seed scale is shared across both halves. Its attenuation therefore reads a regression whose
+911
+      gain covariate carries no cross-half item noise where the realised one plainly does. The regression
+912   alone takes a population carrying the observed correlation from 1.245 to 1.091 in margin space. The
+913   realised fully partialled ΛM is 1.276, which sits 1.9 of the null’s 0.096 standard deviation above its
+914   mean, and these two dispersions do not separate that gap. The accuracy leg admits no comparison of
+915   that kind. N4’s accuracy population starts at 1.11831 against the observed 1.07837, where its margin
+916   population starts at 1.24502 against 1.24395, while the realised fully partialled ΛA is 1.094 against
+917   that null’s 1.104, and the two are not like for like, so we deliberately draw no mediation conclusion
+      on accuracy.
+
+
+                                                          17
+      Under review as a conference paper at ICLR 2027
+
+
+
+
+918
+      B     D ESIGN DETAILS
+919
+920
+      B.1    C OMMON - STEP RULE
+921
+922   For each of the 125 cells, the released checkpoints of the three seeds were listed once on day 1, and
+923   then the largest step present in all three was taken. The chosen step is carried explicitly in every
+924   released filename. The fetch stage’s own per-cell table, however, is not shipped in the supplement.
+925   Ninety-two of the 125 cells have three seeds that do not share a maximum step, which is the suite’s
+926   intention, since the two nondefault seeds of every size below 1B are stopped at 25 percent of the
+927   1B compute budget. Three full seeds are trained only at 1B (Magnusson et al., 2025). The shortfall
+928
+      we score around is therefore documented design and not an omission from the release, and those
+      nondefault seeds are carried in the per-instance release only from 150M upward, so our five replicated
+929
+      sizes necessarily start there and not at 4M, and a reader comparing our size ladder against the suite’s
+930
+      fourteen sizes should read the difference strictly as what the release exposes. In 26 of them, all at
+931   530M and 750M, the largest seed maximum exceeds the smallest by more than 1.5×, and the 18 and
+932   89 percent that Section 4 reports for those two sizes are aggregates over each band of 25 cells rather
+933   than any one cell’s figure, so the common step after truncation falls well short of the default seed’s
+934   endpoint. Section 5 reports that truncation’s effect on the estimate, through the aux 2 against aux 3
+935   contrast and through the per-band estimates of Table 7.
+936
+937   B.2    R ELIABILITY PHENOTYPES
+938
+939   Table 3 gives per-trait cross-half reliability separately in both spaces. The two halves hold 18,840
+940   and 18,842 items in total. The per-trait split is written by the fetch stage and shipped with the code.
+941
+      Our plan called for these estimates on the 8 screening recipes only. Gates G1 and G2 and the power
+      arithmetic would then be fixed before any estimation recipe was opened. We never drew that recipe
+942
+      split (Section 4). The table instead runs on all 25 recipes. The gates were necessarily evaluated with
+943
+      the whole population already visible, which leaves every gate decision in this paper exploratory by
+944   construction.
+945
+946
+947   Table 3: Per-trait cross-half reliability of the seed deviation on all 25 recipes, though the plan specified
+                                                                                      2      2     2
+948
+      the 8 screening recipes, which were never drawn, where reliability is σ̂E          /(σ̂E + σ̂noise ) and goes
+                         2
+      negative where σ̂E does. The battery mean is 0.65 in margin space and 0.32 in accuracy space, and
+949
+      two accuracy traits estimate below zero and two more below 0.10. The per-trait information ratio of
+950
+      (5) is not released per trait, and only its median, minimum and maximum are reported by the pipeline,
+951   1.61, 1.571 and 1.732. The ρg of (6) is a battery-level quantity taking no median, 0.73 against the
+952   plan’s 0.49. That was set at Λ2 = 1.819. The v̄ that reconciles the two is shipped with the released
+953   matrices.
+954                   Trait                Format     Reliability (accuracy)   Reliability (margin)
+955
+                      ARC-Easy                MC              0.602                   0.927
+956                   ARC-Challenge           MC              0.203                   0.584
+957                   BoolQ                 yes/no            0.970                   0.993
+958                   CommonsenseQA           MC              0.615                   0.930
+959                   HellaSwag              cloze            0.450                   0.757
+                      MMLU                    MC              0.022                   0.860
+960
+                      OpenBookQA              MC              0.091                   0.392
+961                   PIQA                   cloze           −0.028                   0.273
+962                   Social IQa              MC              0.416                   0.888
+963                   WinoGrande             cloze           −0.102                  −0.086
+964                   Battery mean                             0.324                  0.652
+965
+966
+967   B.3    P OWER
+968
+969   The arithmetic of Appendix A is evaluated by Table 4 at the planning values. Those values carried
+970   the assumption of the registered 85-configuration estimation set. The realised analysis has 125
+971   configurations and 25 clusters. The count alone points to more power than the table promises, once
+      the two columns are read on one scale, since our realised clustered SE of Λ, the one the bootstrap
+
+
+                                                          18
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+972
+       studentises by, is 0.045 on margins and 0.038 on accuracy, and the planned column is on the same
+973
+       scale, so the Λ̂2 conversions of 0.112 and 0.081 are not what it should be read against. Both realised
+974
+       values sit inside their planned 0.0935 and 0.1232, narrower by factors of 2.1 and 3.3. The larger N
+975    predicts a factor of 1.21 by itself. One further term we can name, because null N1 prints the estimator
+976    dispersion against the true correlation, and that dispersion rises with the effect, so the planned column
+977    was evaluated at a larger effect than the realised one. Interpolating that table between its printed grid
+978    points, the SD at the registered r̄E of 0.0911 runs 1.04 times the SD at our realised 0.061 on margins
+979    and 1.13 times the SD at our realised 0.0181 on accuracy, so effect size alone carries that much of the
+980    narrowing and carries more of it on accuracy than on margins. The remainder comes from the design
+981    effect and ρg departing from their planning values, and that remainder we do not decompose. We
+982    label the column by the scale that regenerates the two published MDE entries and all five published
+983
+       power entries, since a variance-scale reading of it puts the margin power at 1 where the row prints
+       0.89. We deliberately do not recompute realised power, because the effect the registration powered
+984
+       for is the one both sides falsified, and a realised-power computation on a falsified effect would report
+985
+       nothing about the estimates we do report.
+986
+987
+988    Table 4: Planned power for Λ2 = 1.819 (r̄E = 0.091) at the registered N = 85 and wild cluster
+989    t(16), with the design effect 1 + 4ρICC = 1.60 applied at an illustrative ρICC = 0.15, and planning
+990    values of ρg = 0.61 (margin) and 0.49 (accuracy). Our registration tabulated the minimum detectable
+991    effect for the cross-half aggregation only, and the realised analysis runs at N = 125 over 25 clusters.
+992              Phenotype          Aggregation            SE(Λ) planned   MDE (Λ)     Power planned
+993              Margin              Cross-half                 0.0935       1.300          0.89
+994              Margin             Battery mean                0.0845        n/a           0.94
+995              Accuracy            Cross-half                 0.1232       1.412          0.68
+                 Accuracy           Battery mean                0.1076        n/a           0.79
+996
+                 Accuracy     Cross-half, at r̄E = 0.115        0.1232        n/a           0.82
+997
+998
+999    B.4   G ATES
+1000
+1001   G8 is the gate most likely to have changed the abstract. A batch offset produces exactly the
+1002   signature the estimator looks for. Step truncation is a documented instance of it. The batch-free
+1003   contrast, however, removes the offset from the batch-free number only. The full-set headline remains
+1004
+       exposed to it. We apply no correction for that exposure. Gate G5 left the size of the effect alone and
+       changed only its interpretation. 0.61 of the margin excess is manufactured by a run-level sharpness
+1005
+       term at the pipeline default gain SD of 0.05. None of the accuracy excess is. That second half is
+1006
+       a property of the simulator. Its only operation on margins is a multiplication by a positive factor.
+1007   It cannot move any item across the accuracy boundary. On the evidence we have here, the margin
+1008   side cannot be read as a clean seed-correlation result, and the choice between the two readings is
+1009   not settled, and a simulator matched empirically to the observed margin distributions manufactures
+1010   0.08 at that same gain SD and 0.06 at the 0.042 the data imply. Partialling the gain covariate moves
+1011   ΛM up, while the addition of a gain axis to the rank-one scalar predicts held-out noise worse than
+1012   the scalar alone (Sections 5.2 and 5.4). Those cells let us bound the mechanism between 6 and 61
+1013   percent of the margin excess once both are free to move, and only the registration keeps that bound
+1014   from being a simulator chosen after the fact.
+1015
+1016   B.5   R EGISTERED PREDICTIONS
+1017
+       Each prediction was registered with its falsification condition on 2026-09-05, before the release was
+1018
+       downloaded, a date the plan document asserts and no timestamp independently corroborates, and
+1019   Table 6 scores them. Because we never formally held the screening set out, the scoring is exploratory.
+1020   We repeat that statement here as well as in Section 4. No reader then meets the table of planning
+1021   values without also meeting the deviation.
+1022
+1023         1. ΛM > 1.349 and ΛA > 1.40 with lower confidence bounds above 1. Either interval
+1024            containing 1 falsifies it.
+1025         2. ΛA ≥ 0.8ΛM , and this is falsified below 0.8. That would say the excess is a margin-space
+                artifact.
+
+
+                                                           19
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1026
+1027   Table 5: Gates, in the order they fire, with the fallback each one triggers and the value it took. Four
+1028   of the nine fail. Each failure’s fallback is executed in the section that reports it, except G3’s and
+1029   G5’s, which we report and do not run, since G3’s targets a leg that did not fail and G5’s would drop a
+1030   margin bound we do report. Every fallback leaves a complete paper. That is the property the list was
+1031
+       built for. The released gate table carries seven of these nine rows, since G6 is scored by the transport
+       job of Appendix C and G8’s value is read directly off the batch-free rows of the primary table.
+1032
+1033    Gate    Condition                        Fallback                      Fires on   Outcome
+1034    G0      Per-item outputs stream and      Drop cell; if <70             Day 1      Pass, 125/125
+1035            parse for all 125 cells at the   estimation configs remain,
+                common step                      report at reduced N
+1036
+        G1      Accuracy power at                Accuracy demoted to           Day 2      Pass, power 1.00 at
+1037            r̄E = 0.115 ≥ 0.80 from          secondary; abstract states               Λalt = 1.427, ρg = 0.73
+1038            measured ρg                      margin only
+1039    G2      Information ratio ≥ 1.4 on       Margin loses its “more        Day 2      Unfalsifiable, 1.61, on a
+1040            battery median                   informative” framing; both               threshold below the
+                                                 sides reported flat                      ratio’s floor
+1041
+        G3      Cross-half covariance            Re-split by source            Day 3      Fail, one negative
+1042            symmetric and diagonal           document; if still                       diagonal on margins, two
+1043            positive                         asymmetric, report leakage               on accuracy
+1044    G4      |Λ̂ − 1| ≤ 0.02 under N1         Subtract calibrated offset;   Day 4      Pass, ≤ 0.002
+1045            and N2                           report both raw and
+1046                                             corrected
+        G5      N5 manufactures < 50% of         Sharpness becomes the         Day 5      Fail, 0.61 (default sim.)
+1047
+                the observed excess              headline; ΛA reported alone
+1048    G6      PolyPythias transport within     Transport reported as a       Day 6      Fail, upward
+1049            20%                              failure with the ratio
+1050    G7      A held-out-loss field exists     Competence mediator is        Day 1      Fail, no such field
+1051            in DataDecide metadata           leave-one-trait-out x(−j)
+1052    G8      Batch-free                       Batch-free Λ becomes the      Day 5      Pass on both point
+                Λ ≥ 1 + 0.5(Λfull − 1)           headline; full-set moved to              estimates, 1.256 vs 1.122,
+1053
+                                                 appendix                                 and both intervals span
+1054                                                                                      their lines
+1055
+1056
+1057          3. ΛA retains more than 70 percent of its excess after partialling gain s, and N5 manufactures
+1058             less than 30 percent of the observed margin excess. Failure on either leg falsifies the
+1059             prediction.
+1060          4. N6 at the measured token-budget ratios manufactures less than 50 percent of the full-set
+1061             excess. Anything more than that falsifies it.
+1062          5. σindep underpredicts the directly observed aggregate seed SD by the factor Λ in at least four
+1063             of five size bands.
+1064
+              6. RE from DataDecide predicts PolyPythias’s σagg within 20 percent, while σindep misses by
+1065
+                 more than 20 percent.
+1066
+              7. The signal-and-noise random-seed panel gives Λ > 1 with a bootstrap lower bound above 1
+1067
+                 on at least one of the two seed types.
+1068
+1069
+              8. The information ratio lies in [1.4, 3.0] on at least eight of ten traits.
+1070          9. Λ under restriction to cross-format pairs exceeds 1.2 with lower bound above 1, and anything
+1071             short of that falsifies it. A pass there would place the correlation outside shared format.
+1072         10. ∥RE −RP ∥F > 0.5. Anything below 0.5 falsifies it. Such a result would mean the Cheverud
+1073             plug-in suffices.
+1074         11. Pflip > 0.05 for more than 10 percent of same-size configuration pairs at the measured σagg .
+1075
+1076   B.6     E XCLUDED POPULATIONS
+1077
+1078   MultiBERTs (Sellam et al., 2022) (25 seeds, one configuration), the 100 BERT fine-tuning runs of
+1079   McCoy et al. (2020) (one pretrained checkpoint, so the seed they vary is the fine-tuning one), Pythia
+       and its size ladder (Biderman et al., 2023) (no seed replicates), OLMo-2 release checkpoints (Team
+
+
+                                                             20
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1080
+       OLMo et al., 2025) (no seed replicates at matched steps), and the signal-and-noise random seeds
+1081   runs beyond the external check (no per-item outputs). Each exclusion rests solely on the reason we
+1082   give in parentheses. We mean none of them as a criticism of the release.
+1083
+1084
+1085   B.7   A DJACENT LITERATURE
+1086
+1087   Reimers & Gurevych (2017) report score distributions over seeds, dataset by dataset. Madaan et al.
+1088   (2024) reports seed variance per benchmark and never across them. Hagmann et al. (2023) treat
+1089   nondeterminism as measurement noise. The decomposition they give runs through linear mixed
+1090   effects models, whose variance components are only scalars for the noise factors and for their
+1091
+       interaction with data properties. No cross-benchmark covariance term enters. Jordan (2024) attributes
+       most test-set variance in standard trainings to per-example noise over seeds rather than to run-to-run
+1092
+       differences in distribution-level error, and his Appendix C does correlate run accuracies across five
+1093
+       ImageNet evaluation sets, at most R2 = 0.14, pairing shifted versions of one benchmark rather
+1094   than distinct ones, while Bui et al. (2025) vary the fine-tuning seed of a fixed pretrained model,
+1095   and Hochlehnert et al. (2025) the decoding seed. Both report instability benchmark by benchmark.
+1096   Neither variance component is this paper’s E. Dodge et al. (2020) do look further on the fine-tuning
+1097   seed, since their Section 4.3 asks whether a seed is good across datasets and reports that some weight
+1098   initialisations do well on several GLUE tasks at once, though they read that pattern off four per-task
+1099   rankings and estimate no correlation and no covariance. Across-dataset structure is a question they
+1100   raise and leave open. Zhou et al. (2020) go further still on this point. Their Figure 3 prints a 15
+1101   by 15 Spearman matrix over datasets, where the standard block sits at 0.95 and above while the
+1102
+       standard-to-analysis entries scatter from 0.97 for STR-L down to 0.30 for STR-O, and each entry is a
+       Spearman correlation over one run’s checkpoints averaged across seeds, so competence differences
+1103
+       between checkpoints alone drive those entries. That makes their matrix an RP and not the RE we
+1104
+       estimate. Dufour et al. (2026) retrain several hundred image generators and split FID variance into
+1105   training and sampling seeds. One metric admits no covariance. Miller (2024) gives item-level error
+1106   bars for one model without reaching the training seed, and Zhao et al. (2026) compute a three-seed
+1107   SD of a twelve-task average, and their Appendix E.4 does combine twelve per-task Welch tests,
+1108   by treating each task as independent evidence rather than by estimating any relation between them.
+1109   Haupt et al. (2026) come closest, since they rank benchmark items by welfare weight, improvability,
+1110   and variance, and the variance term is drawn from the PolyPythias 410M panel we also use, and the
+1111   within-checkpoint across-seed variance is pooled by their per-item noise estimate into one scalar
+1112   for each item, while their own limitations state that the item-level tests carry an assumption of
+1113
+       approximate independence across items. Their panel is ours and their estimand is not, because a
+       diagonal of per-item variances carries no off-diagonal correlation structure. They never estimate the
+1114
+       covariance matrix their own theory section defines.
+1115
+1116   A separate literature already counts the effective number of independent tests inside a correlated
+1117   family. That count is the closest formal relative of our Keff . Cheverud (2001) derives an effective
+1118   number of independent comparisons from the variance of the eigenvalues of an observed marker
+1119
+       correlation matrix, while Nyholt (2004) builds the same correction from a spectral decomposition of
+       pairwise linkage disequilibrium. Li & Ji (2005) report a systematic overestimation in the first of the
+1120
+       two counts and give a more accurate one. All three take the correlation matrix as observed. All three
+1121
+       spend the count exclusively on a significance threshold rather than on an aggregate’s standard error.
+1122   Our difficulty is the one they do not have, since no prior estimate of the seed-noise matrix exists in
+1123   this literature to calibrate against. No release reports one, so the estimator has to come first. The
+1124   count is what we read off it afterwards. Searle et al. (1992) give the standard account of the negative
+1125   variance estimates a moment decomposition returns when a component sits near zero, which is what
+1126   gate G3 reports on one margin trait and on two accuracy traits.
+1127
+       Metric choice carries a literature of its own, and Schaeffer et al. (2023) show that a metric with
+1128   a discontinuity can manufacture an apparent jump where a continuous metric moves smoothly.
+1129   Accuracy is our margin thresholded at zero. Our two phenotypes differ by exactly that transformation.
+1130   We report both rather than keeping whichever one flatters the estimate. We do not read the accuracy
+1131   null as a thresholding artefact, because Section 7 traces it instead to seed variance at or below item
+1132   noise on seven of the ten traits. Dehghani et al. (2021) show that benchmark choice alone can reorder
+1133   methods. That is a claim about the correlations a ranking inherits. Neither paper estimates a seed
+       covariance.
+
+
+                                                         21
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1134
+       Other authors take up the reporting and comparison of results across several datasets at once, instead
+1135   of the measurement of the noise inside one of them. Demšar (2006) and Dror et al. (2017) give the
+1136   tests for a claim that spans multiple datasets. Card et al. (2020) shows how little power a typical
+1137   comparison carries. Gorman & Bedrick (2019) measures how much a single standard split decides,
+1138   and Burnell et al. (2023) argue for reporting per-instance results beside one aggregate, which is the
+1139   same reporting question Henderson et al. (2018) and Agarwal et al. (2021) press in reinforcement
+1140   learning, where the first shows how far a reported result moves with the random seed alone. The
+1141   second proposes a stratified bootstrap that resamples runs independently inside a fixed task set, which
+1142   widens an interval only for run noise and leaves cross-task dependence outside it. Their Appendix A.5
+1143
+       does add a variant that resamples tasks too, for the one-run-per-task regime, and tasks drawn as
+       exchangeable still carry no covariance between them. None of them supplies the cross-benchmark
+1144
+       seed covariance. Each one either carries an assumption of independence across datasets or works
+1145
+       around the dependence without any measurement of it.
+1146
+1147   Hardy et al. (2026) decompose benchmark variance across 4,000 released models with generalizability
+1148   theory. The replication there runs over models instead of seeds. The same effective-count algebra
+1149
+       reaches raters in Kohli (2026), where nine frontier judges carry roughly two independent votes
+       because they err on the same items, a correlation among judges of one model on a different axis from
+1150
+       benchmarks of one run. On the same side of the pipeline, Messing (2026) finds naive standard errors
+1151
+       40 to 60 percent too small once judge and prompt choice enter the variance.
+1152
+1153   Four older results in psychometrics supply the machinery we reuse. We name them because a reader
+1154   from that field will recognise the estimator before they recognise the application. Spearman (1904)
+1155
+       corrects a correlation for attenuation by pairing two error-independent measurements of each thing.
+       Our cross-half identity (2) is that correction carried to a covariance matrix, where half A and half B
+1156
+       of one item set play the two measurements. The correction lands on the diagonal as well as off it.
+1157
+       Cronbach (1951) reads a split-half coefficient as an estimate over random halves of an item universe,
+1158   which is the reliability we tabulate per trait in Table 3, and which null N3 re-randomises 50 times.
+1159   The split itself moves ΛM by only 0.002. Brown (1910) and Spearman (1910) give the prophecy
+1160   formula for the reliability of a test lengthened k times, and its denominator 1 + (k − 1)ρ carries
+1161   exactly the algebraic form of Λ2 , with items in the role our benchmarks take. The two are not one
+1162   quantity. That ρ is a correlation between parallel items, while ours is a correlation between the seed
+1163   effects on two benchmarks, so substitution of the battery means of Table 3 into that denominator
+1164   at k = 10 returns 6.87 and 3.91, well above our own Λ2 . Campbell & Fiske (1959) arrange traits
+1165   against methods in one matrix and read convergent and discriminant validity off its blocks, and our
+1166   within-format against cross-format separation of RˆE in Section 5.2 is the same reading, where scoring
+1167   format takes the method role and the benchmark the trait role. Only one of their two legs is open
+1168
+       to us here. No benchmark appears in two formats. We can therefore read method variance off the
+       heterotrait blocks. We cannot read the monotrait convergent diagonal a fully crossed design would
+1169
+       supply. Brennan (2001) gives the variance-component framework that Hardy et al. (2026) apply
+1170
+       over released models, where our facet of generalisation is the training seed, not the rater and not
+1171   the occasion. Item response theory offers the other modern route into item-level measurement, and
+1172   Hofmann et al. (2025) fit an ability model per benchmark from existing evaluation results, on a panel
+1173   overlapping ours and with seven authors in common with Heineman et al. (2025). A latent ability per
+1174   benchmark carries no off-diagonal noise term, so that route reaches the same wall from the other side.
+1175   Kipnis et al. (2024) do fit a common factor across six benchmarks, correlating at 0.94 with total score,
+1176   and that is signal-side structure rather than the seed-noise covariance we need. Outside machine
+1177   learning, Hedges et al. (2010) handle dependent effect sizes inside a cluster with a standard error that
+1178   needs no knowledge of their covariance structure, where we estimate that correlation instead and
+1179
+       spend it on Keff , a point estimate a practitioner can act on rather than a robust band.
+1180
+1181   C    S UPPLEMENTARY RESULTS
+1182
+1183   The asymmetry check behind gate G3 is separate from the negative diagonal, since the largest gap
+1184   between Cov(dA        B             B A
+                        j , dk ) and Cov(dj , dk ) is 2.44 bootstrap standard errors. The defined pairs will
+1185   produce that by chance alone. A second reason stands behind that, since the release carries no
+1186   source-document key we could properly split on. The per-item records group only MMLU, into that
+1187   benchmark’s 57 subjects. Every other trait receives exactly one group. The same near-zero signal that
+       drives three diagonals negative also pushes the accuracy off-diagonals numerically out of range. Over
+
+
+                                                         22
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1188
+1189   Table 6: Scorecard for the eleven registered predictions of Appendix B.5. Because the screening set
+1190   was never held out, every verdict here is exploratory, and five of the eleven are falsified, four held
+1191   and two unfalsifiable as registered. Predictions 9 and 11 are scored below from the per-run reduction
+1192   supplied with this paper, which the released pipeline never scores, while prediction 8’s ratio range
+1193
+       comes from the pipeline’s own G2 row. Prediction 7 asked for a bootstrap lower bound the external
+       check does not ship, so only its point estimate can be read. Prediction 6’s row is scored on the excess
+1194
+       Λ − 1, and our plan named σagg without naming a scale, so that reading is post hoc and Λ itself would
+1195
+       sit inside the registered band.
+1196
+         #     Claim (short)                      Registered         Measured           Verdict
+1197
+                                                  threshold
+1198
+         1     ΛM , ΛA above thresholds, LB       1.349 / 1.40       1.244 / 1.078      Falsified on both sides
+1199
+               >1
+1200     2     ΛA /ΛM                             ≥ 0.8              0.867              Held
+1201     3     Excess retained after s; N5        > 0.70; < 0.30     1.23; 0.61         Falsified on the N5 leg
+1202           share
+1203     4     N6 share of the observed excess    < 0.50             0.015              Held
+         5     Bands where σindep                 ≥ 4/5              1/5                Falsified
+1204
+               underpredicts, read as the Λ
+1205           interval excluding 1
+1206     6     PolyPythias transport error, and   < 20%; > 20%       +66%;              Falsified on the first leg,
+1207           σindep missing by more than                           −28.9%             second leg held, at
+1208           20%                                                                      Nunit = 3
+         7     Signal-and-noise Λ                 > 1, LB > 1,       1.705 (bpb, seed   Unfalsifiable as
+1209
+                                                  on one seed type   panel)             registered
+1210     8     Traits with info ratio in          ≥ 8/10             10/10,             Lower leg unfalsifiable
+1211           [1.4, 3.0]                                            1.571–1.732
+1212     9     Cross-format Λ                     > 1.2, LB > 1      0.921 / 0.965      Falsified on both sides
+1213     10    ∥RE − RP ∥F                        > 0.5              5.59 / 6.49        Held
+         11    Pairs with Pflip > 0.05            > 10%              30.3% (455 of      Held
+1214
+                                                                     1,500)
+1215
+1216
+1217
+1218
+       the eight defined accuracy traits, the estimated correlations run from −0.216 to 1.296, the upper end
+       being ARC-Easy with MMLU, and the symmetrised submatrix carries one negative eigenvalue at
+1219
+1220
+       −0.55 against a leading 3.85, so RˆE on accuracy lacks the positive semidefiniteness a correlation
+       matrix has, which is exactly what an unbiased estimator of a covariance does when the quantity
+1221
+       under estimation sits near zero. We report it unprojected, since projection onto the nearest valid
+1222
+       matrix would move the accuracy numbers. Nothing in the evidence we have fixes the direction those
+1223
+                  numbers should move. Our headline Λ does not pass through RˆE at all, because c Tc and
+                                                                                                  P
+       accuracy
+1224   P
+          c Uc are formed directly from the cross-half products. No primary estimate depends on the validity
+1225   of that submatrix as a correlation matrix. The margin submatrix needs no such caveat. Nine defined
+1226   traits there give off-diagonals from −0.157 to 0.802. All nine eigenvalues are strictly positive.
+1227
+1228
+       At 25 configurations per band, the size slices below are too wide to rank sizes, and the single
+       separation at 530M reads as an underpowered slice of a real effect, since nine of the ten band
+1229
+       estimates still sit above 1, though the five accuracy bands are the same runs thresholded at zero and
+1230   the pooled accuracy interval of 0.993 to 1.157 still contains 1. Prediction 5 asked for underprediction
+1231   in at least four of five bands. Read strictly as a point comparison, it holds on both sides, 5 of 5 on
+1232   margins and 4 of 5 on accuracy. The stricter interval reading we score instead gives 1 of 5, which
+1233   falsifies it. Both readings are reported here. The verdict’s dependence on the reading stays visible.
+1234
+1235
+       Permutation null read as a test, against the registered wild cluster bootstrap interval. Our
+1236   registration named null N2 a bias check for gate G4, never the headline test. The fraction of
+1237   permutation replicates at or above the observed value is carried by its released summary. That is
+1238   0 of 500 on margins and 0.028 on accuracy. Read that way, its disagreement with the registered
+1239   interval falls on the accuracy side. The wild cluster bootstrap still covers 1 there, and the permutation
+1240   puts ΛA = 1.078 above 97.2 percent of replicates. Those two answer separate questions here. The
+1241   permutation reassigns seed labels inside a configuration and inside a trait. That reassignment therefore
+       holds every configuration fixed and carries none of the recipe clustering, deliberately. Our registered
+
+
+                                                            23
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1242
+1243   Table 7: Λ by size band on all 25 recipes, both phenotypes, each band carrying 25 configurations,
+1244   and intervals are the wild cluster bootstrap-t. The 1B margin interval has no lower endpoint because
+1245   the bootstrap-t bound on the squared ratio fell below zero. At 25 configurations, the bands are too
+1246   wide to rank sizes, and only 530M shows a separation from 1 on either side. Each band holds one
+1247
+       configuration per recipe, so its 25 clusters are singletons, and the design effect of Section 2 has
+       nothing to act on inside a band, which leaves these intervals at the independence reading rather than
+1248
+       at a clustered one.
+1249
+                          Size                  ΛM        95% CI        ΛA       95% CI
+1250
+1251                      150M                 1.101    0.781–1.344    1.028   0.878–1.165
+                          300M                 1.350    0.638–1.803    1.080   0.836–1.288
+1252
+                          530M                 1.514    1.064–1.837    1.219   1.083–1.338
+1253                      750M                 1.110    0.686–1.407    0.987   0.310–1.320
+1254                      1B                   1.149     n/a–1.751     1.205   0.805–1.497
+1255                      Pooled (N = 125)     1.244    1.143–1.338    1.078   0.993–1.157
+1256
+1257
+1258
+1259
+1260
+1261
+1262
+1263
+1264
+1265
+1266
+1267
+1268
+1269
+1270
+1271
+1272
+1273
+1274   Figure 2: Calibration of Λ̂ against the truth under null N1 at six effect sizes, 2,000 replicates
+1275   each, margin (left) and accuracy (right). The band is the 2.5th to 97.5th percentile of the replicate
+1276   distribution. The dashed line is the identity. The recovered mean sits on the identity at every point in
+1277
+       both phenotypes, including at zero, where the offset gate G4 would have fired had the curve sat above
+       it.
+1278
+1279
+1280   interval instead resamples 25 recipe clusters and pays for the dependence between a recipe’s five
+1281   sizes, and we report the registered procedure as the headline, which is the conservative one here,
+1282   and we report the permutation fraction, so that a reader who prefers the other reading finds it stated,
+1283   without backing it out of the bias table.
+1284
+1285   A correlation in shared scoring format separates from one in the run. The off-diagonal sum in
+1286   Tc is restricted by the registered check to the ordered pairs whose two traits differ in format. The
+1287
+       diagonal is left to Uc . The null value stays exactly 1 under that restriction. A correlation living in
+       shared scoring format therefore admits separation from one living in the run. The released pipeline
+1288
+       never ran it. It is scored separately here on the same 375 runs in a standalone script that reproduces
+1289
+       the released headline to four decimal places before any restriction is applied. Of the 90 ordered
+1290   off-diagonal pairs, exactly 54 cross a format boundary, and on those ΛM is 0.921 (0.801–1.035)
+1291   against 1.244 on the full battery, and ΛA is 0.965 (0.848–1.063). Thus, prediction 9 fails against its
+1292   registered 1.2. It lands well below the 1.153 that a correlation of uniform size would have put there.
+1293   BoolQ is the only yes-or-no trait. Every pair it enters necessarily crosses a boundary and it makes no
+1294   within-format contribution. Its seed variance is by far the largest of the ten at 1.43 × 10−3 against
+1295   4.34 × 10−4 for the next. Exclusion of BoolQ leaves a nine-trait battery where the cross-format
+       restriction gives 1.006 (0.972–1.039), against the 1.786 (1.689–1.877) the same nine traits give
+
+
+                                                         24
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1296
+1297   Table 8: Practitioner table in accuracy points at the median 300M configuration. Independence is the
+1298   assumption of current practice, and measured applies the estimated r̄E = 0.0181 at the same per-trait
+1299   SDs. The column Pflip is the probability that a 1-point true gap reverses on a single pair of seeds.
+1300   On this phenotype, the fold means favour the full matrix over independence, 0.0105 against 0.0143,
+1301
+       and no interval on that gap is shipped by our pipeline, so the comparison resolves nothing either way.
+       We recommend no structural model even so, because every model in the bake-off is handed held-out
+1302
+       per-trait seed SDs that a practitioner without replicate runs does not have. Our measured column
+1303
+       is the correction to apply only to a battery weighted like this one. The flip curve is shipped by the
+1304   release at ten traits only, and the K = 4 and K = 7 rows are (4) and Pflip evaluated at a smaller K
+1305   on the same ten-trait quantities, so those rows are arithmetic and not a second measurement. The
+1306   one PolyPythias estimate clearing that arm’s detection limit is an accuracy Λ of 2.286 at three units,
+1307   which points away from the 1.078 this table applies and carries no interval.
+1308                   K      Assumed σagg (indep.)    Measured σagg        Keff     Pflip at 1-pt gap
+1309
+                       4             0.754                  0.774           3.79          0.181
+1310                   7             0.570                  0.600           6.31          0.119
+1311                   10            0.477                  0.514           8.60          0.085
+1312
+1313
+1314   Table 9: Bias table. Populations with the stated structure are pushed by each null through byte-
+1315   identical code in both phenotypes, and entries are the manufactured or recovered Λ̂ with the SD over
+1316   replicates. The first two rows are consumed by gate G4, while the last two are consumed by gates
+1317   G5 and G8. Rows N3 and N4 are generated at the observed correlation, so each is a reference for a
+1318   re-split or a post-partialling Λ̂, with no null value attached.
+1319       Null   Structure                                                    ΛˆM        SD        ΛˆA     SD
+1320
+           N1     Simulation, r̄E = 0, real item counts and reliabilities    1.0009      0.046    1.0004   0.048
+1321
+           N2     Per-trait-independent seed-label permutation, real data    1.0010      0.048    0.9984   0.039
+1322       N1     Simulation, r̄E = 0.05 (true Λ = 1.2042)                   1.2048      0.051    1.2044   0.053
+1323       N1     Simulation, r̄E = 0.10 (true Λ = 1.3784)                   1.3788      0.055    1.3782   0.057
+1324       N1     Simulation, r̄E = 0.20 (true Λ = 1.6733)                   1.6730      0.059    1.6724   0.061
+1325       N1     Simulation, r̄E = 0.30 (true Λ = 1.9235)                   1.9226      0.059    1.9220   0.061
+           N1     Simulation, r̄E = 0.50 (true Λ = 2.3452)                   2.3433      0.052    2.3429   0.053
+1326
+           N3     Item-split re-randomisation, 50 draws                      1.2459      0.002    1.0843   0.008
+1327       N4     Zero-mediation through pooled-slope regression             1.0910      0.096    1.1045   0.062
+1328       N5     r̄E = 0 plus run-level multiplicative gain, σg = 0.05      1.1477      0.050    0.9986   0.048
+1329       N6     r̄E = 0 plus batch offset (default vs. aux shift)          1.0038      0.044    1.0030   0.047
+1330       N6     Same, batch-free contrast                                  1.0004      0.062    1.0003   0.065
+1331
+1332
+1333   unrestricted, and the correlations separate the same way on the nine traits whose margin seed variance
+1334
+       is defined. WinoGrande is the one trait that set leaves out. Over those nine the mean off-diagonal
+1335   of RˆE is +0.624 over the 16 within-format pairs against +0.007 over the 20 that cross. Neither
+1336
+       the ARC pair nor the multiple-choice block alone produces this. The three cloze traits, taken by
+       themselves, give 1.225 (1.064–1.367). After the exclusion of ARC-Easy and ARC-Challenge, the
+1337
+       remaining multiple-choice block gives 1.479 (1.416–1.541) on its own. So the margin correlation is
+1338
+       not one shift common to every benchmark. Its concentration inside the two larger format blocks is
+1339   therefore a limitation of this battery’s composition. Our bake-off does not say otherwise, since P1
+1340   carries a free loading per trait. A rank-one structure whose loadings concentrate inside the two larger
+1341   format blocks reproduces both the ordering it wins and the blocks the restriction exposes.
+1342
+1343   The phenotypic matrix is not a stand-in for the environmental one. ∥RE − RP ∥F = 5.59 in
+1344   margin space and 6.49 in accuracy space, both far above the registered 0.5 of prediction 10. Three
+1345   diagonal entries of ΣˆE are negative, one on margins and two on accuracy. Eighteen of the 90 margin
+1346   off-diagonal pairs and 34 of the 90 accuracy pairs are therefore left with no defined correlation.
+1347   Each is filled with a zero by the released code before differencing. The same fill sends an undefined
+1348   diagonal into the norm as a zero against the one RP holds, worth 1.0 of the squared margin norm
+1349   and 2.0 of the accuracy one. Repair of the diagonal alone gives 5.499 and 6.339, and restriction to
+       the cells both matrices define, which is the reading we regard as cleanest, gives 4.374 and 4.593, so
+
+
+                                                           25
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1350
+       prediction 10 is held under all three readings, and we print the convention the pipeline used, though a
+1351   Frobenius threshold of 0.5 on a ten-trait correlation difference is one that almost no pair of matrices
+1352   would meet. So the holding carries little here. The element-wise comparison below is what has
+1353   content.
+1354
+       The element-wise correlation between the two matrices’ off-diagonals is 0.756 on margins and 0.345
+1355
+       on accuracy. Mean off-diagonals are 0.281 for RE against 0.750 for RP on margins and 0.273 against
+1356
+       0.754 on accuracy, where the RE figure averages over the defined pairs and the RP figure over all 90,
+1357   which on the matching pairs alone would read 0.743 and 0.769. Thus, RP ranks the pairs only on the
+1358   more informative phenotype. It gets their magnitude wrong by a factor of 2.7 on margins and 2.8 on
+1359   accuracy, which is why its substitution inflates every predicted σagg (mean predicted 0.0072 against
+1360   an observed margin σagg of 0.0057), and why P2 is the worst model in the bake-off by an order of
+1361   magnitude.
+1362
+       A reviewer will ask whether the scale is the whole story. So a sixth baseline was scored after the
+1363   pre-committed five were in. We report it as the exploratory addition it is. P2 R takes the same RP
+1364   and shrinks its off-diagonals by a single factor fitted empirically on the training fold. Its value is the
+1365   ratio of the two mean off-diagonals there. That factor comes out at 0.366 on margins and 0.370 on
+1366   accuracy against whole-population ratios of 0.375 and 0.362. Held out on the same five recipe folds,
+1367   it scores 0.0131 on margins. On accuracy it scores 0.0342. One scale parameter recovers most of
+1368   what P2 lost. P2 R still loses to P1 by a factor of 2.3 on margins and to independence on accuracy,
+1369   and the same ordering repeats identically at three fold seeds, P2 R beating independence on margins
+1370   and losing to it on accuracy each time, and five folds can say no more than that. So the scale is most
+1371
+       of the failure and not all of it. The rescaled plug-in fits its factor on replicate runs. That is exactly
+       what made RP attractive to a practitioner who has none. Cheverud’s conjecture does not carry over
+1372
+       here. The version of it that comes closest needs the replicates it was meant to replace.
+1373
+1374
+       Redundant-pair and outlier checks, dropping one recipe, one size band. One trait at a time.
+1375
+       Leave-one-recipe-out Λ ranges over 1.207–1.256 (margin) and 1.065–1.099 (accuracy) across the 25
+1376   recipes, each of which is dropped once in turn, and no single recipe cluster moves the estimate by
+1377   more than 0.037 in margin space or 0.021 in accuracy space. Our headline is not one recipe’s doing.
+1378
+1379
+       Leave-one-size-out ranges over 1.178–1.289 and 1.047–1.115. The variability of the size bands alone
+       is far greater. Variability there runs over 1.101–1.514 and 0.987–1.219. That is the 25-configuration
+1380
+       slice showing through, with no size effect in it. The between-band spread sits inside the per-band
+1381
+       intervals. The released sweep drops recipes and size bands, but not traits. Our registered leave-
+1382   one-trait-out sweep, run here on the same reduction, moves the headline much further than either
+1383   (Table 10). Exclusion of BoolQ raises ΛM to 1.786 (1.689–1.877) and ΛA to 1.558 (1.412–1.687),
+1384   the second of those above the 1.40 the accuracy side reports as a bounded null. Exclusion of CSQA
+1385   lowers them to 1.096 and 1.014. That is the smallest pair the sweep produces in either phenotype.
+1386
+1387
+       The mechanism is a variance share. BoolQ carries 68 percent of the margin trace of ΣˆE and 84
+       percent of the accuracy trace. The covariance with the other nine averages near zero. It therefore
+1388
+       enters Λ2 − 1 almost entirely through the denominator, where it divides the excess the nine traits
+1389
+       show.
+1390
+1391   Read as a weight vector, those trace shares have a participation ratio of 1.97 on margins and 1.42
+1392   on accuracy. Both run over the traits whose seed variance is defined. Each headline is close to a
+1393
+       two-trait statistic. The noise-side participation ratio of 3.57 that Section 6 sets beside BenchScope
+1394   describes RˆE alone. A reader should hold the two apart. One counts the directions the seed moves.
+1395
+       The other counts the benchmarks this battery’s variance profile lets into the average. Standardisation
+       of each trait by its own estimated seed SD before averaging gives 1.803 on the nine defined margin
+1396
+       traits and 1.707 on the eight defined accuracy ones. That is the equal-weight reading a reviewer will
+1397
+       ask for. We give it as a diagnostic and not as a second headline. Section 4 gives our reason for that.
+1398   That standardisation divides by an estimated SD sitting at or below item noise on seven of the ten
+1399   accuracy traits, and the release also carries no resampling distribution for the standardised form. We
+1400   necessarily print no interval beside those two values. Their separation from the headline is read only
+1401   as a point difference. They point where the leave-one-trait-out sweep already points. We can still
+1402   say how those two move when the battery changes, since the released matrices carry every defined
+1403   trait. Dropping each defined trait in turn leaves the standardised margin figure between 1.625 and
+       1.910 and the standardised accuracy figure between 1.388 and 1.780, spreads that sit above both
+
+
+                                                          26
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1404
+       raw headlines throughout. We do not score those points against the registered thresholds, because a
+1405   quantity we print without an interval is not one we are entitled to test. BoolQ’s removal sits at the top
+1406   of the margin sweep at 1.910 and near the top of the accuracy sweep at 1.761, so standardisation does
+1407   not neutralise that trait, and it only stops the raw weights from handing it 68 and 84 percent of the
+1408   seed trace. This sweep also runs on the defined traits alone, so its trait set is chosen by the sign of an
+1409   estimated variance, and the traits that sign deletes are the low-seed-signal ones that would pull the
+1410   mean correlation down, which points that selection upward if low-signal traits also carry low true
+1411   correlations, an assumption we state and do not test. Either way it is the selection our retention rule
+1412   pre-commits against. That is stability and not validity. The small estimated denominators sit inside
+1413
+       every one of these subsets exactly as they sit inside the full battery, and no part of this sweep is a
+       sampling statement. Raw weighting is what holds the accuracy side near 1, while equal weighting
+1414
+       over the traits we can define does not. A reader should weigh that against the intervals. The trait
+1415
+       sweep spans 0.690 in margin space and 0.544 in accuracy space. The wild-cluster intervals are 0.195
+1416   and 0.164 wide. Which ten benchmarks the release happens to contain moves the margin headline 3.5
+1417   times further than sampling error does and the accuracy headline 3.3 times further, and we report Λ
+1418   to three decimals because the estimator resolves it there on a fixed battery whose composition is the
+1419   larger uncertainty. A span set against an interval width is not a like-for-like comparison, so we also
+1420   put the two on one scale. The cluster jackknife over the ten removals gives a composition SE of 0.554
+1421   on margins and 0.456 on accuracy, against wild cluster sampling SEs of 0.045 and 0.038, ratios of
+1422   12.3 and 12.1. The jackknife scales the dispersion of those ten values by 2.85, so a reader who prefers
+1423   their raw spread against sampling error reads 4.33 and 4.25 instead, and the order-of-magnitude
+1424
+       framing belongs partly to that convention. Composition is therefore the larger uncertainty by an
+       order of magnitude, and not by the factor of about 3.5 that the span comparison suggests. Removing
+1425
+       the BoolQ row drops those composition SEs to 0.138 and 0.073, still 3.07 and 1.93 times sampling
+1426
+       error, so one trait carries most of the excess while the residual across the other nine stays larger
+1427   than sampling error on both sides. We do not read any of that as a reason to drop a trait. A reader
+1428   who treats the ten benchmarks as exchangeable draws, rather than as the fixed battery our estimand
+1429   is conditional on, can add the two SEs in quadrature. That gives 0.556 on margins and 0.457 on
+1430   accuracy, so the intervals run 0.15 to 2.33 and 0.18 to 1.974, and neither separates from 1. A normal
+1431   interval is the wrong shape down there, since Λ = 0.15 implies r̄E = −0.109 and lands 0.003 inside
+1432   the floor of −1/9 that K = 10 allows, so the accurate reading is that a trait-resampling estimand
+1433   is not estimable on ten benchmarks when one of them holds 68 percent of the trace. Dropping the
+1434   BoolQ row still leaves 0.959 to 1.529 on margins and 0.917 to 1.239 on accuracy, and both cover 1.
+1435
+       That quadrature is conservative, since each leave-one-out estimate already carries the sampling noise
+       the second term adds back. We do not adopt that estimand, because our claim is conditional on this
+1436
+       battery and our abstract says so. We report the arithmetic because a reader is entitled to know that
+1437
+       our margin effect is a statement about these ten benchmarks and not about benchmarks in general.
+1438   One caution belongs with the table, because Λ rises with K at fixed correlation, so a nine-trait and
+1439   a ten-trait value are not strictly on one scale, and our margin r̄E of 0.061 would read 1.219 on any
+1440   nine traits rather than the 1.244 we report on ten, with the accuracy pair at 1.070 and 1.078. The
+1441   same conversion governs the eight-trait figure Section 7 quotes, since 1.707 on eight traits leaves
+1442   2.75 effective benchmarks while the raw accuracy r̄E of 0.0181 on those same eight leaves 7.10, so
+1443   the drop from the ten-trait 8.60 is part weighting and part trait count, and only the 7.10 comparison
+1444   holds the count fixed. Four of the ten margin removals and five of the ten accuracy removals still sit
+1445   above that mechanical level. Every span quoted here is taken inside the nine-trait column, so none of
+1446
+       it turns on that conversion.
+1447   The ARC pair, the most likely redundancy, carries RˆE = 0.801 on margins, and removal of both
+1448   its traits gives 1.118 (1.059–1.174) and 1.012 (0.929–1.086). That pair inflates the headline without
+1449   creating it. The configuration bootstrap at N = 125, ignoring recipe clustering, gives 1.069–1.426
+1450   (margin) and 0.976–1.182 (accuracy), wider than the wild-cluster intervals, so the recipe clustering
+1451   absorbs far less variance than the design effect anticipated. Read as a design effect, the ratio of
+1452
+       squared standard errors, 0.045 against 0.093 on margins and 0.038 against 0.052 on accuracy, that pair
+       gives 0.24 and 0.53. The quantity the plan defined is released separately by the pipeline, 1 + 4ρICC
+1453
+       at the realised intraclass correlation of Tc over recipes, which reads 2.06 on margins and 1.26 on
+1454
+       accuracy, the first above the 1.60 the plan assumed. The two statistics cluster different things. The
+1455   released one clusters the numerator Tc and the ratio above the linearised residual Tc − Λ2 Uc . Nothing
+1456   forces them onto the same side of one. The two intervals also differ in three ways at once. Those
+1457   are the resampling unit, the interval construction, and the treatment of the denominator, and the
+
+
+                                                          27
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1458                                                                                             P
+       clustered one is a bootstrap-t over recipes that holds the denominator at the observed c Uc , while
+1459   the other is a percentile bootstrap over configurations that resamples both sums, so we report all three
+1460   figures and read no single ρICC off the interval widths. Both headline readings are left standing by
+1461   the wider interval, since the margin lower bound is computed at 1.069 and still sits above 1, and the
+1462   accuracy interval still covers it, so the primary interval being the narrower of the two changes neither
+1463   verdict. Few clusters is the regime where cluster-robust standard errors are biased downward (Bell &
+1464   McCaffrey, 2002), and twenty-five is few enough that the primary interval is a bootstrap-t in place of
+1465   a plug-in sandwich.
+1466
+1467
+       Table 10: Leave-one-trait-out Λ on all 125 configurations, both phenotypes, each estimate formed
+1468
+       on the nine remaining traits and ordered by the margin column. BoolQ is the only yes-or-no trait
+1469
+       and carries the largest per-trait seed variance in both phenotypes, and its removal raises the headline
+1470   furthest, with WinoGrande’s the only other removal that raises it at all. Intervals are given in the text
+1471   for the two extremes.
+1472                                      Trait removed          ΛM      ΛA
+1473
+                                          BoolQ                  1.786   1.558
+1474                                      WinoGrande             1.246   1.102
+1475                                      HellaSwag              1.244   1.076
+1476                                      PIQA                   1.243   1.073
+1477                                      MMLU                   1.205   1.068
+                                          ARC-Challenge          1.195   1.039
+1478
+                                          OpenBookQA             1.178   1.074
+1479                                      ARC-Easy               1.161   1.046
+1480                                      Social IQa             1.139   1.032
+1481                                      CommonsenseQA          1.096   1.014
+1482                                      None, all ten traits   1.244   1.078
+1483
+1484
+1485   Per-pair flip census over the same-size configuration pairs of each band, at the measured σagg .
+1486   Prediction 11 asked for Pflip > 0.05 on more than 10 percent of same-size configuration pairs at
+1487   the measured σagg , which, at the
+                                       accuracy-space σagg of 0.00514, means an observed aggregate gap
+1488   below 0.01196. Of the 5 × 25 2 = 1,500 same-size pairs, 455 sit below that line, 30.3 percent. Those
+1489   five bands run from 28.7 to 33.3 percent. The prediction holds with room to spare. An observed
+1490   gap is itself widened by the seed noise the census is about. So 30.3 percent is a lower bound on the
+1491   fraction of pairs whose true gap is that small.
+1492
+1493   A single checkpoint is not a stable summary of a seed. The fifth registered check asks how
+1494   much of a run’s battery score belongs to its seed. The rest belongs to the trajectory position at the
+1495   scored step. All nine PolyPythias seeds of 160M were rescored twice, at step143000 and at
+1496   step142000, the released checkpoint 1,000 optimizer steps before it, on the nested 1,800-item
+1497
+       subsample of the nine non-MMLU traits. Items, traits, batching, and scoring code were held fixed,
+       so only the checkpoint moves. MMLU is dropped from this check. Its 57 subjects would triple the
+1498
+       forward passes to move one trait of ten. On margins, the between-seed SD of the battery mean sits at
+1499
+       0.00513. The root-mean-square shift from that 1,000-step displacement is 0.00456, a ratio of 0.890.
+1500   On accuracy, the same two are 0.00451 and 0.00710, a ratio of 1.573. Across the nine seeds, the
+1501   battery at the final checkpoint shows a correlation of 0.573 with the battery 1,000 steps earlier on
+1502   margins and −0.070 on accuracy, and a single checkpoint is therefore not a stable summary of a
+1503   seed at this size. On accuracy the shift exceeds the whole between-seed spread. On margins the
+1504   two sit within 11 percent of each other while the seed ordering still does not survive it, though our
+1505   estimate survives that, since a trajectory wobble moves every trait of a run jointly and is the kind of
+1506   run-level deviation RE is built to hold, and anyone comparing two finished runs necessarily meets
+1507   the wobble along with the seed. What it costs us is the word seed. Our estimand is run-level noise at
+1508
+       the scored step, with trajectory position inside it. Nothing in our design separates that component
+       from initialisation.
+1509
+1510   The check also does not travel far, since it is our narrowest PolyPythias measurement. It uses only
+1511   1,800 items against the 4,755 of the transport estimate. The between-seed SD we compare it against
+       comes from nine numbers alone. We read it exclusively at a final checkpoint. By contrast, the
+
+
+                                                            28
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1512
+       DataDecide estimate sits at a common mid-training step. Its wobble we have not measured, and
+1513   we have no reason to think it smaller. BoolQ again carries the extreme. Its per-trait between-seed
+1514   SD is 0.0438 against a per-trait shift of 0.0370, both the largest of the nine and the same trait the
+1515   leave-one-trait-out sweep singles out.
+1516
+1517
+       Our accuracy interval is the narrower despite the larger null SD. A second reading of the
+1518
+       primary interval, which no registration of ours anticipated, compares the plug-in sandwich standard
+1519
+       errors of Λ̂ the bootstrap uses for studentisation, 0.045 and 0.038 (Appendix B), against the null
+1520
+       SDs that N1 simulated independently of them. On margins, the two are in agreement, 0.045 against
+1521
+       0.046, while on accuracy they are not, 0.038 sitting 21 percent below the simulated 0.048, and our
+1522   accuracy interval is therefore the narrower of the two despite that side carrying the larger null SD.
+1523   Our bootstrap is not the reason. Its own quantiles run wider than the t(24) they replace. The reported
+1524   half-widths of 0.0974 and 0.082 are roughly 2.2 standard errors each against 2.06. Substitution
+1525   of the simulated value gives 0.979–1.178. That range covers 1 as the reported interval does. So
+1526   the non-detection is not an artifact of whichever of the two the reader prefers, and we report the
+1527   registered bootstrap and leave the gap flagged and unreconciled, since the simulated population is not
+1528   the observed one, and N1 never scored coverage.
+1529
+1530   Whether a bootstrap at 25 clusters is calibrated at all. That question was scored separately, in
+1531   a simulation written from the definitions of Section 2. It was never written from the analysis code.
+1532   Those populations were shaped like the design, 25 clusters of five configurations, R = 3, K = 10,
+1533   exchangeable ΣE , independent half-A and half-B item noise, and recipe-level heterogeneity in how
+1534   much seed variance a recipe carries. Over 200 datasets per cell, at four true r̄E from 0 to 0.10 crossed
+1535   with four noise settings, empirical coverage of the nominal 95 percent interval runs from 0.920 to
+1536   0.975. Every cell sits inside two Monte Carlo standard errors of 0.95. The estimate Λ̂ sits within 0.01
+1537   of the truth in fifteen of the sixteen. Four cells whose dispersion matches ours, an SD of 0.044 against
+1538   the observed nulls’ 0.046 and 0.048 and widths from 0.203 to 0.238 against the margin interval’s
+1539
+       0.195, cover at 0.950, 0.935, 0.975, and 0.960. That is only a property of the procedure on a stylised
+       population, leaving this estimate on the real one unaddressed. It answers the worry that 25 clusters on
+1540
+       their own break the bootstrap. It settles nothing past that.
+1541
+1542
+1543   Coverage on the observed population, measured by the permutation null rather than by
+1544   simulation. Null N2 answers the question the stylised simulation leaves open, since relabelling
+1545   runs independently per trait inside a configuration holds the item noise, the trait means, and the
+1546
+       recipe clustering at their observed values. It sets the truth to Λ = 1. The fraction of registered
+       intervals covering 1 across permutations is coverage measured on our own population. Over 1,000
+1547
+       permutations at the registered 4,999 bootstrap replicates, the wild cluster bootstrap-t covers 1 on
+1548
+       0.925 of margin replicates and 0.954 of accuracy replicates against a nominal 0.95. The margin
+1549   shortfall is one-sided and sits in the tail our claim does not spend, because the interval falls entirely
+1550   below 1 on 0.049 of replicates against a nominal 0.025, and entirely above 1 on 0.026, and the upward
+1551   error rate that the exclusion of 1 buys is 0.026 against 0.025. The two-sided figure understates the
+1552   calibration of that claim. Our second margin reading of the same interval runs the other way entirely,
+1553   since the comparison of the upper endpoint against 1.349 asks whether the interval sits below a fixed
+1554   value. The 0.049 rate is how often it sits below the truth, so that reading spends the miscalibrated
+1555   tail at about twice its nominal rate, where the headroom is 0.011, a quarter of the realised SE on Λ,
+1556   and that is thin. The margin is thin enough that it makes the upper bound falling under 1.349 the
+1557
+       weaker of our two margin verdicts, and the cluster-t interval we did not register covers at 0.881 and
+       0.941, with upward rates of 0.044 and 0.023, so our registered choice returns most of what it costs
+1558
+       in width. Read as a test, the same permutations put ΛM above every replicate, a p below 0.001 that
+1559
+       needs no bootstrap calibration at all, and ΛA above 0.979 of them, close to the 0.972 of the released
+1560   500-replicate summary. That accuracy figure of 0.979 is a one-sided p of 0.021, so the permutation
+1561   rejects Λ = 1 on accuracy at a level the registered interval does not. We report both, not the one
+1562   that suits us. Which to believe turns on the width question of the paragraph above. We leave the
+1563   reading there. A third line on the width question comes from a scheme we never registered. The 25
+1564   leave-one-recipe-out estimates of Table 10 give a cluster jackknife SE of 0.049 on margins and 0.039
+1565   on accuracy, against the registered wild cluster figures of 0.045 and 0.038. A jackknife-t interval
+       on those same clusters would run 1.160–1.328 on margins and 1.012–1.145 on accuracy, inside the
+
+
+                                                          29
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1566
+       registered 1.143–1.338 and 0.993–1.157 on both sides. The width we registered is therefore the
+1567   wider of the two, and it is not the narrow choice a reader might suspect of a 25-cluster design.
+1568
+1569   One thing does move, since this null’s own dispersion over these 1,000 permutations is an SD of
+1570
+       0.0488 on margins and 0.0382 on accuracy against the 0.048 and 0.039 the released 500 gave, and
+       that dispersion sits with the bootstrap standard errors of 0.045 and 0.038, while N1 simulated 0.046
+1571
+       and 0.048. The accuracy gap of the paragraph above is therefore between the simulated population
+1572
+       and the observed one. It is not between the bootstrap and the width it should have had. The released
+1573   bias table already carried that. We did not read it. We report the registered interval, and now what it
+1574   covers on the observed population.
+1575
+1576
+       What a release would have to ship for gate G7, and why no release we found does. G7 asked
+1577   DataDecide for a held-out loss per run. That the run-level gain of Section 5.3 could be read on a scale
+1578   the phenotype does not share. No field of that kind exists.
+1579
+1580
+       We then looked outside DataDecide.             The PolyPythias evaluation artifacts, released as
+       EleutherAI/polypythias-evals, store one evaluation-harness result file per seed and per
+1581
+       checkpoint. The files we read, covering three model sizes at a final and an early checkpoint, carry
+1582
+       only accuracies, likelihood differences, and a single perplexity, LAMBADA’s. That perplexity runs
+1583   on exactly the items its own accuracy runs on, and therefore on the phenotype’s own scale, while the
+1584   Mistral release of Karamcheti et al. (2021) fails the other half of that requirement, since it is given as
+1585   five GPT-2 Small and five GPT-2 Medium runs at 610 checkpoints each with validation perplexity
+1586   on WikiText-103 and OpenWebText, and no benchmark battery scored per run. A per-run loss on
+1587   held-out text and a per-run battery have not appeared together in any release we found, which is why
+1588   the margin side ends bounded between 6 and 61 percent, and without resolution.
+1589
+1590   Transport to PolyPythias, scored on the nested 4,755-item battery at nine seeds per configuration.
+1591   PolyPythias’s nine seeds per configuration are passed by the second arm through the same estimator
+1592   on the nested 4,755-item battery. It gives a margin Λ of 1.40574 against 1.24395 here, an excess ratio
+1593   of 1.66323, so gate G6 fails in the direction opposite to the one the fallback anticipated, and RE from
+1594   DataDecide underpredicts PolyPythias. The gate is read on the excess Λ − 1, short by 40 percent,
+1595
+       where Λ itself is short by 12 and would instead sit inside the registered band. Our plan named σagg
+       without naming the scale. The choice of scale here is a post hoc decision. We report the reading
+1596
+       that fails. All 27 runs were rescored directly from the checkpoints for this estimate after the scoring
+1597
+       kernel was rewritten, and our aggregate is unmoved by that rewrite, giving the same Λ to five decimal
+1598   places and an excess ratio of 1.66321 before it, while this per-configuration table is written by the
+1599   second-arm job and is not in the released DataDecide directory. Its verification needs a rerun of that
+1600   job and not an inspection of the release.
+1601
+1602
+       Transport at five units, outside the registered design and scored only after the gate had been
+1603   read. The registered arm scores only three sizes. Those are the three we planned for, while
+1604   PolyPythias releases five. After the gate had been read, the 14M and 31M seed sets were scored
+1605   too, nine seeds each at the same step143000 and on the same 4,755 items. We report the result
+1606   as the exploratory deviation it is. Those two units move the margin Λ from 1.41372 to 1.26199,
+1607   1.414 to 1.262 at the precision the body quotes, and the excess ratio from 1.69592 to 1.07395, inside
+1608   G6’s 20-percent band. Accuracy Λ moves from 2.28589 to 1.71085 under those same two units.
+1609   The accuracy leg carries the wider gap of the two, since DataDecide gives 1.07837 there while
+1610   PolyPythias gives 2.28589 at three units and 1.71085 at five. Only the three-unit value clears the 2.05
+1611
+       detection limit of this arm. We computed no interval on that accuracy pair, so neither reading stands
+       alone. A gate that fails at three units and passes at five has decided nothing. The margin intervals
+1612
+       say so directly. The configuration bootstrap gives 0.939–1.781 at three units and 0.927–1.537 at five,
+1613
+       both covering 1 and both covering the DataDecide 1.24395, and the two extra units produce only a
+1614   reduction of the bootstrap standard error from 0.190 to 0.150, which leaves the arm as underpowered
+1615   as the registered minimum detectable Λ of roughly 2.05 in Section 4 says, and repairs nothing. The
+1616   rescore also does not reproduce the released transport number exactly on the registered three sizes.
+1617   Run in one job on one T4 with a 6,000-token cap against the registered 30,000, the rescore gives
+1618   1.41372 for the registered three sizes against the 1.40574 the pipeline reported, and that gap is 0.6
+1619   percent in Λ and 2 percent in the excess ratio, the size of drift Appendix D.6 documents across fp16
+       kernels. What survives that is the internal comparison, 1.41372 against 1.26199, both from the same
+
+
+                                                          30
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1620
+       kernel on the same device in the same job. The 45 per-seed score files are shipped unmodified with
+1621   the supplement, nine seeds at each of the five units.
+1622
+1623
+1624   Table 11: Bake-off on held-out recipes, five folds. Mean squared prediction error of log σagg , both
+1625   phenotypes. P0 is current practice, and lower is better. Every model is handed the held-out per-trait
+1626   seed SDs and differs only in the correlation matrix it multiplies them by, so the comparison isolates
+1627   correlation structure with variance estimation held fixed. P2 is handed RP computed on the held-out
+1628
+       fold itself, since it needs no replicates, and loses anyway. Our pipeline releases fold-mean errors
+       and no interval. The ranking rests only on point error over the same five folds. The pre-committed
+1629
+       decision rule is applied to it without an interval. On a fold where a trait’s cross-half variance comes
+1630
+       out negative, its seed SD is clipped to zero, which drops the trait rather than leaving it uncorrelated.
+1631   The clip runs before the model branch, so P0 carries it too. One margin trait and two accuracy traits
+1632
+       clip on the full population, which raises 1⊤ ΣˆE 1 by 0.3 and 4.8 percent. Our scored target keeps
+1633   them in full. The convention moves every model toward its target rather than ranking them.
+1634    Model                       Parameters    Margin SPE       Accuracy SPE   Rank against P3
+1635
+        P0 independence             K                0.0358           0.0143      worse on both
+1636    P1 rank-one competence      K +1             0.0057           0.0140      better on margin, worse on accuracy
+1637    P1 G rank-one plus gain     2K + 2           0.0063           0.0260      better on margin, worse on accuracy
+1638    P2 Cheverud plug-in RP      K                0.1073           0.1682      worse on both, by an order of magnitude
+        P3 full ΣE                  K(K + 1)/2       0.0068           0.0105      reference
+1639
+1640
+1641   External check on allenai/signal-and-noise, whose random seeds runs share no
+1642   models with ours. Both seed mechanisms and both phenotypes are given by Table 12, with and
+1643   without the leave-one-out control that removes a common run-level shift. The likelihood phenotype
+1644   carries a large correlation under both mechanisms. The accuracy phenotype carries none. The control
+1645   moves three of the four cells up rather than down, from 0.989 to 1.105, from 1.625 to 1.763 and
+1646   from 0.868 to 1.059, and only the initialisation likelihood cell falls, from 1.705 to 1.464. A control
+1647   that removes a common run-level shift was expected to attenuate a rank-one estimate throughout, so
+1648
+       at a single unit we read these four numbers as too unstable to carry that reading either way. So the
+       contrast we measured on DataDecide between the two phenotypes reappears here. We computed no
+1649
+       interval for these estimates. That makes the agreement suggestive and not independent confirmation.
+1650
+       The two populations are independent in their runs alone, since one lab shipped both releases, the
+1651   scoring harness is shared, and this release’s battery contains all ten of our traits. We compute these
+1652   as single-unit estimates with no cross-half correction. Attenuation toward 1 is necessary here. How
+1653   much of it there is goes unmeasured by this arm.
+1654
+1655
+1656   Table 12: Λ on the random seeds split, averaged over 20 released checkpoints. Initialisation seeds
+1657   give R = 10 runs, data-order seeds R = 9. The leave-one-out control partials each task’s deviation
+1658
+       against the mean of the others.
+1659               Seed mechanism        Phenotype             K        Λ      Λ (leave-one-out)       r̄E
+1660               Initialisation        bits-per-byte         18     1.705         1.464            0.112
+1661               Initialisation        accuracy-per-char      8     0.989         1.105           −0.003
+1662               Data order            bits-per-byte         18     1.625         1.763            0.096
+                   Data order            accuracy-per-char      8     0.868         1.059           −0.035
+1663
+1664
+1665
+       C.1   T HE GAIN CALIBRATION AND THE SPLIT SWEEP
+1666
+1667   How much of the margin excess a run-level gain can manufacture. Table 13 varies the two
+1668   quantities the registration left free in null N5, the gain SD and the simulator that converts a run-
+1669   level gain into item scores, and the default simulator applies the gain on a common margin scale,
+1670   which couples the ten traits more tightly than the released per-trait margin distributions do. The
+1671   matched simulator instead draws each trait’s margins separately from its own empirical distribution.
+1672   At the default σg = 0.05, the disagreement between the two simulators runs to a factor of seven.
+1673   The empirically estimated σg of 0.042, obtained by subtraction of the cross-half leakage variance
+       1.91 × 10−3 from the total 3.67 × 10−3 , sits between the grid points that matter, and the σg = 0.05
+
+
+                                                               31
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1674
+       cell sits 0.0009 above the corresponding row of Table 9, which is under half a Monte Carlo standard
+1675   error of the 500 replicates behind that cell. This gate is reported only at the default specification. That
+1676   is the one that fails it.
+1677
+1678
+       Table 13: Null N5 in margin space, as the share of the observed margin excess of 0.244 that a
+1679
+       run-level multiplicative gain manufactures, by gain SD and simulator. The row at σg = 0.042 is
+1680
+       the value estimated from the data, and σg = 0.05 is the pipeline default that gate G5 is scored
+1681   at. Accuracy is omitted. Every cell sitting within 0.004 of 1 carries no information, because the
+1682   simulator multiplies each margin by one plus the gain and then scores an item correct when its margin
+1683   is positive. A positive gain therefore moves no item across the boundary and leaves the accuracy
+1684   estimate unchanged.
+1685
+           σg                        ΛˆM (default sim.)   Share of excess     ΛˆM (matched sim.)    Share of excess
+1686
+           0.01                            1.007               0.029                1.001               0.003
+1687
+           0.02                            1.026               0.108                1.003               0.014
+1688       0.03                            1.058               0.236                1.008               0.031
+1689       0.042 (estimated)               1.108               0.443                1.014               0.059
+1690       0.05 (pipeline default)         1.149               0.609                1.020               0.081
+1691       0.10                            1.465               1.905                1.062               0.256
+1692
+1693
+1694
+       Every split the registration could have drawn, and what each would have done to the headline.
+       Because Tc and Uc are computed entirely inside configuration c and carry     no dependence
+                                                                                              P on which
+1695                                                                            pP
+       other configurations are in the sample, Λ on any subset of recipes is         c∈S Tc /    c∈S Uc . 
+                                                                                                          The
+1696
+1697
+       registered 8/17 partition can therefore be replaced here by an exact enumeration, and all 25    17 =
+       1,081,575 estimation sets are evaluated exhaustively in a 13-second job on one core. Table 14 reports
+1698
+       the resulting distribution of Λ and, for each side, the fraction of admissible splits that would have
+1699
+       crossed the registered threshold and the fraction that would have separated the estimate from 1, and a
+1700   reader who believes the registered split would have produced a different paper can read the answer
+1701   off this table.
+1702
+1703
+       Table 14: Exact sweep over all 25
+                                               
+1704                                         17 = 1,081,575 admissible estimation sets, both phenotypes,
+1705
+       enumerated on the full population. Every subset gives a finite estimate, no subset of either phenotype
+       reaches its registered threshold, and on accuracy 1,393 of them fall below 1. The reconstructed parti-
+1706
+       tion is the one the registered master seed induces under the released code, a post hoc reconstruction
+1707
+       of a rule the plan did not spell out, recovering no artifact.
+1708
+                                                                         Margin         Accuracy
+1709
+1710                      Λ on all 25 recipes (N = 125)                     1.244           1.078
+1711
+                          Λ on the reconstructed registered partition       1.199           1.099
+1712                      Smallest Λ over the 1,081,575 sets              1.037           0.963
+1713                      5th percentile                                  1.176           1.035
+                          Median                                          1.246           1.078
+1714
+                          95th percentile                                 1.285           1.124
+1715                      Largest                                         1.317           1.191
+1716                      Keff from smallest to largest                 5.77–9.31      7.05–10.77
+1717                      Registered threshold                              1.349         1.40
+1718                      Estimation sets reaching it                         0             0
+1719                      Estimation sets below 1                             0      1,393 (0.13%)
+1720
+1721
+1722   D        I MPLEMENTATION DETAILS
+1723
+1724   D.1      DATA STREAMING
+1725
+1726   Per-item outputs are read from the 122.9 GB of gzipped JSONL tarballs on the Hugging Face hub by
+1727   streaming each member exactly once, and only the item identifier, the correct-answer margin, and the
+       accuracy bit for the ten traits at the common step are retained, with the rest discarded. A run’s outputs
+
+
+                                                               32
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1728
+       are 37,682 items at roughly 30 MB compressed. The 375 DataDecide runs are reduced together to
+1729   48 MB of .npz, one array per run. The item split into halves A and B is one balanced draw per
+1730   trait from a frozen master seed, so its application is identical across every run and every trait of an
+1731   arm, and its regeneration needs no tarballs. The draw is a permutation of each trait’s item order and
+1732   involves no hash of the identifier. So the two arms do not share one split. The PolyPythias subsample
+1733   necessarily carries a split of its own.
+1734
+1735   D.2   T HE INTERVAL , EXACTLY AS COMPUTED
+1736
+1737   Every headline interval is produced by one routine, which we set out here at the level of detail a reader
+                                                                                               P         P
+1738   needs for reimplementation,
+                  p                  beginning with the estimator, a ratio of two sums, θ̂ = c Tc / c Uc
+1739   with Λ̂ = θ̂. So we build the interval on θ and square-root both endpoints at the end. That
+1740   transformation is exact because of the strict monotonicity of the square root. A delta-method interval
+1741   on Λ itself would not be. Recipe g contributes the linearised influence
+1742                                                                        G      1/2
+                                      1 X                                 X
+                                                                               ψg2
+                                                           
+1743                         ψg = P              Tc − θ̂ Uc ,     SE =                  ,                 (7)
+1744                                  c Uc c∈g                             g=1
+1745   over the G = 25 recipes, and the clustered standard error and the bootstrap share this linearisation.
+1746   The two are in exact agreement on one recipe’s contribution.
+1747
+       In each bootstrap draw b every recipe is assigned an independent Rademacher sign vbg ∈ {−1, +1},
+1748
+       each configuration takes the sign of its own recipe. The numerator is rebuilt as Tc∗ = θ̂ Uc +
+1749                                                                             P
+1750
+       vbg(c) (Tc − θ̂ Uc ). That rebuild holds the denominator at the observed c Uc . It recentres the draws
+       on the point estimate and not on any null value, and both the statistic θ̂b∗ = c Tc∗ / c Uc and
+                                                                                            P        P
+1751
+1752   its standard error are recomputed from (7) applied to the bootstrap residuals Tc∗ − θ̂b∗ Uc , and that
+1753   recomputation is what makes the procedure a bootstrap-t and not a percentile method, and what buys
+1754   its accuracy at a small cluster count. The draw contributes t∗b = (θ̂b∗ − θ̂)/SE∗b , and over B = 4,999
+1755   draws from the bootstrap’s own seed 0 the interval on θ runs from θ̂ − q0.975 SE up to θ̂ − q0.025 SE,
+1756   with qα the empirical quantiles of the t∗ distribution. The upper tail of t∗ therefore sets the lower
+1757   endpoint. That is the usual reversal of a bootstrap-t. No transcription error produces it.
+1758   Two behaviours of this routine, which produces every headline interval, show up in the reported
+1759   tables. A draw whose bootstrap standard error is exactly zero yields no finite t∗ , so that draw is
+1760   discarded, and the routine then refuses to return an interval at all when fewer than max(100, 0.9B)
+1761   draws survive, which is why no interval reported in this paper rests on a thinned draw set. A lower
+1762   endpoint that falls below zero on the θ scale has no square root, so we report the endpoint as missing,
+1763   with no truncation at zero, which is why the 1B margin band in Table 7 carries an upper bound and
+1764   no lower one. Beside every clustered interval, a percentile bootstrap is reported. It resamples the 125
+1765   configurations randomly with replacement, and ignores the recipe structure. That is the interval a
+1766
+       reader working under the assumption of configuration independence would compute instead, and
+       Appendix C takes apart what the gap between the two does and does not measure.
+1767
+1768   Our registration specified a wild cluster bootstrap-t with t(16) critical values at the planned 17
+1769   estimation recipes. Table 4 still reports the power arithmetic on that basis. The realised headline
+1770   reads its critical values off the bootstrap’s own t∗ distribution over 25 recipes instead, which is the
+1771   deviation Section 4 traces to the unimplemented recipe split, and the registered t(G − 1) form is
+1772
+       shipped beside the bootstrap in the released code. A reader can recompute either one independently.
+1773
+1774
+       D.3   P RACTICAL CONSIDERATIONS
+1775          • Tc is computed on deviations, never on raw scores. With R = 3 a single high-competence
+1776            seed would otherwise dominate every cross-half product. The estimator would return
+1777            competence in place of its correlation. Within-configuration centring therefore carries the
+1778            whole of the identification argument here (Remark 1).
+1779          • The permutation null permutes independently per trait. A joint permutation of run
+1780            labels across traits is not a null. It preserves every cross-trait pairing. Nor is a per-trait
+1781            permutation clean, because one that happens to be the identity on every trait reproduces the
+                observed value exactly. With R = 3 that identity has probability 6−K per configuration.
+
+
+                                                          33
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1782
+              • Gzip members are not seekable. A tarball member must be streamed from its start, so
+1783            every run is read exactly once, and every quantity that might be needed is extracted on that
+1784            pass, since a forgotten field costs a full re-read of the tarball.
+1785
+              • Token-budget batching. The step truncation at 530M and 750M is aligned with the default-
+1786
+                versus-aux contrast. The batch-free estimate is computed on the aux 2-versus-aux 3 pair
+1787
+                alone. Both aux runs are checked for step agreement separately from the default run.
+1788
+1789
+              • Hub rate limiting. The listing of 375 checkpoint directories on day 1 is performed once
+                with exponential back-off and cached to disk, since a repeated listing during the run would
+1790
+                exceed the anonymous rate limit and stall the pipeline mid-tarball.
+1791
+1792          • Common step across 92 of 125 mismatched cells. The step table is regenerated from the
+1793            cached listing and diffed against the day-1 version before any estimation run, so a hub-side
+1794
+                change in released checkpoints is caught automatically at the diff, before it can shift the
+                common step.
+1795
+1796
+1797   D.4    C OMPUTE
+1798
+1799
+       Table 15: Registered compute budget. GPU lines are Arm 2 forward passes for held-out bits-per-byte
+1800
+       and the calibration runs, and everything else is CPU. Our realised Arm-1 analysis ran on one Kaggle
+1801
+       CPU core, taking 6.0 hours for the estimation and the null battery, a further 1.6 hours across four
+1802   sensitivity tasks covering the gain calibration and the 50 re-splits we ran against the 200 budgeted
+1803   below, and thirteen seconds for the exact split sweep. The 160M jitter check was carried out later and
+1804   elsewhere, on one T4, taking 423 seconds of scoring against the 0.5 GPU-h budgeted for it.
+1805             Item                                   Budgeted                    Notes
+1806
+                 Arm 2 held-out bpb, 27 runs           6.0 GPU-h          PolyPythias, 4,755 items
+1807
+                 Calibration simulations N1, N5, N6    1.0 GPU-h       2,000 replicates × 6 effect sizes
+1808             160M jitter check                     0.5 GPU-h      adjacent-checkpoint disagreement
+1809             Contingency                           2.5 GPU-h
+1810             Total GPU                             10.0 GPU-h
+1811             Streaming and reduction, 122.9 GB      18 CPU-h                 single pass
+1812             Estimation, bootstrap, permutation     7 CPU-h       wild cluster bootstrap, 200 splits
+1813
+1814
+       Arm 1 costs no GPU, and its real cost is transfer, since the 25 monolithic gzipped tarballs totalling
+1815   122.9 GB are not seekable, which forces the cell-by-cell streaming and reduction that holds peak
+1816   disk under 10 GB. Arm 2 is teacher-forced scoring in fp16, and zero-shot contexts are built by the
+1817   released scorer with no exemplars, one per item except on WinoGrande where each choice takes
+1818   its own, at token counts of 199 on ARC-Challenge and 937 on BoolQ. Our budget in Table 15 was
+1819   written for two 16 GB cards, and the run that produced the reported numbers was allocated one 46 GB
+1820   L40S per task on a Slurm cluster instead, which finished all 27 scoring tasks in under two minutes
+1821   each. Our realised Arm-2 cost is under one card-hour against the 6.0 budgeted. Scoring the gold
+1822   logit materialises a log softmax over the 50,304-token vocabulary in float32. The per-batch token
+1823
+       budget is what decides peak memory, and 30,000 tokens asks about 6 GB in that one tensor. We
+       rescored one configuration inside a 23 GB card at that registered budget, while the 16 GB T4 of
+1824
+       the jitter check needed the budget cut to 6,000 tokens. That reduction changes the batch grouping
+1825
+       alone by construction, though the transport rescore of Appendix C changed the card and the budget
+1826   together and moved Λ by 0.6 percent. We do not claim the two give identical scores. Our whole
+1827   pipeline, streaming through the bootstrap, runs on CPU, with Arm 2 and the calibration kernels the
+1828   one exception. Arm 1 as released spent no GPU at all.
+1829
+1830
+       D.5    T HE FAILURE MODE THE NULLS CANNOT SEE
+1831
+1832   Every null in this paper tests a mechanism that could produce the estimator’s signature from something
+1833   other than seed-induced correlation, and none of them tests whether DataDecide’s three seeds vary
+1834   what the documentation claims they vary. If the auxiliary runs differ from the default run in tokeniser
+1835   build or harness revision, with no seed difference, the batch-free contrast stays a seed contrast, but the
+       full-set number is not one, so we put both the step table and the disagreement-rate check between the
+
+
+                                                          34
+       Under review as a conference paper at ICLR 2027
+
+
+
+
+1836
+       reader and that error. Neither, however, is a test of provenance in the sense a release-side audit would
+1837   be, so the identification of the full-set number as a seed contrast rests solely on the documentation
+1838   and not on any measurement of ours.
+1839
+1840   D.6    H OW FAR THE PHENOTYPES TRAVEL ACROSS GPU ARCHITECTURES
+1841
+1842   Every Arm-2 number reported in this paper was produced on one card type. So a reader who
+1843   attempts its reproduction elsewhere meets a floating-point question the design does not otherwise
+1844   raise. Rescoring one configuration on a Turing card against the Ada card that produced the released
+1845   run leaves most items bit-identical, and the rescoring moves the mean absolute margin by 1.0 ×
+1846   10−3 against a margin standard deviation of 0.391, a ratio of 2.6 × 10−3 , while the largest single
+1847
+       disagreement sits at 3.5 × 10−2 . Accuracy, the thresholded phenotype, has the lower stability of the
+       two scales scored here. Of the 4,755 accuracy bits, 18 flip, 0.38 percent. They sit exactly where a sign
+1848
+       test is least stable, at a median |margin| of 1.3 × 10−3 , moving the battery accuracy by 4.2 × 10−4 ,
+1849
+       from 0.430074 to 0.430494. Nothing in Arm 1 is exposed to this, since the per-item outputs are
+1850   shipped directly by DataDecide and we run no forward-pass recomputation, while the internal
+1851   consistency of Arm 2’s 27 runs follows solely from their shared card type, with no independent
+1852   confirmation from a second architecture. Thus a difference in battery accuracy below 4.2 × 10−4 has
+1853   no portability across fp16 kernels. That threshold is itself 8 percent of the accuracy-space seed SD
+1854   measured here.
+1855
+1856   D.7    W HY THE ESTIMATOR CANNOT BE FED RAW SCORES
+1857
+1858   Remark 1. Tc must be formed on deviations, never on raw scores, since the cross-half product of
+1859   two runs’ raw battery means is dominated by µ2c . A one-symbol slip there produces an inflation of
+1860   Λ̂ by roughly three orders of magnitude. The failure mode is made structurally impossible by our
+1861
+       released code. The statistic is a projection onto an orthonormal basis of the mean-zero contrast space,
+       and since every row of that basis annihilates the all-ones vector, the projection of the raw scores is
+1862
+       already the projection of the deviations. The property that buys the immunity admits verification. The
+1863
+       code asserts it unconditionally   at run time. That assertion requires every basis row to sum exactly to
+1864                        P
+       zero, and it requires c Tc to be unchanged when a per-configuration constant is added to every run
+1865   of both halves.
+1866
+1867
+1868
+1869
+1870
+1871
+1872
+1873
+1874
+1875
+1876
+1877
+1878
+1879
+1880
+1881
+1882
+1883
+1884
+1885
+1886
+1887
+1888
+1889
+
+
+
+                                                         35
+

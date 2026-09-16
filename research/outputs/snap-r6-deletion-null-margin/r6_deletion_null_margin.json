@@ -1,0 +1,24 @@
+{
+ "design": "R6 null calibration of the one deletion that breaks the margin conclusion.\n\nDesign fixed before running (2026-09-16, written 00:25 EDT). snap-r6-deletion-null calibrated the\naccuracy side of the deletion sweep and found that five recipe flips out of 25 sit in the upper few\npercent of chance. The margin side has the mirror problem and no calibration at all. Every recipe\ndeletion, every recipe pair and every benchmark deletion leaves the margin interval excluding one, and\nexactly one deletion breaks it, which is the 530M band at 0.993 to 1.338. That single exception is the\npaper's largest disclosed weakness, and a reader cannot tell whether one failure out of five band\ndeletions is surprising or ordinary. This run measures it. It simulates a margin-like population at the\nfitted cell whose true ratio sits near the observed 1.244, with 2,000 replicates, and for each replicate\nwhose full interval excludes one it recomputes the 25 recipe deletions and the five band deletions with\nthe shipped construction. It reports how often at least one band deletion loses the exclusion, which is\nthe observed event, and the same for recipe deletions. Seed 20260938 keeps the draws distinct from the\naccuracy calibration. A band failure that is ordinary under the null weakens the deletion as evidence,\nand one that is rare means the 530M band carries something the other four don't.\n",
+ "seed": 20260938,
+ "reps": 2000,
+ "cells": {
+  "margin_like": {
+   "name": "margin_like",
+   "truth": 1.2445882853377657,
+   "n_rep": 2000,
+   "share_full_excludes_one": 0.9725,
+   "recipe_losses_mean": 0.3131105398457584,
+   "recipe_losses_median": 0.0,
+   "recipe_losses_p95": 0.0,
+   "recipe_losses_max": 20.0,
+   "share_recipe_losses_at_least_1": 0.04524421593830334,
+   "size_losses_mean": 0.27249357326478146,
+   "share_size_losses_at_least_1": 0.16195372750642673,
+   "share_size_losses_at_least_2": 0.0781491002570694,
+   "size_worst_margin_median": 0.05997152755910529,
+   "seconds": 1190.535995721817
+  }
+ },
+ "wall_seconds": 1206.4346854686737
+}

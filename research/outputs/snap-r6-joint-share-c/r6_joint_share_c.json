@@ -1,0 +1,88 @@
+{
+ "design": "R6 the two coverage numbers the main text quotes, at ten thousand replicates.\n\nDesign fixed before running (2026-09-16, written 11:15 EDT). snap-r6-joint-share measured recipe-clustered\ncoverage at the corners the data allows, with 4,000 replicates per cell, which leaves a Monte Carlo\nstandard error near 0.0035. Two of those four numbers are now quoted in the main text, the 0.9367 at the\nband-share bound of 0.044 and the 0.9490 at the joint corner where recipe sharing sits at 0.114 as well,\nand the limitation they support turns on whether coverage there is a point below nominal or two. At the\ncurrent precision a reader cannot separate 0.937 from 0.943, so the sentence rests on noise the paper\ndoes not own. This run repeats the identical two cells at 12,000 replicates with a fresh seed, which cuts\nthe Monte Carlo standard error to about 0.0021. The generator, the four interval constructions and the\nshipped-estimator check are unchanged, so the two runs can be compared directly and pooled if they agree.\nSeed 20260947 and a cell offset of twenty one hundred keep the draws distinct from the first pass.\n",
+ "seed": 20260947,
+ "reps": 12000,
+ "cells": {
+  "band_0.044": {
+   "name": "band_0.044",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.044,
+   "recipe_shared": 0.0,
+   "wild_recipe": {
+    "coverage": 0.9444166666666667,
+    "mc_se": 0.0020915270814425057,
+    "lower_miss": 0.0195,
+    "upper_miss": 0.036083333333333335,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24169829955489852
+   },
+   "wild_size": {
+    "coverage": 0.9545,
+    "mc_se": 0.0019024052757846664,
+    "lower_miss": 0.0145,
+    "upper_miss": 0.0235,
+    "undefined_or_unbounded": 0.0075,
+    "median_width": 0.36477877237800316
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9448333333333333,
+    "mc_se": 0.002084132624449869,
+    "lower_miss": 0.019333333333333334,
+    "upper_miss": 0.035833333333333335,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24103009768196437
+   },
+   "cluster_t_size": {
+    "coverage": 0.9505833333333333,
+    "mc_se": 0.0019785234334856517,
+    "lower_miss": 0.018416666666666668,
+    "upper_miss": 0.031,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.30904910835109267
+   }
+  },
+  "joint_bound": {
+   "name": "joint_bound",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.044,
+   "recipe_shared": 0.114,
+   "wild_recipe": {
+    "coverage": 0.9428333333333333,
+    "mc_se": 0.002119328488163348,
+    "lower_miss": 0.018333333333333333,
+    "upper_miss": 0.03883333333333333,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2457098702333691
+   },
+   "wild_size": {
+    "coverage": 0.9484166666666667,
+    "mc_se": 0.002019127143420219,
+    "lower_miss": 0.016833333333333332,
+    "upper_miss": 0.025583333333333333,
+    "undefined_or_unbounded": 0.009166666666666667,
+    "median_width": 0.3630208987749308
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9424166666666667,
+    "mc_se": 0.002126567912849943,
+    "lower_miss": 0.018583333333333334,
+    "upper_miss": 0.039,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24511902134859154
+   },
+   "cluster_t_size": {
+    "coverage": 0.945,
+    "mc_se": 0.002081165538826742,
+    "lower_miss": 0.021916666666666668,
+    "upper_miss": 0.03308333333333333,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.30807559552706365
+   }
+  }
+ },
+ "shipped_check": {
+  "band_0.044": 2.220446049250313e-16,
+  "joint_bound": 2.220446049250313e-16
+ },
+ "wall_seconds": 1383.2534341812134
+}

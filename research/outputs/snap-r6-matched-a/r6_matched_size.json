@@ -1,0 +1,179 @@
+{
+ "design": "R6 fitted scenario: interval coverage in populations built from the observed data's own structure.\n\nDesign fixed before running (2026-09-15, written 18:12 EDT). The plan asks for one scenario with a\ndocumented estimate of the real influence concentration, reported as a fitted scenario and never as\nindependent confirmation. The twelve R6 cells use exchangeable covariance, and on the observed margins\nthe test-inversion lower endpoint sits 0.048 below the wild one, which suggests influence structure the\ncells don't contain.\nSCENARIO \"size\" (kernel snap-r6-matched-a). Each of the five size bands gets its own seed covariance,\nthe nearest positive semidefinite matrix to that band's observed sigma_e, and its own item-noise SDs and\nmargin levels, as in matched_spec. Every replicate simulates the five bands with 25 configurations each,\none per recipe, sharing one random item split per trait, and stacks them into 125 configurations.\nSCENARIO \"size_recipe\" (kernel snap-r6-matched-b). As \"size\", and each recipe's run deviations are then\nscaled by the square root of k_r, the observed recipe sum of U_c over its mean, clipped below at 0.05,\nseparately for each phenotype. These k_r include sampling noise, so they overstate true heterogeneity.\nEach replicate scores the wild cluster bootstrap-t (4,999 draws, seed rep), the cluster-robust t(24), and\nthe centred and restricted test-inversion intervals of snap-r6-fieller. Margin truth is\nsqrt(sum_s sum Sigma_s / sum_s trace Sigma_s). Accuracy truth is the square root of the ratio of mean\nsummed T to mean summed U over the replicates, since the generator acts on margins. 2,000 replicates,\nseeds 20260916 + 104729 rep. Record coverage, tail misses, widths, undefined and unbounded shares, and\nthe largest recipe share of squared influence, with the observed value for comparison.\n",
+ "scenario": "size",
+ "reps": 2000,
+ "truth_margin": 1.2436229902782288,
+ "band_psd_clipped": [
+  1.5318422139172766e-06,
+  1.7303572714972133e-06,
+  2.132326519412189e-06,
+  1.844463074896418e-06,
+  3.308645606382728e-07
+ ],
+ "k_r": {
+  "margin": [
+   0.5491788612720729,
+   0.35375157664989293,
+   0.3778182984499977,
+   0.34849379024428223,
+   0.8854169441158543,
+   0.8302691142329867,
+   1.4884548206478652,
+   0.6313111398579125,
+   0.27718584090934845,
+   0.6567865518626828,
+   0.9946821382698045,
+   0.4456588784404254,
+   0.32961937683307024,
+   0.5424986462878498,
+   4.864393745119804,
+   3.5280930026618047,
+   0.2679175896116588,
+   2.6089957143049975,
+   2.0471347326897082,
+   0.5325284963370324,
+   0.4334182113526087,
+   0.481734548166776,
+   0.583425299514517,
+   0.6179093958544283,
+   0.32332328631262436
+  ],
+  "accuracy": [
+   0.54103629266114,
+   0.5191545720463746,
+   0.6133298230037113,
+   0.565586320719393,
+   2.0377081101782943,
+   2.727215781887734,
+   1.9906673287401893,
+   0.6823024698052939,
+   0.38617440742602627,
+   0.11559505189361334,
+   0.846451551771694,
+   0.2075472928157743,
+   0.3375070053599008,
+   1.7089978763774145,
+   1.4193042432446263,
+   0.7336591144933269,
+   0.4120972821029486,
+   2.1595752962156007,
+   2.126174825424233,
+   0.44194563849290536,
+   0.9126080067594468,
+   1.0793918883055376,
+   0.5918974875293137,
+   1.384456394795146,
+   0.45961593795035927
+  ]
+ },
+ "observed": {
+  "margin": {
+   "lambda": 1.2439499117191137,
+   "max_recipe_influence_share": 0.5199019718929418
+  },
+  "accuracy": {
+   "lambda": 1.0783733870898096,
+   "max_recipe_influence_share": 0.25538550666472665
+  }
+ },
+ "truth": {
+  "margin": 1.2436229902782288,
+  "accuracy": 1.262420535641794,
+  "margin_mean_ratio_check": 1.2428472499016658
+ },
+ "summary": {
+  "margin": {
+   "estimate": {
+    "mean": 1.2426943065771172,
+    "bias": -0.0009286837011115434,
+    "sd": 0.05070674890511069,
+    "undefined": 0
+   },
+   "max_recipe_influence_share": {
+    "p05": 0.14386424448260973,
+    "median": 0.22849665766700217,
+    "p95": 0.3997960612385432,
+    "share_at_or_above_observed": 0.0095
+   },
+   "wild": {
+    "coverage": 0.9535,
+    "lower_miss": 0.0145,
+    "upper_miss": 0.032,
+    "undefined": 0.0,
+    "median_width": 0.21418965139759105,
+    "mc_se": 0.004708383480558906
+   },
+   "cluster_t": {
+    "coverage": 0.9455,
+    "lower_miss": 0.0205,
+    "upper_miss": 0.034,
+    "undefined": 0.0,
+    "median_width": 0.20657387567948138,
+    "mc_se": 0.005075911248239078
+   },
+   "centred": {
+    "coverage": 0.9535,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.028,
+    "unbounded": 0.0,
+    "median_width": 0.2125107366222556,
+    "mc_se": 0.004708383480558906
+   },
+   "restricted": {
+    "coverage": 0.9695,
+    "lower_miss": 0.01,
+    "upper_miss": 0.0205,
+    "unbounded": 0.0,
+    "median_width": 0.22903468896633938,
+    "mc_se": 0.0038451105315712303
+   }
+  },
+  "accuracy": {
+   "estimate": {
+    "mean": 1.2619938879201755,
+    "bias": -0.0004266477216183784,
+    "sd": 0.05347386767792468,
+    "undefined": 0
+   },
+   "max_recipe_influence_share": {
+    "p05": 0.13653124906961536,
+    "median": 0.22593279489995577,
+    "p95": 0.40050230295654177,
+    "share_at_or_above_observed": 0.347
+   },
+   "wild": {
+    "coverage": 0.947,
+    "lower_miss": 0.0205,
+    "upper_miss": 0.0325,
+    "undefined": 0.0,
+    "median_width": 0.2237125220406163,
+    "mc_se": 0.005009540897128201
+   },
+   "cluster_t": {
+    "coverage": 0.94,
+    "lower_miss": 0.0235,
+    "upper_miss": 0.0365,
+    "undefined": 0.0,
+    "median_width": 0.21632283968001353,
+    "mc_se": 0.005310367218940704
+   },
+   "centred": {
+    "coverage": 0.951,
+    "lower_miss": 0.0215,
+    "upper_miss": 0.0275,
+    "unbounded": 0.0,
+    "median_width": 0.22267877982546558,
+    "mc_se": 0.004826955562256609
+   },
+   "restricted": {
+    "coverage": 0.966,
+    "lower_miss": 0.0145,
+    "upper_miss": 0.0195,
+    "unbounded": 0.0,
+    "median_width": 0.24000665089156137,
+    "mc_se": 0.004052406692324946
+   }
+  }
+ },
+ "wall_seconds": 3187.1895232200623
+}

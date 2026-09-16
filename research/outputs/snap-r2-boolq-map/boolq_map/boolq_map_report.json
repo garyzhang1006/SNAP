@@ -1,0 +1,26 @@
+{
+ "boolq_prediction_rows": 3270,
+ "boolq_validation_rows": 3270,
+ "native_id_types": [
+  "int"
+ ],
+ "doc_id_equals_native_id": true,
+ "joined": 3270,
+ "unmatched": 0,
+ "unmatched_examples": [],
+ "label_agreement": 0,
+ "label_agreement_fraction": 0.0,
+ "unique_passages": 2938,
+ "group_size_histogram": {
+  "1": 2692,
+  "2": 197,
+  "3": 27,
+  "4": 13,
+  "5": 7,
+  "7": 1,
+  "9": 1
+ },
+ "max_group_size": 9,
+ "label_convention_check": "label 1 must correspond to answer True; if agreement is near 0 the convention is inverted, near 0.5 the join is wrong",
+ "duplicate_question_texts": 0
+}

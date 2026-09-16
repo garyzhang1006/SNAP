@@ -1,0 +1,410 @@
+{
+ "design": "R6 whether the interval needs the normality the generator hands it.\n\nDesign fixed before running (2026-09-16, written 14:50 EDT). Every coverage simulation in this paper\ndraws its latent run effects from a multivariate normal. Benchmark scores are averages over thousands of\nbinary or near-binary items, so normality is a reasonable working assumption, and it is still an\nassumption the paper never tests. Seed effects on a small benchmark could be heavy-tailed, and recipes\nplainly differ in how variable their runs are, since a recipe that trains on a narrow corpus has more\nroom to move between seeds than one that trains on a broad mixture.\nThis run breaks both assumptions on purpose. It draws the latent effects from a multivariate t with 3, 5\nand 10 degrees of freedom, scaled so the covariance is unchanged, and it separately gives the 25 recipes\nvariance scales spread over a four-fold and a sixteen-fold range while holding the average fixed. It then\nscores the same four intervals at 4,000 replicates per cell. An interval that holds near nominal under a\nt with three degrees of freedom, which has no finite kurtosis, is an interval a reader can use on real\nscores. Seed 20260961 keeps the draws distinct.\n",
+ "seed": 20260961,
+ "reps": 4000,
+ "cells": {
+  "normal_baseline": {
+   "name": "normal_baseline",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73
+   },
+   "wild_recipe": {
+    "coverage": 0.948,
+    "mc_se": 0.0035105555115964213,
+    "excludes_one_rate": 0.96725,
+    "lower_miss": 0.014,
+    "upper_miss": 0.038,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24103754683523182
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94575,
+    "mc_se": 0.0035814430576235614,
+    "excludes_one_rate": 0.96625,
+    "lower_miss": 0.01425,
+    "upper_miss": 0.04,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24018721264513776
+   },
+   "wild_size": {
+    "coverage": 0.95225,
+    "mc_se": 0.0033715700163277035,
+    "excludes_one_rate": 0.61225,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.02425,
+    "undefined_or_unbounded": 0.008,
+    "median_width": 0.3627311939987102
+   },
+   "cluster_t_size": {
+    "coverage": 0.94675,
+    "mc_se": 0.0035501562465615516,
+    "excludes_one_rate": 0.80175,
+    "lower_miss": 0.0205,
+    "upper_miss": 0.03275,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3032602536924146
+   }
+  },
+  "student_df_10": {
+   "name": "student_df_10",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "student_df": 10
+   },
+   "wild_recipe": {
+    "coverage": 0.9435,
+    "mc_se": 0.003650607826102387,
+    "excludes_one_rate": 0.94825,
+    "lower_miss": 0.016,
+    "upper_miss": 0.0405,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.25688195598632024
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.942,
+    "mc_se": 0.0036958084365940843,
+    "excludes_one_rate": 0.95,
+    "lower_miss": 0.016,
+    "upper_miss": 0.042,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2555832023054324
+   },
+   "wild_size": {
+    "coverage": 0.94525,
+    "mc_se": 0.0035969583504677936,
+    "excludes_one_rate": 0.58325,
+    "lower_miss": 0.01625,
+    "upper_miss": 0.02725,
+    "undefined_or_unbounded": 0.01125,
+    "median_width": 0.38086990488750083
+   },
+   "cluster_t_size": {
+    "coverage": 0.94875,
+    "mc_se": 0.0034865254014562986,
+    "excludes_one_rate": 0.74975,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.0325,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.32626778178770344
+   }
+  },
+  "student_df_05": {
+   "name": "student_df_05",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "student_df": 5
+   },
+   "wild_recipe": {
+    "coverage": 0.94,
+    "mc_se": 0.003754996671103719,
+    "excludes_one_rate": 0.856,
+    "lower_miss": 0.01225,
+    "upper_miss": 0.0475,
+    "undefined_or_unbounded": 0.00025,
+    "median_width": 0.29190290535030683
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9365,
+    "mc_se": 0.0038557667849598992,
+    "excludes_one_rate": 0.8685,
+    "lower_miss": 0.01375,
+    "upper_miss": 0.04975,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.28647614469676264
+   },
+   "wild_size": {
+    "coverage": 0.92425,
+    "mc_se": 0.004183656818502205,
+    "excludes_one_rate": 0.47425,
+    "lower_miss": 0.015,
+    "upper_miss": 0.032,
+    "undefined_or_unbounded": 0.02875,
+    "median_width": 0.4260351107737905
+   },
+   "cluster_t_size": {
+    "coverage": 0.94,
+    "mc_se": 0.003754996671103719,
+    "excludes_one_rate": 0.643,
+    "lower_miss": 0.017,
+    "upper_miss": 0.04225,
+    "undefined_or_unbounded": 0.00075,
+    "median_width": 0.3622529188820576
+   }
+  },
+  "student_df_03": {
+   "name": "student_df_03",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "student_df": 3
+   },
+   "wild_recipe": {
+    "coverage": 0.89525,
+    "mc_se": 0.004841937564136902,
+    "excludes_one_rate": 0.52,
+    "lower_miss": 0.01225,
+    "upper_miss": 0.068,
+    "undefined_or_unbounded": 0.0245,
+    "median_width": 0.3965620083134045
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.89225,
+    "mc_se": 0.004902548763143514,
+    "excludes_one_rate": 0.57975,
+    "lower_miss": 0.019,
+    "upper_miss": 0.08375,
+    "undefined_or_unbounded": 0.005,
+    "median_width": 0.3698991563925313
+   },
+   "wild_size": {
+    "coverage": 0.793,
+    "mc_se": 0.006406071338972116,
+    "excludes_one_rate": 0.26675,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.0505,
+    "undefined_or_unbounded": 0.139,
+    "median_width": 0.5534461903241567
+   },
+   "cluster_t_size": {
+    "coverage": 0.898,
+    "mc_se": 0.004785289959866591,
+    "excludes_one_rate": 0.3855,
+    "lower_miss": 0.01825,
+    "upper_miss": 0.06375,
+    "undefined_or_unbounded": 0.02,
+    "median_width": 0.484628991194615
+   }
+  },
+  "recipe_spread_4x": {
+   "name": "recipe_spread_4x",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipe_variance_scales": [
+     0.4,
+     0.45,
+     0.5,
+     0.55,
+     0.6,
+     0.65,
+     0.7,
+     0.75,
+     0.8,
+     0.85,
+     0.9,
+     0.95,
+     1.0,
+     1.05,
+     1.1,
+     1.15,
+     1.2,
+     1.25,
+     1.3,
+     1.35,
+     1.4,
+     1.45,
+     1.5,
+     1.55,
+     1.6
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.93775,
+    "mc_se": 0.0038201746524210126,
+    "excludes_one_rate": 0.95025,
+    "lower_miss": 0.0225,
+    "upper_miss": 0.03975,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.25430564288583213
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.935,
+    "mc_se": 0.0038979161099233508,
+    "excludes_one_rate": 0.95425,
+    "lower_miss": 0.023,
+    "upper_miss": 0.042,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24902694217140442
+   },
+   "wild_size": {
+    "coverage": 0.9465,
+    "mc_se": 0.0035580103288214327,
+    "excludes_one_rate": 0.6035,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.02525,
+    "undefined_or_unbounded": 0.0105,
+    "median_width": 0.37221406721866895
+   },
+   "cluster_t_size": {
+    "coverage": 0.945,
+    "mc_se": 0.003604684452209376,
+    "excludes_one_rate": 0.78425,
+    "lower_miss": 0.01925,
+    "upper_miss": 0.03575,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3146811697047678
+   }
+  },
+  "recipe_spread_16x": {
+   "name": "recipe_spread_16x",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipe_variance_scales": [
+     0.11764705882352941,
+     0.19117647058823528,
+     0.2647058823529412,
+     0.3382352941176471,
+     0.4117647058823529,
+     0.4852941176470588,
+     0.5588235294117647,
+     0.6323529411764706,
+     0.7058823529411765,
+     0.7794117647058824,
+     0.8529411764705882,
+     0.9264705882352942,
+     1.0,
+     1.0735294117647058,
+     1.1470588235294117,
+     1.2205882352941178,
+     1.2941176470588236,
+     1.3676470588235294,
+     1.4411764705882353,
+     1.5147058823529411,
+     1.588235294117647,
+     1.661764705882353,
+     1.7352941176470589,
+     1.8088235294117647,
+     1.8823529411764706
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.94575,
+    "mc_se": 0.0035814430576235614,
+    "excludes_one_rate": 0.93325,
+    "lower_miss": 0.016,
+    "upper_miss": 0.03825,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2674051415018913
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9395,
+    "mc_se": 0.003769607075014583,
+    "excludes_one_rate": 0.94225,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.042,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.25861027155060423
+   },
+   "wild_size": {
+    "coverage": 0.942,
+    "mc_se": 0.0036958084365940843,
+    "excludes_one_rate": 0.559,
+    "lower_miss": 0.018,
+    "upper_miss": 0.0255,
+    "undefined_or_unbounded": 0.0145,
+    "median_width": 0.3959242686407093
+   },
+   "cluster_t_size": {
+    "coverage": 0.945,
+    "mc_se": 0.003604684452209376,
+    "excludes_one_rate": 0.74025,
+    "lower_miss": 0.02025,
+    "upper_miss": 0.03475,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.33215609878204017
+   }
+  },
+  "student_05_spread_4x": {
+   "name": "student_05_spread_4x",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "student_df": 5,
+    "recipe_variance_scales": [
+     0.4,
+     0.45,
+     0.5,
+     0.55,
+     0.6,
+     0.65,
+     0.7,
+     0.75,
+     0.8,
+     0.85,
+     0.9,
+     0.95,
+     1.0,
+     1.05,
+     1.1,
+     1.15,
+     1.2,
+     1.25,
+     1.3,
+     1.35,
+     1.4,
+     1.45,
+     1.5,
+     1.55,
+     1.6
+    ]
+   },
+   "wild_recipe": {
+    "coverage": 0.9405,
+    "mc_se": 0.0037403124869454423,
+    "excludes_one_rate": 0.8205,
+    "lower_miss": 0.014,
+    "upper_miss": 0.0455,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3037049242252172
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.93275,
+    "mc_se": 0.00396003274923327,
+    "excludes_one_rate": 0.84925,
+    "lower_miss": 0.01675,
+    "upper_miss": 0.0505,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2930950038494765
+   },
+   "wild_size": {
+    "coverage": 0.925,
+    "mc_se": 0.00416458281223942,
+    "excludes_one_rate": 0.44675,
+    "lower_miss": 0.01275,
+    "upper_miss": 0.02875,
+    "undefined_or_unbounded": 0.0335,
+    "median_width": 0.44666442572005693
+   },
+   "cluster_t_size": {
+    "coverage": 0.947,
+    "mc_se": 0.003542280338990692,
+    "excludes_one_rate": 0.613,
+    "lower_miss": 0.017,
+    "upper_miss": 0.036,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.37652619497321604
+   }
+  }
+ },
+ "shipped_check": {
+  "normal_baseline": 0.0,
+  "student_df_10": 0.0,
+  "student_df_05": 0.0,
+  "student_df_03": 0.0,
+  "recipe_spread_4x": 0.0,
+  "recipe_spread_16x": 0.0,
+  "student_05_spread_4x": 0.0
+ },
+ "wall_seconds": 1609.2978405952454
+}

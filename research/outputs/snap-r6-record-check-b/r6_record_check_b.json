@@ -1,0 +1,153 @@
+{
+ "design": "Second pass over the record, covering the figures snap-r6-record-check left alone.\n\nDesign fixed before running (2026-09-16, written 01:15 EDT). The first pass found that the design\neffects and three of four standard errors reproduce, that one standard error had been rounded down, and\nthat the permutation coverage sits about two standard errors away from the recorded value. Five figures\nfrom the same record remain in the paper. The first is the pair of Frobenius distances between the seed\ncorrelation and the phenotypic correlation, recorded as 5.59 and 6.49, together with the counts of\nundefined off-diagonal entries, recorded as eighteen and 34, and the contributions of substituted\ndiagonal entries, recorded as 1.0 and 2.0. The second is the pair of interval half-widths, recorded as\n0.0974 and 0.082. The third is the cluster-robust comparator under the same seed-label permutation,\nrecorded as coverage 0.881 and 0.941 with above-one rates 0.044 and 0.023, together with the statement\nthat no margin permutation reaches the observed estimate and that the accuracy upper tail holds 0.021.\nThe fourth is the pair of delete-one-recipe jackknife standard errors, recorded as 0.049 and 0.039. The\nfifth is the battery-level seed correlation, recorded as 0.73, with two accuracy traits at negative\nreliability and two more below 0.10. Each one is recomputed here and printed beside the recorded value.\n",
+ "record": {
+  "frobenius": {
+   "margin": 5.59,
+   "accuracy": 6.49
+  },
+  "undefined_offdiagonal": {
+   "margin": 18,
+   "accuracy": 34
+  },
+  "diagonal_contribution": {
+   "margin": 1.0,
+   "accuracy": 2.0
+  },
+  "half_width": {
+   "margin": 0.0974,
+   "accuracy": 0.082
+  },
+  "permutation_cluster_t_coverage": {
+   "margin": 0.881,
+   "accuracy": 0.941
+  },
+  "permutation_cluster_t_above": {
+   "margin": 0.044,
+   "accuracy": 0.023
+  },
+  "permutation_accuracy_upper_tail": 0.021,
+  "jackknife_se": {
+   "margin": 0.049,
+   "accuracy": 0.039
+  },
+  "battery_rbar_e": 0.73
+ },
+ "recomputed": {
+  "frobenius": {
+   "margin": {
+    "distance": 5.5889241525709785,
+    "undefined_offdiagonal_ordered": 18,
+    "undefined_diagonal": 1,
+    "diagonal_squared_contribution": 1.0,
+    "negative_seed_variances": 1,
+    "record_distance": 5.59
+   },
+   "accuracy": {
+    "distance": 6.494887080783919,
+    "undefined_offdiagonal_ordered": 34,
+    "undefined_diagonal": 2,
+    "diagonal_squared_contribution": 1.9999999999999993,
+    "negative_seed_variances": 2,
+    "record_distance": 6.49
+   }
+  },
+  "half_width": {
+   "margin": {
+    "wild_half_width": 0.09739195632591147,
+    "wild": [
+     1.1429001912272696,
+     1.3376841038790925
+    ],
+    "cluster_t_half_width": 0.09315760584845645,
+    "record": 0.0974
+   },
+   "accuracy": {
+    "wild_half_width": 0.08202386416941643,
+    "wild": [
+     0.992604456794931,
+     1.1566521851337639
+    ],
+    "cluster_t_half_width": 0.07801755117423925,
+    "record": 0.082
+   }
+  },
+  "permutation_cluster_t": {
+   "margin": {
+    "cluster_t_coverage": 0.9005,
+    "above_one": 0.0335,
+    "below_one": 0.066,
+    "undefined": 0.0,
+    "share_reaching_observed": 0.0,
+    "observed": 1.2439499117191137,
+    "record_coverage": 0.881,
+    "record_above": 0.044,
+    "seconds": 22.516092538833618
+   },
+   "accuracy": {
+    "cluster_t_coverage": 0.9375,
+    "above_one": 0.0225,
+    "below_one": 0.04,
+    "undefined": 0.0,
+    "share_reaching_observed": 0.0195,
+    "observed": 1.0783733870898096,
+    "record_coverage": 0.941,
+    "record_above": 0.023,
+    "seconds": 22.497660398483276
+   }
+  },
+  "jackknife": {
+   "margin": {
+    "jackknife_se": 0.04886932494082015,
+    "full": 1.2439499117191137,
+    "mean_leave_one_out": 1.243674711722195,
+    "record": 0.049
+   },
+   "accuracy": {
+    "jackknife_se": 0.0391012245833648,
+    "full": 1.0783733870898096,
+    "mean_leave_one_out": 1.0783745847870088,
+    "record": 0.039
+   }
+  },
+  "battery": {
+   "margin": {
+    "lambda_hat": 1.2439499117191137,
+    "rbar_e": 0.06082348698511009,
+    "n_reliability_negative": 1,
+    "n_reliability_below_0.10": 0,
+    "reliability": [
+     0.5840616394414372,
+     0.9266190876695725,
+     0.9932446343227505,
+     0.9296600641664801,
+     0.7568898281508208,
+     0.8599186108723474,
+     0.39158648053523043,
+     0.2733613420997581,
+     0.8878533565109717,
+     -0.08556993181838715
+    ]
+   },
+   "accuracy": {
+    "lambda_hat": 1.0783733870898096,
+    "rbar_e": 0.0180987957759498,
+    "n_reliability_negative": 2,
+    "n_reliability_below_0.10": 2,
+    "reliability": [
+     0.2028507406946345,
+     0.601797302178434,
+     0.9701240022988321,
+     0.6145114799844066,
+     0.4496825978955789,
+     0.021639566748051255,
+     0.09087863305134439,
+     -0.028416942024631395,
+     0.41574745923642337,
+     -0.10183447644466996
+    ]
+   }
+  }
+ },
+ "record_battery_rbar_e": 0.73,
+ "wall_seconds": 68.16832423210144
+}

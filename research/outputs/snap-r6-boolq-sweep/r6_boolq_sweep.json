@@ -1,0 +1,309 @@
+{
+ "design": "R6 the BoolQ result as a continuous dial rather than a switch.\n\nDesign fixed before running (2026-09-16, written 13:00 EDT). The accuracy conclusion turns on one\nbenchmark. BoolQ carries 84 percent of the estimated accuracy variance trace, the full battery gives\n1.078 with an interval that includes one, and removing BoolQ outright gives 1.558. A reader is entitled\nto ask whether that jump is a smooth function of how much weight BoolQ carries, or whether it appears\nonly at the moment the benchmark leaves the battery. A binary removal cannot tell them, and the paper\ncurrently reports only the two endpoints of a dial it never turned.\nThis run turns it. Using the same weighted rebuild that reproduced the shipped numerator and denominator\nto one part in 1e19 under flat weights, it sweeps the BoolQ weight from its flat 0.10 down to 0 in\nsixteen steps, renormalising the other nine benchmarks to carry the remainder equally, and computes the\nestimate and a recipe-clustered wild interval at 4,999 draws for each step on both scales. It reports the\nweight at which the accuracy interval stops including one, which is the number a reader wants, and it\ncarries margins alongside as a control, since the margin conclusion should barely move. A smooth curve\nmeans the accuracy reading is a statement about how much a battery leans on one benchmark. A cliff at the\nvery end would mean something about BoolQ's removal rather than about its weight, and we would say so.\n",
+ "traits": [
+  "arc_challenge",
+  "arc_easy",
+  "boolq",
+  "csqa",
+  "hellaswag",
+  "mmlu",
+  "openbookqa",
+  "piqa",
+  "socialiqa",
+  "winogrande"
+ ],
+ "boolq_index": 2,
+ "n_boot": 4999,
+ "boolq_weights": [
+  0.1,
+  0.093333,
+  0.086667,
+  0.08,
+  0.073333,
+  0.066667,
+  0.06,
+  0.053333,
+  0.046667,
+  0.04,
+  0.033333,
+  0.026667,
+  0.02,
+  0.013333,
+  0.006667,
+  0.0
+ ],
+ "seed": 20260953,
+ "scales": {
+  "margin": {
+   "shipped_rebuild_max_abs_diff": 1.0842021724855044e-19,
+   "rows": [
+    {
+     "boolq_weight": 0.1,
+     "other_weight": 0.1,
+     "lambda_hat": 1.2439499117191135,
+     "lo": 1.1413238893954967,
+     "hi": 1.3400980874741502,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.093333,
+     "other_weight": 0.10074077777777778,
+     "lambda_hat": 1.2721169148734057,
+     "lo": 1.1608722143390517,
+     "hi": 1.3748044324054005,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.086667,
+     "other_weight": 0.10148144444444444,
+     "lambda_hat": 1.3032224300360153,
+     "lo": 1.1841750091433771,
+     "hi": 1.409078244990107,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.08,
+     "other_weight": 0.10222222222222223,
+     "lambda_hat": 1.337394963121821,
+     "lo": 1.2113661745717725,
+     "hi": 1.4506131264984146,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.073333,
+     "other_weight": 0.102963,
+     "lambda_hat": 1.374659283889183,
+     "lo": 1.2525214612506363,
+     "hi": 1.4925546597349169,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.066667,
+     "other_weight": 0.10370366666666667,
+     "lambda_hat": 1.4149042762913102,
+     "lo": 1.2888799304050347,
+     "hi": 1.5354415882007102,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.06,
+     "other_weight": 0.10444444444444444,
+     "lambda_hat": 1.4578501828409496,
+     "lo": 1.3249225551487886,
+     "hi": 1.5790726420328898,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.053333,
+     "other_weight": 0.10518522222222222,
+     "lambda_hat": 1.5029544792131158,
+     "lo": 1.3673912496703824,
+     "hi": 1.6223537833105577,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.046667,
+     "other_weight": 0.10592588888888889,
+     "lambda_hat": 1.549374584890142,
+     "lo": 1.4277987507916479,
+     "hi": 1.6670234613125186,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.04,
+     "other_weight": 0.10666666666666666,
+     "lambda_hat": 1.5959548254739593,
+     "lo": 1.4777613882065541,
+     "hi": 1.707116707123471,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.033333,
+     "other_weight": 0.10740744444444444,
+     "lambda_hat": 1.641188233927382,
+     "lo": 1.5281479420401365,
+     "hi": 1.7424499772014481,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.026667,
+     "other_weight": 0.10814811111111111,
+     "lambda_hat": 1.6833034404727572,
+     "lo": 1.5800931559073896,
+     "hi": 1.7765693352756444,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.02,
+     "other_weight": 0.10888888888888888,
+     "lambda_hat": 1.7204233269974416,
+     "lo": 1.629270678619392,
+     "hi": 1.8109708804676203,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.013333,
+     "other_weight": 0.10962966666666667,
+     "lambda_hat": 1.7507374846878656,
+     "lo": 1.6610768630968205,
+     "hi": 1.8380107265760375,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.006667,
+     "other_weight": 0.11037033333333333,
+     "lambda_hat": 1.7727720939959342,
+     "lo": 1.6840651035634444,
+     "hi": 1.8579451723082232,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.0,
+     "other_weight": 0.1111111111111111,
+     "lambda_hat": 1.7856174646172647,
+     "lo": 1.6901669493113387,
+     "hi": 1.8752042810053506,
+     "excludes_one": true
+    }
+   ],
+   "first_boolq_weight_excluding_one": 0.1,
+   "seconds": 0.21426939964294434
+  },
+  "accuracy": {
+   "shipped_rebuild_max_abs_diff": 5.421010862427522e-20,
+   "rows": [
+    {
+     "boolq_weight": 0.1,
+     "other_weight": 0.1,
+     "lambda_hat": 1.0783733870898096,
+     "lo": 0.9920950381310577,
+     "hi": 1.1564004635785121,
+     "excludes_one": false
+    },
+    {
+     "boolq_weight": 0.093333,
+     "other_weight": 0.10074077777777778,
+     "lambda_hat": 1.0908717115101685,
+     "lo": 0.9999086282587564,
+     "hi": 1.1734249226785045,
+     "excludes_one": false
+    },
+    {
+     "boolq_weight": 0.086667,
+     "other_weight": 0.10148144444444444,
+     "lambda_hat": 1.1056323378090165,
+     "lo": 1.0144556014637656,
+     "hi": 1.191676882372279,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.08,
+     "other_weight": 0.10222222222222223,
+     "lambda_hat": 1.1231060931219559,
+     "lo": 1.0296814759671602,
+     "hi": 1.2072875653394022,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.073333,
+     "other_weight": 0.102963,
+     "lambda_hat": 1.1438085395726783,
+     "lo": 1.051063357689505,
+     "hi": 1.2329423796980696,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.066667,
+     "other_weight": 0.10370366666666667,
+     "lambda_hat": 1.1683141963010901,
+     "lo": 1.0724863903283834,
+     "hi": 1.2607958942554816,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.06,
+     "other_weight": 0.10444444444444444,
+     "lambda_hat": 1.197236388154498,
+     "lo": 1.0964346225220987,
+     "hi": 1.2949551312066845,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.053333,
+     "other_weight": 0.10518522222222222,
+     "lambda_hat": 1.2311305504137253,
+     "lo": 1.1248843546794045,
+     "hi": 1.3259068091767632,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.046667,
+     "other_weight": 0.10592588888888889,
+     "lambda_hat": 1.2703596181418826,
+     "lo": 1.1633937646719934,
+     "hi": 1.3691876266065042,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.04,
+     "other_weight": 0.10666666666666666,
+     "lambda_hat": 1.3148752439439777,
+     "lo": 1.2038928225195493,
+     "hi": 1.4151941637924037,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.033333,
+     "other_weight": 0.10740744444444444,
+     "lambda_hat": 1.3638296649733272,
+     "lo": 1.2531187597803706,
+     "hi": 1.4642503615849005,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.026667,
+     "other_weight": 0.10814811111111111,
+     "lambda_hat": 1.415167484528169,
+     "lo": 1.3042931024412314,
+     "hi": 1.5133226224537357,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.02,
+     "other_weight": 0.10888888888888888,
+     "lambda_hat": 1.4653282464896782,
+     "lo": 1.3534783604401295,
+     "hi": 1.5682524155042363,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.013333,
+     "other_weight": 0.10962966666666667,
+     "lambda_hat": 1.5093103314814642,
+     "lo": 1.389032053314522,
+     "hi": 1.621858904003266,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.006667,
+     "other_weight": 0.11037033333333333,
+     "lambda_hat": 1.5415989687151563,
+     "lo": 1.4063571247411328,
+     "hi": 1.6636172195254058,
+     "excludes_one": true
+    },
+    {
+     "boolq_weight": 0.0,
+     "other_weight": 0.1111111111111111,
+     "lambda_hat": 1.5578291363266619,
+     "lo": 1.4097872698742058,
+     "hi": 1.6896668712192577,
+     "excludes_one": true
+    }
+   ],
+   "first_boolq_weight_excluding_one": 0.086667,
+   "seconds": 0.2115466594696045
+  }
+ },
+ "wall_seconds": 17.55139398574829
+}

@@ -1,0 +1,48 @@
+[{"stream_name":"stdout","time":0.854969857,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":1.026919551,"data":"[Falcon-with-cc-top-orig-10p] attempt 1 failed: HTTPError: HTTP Error 404: Not Found\n"}
+,{"stream_name":"stdout","time":31.160265978,"data":"[Falcon-with-cc-top-orig-10p] attempt 2 failed: HTTPError: HTTP Error 404: Not Found\n"}
+,{"stream_name":"stdout","time":61.300065483,"data":"[Falcon-with-cc-top-orig-10p] attempt 3 failed: HTTPError: HTTP Error 404: Not Found\n"}
+,{"stream_name":"stdout","time":91.435315388,"data":"[Falcon-with-cc-top-tulu-10p] attempt 1 failed: HTTPError: HTTP Error 404: Not Found\n"}
+,{"stream_name":"stdout","time":121.570039418,"data":"[Falcon-with-cc-top-tulu-10p] attempt 2 failed: HTTPError: HTTP Error 404: Not Found\n"}
+,{"stream_name":"stdout","time":151.700389155,"data":"[Falcon-with-cc-top-tulu-10p] attempt 3 failed: HTTPError: HTTP Error 404: Not Found\n"}
+,{"stream_name":"stdout","time":203.898560075,"data":"  c4: 0.50/4.89 GB, 61 runs, 22s\n"}
+,{"stream_name":"stdout","time":227.482567284,"data":"  c4: 1.00/4.89 GB, 132 runs, 46s\n"}
+,{"stream_name":"stdout","time":253.207387804,"data":"  c4: 1.51/4.89 GB, 191 runs, 71s\n"}
+,{"stream_name":"stdout","time":291.950075349,"data":"  c4: 2.01/4.89 GB, 251 runs, 110s\n"}
+,{"stream_name":"stdout","time":313.839981264,"data":"  c4: 2.52/4.89 GB, 318 runs, 132s\n"}
+,{"stream_name":"stdout","time":338.451506019,"data":"  c4: 3.02/4.89 GB, 378 runs, 156s\n"}
+,{"stream_name":"stdout","time":359.833352423,"data":"  c4: 3.53/4.89 GB, 445 runs, 178s\n"}
+,{"stream_name":"stdout","time":403.177870923,"data":"  c4: 4.03/4.89 GB, 504 runs, 221s\n"}
+,{"stream_name":"stdout","time":425.687952666,"data":"  c4: 4.53/4.89 GB, 564 runs, 244s\n"}
+,{"stream_name":"stdout","time":441.122930139,"data":"[c4] 603 runs, 4.89 GB in 259s\n"}
+,{"stream_name":"stdout","time":464.989415362,"data":"  dclm-baseline: 0.50/5.12 GB, 61 runs, 24s\n"}
+,{"stream_name":"stdout","time":486.980702558,"data":"  dclm-baseline: 1.01/5.12 GB, 122 runs, 46s\n"}
+,{"stream_name":"stdout","time":512.305232746,"data":"  dclm-baseline: 1.51/5.12 GB, 182 runs, 71s\n"}
+,{"stream_name":"stdout","time":534.920984272,"data":"  dclm-baseline: 2.02/5.12 GB, 241 runs, 94s\n"}
+,{"stream_name":"stdout","time":558.98433956,"data":"  dclm-baseline: 2.52/5.12 GB, 301 runs, 118s\n"}
+,{"stream_name":"stdout","time":581.982516965,"data":"  dclm-baseline: 3.02/5.12 GB, 360 runs, 141s\n"}
+,{"stream_name":"stdout","time":603.232172157,"data":"  dclm-baseline: 3.53/5.12 GB, 420 runs, 162s\n"}
+,{"stream_name":"stdout","time":625.969577595,"data":"  dclm-baseline: 4.03/5.12 GB, 478 runs, 185s\n"}
+,{"stream_name":"stdout","time":647.175161876,"data":"  dclm-baseline: 4.54/5.12 GB, 538 runs, 206s\n"}
+,{"stream_name":"stdout","time":670.510707177,"data":"  dclm-baseline: 5.04/5.12 GB, 597 runs, 229s\n"}
+,{"stream_name":"stdout","time":673.661558059,"data":"[dclm-baseline] 604 runs, 5.12 GB in 232s\n"}
+,{"stream_name":"stdout","time":697.801412707,"data":"  dclm-baseline-25p-dolma1.7-75p: 0.50/5.07 GB, 61 runs, 24s\n"}
+,{"stream_name":"stdout","time":720.596129287,"data":"  dclm-baseline-25p-dolma1.7-75p: 1.00/5.07 GB, 125 runs, 47s\n"}
+,{"stream_name":"stdout","time":743.620712778,"data":"  dclm-baseline-25p-dolma1.7-75p: 1.51/5.07 GB, 186 runs, 70s\n"}
+,{"stream_name":"stdout","time":765.367204132,"data":"  dclm-baseline-25p-dolma1.7-75p: 2.01/5.07 GB, 245 runs, 91s\n"}
+,{"stream_name":"stdout","time":788.110645257,"data":"  dclm-baseline-25p-dolma1.7-75p: 2.51/5.07 GB, 305 runs, 114s\n"}
+,{"stream_name":"stdout","time":812.81478618,"data":"  dclm-baseline-25p-dolma1.7-75p: 3.02/5.07 GB, 365 runs, 139s\n"}
+,{"stream_name":"stdout","time":834.98538156,"data":"  dclm-baseline-25p-dolma1.7-75p: 3.52/5.07 GB, 425 runs, 161s\n"}
+,{"stream_name":"stdout","time":857.570564109,"data":"  dclm-baseline-25p-dolma1.7-75p: 4.03/5.07 GB, 483 runs, 184s\n"}
+,{"stream_name":"stdout","time":878.957415674,"data":"  dclm-baseline-25p-dolma1.7-75p: 4.53/5.07 GB, 543 runs, 205s\n"}
+,{"stream_name":"stdout","time":908.312918442,"data":"  dclm-baseline-25p-dolma1.7-75p: 5.04/5.07 GB, 601 runs, 234s\n"}
+,{"stream_name":"stdout","time":908.959003001,"data":"[dclm-baseline-25p-dolma1.7-75p] 603 runs, 5.07 GB in 235s\n"}
+,{"stream_name":"stdout","time":908.982828419,"data":"[done] 3 of 5 recipes indexed in 908s\n"}
+,{"stream_name":"stderr","time":908.982815487,"data":"missing recipes: ['Falcon-with-cc-top-orig-10p', 'Falcon-with-cc-top-tulu-10p']\n"}
+,{"stream_name":"stderr","time":911.84563336,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":911.845665483,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":912.244677131,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":912.244710937,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":913.714254016,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":915.303962786,"data":"[NbConvertApp] Writing 292767 bytes to __results__.html\n"}
+]

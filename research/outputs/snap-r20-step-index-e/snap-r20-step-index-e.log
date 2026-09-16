@@ -1,0 +1,59 @@
+[{"stream_name":"stdout","time":1.115256524,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":14.880998691,"data":"  falcon-with-cc: 0.50/4.89 GB, 61 runs, 14s\n"}
+,{"stream_name":"stdout","time":26.908097561,"data":"  falcon-with-cc: 1.01/4.89 GB, 132 runs, 26s\n"}
+,{"stream_name":"stdout","time":43.007225486,"data":"  falcon-with-cc: 1.51/4.89 GB, 191 runs, 42s\n"}
+,{"stream_name":"stdout","time":57.932901206,"data":"  falcon-with-cc: 2.02/4.89 GB, 251 runs, 57s\n"}
+,{"stream_name":"stdout","time":65.764181635,"data":"  falcon-with-cc: 2.52/4.89 GB, 318 runs, 64s\n"}
+,{"stream_name":"stdout","time":77.084861506,"data":"  falcon-with-cc: 3.03/4.89 GB, 378 runs, 76s\n"}
+,{"stream_name":"stdout","time":92.142380674,"data":"  falcon-with-cc: 3.53/4.89 GB, 445 runs, 91s\n"}
+,{"stream_name":"stdout","time":101.242982009,"data":"  falcon-with-cc: 4.03/4.89 GB, 504 runs, 100s\n"}
+,{"stream_name":"stdout","time":111.570978902,"data":"  falcon-with-cc: 4.53/4.89 GB, 564 runs, 110s\n"}
+,{"stream_name":"stdout","time":119.050389377,"data":"[falcon-with-cc] 603 runs, 4.89 GB in 118s\n"}
+,{"stream_name":"stdout","time":130.154115115,"data":"  falcon-with-cc-top-10p: 0.50/4.87 GB, 61 runs, 11s\n"}
+,{"stream_name":"stdout","time":146.779417383,"data":"  falcon-with-cc-top-10p: 1.01/4.87 GB, 132 runs, 28s\n"}
+,{"stream_name":"stdout","time":156.281640239,"data":"  falcon-with-cc-top-10p: 1.51/4.87 GB, 191 runs, 37s\n"}
+,{"stream_name":"stdout","time":167.622149854,"data":"  falcon-with-cc-top-10p: 2.01/4.87 GB, 251 runs, 48s\n"}
+,{"stream_name":"stdout","time":177.449492425,"data":"  falcon-with-cc-top-10p: 2.52/4.87 GB, 317 runs, 58s\n"}
+,{"stream_name":"stdout","time":190.502458398,"data":"  falcon-with-cc-top-10p: 3.03/4.87 GB, 378 runs, 71s\n"}
+,{"stream_name":"stdout","time":200.610503436,"data":"  falcon-with-cc-top-10p: 3.53/4.87 GB, 445 runs, 81s\n"}
+,{"stream_name":"stdout","time":211.929507211,"data":"  falcon-with-cc-top-10p: 4.03/4.87 GB, 504 runs, 93s\n"}
+,{"stream_name":"stdout","time":222.736422214,"data":"  falcon-with-cc-top-10p: 4.53/4.87 GB, 564 runs, 103s\n"}
+,{"stream_name":"stdout","time":228.057962139,"data":"[falcon-with-cc-top-10p] 601 runs, 4.87 GB in 109s\n"}
+,{"stream_name":"stdout","time":240.5737272,"data":"  falcon-with-cc-top-20p: 0.50/4.86 GB, 61 runs, 12s\n"}
+,{"stream_name":"stdout","time":251.671308347,"data":"  falcon-with-cc-top-20p: 1.01/4.86 GB, 132 runs, 23s\n"}
+,{"stream_name":"stdout","time":260.348301757,"data":"  falcon-with-cc-top-20p: 1.51/4.86 GB, 191 runs, 32s\n"}
+,{"stream_name":"stdout","time":272.762291646,"data":"  falcon-with-cc-top-20p: 2.01/4.86 GB, 251 runs, 44s\n"}
+,{"stream_name":"stdout","time":283.51705754,"data":"  falcon-with-cc-top-20p: 2.51/4.86 GB, 316 runs, 55s\n"}
+,{"stream_name":"stdout","time":292.6130238,"data":"  falcon-with-cc-top-20p: 3.02/4.86 GB, 377 runs, 64s\n"}
+,{"stream_name":"stdout","time":302.256935471,"data":"  falcon-with-cc-top-20p: 3.52/4.86 GB, 444 runs, 74s\n"}
+,{"stream_name":"stdout","time":319.395545368,"data":"  falcon-with-cc-top-20p: 4.02/4.86 GB, 503 runs, 91s\n"}
+,{"stream_name":"stdout","time":336.470770582,"data":"  falcon-with-cc-top-20p: 4.52/4.86 GB, 563 runs, 108s\n"}
+,{"stream_name":"stdout","time":357.17245173,"data":"[falcon-with-cc-top-20p] 600 runs, 4.86 GB in 129s\n"}
+,{"stream_name":"stdout","time":368.098256784,"data":"  fineweb-edu: 0.50/4.88 GB, 61 runs, 11s\n"}
+,{"stream_name":"stdout","time":378.333945187,"data":"  fineweb-edu: 1.01/4.88 GB, 130 runs, 21s\n"}
+,{"stream_name":"stdout","time":387.674226686,"data":"  fineweb-edu: 1.52/4.88 GB, 190 runs, 30s\n"}
+,{"stream_name":"stdout","time":397.151864557,"data":"  fineweb-edu: 2.02/4.88 GB, 249 runs, 40s\n"}
+,{"stream_name":"stdout","time":407.420695437,"data":"  fineweb-edu: 2.52/4.88 GB, 316 runs, 50s\n"}
+,{"stream_name":"stdout","time":418.719828869,"data":"  fineweb-edu: 3.03/4.88 GB, 376 runs, 61s\n"}
+,{"stream_name":"stdout","time":427.164317259,"data":"  fineweb-edu: 3.53/4.88 GB, 443 runs, 70s\n"}
+,{"stream_name":"stdout","time":437.037748223,"data":"  fineweb-edu: 4.03/4.88 GB, 502 runs, 80s\n"}
+,{"stream_name":"stdout","time":445.859593352,"data":"  fineweb-edu: 4.54/4.88 GB, 562 runs, 88s\n"}
+,{"stream_name":"stdout","time":452.299495802,"data":"[fineweb-edu] 600 runs, 4.88 GB in 95s\n"}
+,{"stream_name":"stdout","time":461.470940321,"data":"  fineweb-pro: 0.50/4.95 GB, 61 runs, 9s\n"}
+,{"stream_name":"stdout","time":470.330602599,"data":"  fineweb-pro: 1.01/4.95 GB, 125 runs, 18s\n"}
+,{"stream_name":"stdout","time":479.574704547,"data":"  fineweb-pro: 1.52/4.95 GB, 184 runs, 27s\n"}
+,{"stream_name":"stdout","time":489.952336283,"data":"  fineweb-pro: 2.02/4.95 GB, 244 runs, 37s\n"}
+,{"stream_name":"stdout","time":500.084237536,"data":"  fineweb-pro: 2.53/4.95 GB, 311 runs, 48s\n"}
+,{"stream_name":"stdout","time":510.749199656,"data":"  fineweb-pro: 3.03/4.95 GB, 371 runs, 58s\n"}
+,{"stream_name":"stdout","time":520.198642427,"data":"  fineweb-pro: 3.54/4.95 GB, 437 runs, 68s\n"}
+,{"stream_name":"stdout","time":531.129228085,"data":"  fineweb-pro: 4.05/4.95 GB, 498 runs, 79s\n"}
+,{"stream_name":"stdout","time":539.501908605,"data":"  fineweb-pro: 4.55/4.95 GB, 558 runs, 87s\n"}
+,{"stream_name":"stdout","time":546.027268022,"data":"[fineweb-pro] 602 runs, 4.95 GB in 93s\n"}
+,{"stream_name":"stdout","time":546.067694586,"data":"[done] 5 of 5 recipes indexed in 545s\n"}
+,{"stream_name":"stderr","time":548.965015091,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":548.965098259,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":549.355625482,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":549.355660531,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":551.101308246,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":552.837563662,"data":"[NbConvertApp] Writing 293512 bytes to __results__.html\n"}
+]

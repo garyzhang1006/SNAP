@@ -1,0 +1,152 @@
+{
+ "design": "R6 precision replication of the four decisive coverage cells at 10,000 replicates with new seeds.\n\nDesign fixed before running (2026-09-15, written 19:12 EDT). The plan gives Monte Carlo SE 0.0049 at 2,000\nreplicates and 0.0022 at 10,000, and asks that decisive cells receive adequate replication. The decisive\ncells are the two with the lowest wild coverage in R6 (margin-like cross-half correlation 0.1, 0.928, and one\ndominant recipe, 0.930) and the two cells calibrated to the observed estimates (margin-like and\naccuracy-like). The R6 generator is copied verbatim from snap-r6-fieller, with seed 20260917 so these datasets\nare independent of R6. Intervals are the wild cluster bootstrap-t (4,999 draws, seed rep), cluster-robust\nt(24), and the centred and restricted test inversions. Record coverage, Monte Carlo SE, tail misses,\nundefined or unbounded shares, and median widths.\n",
+ "seed": 20260917,
+ "reps": 10000,
+ "cells": {
+  "margin_like_cross_half_error_corr_0.1": {
+   "name": "margin_like_cross_half_error_corr_0.1",
+   "truth": 1.2445882853377657,
+   "wild": {
+    "coverage": 0.9334,
+    "mc_se": 0.002493279767695555,
+    "lower_miss": 0.0126,
+    "upper_miss": 0.054,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23520864232402372
+   },
+   "cluster_t": {
+    "coverage": 0.9292,
+    "mc_se": 0.002564904676591315,
+    "lower_miss": 0.014,
+    "upper_miss": 0.0568,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2297494006638784
+   },
+   "centred": {
+    "coverage": 0.9353,
+    "mc_se": 0.0024599575199584236,
+    "lower_miss": 0.0113,
+    "upper_miss": 0.0534,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23529266437865415
+   },
+   "restricted": {
+    "coverage": 0.9513,
+    "mc_se": 0.00215240121724552,
+    "lower_miss": 0.0074,
+    "upper_miss": 0.0413,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2534291673452602
+   }
+  },
+  "margin_like_one_dominant_recipe": {
+   "name": "margin_like_one_dominant_recipe",
+   "truth": 1.2445882853377657,
+   "wild": {
+    "coverage": 0.9354,
+    "mc_se": 0.0024581871368958056,
+    "lower_miss": 0.0218,
+    "upper_miss": 0.0428,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26237555940626234
+   },
+   "cluster_t": {
+    "coverage": 0.9156,
+    "mc_se": 0.00277986762274753,
+    "lower_miss": 0.0294,
+    "upper_miss": 0.055,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23667286066872728
+   },
+   "centred": {
+    "coverage": 0.9561,
+    "mc_se": 0.0020487261896114874,
+    "lower_miss": 0.0131,
+    "upper_miss": 0.0308,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.26173801408376507
+   },
+   "restricted": {
+    "coverage": 0.9696,
+    "mc_se": 0.001716852934878232,
+    "lower_miss": 0.0086,
+    "upper_miss": 0.0218,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2854765678867546
+   }
+  },
+  "margin_like": {
+   "name": "margin_like",
+   "truth": 1.2445882853377657,
+   "wild": {
+    "coverage": 0.9404,
+    "mc_se": 0.0023674425019417048,
+    "lower_miss": 0.0204,
+    "upper_miss": 0.0392,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24166461276596662
+   },
+   "cluster_t": {
+    "coverage": 0.9363,
+    "mc_se": 0.0024421775119757363,
+    "lower_miss": 0.0222,
+    "upper_miss": 0.0415,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23614412897411896
+   },
+   "centred": {
+    "coverage": 0.9419,
+    "mc_se": 0.002339324475142344,
+    "lower_miss": 0.0192,
+    "upper_miss": 0.0389,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2420284794444696
+   },
+   "restricted": {
+    "coverage": 0.9593,
+    "mc_se": 0.001975943065981405,
+    "lower_miss": 0.0117,
+    "upper_miss": 0.029,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2606473870241155
+   }
+  },
+  "accuracy_like": {
+   "name": "accuracy_like",
+   "truth": 1.0779610382569493,
+   "wild": {
+    "coverage": 0.9449,
+    "mc_se": 0.0022817534923825584,
+    "lower_miss": 0.0184,
+    "upper_miss": 0.0365,
+    "undefined_or_unbounded": 0.0002,
+    "median_width": 0.39596271309461556
+   },
+   "cluster_t": {
+    "coverage": 0.9416,
+    "mc_se": 0.002344982729147488,
+    "lower_miss": 0.0201,
+    "upper_miss": 0.0381,
+    "undefined_or_unbounded": 0.0002,
+    "median_width": 0.38871659116412755
+   },
+   "centred": {
+    "coverage": 0.9466,
+    "mc_se": 0.0022482980229498045,
+    "lower_miss": 0.0181,
+    "upper_miss": 0.0353,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.40078314296520634
+   },
+   "restricted": {
+    "coverage": 0.9616,
+    "mc_se": 0.0019215993338883106,
+    "lower_miss": 0.0128,
+    "upper_miss": 0.0256,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.4330264468868899
+   }
+  }
+ },
+ "wall_seconds": 1293.451688528061
+}

@@ -1,0 +1,3918 @@
+{
+ "design": "R12 pooled held-out prediction, giving the fitted predictions a less noisy target.\n\nDesign fixed before running (2026-09-15, written 21:35 EDT). snap-r12-predict compares predictions of a\nratio measured on six runs of one configuration, and that target swings from 0.70 to 1.85 between its\nfifth and ninety-fifth percentiles, so the comparison may be measuring target noise rather than model\nquality. This run pools the target across configurations. For each of the 84 ways of choosing three\nruns, the held-out six runs give one pooled ratio, formed from the mean within-configuration variance\nof the battery mean over the mean within-configuration variance sum of the benchmarks. The three\npredictions are those of snap-r12-predict, fitted on the three-run population across all\nconfigurations. We report the mean absolute log error of each prediction over the 84 splits, the\npaired differences, and the spread of the pooled target, for both phenotypes and both size sets.\n",
+ "sets": {
+  "three_sizes": {
+   "N": 3,
+   "R": 9,
+   "phenotypes": {
+    "margin": {
+     "n_splits": 84,
+     "observed": {
+      "n_finite": 84,
+      "mean": 1.3804771760834622,
+      "sd": 0.14027548777946708,
+      "p05": 1.1424480364859235,
+      "median": 1.3962709622446028,
+      "p95": 1.5566090001769337
+     },
+     "errors": {
+      "independence": {
+       "n": 84,
+       "mean_abs_log_error": 0.31947785115411687,
+       "median_abs_log_error": 0.3338048344531618,
+       "mean_prediction": 1.0,
+       "sd_prediction": 0.0
+      },
+      "plug_in": {
+       "n": 83,
+       "mean_abs_log_error": 0.2792692724374369,
+       "median_abs_log_error": 0.20712023550142916,
+       "mean_prediction": 1.357350602102664,
+       "sd_prediction": 0.3367205993742148
+      },
+      "decomposition": {
+       "n": 84,
+       "mean_abs_log_error": 0.2754415256813376,
+       "median_abs_log_error": 0.20688965929007508,
+       "mean_prediction": 1.3260490874521615,
+       "sd_prediction": 0.32323914139003457
+      },
+      "decomposition_minus_independence": {
+       "mean": -0.04403632547277918,
+       "median": -0.09061294278231263,
+       "share_below_zero": 0.5952380952380952
+      },
+      "decomposition_minus_plug_in": {
+       "mean": -0.015568649343419954,
+       "median": -0.016515228947201976,
+       "share_below_zero": 0.7228915662650602
+      },
+      "plug_in_minus_independence": {
+       "mean": -0.0380091788018477,
+       "median": -0.07219711206832258,
+       "share_below_zero": 0.6024096385542169
+      }
+     },
+     "rows": [
+      {
+       "fit": [
+        0,
+        1,
+        2
+       ],
+       "observed": 1.5269566786167774,
+       "independence": 1.0,
+       "plug_in": 0.9649640575223222,
+       "decomposition": 0.9670607884374283
+      },
+      {
+       "fit": [
+        0,
+        1,
+        3
+       ],
+       "observed": 1.478768766409793,
+       "independence": 1.0,
+       "plug_in": 1.0948569263988321,
+       "decomposition": 1.0909968612780034
+      },
+      {
+       "fit": [
+        0,
+        1,
+        4
+       ],
+       "observed": 1.42965726710695,
+       "independence": 1.0,
+       "plug_in": 1.2849721731867527,
+       "decomposition": 1.272651092301562
+      },
+      {
+       "fit": [
+        0,
+        1,
+        5
+       ],
+       "observed": 1.5477175413345357,
+       "independence": 1.0,
+       "plug_in": 0.8064368223882549,
+       "decomposition": 0.8178740344757636
+      },
+      {
+       "fit": [
+        0,
+        1,
+        6
+       ],
+       "observed": 1.6171114523147836,
+       "independence": 1.0,
+       "plug_in": 0.8848016492883488,
+       "decomposition": 0.8910821549737368
+      },
+      {
+       "fit": [
+        0,
+        1,
+        7
+       ],
+       "observed": 1.6365154398508934,
+       "independence": 1.0,
+       "plug_in": 0.779104358098759,
+       "decomposition": 0.7976457301541032
+      },
+      {
+       "fit": [
+        0,
+        1,
+        8
+       ],
+       "observed": 1.576513928256224,
+       "independence": 1.0,
+       "plug_in": 0.8981970770482037,
+       "decomposition": 0.9032176877031269
+      },
+      {
+       "fit": [
+        0,
+        2,
+        3
+       ],
+       "observed": 1.3055346061056576,
+       "independence": 1.0,
+       "plug_in": 1.2428732883249562,
+       "decomposition": 1.231002406460074
+      },
+      {
+       "fit": [
+        0,
+        2,
+        4
+       ],
+       "observed": 1.30320168521867,
+       "independence": 1.0,
+       "plug_in": 1.583811653282167,
+       "decomposition": 1.545757508948912
+      },
+      {
+       "fit": [
+        0,
+        2,
+        5
+       ],
+       "observed": 1.4528518975038756,
+       "independence": 1.0,
+       "plug_in": 1.2867287343319738,
+       "decomposition": 1.2643131842692983
+      },
+      {
+       "fit": [
+        0,
+        2,
+        6
+       ],
+       "observed": 1.5226344480638683,
+       "independence": 1.0,
+       "plug_in": 1.3673678732822339,
+       "decomposition": 1.3411210434361347
+      },
+      {
+       "fit": [
+        0,
+        2,
+        7
+       ],
+       "observed": 1.5335020714159595,
+       "independence": 1.0,
+       "plug_in": 1.2382738851639574,
+       "decomposition": 1.2124135634459028
+      },
+      {
+       "fit": [
+        0,
+        2,
+        8
+       ],
+       "observed": 1.4607852957552787,
+       "independence": 1.0,
+       "plug_in": 1.2134230224873954,
+       "decomposition": 1.2012134879686467
+      },
+      {
+       "fit": [
+        0,
+        3,
+        4
+       ],
+       "observed": 1.236914132515324,
+       "independence": 1.0,
+       "plug_in": 1.6538289834474242,
+       "decomposition": 1.6267399258555166
+      },
+      {
+       "fit": [
+        0,
+        3,
+        5
+       ],
+       "observed": 1.4253948316715834,
+       "independence": 1.0,
+       "plug_in": 1.4327115452732906,
+       "decomposition": 1.4135082229741676
+      },
+      {
+       "fit": [
+        0,
+        3,
+        6
+       ],
+       "observed": 1.5251716646745526,
+       "independence": 1.0,
+       "plug_in": 1.4907265117060493,
+       "decomposition": 1.4679168451108002
+      },
+      {
+       "fit": [
+        0,
+        3,
+        7
+       ],
+       "observed": 1.5061111941656595,
+       "independence": 1.0,
+       "plug_in": 1.3374504684473392,
+       "decomposition": 1.3186479159214952
+      },
+      {
+       "fit": [
+        0,
+        3,
+        8
+       ],
+       "observed": 1.460930429493607,
+       "independence": 1.0,
+       "plug_in": 1.4161022266907006,
+       "decomposition": 1.3970589619969813
+      },
+      {
+       "fit": [
+        0,
+        4,
+        5
+       ],
+       "observed": 1.3325999821880028,
+       "independence": 1.0,
+       "plug_in": 1.4563122801409232,
+       "decomposition": 1.4316954253030743
+      },
+      {
+       "fit": [
+        0,
+        4,
+        6
+       ],
+       "observed": 1.3952834891295387,
+       "independence": 1.0,
+       "plug_in": 1.5145068983133492,
+       "decomposition": 1.4765895674807865
+      },
+      {
+       "fit": [
+        0,
+        4,
+        7
+       ],
+       "observed": 1.4108234169172083,
+       "independence": 1.0,
+       "plug_in": 1.3548013550031022,
+       "decomposition": 1.309410212294611
+      },
+      {
+       "fit": [
+        0,
+        4,
+        8
+       ],
+       "observed": 1.3255547643711925,
+       "independence": 1.0,
+       "plug_in": 1.349382371111098,
+       "decomposition": 1.3350125222417655
+      },
+      {
+       "fit": [
+        0,
+        5,
+        6
+       ],
+       "observed": 1.538929792089684,
+       "independence": 1.0,
+       "plug_in": 0.7089224270370097,
+       "decomposition": 0.7448468368970506
+      },
+      {
+       "fit": [
+        0,
+        5,
+        7
+       ],
+       "observed": 1.55332118460126,
+       "independence": 1.0,
+       "plug_in": 0.4774402053312786,
+       "decomposition": 0.6105401783204487
+      },
+      {
+       "fit": [
+        0,
+        5,
+        8
+       ],
+       "observed": 1.464636224388487,
+       "independence": 1.0,
+       "plug_in": 0.7379029640991627,
+       "decomposition": 0.760468435020299
+      },
+      {
+       "fit": [
+        0,
+        6,
+        7
+       ],
+       "observed": 1.6520683429791723,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 0.47335559032655555
+      },
+      {
+       "fit": [
+        0,
+        6,
+        8
+       ],
+       "observed": 1.5224763912209065,
+       "independence": 1.0,
+       "plug_in": 0.8026832690555331,
+       "decomposition": 0.8148961966833869
+      },
+      {
+       "fit": [
+        0,
+        7,
+        8
+       ],
+       "observed": 1.5406648168966972,
+       "independence": 1.0,
+       "plug_in": 0.7264696491970729,
+       "decomposition": 0.751116518977691
+      },
+      {
+       "fit": [
+        1,
+        2,
+        3
+       ],
+       "observed": 1.1966417975491102,
+       "independence": 1.0,
+       "plug_in": 0.8589581206348503,
+       "decomposition": 0.8690816487563362
+      },
+      {
+       "fit": [
+        1,
+        2,
+        4
+       ],
+       "observed": 1.290415583325597,
+       "independence": 1.0,
+       "plug_in": 1.7978343707968099,
+       "decomposition": 1.7405142326198535
+      },
+      {
+       "fit": [
+        1,
+        2,
+        5
+       ],
+       "observed": 1.4377290851235414,
+       "independence": 1.0,
+       "plug_in": 1.4958613537369203,
+       "decomposition": 1.4401030340517398
+      },
+      {
+       "fit": [
+        1,
+        2,
+        6
+       ],
+       "observed": 1.4670759028173241,
+       "independence": 1.0,
+       "plug_in": 1.2607346764989853,
+       "decomposition": 1.244666255706351
+      },
+      {
+       "fit": [
+        1,
+        2,
+        7
+       ],
+       "observed": 1.501253899781784,
+       "independence": 1.0,
+       "plug_in": 1.225600803435359,
+       "decomposition": 1.2033224774294577
+      },
+      {
+       "fit": [
+        1,
+        2,
+        8
+       ],
+       "observed": 1.4923663160700062,
+       "independence": 1.0,
+       "plug_in": 1.6647866103321656,
+       "decomposition": 1.6035296661250198
+      },
+      {
+       "fit": [
+        1,
+        3,
+        4
+       ],
+       "observed": 1.1485827007571112,
+       "independence": 1.0,
+       "plug_in": 1.6365699975848824,
+       "decomposition": 1.6085305642948329
+      },
+      {
+       "fit": [
+        1,
+        3,
+        5
+       ],
+       "observed": 1.3544497803109852,
+       "independence": 1.0,
+       "plug_in": 1.321927949121709,
+       "decomposition": 1.3055121193207935
+      },
+      {
+       "fit": [
+        1,
+        3,
+        6
+       ],
+       "observed": 1.3972584353596669,
+       "independence": 1.0,
+       "plug_in": 1.2729622783760643,
+       "decomposition": 1.26085206233115
+      },
+      {
+       "fit": [
+        1,
+        3,
+        7
+       ],
+       "observed": 1.4124685801996226,
+       "independence": 1.0,
+       "plug_in": 1.1576933587430356,
+       "decomposition": 1.1499161242564109
+      },
+      {
+       "fit": [
+        1,
+        3,
+        8
+       ],
+       "observed": 1.444978486835856,
+       "independence": 1.0,
+       "plug_in": 1.5460932586433684,
+       "decomposition": 1.51218531612827
+      },
+      {
+       "fit": [
+        1,
+        4,
+        5
+       ],
+       "observed": 1.3266411200768757,
+       "independence": 1.0,
+       "plug_in": 1.631941662230644,
+       "decomposition": 1.5991682137838916
+      },
+      {
+       "fit": [
+        1,
+        4,
+        6
+       ],
+       "observed": 1.34438208093108,
+       "independence": 1.0,
+       "plug_in": 1.4294115758355614,
+       "decomposition": 1.40867937061734
+      },
+      {
+       "fit": [
+        1,
+        4,
+        7
+       ],
+       "observed": 1.3815887060357575,
+       "independence": 1.0,
+       "plug_in": 1.4496249723356696,
+       "decomposition": 1.4142924716808043
+      },
+      {
+       "fit": [
+        1,
+        4,
+        8
+       ],
+       "observed": 1.3664162643811522,
+       "independence": 1.0,
+       "plug_in": 1.6752210726901908,
+       "decomposition": 1.6427420649127504
+      },
+      {
+       "fit": [
+        1,
+        5,
+        6
+       ],
+       "observed": 1.480552665961549,
+       "independence": 1.0,
+       "plug_in": 1.029411874821099,
+       "decomposition": 1.0276057935630676
+      },
+      {
+       "fit": [
+        1,
+        5,
+        7
+       ],
+       "observed": 1.5165638730613988,
+       "independence": 1.0,
+       "plug_in": 1.0041281810824623,
+       "decomposition": 1.0036712810018515
+      },
+      {
+       "fit": [
+        1,
+        5,
+        8
+       ],
+       "observed": 1.4911544967247294,
+       "independence": 1.0,
+       "plug_in": 1.2531288114877634,
+       "decomposition": 1.225344869606937
+      },
+      {
+       "fit": [
+        1,
+        6,
+        7
+       ],
+       "observed": 1.557189202925582,
+       "independence": 1.0,
+       "plug_in": 0.9675607945169878,
+       "decomposition": 0.9704368308336357
+      },
+      {
+       "fit": [
+        1,
+        6,
+        8
+       ],
+       "observed": 1.5054910301880373,
+       "independence": 1.0,
+       "plug_in": 1.0748671924796698,
+       "decomposition": 1.0707155655305038
+      },
+      {
+       "fit": [
+        1,
+        7,
+        8
+       ],
+       "observed": 1.5488608383080134,
+       "independence": 1.0,
+       "plug_in": 1.0583886160901814,
+       "decomposition": 1.0541022570309029
+      },
+      {
+       "fit": [
+        2,
+        3,
+        4
+       ],
+       "observed": 0.9021261598283624,
+       "independence": 1.0,
+       "plug_in": 1.7553487231533802,
+       "decomposition": 1.7172393600377578
+      },
+      {
+       "fit": [
+        2,
+        3,
+        5
+       ],
+       "observed": 1.1861109234507243,
+       "independence": 1.0,
+       "plug_in": 1.519185798487437,
+       "decomposition": 1.49076181328835
+      },
+      {
+       "fit": [
+        2,
+        3,
+        6
+       ],
+       "observed": 1.2291550145125918,
+       "independence": 1.0,
+       "plug_in": 1.4451177818236491,
+       "decomposition": 1.425471877682312
+      },
+      {
+       "fit": [
+        2,
+        3,
+        7
+       ],
+       "observed": 1.2360248224255352,
+       "independence": 1.0,
+       "plug_in": 1.2945542162184618,
+       "decomposition": 1.2792025137381255
+      },
+      {
+       "fit": [
+        2,
+        3,
+        8
+       ],
+       "observed": 1.208181508649131,
+       "independence": 1.0,
+       "plug_in": 1.712220195044961,
+       "decomposition": 1.668300197024729
+      },
+      {
+       "fit": [
+        2,
+        4,
+        5
+       ],
+       "observed": 1.206891014510906,
+       "independence": 1.0,
+       "plug_in": 1.9544453699437814,
+       "decomposition": 1.8884013336405336
+      },
+      {
+       "fit": [
+        2,
+        4,
+        6
+       ],
+       "observed": 1.2197603087985731,
+       "independence": 1.0,
+       "plug_in": 1.7764967989686373,
+       "decomposition": 1.7295809313493384
+      },
+      {
+       "fit": [
+        2,
+        4,
+        7
+       ],
+       "observed": 1.2509895095117645,
+       "independence": 1.0,
+       "plug_in": 1.7571325907721116,
+       "decomposition": 1.6816996564075941
+      },
+      {
+       "fit": [
+        2,
+        4,
+        8
+       ],
+       "observed": 1.2221788315237967,
+       "independence": 1.0,
+       "plug_in": 1.851828187440595,
+       "decomposition": 1.8045424705595292
+      },
+      {
+       "fit": [
+        2,
+        5,
+        6
+       ],
+       "observed": 1.387158380409297,
+       "independence": 1.0,
+       "plug_in": 1.57243486385341,
+       "decomposition": 1.5340379606384074
+      },
+      {
+       "fit": [
+        2,
+        5,
+        7
+       ],
+       "observed": 1.4139091022391619,
+       "independence": 1.0,
+       "plug_in": 1.6706104470524694,
+       "decomposition": 1.5846165329697934
+      },
+      {
+       "fit": [
+        2,
+        5,
+        8
+       ],
+       "observed": 1.3724352069999608,
+       "independence": 1.0,
+       "plug_in": 1.770488893846976,
+       "decomposition": 1.6899789419186833
+      },
+      {
+       "fit": [
+        2,
+        6,
+        7
+       ],
+       "observed": 1.4558390555239273,
+       "independence": 1.0,
+       "plug_in": 1.5030098101622291,
+       "decomposition": 1.452194498939924
+      },
+      {
+       "fit": [
+        2,
+        6,
+        8
+       ],
+       "observed": 1.3926903686840568,
+       "independence": 1.0,
+       "plug_in": 1.413356235331123,
+       "decomposition": 1.391337213854237
+      },
+      {
+       "fit": [
+        2,
+        7,
+        8
+       ],
+       "observed": 1.4241366292796582,
+       "independence": 1.0,
+       "plug_in": 1.4211642569933882,
+       "decomposition": 1.3903340609159172
+      },
+      {
+       "fit": [
+        3,
+        4,
+        5
+       ],
+       "observed": 1.105681800775787,
+       "independence": 1.0,
+       "plug_in": 1.8492432103078165,
+       "decomposition": 1.8160503883626273
+      },
+      {
+       "fit": [
+        3,
+        4,
+        6
+       ],
+       "observed": 1.1225932477074136,
+       "independence": 1.0,
+       "plug_in": 1.7588857717547066,
+       "decomposition": 1.7281547439434528
+      },
+      {
+       "fit": [
+        3,
+        4,
+        7
+       ],
+       "observed": 1.1413654486733609,
+       "independence": 1.0,
+       "plug_in": 1.649403842758229,
+       "decomposition": 1.6146065057851318
+      },
+      {
+       "fit": [
+        3,
+        4,
+        8
+       ],
+       "observed": 1.120155764273211,
+       "independence": 1.0,
+       "plug_in": 1.9149641957112113,
+       "decomposition": 1.8753441898802963
+      },
+      {
+       "fit": [
+        3,
+        5,
+        6
+       ],
+       "observed": 1.338752524950024,
+       "independence": 1.0,
+       "plug_in": 1.581389142046714,
+       "decomposition": 1.5574206909330877
+      },
+      {
+       "fit": [
+        3,
+        5,
+        7
+       ],
+       "observed": 1.3490473272335528,
+       "independence": 1.0,
+       "plug_in": 1.4865663295902474,
+       "decomposition": 1.4607588245787053
+      },
+      {
+       "fit": [
+        3,
+        5,
+        8
+       ],
+       "observed": 1.3241334683977322,
+       "independence": 1.0,
+       "plug_in": 1.8296846666688305,
+       "decomposition": 1.7739952307652445
+      },
+      {
+       "fit": [
+        3,
+        6,
+        7
+       ],
+       "observed": 1.4042380584747274,
+       "independence": 1.0,
+       "plug_in": 1.4559790182966947,
+       "decomposition": 1.4316120034512545
+      },
+      {
+       "fit": [
+        3,
+        6,
+        8
+       ],
+       "observed": 1.360051426364279,
+       "independence": 1.0,
+       "plug_in": 1.570178873869995,
+       "decomposition": 1.5438138857064954
+      },
+      {
+       "fit": [
+        3,
+        7,
+        8
+       ],
+       "observed": 1.373194409809596,
+       "independence": 1.0,
+       "plug_in": 1.4829898650601399,
+       "decomposition": 1.4588930768553972
+      },
+      {
+       "fit": [
+        4,
+        5,
+        6
+       ],
+       "observed": 1.2400958623070293,
+       "independence": 1.0,
+       "plug_in": 1.5901267097550003,
+       "decomposition": 1.5628593709505132
+      },
+      {
+       "fit": [
+        4,
+        5,
+        7
+       ],
+       "observed": 1.275886255553649,
+       "independence": 1.0,
+       "plug_in": 1.6144050882569145,
+       "decomposition": 1.548256276557253
+      },
+      {
+       "fit": [
+        4,
+        5,
+        8
+       ],
+       "observed": 1.2271719362862494,
+       "independence": 1.0,
+       "plug_in": 1.6888689423811492,
+       "decomposition": 1.6521272439287171
+      },
+      {
+       "fit": [
+        4,
+        6,
+        7
+       ],
+       "observed": 1.300502573400809,
+       "independence": 1.0,
+       "plug_in": 1.4660191615917835,
+       "decomposition": 1.4057189991499057
+      },
+      {
+       "fit": [
+        4,
+        6,
+        8
+       ],
+       "observed": 1.2281235409066582,
+       "independence": 1.0,
+       "plug_in": 1.4439312083850337,
+       "decomposition": 1.4262417221947952
+      },
+      {
+       "fit": [
+        4,
+        7,
+        8
+       ],
+       "observed": 1.2701261913961701,
+       "independence": 1.0,
+       "plug_in": 1.447151455526636,
+       "decomposition": 1.4181338698499792
+      },
+      {
+       "fit": [
+        5,
+        6,
+        7
+       ],
+       "observed": 1.4661571179532629,
+       "independence": 1.0,
+       "plug_in": 0.8365567631646835,
+       "decomposition": 0.8711002157353036
+      },
+      {
+       "fit": [
+        5,
+        6,
+        8
+       ],
+       "observed": 1.3865984630678978,
+       "independence": 1.0,
+       "plug_in": 0.9196184285087579,
+       "decomposition": 0.9259835677325003
+      },
+      {
+       "fit": [
+        5,
+        7,
+        8
+       ],
+       "observed": 1.4226213043134415,
+       "independence": 1.0,
+       "plug_in": 0.8917985980530622,
+       "decomposition": 0.9059309124406458
+      },
+      {
+       "fit": [
+        6,
+        7,
+        8
+       ],
+       "observed": 1.45130665083761,
+       "independence": 1.0,
+       "plug_in": 0.8471843266090341,
+       "decomposition": 0.8602971453758094
+      }
+     ]
+    },
+    "accuracy": {
+     "n_splits": 84,
+     "observed": {
+      "n_finite": 84,
+      "mean": 1.7030281085519259,
+      "sd": 0.22922373213269942,
+      "p05": 1.305445451538703,
+      "median": 1.8377250763514124,
+      "p95": 1.9012936498647706
+     },
+     "errors": {
+      "independence": {
+       "n": 84,
+       "mean_abs_log_error": 0.5225941526987595,
+       "median_abs_log_error": 0.6085268793540874,
+       "mean_prediction": 1.0,
+       "sd_prediction": 0.0
+      },
+      "plug_in": {
+       "n": 65,
+       "mean_abs_log_error": 0.4121528132936735,
+       "median_abs_log_error": 0.3928225670448928,
+       "mean_prediction": 2.547262336895231,
+       "sd_prediction": 1.8838679100988502
+      },
+      "decomposition": {
+       "n": 84,
+       "mean_abs_log_error": 0.3666620213859162,
+       "median_abs_log_error": 0.33458087175720935,
+       "mean_prediction": 1.5004027473078851,
+       "sd_prediction": 0.38403344911383386
+      },
+      "decomposition_minus_independence": {
+       "mean": -0.15593213131284325,
+       "median": -0.12405829350452774,
+       "share_below_zero": 0.7261904761904762
+      },
+      "decomposition_minus_plug_in": {
+       "mean": -0.10506250628271444,
+       "median": -0.1457200302124005,
+       "share_below_zero": 0.6307692307692307
+      },
+      "plug_in_minus_independence": {
+       "mean": -0.08288904244149928,
+       "median": 0.0348756015090802,
+       "share_below_zero": 0.49230769230769234
+      }
+     },
+     "rows": [
+      {
+       "fit": [
+        0,
+        1,
+        2
+       ],
+       "observed": 1.896737749943535,
+       "independence": 1.0,
+       "plug_in": 1.3995618952961062,
+       "decomposition": 1.1891317681633513
+      },
+      {
+       "fit": [
+        0,
+        1,
+        3
+       ],
+       "observed": 1.3679585872136941,
+       "independence": 1.0,
+       "plug_in": 1.9676086413526959,
+       "decomposition": 1.659151384586188
+      },
+      {
+       "fit": [
+        0,
+        1,
+        4
+       ],
+       "observed": 1.928681134232785,
+       "independence": 1.0,
+       "plug_in": 2.189837340206367,
+       "decomposition": 1.129993758944564
+      },
+      {
+       "fit": [
+        0,
+        1,
+        5
+       ],
+       "observed": 1.9141533872539351,
+       "independence": 1.0,
+       "plug_in": 2.0526353854462567,
+       "decomposition": 1.3052532447102376
+      },
+      {
+       "fit": [
+        0,
+        1,
+        6
+       ],
+       "observed": 1.883528755755409,
+       "independence": 1.0,
+       "plug_in": 1.2172939037720611,
+       "decomposition": 1.0682465126613143
+      },
+      {
+       "fit": [
+        0,
+        1,
+        7
+       ],
+       "observed": 1.8710246066993004,
+       "independence": 1.0,
+       "plug_in": 2.7712784994924045,
+       "decomposition": 1.4349471223797396
+      },
+      {
+       "fit": [
+        0,
+        1,
+        8
+       ],
+       "observed": 1.901978659121091,
+       "independence": 1.0,
+       "plug_in": 2.6177556287419974,
+       "decomposition": 1.3698825652556912
+      },
+      {
+       "fit": [
+        0,
+        2,
+        3
+       ],
+       "observed": 1.2064828415594109,
+       "independence": 1.0,
+       "plug_in": 2.109028356993027,
+       "decomposition": 1.7892242209838254
+      },
+      {
+       "fit": [
+        0,
+        2,
+        4
+       ],
+       "observed": 1.8985288729317273,
+       "independence": 1.0,
+       "plug_in": 2.4144757753584276,
+       "decomposition": 1.4768926299270972
+      },
+      {
+       "fit": [
+        0,
+        2,
+        5
+       ],
+       "observed": 1.8938489644410168,
+       "independence": 1.0,
+       "plug_in": 2.6344380738416726,
+       "decomposition": 1.4810094024808396
+      },
+      {
+       "fit": [
+        0,
+        2,
+        6
+       ],
+       "observed": 1.8722354111984472,
+       "independence": 1.0,
+       "plug_in": 1.996327242905707,
+       "decomposition": 1.4587181216738119
+      },
+      {
+       "fit": [
+        0,
+        2,
+        7
+       ],
+       "observed": 1.8749951441830395,
+       "independence": 1.0,
+       "plug_in": 3.792987743739423,
+       "decomposition": 1.8449577157681805
+      },
+      {
+       "fit": [
+        0,
+        2,
+        8
+       ],
+       "observed": 1.8844667561389266,
+       "independence": 1.0,
+       "plug_in": 2.486012490768271,
+       "decomposition": 1.5926740357763725
+      },
+      {
+       "fit": [
+        0,
+        3,
+        4
+       ],
+       "observed": 1.4723934190383086,
+       "independence": 1.0,
+       "plug_in": 2.3742277008001693,
+       "decomposition": 1.938745835802533
+      },
+      {
+       "fit": [
+        0,
+        3,
+        5
+       ],
+       "observed": 1.4483071796815878,
+       "independence": 1.0,
+       "plug_in": 2.2807619487199515,
+       "decomposition": 1.8898974428537736
+      },
+      {
+       "fit": [
+        0,
+        3,
+        6
+       ],
+       "observed": 1.448574144807137,
+       "independence": 1.0,
+       "plug_in": 2.233148311813909,
+       "decomposition": 1.9324873953824737
+      },
+      {
+       "fit": [
+        0,
+        3,
+        7
+       ],
+       "observed": 1.4313147336434124,
+       "independence": 1.0,
+       "plug_in": 2.488987227365492,
+       "decomposition": 2.0590000846677965
+      },
+      {
+       "fit": [
+        0,
+        3,
+        8
+       ],
+       "observed": 1.4593562075769817,
+       "independence": 1.0,
+       "plug_in": 2.3696336844687833,
+       "decomposition": 1.9644640431440878
+      },
+      {
+       "fit": [
+        0,
+        4,
+        5
+       ],
+       "observed": 1.901460098711102,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 1.1669586197132045
+      },
+      {
+       "fit": [
+        0,
+        4,
+        6
+       ],
+       "observed": 1.8858868651909675,
+       "independence": 1.0,
+       "plug_in": 12.21191089671356,
+       "decomposition": 1.3040895719882388
+      },
+      {
+       "fit": [
+        0,
+        4,
+        7
+       ],
+       "observed": 1.8627873105851367,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 1.5224551905185224
+      },
+      {
+       "fit": [
+        0,
+        4,
+        8
+       ],
+       "observed": 1.8963647529368137,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 1.4259820178904017
+      },
+      {
+       "fit": [
+        0,
+        5,
+        6
+       ],
+       "observed": 1.8707350952564494,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 1.337027211764828
+      },
+      {
+       "fit": [
+        0,
+        5,
+        7
+       ],
+       "observed": 1.848665652790337,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 1.5726145206285622
+      },
+      {
+       "fit": [
+        0,
+        5,
+        8
+       ],
+       "observed": 1.8915438219817156,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 1.4725342473570346
+      },
+      {
+       "fit": [
+        0,
+        6,
+        7
+       ],
+       "observed": 1.8211078871866961,
+       "independence": 1.0,
+       "plug_in": 12.8709333192221,
+       "decomposition": 1.4747442014727603
+      },
+      {
+       "fit": [
+        0,
+        6,
+        8
+       ],
+       "observed": 1.8490283462534034,
+       "independence": 1.0,
+       "plug_in": 5.267729103673257,
+       "decomposition": 1.2040525844219863
+      },
+      {
+       "fit": [
+        0,
+        7,
+        8
+       ],
+       "observed": 1.8409667508505154,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 1.5542351665178844
+      },
+      {
+       "fit": [
+        1,
+        2,
+        3
+       ],
+       "observed": 1.123022797902122,
+       "independence": 1.0,
+       "plug_in": 1.896834765467854,
+       "decomposition": 1.5700099093286763
+      },
+      {
+       "fit": [
+        1,
+        2,
+        4
+       ],
+       "observed": 1.8990418536140388,
+       "independence": 1.0,
+       "plug_in": 1.4651301692361332,
+       "decomposition": 1.1964146251356864
+      },
+      {
+       "fit": [
+        1,
+        2,
+        5
+       ],
+       "observed": 1.886169692373366,
+       "independence": 1.0,
+       "plug_in": 1.679452553286369,
+       "decomposition": 1.361433610815392
+      },
+      {
+       "fit": [
+        1,
+        2,
+        6
+       ],
+       "observed": 1.8699422839220852,
+       "independence": 1.0,
+       "plug_in": 1.642798892785291,
+       "decomposition": 1.301906182698558
+      },
+      {
+       "fit": [
+        1,
+        2,
+        7
+       ],
+       "observed": 1.8576603314587943,
+       "independence": 1.0,
+       "plug_in": 2.2725578969239213,
+       "decomposition": 1.575977343298251
+      },
+      {
+       "fit": [
+        1,
+        2,
+        8
+       ],
+       "observed": 1.8868874060683123,
+       "independence": 1.0,
+       "plug_in": 1.943923587731678,
+       "decomposition": 1.4742379444500835
+      },
+      {
+       "fit": [
+        1,
+        3,
+        4
+       ],
+       "observed": 1.4306129265993428,
+       "independence": 1.0,
+       "plug_in": 2.151773330192281,
+       "decomposition": 1.7408612175796856
+      },
+      {
+       "fit": [
+        1,
+        3,
+        5
+       ],
+       "observed": 1.4047730054893528,
+       "independence": 1.0,
+       "plug_in": 2.052451244671858,
+       "decomposition": 1.7399336464058734
+      },
+      {
+       "fit": [
+        1,
+        3,
+        6
+       ],
+       "observed": 1.3995725209458025,
+       "independence": 1.0,
+       "plug_in": 2.1439812546888133,
+       "decomposition": 1.791754646259861
+      },
+      {
+       "fit": [
+        1,
+        3,
+        7
+       ],
+       "observed": 1.3613506593646516,
+       "independence": 1.0,
+       "plug_in": 2.3132299561547742,
+       "decomposition": 1.8848095538005591
+      },
+      {
+       "fit": [
+        1,
+        3,
+        8
+       ],
+       "observed": 1.409650938959485,
+       "independence": 1.0,
+       "plug_in": 2.2595776184338665,
+       "decomposition": 1.8619864224611549
+      },
+      {
+       "fit": [
+        1,
+        4,
+        5
+       ],
+       "observed": 1.9003504397355586,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 0.7956121588775329
+      },
+      {
+       "fit": [
+        1,
+        4,
+        6
+       ],
+       "observed": 1.8900483415782332,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 0.7589920747716465
+      },
+      {
+       "fit": [
+        1,
+        4,
+        7
+       ],
+       "observed": 1.8514872842193424,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 1.0466161286610707
+      },
+      {
+       "fit": [
+        1,
+        4,
+        8
+       ],
+       "observed": 1.9055203324141825,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 1.0224327696214537
+      },
+      {
+       "fit": [
+        1,
+        5,
+        6
+       ],
+       "observed": 1.8667181617851676,
+       "independence": 1.0,
+       "plug_in": 1.4551947130820684,
+       "decomposition": 1.1635164006939376
+      },
+      {
+       "fit": [
+        1,
+        5,
+        7
+       ],
+       "observed": 1.8293788808737133,
+       "independence": 1.0,
+       "plug_in": 2.0788280569792863,
+       "decomposition": 1.3097977172014494
+      },
+      {
+       "fit": [
+        1,
+        5,
+        8
+       ],
+       "observed": 1.8924869568761002,
+       "independence": 1.0,
+       "plug_in": 2.047154172326751,
+       "decomposition": 1.3256949235850477
+      },
+      {
+       "fit": [
+        1,
+        6,
+        7
+       ],
+       "observed": 1.8063578574433303,
+       "independence": 1.0,
+       "plug_in": 1.853152278247246,
+       "decomposition": 1.1807941444959955
+      },
+      {
+       "fit": [
+        1,
+        6,
+        8
+       ],
+       "observed": 1.853673683336794,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 0.9288186306187196
+      },
+      {
+       "fit": [
+        1,
+        7,
+        8
+       ],
+       "observed": 1.8304799424524487,
+       "independence": 1.0,
+       "plug_in": 2.3203865219131945,
+       "decomposition": 1.3016269568819414
+      },
+      {
+       "fit": [
+        2,
+        3,
+        4
+       ],
+       "observed": 1.3039556883630656,
+       "independence": 1.0,
+       "plug_in": 2.2258876490196466,
+       "decomposition": 1.8863064913207164
+      },
+      {
+       "fit": [
+        2,
+        3,
+        5
+       ],
+       "observed": 1.2878225394294784,
+       "independence": 1.0,
+       "plug_in": 2.1561106356998803,
+       "decomposition": 1.833465666130207
+      },
+      {
+       "fit": [
+        2,
+        3,
+        6
+       ],
+       "observed": 1.313887442867315,
+       "independence": 1.0,
+       "plug_in": 2.291918689309537,
+       "decomposition": 1.9570971830172699
+      },
+      {
+       "fit": [
+        2,
+        3,
+        7
+       ],
+       "observed": 1.2925252334487827,
+       "independence": 1.0,
+       "plug_in": 2.5094054594822497,
+       "decomposition": 2.0909448103322257
+      },
+      {
+       "fit": [
+        2,
+        3,
+        8
+       ],
+       "observed": 1.3207247626617273,
+       "independence": 1.0,
+       "plug_in": 2.2953035349266924,
+       "decomposition": 1.9649661725516916
+      },
+      {
+       "fit": [
+        2,
+        4,
+        5
+       ],
+       "observed": 1.8649464695889906,
+       "independence": 1.0,
+       "plug_in": 1.6627658552362745,
+       "decomposition": 1.3130087491170426
+      },
+      {
+       "fit": [
+        2,
+        4,
+        6
+       ],
+       "observed": 1.8642093097546408,
+       "independence": 1.0,
+       "plug_in": 1.9893791970114558,
+       "decomposition": 1.5299189116507297
+      },
+      {
+       "fit": [
+        2,
+        4,
+        7
+       ],
+       "observed": 1.8412663087933239,
+       "independence": 1.0,
+       "plug_in": 2.647646453781174,
+       "decomposition": 1.6542601699183261
+      },
+      {
+       "fit": [
+        2,
+        4,
+        8
+       ],
+       "observed": 1.872935458876743,
+       "independence": 1.0,
+       "plug_in": 2.0700610122402434,
+       "decomposition": 1.5263109756564819
+      },
+      {
+       "fit": [
+        2,
+        5,
+        6
+       ],
+       "observed": 1.85108738830369,
+       "independence": 1.0,
+       "plug_in": 2.070143606523592,
+       "decomposition": 1.5696280952879968
+      },
+      {
+       "fit": [
+        2,
+        5,
+        7
+       ],
+       "observed": 1.829393754776747,
+       "independence": 1.0,
+       "plug_in": 2.6256281994720583,
+       "decomposition": 1.6980621192082401
+      },
+      {
+       "fit": [
+        2,
+        5,
+        8
+       ],
+       "observed": 1.869869064560544,
+       "independence": 1.0,
+       "plug_in": 2.0854909987582366,
+       "decomposition": 1.5782386694910282
+      },
+      {
+       "fit": [
+        2,
+        6,
+        7
+       ],
+       "observed": 1.8164484797545397,
+       "independence": 1.0,
+       "plug_in": 2.6308922326052047,
+       "decomposition": 1.7697027141016826
+      },
+      {
+       "fit": [
+        2,
+        6,
+        8
+       ],
+       "observed": 1.8419386810302771,
+       "independence": 1.0,
+       "plug_in": 2.0587642293509916,
+       "decomposition": 1.5292870045908402
+      },
+      {
+       "fit": [
+        2,
+        7,
+        8
+       ],
+       "observed": 1.8344834018523093,
+       "independence": 1.0,
+       "plug_in": 2.4034202292739946,
+       "decomposition": 1.7509445700219055
+      },
+      {
+       "fit": [
+        3,
+        4,
+        5
+       ],
+       "observed": 1.4569548937955792,
+       "independence": 1.0,
+       "plug_in": 2.1980546923021205,
+       "decomposition": 1.8787952602229339
+      },
+      {
+       "fit": [
+        3,
+        4,
+        6
+       ],
+       "observed": 1.4891641225566021,
+       "independence": 1.0,
+       "plug_in": 2.334794851516802,
+       "decomposition": 2.022898150052553
+      },
+      {
+       "fit": [
+        3,
+        4,
+        7
+       ],
+       "observed": 1.428172358182514,
+       "independence": 1.0,
+       "plug_in": 2.4876259313639335,
+       "decomposition": 2.0549623516810405
+      },
+      {
+       "fit": [
+        3,
+        4,
+        8
+       ],
+       "observed": 1.4939967858781127,
+       "independence": 1.0,
+       "plug_in": 2.3906060274818057,
+       "decomposition": 2.0052373038032276
+      },
+      {
+       "fit": [
+        3,
+        5,
+        6
+       ],
+       "observed": 1.4548052037106955,
+       "independence": 1.0,
+       "plug_in": 2.2550378898814785,
+       "decomposition": 1.9755041389990189
+      },
+      {
+       "fit": [
+        3,
+        5,
+        7
+       ],
+       "observed": 1.3944423483397532,
+       "independence": 1.0,
+       "plug_in": 2.3681415016867646,
+       "decomposition": 2.0122661687650667
+      },
+      {
+       "fit": [
+        3,
+        5,
+        8
+       ],
+       "observed": 1.4733790726501945,
+       "independence": 1.0,
+       "plug_in": 2.2844503042484243,
+       "decomposition": 1.9761399026142363
+      },
+      {
+       "fit": [
+        3,
+        6,
+        7
+       ],
+       "observed": 1.4090851348432976,
+       "independence": 1.0,
+       "plug_in": 2.430083976449075,
+       "decomposition": 2.0891074049756004
+      },
+      {
+       "fit": [
+        3,
+        6,
+        8
+       ],
+       "observed": 1.4566713839288634,
+       "independence": 1.0,
+       "plug_in": 2.3391042062657856,
+       "decomposition": 2.0108947217817903
+      },
+      {
+       "fit": [
+        3,
+        7,
+        8
+       ],
+       "observed": 1.425543070449128,
+       "independence": 1.0,
+       "plug_in": 2.408371545635349,
+       "decomposition": 2.081795581577128
+      },
+      {
+       "fit": [
+        4,
+        5,
+        6
+       ],
+       "observed": 1.8457516883800897,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 0.7941830760047697
+      },
+      {
+       "fit": [
+        4,
+        5,
+        7
+       ],
+       "observed": 1.7969845611773019,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 0.6797077314233151
+      },
+      {
+       "fit": [
+        4,
+        5,
+        8
+       ],
+       "observed": 1.8630571391925623,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 0.733819143670547
+      },
+      {
+       "fit": [
+        4,
+        6,
+        7
+       ],
+       "observed": 1.7908093782590329,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 1.0953375120375948
+      },
+      {
+       "fit": [
+        4,
+        6,
+        8
+       ],
+       "observed": 1.8411565748645835,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 0.8462307322703784
+      },
+      {
+       "fit": [
+        4,
+        7,
+        8
+       ],
+       "observed": 1.807189763298687,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 0.9833376655390523
+      },
+      {
+       "fit": [
+        5,
+        6,
+        7
+       ],
+       "observed": 1.7660239226361174,
+       "independence": 1.0,
+       "plug_in": 2.546005007682275,
+       "decomposition": 1.2198448516979543
+      },
+      {
+       "fit": [
+        5,
+        6,
+        8
+       ],
+       "observed": 1.8262007294213245,
+       "independence": 1.0,
+       "plug_in": 0.6134985809260667,
+       "decomposition": 0.9657414538781922
+      },
+      {
+       "fit": [
+        5,
+        7,
+        8
+       ],
+       "observed": 1.7926655502437268,
+       "independence": 1.0,
+       "plug_in": 1.870459217245892,
+       "decomposition": 1.0894135009652195
+      },
+      {
+       "fit": [
+        6,
+        7,
+        8
+       ],
+       "observed": 1.7585140179163328,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 0.9138741944284541
+      }
+     ]
+    }
+   }
+  },
+  "five_sizes": {
+   "N": 5,
+   "R": 9,
+   "phenotypes": {
+    "margin": {
+     "n_splits": 84,
+     "observed": {
+      "n_finite": 84,
+      "mean": 1.245446093038802,
+      "sd": 0.10505593492739987,
+      "p05": 1.0515343460865807,
+      "median": 1.2471623512742267,
+      "p95": 1.390693064531425
+     },
+     "errors": {
+      "independence": {
+       "n": 84,
+       "mean_abs_log_error": 0.21753646682680852,
+       "median_abs_log_error": 0.2208703308386944,
+       "mean_prediction": 1.0,
+       "sd_prediction": 0.0
+      },
+      "plug_in": {
+       "n": 84,
+       "mean_abs_log_error": 0.21915942196677224,
+       "median_abs_log_error": 0.14615703849487321,
+       "mean_prediction": 1.226627489483271,
+       "sd_prediction": 0.24590865257835703
+      },
+      "decomposition": {
+       "n": 84,
+       "mean_abs_log_error": 0.20878957932875877,
+       "median_abs_log_error": 0.14264485181690884,
+       "mean_prediction": 1.212914300610834,
+       "sd_prediction": 0.22755231242977358
+      },
+      "decomposition_minus_independence": {
+       "mean": -0.00874688749804976,
+       "median": -0.07537507791929066,
+       "share_below_zero": 0.6309523809523809
+      },
+      "decomposition_minus_plug_in": {
+       "mean": -0.010369842638013497,
+       "median": -0.012439705104304005,
+       "share_below_zero": 0.6785714285714286
+      },
+      "plug_in_minus_independence": {
+       "mean": 0.0016229551399637423,
+       "median": -0.06608514822062854,
+       "share_below_zero": 0.6071428571428571
+      }
+     },
+     "rows": [
+      {
+       "fit": [
+        0,
+        1,
+        2
+       ],
+       "observed": 1.3262034963083145,
+       "independence": 1.0,
+       "plug_in": 1.0187908298465849,
+       "decomposition": 1.0177970467822435
+      },
+      {
+       "fit": [
+        0,
+        1,
+        3
+       ],
+       "observed": 1.263149793480407,
+       "independence": 1.0,
+       "plug_in": 1.0846357901716648,
+       "decomposition": 1.0803301484462766
+      },
+      {
+       "fit": [
+        0,
+        1,
+        4
+       ],
+       "observed": 1.242661417374504,
+       "independence": 1.0,
+       "plug_in": 1.2338043400153285,
+       "decomposition": 1.2242572011729151
+      },
+      {
+       "fit": [
+        0,
+        1,
+        5
+       ],
+       "observed": 1.3890946024468165,
+       "independence": 1.0,
+       "plug_in": 0.8494046384431991,
+       "decomposition": 0.8584930616336198
+      },
+      {
+       "fit": [
+        0,
+        1,
+        6
+       ],
+       "observed": 1.3909497733330327,
+       "independence": 1.0,
+       "plug_in": 0.9528205446973009,
+       "decomposition": 0.9554444014278088
+      },
+      {
+       "fit": [
+        0,
+        1,
+        7
+       ],
+       "observed": 1.3950124897618452,
+       "independence": 1.0,
+       "plug_in": 0.8846156436274208,
+       "decomposition": 0.892422990243907
+      },
+      {
+       "fit": [
+        0,
+        1,
+        8
+       ],
+       "observed": 1.4281319975787015,
+       "independence": 1.0,
+       "plug_in": 0.9752079391795183,
+       "decomposition": 0.976273511073438
+      },
+      {
+       "fit": [
+        0,
+        2,
+        3
+       ],
+       "observed": 1.179443924150062,
+       "independence": 1.0,
+       "plug_in": 1.2001529319255644,
+       "decomposition": 1.183961609610796
+      },
+      {
+       "fit": [
+        0,
+        2,
+        4
+       ],
+       "observed": 1.1797216397426065,
+       "independence": 1.0,
+       "plug_in": 1.6253123653510828,
+       "decomposition": 1.5655738668621348
+      },
+      {
+       "fit": [
+        0,
+        2,
+        5
+       ],
+       "observed": 1.3247483358787406,
+       "independence": 1.0,
+       "plug_in": 1.1450049576396908,
+       "decomposition": 1.1309657530386283
+      },
+      {
+       "fit": [
+        0,
+        2,
+        6
+       ],
+       "observed": 1.3190716022338003,
+       "independence": 1.0,
+       "plug_in": 1.2128515012231416,
+       "decomposition": 1.1900925717626702
+      },
+      {
+       "fit": [
+        0,
+        2,
+        7
+       ],
+       "observed": 1.3192446905801212,
+       "independence": 1.0,
+       "plug_in": 1.1795638917756655,
+       "decomposition": 1.1623470233477122
+      },
+      {
+       "fit": [
+        0,
+        2,
+        8
+       ],
+       "observed": 1.346739130159095,
+       "independence": 1.0,
+       "plug_in": 1.1218414289807555,
+       "decomposition": 1.1117918207707251
+      },
+      {
+       "fit": [
+        0,
+        3,
+        4
+       ],
+       "observed": 1.1112679030745232,
+       "independence": 1.0,
+       "plug_in": 1.589987456132442,
+       "decomposition": 1.5537622258975712
+      },
+      {
+       "fit": [
+        0,
+        3,
+        5
+       ],
+       "observed": 1.2850234294758793,
+       "independence": 1.0,
+       "plug_in": 1.3164132832772872,
+       "decomposition": 1.2939264330981224
+      },
+      {
+       "fit": [
+        0,
+        3,
+        6
+       ],
+       "observed": 1.279096604068207,
+       "independence": 1.0,
+       "plug_in": 1.3668012719218505,
+       "decomposition": 1.34003147362569
+      },
+      {
+       "fit": [
+        0,
+        3,
+        7
+       ],
+       "observed": 1.2688838158063653,
+       "independence": 1.0,
+       "plug_in": 1.271835110351272,
+       "decomposition": 1.2532615233197
+      },
+      {
+       "fit": [
+        0,
+        3,
+        8
+       ],
+       "observed": 1.2970235096785814,
+       "independence": 1.0,
+       "plug_in": 1.2465355530303281,
+       "decomposition": 1.2294255258456999
+      },
+      {
+       "fit": [
+        0,
+        4,
+        5
+       ],
+       "observed": 1.2484352736728133,
+       "independence": 1.0,
+       "plug_in": 1.4131950772752588,
+       "decomposition": 1.3807206833919161
+      },
+      {
+       "fit": [
+        0,
+        4,
+        6
+       ],
+       "observed": 1.212546006819627,
+       "independence": 1.0,
+       "plug_in": 1.2912549551633583,
+       "decomposition": 1.263701502281838
+      },
+      {
+       "fit": [
+        0,
+        4,
+        7
+       ],
+       "observed": 1.2153463162727292,
+       "independence": 1.0,
+       "plug_in": 1.280266095767556,
+       "decomposition": 1.2563661040158425
+      },
+      {
+       "fit": [
+        0,
+        4,
+        8
+       ],
+       "observed": 1.2155838476736824,
+       "independence": 1.0,
+       "plug_in": 1.1580331911824793,
+       "decomposition": 1.146769093421534
+      },
+      {
+       "fit": [
+        0,
+        5,
+        6
+       ],
+       "observed": 1.3618891054628295,
+       "independence": 1.0,
+       "plug_in": 0.5832035960150993,
+       "decomposition": 0.640198219324342
+      },
+      {
+       "fit": [
+        0,
+        5,
+        7
+       ],
+       "observed": 1.3671905512471176,
+       "independence": 1.0,
+       "plug_in": 0.7281605791283542,
+       "decomposition": 0.7639530902860268
+      },
+      {
+       "fit": [
+        0,
+        5,
+        8
+       ],
+       "observed": 1.3712733173799128,
+       "independence": 1.0,
+       "plug_in": 0.6996377912473005,
+       "decomposition": 0.7267865432180068
+      },
+      {
+       "fit": [
+        0,
+        6,
+        7
+       ],
+       "observed": 1.3745042584873102,
+       "independence": 1.0,
+       "plug_in": 0.8613249306994566,
+       "decomposition": 0.883555229128873
+      },
+      {
+       "fit": [
+        0,
+        6,
+        8
+       ],
+       "observed": 1.3809253696505293,
+       "independence": 1.0,
+       "plug_in": 0.8016506593523264,
+       "decomposition": 0.8186375262014421
+      },
+      {
+       "fit": [
+        0,
+        7,
+        8
+       ],
+       "observed": 1.383471040462792,
+       "independence": 1.0,
+       "plug_in": 0.8951400282322433,
+       "decomposition": 0.9030907580747114
+      },
+      {
+       "fit": [
+        1,
+        2,
+        3
+       ],
+       "observed": 1.0902565600796918,
+       "independence": 1.0,
+       "plug_in": 1.0162795166447094,
+       "decomposition": 1.0152336368126675
+      },
+      {
+       "fit": [
+        1,
+        2,
+        4
+       ],
+       "observed": 1.1383083374341347,
+       "independence": 1.0,
+       "plug_in": 1.4624663295491591,
+       "decomposition": 1.4407888349288012
+      },
+      {
+       "fit": [
+        1,
+        2,
+        5
+       ],
+       "observed": 1.2981684943427674,
+       "independence": 1.0,
+       "plug_in": 1.121260930690689,
+       "decomposition": 1.1125877343484845
+      },
+      {
+       "fit": [
+        1,
+        2,
+        6
+       ],
+       "observed": 1.2905361262674022,
+       "independence": 1.0,
+       "plug_in": 1.1889536876153477,
+       "decomposition": 1.1777758184664988
+      },
+      {
+       "fit": [
+        1,
+        2,
+        7
+       ],
+       "observed": 1.295993971136821,
+       "independence": 1.0,
+       "plug_in": 1.1589116761155582,
+       "decomposition": 1.147842694479445
+      },
+      {
+       "fit": [
+        1,
+        2,
+        8
+       ],
+       "observed": 1.3511346270891325,
+       "independence": 1.0,
+       "plug_in": 1.2616720463504891,
+       "decomposition": 1.2491297525314833
+      },
+      {
+       "fit": [
+        1,
+        3,
+        4
+       ],
+       "observed": 1.03183528793504,
+       "independence": 1.0,
+       "plug_in": 1.4768199635386297,
+       "decomposition": 1.4584348432058505
+      },
+      {
+       "fit": [
+        1,
+        3,
+        5
+       ],
+       "observed": 1.2359322630200376,
+       "independence": 1.0,
+       "plug_in": 1.2119913912016052,
+       "decomposition": 1.1985799515499072
+      },
+      {
+       "fit": [
+        1,
+        3,
+        6
+       ],
+       "observed": 1.2299805338206047,
+       "independence": 1.0,
+       "plug_in": 1.2664274351486982,
+       "decomposition": 1.2524265166339592
+      },
+      {
+       "fit": [
+        1,
+        3,
+        7
+       ],
+       "observed": 1.2183739032184675,
+       "independence": 1.0,
+       "plug_in": 1.1936932983005675,
+       "decomposition": 1.1827266386688329
+      },
+      {
+       "fit": [
+        1,
+        3,
+        8
+       ],
+       "observed": 1.282320552360514,
+       "independence": 1.0,
+       "plug_in": 1.2910183040817242,
+       "decomposition": 1.276891834395541
+      },
+      {
+       "fit": [
+        1,
+        4,
+        5
+       ],
+       "observed": 1.2241851800176775,
+       "independence": 1.0,
+       "plug_in": 1.3884880826491939,
+       "decomposition": 1.3714427692124032
+      },
+      {
+       "fit": [
+        1,
+        4,
+        6
+       ],
+       "observed": 1.1875186576215544,
+       "independence": 1.0,
+       "plug_in": 1.3208173771666343,
+       "decomposition": 1.3075464318962853
+      },
+      {
+       "fit": [
+        1,
+        4,
+        7
+       ],
+       "observed": 1.1909991800604574,
+       "independence": 1.0,
+       "plug_in": 1.3317194723253234,
+       "decomposition": 1.315760146365026
+      },
+      {
+       "fit": [
+        1,
+        4,
+        8
+       ],
+       "observed": 1.2264184350113982,
+       "independence": 1.0,
+       "plug_in": 1.3231998954238136,
+       "decomposition": 1.3114817571247457
+      },
+      {
+       "fit": [
+        1,
+        5,
+        6
+       ],
+       "observed": 1.3468027007015757,
+       "independence": 1.0,
+       "plug_in": 0.9451403770214772,
+       "decomposition": 0.9489164275994214
+      },
+      {
+       "fit": [
+        1,
+        5,
+        7
+       ],
+       "observed": 1.3618512416305006,
+       "independence": 1.0,
+       "plug_in": 0.8540967836446665,
+       "decomposition": 0.8689915460294301
+      },
+      {
+       "fit": [
+        1,
+        5,
+        8
+       ],
+       "observed": 1.3892383813223153,
+       "independence": 1.0,
+       "plug_in": 1.0096434810286203,
+       "decomposition": 1.0091035711228171
+      },
+      {
+       "fit": [
+        1,
+        6,
+        7
+       ],
+       "observed": 1.3671647174378914,
+       "independence": 1.0,
+       "plug_in": 1.0767122979198651,
+       "decomposition": 1.070347256239531
+      },
+      {
+       "fit": [
+        1,
+        6,
+        8
+       ],
+       "observed": 1.396659643594112,
+       "independence": 1.0,
+       "plug_in": 1.126643289684774,
+       "decomposition": 1.121372323310673
+      },
+      {
+       "fit": [
+        1,
+        7,
+        8
+       ],
+       "observed": 1.414217033911051,
+       "independence": 1.0,
+       "plug_in": 1.1186309956224976,
+       "decomposition": 1.1132489185996672
+      },
+      {
+       "fit": [
+        2,
+        3,
+        4
+       ],
+       "observed": 0.9316428887142851,
+       "independence": 1.0,
+       "plug_in": 1.6829757933587761,
+       "decomposition": 1.6389793625705023
+      },
+      {
+       "fit": [
+        2,
+        3,
+        5
+       ],
+       "observed": 1.14165009772669,
+       "independence": 1.0,
+       "plug_in": 1.3635140622511206,
+       "decomposition": 1.3344254930446513
+      },
+      {
+       "fit": [
+        2,
+        3,
+        6
+       ],
+       "observed": 1.1304340867899723,
+       "independence": 1.0,
+       "plug_in": 1.3385536062090844,
+       "decomposition": 1.3144108800577574
+      },
+      {
+       "fit": [
+        2,
+        3,
+        7
+       ],
+       "observed": 1.1217513059315356,
+       "independence": 1.0,
+       "plug_in": 1.2684105930650025,
+       "decomposition": 1.2512357876092255
+      },
+      {
+       "fit": [
+        2,
+        3,
+        8
+       ],
+       "observed": 1.1516563209826252,
+       "independence": 1.0,
+       "plug_in": 1.3915963539846672,
+       "decomposition": 1.3608337547292029
+      },
+      {
+       "fit": [
+        2,
+        4,
+        5
+       ],
+       "observed": 1.151633820180366,
+       "independence": 1.0,
+       "plug_in": 1.7545440773837684,
+       "decomposition": 1.6963847453678096
+      },
+      {
+       "fit": [
+        2,
+        4,
+        6
+       ],
+       "observed": 1.1106252524236382,
+       "independence": 1.0,
+       "plug_in": 1.5668680285020034,
+       "decomposition": 1.5228995791526965
+      },
+      {
+       "fit": [
+        2,
+        4,
+        7
+       ],
+       "observed": 1.1187751585263737,
+       "independence": 1.0,
+       "plug_in": 1.5328099595758742,
+       "decomposition": 1.493862379791177
+      },
+      {
+       "fit": [
+        2,
+        4,
+        8
+       ],
+       "observed": 1.1304642012905082,
+       "independence": 1.0,
+       "plug_in": 1.5421842158615953,
+       "decomposition": 1.503367246440706
+      },
+      {
+       "fit": [
+        2,
+        5,
+        6
+       ],
+       "observed": 1.266839070108267,
+       "independence": 1.0,
+       "plug_in": 1.2009627484853025,
+       "decomposition": 1.1832904950748742
+      },
+      {
+       "fit": [
+        2,
+        5,
+        7
+       ],
+       "observed": 1.2751850088300287,
+       "independence": 1.0,
+       "plug_in": 1.2528617365416963,
+       "decomposition": 1.228501122425791
+      },
+      {
+       "fit": [
+        2,
+        5,
+        8
+       ],
+       "observed": 1.294909360165731,
+       "independence": 1.0,
+       "plug_in": 1.1748111234997634,
+       "decomposition": 1.1604770723480953
+      },
+      {
+       "fit": [
+        2,
+        6,
+        7
+       ],
+       "observed": 1.2720238464341609,
+       "independence": 1.0,
+       "plug_in": 1.3544745870727053,
+       "decomposition": 1.3203290698921617
+      },
+      {
+       "fit": [
+        2,
+        6,
+        8
+       ],
+       "observed": 1.2931706952357669,
+       "independence": 1.0,
+       "plug_in": 1.2613827126219737,
+       "decomposition": 1.2428447942878516
+      },
+      {
+       "fit": [
+        2,
+        7,
+        8
+       ],
+       "observed": 1.3019430616648973,
+       "independence": 1.0,
+       "plug_in": 1.2770296914977217,
+       "decomposition": 1.25931232156096
+      },
+      {
+       "fit": [
+        3,
+        4,
+        5
+       ],
+       "observed": 1.088527033954654,
+       "independence": 1.0,
+       "plug_in": 1.734132663321983,
+       "decomposition": 1.6967922259923993
+      },
+      {
+       "fit": [
+        3,
+        4,
+        6
+       ],
+       "observed": 1.0450062246980971,
+       "independence": 1.0,
+       "plug_in": 1.5983162785488327,
+       "decomposition": 1.567732520889373
+      },
+      {
+       "fit": [
+        3,
+        4,
+        7
+       ],
+       "observed": 1.0410526176225543,
+       "independence": 1.0,
+       "plug_in": 1.5363710350919684,
+       "decomposition": 1.5098069492881787
+      },
+      {
+       "fit": [
+        3,
+        4,
+        8
+       ],
+       "observed": 1.037666366503773,
+       "independence": 1.0,
+       "plug_in": 1.5707753250258123,
+       "decomposition": 1.5398542462333598
+      },
+      {
+       "fit": [
+        3,
+        5,
+        6
+       ],
+       "observed": 1.2272473926520127,
+       "independence": 1.0,
+       "plug_in": 1.407352103468436,
+       "decomposition": 1.3819855379832817
+      },
+      {
+       "fit": [
+        3,
+        5,
+        7
+       ],
+       "observed": 1.2257052048895316,
+       "independence": 1.0,
+       "plug_in": 1.3717027308596725,
+       "decomposition": 1.3474244756647245
+      },
+      {
+       "fit": [
+        3,
+        5,
+        8
+       ],
+       "observed": 1.2458894288756401,
+       "independence": 1.0,
+       "plug_in": 1.3202617508385306,
+       "decomposition": 1.2981329074456678
+      },
+      {
+       "fit": [
+        3,
+        6,
+        7
+       ],
+       "observed": 1.2235770106530839,
+       "independence": 1.0,
+       "plug_in": 1.4346638080458565,
+       "decomposition": 1.4075541020483664
+      },
+      {
+       "fit": [
+        3,
+        6,
+        8
+       ],
+       "observed": 1.245399840378793,
+       "independence": 1.0,
+       "plug_in": 1.3842307597564882,
+       "decomposition": 1.3615246713199083
+      },
+      {
+       "fit": [
+        3,
+        7,
+        8
+       ],
+       "observed": 1.2432726566528298,
+       "independence": 1.0,
+       "plug_in": 1.3379068337631037,
+       "decomposition": 1.3200951566652797
+      },
+      {
+       "fit": [
+        4,
+        5,
+        6
+       ],
+       "observed": 1.1685630986286335,
+       "independence": 1.0,
+       "plug_in": 1.3463516455839581,
+       "decomposition": 1.3244893248688185
+      },
+      {
+       "fit": [
+        4,
+        5,
+        7
+       ],
+       "observed": 1.180039380589727,
+       "independence": 1.0,
+       "plug_in": 1.392064575924468,
+       "decomposition": 1.3644651782789603
+      },
+      {
+       "fit": [
+        4,
+        5,
+        8
+       ],
+       "observed": 1.1757967675166328,
+       "independence": 1.0,
+       "plug_in": 1.2606239608154923,
+       "decomposition": 1.2447133050325025
+      },
+      {
+       "fit": [
+        4,
+        6,
+        7
+       ],
+       "observed": 1.148534675201199,
+       "independence": 1.0,
+       "plug_in": 1.323392008856821,
+       "decomposition": 1.2991312977207221
+      },
+      {
+       "fit": [
+        4,
+        6,
+        8
+       ],
+       "observed": 1.1417814712561127,
+       "independence": 1.0,
+       "plug_in": 1.208303035869477,
+       "decomposition": 1.1963742503461618
+      },
+      {
+       "fit": [
+        4,
+        7,
+        8
+       ],
+       "observed": 1.1558475873274738,
+       "independence": 1.0,
+       "plug_in": 1.2497939576092352,
+       "decomposition": 1.2359771534850288
+      },
+      {
+       "fit": [
+        5,
+        6,
+        7
+       ],
+       "observed": 1.3126540326058098,
+       "independence": 1.0,
+       "plug_in": 0.7449600881967585,
+       "decomposition": 0.7810881593862345
+      },
+      {
+       "fit": [
+        5,
+        6,
+        8
+       ],
+       "observed": 1.3118992394677336,
+       "independence": 1.0,
+       "plug_in": 0.797584048364077,
+       "decomposition": 0.8128484592653464
+      },
+      {
+       "fit": [
+        5,
+        7,
+        8
+       ],
+       "observed": 1.3251297521189727,
+       "independence": 1.0,
+       "plug_in": 0.8910605595967378,
+       "decomposition": 0.899332449243028
+      },
+      {
+       "fit": [
+        6,
+        7,
+        8
+       ],
+       "observed": 1.3366487883871645,
+       "independence": 1.0,
+       "plug_in": 1.0318496437684175,
+       "decomposition": 1.0297584349735922
+      }
+     ]
+    },
+    "accuracy": {
+     "n_splits": 84,
+     "observed": {
+      "n_finite": 84,
+      "mean": 1.4475619470503371,
+      "sd": 0.1527969302046975,
+      "p05": 1.1903779783701465,
+      "median": 1.5008243312998757,
+      "p95": 1.6365947146140103
+     },
+     "errors": {
+      "independence": {
+       "n": 84,
+       "mean_abs_log_error": 0.3641037517269643,
+       "median_abs_log_error": 0.40601450204627404,
+       "mean_prediction": 1.0,
+       "sd_prediction": 0.0
+      },
+      "plug_in": {
+       "n": 83,
+       "mean_abs_log_error": 0.33512134698725976,
+       "median_abs_log_error": 0.30849377566763764,
+       "mean_prediction": 1.7495239704678036,
+       "sd_prediction": 0.5340522533056895
+      },
+      "decomposition": {
+       "n": 84,
+       "mean_abs_log_error": 0.25066769677906287,
+       "median_abs_log_error": 0.24710466945828588,
+       "mean_prediction": 1.3972837583985627,
+       "sd_prediction": 0.25948514909189424
+      },
+      "decomposition_minus_independence": {
+       "mean": -0.1134360549479015,
+       "median": -0.15803622147038363,
+       "share_below_zero": 0.7142857142857143
+      },
+      "decomposition_minus_plug_in": {
+       "mean": -0.08451676846785433,
+       "median": -0.09554622218876496,
+       "share_below_zero": 0.5783132530120482
+      },
+      "plug_in_minus_independence": {
+       "mean": -0.028315423770308892,
+       "median": -0.04969170154105085,
+       "share_below_zero": 0.5542168674698795
+      }
+     },
+     "rows": [
+      {
+       "fit": [
+        0,
+        1,
+        2
+       ],
+       "observed": 1.534480876158383,
+       "independence": 1.0,
+       "plug_in": 1.5033028140038693,
+       "decomposition": 1.2312398108498077
+      },
+      {
+       "fit": [
+        0,
+        1,
+        3
+       ],
+       "observed": 1.2347297145461753,
+       "independence": 1.0,
+       "plug_in": 1.8493851624130275,
+       "decomposition": 1.5452022483428773
+      },
+      {
+       "fit": [
+        0,
+        1,
+        4
+       ],
+       "observed": 1.553851468992139,
+       "independence": 1.0,
+       "plug_in": 1.3423704778706793,
+       "decomposition": 1.1896611289559995
+      },
+      {
+       "fit": [
+        0,
+        1,
+        5
+       ],
+       "observed": 1.501029150647669,
+       "independence": 1.0,
+       "plug_in": 1.7166552260406052,
+       "decomposition": 1.3676959334994925
+      },
+      {
+       "fit": [
+        0,
+        1,
+        6
+       ],
+       "observed": 1.5396127305561682,
+       "independence": 1.0,
+       "plug_in": 1.453223821445058,
+       "decomposition": 1.1678326597416568
+      },
+      {
+       "fit": [
+        0,
+        1,
+        7
+       ],
+       "observed": 1.5208502079829693,
+       "independence": 1.0,
+       "plug_in": 2.4672439795252274,
+       "decomposition": 1.4091226305308746
+      },
+      {
+       "fit": [
+        0,
+        1,
+        8
+       ],
+       "observed": 1.626179275932305,
+       "independence": 1.0,
+       "plug_in": 1.3415697945980751,
+       "decomposition": 1.1816490138585332
+      },
+      {
+       "fit": [
+        0,
+        2,
+        3
+       ],
+       "observed": 1.2014449518761727,
+       "independence": 1.0,
+       "plug_in": 2.2409464551247993,
+       "decomposition": 1.7543247245382967
+      },
+      {
+       "fit": [
+        0,
+        2,
+        4
+       ],
+       "observed": 1.540105237114165,
+       "independence": 1.0,
+       "plug_in": 1.5208666411840768,
+       "decomposition": 1.3116025262391555
+      },
+      {
+       "fit": [
+        0,
+        2,
+        5
+       ],
+       "observed": 1.496809282929555,
+       "independence": 1.0,
+       "plug_in": 2.5485034456430617,
+       "decomposition": 1.6151087257894023
+      },
+      {
+       "fit": [
+        0,
+        2,
+        6
+       ],
+       "observed": 1.5297887959181748,
+       "independence": 1.0,
+       "plug_in": 1.9746039902864227,
+       "decomposition": 1.3902249220647898
+      },
+      {
+       "fit": [
+        0,
+        2,
+        7
+       ],
+       "observed": 1.5186633660154902,
+       "independence": 1.0,
+       "plug_in": 3.1052309089033834,
+       "decomposition": 1.6651953377158168
+      },
+      {
+       "fit": [
+        0,
+        2,
+        8
+       ],
+       "observed": 1.595594014936188,
+       "independence": 1.0,
+       "plug_in": 1.3314625305530756,
+       "decomposition": 1.2047737049165534
+      },
+      {
+       "fit": [
+        0,
+        3,
+        4
+       ],
+       "observed": 1.199784608541549,
+       "independence": 1.0,
+       "plug_in": 1.8850511758275066,
+       "decomposition": 1.6697604703142288
+      },
+      {
+       "fit": [
+        0,
+        3,
+        5
+       ],
+       "observed": 1.190017209229161,
+       "independence": 1.0,
+       "plug_in": 2.1979540607768335,
+       "decomposition": 1.8208803302424286
+      },
+      {
+       "fit": [
+        0,
+        3,
+        6
+       ],
+       "observed": 1.2820723506496032,
+       "independence": 1.0,
+       "plug_in": 2.2052402669142315,
+       "decomposition": 1.8183019402532155
+      },
+      {
+       "fit": [
+        0,
+        3,
+        7
+       ],
+       "observed": 1.259945435898224,
+       "independence": 1.0,
+       "plug_in": 2.4268111654112183,
+       "decomposition": 1.9293169659714917
+      },
+      {
+       "fit": [
+        0,
+        3,
+        8
+       ],
+       "observed": 1.3233699822097806,
+       "independence": 1.0,
+       "plug_in": 1.7497617303269868,
+       "decomposition": 1.5736400472074492
+      },
+      {
+       "fit": [
+        0,
+        4,
+        5
+       ],
+       "observed": 1.509110704112785,
+       "independence": 1.0,
+       "plug_in": 1.7084921267706783,
+       "decomposition": 1.4188582259796145
+      },
+      {
+       "fit": [
+        0,
+        4,
+        6
+       ],
+       "observed": 1.5227926964824066,
+       "independence": 1.0,
+       "plug_in": 1.1982335433609246,
+       "decomposition": 1.1133050577533217
+      },
+      {
+       "fit": [
+        0,
+        4,
+        7
+       ],
+       "observed": 1.5006195119520822,
+       "independence": 1.0,
+       "plug_in": 1.4921893922571718,
+       "decomposition": 1.2624330866499767
+      },
+      {
+       "fit": [
+        0,
+        4,
+        8
+       ],
+       "observed": 1.6461830913401978,
+       "independence": 1.0,
+       "plug_in": 0.984412000354729,
+       "decomposition": 0.992360472761083
+      },
+      {
+       "fit": [
+        0,
+        5,
+        6
+       ],
+       "observed": 1.486968240331869,
+       "independence": 1.0,
+       "plug_in": 2.024318467602166,
+       "decomposition": 1.4886008784919347
+      },
+      {
+       "fit": [
+        0,
+        5,
+        7
+       ],
+       "observed": 1.4569653437805712,
+       "independence": 1.0,
+       "plug_in": 3.539768911416371,
+       "decomposition": 1.6418894157239612
+      },
+      {
+       "fit": [
+        0,
+        5,
+        8
+       ],
+       "observed": 1.569921745820608,
+       "independence": 1.0,
+       "plug_in": 1.5689539551191742,
+       "decomposition": 1.3650923841557048
+      },
+      {
+       "fit": [
+        0,
+        6,
+        7
+       ],
+       "observed": 1.4985491079633766,
+       "independence": 1.0,
+       "plug_in": 2.1367864803978085,
+       "decomposition": 1.397403372030388
+      },
+      {
+       "fit": [
+        0,
+        6,
+        8
+       ],
+       "observed": 1.5744393466904305,
+       "independence": 1.0,
+       "plug_in": 0.9464080233042947,
+       "decomposition": 0.9707769318433392
+      },
+      {
+       "fit": [
+        0,
+        7,
+        8
+       ],
+       "observed": 1.5663610513050872,
+       "independence": 1.0,
+       "plug_in": 1.3781171461625563,
+       "decomposition": 1.2133647681358783
+      },
+      {
+       "fit": [
+        1,
+        2,
+        3
+       ],
+       "observed": 1.194220272131295,
+       "independence": 1.0,
+       "plug_in": 1.7735093330948353,
+       "decomposition": 1.4033914659790312
+      },
+      {
+       "fit": [
+        1,
+        2,
+        4
+       ],
+       "observed": 1.5701056793653652,
+       "independence": 1.0,
+       "plug_in": 1.4070722707745573,
+       "decomposition": 1.2599961426629294
+      },
+      {
+       "fit": [
+        1,
+        2,
+        5
+       ],
+       "observed": 1.4969261331651655,
+       "independence": 1.0,
+       "plug_in": 1.4469945696557303,
+       "decomposition": 1.2163545870426138
+      },
+      {
+       "fit": [
+        1,
+        2,
+        6
+       ],
+       "observed": 1.5504461459542163,
+       "independence": 1.0,
+       "plug_in": 1.7839615342679287,
+       "decomposition": 1.1861111567436207
+      },
+      {
+       "fit": [
+        1,
+        2,
+        7
+       ],
+       "observed": 1.5311528727246906,
+       "independence": 1.0,
+       "plug_in": 2.721745342147809,
+       "decomposition": 1.3830010135902773
+      },
+      {
+       "fit": [
+        1,
+        2,
+        8
+       ],
+       "observed": 1.6371778359917806,
+       "independence": 1.0,
+       "plug_in": 1.2800012062317845,
+       "decomposition": 1.1642671049801125
+      },
+      {
+       "fit": [
+        1,
+        3,
+        4
+       ],
+       "observed": 1.2316560673692056,
+       "independence": 1.0,
+       "plug_in": 1.73566467658191,
+       "decomposition": 1.5281975452526095
+      },
+      {
+       "fit": [
+        1,
+        3,
+        5
+       ],
+       "observed": 1.164036142309845,
+       "independence": 1.0,
+       "plug_in": 1.7984300771419197,
+       "decomposition": 1.51656241152178
+      },
+      {
+       "fit": [
+        1,
+        3,
+        6
+       ],
+       "observed": 1.2848004602532708,
+       "independence": 1.0,
+       "plug_in": 2.2709893122386022,
+       "decomposition": 1.6452294459116392
+      },
+      {
+       "fit": [
+        1,
+        3,
+        7
+       ],
+       "observed": 1.2521452305133314,
+       "independence": 1.0,
+       "plug_in": 2.4235149336325996,
+       "decomposition": 1.716231434836004
+      },
+      {
+       "fit": [
+        1,
+        3,
+        8
+       ],
+       "observed": 1.3524198003707997,
+       "independence": 1.0,
+       "plug_in": 1.6992071551235932,
+       "decomposition": 1.4893456967372936
+      },
+      {
+       "fit": [
+        1,
+        4,
+        5
+       ],
+       "observed": 1.5294564099179877,
+       "independence": 1.0,
+       "plug_in": 1.4374880836416029,
+       "decomposition": 1.2854345761987773
+      },
+      {
+       "fit": [
+        1,
+        4,
+        6
+       ],
+       "observed": 1.5661871527618147,
+       "independence": 1.0,
+       "plug_in": 1.2695719342151728,
+       "decomposition": 1.1396537613515034
+      },
+      {
+       "fit": [
+        1,
+        4,
+        7
+       ],
+       "observed": 1.534311738722317,
+       "independence": 1.0,
+       "plug_in": 1.4493709076388568,
+       "decomposition": 1.2281429605269403
+      },
+      {
+       "fit": [
+        1,
+        4,
+        8
+       ],
+       "observed": 1.7217851005854778,
+       "independence": 1.0,
+       "plug_in": 1.2487036770729398,
+       "decomposition": 1.131091734991702
+      },
+      {
+       "fit": [
+        1,
+        5,
+        6
+       ],
+       "observed": 1.4972222059695517,
+       "independence": 1.0,
+       "plug_in": 1.487294060210187,
+       "decomposition": 1.1696196640910508
+      },
+      {
+       "fit": [
+        1,
+        5,
+        7
+       ],
+       "observed": 1.4583143269779357,
+       "independence": 1.0,
+       "plug_in": 2.1791831065811413,
+       "decomposition": 1.229301776415575
+      },
+      {
+       "fit": [
+        1,
+        5,
+        8
+       ],
+       "observed": 1.6022637393180514,
+       "independence": 1.0,
+       "plug_in": 1.3843172101636565,
+       "decomposition": 1.2454531189757991
+      },
+      {
+       "fit": [
+        1,
+        6,
+        7
+       ],
+       "observed": 1.5211447435882792,
+       "independence": 1.0,
+       "plug_in": NaN,
+       "decomposition": 1.1776920811609992
+      },
+      {
+       "fit": [
+        1,
+        6,
+        8
+       ],
+       "observed": 1.6302050673936137,
+       "independence": 1.0,
+       "plug_in": 0.8243227526305993,
+       "decomposition": 0.9394786178833517
+      },
+      {
+       "fit": [
+        1,
+        7,
+        8
+       ],
+       "observed": 1.6118388782753397,
+       "independence": 1.0,
+       "plug_in": 1.4166395733121104,
+       "decomposition": 1.1717574420614207
+      },
+      {
+       "fit": [
+        2,
+        3,
+        4
+       ],
+       "observed": 1.1924223368357303,
+       "independence": 1.0,
+       "plug_in": 1.8256162073744533,
+       "decomposition": 1.641838863653908
+      },
+      {
+       "fit": [
+        2,
+        3,
+        5
+       ],
+       "observed": 1.1435039626843402,
+       "independence": 1.0,
+       "plug_in": 2.116628198871166,
+       "decomposition": 1.6955003085429963
+      },
+      {
+       "fit": [
+        2,
+        3,
+        6
+       ],
+       "observed": 1.2624052591680641,
+       "independence": 1.0,
+       "plug_in": 2.501370782361194,
+       "decomposition": 1.8249563500273818
+      },
+      {
+       "fit": [
+        2,
+        3,
+        7
+       ],
+       "observed": 1.2389566979954736,
+       "independence": 1.0,
+       "plug_in": 2.5942193694991853,
+       "decomposition": 1.9226832221076664
+      },
+      {
+       "fit": [
+        2,
+        3,
+        8
+       ],
+       "observed": 1.3073235385597377,
+       "independence": 1.0,
+       "plug_in": 1.6564661356760746,
+       "decomposition": 1.505522896001704
+      },
+      {
+       "fit": [
+        2,
+        4,
+        5
+       ],
+       "observed": 1.5194772919769697,
+       "independence": 1.0,
+       "plug_in": 1.6070857534854468,
+       "decomposition": 1.4236340839083164
+      },
+      {
+       "fit": [
+        2,
+        4,
+        6
+       ],
+       "observed": 1.5487725695526526,
+       "independence": 1.0,
+       "plug_in": 1.4564377284750172,
+       "decomposition": 1.2968000751077984
+      },
+      {
+       "fit": [
+        2,
+        4,
+        7
+       ],
+       "observed": 1.5267505587524062,
+       "independence": 1.0,
+       "plug_in": 1.563589616479057,
+       "decomposition": 1.3732836979723804
+      },
+      {
+       "fit": [
+        2,
+        4,
+        8
+       ],
+       "observed": 1.6693790169841176,
+       "independence": 1.0,
+       "plug_in": 1.2618762578954086,
+       "decomposition": 1.1825055753370568
+      },
+      {
+       "fit": [
+        2,
+        5,
+        6
+       ],
+       "observed": 1.4915344126854353,
+       "independence": 1.0,
+       "plug_in": 2.0417428601794607,
+       "decomposition": 1.452978030172993
+      },
+      {
+       "fit": [
+        2,
+        5,
+        7
+       ],
+       "observed": 1.4614782517752536,
+       "independence": 1.0,
+       "plug_in": 2.599115128957722,
+       "decomposition": 1.5306269637489285
+      },
+      {
+       "fit": [
+        2,
+        5,
+        8
+       ],
+       "observed": 1.5731172919153333,
+       "independence": 1.0,
+       "plug_in": 1.4323846715245834,
+       "decomposition": 1.3090784770036044
+      },
+      {
+       "fit": [
+        2,
+        6,
+        7
+       ],
+       "observed": 1.516752633139486,
+       "independence": 1.0,
+       "plug_in": 2.7665793887301797,
+       "decomposition": 1.5112433207899074
+      },
+      {
+       "fit": [
+        2,
+        6,
+        8
+       ],
+       "observed": 1.593326452568293,
+       "independence": 1.0,
+       "plug_in": 1.147082988670465,
+       "decomposition": 1.0878799741620468
+      },
+      {
+       "fit": [
+        2,
+        7,
+        8
+       ],
+       "observed": 1.5849496560217857,
+       "independence": 1.0,
+       "plug_in": 1.3838894829681394,
+       "decomposition": 1.2541071024680235
+      },
+      {
+       "fit": [
+        3,
+        4,
+        5
+       ],
+       "observed": 1.1733196053091484,
+       "independence": 1.0,
+       "plug_in": 1.8523226962788957,
+       "decomposition": 1.6746718610087643
+      },
+      {
+       "fit": [
+        3,
+        4,
+        6
+       ],
+       "observed": 1.268372397809888,
+       "independence": 1.0,
+       "plug_in": 1.8963149108126973,
+       "decomposition": 1.685976006130687
+      },
+      {
+       "fit": [
+        3,
+        4,
+        7
+       ],
+       "observed": 1.2321732357993096,
+       "independence": 1.0,
+       "plug_in": 1.9185866957753919,
+       "decomposition": 1.70708383706686
+      },
+      {
+       "fit": [
+        3,
+        4,
+        8
+       ],
+       "observed": 1.351505148796158,
+       "independence": 1.0,
+       "plug_in": 1.7111194438236748,
+       "decomposition": 1.5688343503702866
+      },
+      {
+       "fit": [
+        3,
+        5,
+        6
+       ],
+       "observed": 1.219658531172225,
+       "independence": 1.0,
+       "plug_in": 2.2054036531024463,
+       "decomposition": 1.8127293041361818
+      },
+      {
+       "fit": [
+        3,
+        5,
+        7
+       ],
+       "observed": 1.1672107365360818,
+       "independence": 1.0,
+       "plug_in": 2.3102550503255204,
+       "decomposition": 1.8386405702122022
+      },
+      {
+       "fit": [
+        3,
+        5,
+        8
+       ],
+       "observed": 1.2854400622709885,
+       "independence": 1.0,
+       "plug_in": 1.7393885690894186,
+       "decomposition": 1.596529288224383
+      },
+      {
+       "fit": [
+        3,
+        6,
+        7
+       ],
+       "observed": 1.287013845642238,
+       "independence": 1.0,
+       "plug_in": 2.5428280341092506,
+       "decomposition": 1.958511660761996
+      },
+      {
+       "fit": [
+        3,
+        6,
+        8
+       ],
+       "observed": 1.3562477359516356,
+       "independence": 1.0,
+       "plug_in": 1.7638210374884067,
+       "decomposition": 1.571257106930054
+      },
+      {
+       "fit": [
+        3,
+        7,
+        8
+       ],
+       "observed": 1.338369952187765,
+       "independence": 1.0,
+       "plug_in": 1.8233254316798306,
+       "decomposition": 1.642000219384
+      },
+      {
+       "fit": [
+        4,
+        5,
+        6
+       ],
+       "observed": 1.496230017151418,
+       "independence": 1.0,
+       "plug_in": 1.4372417727831883,
+       "decomposition": 1.2954408020743449
+      },
+      {
+       "fit": [
+        4,
+        5,
+        7
+       ],
+       "observed": 1.4518922110151937,
+       "independence": 1.0,
+       "plug_in": 1.4766268873292279,
+       "decomposition": 1.2964640155039338
+      },
+      {
+       "fit": [
+        4,
+        5,
+        8
+       ],
+       "observed": 1.6384346737739455,
+       "independence": 1.0,
+       "plug_in": 1.3652138561766731,
+       "decomposition": 1.2573309857298118
+      },
+      {
+       "fit": [
+        4,
+        6,
+        7
+       ],
+       "observed": 1.4921026046377694,
+       "independence": 1.0,
+       "plug_in": 1.21779646421985,
+       "decomposition": 1.131323496746634
+      },
+      {
+       "fit": [
+        4,
+        6,
+        8
+       ],
+       "observed": 1.6332903601399784,
+       "independence": 1.0,
+       "plug_in": 0.744070935980392,
+       "decomposition": 0.8579044672929667
+      },
+      {
+       "fit": [
+        4,
+        7,
+        8
+       ],
+       "observed": 1.6102520051651412,
+       "independence": 1.0,
+       "plug_in": 1.0254590582546566,
+       "decomposition": 1.0157705141710374
+      },
+      {
+       "fit": [
+        5,
+        6,
+        7
+       ],
+       "observed": 1.4335780012310466,
+       "independence": 1.0,
+       "plug_in": 2.07121699412109,
+       "decomposition": 1.2995628500994036
+      },
+      {
+       "fit": [
+        5,
+        6,
+        8
+       ],
+       "observed": 1.5462691974568588,
+       "independence": 1.0,
+       "plug_in": 1.1967617431558795,
+       "decomposition": 1.1302049571783843
+      },
+      {
+       "fit": [
+        5,
+        7,
+        8
+       ],
+       "observed": 1.5176847057781826,
+       "independence": 1.0,
+       "plug_in": 1.3169542015029503,
+       "decomposition": 1.2050627234482132
+      },
+      {
+       "fit": [
+        6,
+        7,
+        8
+       ],
+       "observed": 1.5479530902156489,
+       "independence": 1.0,
+       "plug_in": 0.7658521317191456,
+       "decomposition": 0.8779662945320994
+      }
+     ]
+    }
+   }
+  }
+ },
+ "wall_seconds": 15.49408507347107
+}

@@ -1,0 +1,166 @@
+{
+ "design": "R6 coverage when both sharing channels sit at the upper bound the data allows.\n\nDesign fixed before running (2026-09-15, written 23:28 EDT). Two permutation tests now bound the two\nways a seed label can be shared across the design. snap-r6-band-share puts the band-shared share of the\nseed covariance at 0.008 on full-battery margins with a 95 percent upper bound of 0.044, and\nsnap-r6-recipe-share puts the recipe-shared share at minus 0.017 with an upper bound of 0.114. Each\nbound was read against its own null, one channel at a time, so neither run says what the shipped\nrecipe-clustered interval does when both channels sit at their bounds together. That joint corner is the\nworst structure the data cannot exclude, and it is the one a reviewer will ask about, so this run\nmeasures it. Four cells at 4,000 replicates each carry recipe sharing alone at 0.114, the joint corner at\n0.114 and 0.044, twice the joint corner at 0.228 and 0.088, and a band-only cell at 0.044 for the\ncontrast with the recipe channel the clustering already handles. Seed 20260934 and a cell index offset\nof eight hundred keep the draws distinct from every earlier sweep.\n",
+ "seed": 20260934,
+ "reps": 4000,
+ "cells": {
+  "recipe_0.114": {
+   "name": "recipe_0.114",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.0,
+   "recipe_shared": 0.114,
+   "wild_recipe": {
+    "coverage": 0.94925,
+    "mc_se": 0.003470390377896987,
+    "lower_miss": 0.017,
+    "upper_miss": 0.03375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24571346903666225
+   },
+   "wild_size": {
+    "coverage": 0.95625,
+    "mc_se": 0.0032340353082488124,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.02225,
+    "undefined_or_unbounded": 0.006,
+    "median_width": 0.35890777773835114
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94975,
+    "mc_se": 0.0034541618918342556,
+    "lower_miss": 0.01825,
+    "upper_miss": 0.032,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24479973310621184
+   },
+   "cluster_t_size": {
+    "coverage": 0.95275,
+    "mc_se": 0.0033547517605629186,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.02875,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3020303478114106
+   }
+  },
+  "band_0.044": {
+   "name": "band_0.044",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.044,
+   "recipe_shared": 0.0,
+   "wild_recipe": {
+    "coverage": 0.93675,
+    "mc_se": 0.0038486828103911092,
+    "lower_miss": 0.019,
+    "upper_miss": 0.04425,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24049221580041413
+   },
+   "wild_size": {
+    "coverage": 0.953,
+    "mc_se": 0.003346303931205295,
+    "lower_miss": 0.014,
+    "upper_miss": 0.0245,
+    "undefined_or_unbounded": 0.0085,
+    "median_width": 0.3615608791191196
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.93625,
+    "mc_se": 0.0038628337234470752,
+    "lower_miss": 0.019,
+    "upper_miss": 0.04475,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23995937539312406
+   },
+   "cluster_t_size": {
+    "coverage": 0.9485,
+    "mc_se": 0.0034945582696529753,
+    "lower_miss": 0.01925,
+    "upper_miss": 0.03225,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3073519800081488
+   }
+  },
+  "joint_bound": {
+   "name": "joint_bound",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.044,
+   "recipe_shared": 0.114,
+   "wild_recipe": {
+    "coverage": 0.949,
+    "mc_se": 0.003478469491026191,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.0355,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24656912685879495
+   },
+   "wild_size": {
+    "coverage": 0.95125,
+    "mc_se": 0.003404902256306338,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.022,
+    "undefined_or_unbounded": 0.00925,
+    "median_width": 0.36297246046499765
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94875,
+    "mc_se": 0.0034865254014562986,
+    "lower_miss": 0.01575,
+    "upper_miss": 0.0355,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24574911538828703
+   },
+   "cluster_t_size": {
+    "coverage": 0.9475,
+    "mc_se": 0.0035264624625820132,
+    "lower_miss": 0.0225,
+    "upper_miss": 0.03,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3078176970638684
+   }
+  },
+  "joint_double": {
+   "name": "joint_double",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.088,
+   "recipe_shared": 0.228,
+   "wild_recipe": {
+    "coverage": 0.92725,
+    "mc_se": 0.004106623841429842,
+    "lower_miss": 0.02125,
+    "upper_miss": 0.0515,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.25623298206060086
+   },
+   "wild_size": {
+    "coverage": 0.943,
+    "mc_se": 0.003665753674212168,
+    "lower_miss": 0.01725,
+    "upper_miss": 0.03025,
+    "undefined_or_unbounded": 0.0095,
+    "median_width": 0.37885807977259645
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.92825,
+    "mc_se": 0.004080500505452732,
+    "lower_miss": 0.022,
+    "upper_miss": 0.04975,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.25540477007783347
+   },
+   "cluster_t_size": {
+    "coverage": 0.9405,
+    "mc_se": 0.0037403124869454423,
+    "lower_miss": 0.02225,
+    "upper_miss": 0.03725,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.31665610560791824
+   }
+  }
+ },
+ "shipped_check": {
+  "recipe_0.114": 0.0,
+  "band_0.044": 0.0,
+  "joint_bound": 0.0,
+  "joint_double": 0.0
+ },
+ "wall_seconds": 1039.4489459991455
+}

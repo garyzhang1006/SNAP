@@ -1,0 +1,11 @@
+phenotype,model,label,n_free,mse_log_sigma_agg,n_folds_scored,mean_predicted_sigma_agg
+"margin","P0","independence","0","0.275175","3","0.317769"
+"margin","P1","rank-one competence","None","0.0125056","3","0.597005"
+"margin","P1g","rank-one plus gain","None","0.00905368","3","0.586134"
+"margin","P2","Cheverud plug-in with R_P","0","0.0401068","3","0.455221"
+"margin","P3","full matrix","None","0.00143646","3","0.535726"
+"accuracy","P0","independence","0","0.266649","3","0.00902189"
+"accuracy","P1","rank-one competence","None","0.0124269","3","0.0168053"
+"accuracy","P1g","rank-one plus gain","None","0.00890042","3","0.0164917"
+"accuracy","P2","Cheverud plug-in with R_P","0","0.064921","3","0.0121017"
+"accuracy","P3","full matrix","None","0.00145364","3","0.0150778"

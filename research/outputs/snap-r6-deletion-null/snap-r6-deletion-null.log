@@ -1,0 +1,11 @@
+[{"stream_name":"stdout","time":1.292493482,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":1675.586920366,"data":"[true_one_accuracy_noise] {\"name\": \"true_one_accuracy_noise\", \"truth\": 1.0, \"n_rep\": 2000, \"share_full_includes_one\": 0.95, \"recipe_flips_mean\": 0.3078947368421053, \"recipe_flips_median\": 0.0, \"recipe_flips_p95\": 2.0, \"recipe_flips_max\": 12.0, \"share_recipe_flips_at_least_5\": 0.020526315789473684, \"share_recipe_flips_at_least_1\": 0.11578947368421053, \"size_flips_mean\": 0.13105263157894737, \"share_size_flips_at_least_1\": 0.10894736842105263, \"seconds\": 1658.4008948802948}\n"}
+,{"stream_name":"stdout","time":3329.550074923,"data":"[accuracy_like] {\"name\": \"accuracy_like\", \"truth\": 1.0779610382569493, \"n_rep\": 2000, \"share_full_includes_one\": 0.899, \"recipe_flips_mean\": 0.40044493882091214, \"recipe_flips_median\": 0.0, \"recipe_flips_p95\": 3.0, \"recipe_flips_max\": 12.0, \"share_recipe_flips_at_least_5\": 0.03170189098998888, \"share_recipe_flips_at_least_1\": 0.12347052280311457, \"size_flips_mean\": 0.13125695216907676, \"share_size_flips_at_least_1\": 0.11345939933259176, \"seconds\": 1653.9629530906677}\n"}
+,{"stream_name":"stdout","time":3329.553637779,"data":"[done] 3328s\n"}
+,{"stream_name":"stderr","time":3332.61382994,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":3332.613935219,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":3333.041452677,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":3333.041485951,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":3334.225726239,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":3336.079296843,"data":"[NbConvertApp] Writing 332476 bytes to __results__.html\n"}
+]

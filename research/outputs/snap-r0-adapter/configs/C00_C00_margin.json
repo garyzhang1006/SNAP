@@ -1,0 +1,9 @@
+{
+  "seed": 20260914,
+  "inputs": [
+    "/kaggle/working/datasets/margin/scores.json",
+    "/kaggle/working/datasets/margin/scores.npz"
+  ],
+  "dataset": "/kaggle/working/datasets/margin/scores.json",
+  "template_only": false
+}

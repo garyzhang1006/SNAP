@@ -1,0 +1,92 @@
+{
+ "design": "R6 whether the mirror permutation test can see the recipe sharing it bounds.\n\nDesign fixed before running (2026-09-16, written 13:25 EDT). snap-r6-share-power showed the band version\nof this test is correctly sized and reaches 0.992 power at a quarter, which turns its 0.044 bound into a\nmeasurement. The paper leans just as hard on the mirror version, which averages over the five sizes of a\nrecipe and bounds recipe sharing below 0.114, and that bound feeds the corner simulation the limitation\nsection rests on. The mirror test has five configurations per group where the band test has 25, so its\nstandard error is 0.067 against 0.018 and its power has to be worse. Nobody has measured how much worse.\nThis run measures it the same way. It sweeps the recipe share over 0, 0.05, 0.114, 0.25 and 0.50 on a\nmargin-like population, and for each of 500 replicates per share it forms the weighted cross-half\ncovariance of the recipe means, builds the within-configuration run permutation null at 999 draws, and\nreads off the tail and the plug-in share. A test with real power at 0.114 makes the corner argument a\nmeasurement. A test that misses a quarter would mean the recipe bound is an artefact of the procedure,\nand the limitation section would have to say the recipe channel is unbounded. Seed 20260958 with a cell\noffset of three thousand keeps the draws distinct.\n",
+ "seed": 20260958,
+ "reps": 500,
+ "n_perm": 999,
+ "configs_per_recipe": 5,
+ "shares": [
+  0.0,
+  0.05,
+  0.114,
+  0.25,
+  0.5
+ ],
+ "cells": {
+  "share0.0": {
+   "share": 0.0,
+   "reps": 500,
+   "defined_slope": 500,
+   "reject_at_05": 0.054,
+   "reject_at_01": 0.016,
+   "median_tail": 0.48998998998999,
+   "qhat_mean": 0.001038481756206631,
+   "qhat_sd": 0.053877456256121385,
+   "qhat_bias": 0.001038481756206631,
+   "mean_reported_se": 0.05286392139414698,
+   "interval_coverage": 0.942,
+   "upper_bound_mean": 0.10464986377029115,
+   "seconds": 520.2312052249908
+  },
+  "share0.05": {
+   "share": 0.05,
+   "reps": 500,
+   "defined_slope": 500,
+   "reject_at_05": 0.248,
+   "reject_at_01": 0.098,
+   "median_tail": 0.17067067067067065,
+   "qhat_mean": 0.05184744342981769,
+   "qhat_sd": 0.058748939444794514,
+   "qhat_bias": 0.0018474434298176856,
+   "mean_reported_se": 0.052941726483503274,
+   "interval_coverage": 0.942,
+   "upper_bound_mean": 0.15561132061685448,
+   "seconds": 522.1412174701691
+  },
+  "share0.114": {
+   "share": 0.114,
+   "reps": 500,
+   "defined_slope": 500,
+   "reject_at_05": 0.628,
+   "reject_at_01": 0.356,
+   "median_tail": 0.026026026026026026,
+   "qhat_mean": 0.11028491641008872,
+   "qhat_sd": 0.06414723012649527,
+   "qhat_bias": -0.0037150835899112805,
+   "mean_reported_se": 0.05292972326322677,
+   "interval_coverage": 0.884,
+   "upper_bound_mean": 0.21402526771768504,
+   "seconds": 523.831583738327
+  },
+  "share0.25": {
+   "share": 0.25,
+   "reps": 500,
+   "defined_slope": 500,
+   "reject_at_05": 0.982,
+   "reject_at_01": 0.94,
+   "median_tail": 0.0,
+   "qhat_mean": 0.2506674730795731,
+   "qhat_sd": 0.07626848888048719,
+   "qhat_bias": 0.0006674730795730999,
+   "mean_reported_se": 0.05400518232223158,
+   "interval_coverage": 0.834,
+   "upper_bound_mean": 0.35651568540966627,
+   "seconds": 527.5863425731659
+  },
+  "share0.5": {
+   "share": 0.5,
+   "reps": 500,
+   "defined_slope": 500,
+   "reject_at_05": 1.0,
+   "reject_at_01": 1.0,
+   "median_tail": 0.0,
+   "qhat_mean": 0.49535868718965476,
+   "qhat_sd": 0.07686594542534564,
+   "qhat_bias": -0.004641312810345244,
+   "mean_reported_se": 0.057070705591576454,
+   "interval_coverage": 0.86,
+   "upper_bound_mean": 0.6072152147214334,
+   "seconds": 528.8339121341705
+  }
+ },
+ "wall_seconds": 2622.64200592041
+}

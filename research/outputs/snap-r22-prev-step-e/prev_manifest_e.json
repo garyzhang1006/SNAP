@@ -1,0 +1,1172 @@
+{
+ "part": "e",
+ "recipes": {
+  "falcon-with-cc": {
+   "member_recipe": "falcon-with-cc",
+   "cells": {
+    "150M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 37500,
+     "max_step_by_seed": {
+      "14": 38750,
+      "15": 38750,
+      "2": 38157
+     },
+     "previous_step": 36250,
+     "gap": 1250
+    },
+    "1B": {
+     "seeds": [
+      2,
+      4,
+      5
+     ],
+     "common_step": 69369,
+     "max_step_by_seed": {
+      "2": 69369,
+      "4": 69369,
+      "5": 69369
+     },
+     "previous_step": 67500,
+     "gap": 1869
+    },
+    "300M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 45787,
+     "max_step_by_seed": {
+      "14": 45787,
+      "15": 45787,
+      "2": 45787
+     },
+     "previous_step": 45000,
+     "gap": 787
+    },
+    "530M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 51250,
+     "max_step_by_seed": {
+      "14": 51411,
+      "15": 51411,
+      "2": 57776
+     },
+     "previous_step": 50000,
+     "gap": 1250
+    },
+    "750M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 27500,
+     "max_step_by_seed": {
+      "14": 28257,
+      "15": 28257,
+      "2": 63589
+     },
+     "previous_step": 26250,
+     "gap": 1250
+    }
+   },
+   "runs": [
+    {
+     "recipe": "falcon-with-cc",
+     "size": "150M",
+     "seed": 14,
+     "step": 36250,
+     "batch": 1,
+     "gain": -0.7973149104439564,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc",
+     "size": "150M",
+     "seed": 15,
+     "step": 36250,
+     "batch": 2,
+     "gain": -0.7980364474405921,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc",
+     "size": "150M",
+     "seed": 2,
+     "step": 36250,
+     "batch": 0,
+     "gain": -0.8074772906206266,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc",
+     "size": "1B",
+     "seed": 2,
+     "step": 67500,
+     "batch": 0,
+     "gain": -0.6741295445890763,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc",
+     "size": "1B",
+     "seed": 4,
+     "step": 67500,
+     "batch": 1,
+     "gain": -0.6677867074176389,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc",
+     "size": "1B",
+     "seed": 5,
+     "step": 67500,
+     "batch": 2,
+     "gain": -0.6672299467829894,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc",
+     "size": "300M",
+     "seed": 14,
+     "step": 45000,
+     "batch": 1,
+     "gain": -0.7405472574911157,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc",
+     "size": "300M",
+     "seed": 15,
+     "step": 45000,
+     "batch": 2,
+     "gain": -0.7422848925238179,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc",
+     "size": "300M",
+     "seed": 2,
+     "step": 45000,
+     "batch": 0,
+     "gain": -0.7446041203546389,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc",
+     "size": "530M",
+     "seed": 14,
+     "step": 50000,
+     "batch": 1,
+     "gain": -0.7050568476424149,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc",
+     "size": "530M",
+     "seed": 15,
+     "step": 50000,
+     "batch": 2,
+     "gain": -0.7083737027201046,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc",
+     "size": "530M",
+     "seed": 2,
+     "step": 50000,
+     "batch": 0,
+     "gain": -0.707122334330227,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc",
+     "size": "750M",
+     "seed": 14,
+     "step": 26250,
+     "batch": 1,
+     "gain": -0.7304235642996203,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc",
+     "size": "750M",
+     "seed": 15,
+     "step": 26250,
+     "batch": 2,
+     "gain": -0.7302226614318684,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc",
+     "size": "750M",
+     "seed": 2,
+     "step": 26250,
+     "batch": 0,
+     "gain": -0.7259912648774054,
+     "n_tasks": 66,
+     "n_items": 37682
+    }
+   ],
+   "seconds": 524.9056270122528
+  },
+  "falcon-with-cc-top-10p": {
+   "member_recipe": "falcon-with-cc-top-10p",
+   "cells": {
+    "150M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 37500,
+     "max_step_by_seed": {
+      "14": 38750,
+      "15": 38750,
+      "2": 38157
+     },
+     "previous_step": 36250,
+     "gap": 1250
+    },
+    "1B": {
+     "seeds": [
+      2,
+      4,
+      5
+     ],
+     "common_step": 69369,
+     "max_step_by_seed": {
+      "2": 69369,
+      "4": 69369,
+      "5": 69369
+     },
+     "previous_step": 67500,
+     "gap": 1869
+    },
+    "300M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 45000,
+     "max_step_by_seed": {
+      "14": 46250,
+      "15": 46250,
+      "2": 45787
+     },
+     "previous_step": 43750,
+     "gap": 1250
+    },
+    "530M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 51250,
+     "max_step_by_seed": {
+      "14": 51411,
+      "15": 51411,
+      "2": 57776
+     },
+     "previous_step": 50000,
+     "gap": 1250
+    },
+    "750M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 27500,
+     "max_step_by_seed": {
+      "14": 28257,
+      "15": 28257,
+      "2": 63589
+     },
+     "previous_step": 26250,
+     "gap": 1250
+    }
+   },
+   "runs": [
+    {
+     "recipe": "falcon-with-cc-top-10p",
+     "size": "150M",
+     "seed": 14,
+     "step": 36250,
+     "batch": 1,
+     "gain": -0.7650063695667012,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-10p",
+     "size": "150M",
+     "seed": 15,
+     "step": 36250,
+     "batch": 2,
+     "gain": -0.7551615270925007,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-10p",
+     "size": "150M",
+     "seed": 2,
+     "step": 36250,
+     "batch": 0,
+     "gain": -0.7709961036711068,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-10p",
+     "size": "1B",
+     "seed": 2,
+     "step": 67500,
+     "batch": 0,
+     "gain": -0.6503142230186211,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-10p",
+     "size": "1B",
+     "seed": 4,
+     "step": 67500,
+     "batch": 1,
+     "gain": -0.6488673386490511,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-10p",
+     "size": "1B",
+     "seed": 5,
+     "step": 67500,
+     "batch": 2,
+     "gain": -0.6469181960709045,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-10p",
+     "size": "300M",
+     "seed": 14,
+     "step": 43750,
+     "batch": 1,
+     "gain": -0.7075017577279106,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-10p",
+     "size": "300M",
+     "seed": 15,
+     "step": 43750,
+     "batch": 2,
+     "gain": -0.7104547354878953,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-10p",
+     "size": "300M",
+     "seed": 2,
+     "step": 43750,
+     "batch": 0,
+     "gain": -0.7033285921926052,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-10p",
+     "size": "530M",
+     "seed": 14,
+     "step": 50000,
+     "batch": 1,
+     "gain": -0.676430239136395,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-10p",
+     "size": "530M",
+     "seed": 15,
+     "step": 50000,
+     "batch": 2,
+     "gain": -0.6781830251776154,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-10p",
+     "size": "530M",
+     "seed": 2,
+     "step": 50000,
+     "batch": 0,
+     "gain": -0.6807418895162101,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-10p",
+     "size": "750M",
+     "seed": 14,
+     "step": 26250,
+     "batch": 1,
+     "gain": -0.6991353224547407,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-10p",
+     "size": "750M",
+     "seed": 15,
+     "step": 26250,
+     "batch": 2,
+     "gain": -0.6971545636447618,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-10p",
+     "size": "750M",
+     "seed": 2,
+     "step": 26250,
+     "batch": 0,
+     "gain": -0.6969301732664935,
+     "n_tasks": 66,
+     "n_items": 37682
+    }
+   ],
+   "seconds": 510.2096645832062
+  },
+  "falcon-with-cc-top-20p": {
+   "member_recipe": "falcon-with-cc-top-20p",
+   "cells": {
+    "150M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 37500,
+     "max_step_by_seed": {
+      "14": 38157,
+      "15": 38750,
+      "2": 38157
+     },
+     "previous_step": 36250,
+     "gap": 1250
+    },
+    "1B": {
+     "seeds": [
+      2,
+      4,
+      5
+     ],
+     "common_step": 69369,
+     "max_step_by_seed": {
+      "2": 69369,
+      "4": 69369,
+      "5": 69369
+     },
+     "previous_step": 67500,
+     "gap": 1869
+    },
+    "300M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 45000,
+     "max_step_by_seed": {
+      "14": 46250,
+      "15": 46250,
+      "2": 45787
+     },
+     "previous_step": 43750,
+     "gap": 1250
+    },
+    "530M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 51250,
+     "max_step_by_seed": {
+      "14": 51411,
+      "15": 51411,
+      "2": 57776
+     },
+     "previous_step": 50000,
+     "gap": 1250
+    },
+    "750M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 27500,
+     "max_step_by_seed": {
+      "14": 28257,
+      "15": 28257,
+      "2": 63589
+     },
+     "previous_step": 26250,
+     "gap": 1250
+    }
+   },
+   "runs": [
+    {
+     "recipe": "falcon-with-cc-top-20p",
+     "size": "150M",
+     "seed": 14,
+     "step": 36250,
+     "batch": 1,
+     "gain": -0.77271834690433,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-20p",
+     "size": "150M",
+     "seed": 15,
+     "step": 36250,
+     "batch": 2,
+     "gain": -0.7709109595741626,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-20p",
+     "size": "150M",
+     "seed": 2,
+     "step": 36250,
+     "batch": 0,
+     "gain": -0.7671533967962738,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-20p",
+     "size": "1B",
+     "seed": 2,
+     "step": 67500,
+     "batch": 0,
+     "gain": -0.6525644084503344,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-20p",
+     "size": "1B",
+     "seed": 4,
+     "step": 67500,
+     "batch": 1,
+     "gain": -0.6531670825330707,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-20p",
+     "size": "1B",
+     "seed": 5,
+     "step": 67500,
+     "batch": 2,
+     "gain": -0.6515248613766202,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-20p",
+     "size": "300M",
+     "seed": 14,
+     "step": 43750,
+     "batch": 1,
+     "gain": -0.7125382730070982,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-20p",
+     "size": "300M",
+     "seed": 15,
+     "step": 43750,
+     "batch": 2,
+     "gain": -0.7139693408020638,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-20p",
+     "size": "300M",
+     "seed": 2,
+     "step": 43750,
+     "batch": 0,
+     "gain": -0.7155943636735542,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-20p",
+     "size": "530M",
+     "seed": 14,
+     "step": 50000,
+     "batch": 1,
+     "gain": -0.686483847088897,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-20p",
+     "size": "530M",
+     "seed": 15,
+     "step": 50000,
+     "batch": 2,
+     "gain": -0.6835905661470495,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-20p",
+     "size": "530M",
+     "seed": 2,
+     "step": 50000,
+     "batch": 0,
+     "gain": -0.6879854886284203,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-20p",
+     "size": "750M",
+     "seed": 14,
+     "step": 26250,
+     "batch": 1,
+     "gain": -0.7083767604882102,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-20p",
+     "size": "750M",
+     "seed": 15,
+     "step": 26250,
+     "batch": 2,
+     "gain": -0.7060570750085814,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "falcon-with-cc-top-20p",
+     "size": "750M",
+     "seed": 2,
+     "step": 26250,
+     "batch": 0,
+     "gain": -0.7008821766107072,
+     "n_tasks": 66,
+     "n_items": 37682
+    }
+   ],
+   "seconds": 576.4216375350952
+  },
+  "fineweb-edu": {
+   "member_recipe": "fineweb-edu",
+   "cells": {
+    "150M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 37500,
+     "max_step_by_seed": {
+      "14": 38750,
+      "15": 38157,
+      "2": 38157
+     },
+     "previous_step": 36250,
+     "gap": 1250
+    },
+    "1B": {
+     "seeds": [
+      2,
+      4,
+      5
+     ],
+     "common_step": 69369,
+     "max_step_by_seed": {
+      "2": 69369,
+      "4": 69369,
+      "5": 69369
+     },
+     "previous_step": 67500,
+     "gap": 1869
+    },
+    "300M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 45787,
+     "max_step_by_seed": {
+      "14": 45787,
+      "15": 45787,
+      "2": 45787
+     },
+     "previous_step": 45000,
+     "gap": 787
+    },
+    "530M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 51250,
+     "max_step_by_seed": {
+      "14": 51411,
+      "15": 51411,
+      "2": 57776
+     },
+     "previous_step": 50000,
+     "gap": 1250
+    },
+    "750M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 27500,
+     "max_step_by_seed": {
+      "14": 28257,
+      "15": 28257,
+      "2": 63589
+     },
+     "previous_step": 26250,
+     "gap": 1250
+    }
+   },
+   "runs": [
+    {
+     "recipe": "fineweb-edu",
+     "size": "150M",
+     "seed": 14,
+     "step": 36250,
+     "batch": 1,
+     "gain": -0.7562036650002272,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-edu",
+     "size": "150M",
+     "seed": 15,
+     "step": 36250,
+     "batch": 2,
+     "gain": -0.7540449568601568,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-edu",
+     "size": "150M",
+     "seed": 2,
+     "step": 36250,
+     "batch": 0,
+     "gain": -0.7570194226693705,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-edu",
+     "size": "1B",
+     "seed": 2,
+     "step": 67500,
+     "batch": 0,
+     "gain": -0.6575604048567094,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-edu",
+     "size": "1B",
+     "seed": 4,
+     "step": 67500,
+     "batch": 1,
+     "gain": -0.6551836371770895,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-edu",
+     "size": "1B",
+     "seed": 5,
+     "step": 67500,
+     "batch": 2,
+     "gain": -0.6513469523420495,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-edu",
+     "size": "300M",
+     "seed": 14,
+     "step": 45000,
+     "batch": 1,
+     "gain": -0.7063294304595475,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-edu",
+     "size": "300M",
+     "seed": 15,
+     "step": 45000,
+     "batch": 2,
+     "gain": -0.7067229345672271,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-edu",
+     "size": "300M",
+     "seed": 2,
+     "step": 45000,
+     "batch": 0,
+     "gain": -0.710461232005356,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-edu",
+     "size": "530M",
+     "seed": 14,
+     "step": 50000,
+     "batch": 1,
+     "gain": -0.6865350096599063,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-edu",
+     "size": "530M",
+     "seed": 15,
+     "step": 50000,
+     "batch": 2,
+     "gain": -0.6812477424922185,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-edu",
+     "size": "530M",
+     "seed": 2,
+     "step": 50000,
+     "batch": 0,
+     "gain": -0.6892225539452612,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-edu",
+     "size": "750M",
+     "seed": 14,
+     "step": 26250,
+     "batch": 1,
+     "gain": -0.7053293200413365,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-edu",
+     "size": "750M",
+     "seed": 15,
+     "step": 26250,
+     "batch": 2,
+     "gain": -0.699750080254907,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-edu",
+     "size": "750M",
+     "seed": 2,
+     "step": 26250,
+     "batch": 0,
+     "gain": -0.7034523025394473,
+     "n_tasks": 66,
+     "n_items": 37682
+    }
+   ],
+   "seconds": 527.2668738365173
+  },
+  "fineweb-pro": {
+   "member_recipe": "fineweb-pro",
+   "cells": {
+    "150M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 37500,
+     "max_step_by_seed": {
+      "14": 38750,
+      "15": 38157,
+      "2": 38157
+     },
+     "previous_step": 36250,
+     "gap": 1250
+    },
+    "1B": {
+     "seeds": [
+      2,
+      4,
+      5
+     ],
+     "common_step": 69369,
+     "max_step_by_seed": {
+      "2": 69369,
+      "4": 69369,
+      "5": 69369
+     },
+     "previous_step": 67500,
+     "gap": 1869
+    },
+    "300M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 45000,
+     "max_step_by_seed": {
+      "14": 46250,
+      "15": 45787,
+      "2": 45787
+     },
+     "previous_step": 43750,
+     "gap": 1250
+    },
+    "530M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 51250,
+     "max_step_by_seed": {
+      "14": 51411,
+      "15": 51411,
+      "2": 57776
+     },
+     "previous_step": 50000,
+     "gap": 1250
+    },
+    "750M": {
+     "seeds": [
+      2,
+      14,
+      15
+     ],
+     "common_step": 27500,
+     "max_step_by_seed": {
+      "14": 28257,
+      "15": 28257,
+      "2": 63589
+     },
+     "previous_step": 26250,
+     "gap": 1250
+    }
+   },
+   "runs": [
+    {
+     "recipe": "fineweb-pro",
+     "size": "150M",
+     "seed": 14,
+     "step": 36250,
+     "batch": 1,
+     "gain": -0.7818823396231674,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-pro",
+     "size": "150M",
+     "seed": 15,
+     "step": 36250,
+     "batch": 2,
+     "gain": -0.7827758887735526,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-pro",
+     "size": "150M",
+     "seed": 2,
+     "step": 36250,
+     "batch": 0,
+     "gain": -0.7706098679681834,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-pro",
+     "size": "1B",
+     "seed": 2,
+     "step": 67500,
+     "batch": 0,
+     "gain": -0.6627264804109536,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-pro",
+     "size": "1B",
+     "seed": 4,
+     "step": 67500,
+     "batch": 1,
+     "gain": -0.6672023778767165,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-pro",
+     "size": "1B",
+     "seed": 5,
+     "step": 67500,
+     "batch": 2,
+     "gain": -0.6603077471878184,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-pro",
+     "size": "300M",
+     "seed": 14,
+     "step": 43750,
+     "batch": 1,
+     "gain": -0.7191193744472452,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-pro",
+     "size": "300M",
+     "seed": 15,
+     "step": 43750,
+     "batch": 2,
+     "gain": -0.7204130490743091,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-pro",
+     "size": "300M",
+     "seed": 2,
+     "step": 43750,
+     "batch": 0,
+     "gain": -0.7216561719976732,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-pro",
+     "size": "530M",
+     "seed": 14,
+     "step": 50000,
+     "batch": 1,
+     "gain": -0.692209070948979,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-pro",
+     "size": "530M",
+     "seed": 15,
+     "step": 50000,
+     "batch": 2,
+     "gain": -0.6965707241079616,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-pro",
+     "size": "530M",
+     "seed": 2,
+     "step": 50000,
+     "batch": 0,
+     "gain": -0.7001556494498061,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-pro",
+     "size": "750M",
+     "seed": 14,
+     "step": 26250,
+     "batch": 1,
+     "gain": -0.7126632818938748,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-pro",
+     "size": "750M",
+     "seed": 15,
+     "step": 26250,
+     "batch": 2,
+     "gain": -0.7148944156924545,
+     "n_tasks": 66,
+     "n_items": 37682
+    },
+    {
+     "recipe": "fineweb-pro",
+     "size": "750M",
+     "seed": 2,
+     "step": 26250,
+     "batch": 0,
+     "gain": -0.70433624341013,
+     "n_tasks": 66,
+     "n_items": 37682
+    }
+   ],
+   "seconds": 581.5465097427368
+  }
+ },
+ "failures": {},
+ "wall_seconds": 2739.953521966934
+}

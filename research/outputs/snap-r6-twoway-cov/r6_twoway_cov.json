@@ -1,0 +1,108 @@
+{
+ "design": "R6 whether the two-way bootstrap really covers worse than recipe clustering, at eight times the precision.\n\nDesign fixed before running (2026-09-16, written 11:20 EDT). snap-r6-twoway-boot found that the two-way\nwild bootstrap repairs the negative analytic variance on the observed cells but repairs no coverage, at\n0.824 against 0.839 where band sharing sits at a quarter and 0.932 against 0.936 at the joint corner the\ndata allows. Those two comparisons came from 1,000 replicates at 999 draws, which puts the Monte Carlo\nstandard error near 0.012 on each side, so neither difference is resolved and the appendix currently\nstates a dead end it has not actually measured. A reviewer who wants the two-way interval adopted will\nnotice that. This run repeats the identical two cells at 8,000 replicates and 2,999 draws, which brings\nthe standard error on each coverage figure to about 0.004 and on the paired difference lower still, since\nboth intervals are computed on the same replicate. The observed four cells are recomputed at 9,999 draws\nwith the same seed as before, which is a reproduction check rather than a new result, and they should\nreturn the identical numbers. Seed 20260948 and a cell offset of twenty two hundred keep the simulated\ndraws distinct. The paired difference is what the appendix should quote, so this run reports it directly.\n",
+ "traits": [
+  "arc_challenge",
+  "arc_easy",
+  "boolq",
+  "csqa",
+  "hellaswag",
+  "mmlu",
+  "openbookqa",
+  "piqa",
+  "socialiqa",
+  "winogrande"
+ ],
+ "observed": {
+  "full/margin": {
+   "theta": 1.5474113828659908,
+   "lambda_hat": 1.2439499117191137,
+   "lo": 1.051448717700856,
+   "hi": 1.4105034896161226,
+   "boot_sd_theta": 0.23239472377969717,
+   "analytic_two_way_variance": -0.011083961044773917,
+   "analytic_two_way_variance_negative": true,
+   "excludes_one": true
+  },
+  "full/accuracy": {
+   "theta": 1.162889161983548,
+   "lambda_hat": 1.0783733870898093,
+   "lo": 0.9731686648547416,
+   "hi": 1.174751041868901,
+   "boot_sd_theta": 0.11098206230799984,
+   "analytic_two_way_variance": 0.0016032601059146959,
+   "analytic_two_way_variance_negative": false,
+   "excludes_one": false
+  },
+  "without_boolq/margin": {
+   "theta": 3.188429729946189,
+   "lambda_hat": 1.785617464617265,
+   "lo": 1.7001063686564253,
+   "hi": 1.8650060233718673,
+   "boot_sd_theta": 0.1581558388597471,
+   "analytic_two_way_variance": 0.02743539282669758,
+   "analytic_two_way_variance_negative": false,
+   "excludes_one": true
+  },
+  "without_boolq/accuracy": {
+   "theta": 2.4268316179882734,
+   "lambda_hat": 1.5578291363266619,
+   "lo": 1.3883759396195785,
+   "hi": 1.7086633109887306,
+   "boot_sd_theta": 0.2543633176172024,
+   "analytic_two_way_variance": 0.08302766550967579,
+   "analytic_two_way_variance_negative": false,
+   "excludes_one": true
+  }
+ },
+ "simulation": {
+  "joint_bound": {
+   "name": "joint_bound",
+   "truth": 1.2445882853377657,
+   "recipe_shared": 0.114,
+   "size_shared": 0.044,
+   "reps": 8000,
+   "two_way_boot": {
+    "coverage": 0.931875,
+    "mc_se": 0.002817001605763653,
+    "undefined": 0.0
+   },
+   "wild_recipe": {
+    "coverage": 0.93975,
+    "mc_se": 0.0026603556505662928,
+    "undefined": 0.0
+   },
+   "paired_difference": {
+    "n": 8000,
+    "mean": -0.007875,
+    "se": 0.0018813732996302384,
+    "two_way_only": 82,
+    "recipe_only": 145
+   }
+  },
+  "band_quarter": {
+   "name": "band_quarter",
+   "truth": 1.2445882853377657,
+   "recipe_shared": 0.0,
+   "size_shared": 0.25,
+   "reps": 8000,
+   "two_way_boot": {
+    "coverage": 0.82275,
+    "mc_se": 0.0042695497054724635,
+    "undefined": 0.0
+   },
+   "wild_recipe": {
+    "coverage": 0.832875,
+    "mc_se": 0.0041712443343533585,
+    "undefined": 0.0
+   },
+   "paired_difference": {
+    "n": 8000,
+    "mean": -0.010125,
+    "se": 0.002398651650009284,
+    "two_way_only": 144,
+    "recipe_only": 225
+   }
+  }
+ },
+ "wall_seconds": 203.54417943954468
+}

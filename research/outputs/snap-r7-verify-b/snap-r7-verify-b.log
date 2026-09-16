@@ -1,0 +1,82 @@
+[{"stream_name":"stdout","time":1.3731164900000001,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":42.304830557,"data":"[env] torch 2.10.0+cu128 transformers 5.0.0 Tesla T4\n"}
+,{"stream_name":"stdout","time":44.427186901,"data":"[requests] rows 19002 docs 150\n"}
+,{"stream_name":"stdout","time":44.750449759,"data":"[recipes] present 25 attempting ['dclm-baseline-75p-dolma1.7-25p', 'dclm-baseline-top-10p', 'dclm-baseline-top-20p', 'dclm-baseline-top-fw-10p', 'dclm-baseline-top-fw-3p', 'dclm-baseline-top-fw2-7p', 'dclm-baseline-top-fw3-7p', 'dolma1.6++', 'dolma1.7', 'dolma1.7-no-code', 'dolma1.7-no-flan', 'dolma1.7-no-math-no-code', 'dolma1.7-no-reddit', 'falcon', 'falcon-with-cc', 'falcon-with-cc-top-10p', 'falcon-with-cc-top-20p', 'fineweb-edu', 'fineweb-pro']\n"}
+,{"stream_name":"stderr","time":45.256394877,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":45.274431503,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":74.295857908,"data":"[dclm-baseline-75p-dolma1.7-25p default] load 15s score 14s {\"0\": {\"seed\": \"2\", \"corr\": 0.9999999812952298, \"median_abs_diff\": 2.0077011801900024e-05, \"runner_up_corr\": 0.880297002365453}}\n"}
+,{"stream_name":"stderr","time":74.940679626,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":102.388705365,"data":"[dclm-baseline-75p-dolma1.7-25p small-aux-2] load 14s score 14s {\"0\": {\"seed\": \"14\", \"corr\": 0.9999999805391263, \"median_abs_diff\": 1.633838141634758e-05, \"runner_up_corr\": 0.8802921021043245}}\n"}
+,{"stream_name":"stderr","time":103.008648409,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":130.601733299,"data":"[dclm-baseline-75p-dolma1.7-25p small-aux-3] load 14s score 14s {\"0\": {\"seed\": \"15\", \"corr\": 0.9999999752178597, \"median_abs_diff\": 1.7488469197218803e-05, \"runner_up_corr\": 0.8701673166370179}}\n"}
+,{"stream_name":"stdout","time":131.37997869,"data":"[dclm-baseline-top-10p default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":131.536172697,"data":"[dclm-baseline-top-10p small-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":131.690914418,"data":"[dclm-baseline-top-10p small-aux-3] unavailable OSError\n"}
+,{"stream_name":"stdout","time":131.914988972,"data":"[dclm-baseline-top-20p default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":132.07739438,"data":"[dclm-baseline-top-20p small-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":132.236092183,"data":"[dclm-baseline-top-20p small-aux-3] unavailable OSError\n"}
+,{"stream_name":"stdout","time":132.471457079,"data":"[dclm-baseline-top-fw-10p default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":132.628095748,"data":"[dclm-baseline-top-fw-10p small-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":132.791310088,"data":"[dclm-baseline-top-fw-10p small-aux-3] unavailable OSError\n"}
+,{"stream_name":"stdout","time":133.014824334,"data":"[dclm-baseline-top-fw-3p default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":133.16566347,"data":"[dclm-baseline-top-fw-3p small-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":133.339645405,"data":"[dclm-baseline-top-fw-3p small-aux-3] unavailable OSError\n"}
+,{"stream_name":"stdout","time":133.563262677,"data":"[dclm-baseline-top-fw2-7p default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":133.721184348,"data":"[dclm-baseline-top-fw2-7p small-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":133.878549707,"data":"[dclm-baseline-top-fw2-7p small-aux-3] unavailable OSError\n"}
+,{"stream_name":"stdout","time":134.161720989,"data":"[dclm-baseline-top-fw3-7p default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":134.323908246,"data":"[dclm-baseline-top-fw3-7p small-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":134.48478424,"data":"[dclm-baseline-top-fw3-7p small-aux-3] unavailable OSError\n"}
+,{"stream_name":"stdout","time":134.556926662,"data":"[dolma1.6++ default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":134.557562516,"data":"[dolma1.6++ small-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":134.558374402,"data":"[dolma1.6++ small-aux-3] unavailable OSError\n"}
+,{"stream_name":"stdout","time":134.777414941,"data":"[dolma1.7 default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":134.934351627,"data":"[dolma1.7 small-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":135.105757204,"data":"[dolma1.7 small-aux-3] unavailable OSError\n"}
+,{"stream_name":"stdout","time":135.344274827,"data":"[dolma1.7-no-code default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":135.512140767,"data":"[dolma1.7-no-code small-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":135.673542352,"data":"[dolma1.7-no-code small-aux-3] unavailable OSError\n"}
+,{"stream_name":"stdout","time":135.913993078,"data":"[dolma1.7-no-flan default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":136.072123877,"data":"[dolma1.7-no-flan small-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":136.230642404,"data":"[dolma1.7-no-flan small-aux-3] unavailable OSError\n"}
+,{"stream_name":"stdout","time":136.462451744,"data":"[dolma1.7-no-math-no-code default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":136.639185682,"data":"[dolma1.7-no-math-no-code small-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":136.793898642,"data":"[dolma1.7-no-math-no-code small-aux-3] unavailable OSError\n"}
+,{"stream_name":"stdout","time":137.02972515,"data":"[dolma1.7-no-reddit default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":137.192597129,"data":"[dolma1.7-no-reddit small-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":137.354753526,"data":"[dolma1.7-no-reddit small-aux-3] unavailable OSError\n"}
+,{"stream_name":"stderr","time":137.810794181,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":166.526971355,"data":"[falcon default] load 14s score 15s {\"0\": {\"seed\": \"2\", \"corr\": 0.9999810330601758, \"median_abs_diff\": 1.7370253626719512e-05, \"runner_up_corr\": 0.8762858780345745}}\n"}
+,{"stream_name":"stderr","time":167.133631638,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":196.310171552,"data":"[falcon small-aux-2] load 14s score 16s {\"0\": {\"seed\": \"14\", \"corr\": 0.9999999848974969, \"median_abs_diff\": 1.0190691266787066e-05, \"runner_up_corr\": 0.8765105292556536}}\n"}
+,{"stream_name":"stderr","time":196.934931231,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":227.190296909,"data":"[falcon small-aux-3] load 14s score 17s {\"0\": {\"seed\": \"15\", \"corr\": 0.9999999770607835, \"median_abs_diff\": 1.9395663501786675e-05, \"runner_up_corr\": 0.8764884528104793}}\n"}
+,{"stream_name":"stdout","time":227.931797952,"data":"[falcon-with-cc default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":228.08751189,"data":"[falcon-with-cc small-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":228.244657751,"data":"[falcon-with-cc small-aux-3] unavailable OSError\n"}
+,{"stream_name":"stdout","time":228.47341341999999,"data":"[falcon-with-cc-top-10p default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":228.629597474,"data":"[falcon-with-cc-top-10p small-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":228.78858142,"data":"[falcon-with-cc-top-10p small-aux-3] unavailable OSError\n"}
+,{"stream_name":"stdout","time":229.016847601,"data":"[falcon-with-cc-top-20p default] unavailable OSError\n"}
+,{"stream_name":"stdout","time":229.204444873,"data":"[falcon-with-cc-top-20p small-aux-2] unavailable OSError\n"}
+,{"stream_name":"stdout","time":229.360984826,"data":"[falcon-with-cc-top-20p small-aux-3] unavailable OSError\n"}
+,{"stream_name":"stderr","time":229.832519127,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":259.524060243,"data":"[fineweb-edu default] load 14s score 16s {\"0\": {\"seed\": \"2\", \"corr\": 0.9999352509780046, \"median_abs_diff\": 1.5342748293345476e-05, \"runner_up_corr\": 0.8766805792839116}}\n"}
+,{"stream_name":"stderr","time":260.148492188,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":289.899900843,"data":"[fineweb-edu small-aux-2] load 14s score 16s {\"0\": {\"seed\": \"14\", \"corr\": 0.9999999819570204, \"median_abs_diff\": 1.4578897213540776e-05, \"runner_up_corr\": 0.8774510242759046}}\n"}
+,{"stream_name":"stderr","time":290.517332585,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":320.277094116,"data":"[fineweb-edu small-aux-3] load 14s score 16s {\"0\": {\"seed\": \"15\", \"corr\": 0.9999999804981257, \"median_abs_diff\": 1.9464798814011752e-05, \"runner_up_corr\": 0.8480459286322589}}\n"}
+,{"stream_name":"stderr","time":321.292802567,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":350.912128208,"data":"[fineweb-pro default] load 14s score 16s {\"0\": {\"seed\": \"2\", \"corr\": 0.9999437011083482, \"median_abs_diff\": 1.9225025745389646e-05, \"runner_up_corr\": 0.8502693994384262}}\n"}
+,{"stream_name":"stderr","time":351.547000172,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":382.414161417,"data":"[fineweb-pro small-aux-2] load 15s score 16s {\"0\": {\"seed\": \"14\", \"corr\": 0.9999999766796083, \"median_abs_diff\": 1.6516582532377644e-05, \"runner_up_corr\": 0.8361432366404399}}\n"}
+,{"stream_name":"stderr","time":383.053268689,"data":"You are using a model of type hf_olmo to instantiate a model of type . This is not supported for all configurations of models and can yield errors.\n"}
+,{"stream_name":"stdout","time":412.417391507,"data":"[fineweb-pro small-aux-3] load 14s score 16s {\"0\": {\"seed\": \"15\", \"corr\": 0.9999999816822089, \"median_abs_diff\": 1.5676021575927734e-05, \"runner_up_corr\": 0.8495114617513375}}\n"}
+,{"stream_name":"stdout","time":412.595667082,"data":"[done] 411s cells 12 unavailable 45\n"}
+,{"stream_name":"stderr","time":417.494130224,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":417.494159544,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":417.743194136,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":417.743220897,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":418.353330693,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":419.616591093,"data":"[NbConvertApp] Writing 336559 bytes to __results__.html\n"}
+]

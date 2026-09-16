@@ -1,0 +1,14 @@
+[{"stream_name":"stdout","time":0.91826241,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":88.215996618,"data":"[dolma1.7-no-code] 15 runs reduced at the previous shared step in 73s; gaps {'150M': 1250, '1B': 1869, '300M': 1250, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":162.025336597,"data":"[dolma1.7-no-flan] 15 runs reduced at the previous shared step in 73s; gaps {'150M': 1250, '1B': 1869, '300M': 1250, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":227.428469268,"data":"[dolma1.7-no-math-no-code] 12 runs reduced at the previous shared step in 65s; gaps {'150M': 1250, '1B': None, '300M': 1250, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":307.42377122,"data":"[dolma1.7-no-reddit] 15 runs reduced at the previous shared step in 79s; gaps {'150M': 1250, '1B': 1869, '300M': 1250, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":395.731055614,"data":"[falcon] 15 runs reduced at the previous shared step in 88s; gaps {'150M': 1250, '1B': 1869, '300M': 1250, '530M': 1250, '750M': 1250}\n"}
+,{"stream_name":"stdout","time":396.427710637,"data":"[done] 5 of 5 recipes in 396s\n"}
+,{"stream_name":"stderr","time":399.698694023,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":399.698807976,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":400.088563703,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":400.088602431,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":401.077902511,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":402.874779344,"data":"[NbConvertApp] Writing 300061 bytes to __results__.html\n"}
+]

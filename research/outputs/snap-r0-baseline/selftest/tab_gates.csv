@@ -1,0 +1,5 @@
+gate,condition,passed,fallback,m_cells_parsed,m_cells_expected,m_estimation_configs,m_min_estimation,m_median_ratio,m_min_ratio,m_max_ratio,m_max_z_asymmetry,m_max_relative_asymmetry,m_negative_diagonals,m_min_diagonal,m_has_field,m_field
+"G0","per-item outputs parse for all 125 cells at the common step","yes","drop the cell; below 70 estimation configurations, report at reduced N","125","125","85","70","","","","","","","","",""
+"G2","information ratio at least 1.4 on the battery median","yes","the margin loses its more-informative framing; both arms reported flat","","","","","1.61738","1.61254","1.61926","","","","","",""
+"G3","cross-half covariance is symmetric with a positive diagonal","yes","re-split by source document; if still asymmetric, report leakage","","","","","","","","2.56089","0.227337","0","0.868221","",""
+"G7","a held-out-loss field exists in the DataDecide metadata","no","the competence mediator is the leave-one-trait-out proxy x^(-j)","","","","","","","","","","","","no",""

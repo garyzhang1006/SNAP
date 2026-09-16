@@ -1,0 +1,72 @@
+{
+ "design": "R6 direct test for a run effect shared across recipes inside one size band.\n\nDesign fixed before running (2026-09-15, written 23:05 EDT). snap-r6-size-shared showed that the shipped\nrecipe-clustered interval collapses if the shared run effect follows the size band instead, reaching\n0.810 coverage when that effect holds a quarter of latent variance and 0.579 at a half. The release makes\nthat violation plausible rather than hypothetical, because it uses seeds 2, 14 and 15 below 1B and 2, 4\nand 5 at 1B, so one seed label is shared across all 25 recipes inside a band. The paper currently carries\nthis as an untested limitation. This run tests it. Write the per-run deviation of configuration c on half\nA as d_cri, which is that run's score minus the mean over the configuration's three runs. Line the runs\nup by their batch index, which is the slot the release's seed labels occupy, and average d across the 25\nrecipes of a band to get a band mean. A run effect shared across the band survives that average, while\nanything specific to a recipe shrinks towards zero. The statistic is the weighted cross-half covariance\nof those band means, summed over the five bands. The null permutes each configuration's three runs among\nits own batch slots independently, which leaves every configuration's own deviations and its own\ncross-half covariance untouched, and destroys only the alignment of runs across recipes. That is the\nexact null for this question. Two thousand permutations give the reference distribution, and the run\nreports the observed statistic, its share of the per-configuration total, and the permutation tail.\n",
+ "traits": [
+  "arc_challenge",
+  "arc_easy",
+  "boolq",
+  "csqa",
+  "hellaswag",
+  "mmlu",
+  "openbookqa",
+  "piqa",
+  "socialiqa",
+  "winogrande"
+ ],
+ "n_perm": 2000,
+ "seed": 20260931,
+ "batteries": {
+  "full/margin": {
+   "observed": 7.794077959781909e-06,
+   "per_config_total": 0.004083877356163356,
+   "observed_over_per_config": 0.0019084995165242037,
+   "independence_expectation": 0.0016,
+   "null_mean": 6.502025584075332e-06,
+   "null_sd": 2.8465395129734238e-06,
+   "null_p05": 2.5448092720778363e-06,
+   "null_p95": 1.1638844428908694e-05,
+   "z": 0.45390284231710215,
+   "share_at_or_above_observed": 0.283,
+   "seconds": 0.7618148326873779
+  },
+  "full/accuracy": {
+   "observed": 3.311917703681002e-06,
+   "per_config_total": 0.00330499535460678,
+   "observed_over_per_config": 0.0010020945109845837,
+   "independence_expectation": 0.0016,
+   "null_mean": 5.29820050526234e-06,
+   "null_sd": 2.7380920407485624e-06,
+   "null_p05": 1.4010178776162827e-06,
+   "null_p95": 1.0244081863340383e-05,
+   "z": -0.7254258702853214,
+   "share_at_or_above_observed": 0.7435,
+   "seconds": 0.7675681114196777
+  },
+  "without_boolq/margin": {
+   "observed": 7.792765156509719e-06,
+   "per_config_total": 0.003334278651727164,
+   "observed_over_per_config": 0.0023371667369411517,
+   "independence_expectation": 0.0016,
+   "null_mean": 5.270059460607419e-06,
+   "null_sd": 2.1435639945364947e-06,
+   "null_p05": 2.163313046964797e-06,
+   "null_p95": 9.095779762237271e-06,
+   "z": 1.1768744494366203,
+   "share_at_or_above_observed": 0.132,
+   "seconds": 0.7770287990570068
+  },
+  "without_boolq/accuracy": {
+   "observed": 2.4568877316259944e-06,
+   "per_config_total": 0.001328968563001426,
+   "observed_over_per_config": 0.0018487177199114516,
+   "independence_expectation": 0.0016,
+   "null_mean": 2.1145008378770393e-06,
+   "null_sd": 1.5251511847542426e-06,
+   "null_p05": -3.256030174481249e-08,
+   "null_p95": 4.890331493970451e-06,
+   "z": 0.22449374014296564,
+   "share_at_or_above_observed": 0.3645,
+   "seconds": 0.7976486682891846
+  }
+ },
+ "wall_seconds": 26.476595640182495
+}

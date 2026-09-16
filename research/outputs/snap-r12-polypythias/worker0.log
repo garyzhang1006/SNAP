@@ -1,0 +1,3507 @@
+[worker] torch 2.10.0+cu128 transformers 5.0.0 Tesla T4
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Generating train split:   0%|          | 0/2251 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 2251/2251 [00:00<00:00, 265259.41 examples/s]
+Generating test split:   0%|          | 0/2376 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 2376/2376 [00:00<00:00, 388176.93 examples/s]
+Generating validation split:   0%|          | 0/570 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 570/570 [00:00<00:00, 188218.65 examples/s]
+Generating train split:   0%|          | 0/39905 [00:00<?, ? examples/s]Generating train split:  70%|███████   | 28000/39905 [00:00<00:00, 260120.52 examples/s]Generating train split: 100%|██████████| 39905/39905 [00:00<00:00, 260653.51 examples/s]
+Generating test split:   0%|          | 0/10003 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 10003/10003 [00:00<00:00, 248410.99 examples/s]
+Generating validation split:   0%|          | 0/10042 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 10042/10042 [00:00<00:00, 284504.61 examples/s]
+Generating train split:   0%|          | 0/4957 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 4957/4957 [00:00<00:00, 597928.36 examples/s]
+Generating validation split:   0%|          | 0/500 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 500/500 [00:00<00:00, 147075.67 examples/s]
+Generating test split:   0%|          | 0/500 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 500/500 [00:00<00:00, 185785.97 examples/s]
+Generating train split:   0%|          | 0/16113 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 16113/16113 [00:00<00:00, 829104.81 examples/s]
+Generating validation split:   0%|          | 0/1838 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 1838/1838 [00:00<00:00, 452573.13 examples/s]
+Generating test split:   0%|          | 0/3084 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 3084/3084 [00:00<00:00, 607145.44 examples/s]
+Generating train split:   0%|          | 0/33410 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 33410/33410 [00:00<00:00, 1091019.98 examples/s]
+Generating validation split:   0%|          | 0/1954 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 1954/1954 [00:00<00:00, 502001.10 examples/s]
+Generating train split:   0%|          | 0/40398 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 40398/40398 [00:00<00:00, 1343185.38 examples/s]
+Generating test split:   0%|          | 0/1767 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 1767/1767 [00:00<00:00, 507278.25 examples/s]
+Generating validation split:   0%|          | 0/1267 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 1267/1267 [00:00<00:00, 428597.72 examples/s]
+Generating test split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 100/100 [00:00<00:00, 36114.21 examples/s]
+Generating validation split:   0%|          | 0/11 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 11/11 [00:00<00:00, 4759.86 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2084.02 examples/s]
+Generating test split:   0%|          | 0/135 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 135/135 [00:00<00:00, 46042.53 examples/s]
+Generating validation split:   0%|          | 0/14 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 14/14 [00:00<00:00, 5532.86 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2417.47 examples/s]
+Generating test split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 100/100 [00:00<00:00, 34871.17 examples/s]
+Generating validation split:   0%|          | 0/11 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 11/11 [00:00<00:00, 5165.98 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2465.21 examples/s]
+Generating test split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 100/100 [00:00<00:00, 35879.42 examples/s]
+Generating validation split:   0%|          | 0/11 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 11/11 [00:00<00:00, 5162.51 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2521.83 examples/s]
+Generating test split:   0%|          | 0/173 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 173/173 [00:00<00:00, 61691.43 examples/s]
+Generating validation split:   0%|          | 0/22 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 22/22 [00:00<00:00, 9047.43 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2538.92 examples/s]
+Generating test split:   0%|          | 0/145 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 145/145 [00:00<00:00, 50479.26 examples/s]
+Generating validation split:   0%|          | 0/16 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 16/16 [00:00<00:00, 7587.21 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2588.12 examples/s]
+Generating test split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 100/100 [00:00<00:00, 32806.45 examples/s]
+Generating validation split:   0%|          | 0/9 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 9/9 [00:00<00:00, 4045.52 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2508.56 examples/s]
+Generating test split:   0%|          | 0/198 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 198/198 [00:00<00:00, 68362.87 examples/s]
+Generating validation split:   0%|          | 0/22 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 22/22 [00:00<00:00, 10507.25 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2449.94 examples/s]
+Generating test split:   0%|          | 0/270 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 270/270 [00:00<00:00, 90640.47 examples/s]
+Generating validation split:   0%|          | 0/29 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 29/29 [00:00<00:00, 11478.23 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2380.42 examples/s]
+Generating test split:   0%|          | 0/238 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 238/238 [00:00<00:00, 76423.55 examples/s]
+Generating validation split:   0%|          | 0/26 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 26/26 [00:00<00:00, 11143.66 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2334.32 examples/s]
+Generating test split:   0%|          | 0/545 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 545/545 [00:00<00:00, 165201.68 examples/s]
+Generating validation split:   0%|          | 0/60 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 60/60 [00:00<00:00, 24686.90 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2519.71 examples/s]
+Generating test split:   0%|          | 0/204 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 204/204 [00:00<00:00, 55320.23 examples/s]
+Generating validation split:   0%|          | 0/22 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 22/22 [00:00<00:00, 9298.13 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2393.46 examples/s]
+Generating test split:   0%|          | 0/237 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 237/237 [00:00<00:00, 60709.05 examples/s]
+Generating validation split:   0%|          | 0/26 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 26/26 [00:00<00:00, 11560.68 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2454.24 examples/s]
+Generating test split:   0%|          | 0/223 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 223/223 [00:00<00:00, 80694.49 examples/s]
+Generating validation split:   0%|          | 0/23 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 23/23 [00:00<00:00, 10839.21 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2404.72 examples/s]
+Generating test split:   0%|          | 0/131 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 131/131 [00:00<00:00, 46877.73 examples/s]
+Generating validation split:   0%|          | 0/12 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 12/12 [00:00<00:00, 5913.72 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2227.22 examples/s]
+Generating test split:   0%|          | 0/121 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 121/121 [00:00<00:00, 42473.08 examples/s]
+Generating validation split:   0%|          | 0/13 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 13/13 [00:00<00:00, 5527.77 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2254.03 examples/s]
+Generating test split:   0%|          | 0/163 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 163/163 [00:00<00:00, 54891.33 examples/s]
+Generating validation split:   0%|          | 0/18 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 18/18 [00:00<00:00, 8135.50 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2585.25 examples/s]
+Generating test split:   0%|          | 0/112 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 112/112 [00:00<00:00, 39284.33 examples/s]
+Generating validation split:   0%|          | 0/11 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 11/11 [00:00<00:00, 4679.72 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2571.61 examples/s]
+Generating test split:   0%|          | 0/234 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 234/234 [00:00<00:00, 77008.01 examples/s]
+Generating validation split:   0%|          | 0/25 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 25/25 [00:00<00:00, 10069.87 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2063.31 examples/s]
+Generating test split:   0%|          | 0/306 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 306/306 [00:00<00:00, 98598.53 examples/s]
+Generating validation split:   0%|          | 0/33 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 33/33 [00:00<00:00, 15497.93 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2438.55 examples/s]
+Generating test split:   0%|          | 0/311 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 311/311 [00:00<00:00, 103905.41 examples/s]
+Generating validation split:   0%|          | 0/34 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 34/34 [00:00<00:00, 16037.60 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2387.47 examples/s]
+Generating test split:   0%|          | 0/272 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 272/272 [00:00<00:00, 77277.70 examples/s]
+Generating validation split:   0%|          | 0/31 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 31/31 [00:00<00:00, 14693.57 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2364.32 examples/s]
+Generating test split:   0%|          | 0/612 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 612/612 [00:00<00:00, 177407.84 examples/s]
+Generating validation split:   0%|          | 0/69 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 69/69 [00:00<00:00, 31135.77 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2568.47 examples/s]
+Generating test split:   0%|          | 0/110 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 110/110 [00:00<00:00, 39369.69 examples/s]
+Generating validation split:   0%|          | 0/12 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 12/12 [00:00<00:00, 5375.59 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2669.15 examples/s]
+`torch_dtype` is deprecated! Use `dtype` instead!
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-70m-seed1: 4755 items, acc=0.3870
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-70m-seed2: 4755 items, acc=0.3790
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-70m-seed3: 4755 items, acc=0.3840
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-70m-seed4: 4755 items, acc=0.3741
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-70m-seed5: 4755 items, acc=0.3760
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-70m-seed6: 4755 items, acc=0.3777
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-70m-seed7: 4755 items, acc=0.3830
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-70m-seed8: 4755 items, acc=0.3771
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-70m-seed9: 4755 items, acc=0.3815
+[job] ['70m'] step143000 n=500 items=4755 in 450s
+Exception in thread Thread-auto_conversion:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 116, in auto_conversion
+    raise e
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 95, in auto_conversion
+    sha = get_conversion_pr_reference(api, pretrained_model_name_or_path, **cached_file_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 71, in get_conversion_pr_reference
+    spawn_conversion(token, private, model_id)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 48, in spawn_conversion
+    event_id = result["event_id"]
+               ~~~~~~^^^^^^^^^^^^
+KeyError: 'event_id'
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-160m-seed1: 4755 items, acc=0.4111
+Exception in thread Thread-auto_conversion:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 116, in auto_conversion
+    raise e
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 95, in auto_conversion
+    sha = get_conversion_pr_reference(api, pretrained_model_name_or_path, **cached_file_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 71, in get_conversion_pr_reference
+    spawn_conversion(token, private, model_id)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 48, in spawn_conversion
+    event_id = result["event_id"]
+               ~~~~~~^^^^^^^^^^^^
+KeyError: 'event_id'
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-160m-seed2: 4755 items, acc=0.3958
+Exception in thread Thread-auto_conversion:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 116, in auto_conversion
+    raise e
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 95, in auto_conversion
+    sha = get_conversion_pr_reference(api, pretrained_model_name_or_path, **cached_file_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 71, in get_conversion_pr_reference
+    spawn_conversion(token, private, model_id)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 48, in spawn_conversion
+    event_id = result["event_id"]
+               ~~~~~~^^^^^^^^^^^^
+KeyError: 'event_id'
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-160m-seed3: 4755 items, acc=0.4082
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-160m-seed4: 4755 items, acc=0.4019
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-160m-seed5: 4755 items, acc=0.4111
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-160m-seed6: 4755 items, acc=0.4124
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-160m-seed7: 4755 items, acc=0.4057
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-160m-seed8: 4755 items, acc=0.4111
+  batch 1/131
+  batch 2/131
+  batch 3/131
+  batch 4/131
+  batch 5/131
+  batch 6/131
+  batch 7/131
+  batch 8/131
+  batch 9/131
+  batch 10/131
+  batch 11/131
+  batch 12/131
+  batch 13/131
+  batch 14/131
+  batch 15/131
+  batch 16/131
+  batch 17/131
+  batch 18/131
+  batch 19/131
+  batch 20/131
+  batch 21/131
+  batch 22/131
+  batch 23/131
+  batch 24/131
+  batch 25/131
+  batch 26/131
+  batch 27/131
+  batch 28/131
+  batch 29/131
+  batch 30/131
+  batch 31/131
+  batch 32/131
+  batch 33/131
+  batch 34/131
+  batch 35/131
+  batch 36/131
+  batch 37/131
+  batch 38/131
+  batch 39/131
+  batch 40/131
+  batch 41/131
+  batch 42/131
+  batch 43/131
+  batch 44/131
+  batch 45/131
+  batch 46/131
+  batch 47/131
+  batch 48/131
+  batch 49/131
+  batch 50/131
+  batch 51/131
+  batch 52/131
+  batch 53/131
+  batch 54/131
+  batch 55/131
+  batch 56/131
+  batch 57/131
+  batch 58/131
+  batch 59/131
+  batch 60/131
+  batch 61/131
+  batch 62/131
+  batch 63/131
+  batch 64/131
+  batch 65/131
+  batch 66/131
+  batch 67/131
+  batch 68/131
+  batch 69/131
+  batch 70/131
+  batch 71/131
+  batch 72/131
+  batch 73/131
+  batch 74/131
+  batch 75/131
+  batch 76/131
+  batch 77/131
+  batch 78/131
+  batch 79/131
+  batch 80/131
+  batch 81/131
+  batch 82/131
+  batch 83/131
+  batch 84/131
+  batch 85/131
+  batch 86/131
+  batch 87/131
+  batch 88/131
+  batch 89/131
+  batch 90/131
+  batch 91/131
+  batch 92/131
+  batch 93/131
+  batch 94/131
+  batch 95/131
+  batch 96/131
+  batch 97/131
+  batch 98/131
+  batch 99/131
+  batch 100/131
+  batch 101/131
+  batch 102/131
+  batch 103/131
+  batch 104/131
+  batch 105/131
+  batch 106/131
+  batch 107/131
+  batch 108/131
+  batch 109/131
+  batch 110/131
+  batch 111/131
+  batch 112/131
+  batch 113/131
+  batch 114/131
+  batch 115/131
+  batch 116/131
+  batch 117/131
+  batch 118/131
+  batch 119/131
+  batch 120/131
+  batch 121/131
+  batch 122/131
+  batch 123/131
+  batch 124/131
+  batch 125/131
+  batch 126/131
+  batch 127/131
+  batch 128/131
+  batch 129/131
+  batch 130/131
+  batch 131/131
+  EleutherAI/pythia-160m-seed9: 4755 items, acc=0.4042
+[job] ['160m'] step143000 n=500 items=4755 in 396s
+Exception in thread Thread-auto_conversion:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 116, in auto_conversion
+    raise e
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 95, in auto_conversion
+    sha = get_conversion_pr_reference(api, pretrained_model_name_or_path, **cached_file_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 71, in get_conversion_pr_reference
+    spawn_conversion(token, private, model_id)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 48, in spawn_conversion
+    event_id = result["event_id"]
+               ~~~~~~^^^^^^^^^^^^
+KeyError: 'event_id'
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed1: 1800 items, acc=0.4133
+Exception in thread Thread-auto_conversion:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 116, in auto_conversion
+    raise e
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 95, in auto_conversion
+    sha = get_conversion_pr_reference(api, pretrained_model_name_or_path, **cached_file_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 71, in get_conversion_pr_reference
+    spawn_conversion(token, private, model_id)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 48, in spawn_conversion
+    event_id = result["event_id"]
+               ~~~~~~^^^^^^^^^^^^
+KeyError: 'event_id'
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed2: 1800 items, acc=0.3989
+Exception in thread Thread-auto_conversion:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 116, in auto_conversion
+    raise e
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 95, in auto_conversion
+    sha = get_conversion_pr_reference(api, pretrained_model_name_or_path, **cached_file_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 71, in get_conversion_pr_reference
+    spawn_conversion(token, private, model_id)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 48, in spawn_conversion
+    event_id = result["event_id"]
+               ~~~~~~^^^^^^^^^^^^
+KeyError: 'event_id'
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed3: 1800 items, acc=0.4144
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed4: 1800 items, acc=0.4072
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed5: 1800 items, acc=0.4111
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed6: 1800 items, acc=0.4078
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed7: 1800 items, acc=0.4072
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed8: 1800 items, acc=0.4094
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed9: 1800 items, acc=0.4094
+[job] ['160m'] step143000 n=200 items=1800 in 102s
+Exception in thread Thread-auto_conversion:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 116, in auto_conversion
+    raise e
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 95, in auto_conversion
+    sha = get_conversion_pr_reference(api, pretrained_model_name_or_path, **cached_file_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 71, in get_conversion_pr_reference
+    spawn_conversion(token, private, model_id)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 48, in spawn_conversion
+    event_id = result["event_id"]
+               ~~~~~~^^^^^^^^^^^^
+KeyError: 'event_id'
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed1: 1800 items, acc=0.4039
+Exception in thread Thread-auto_conversion:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 116, in auto_conversion
+    raise e
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 95, in auto_conversion
+    sha = get_conversion_pr_reference(api, pretrained_model_name_or_path, **cached_file_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 71, in get_conversion_pr_reference
+    spawn_conversion(token, private, model_id)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 48, in spawn_conversion
+    event_id = result["event_id"]
+               ~~~~~~^^^^^^^^^^^^
+KeyError: 'event_id'
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed2: 1800 items, acc=0.4094
+Exception in thread Thread-auto_conversion:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 116, in auto_conversion
+    raise e
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 95, in auto_conversion
+    sha = get_conversion_pr_reference(api, pretrained_model_name_or_path, **cached_file_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 71, in get_conversion_pr_reference
+    spawn_conversion(token, private, model_id)
+  File "/usr/local/lib/python3.12/dist-packages/transformers/safetensors_conversion.py", line 48, in spawn_conversion
+    event_id = result["event_id"]
+               ~~~~~~^^^^^^^^^^^^
+KeyError: 'event_id'
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed3: 1800 items, acc=0.4094
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed4: 1800 items, acc=0.3989
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed5: 1800 items, acc=0.4078
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed6: 1800 items, acc=0.4044
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed7: 1800 items, acc=0.4039
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed8: 1800 items, acc=0.4044
+  batch 1/48
+  batch 2/48
+  batch 3/48
+  batch 4/48
+  batch 5/48
+  batch 6/48
+  batch 7/48
+  batch 8/48
+  batch 9/48
+  batch 10/48
+  batch 11/48
+  batch 12/48
+  batch 13/48
+  batch 14/48
+  batch 15/48
+  batch 16/48
+  batch 17/48
+  batch 18/48
+  batch 19/48
+  batch 20/48
+  batch 21/48
+  batch 22/48
+  batch 23/48
+  batch 24/48
+  batch 25/48
+  batch 26/48
+  batch 27/48
+  batch 28/48
+  batch 29/48
+  batch 30/48
+  batch 31/48
+  batch 32/48
+  batch 33/48
+  batch 34/48
+  batch 35/48
+  batch 36/48
+  batch 37/48
+  batch 38/48
+  batch 39/48
+  batch 40/48
+  batch 41/48
+  batch 42/48
+  batch 43/48
+  batch 44/48
+  batch 45/48
+  batch 46/48
+  batch 47/48
+  batch 48/48
+  EleutherAI/pythia-160m-seed9: 1800 items, acc=0.3994
+[job] ['160m'] step142000 n=200 items=1800 in 331s

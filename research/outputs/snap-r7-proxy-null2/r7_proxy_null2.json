@@ -1,0 +1,192 @@
+{
+ "design": "R7 CPU part 3: calibration of the shipped proxy with its clipped traits removed.\n\nDesign fixed before running (2026-09-15, 17:55 EDT), as a companion to snap-r7-proxy-null.\nThe audit found that dropping WinoGrande from the margin proxy moves margin inflation from\n1.244 to 0.890. The traits whose observed pooled seed variance is nonpositive (WinoGrande for\nmargins, PIQA and WinoGrande for accuracy) are removed from every proxy, the remaining traits\nare standardised by the unshrunk pooled seed SD with the shipped 1e-12 variance floor, and the\nshipped pooled cross-half slopes are refitted. The same simulated populations as\nsnap-r7-proxy-null (independence, equicorrelated, matched; 300 replicates) report Lambda before\nadjustment, after the shipped adjustment, and after this drop-clipped adjustment.\n",
+ "n_rep": 300,
+ "alpha": 0.5,
+ "folds": 5,
+ "observed": {
+  "margin": {
+   "before": 1.2439499117191137,
+   "shipped": 1.243994265941912,
+   "drop_clipped": 0.8901352986672032
+  },
+  "accuracy": {
+   "before": 1.0783733870898096,
+   "shipped": 1.0759504530047193,
+   "drop_clipped": 1.0082702463192945
+  }
+ },
+ "cells": {
+  "margin/independence": {
+   "before": {
+    "n_finite": 300,
+    "mean": 0.9999576188300429,
+    "sd": 0.032281571065336995,
+    "p05": 0.9528151804222478,
+    "median": 0.9967681333034846,
+    "p95": 1.0589893676775934
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 1.0003191401816165,
+    "sd": 0.029993409269425838,
+    "p05": 0.9534110028034595,
+    "median": 0.9983704398756477,
+    "p95": 1.0547533975728107
+   },
+   "drop_clipped": {
+    "n_finite": 300,
+    "mean": 1.0013458199087275,
+    "sd": 0.020134955227270677,
+    "p05": 0.9663448922632836,
+    "median": 1.0011657031443701,
+    "p95": 1.0342836374997424
+   },
+   "r": null
+  },
+  "margin/equicorrelated": {
+   "before": {
+    "n_finite": 300,
+    "mean": 1.2421170903866217,
+    "sd": 0.03653074638196605,
+    "p05": 1.1886130339538794,
+    "median": 1.2392363135295064,
+    "p95": 1.3075307208210565
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 1.1695327659043186,
+    "sd": 0.09047294894996688,
+    "p05": 1.0207162497189681,
+    "median": 1.1943035936592745,
+    "p95": 1.2938081816429299
+   },
+   "drop_clipped": {
+    "n_finite": 300,
+    "mean": 0.9475893664273685,
+    "sd": 0.024238796836612612,
+    "p05": 0.9070763009367517,
+    "median": 0.9461835286244611,
+    "p95": 0.9844239102126066
+   },
+   "r": 0.1779555494603412
+  },
+  "margin/matched": {
+   "before": {
+    "n_finite": 300,
+    "mean": 1.2430845709373444,
+    "sd": 0.0511434895165933,
+    "p05": 1.1578344186856637,
+    "median": 1.2406201157654961,
+    "p95": 1.330529529600829
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 1.0926592018477368,
+    "sd": 0.09847393693735194,
+    "p05": 0.9686130179295307,
+    "median": 1.0698137584109724,
+    "p95": 1.2708216098412721
+   },
+   "drop_clipped": {
+    "n_finite": 300,
+    "mean": 0.8886203659304253,
+    "sd": 0.026811971776548375,
+    "p05": 0.8448354606937645,
+    "median": 0.8852297246328225,
+    "p95": 0.930942298006619
+   },
+   "r": null
+  },
+  "accuracy/independence": {
+   "before": {
+    "n_finite": 300,
+    "mean": 0.997976727449564,
+    "sd": 0.05776874228411645,
+    "p05": 0.9071253876820774,
+    "median": 0.99925138451596,
+    "p95": 1.090137680282273
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 0.9985833698662591,
+    "sd": 0.05756918574142203,
+    "p05": 0.9054957017513073,
+    "median": 1.0008578103646895,
+    "p95": 1.0866638655312848
+   },
+   "drop_clipped": {
+    "n_finite": 300,
+    "mean": 0.9987520324373029,
+    "sd": 0.05393096730512435,
+    "p05": 0.9143282417054756,
+    "median": 0.9989312429153432,
+    "p95": 1.0817523978507377
+   },
+   "r": null
+  },
+  "accuracy/equicorrelated": {
+   "before": {
+    "n_finite": 300,
+    "mean": 1.0926348967039765,
+    "sd": 0.057536163146474736,
+    "p05": 1.0007340283232233,
+    "median": 1.0924504962729849,
+    "p95": 1.1842761068224839
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 1.0923598301787136,
+    "sd": 0.056579925376411724,
+    "p05": 0.9983503264229212,
+    "median": 1.091604479286151,
+    "p95": 1.179510705591211
+   },
+   "drop_clipped": {
+    "n_finite": 300,
+    "mean": 1.0832695726882067,
+    "sd": 0.05457839736307993,
+    "p05": 0.9976189429044868,
+    "median": 1.0787373420474657,
+    "p95": 1.1715866294491604
+   },
+   "r": 0.07118216252506011
+  },
+  "accuracy/matched": {
+   "before": {
+    "n_finite": 300,
+    "mean": 1.115695655889787,
+    "sd": 0.06042601099745555,
+    "p05": 1.0074922768677343,
+    "median": 1.1144002451044561,
+    "p95": 1.20995990496742
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 1.1088530102844383,
+    "sd": 0.05867359588897809,
+    "p05": 1.0101414847833023,
+    "median": 1.104999424430536,
+    "p95": 1.2065091821092095
+   },
+   "drop_clipped": {
+    "n_finite": 300,
+    "mean": 1.0792777808542033,
+    "sd": 0.06423043426785975,
+    "p05": 0.9768065425269322,
+    "median": 1.074949061730471,
+    "p95": 1.1871709179044483
+   },
+   "r": null
+  }
+ },
+ "dropped": {
+  "margin": [
+   "winogrande"
+  ],
+  "accuracy": [
+   "piqa",
+   "winogrande"
+  ]
+ },
+ "wall_seconds": 2235.1455416679382
+}

@@ -1,0 +1,286 @@
+{
+ "design": "R6 how few recipes the cluster-robust interval can stand on.\n\nDesign fixed before running (2026-09-16, written 14:45 EDT). The shipped interval clusters on 25 recipes,\nand 25 is a small number of clusters for cluster-robust inference. The wild bootstrap-t is the standard\nanswer to exactly that problem, which is why we use it, and the paper has never checked where the answer\nstops working. A reviewer who knows this literature will ask, because the usual rule of thumb starts\nworrying below about forty clusters and the shipped design sits well under that.\nThis run sweeps the number of recipes over 5, 10, 15, 25, 40 and 60 at five size bands each, holding the\ncorrelation and the item noise at the margin-like values, with 4,000 replicates per cell. It reports\ncoverage, the rate at which the interval excludes one when the truth is 1.2446, and the median width, so\na reader sees both the failure point and what extra clusters buy. Coverage that holds at 25 and collapses\nat 10 tells a reader the design is above the cliff rather than on it. Seed 20260960 keeps the draws\ndistinct.\n",
+ "seed": 20260960,
+ "reps": 4000,
+ "cells": {
+  "recipes_05": {
+   "name": "recipes_05",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 5
+   },
+   "wild_recipe": {
+    "coverage": 0.74925,
+    "mc_se": 0.006853364821385186,
+    "excludes_one_rate": 0.161,
+    "lower_miss": 0.01025,
+    "upper_miss": 0.03575,
+    "undefined_or_unbounded": 0.20475,
+    "median_width": 0.7283506184533478
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.91025,
+    "mc_se": 0.004519262591950151,
+    "excludes_one_rate": 0.20225,
+    "lower_miss": 0.01225,
+    "upper_miss": 0.04725,
+    "undefined_or_unbounded": 0.03025,
+    "median_width": 0.6833507769054894
+   },
+   "wild_size": {
+    "coverage": 0.7555,
+    "mc_se": 0.00679558220463854,
+    "excludes_one_rate": 0.16575,
+    "lower_miss": 0.0135,
+    "upper_miss": 0.03275,
+    "undefined_or_unbounded": 0.19825,
+    "median_width": 0.7237847008528436
+   },
+   "cluster_t_size": {
+    "coverage": 0.91525,
+    "mc_se": 0.004403618895295096,
+    "excludes_one_rate": 0.214,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.0425,
+    "undefined_or_unbounded": 0.02675,
+    "median_width": 0.6813228068277685
+   }
+  },
+  "recipes_10": {
+   "name": "recipes_10",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 10
+   },
+   "wild_recipe": {
+    "coverage": 0.94625,
+    "mc_se": 0.003565842729986839,
+    "excludes_one_rate": 0.5425,
+    "lower_miss": 0.01475,
+    "upper_miss": 0.039,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.4168877521205635
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9455,
+    "mc_se": 0.0035892112643309253,
+    "excludes_one_rate": 0.5555,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.039,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.4116410485893664
+   },
+   "wild_size": {
+    "coverage": 0.893,
+    "mc_se": 0.004887509590783428,
+    "excludes_one_rate": 0.3105,
+    "lower_miss": 0.01375,
+    "upper_miss": 0.02225,
+    "undefined_or_unbounded": 0.071,
+    "median_width": 0.5568069249806855
+   },
+   "cluster_t_size": {
+    "coverage": 0.951,
+    "mc_se": 0.003413173010557773,
+    "excludes_one_rate": 0.42,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.02975,
+    "undefined_or_unbounded": 0.00075,
+    "median_width": 0.48322309584285095
+   }
+  },
+  "recipes_15": {
+   "name": "recipes_15",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 15
+   },
+   "wild_recipe": {
+    "coverage": 0.9415,
+    "mc_se": 0.003710719269899031,
+    "excludes_one_rate": 0.7935,
+    "lower_miss": 0.01825,
+    "upper_miss": 0.04025,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.32086037959427105
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94175,
+    "mc_se": 0.0037032734674879203,
+    "excludes_one_rate": 0.79875,
+    "lower_miss": 0.01825,
+    "upper_miss": 0.04,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3197694380305568
+   },
+   "wild_size": {
+    "coverage": 0.9315,
+    "mc_se": 0.00399398766898447,
+    "excludes_one_rate": 0.453,
+    "lower_miss": 0.02025,
+    "upper_miss": 0.02575,
+    "undefined_or_unbounded": 0.0225,
+    "median_width": 0.4553151471091008
+   },
+   "cluster_t_size": {
+    "coverage": 0.9445,
+    "mc_se": 0.0036200742395702326,
+    "excludes_one_rate": 0.58875,
+    "lower_miss": 0.0215,
+    "upper_miss": 0.034,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3866486039503706
+   }
+  },
+  "recipes_25": {
+   "name": "recipes_25",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 25
+   },
+   "wild_recipe": {
+    "coverage": 0.94225,
+    "mc_se": 0.003688324060464318,
+    "excludes_one_rate": 0.96925,
+    "lower_miss": 0.015,
+    "upper_miss": 0.04275,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.241871099422867
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94175,
+    "mc_se": 0.0037032734674879203,
+    "excludes_one_rate": 0.96825,
+    "lower_miss": 0.01475,
+    "upper_miss": 0.0435,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2408011603420268
+   },
+   "wild_size": {
+    "coverage": 0.954,
+    "mc_se": 0.003312249990565327,
+    "excludes_one_rate": 0.61975,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.0225,
+    "undefined_or_unbounded": 0.008,
+    "median_width": 0.3611377309868413
+   },
+   "cluster_t_size": {
+    "coverage": 0.94925,
+    "mc_se": 0.003470390377896987,
+    "excludes_one_rate": 0.8065,
+    "lower_miss": 0.01825,
+    "upper_miss": 0.0325,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.303228019405153
+   }
+  },
+  "recipes_40": {
+   "name": "recipes_40",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 40
+   },
+   "wild_recipe": {
+    "coverage": 0.94625,
+    "mc_se": 0.003565842729986839,
+    "excludes_one_rate": 0.9985,
+    "lower_miss": 0.01625,
+    "upper_miss": 0.0375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.18769335699280276
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94725,
+    "mc_se": 0.0035343824602043273,
+    "excludes_one_rate": 0.9985,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.03725,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.18751703170337908
+   },
+   "wild_size": {
+    "coverage": 0.95975,
+    "mc_se": 0.003107649332695052,
+    "excludes_one_rate": 0.78325,
+    "lower_miss": 0.016,
+    "upper_miss": 0.022,
+    "undefined_or_unbounded": 0.00225,
+    "median_width": 0.2862789269682875
+   },
+   "cluster_t_size": {
+    "coverage": 0.9495,
+    "mc_se": 0.003462287899640929,
+    "excludes_one_rate": 0.9445,
+    "lower_miss": 0.0225,
+    "upper_miss": 0.028,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24058349752682673
+   }
+  },
+  "recipes_60": {
+   "name": "recipes_60",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73,
+    "recipes": 60
+   },
+   "wild_recipe": {
+    "coverage": 0.946,
+    "mc_se": 0.0035736535926135893,
+    "excludes_one_rate": 1.0,
+    "lower_miss": 0.02325,
+    "upper_miss": 0.03075,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.1524060716085065
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94625,
+    "mc_se": 0.003565842729986839,
+    "excludes_one_rate": 1.0,
+    "lower_miss": 0.023,
+    "upper_miss": 0.03075,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.15229156986310644
+   },
+   "wild_size": {
+    "coverage": 0.95775,
+    "mc_se": 0.003180602832011567,
+    "excludes_one_rate": 0.88775,
+    "lower_miss": 0.018,
+    "upper_miss": 0.02375,
+    "undefined_or_unbounded": 0.0005,
+    "median_width": 0.23087929949989916
+   },
+   "cluster_t_size": {
+    "coverage": 0.94525,
+    "mc_se": 0.0035969583504677936,
+    "excludes_one_rate": 0.99475,
+    "lower_miss": 0.02475,
+    "upper_miss": 0.03,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.19406078986601905
+   }
+  }
+ },
+ "shipped_check": {
+  "recipes_05": 2.220446049250313e-16,
+  "recipes_10": 0.0,
+  "recipes_15": 0.0,
+  "recipes_25": 0.0,
+  "recipes_40": 0.0,
+  "recipes_60": 0.0
+ },
+ "wall_seconds": 1705.2188274860382
+}

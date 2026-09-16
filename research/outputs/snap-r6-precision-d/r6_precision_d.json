@@ -1,0 +1,31 @@
+{
+ "design": "R6 tie-breaker for the one coverage cell whose two 10,000-replicate runs disagree.\n\nDesign fixed before running (2026-09-15, written 22:05 EDT). snap-r6-precision returned wild coverage of\n0.9404 in the margin-like cell at 10,000 replicates, and snap-r6-precision-c returned 0.9508 for the same\ncell at the same count with a different seed. Each carries a Monte Carlo standard error near 0.0022, so\nthe two sit more than three standard errors of their difference apart, and a homogeneity test across the\nruns of that cell gives about 0.005. Diffing the two generators ruled out an implementation difference,\nand the median interval widths agree at 0.2417 against 0.2422 with no undefined replicate in either run,\nso the remaining explanation is dataset variation. The appendix currently pools the two at 0.946 and\ndeclines to call the cell settled. This run takes the same cell to 40,000 replicates on fresh datasets,\nwith seed 20260925 and a cell index offset of two hundred, which drops the standard error to about\n0.0011 and puts the pooled three-run estimate inside 0.002. It scores the shipped Rademacher version and\nthe residual-scaled one, so the construction comparison gains precision in the same pass. Nothing else\nchanges, and a result near 0.946 confirms the pooled value the paper already reports.\n",
+ "seed": 20260925,
+ "reps": 40000,
+ "cells": {
+  "margin_like": {
+   "name": "margin_like",
+   "truth": 1.2445882853377657,
+   "wild_rademacher": {
+    "coverage": 0.946575,
+    "mc_se": 0.0011243972760439252,
+    "lower_miss": 0.015675,
+    "upper_miss": 0.03775,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24143611182455815
+   },
+   "wild_cr3": {
+    "coverage": 0.955275,
+    "mc_se": 0.0010334973920504108,
+    "lower_miss": 0.012725,
+    "upper_miss": 0.032,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.25230456926607536
+   }
+  }
+ },
+ "shipped_check": {
+  "margin_like": 0.0
+ },
+ "wall_seconds": 2725.6864993572235
+}

@@ -1,0 +1,96 @@
+[{"stream_name":"stdout","time":1.146554628,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":16.454381122,"data":"[groups] BoolQ {'items': 3270, 'passage_exact_match_with_google_boolq': 3270, 'passage_mismatches': 0, 'mismatch_examples': [], 'unique_passages': 2938, 'group_size_histogram': {'1': 2692, '2': 197, '3': 27, '4': 13, '5': 7, '7': 1, '9': 1}, 'items_in_groups_of_two_or_more': 578}\n"}
+,{"stream_name":"stdout","time":37.591700041,"data":"{\n"}
+,{"stream_name":"stdout","time":37.591771531,"data":" \"configs\": 125,\n"}
+,{"stream_name":"stdout","time":37.591777321,"data":" \"runs\": 375,\n"}
+,{"stream_name":"stdout","time":37.591782691,"data":" \"items\": 37682,\n"}
+,{"stream_name":"stdout","time":37.591788371,"data":" \"half_A\": 18840,\n"}
+,{"stream_name":"stdout","time":37.591793001,"data":" \"half_B\": 18842,\n"}
+,{"stream_name":"stdout","time":37.591797451,"data":" \"items_per_trait\": {\n"}
+,{"stream_name":"stdout","time":37.591802331,"data":"  \"arc_challenge\": 1172,\n"}
+,{"stream_name":"stdout","time":37.591807451,"data":"  \"arc_easy\": 2376,\n"}
+,{"stream_name":"stdout","time":37.591812341,"data":"  \"boolq\": 3270,\n"}
+,{"stream_name":"stdout","time":37.591817191,"data":"  \"csqa\": 1221,\n"}
+,{"stream_name":"stdout","time":37.591821441,"data":"  \"hellaswag\": 10042,\n"}
+,{"stream_name":"stdout","time":37.591825561,"data":"  \"mmlu\": 14042,\n"}
+,{"stream_name":"stdout","time":37.591829921,"data":"  \"openbookqa\": 500,\n"}
+,{"stream_name":"stdout","time":37.591834251,"data":"  \"piqa\": 1838,\n"}
+,{"stream_name":"stdout","time":37.591838411,"data":"  \"socialiqa\": 1954,\n"}
+,{"stream_name":"stdout","time":37.591843301,"data":"  \"winogrande\": 1267\n"}
+,{"stream_name":"stdout","time":37.591847711,"data":" },\n"}
+,{"stream_name":"stdout","time":37.591851951,"data":" \"written\": {\n"}
+,{"stream_name":"stdout","time":37.591856581,"data":"  \"margin\": \"/kaggle/working/datasets/full/margin/scores.json\",\n"}
+,{"stream_name":"stdout","time":37.591861151,"data":"  \"accuracy\": \"/kaggle/working/datasets/full/accuracy/scores.json\"\n"}
+,{"stream_name":"stdout","time":37.591866091,"data":" }\n"}
+,{"stream_name":"stdout","time":37.591870531,"data":"}\n"}
+,{"stream_name":"stdout","time":51.930403837,"data":"{\n"}
+,{"stream_name":"stdout","time":51.930455126,"data":" \"configs\": 125,\n"}
+,{"stream_name":"stdout","time":51.930461626,"data":" \"runs\": 375,\n"}
+,{"stream_name":"stdout","time":51.930467046,"data":" \"items\": 37682,\n"}
+,{"stream_name":"stdout","time":51.930471986,"data":" \"half_A\": 18840,\n"}
+,{"stream_name":"stdout","time":51.930477197,"data":" \"half_B\": 18842,\n"}
+,{"stream_name":"stdout","time":51.930492957,"data":" \"items_per_trait\": {\n"}
+,{"stream_name":"stdout","time":51.930498217,"data":"  \"arc_challenge\": 1172,\n"}
+,{"stream_name":"stdout","time":51.930502777,"data":"  \"arc_easy\": 2376,\n"}
+,{"stream_name":"stdout","time":51.930507417,"data":"  \"csqa\": 1221,\n"}
+,{"stream_name":"stdout","time":51.930512177,"data":"  \"hellaswag\": 10042,\n"}
+,{"stream_name":"stdout","time":51.930516946,"data":"  \"mmlu\": 14042,\n"}
+,{"stream_name":"stdout","time":51.930521386,"data":"  \"openbookqa\": 500,\n"}
+,{"stream_name":"stdout","time":51.930526246,"data":"  \"piqa\": 1838,\n"}
+,{"stream_name":"stdout","time":51.930530697,"data":"  \"socialiqa\": 1954,\n"}
+,{"stream_name":"stdout","time":51.930534666,"data":"  \"winogrande\": 1267\n"}
+,{"stream_name":"stdout","time":51.930537566,"data":" },\n"}
+,{"stream_name":"stdout","time":51.930560117,"data":" \"written\": {\n"}
+,{"stream_name":"stdout","time":51.930562337,"data":"  \"margin\": \"/kaggle/working/datasets/noboolq/margin/scores.json\",\n"}
+,{"stream_name":"stdout","time":51.930564677,"data":"  \"accuracy\": \"/kaggle/working/datasets/noboolq/accuracy/scores.json\"\n"}
+,{"stream_name":"stdout","time":51.930566857,"data":" }\n"}
+,{"stream_name":"stdout","time":51.930568746,"data":"}\n"}
+,{"stream_name":"stdout","time":52.160120493,"data":"[adapter] done at 51s\n"}
+,{"stream_name":"stdout","time":53.181099238,"data":"C01: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C01_margin_original/result.json\n"}
+,{"stream_name":"stdout","time":53.230727419,"data":"[C01] C01_margin_original in 1s\n"}
+,{"stream_name":"stdout","time":53.237742847,"data":"margin original lambda 1.243949911719114 recipe-pct [1.134410517646752, 1.3220682203544456]\n"}
+,{"stream_name":"stdout","time":54.081898866,"data":"{\"lambda\": 1.2439499117191135, \"wild\": {\"lo\": 1.1429001912272698, \"hi\": 1.3376841038790925, \"se\": 0.04500996929632814, \"method\": \"wild cluster bootstrap-t (G=25)\"}, \"cluster_t\": {\"lo\": 1.1472991823302265, \"hi\": 1.3336143940271394, \"se\": 0.04500996929632814, \"method\": \"cluster-robust t(24)\"}, \"config\": {\"lo\": 1.0693822391016938, \"hi\": 1.4255381896468478, \"se\": 0.0928081557738457, \"method\": \"configuration percentile bootstrap\"}, \"aggregate_sd\": 0.005715856790482671}\n"}
+,{"stream_name":"stdout","time":55.278222018,"data":"C01: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C01_margin_item/result.json\n"}
+,{"stream_name":"stdout","time":55.317601971,"data":"[C01] C01_margin_item in 1s\n"}
+,{"stream_name":"stdout","time":55.324663779,"data":"margin item lambda 1.245600867748908 recipe-pct [1.1364055462600666, 1.3241781225591]\n"}
+,{"stream_name":"stdout","time":56.048929651,"data":"{\"lambda\": 1.245600867748908, \"wild\": {\"lo\": 1.1436620552069106, \"hi\": 1.3399769660311605, \"se\": 0.04516930244728215, \"method\": \"wild cluster bootstrap-t (G=25)\"}, \"cluster_t\": {\"lo\": 1.1485989695372638, \"hi\": 1.3355760744531182, \"se\": 0.04516930244728215, \"method\": \"cluster-robust t(24)\"}, \"config\": {\"lo\": 1.0701262628004173, \"hi\": 1.4265683591191938, \"se\": 0.0928574202121965, \"method\": \"configuration percentile bootstrap\"}, \"aggregate_sd\": 0.005716694951081009}\n"}
+,{"stream_name":"stdout","time":57.173720626,"data":"C01: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C01_margin_group/result.json\n"}
+,{"stream_name":"stdout","time":57.211022869,"data":"[C01] C01_margin_group in 1s\n"}
+,{"stream_name":"stdout","time":57.216661368,"data":"margin group lambda 1.247508241371148 recipe-pct [1.1386789632215109, 1.3250215067251752]\n"}
+,{"stream_name":"stdout","time":58.033202413,"data":"{\"lambda\": 1.247508241371148, \"wild\": {\"lo\": 1.1466379811807648, \"hi\": 1.3408100411793367, \"se\": 0.04484438559172485, \"method\": \"wild cluster bootstrap-t (G=25)\"}, \"cluster_t\": {\"lo\": 1.1512395062522118, \"hi\": 1.336862455087296, \"se\": 0.04484438559172485, \"method\": \"cluster-robust t(24)\"}, \"config\": {\"lo\": 1.07132947112163, \"hi\": 1.4290280144369845, \"se\": 0.09305556469455217, \"method\": \"configuration percentile bootstrap\"}, \"aggregate_sd\": 0.005711150580726068}\n"}
+,{"stream_name":"stdout","time":59.062218876,"data":"C01: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C01_margin_noboolq_original/result.json\n"}
+,{"stream_name":"stdout","time":59.102919618,"data":"[C01] C01_margin_noboolq_original in 1s\n"}
+,{"stream_name":"stdout","time":59.108615567,"data":"margin no BoolQ original 1.7856174646172651 [1.6436950804078552, 1.8375367467339918]\n"}
+,{"stream_name":"stdout","time":59.927318991,"data":"{\"lambda\": 1.785617464617265, \"wild\": {\"lo\": 1.6891033385766654, \"hi\": 1.8765174171308665, \"se\": 0.035834554826928024, \"method\": \"wild cluster bootstrap-t (G=25)\"}, \"cluster_t\": {\"lo\": 1.7100599908630312, \"hi\": 1.8581050259718657, \"se\": 0.035834554826928024, \"method\": \"cluster-robust t(24)\"}, \"config\": {\"lo\": 1.6749393766132572, \"hi\": 1.8617297726894584, \"se\": 0.0466022826646266, \"method\": \"configuration percentile bootstrap\"}, \"aggregate_sd\": 0.005164709983514787}\n"}
+,{"stream_name":"stdout","time":87.167192466,"data":"C03: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C03_margin/result.json\n"}
+,{"stream_name":"stdout","time":87.206401208,"data":"[C03] C03_margin in 27s\n"}
+,{"stream_name":"stdout","time":88.115709195,"data":"C09: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C09_margin/result.json\n"}
+,{"stream_name":"stdout","time":88.166126255,"data":"[C09] C09_margin in 1s\n"}
+,{"stream_name":"stdout","time":88.937456338,"data":"C01: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C01_accuracy_original/result.json\n"}
+,{"stream_name":"stdout","time":88.989324198,"data":"[C01] C01_accuracy_original in 1s\n"}
+,{"stream_name":"stdout","time":88.994816657,"data":"accuracy original lambda 1.0783733870898093 recipe-pct [1.002883807549505, 1.1549505063247616]\n"}
+,{"stream_name":"stdout","time":89.938281387,"data":"{\"lambda\": 1.0783733870898096, \"wild\": {\"lo\": 0.992604456794931, \"hi\": 1.1566521851337639, \"se\": 0.037702000910158816, \"method\": \"wild cluster bootstrap-t (G=25)\"}, \"cluster_t\": {\"lo\": 0.9975299483311629, \"hi\": 1.1535650506796415, \"se\": 0.037702000910158816, \"method\": \"cluster-robust t(24)\"}, \"config\": {\"lo\": 0.9755457229741982, \"hi\": 1.1824104939632454, \"se\": 0.05182277883969228, \"method\": \"configuration percentile bootstrap\"}, \"aggregate_sd\": 0.005141980439174603}\n"}
+,{"stream_name":"stdout","time":91.021273401,"data":"C01: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C01_accuracy_item/result.json\n"}
+,{"stream_name":"stdout","time":91.08057693,"data":"[C01] C01_accuracy_item in 1s\n"}
+,{"stream_name":"stdout","time":91.089604878,"data":"accuracy item lambda 1.0837509498345899 recipe-pct [1.0033765620533537, 1.1658171823549521]\n"}
+,{"stream_name":"stdout","time":92.046239735,"data":"{\"lambda\": 1.0837509498345899, \"wild\": {\"lo\": 0.9934348084793528, \"hi\": 1.1635329673272676, \"se\": 0.03995650292395585, \"method\": \"wild cluster bootstrap-t (G=25)\"}, \"cluster_t\": {\"lo\": 0.9978830309666692, \"hi\": 1.1632977688638129, \"se\": 0.03995650292395585, \"method\": \"cluster-robust t(24)\"}, \"config\": {\"lo\": 0.9825201422776235, \"hi\": 1.1902277304086633, \"se\": 0.052560862364262786, \"method\": \"configuration percentile bootstrap\"}, \"aggregate_sd\": 0.005128017730611216}\n"}
+,{"stream_name":"stdout","time":93.067770401,"data":"C01: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C01_accuracy_group/result.json\n"}
+,{"stream_name":"stdout","time":93.105237683,"data":"[C01] C01_accuracy_group in 1s\n"}
+,{"stream_name":"stdout","time":93.111467753,"data":"accuracy group lambda 1.0970667913462526 recipe-pct [1.0174209580069724, 1.1793805294937052]\n"}
+,{"stream_name":"stdout","time":93.938035004,"data":"{\"lambda\": 1.0970667913462526, \"wild\": {\"lo\": 1.0068269003021308, \"hi\": 1.176870638236651, \"se\": 0.040162296064787856, \"method\": \"wild cluster bootstrap-t (G=25)\"}, \"cluster_t\": {\"lo\": 1.0107827789092019, \"hi\": 1.1770425919269514, \"se\": 0.040162296064787856, \"method\": \"cluster-robust t(24)\"}, \"config\": {\"lo\": 0.9957383088807787, \"hi\": 1.2030602709771132, \"se\": 0.05250443304568521, \"method\": \"configuration percentile bootstrap\"}, \"aggregate_sd\": 0.005165945905605476}\n"}
+,{"stream_name":"stdout","time":94.654868903,"data":"C01: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C01_accuracy_noboolq_original/result.json\n"}
+,{"stream_name":"stdout","time":94.690973218,"data":"[C01] C01_accuracy_noboolq_original in 1s\n"}
+,{"stream_name":"stdout","time":94.697664019,"data":"accuracy no BoolQ original 1.5578291363266623 [1.4231740681339762, 1.7013076850276896]\n"}
+,{"stream_name":"stdout","time":95.65309388,"data":"{\"lambda\": 1.557829136326662, \"wild\": {\"lo\": 1.4119121961052712, \"hi\": 1.6870177418636012, \"se\": 0.06591654353436374, \"method\": \"wild cluster bootstrap-t (G=25)\"}, \"cluster_t\": {\"lo\": 1.4152602952291988, \"hi\": 1.68840206488985, \"se\": 0.06591654353436374, \"method\": \"cluster-robust t(24)\"}, \"config\": {\"lo\": 1.39839991018082, \"hi\": 1.7216510270367678, \"se\": 0.08329346098127922, \"method\": \"configuration percentile bootstrap\"}, \"aggregate_sd\": 0.003260636211540841}\n"}
+,{"stream_name":"stdout","time":127.824998594,"data":"C03: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C03_accuracy/result.json\n"}
+,{"stream_name":"stdout","time":127.876099351,"data":"[C03] C03_accuracy in 32s\n"}
+,{"stream_name":"stdout","time":128.602654981,"data":"C09: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C09_accuracy/result.json\n"}
+,{"stream_name":"stdout","time":128.645462207,"data":"[C09] C09_accuracy in 1s\n"}
+,{"stream_name":"stdout","time":128.682713942,"data":"[done] 128s\n"}
+,{"stream_name":"stderr","time":131.488788318,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":131.488874738,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":131.925940788,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":131.925981418,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":132.980742283,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":134.916728819,"data":"[NbConvertApp] Writing 299469 bytes to __results__.html\n"}
+]

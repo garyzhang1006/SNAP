@@ -1,0 +1,43 @@
+[{"stream_name":"stdout","time":0.951107514,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":0.978597877,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":0.978633425,"data":"/dev/loop1       20G  116K   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":7.911224976,"data":"[map] 233 entries in allenai/DataDecide-eval-instances; 1s\n"}
+,{"stream_name":"stdout","time":11.738987616,"data":"[map] run {'recipe': 'c4', 'size': '150M', 'seed': '14', 'step': '0'} read from 8 MB stream; 66 tasks; 5s\n"}
+,{"stream_name":"stderr","time":17.13254187,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":21.723781038,"data":"\rGenerating train split:   0%|          | 0/9427 [00:00\u003c?, ? examples/s]\rGenerating train split: 100%|██████████| 9427/9427 [00:00\u003c00:00, 89307.43 examples/s]\rGenerating train split: 100%|██████████| 9427/9427 [00:00\u003c00:00, 88906.61 examples/s]\n"}
+,{"stream_name":"stderr","time":21.743584409,"data":"\rGenerating validation split:   0%|          | 0/3270 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 3270/3270 [00:00\u003c00:00, 171174.72 examples/s]\n"}
+,{"stream_name":"stdout","time":22.518636179,"data":"{\n"}
+,{"stream_name":"stdout","time":22.518690905,"data":" \"boolq_prediction_rows\": 3270,\n"}
+,{"stream_name":"stdout","time":22.518698719,"data":" \"boolq_validation_rows\": 3270,\n"}
+,{"stream_name":"stdout","time":22.518721052,"data":" \"native_id_types\": [\n"}
+,{"stream_name":"stdout","time":22.518729051,"data":"  \"int\"\n"}
+,{"stream_name":"stdout","time":22.518734787,"data":" ],\n"}
+,{"stream_name":"stdout","time":22.518740839,"data":" \"doc_id_equals_native_id\": true,\n"}
+,{"stream_name":"stdout","time":22.518747047,"data":" \"joined\": 3270,\n"}
+,{"stream_name":"stdout","time":22.518753219,"data":" \"unmatched\": 0,\n"}
+,{"stream_name":"stdout","time":22.518759305,"data":" \"unmatched_examples\": [],\n"}
+,{"stream_name":"stdout","time":22.518765222,"data":" \"label_agreement\": 0,\n"}
+,{"stream_name":"stdout","time":22.518771349,"data":" \"label_agreement_fraction\": 0.0,\n"}
+,{"stream_name":"stdout","time":22.518776295,"data":" \"unique_passages\": 2938,\n"}
+,{"stream_name":"stdout","time":22.518782261,"data":" \"group_size_histogram\": {\n"}
+,{"stream_name":"stdout","time":22.518787161,"data":"  \"1\": 2692,\n"}
+,{"stream_name":"stdout","time":22.518790909,"data":"  \"2\": 197,\n"}
+,{"stream_name":"stdout","time":22.518794731,"data":"  \"3\": 27,\n"}
+,{"stream_name":"stdout","time":22.518798379,"data":"  \"4\": 13,\n"}
+,{"stream_name":"stdout","time":22.518802467,"data":"  \"5\": 7,\n"}
+,{"stream_name":"stdout","time":22.518808001,"data":"  \"7\": 1,\n"}
+,{"stream_name":"stdout","time":22.518813672,"data":"  \"9\": 1\n"}
+,{"stream_name":"stdout","time":22.518819188,"data":" },\n"}
+,{"stream_name":"stdout","time":22.518824556,"data":" \"max_group_size\": 9,\n"}
+,{"stream_name":"stdout","time":22.518830346,"data":" \"label_convention_check\": \"label 1 must correspond to answer True; if agreement is near 0 the convention is inverted, near 0.5 the join is wrong\",\n"}
+,{"stream_name":"stdout","time":22.518837017,"data":" \"duplicate_question_texts\": 0\n"}
+,{"stream_name":"stdout","time":22.518842974000002,"data":"}\n"}
+,{"stream_name":"stdout","time":22.518848287,"data":"[map] done in 16s\n"}
+,{"stream_name":"stdout","time":22.943583106,"data":"[done] 22s\n"}
+,{"stream_name":"stderr","time":26.090966707,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":26.091005009,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":26.454657121,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":26.454693657,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":27.341953539,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":29.175762461,"data":"[NbConvertApp] Writing 277565 bytes to __results__.html\n"}
+]

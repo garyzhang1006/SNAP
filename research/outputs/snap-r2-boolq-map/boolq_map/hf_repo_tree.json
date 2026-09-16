@@ -1,0 +1,934 @@
+[
+ {
+  "path": "models",
+  "size": null
+ },
+ {
+  "path": "requests",
+  "size": null
+ },
+ {
+  "path": "sample-evals",
+  "size": null
+ },
+ {
+  "path": "sample-evals/dclm-baseline",
+  "size": null
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M",
+  "size": null
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14",
+  "size": null
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000",
+  "size": null
+ },
+ {
+  "path": ".gitattributes",
+  "size": 2634
+ },
+ {
+  "path": "README.md",
+  "size": 4117
+ },
+ {
+  "path": "models/c4.tar.gz",
+  "size": 4886124480
+ },
+ {
+  "path": "models/dclm-baseline-25p-dolma1.7-75p.tar.gz",
+  "size": 5065163629
+ },
+ {
+  "path": "models/dclm-baseline-50p-dolma1.7-50p.tar.gz",
+  "size": 5082570178
+ },
+ {
+  "path": "models/dclm-baseline-75p-dolma1.7-25p.tar.gz",
+  "size": 4877671054
+ },
+ {
+  "path": "models/dclm-baseline-top-10p.tar.gz",
+  "size": 4635051501
+ },
+ {
+  "path": "models/dclm-baseline-top-20p.tar.gz",
+  "size": 4578130966
+ },
+ {
+  "path": "models/dclm-baseline-top-fw-10p.tar.gz",
+  "size": 5265369246
+ },
+ {
+  "path": "models/dclm-baseline-top-fw-3p.tar.gz",
+  "size": 5086716071
+ },
+ {
+  "path": "models/dclm-baseline-top-fw2-7p.tar.gz",
+  "size": 5086964912
+ },
+ {
+  "path": "models/dclm-baseline-top-fw3-7p.tar.gz",
+  "size": 5079035586
+ },
+ {
+  "path": "models/dclm-baseline.tar.gz",
+  "size": 5117565111
+ },
+ {
+  "path": "models/dolma1.6++.tar.gz",
+  "size": 5060335865
+ },
+ {
+  "path": "models/dolma1.7-no-code.tar.gz",
+  "size": 4888566199
+ },
+ {
+  "path": "models/dolma1.7-no-flan.tar.gz",
+  "size": 4886924293
+ },
+ {
+  "path": "models/dolma1.7-no-math-no-code.tar.gz",
+  "size": 4430453715
+ },
+ {
+  "path": "models/dolma1.7-no-reddit.tar.gz",
+  "size": 4904813774
+ },
+ {
+  "path": "models/dolma1.7.tar.gz",
+  "size": 4892710078
+ },
+ {
+  "path": "models/falcon-with-cc-top-10p.tar.gz",
+  "size": 4871654082
+ },
+ {
+  "path": "models/falcon-with-cc-top-20p.tar.gz",
+  "size": 4862433316
+ },
+ {
+  "path": "models/falcon-with-cc-top-orig-10p.tar.gz",
+  "size": 4912093949
+ },
+ {
+  "path": "models/falcon-with-cc-top-tulu-10p.tar.gz",
+  "size": 4865776935
+ },
+ {
+  "path": "models/falcon-with-cc.tar.gz",
+  "size": 4889532627
+ },
+ {
+  "path": "models/falcon.tar.gz",
+  "size": 4870160904
+ },
+ {
+  "path": "models/fineweb-edu.tar.gz",
+  "size": 4882430652
+ },
+ {
+  "path": "models/fineweb-pro.tar.gz",
+  "size": 4945554599
+ },
+ {
+  "path": "requests/arc_challenge-requests.jsonl.gz",
+  "size": 460325
+ },
+ {
+  "path": "requests/arc_easy-requests.jsonl.gz",
+  "size": 839637
+ },
+ {
+  "path": "requests/boolq-requests.jsonl.gz",
+  "size": 1284304
+ },
+ {
+  "path": "requests/csqa-requests.jsonl.gz",
+  "size": 405982
+ },
+ {
+  "path": "requests/hellaswag-requests.jsonl.gz",
+  "size": 8724541
+ },
+ {
+  "path": "requests/mmlu_abstract_algebra-requests.jsonl.gz",
+  "size": 26373
+ },
+ {
+  "path": "requests/mmlu_anatomy-requests.jsonl.gz",
+  "size": 44615
+ },
+ {
+  "path": "requests/mmlu_astronomy-requests.jsonl.gz",
+  "size": 64982
+ },
+ {
+  "path": "requests/mmlu_business_ethics-requests.jsonl.gz",
+  "size": 45892
+ },
+ {
+  "path": "requests/mmlu_clinical_knowledge-requests.jsonl.gz",
+  "size": 94908
+ },
+ {
+  "path": "requests/mmlu_college_biology-requests.jsonl.gz",
+  "size": 67674
+ },
+ {
+  "path": "requests/mmlu_college_chemistry-requests.jsonl.gz",
+  "size": 39343
+ },
+ {
+  "path": "requests/mmlu_college_computer_science-requests.jsonl.gz",
+  "size": 61272
+ },
+ {
+  "path": "requests/mmlu_college_mathematics-requests.jsonl.gz",
+  "size": 39655
+ },
+ {
+  "path": "requests/mmlu_college_medicine-requests.jsonl.gz",
+  "size": 108740
+ },
+ {
+  "path": "requests/mmlu_college_physics-requests.jsonl.gz",
+  "size": 45386
+ },
+ {
+  "path": "requests/mmlu_computer_security-requests.jsonl.gz",
+  "size": 41566
+ },
+ {
+  "path": "requests/mmlu_conceptual_physics-requests.jsonl.gz",
+  "size": 70281
+ },
+ {
+  "path": "requests/mmlu_econometrics-requests.jsonl.gz",
+  "size": 56173
+ },
+ {
+  "path": "requests/mmlu_electrical_engineering-requests.jsonl.gz",
+  "size": 44150
+ },
+ {
+  "path": "requests/mmlu_elementary_mathematics-requests.jsonl.gz",
+  "size": 119895
+ },
+ {
+  "path": "requests/mmlu_formal_logic-requests.jsonl.gz",
+  "size": 52350
+ },
+ {
+  "path": "requests/mmlu_global_facts-requests.jsonl.gz",
+  "size": 30104
+ },
+ {
+  "path": "requests/mmlu_high_school_biology-requests.jsonl.gz",
+  "size": 149319
+ },
+ {
+  "path": "requests/mmlu_high_school_chemistry-requests.jsonl.gz",
+  "size": 83664
+ },
+ {
+  "path": "requests/mmlu_high_school_computer_science-requests.jsonl.gz",
+  "size": 58851
+ },
+ {
+  "path": "requests/mmlu_high_school_european_history-requests.jsonl.gz",
+  "size": 341421
+ },
+ {
+  "path": "requests/mmlu_high_school_geography-requests.jsonl.gz",
+  "size": 69538
+ },
+ {
+  "path": "requests/mmlu_high_school_government_and_politics-requests.jsonl.gz",
+  "size": 90049
+ },
+ {
+  "path": "requests/mmlu_high_school_macroeconomics-requests.jsonl.gz",
+  "size": 148250
+ },
+ {
+  "path": "requests/mmlu_high_school_mathematics-requests.jsonl.gz",
+  "size": 96777
+ },
+ {
+  "path": "requests/mmlu_high_school_microeconomics-requests.jsonl.gz",
+  "size": 92931
+ },
+ {
+  "path": "requests/mmlu_high_school_physics-requests.jsonl.gz",
+  "size": 75077
+ },
+ {
+  "path": "requests/mmlu_high_school_psychology-requests.jsonl.gz",
+  "size": 242572
+ },
+ {
+  "path": "requests/mmlu_high_school_statistics-requests.jsonl.gz",
+  "size": 133087
+ },
+ {
+  "path": "requests/mmlu_high_school_us_history-requests.jsonl.gz",
+  "size": 376412
+ },
+ {
+  "path": "requests/mmlu_high_school_world_history-requests.jsonl.gz",
+  "size": 446625
+ },
+ {
+  "path": "requests/mmlu_human_aging-requests.jsonl.gz",
+  "size": 77287
+ },
+ {
+  "path": "requests/mmlu_human_sexuality-requests.jsonl.gz",
+  "size": 49751
+ },
+ {
+  "path": "requests/mmlu_international_law-requests.jsonl.gz",
+  "size": 60320
+ },
+ {
+  "path": "requests/mmlu_jurisprudence-requests.jsonl.gz",
+  "size": 47947
+ },
+ {
+  "path": "requests/mmlu_logical_fallacies-requests.jsonl.gz",
+  "size": 66081
+ },
+ {
+  "path": "requests/mmlu_machine_learning-requests.jsonl.gz",
+  "size": 48416
+ },
+ {
+  "path": "requests/mmlu_management-requests.jsonl.gz",
+  "size": 32183
+ },
+ {
+  "path": "requests/mmlu_marketing-requests.jsonl.gz",
+  "size": 94137
+ },
+ {
+  "path": "requests/mmlu_medical_genetics-requests.jsonl.gz",
+  "size": 33800
+ },
+ {
+  "path": "requests/mmlu_miscellaneous-requests.jsonl.gz",
+  "size": 256972
+ },
+ {
+  "path": "requests/mmlu_moral_disputes-requests.jsonl.gz",
+  "size": 148586
+ },
+ {
+  "path": "requests/mmlu_moral_scenarios-requests.jsonl.gz",
+  "size": 309699
+ },
+ {
+  "path": "requests/mmlu_nutrition-requests.jsonl.gz",
+  "size": 131579
+ },
+ {
+  "path": "requests/mmlu_philosophy-requests.jsonl.gz",
+  "size": 117333
+ },
+ {
+  "path": "requests/mmlu_prehistory-requests.jsonl.gz",
+  "size": 133219
+ },
+ {
+  "path": "requests/mmlu_professional_accounting-requests.jsonl.gz",
+  "size": 167211
+ },
+ {
+  "path": "requests/mmlu_professional_law-requests.jsonl.gz",
+  "size": 2155309
+ },
+ {
+  "path": "requests/mmlu_professional_medicine-requests.jsonl.gz",
+  "size": 276267
+ },
+ {
+  "path": "requests/mmlu_professional_psychology-requests.jsonl.gz",
+  "size": 316058
+ },
+ {
+  "path": "requests/mmlu_public_relations-requests.jsonl.gz",
+  "size": 44552
+ },
+ {
+  "path": "requests/mmlu_security_studies-requests.jsonl.gz",
+  "size": 219601
+ },
+ {
+  "path": "requests/mmlu_sociology-requests.jsonl.gz",
+  "size": 94207
+ },
+ {
+  "path": "requests/mmlu_us_foreign_policy-requests.jsonl.gz",
+  "size": 40484
+ },
+ {
+  "path": "requests/mmlu_virology-requests.jsonl.gz",
+  "size": 61629
+ },
+ {
+  "path": "requests/mmlu_world_religions-requests.jsonl.gz",
+  "size": 47275
+ },
+ {
+  "path": "requests/openbookqa-requests.jsonl.gz",
+  "size": 132714
+ },
+ {
+  "path": "requests/piqa-requests.jsonl.gz",
+  "size": 529275
+ },
+ {
+  "path": "requests/socialiqa-requests.jsonl.gz",
+  "size": 618296
+ },
+ {
+  "path": "requests/winogrande-requests.jsonl.gz",
+  "size": 115375
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/arc_challenge-metrics.json",
+  "size": 1249
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/arc_challenge-predictions.jsonl",
+  "size": 1753771
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/arc_easy-metrics.json",
+  "size": 1284
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/arc_easy-predictions.jsonl",
+  "size": 3555686
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/boolq-metrics.json",
+  "size": 1168
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/boolq-predictions.jsonl",
+  "size": 2808106
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/csqa-metrics.json",
+  "size": 1212
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/csqa-predictions.jsonl",
+  "size": 2176636
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/hellaswag-metrics.json",
+  "size": 1230
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/hellaswag-predictions.jsonl",
+  "size": 14956960
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_abstract_algebra-metrics.json",
+  "size": 1200
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_abstract_algebra-predictions.jsonl",
+  "size": 148176
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_anatomy-metrics.json",
+  "size": 1227
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_anatomy-predictions.jsonl",
+  "size": 199806
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_astronomy-metrics.json",
+  "size": 1240
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_astronomy-predictions.jsonl",
+  "size": 225164
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_business_ethics-metrics.json",
+  "size": 1197
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_business_ethics-predictions.jsonl",
+  "size": 147878
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_clinical_knowledge-metrics.json",
+  "size": 1284
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_clinical_knowledge-predictions.jsonl",
+  "size": 392622
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_college_biology-metrics.json",
+  "size": 1267
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_college_biology-predictions.jsonl",
+  "size": 213261
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_college_chemistry-metrics.json",
+  "size": 1207
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_college_chemistry-predictions.jsonl",
+  "size": 147676
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_college_computer_science-metrics.json",
+  "size": 1240
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_college_computer_science-predictions.jsonl",
+  "size": 147790
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_college_mathematics-metrics.json",
+  "size": 1217
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_college_mathematics-predictions.jsonl",
+  "size": 147592
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_college_medicine-metrics.json",
+  "size": 1276
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_college_medicine-predictions.jsonl",
+  "size": 256189
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_college_physics-metrics.json",
+  "size": 1271
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_college_physics-predictions.jsonl",
+  "size": 150619
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_computer_security-metrics.json",
+  "size": 1205
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_computer_security-predictions.jsonl",
+  "size": 147858
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_conceptual_physics-metrics.json",
+  "size": 1284
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_conceptual_physics-predictions.jsonl",
+  "size": 347862
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_econometrics-metrics.json",
+  "size": 1251
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_econometrics-predictions.jsonl",
+  "size": 168956
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_electrical_engineering-metrics.json",
+  "size": 1304
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_electrical_engineering-predictions.jsonl",
+  "size": 214319
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_elementary_mathematics-metrics.json",
+  "size": 1306
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_elementary_mathematics-predictions.jsonl",
+  "size": 557906
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_formal_logic-metrics.json",
+  "size": 1252
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_formal_logic-predictions.jsonl",
+  "size": 186446
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_global_facts-metrics.json",
+  "size": 1182
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_global_facts-predictions.jsonl",
+  "size": 147560
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_biology-metrics.json",
+  "size": 1292
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_biology-predictions.jsonl",
+  "size": 459456
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_chemistry-metrics.json",
+  "size": 1298
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_chemistry-predictions.jsonl",
+  "size": 300492
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_computer_science-metrics.json",
+  "size": 1261
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_computer_science-predictions.jsonl",
+  "size": 147938
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_european_history-metrics.json",
+  "size": 1335
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_european_history-predictions.jsonl",
+  "size": 245190
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_geography-metrics.json",
+  "size": 1298
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_geography-predictions.jsonl",
+  "size": 293087
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_government_and_politics-metrics.json",
+  "size": 1372
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_government_and_politics-predictions.jsonl",
+  "size": 286301
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_macroeconomics-metrics.json",
+  "size": 1309
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_macroeconomics-predictions.jsonl",
+  "size": 578220
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_mathematics-metrics.json",
+  "size": 1312
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_mathematics-predictions.jsonl",
+  "size": 397960
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_microeconomics-metrics.json",
+  "size": 1323
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_microeconomics-predictions.jsonl",
+  "size": 352661
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_physics-metrics.json",
+  "size": 1285
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_physics-predictions.jsonl",
+  "size": 223498
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_psychology-metrics.json",
+  "size": 1306
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_psychology-predictions.jsonl",
+  "size": 807333
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_statistics-metrics.json",
+  "size": 1304
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_statistics-predictions.jsonl",
+  "size": 320035
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_us_history-metrics.json",
+  "size": 1305
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_us_history-predictions.jsonl",
+  "size": 303300
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_world_history-metrics.json",
+  "size": 1318
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_high_school_world_history-predictions.jsonl",
+  "size": 352171
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_human_aging-metrics.json",
+  "size": 1248
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_human_aging-predictions.jsonl",
+  "size": 330142
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_human_sexuality-metrics.json",
+  "size": 1268
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_human_sexuality-predictions.jsonl",
+  "size": 193863
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_international_law-metrics.json",
+  "size": 1276
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_international_law-predictions.jsonl",
+  "size": 179475
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_jurisprudence-metrics.json",
+  "size": 1260
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_jurisprudence-predictions.jsonl",
+  "size": 159902
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_logical_fallacies-metrics.json",
+  "size": 1280
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_logical_fallacies-predictions.jsonl",
+  "size": 241429
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_machine_learning-metrics.json",
+  "size": 1277
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_machine_learning-predictions.jsonl",
+  "size": 165654
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_management-metrics.json",
+  "size": 1245
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_management-predictions.jsonl",
+  "size": 152369
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_marketing-metrics.json",
+  "size": 1238
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_marketing-predictions.jsonl",
+  "size": 346478
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_medical_genetics-metrics.json",
+  "size": 1201
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_medical_genetics-predictions.jsonl",
+  "size": 147881
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_miscellaneous-metrics.json",
+  "size": 1256
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_miscellaneous-predictions.jsonl",
+  "size": 1158744
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_moral_disputes-metrics.json",
+  "size": 1264
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_moral_disputes-predictions.jsonl",
+  "size": 512974
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_moral_scenarios-metrics.json",
+  "size": 1272
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_moral_scenarios-predictions.jsonl",
+  "size": 1334812
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_nutrition-metrics.json",
+  "size": 1236
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_nutrition-predictions.jsonl",
+  "size": 453309
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_philosophy-metrics.json",
+  "size": 1243
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_philosophy-predictions.jsonl",
+  "size": 460704
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_prehistory-metrics.json",
+  "size": 1243
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_prehistory-predictions.jsonl",
+  "size": 479925
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_professional_accounting-metrics.json",
+  "size": 1309
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_professional_accounting-predictions.jsonl",
+  "size": 417420
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_professional_law-metrics.json",
+  "size": 1271
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_professional_law-predictions.jsonl",
+  "size": 2286613
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_professional_medicine-metrics.json",
+  "size": 1300
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_professional_medicine-predictions.jsonl",
+  "size": 403117
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_professional_psychology-metrics.json",
+  "size": 1311
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_professional_psychology-predictions.jsonl",
+  "size": 906860
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_public_relations-metrics.json",
+  "size": 1277
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_public_relations-predictions.jsonl",
+  "size": 162605
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_security_studies-metrics.json",
+  "size": 1273
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_security_studies-predictions.jsonl",
+  "size": 364090
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_sociology-metrics.json",
+  "size": 1236
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_sociology-predictions.jsonl",
+  "size": 297767
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_us_foreign_policy-metrics.json",
+  "size": 1206
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_us_foreign_policy-predictions.jsonl",
+  "size": 148164
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_virology-metrics.json",
+  "size": 1235
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_virology-predictions.jsonl",
+  "size": 245549
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_world_religions-metrics.json",
+  "size": 1269
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/mmlu_world_religions-predictions.jsonl",
+  "size": 252791
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/openbookqa-metrics.json",
+  "size": 1174
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/openbookqa-predictions.jsonl",
+  "size": 741102
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/piqa-metrics.json",
+  "size": 1198
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/piqa-predictions.jsonl",
+  "size": 1718942
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/socialiqa-metrics.json",
+  "size": 1234
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/socialiqa-predictions.jsonl",
+  "size": 2359223
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/winogrande-metrics.json",
+  "size": 1176
+ },
+ {
+  "path": "sample-evals/dclm-baseline/750M/seed-14/step-25000/winogrande-predictions.jsonl",
+  "size": 1086365
+ },
+ {
+  "path": "summary-metrics.jsonl",
+  "size": 269118300
+ }
+]

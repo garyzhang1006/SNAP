@@ -1,0 +1,11 @@
+{
+  "template_only": true,
+  "seed": 20260914,
+  "required_outputs": [
+    {
+      "job": "C01",
+      "path": "../results/C01",
+      "config_hash": "COPY_EXACT_CONFIG_HASH_FROM_COMPLETED_MANIFEST"
+    }
+  ]
+}

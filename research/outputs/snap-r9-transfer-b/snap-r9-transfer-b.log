@@ -1,0 +1,29 @@
+[{"stream_name":"stdout","time":1.224667007,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":1.224751278,"data":"[source] estimating the transferred correction\n"}
+,{"stream_name":"stdout","time":13.882275363,"data":"[source] {\"name\": \"accuracy_like\", \"rho\": 0.018, \"noise_sd\": 1.45, \"lambda_true\": 1.0779610382569491, \"lambda_hat_mean\": 1.0747208210580272, \"lambda_hat_sd\": 0.09832179546912131, \"undefined\": 0.0}\n"}
+,{"stream_name":"stdout","time":25.705871604,"data":"[target1.0/gap0.0] {\"independence\": 0.0503, \"transferred\": 0.04, \"matched\": 0.058, \"oracle\": 0.0503}\n"}
+,{"stream_name":"stdout","time":25.706573277,"data":"[target1.0/gap1.0] {\"independence\": 0.1111, \"transferred\": 0.0874, \"matched\": 0.1185, \"oracle\": 0.1111}\n"}
+,{"stream_name":"stdout","time":36.425445581,"data":"[target1.05/gap0.0] {\"independence\": 0.0617, \"transferred\": 0.048, \"matched\": 0.0556, \"oracle\": 0.0508}\n"}
+,{"stream_name":"stdout","time":36.426082576,"data":"[target1.05/gap1.0] {\"independence\": 0.1338, \"transferred\": 0.112, \"matched\": 0.1235, \"oracle\": 0.1135}\n"}
+,{"stream_name":"stdout","time":48.754463145,"data":"[target1.1/gap0.0] {\"independence\": 0.0707, \"transferred\": 0.0564, \"matched\": 0.0506, \"oracle\": 0.0469}\n"}
+,{"stream_name":"stdout","time":48.75525246,"data":"[target1.1/gap1.0] {\"independence\": 0.1474, \"transferred\": 0.1222, \"matched\": 0.1141, \"oracle\": 0.1116}\n"}
+,{"stream_name":"stdout","time":59.614354244,"data":"[target1.2/gap0.0] {\"independence\": 0.0998, \"transferred\": 0.0824, \"matched\": 0.0522, \"oracle\": 0.0478}\n"}
+,{"stream_name":"stdout","time":59.614958963,"data":"[target1.2/gap1.0] {\"independence\": 0.1865, \"transferred\": 0.1562, \"matched\": 0.1187, \"oracle\": 0.1099}\n"}
+,{"stream_name":"stdout","time":70.75184569,"data":"[target1.2446/gap0.0] {\"independence\": 0.1166, \"transferred\": 0.0968, \"matched\": 0.0548, \"oracle\": 0.0495}\n"}
+,{"stream_name":"stdout","time":70.752459313,"data":"[target1.2446/gap1.0] {\"independence\": 0.2041, \"transferred\": 0.172, \"matched\": 0.109, \"oracle\": 0.1049}\n"}
+,{"stream_name":"stdout","time":81.672697069,"data":"[target1.3/gap0.0] {\"independence\": 0.1335, \"transferred\": 0.1109, \"matched\": 0.0512, \"oracle\": 0.0504}\n"}
+,{"stream_name":"stdout","time":81.673212807,"data":"[target1.3/gap1.0] {\"independence\": 0.2276, \"transferred\": 0.1986, \"matched\": 0.1139, \"oracle\": 0.112}\n"}
+,{"stream_name":"stdout","time":92.950146392,"data":"[target1.4/gap0.0] {\"independence\": 0.1615, \"transferred\": 0.1345, \"matched\": 0.0521, \"oracle\": 0.0504}\n"}
+,{"stream_name":"stdout","time":92.950822661,"data":"[target1.4/gap1.0] {\"independence\": 0.2594, \"transferred\": 0.2304, \"matched\": 0.1095, \"oracle\": 0.107}\n"}
+,{"stream_name":"stdout","time":104.204175864,"data":"[target1.5/gap0.0] {\"independence\": 0.1994, \"transferred\": 0.1681, \"matched\": 0.0541, \"oracle\": 0.0499}\n"}
+,{"stream_name":"stdout","time":104.204754908,"data":"[target1.5/gap1.0] {\"independence\": 0.2931, \"transferred\": 0.2632, \"matched\": 0.1096, \"oracle\": 0.1061}\n"}
+,{"stream_name":"stdout","time":115.756201729,"data":"[target1.6/gap0.0] {\"independence\": 0.2233, \"transferred\": 0.1915, \"matched\": 0.053, \"oracle\": 0.0495}\n"}
+,{"stream_name":"stdout","time":115.757079422,"data":"[target1.6/gap1.0] {\"independence\": 0.3291, \"transferred\": 0.2948, \"matched\": 0.1087, \"oracle\": 0.1071}\n"}
+,{"stream_name":"stdout","time":115.758297713,"data":"[done] 115s\n"}
+,{"stream_name":"stderr","time":118.979112465,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":118.979175928,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":119.45120382,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":119.451249006,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":121.269513793,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":123.242239519,"data":"[NbConvertApp] Writing 304924 bytes to __results__.html\n"}
+]

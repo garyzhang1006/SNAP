@@ -1,0 +1,19 @@
+[{"stream_name":"stdout","time":1.375118357,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":455.904851627,"data":"[margin/independence] 430s truth 4.595e-03 target_mse 0.0117 obs {\"P0\": 0.0059, \"P1\": 0.0091, \"P1g\": 0.0122, \"P2\": 0.0169, \"P3\": 0.0076, \"P2R\": 0.1313} truth {\"P0\": 0.0051, \"P1\": 0.0081, \"P1g\": 0.0117, \"P2\": 0.0158, \"P3\": 0.0064, \"P2R\": 0.1308}\n"}
+,{"stream_name":"stdout","time":885.309557796,"data":"[margin/equicorrelated] 429s truth 5.716e-03 target_mse 0.0115 obs {\"P0\": 0.0492, \"P1\": 0.0134, \"P1g\": 0.0116, \"P2\": 0.0152, \"P3\": 0.0056, \"P2R\": 0.0506} truth {\"P0\": 0.0558, \"P1\": 0.0109, \"P1g\": 0.0088, \"P2\": 0.016, \"P3\": 0.0051, \"P2R\": 0.0473}\n"}
+,{"stream_name":"stdout","time":1313.756955878,"data":"[margin/matched] 428s truth 5.716e-03 target_mse 0.0111 obs {\"P0\": 0.0534, \"P1\": 0.0108, \"P1g\": 0.0091, \"P2\": 0.0255, \"P3\": 0.0079, \"P2R\": 0.0524} truth {\"P0\": 0.0563, \"P1\": 0.0083, \"P1g\": 0.0064, \"P2\": 0.0247, \"P3\": 0.0056, \"P2R\": 0.0493}\n"}
+,{"stream_name":"stdout","time":1742.361575842,"data":"[accuracy/independence] 429s truth 4.483e-03 target_mse 0.0320 obs {\"P0\": 0.022, \"P1\": 0.0253, \"P1g\": 0.0293, \"P2\": 0.0305, \"P3\": 0.0335, \"P2R\": 0.3426} truth {\"P0\": 0.0068, \"P1\": 0.0097, \"P1g\": 0.0129, \"P2\": 0.0156, \"P3\": 0.0181, \"P2R\": 0.312}\n"}
+,{"stream_name":"stderr","time":2171.159540209,"data":"/kaggle/src/script.py:88: RuntimeWarning: Mean of empty slice\n"}
+,{"stream_name":"stderr","time":2171.159600955,"data":"  per[\"observed\"][m].append(np.nanmean([le(r[m], r[\"obs\"]) for r in rows]))\n"}
+,{"stream_name":"stderr","time":2171.15960646,"data":"/kaggle/src/script.py:89: RuntimeWarning: Mean of empty slice\n"}
+,{"stream_name":"stderr","time":2171.159611102,"data":"  per[\"truth\"][m].append(np.nanmean([le(r[m], truth) for r in rows]))\n"}
+,{"stream_name":"stdout","time":2171.304275707,"data":"[accuracy/equicorrelated] 429s truth 4.905e-03 target_mse 0.0268 obs {\"P0\": 0.0199, \"P1\": 0.0246, \"P1g\": 0.0275, \"P2\": 0.0259, \"P3\": 0.0249, \"P2R\": 0.3595} truth {\"P0\": 0.0142, \"P1\": 0.0159, \"P1g\": 0.0168, \"P2\": 0.0185, \"P3\": 0.015, \"P2R\": 0.3404}\n"}
+,{"stream_name":"stdout","time":2600.701549622,"data":"[accuracy/matched] 429s truth 5.023e-03 target_mse 0.0245 obs {\"P0\": 0.0243, \"P1\": 0.0306, \"P1g\": 0.0275, \"P2\": 0.0329, \"P3\": 0.0298, \"P2R\": 0.3945} truth {\"P0\": 0.0183, \"P1\": 0.02, \"P1g\": 0.0168, \"P2\": 0.0262, \"P3\": 0.0176, \"P2R\": 0.3807}\n"}
+,{"stream_name":"stdout","time":2600.722571858,"data":"[done] 2599s\n"}
+,{"stream_name":"stderr","time":2603.992569166,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2603.992619202,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2604.439719146,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2604.43975157,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2605.69198671,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2607.50257181,"data":"[NbConvertApp] Writing 323091 bytes to __results__.html\n"}
+]

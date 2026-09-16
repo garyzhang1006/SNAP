@@ -1,0 +1,124 @@
+{
+ "design": "R6 the coverage figure the main-text limitation rests on, at five times the replicates.\n\nDesign fixed before running (2026-09-16, written 12:45 EDT). The manuscript's largest disclosed weakness\nis stated as a number. A run effect that follows the size band rather than the recipe takes coverage of\nthe recipe-clustered interval to 0.810 when it holds a quarter of latent variance and to 0.579 at a half,\nand both figures appear in the main text. They came from 2,000 replicates, which puts the Monte Carlo\nstandard error near 0.009 on the first and near 0.011 on the second. A reader deciding how seriously to\ntake a limitation should not have to wonder whether 0.810 is really 0.82, so this run repeats the zero,\nquarter and half cells at 10,000 replicates with a fresh seed, which brings the standard error to about\n0.004. The generator, the four interval constructions and the shipped-estimator check are unchanged, so\nthe two runs compare directly and pool if they agree. The three-quarter cell is dropped, because 0.348 is\nfar enough from nominal that its precision changes nothing a reader would decide differently.\nSeed 20260952 and a cell offset of three thousand keep the draws distinct from the first pass.\n",
+ "seed": 20260952,
+ "reps": 10000,
+ "cells": {
+  "size_shared_0.00": {
+   "name": "size_shared_0.00",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.0,
+   "wild_recipe": {
+    "coverage": 0.9431,
+    "mc_se": 0.002316514407466527,
+    "lower_miss": 0.0158,
+    "upper_miss": 0.0411,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2419638589280645
+   },
+   "wild_size": {
+    "coverage": 0.9504,
+    "mc_se": 0.0021711711125565387,
+    "lower_miss": 0.0128,
+    "upper_miss": 0.0277,
+    "undefined_or_unbounded": 0.0091,
+    "median_width": 0.35801761709745206
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9428,
+    "mc_se": 0.002322243742590343,
+    "lower_miss": 0.0158,
+    "upper_miss": 0.0414,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24148158299328748
+   },
+   "cluster_t_size": {
+    "coverage": 0.9432,
+    "mc_se": 0.0023146006134968505,
+    "lower_miss": 0.0201,
+    "upper_miss": 0.0367,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.30431406539991507
+   }
+  },
+  "size_shared_0.25": {
+   "name": "size_shared_0.25",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.25,
+   "wild_recipe": {
+    "coverage": 0.8227,
+    "mc_se": 0.0038192238740351425,
+    "lower_miss": 0.0748,
+    "upper_miss": 0.1025,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2365807755751982
+   },
+   "wild_size": {
+    "coverage": 0.9185,
+    "mc_se": 0.002736014437096413,
+    "lower_miss": 0.0094,
+    "upper_miss": 0.0416,
+    "undefined_or_unbounded": 0.0305,
+    "median_width": 0.477962094008056
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.8236,
+    "mc_se": 0.003811601238324912,
+    "lower_miss": 0.0743,
+    "upper_miss": 0.1021,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23591137367603654
+   },
+   "cluster_t_size": {
+    "coverage": 0.9344,
+    "mc_se": 0.0024758158251372412,
+    "lower_miss": 0.0113,
+    "upper_miss": 0.0541,
+    "undefined_or_unbounded": 0.0002,
+    "median_width": 0.40624782601940385
+   }
+  },
+  "size_shared_0.50": {
+   "name": "size_shared_0.50",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.5,
+   "wild_recipe": {
+    "coverage": 0.5805,
+    "mc_se": 0.004934772031208737,
+    "lower_miss": 0.175,
+    "upper_miss": 0.2445,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.21880554241546102
+   },
+   "wild_size": {
+    "coverage": 0.7628,
+    "mc_se": 0.004253659130677962,
+    "lower_miss": 0.0073,
+    "upper_miss": 0.0631,
+    "undefined_or_unbounded": 0.1668,
+    "median_width": 0.6975991415105012
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.5777,
+    "mc_se": 0.004939258142676894,
+    "lower_miss": 0.1761,
+    "upper_miss": 0.2462,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2185314886659132
+   },
+   "cluster_t_size": {
+    "coverage": 0.8972,
+    "mc_se": 0.00303697481056396,
+    "lower_miss": 0.0078,
+    "upper_miss": 0.081,
+    "undefined_or_unbounded": 0.014,
+    "median_width": 0.6214629931334669
+   }
+  }
+ },
+ "shipped_check": {
+  "size_shared_0.00": 0.0,
+  "size_shared_0.25": 0.0,
+  "size_shared_0.50": 0.0
+ },
+ "wall_seconds": 1430.300344467163
+}

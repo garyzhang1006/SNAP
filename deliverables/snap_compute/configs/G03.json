@@ -1,0 +1,14 @@
+{
+  "template_only": true,
+  "seed": 20260914,
+  "models": "../inputs/models.json",
+  "protocol_reviewed": false,
+  "protocol_source": "REPLACE_WITH_FROZEN_PROTOCOL_REFERENCE",
+  "dtype": "float16",
+  "device": "cuda:0",
+  "worker": 0,
+  "workers": 1,
+  "records_per_shard": 64,
+  "logit_chunk_tokens": 64,
+  "max_seconds": 27000
+}

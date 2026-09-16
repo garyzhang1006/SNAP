@@ -1,0 +1,233 @@
+{
+ "design": "R6 shared item noise, asking how much of the observed estimate a common half effect could fake.\n\nDesign fixed before running (2026-09-15, written 20:30 EDT). snap-r6-crosshalf shows that item noise\ncorrelated across halves within one benchmark can't manufacture inflation, because it adds the same\nquantity to the numerator and the denominator and pulls the ratio toward one. A different violation\ncan manufacture it. If something in a half is shared across benchmarks and repeats in the opposite\nhalf, such as a formatting artefact or a shared source document, the cross-half product picks up an\noff-diagonal term that the denominator never sees.\n\nThe generator here extends the R6 one. Each half's item noise for benchmark k is\nsigma_k (sqrt(q) f_half + sqrt(1 - q) z_k), where f is a scalar half effect shared by every benchmark\nand z is independent. The two halves' shared effects correlate at rho_f. Only the product q rho_f\nmatters for the cross-half covariance, so the sweep runs over that product with the true seed\ncorrelation held at zero. The run reports the mean estimate, its dispersion, and the share of\nreplicates at or above the observed value, with 2,000 replicates per grid point and seed 20260920.\nA check at zero must return a mean near one, since the generator reduces to the R6 null there.\n",
+ "seed": 20260920,
+ "reps": 2000,
+ "grid": [
+  0.0,
+  0.002,
+  0.005,
+  0.01,
+  0.02,
+  0.05,
+  0.1,
+  0.2,
+  0.4
+ ],
+ "observed": {
+  "margin": 1.2439499117191137,
+  "accuracy": 1.0783733870898096
+ },
+ "curves": {
+  "margin": {
+   "rows": [
+    {
+     "shared_share": 0.0,
+     "n_finite": 2000,
+     "mean": 0.9992895144548597,
+     "sd": 0.055112510217116155,
+     "median": 0.9983624996883248,
+     "p05": 0.9096633737962064,
+     "p95": 1.0895736612915865,
+     "share_at_or_above_observed": 0.0,
+     "seconds": 2.123410940170288
+    },
+    {
+     "shared_share": 0.002,
+     "n_finite": 2000,
+     "mean": 1.004476496976036,
+     "sd": 0.05447824137276533,
+     "median": 1.0043022991911332,
+     "p05": 0.913344605748534,
+     "p95": 1.095416324222187,
+     "share_at_or_above_observed": 0.0,
+     "seconds": 2.104952812194824
+    },
+    {
+     "shared_share": 0.005,
+     "n_finite": 2000,
+     "mean": 1.0106070810915597,
+     "sd": 0.05577411705859937,
+     "median": 1.0101562872043197,
+     "p05": 0.9163540137956508,
+     "p95": 1.100322728825637,
+     "share_at_or_above_observed": 0.0005,
+     "seconds": 2.111780881881714
+    },
+    {
+     "shared_share": 0.01,
+     "n_finite": 2000,
+     "mean": 1.0205989715489405,
+     "sd": 0.05572454816532498,
+     "median": 1.0209453605629797,
+     "p05": 0.9281025092555724,
+     "p95": 1.110336155708614,
+     "share_at_or_above_observed": 0.0,
+     "seconds": 2.1269078254699707
+    },
+    {
+     "shared_share": 0.02,
+     "n_finite": 2000,
+     "mean": 1.0441639047538425,
+     "sd": 0.05408705052191304,
+     "median": 1.0452235522520907,
+     "p05": 0.9549720723814319,
+     "p95": 1.1318159178020506,
+     "share_at_or_above_observed": 0.0,
+     "seconds": 2.10754132270813
+    },
+    {
+     "shared_share": 0.05,
+     "n_finite": 2000,
+     "mean": 1.1107280112654019,
+     "sd": 0.05519122499664352,
+     "median": 1.1126969824970767,
+     "p05": 1.0197140749086466,
+     "p95": 1.2015328065356055,
+     "share_at_or_above_observed": 0.0065,
+     "seconds": 2.093228578567505
+    },
+    {
+     "shared_share": 0.1,
+     "n_finite": 2000,
+     "mean": 1.2049217557165408,
+     "sd": 0.05711802205338115,
+     "median": 1.2043440985789908,
+     "p05": 1.1110851941587756,
+     "p95": 1.2978754375113692,
+     "share_at_or_above_observed": 0.2435,
+     "seconds": 2.0960350036621094
+    },
+    {
+     "shared_share": 0.2,
+     "n_finite": 2000,
+     "mean": 1.366044945765431,
+     "sd": 0.05850126073906814,
+     "median": 1.365295303553141,
+     "p05": 1.27094820836917,
+     "p95": 1.4634917131964298,
+     "share_at_or_above_observed": 0.984,
+     "seconds": 2.1079039573669434
+    },
+    {
+     "shared_share": 0.4,
+     "n_finite": 2000,
+     "mean": 1.6058168285676966,
+     "sd": 0.058395437424547,
+     "median": 1.6052527972884085,
+     "p05": 1.509356590836788,
+     "p95": 1.703836717887895,
+     "share_at_or_above_observed": 1.0,
+     "seconds": 2.13668155670166
+    }
+   ],
+   "monotone": true,
+   "matching_share": 0.12422255666036063
+  },
+  "accuracy": {
+   "rows": [
+    {
+     "shared_share": 0.0,
+     "n_finite": 2000,
+     "mean": 1.0007674936848534,
+     "sd": 0.1003727080840885,
+     "median": 1.0050559158642218,
+     "p05": 0.8295365895933074,
+     "p95": 1.1642084830471808,
+     "share_at_or_above_observed": 0.213,
+     "seconds": 2.1075539588928223
+    },
+    {
+     "shared_share": 0.002,
+     "n_finite": 2000,
+     "mean": 1.0141313837003947,
+     "sd": 0.09936534613766684,
+     "median": 1.019361837858465,
+     "p05": 0.8468685122441684,
+     "p95": 1.170754410169242,
+     "share_at_or_above_observed": 0.2645,
+     "seconds": 2.0920767784118652
+    },
+    {
+     "shared_share": 0.005,
+     "n_finite": 2000,
+     "mean": 1.0393751026984515,
+     "sd": 0.10158491002929818,
+     "median": 1.040972964888117,
+     "p05": 0.8717641258780527,
+     "p95": 1.2026743174923988,
+     "share_at_or_above_observed": 0.355,
+     "seconds": 2.10587739944458
+    },
+    {
+     "shared_share": 0.01,
+     "n_finite": 2000,
+     "mean": 1.0872120319506948,
+     "sd": 0.09202617224254743,
+     "median": 1.0890542734792603,
+     "p05": 0.9336386890747854,
+     "p95": 1.2321691773328836,
+     "share_at_or_above_observed": 0.5425,
+     "seconds": 2.106027364730835
+    },
+    {
+     "shared_share": 0.02,
+     "n_finite": 2000,
+     "mean": 1.1624696930166747,
+     "sd": 0.09143655727016227,
+     "median": 1.1653136271924818,
+     "p05": 1.0095581962482862,
+     "p95": 1.3039718409305066,
+     "share_at_or_above_observed": 0.8215,
+     "seconds": 2.1277260780334473
+    },
+    {
+     "shared_share": 0.05,
+     "n_finite": 2000,
+     "mean": 1.3585148476848472,
+     "sd": 0.08625888951779385,
+     "median": 1.3589411784343446,
+     "p05": 1.2140808344650584,
+     "p95": 1.500372214695472,
+     "share_at_or_above_observed": 0.9985,
+     "seconds": 2.100292921066284
+    },
+    {
+     "shared_share": 0.1,
+     "n_finite": 2000,
+     "mean": 1.600026966438239,
+     "sd": 0.07920080710567336,
+     "median": 1.5985184037726397,
+     "p05": 1.4691599066662515,
+     "p95": 1.7278641053153032,
+     "share_at_or_above_observed": 1.0,
+     "seconds": 2.088751792907715
+    },
+    {
+     "shared_share": 0.2,
+     "n_finite": 2000,
+     "mean": 1.9123575886824686,
+     "sd": 0.07238566377036011,
+     "median": 1.9156581977633218,
+     "p05": 1.789274518410581,
+     "p95": 2.0278549663265646,
+     "share_at_or_above_observed": 1.0,
+     "seconds": 2.0943124294281006
+    },
+    {
+     "shared_share": 0.4,
+     "n_finite": 2000,
+     "mean": 2.256195348622861,
+     "sd": 0.05975922505322297,
+     "median": 2.258004545563833,
+     "p05": 2.1562744307722035,
+     "p95": 2.3512697462719037,
+     "share_at_or_above_observed": 1.0,
+     "seconds": 2.1165637969970703
+    }
+   ],
+   "monotone": true,
+   "matching_share": 0.00907616929022772
+  }
+ },
+ "wall_seconds": 52.21701622009277
+}

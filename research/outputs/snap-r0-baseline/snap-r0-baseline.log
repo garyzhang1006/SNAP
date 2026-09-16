@@ -1,0 +1,82 @@
+[{"stream_name":"stdout","time":1.127540199,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":1.153514223,"data":"Filesystem      Size  Used Avail Use% Mounted on\n"}
+,{"stream_name":"stdout","time":1.153549637,"data":"/dev/loop1       20G  120K   20G   1% /kaggle/working\n"}
+,{"stream_name":"stdout","time":1.159731083,"data":"4\n"}
+,{"stream_name":"stdout","time":1.1934383610000001,"data":"               total        used        free      shared  buff/cache   available\n"}
+,{"stream_name":"stdout","time":1.193500403,"data":"Mem:              31           0          28           0           2          30\n"}
+,{"stream_name":"stdout","time":1.193507536,"data":"Swap:              0           0           0\n"}
+,{"stream_name":"stdout","time":2.155647722,"data":"[env] source at /kaggle/input/datasets/garyzhang11111/seed-noise-src/seed-noise\n"}
+,{"stream_name":"stdout","time":16.650838876999998,"data":"[env] git HEAD present: False\n"}
+,{"stream_name":"stdout","time":22.449891604,"data":"[runs] 375 reduced runs gathered at 21s\n"}
+,{"stream_name":"stdout","time":26.032799343,"data":"[seednoise] ok   estimator recovers Lambda: 1.7294 against 1.6733, K_eff 3.34\n"}
+,{"stream_name":"stdout","time":26.821917166,"data":"[seednoise] ok   null population sits at one: 1.0165\n"}
+,{"stream_name":"stdout","time":80.244757298,"data":"[seednoise] ok   N1 at rbar=0.0: mean 0.9991 against 1.0000, sd 0.0625\n"}
+,{"stream_name":"stdout","time":80.244817062,"data":"[seednoise] ok   N1 at rbar=0.2: mean 1.6751 against 1.6733, sd 0.0738\n"}
+,{"stream_name":"stdout","time":87.869477686,"data":"[seednoise] ok   N2 permutation is centred at one: 0.9984 against an observed 1.7294\n"}
+,{"stream_name":"stdout","time":114.288186448,"data":"[seednoise] ok   N5 hits margin harder than accuracy: margin 1.1523 against accuracy 1.0018\n"}
+,{"stream_name":"stdout","time":114.329147617,"data":"[seednoise] ok   bake-off ranks the structured models first: winner P3\n"}
+,{"stream_name":"stdout","time":114.712118353,"data":"[seednoise] ok   intervals cover the truth: [1.549, 1.808] around 1.673\n"}
+,{"stream_name":"stdout","time":114.714865189,"data":"[seednoise] 0 failures in 89.5s; artifacts in /kaggle/working/selftest\n"}
+,{"stream_name":"stdout","time":114.878023663,"data":"[selftest] done at 114s\n"}
+,{"stream_name":"stdout","time":120.195892763,"data":"[seednoise] built 125 configurations from 375 runs in /kaggle/working/runs\n"}
+,{"stream_name":"stdout","time":120.196483946,"data":"[seednoise] N=125 R=3 K=10 clusters=25\n"}
+,{"stream_name":"stdout","time":120.204486915,"data":"[seednoise] E1 gates: G0=pass, G2=pass, G3=FAIL, G7=FAIL\n"}
+,{"stream_name":"stdout","time":120.811494382,"data":"[seednoise] Lambda[margin] = 1.2439 [1.1429, 1.3377]  K_eff = 6.46\n"}
+,{"stream_name":"stdout","time":120.811532609,"data":"[seednoise] Lambda[accuracy] = 1.0784 [0.9926, 1.1567]  K_eff = 8.60\n"}
+,{"stream_name":"stdout","time":120.880357794,"data":"[seednoise] bake-off winner (margin): P1\n"}
+,{"stream_name":"stdout","time":120.880873211,"data":"[seednoise] gates failed: G3, G7\n"}
+,{"stream_name":"stdout","time":120.880892243,"data":"[seednoise] tables written to /kaggle/working/results\n"}
+,{"stream_name":"stdout","time":121.073276548,"data":"[analyze] done in 6s\n"}
+,{"stream_name":"stdout","time":121.073596922,"data":"\n"}
+,{"stream_name":"stdout","time":121.073616596,"data":"===== tab_primary.csv\n"}
+,{"stream_name":"stdout","time":121.073630644,"data":"phenotype,label,contrast,Lambda,K_eff,rbar_E,sigma_agg,sigma_indep,N,K,df_per_config,t_lo,t_hi,t_se,wild_lo,wild_hi,wild_se,config_lo,config_hi,config_se,retained_excess\n"}
+,{"stream_name":"stdout","time":121.073661271,"data":"\"margin\",\"full contrast set\",\"all\",\"1.24395\",\"6.46241\",\"0.0608235\",\"0.00571586\",\"0.00459493\",\"125\",\"10\",\"2\",\"1.1473\",\"1.33361\",\"0.04501\",\"1.1429\",\"1.33768\",\"0.04501\",\"1.06938\",\"1.42554\",\"0.0928082\",\"\"\n"}
+,{"stream_name":"stdout","time":121.073672615,"data":"\"margin\",\"batch-free contrast\",\"batch_free\",\"1.25558\",\"6.3432\",\"0.0640546\",\"0.00562103\",\"0.00447683\",\"125\",\"10\",\"1\",\"1.10225\",\"1.39213\",\"0.0697585\",\"1.08993\",\"1.40018\",\"0.0697585\",\"1.02938\",\"1.45681\",\"0.108085\",\"\"\n"}
+,{"stream_name":"stdout","time":121.073680623,"data":"\"margin\",\"after competence\",\"all\",\"1.24399\",\"6.46194\",\"0.0608357\",\"0.00570493\",\"0.00458598\",\"125\",\"10\",\"2\",\"1.14684\",\"1.33409\",\"0.0452329\",\"1.14215\",\"1.33961\",\"0.0452329\",\"1.0691\",\"1.42466\",\"0.09275\",\"1.00018\"\n"}
+,{"stream_name":"stdout","time":121.073688461,"data":"\"margin\",\"after gain\",\"all\",\"1.27503\",\"6.15119\",\"0.0695223\",\"0.00513705\",\"0.00402897\",\"125\",\"10\",\"2\",\"1.11742\",\"1.4152\",\"0.0716463\",\"1.1111\",\"1.42094\",\"0.0716463\",\"1.16555\",\"1.38471\",\"0.0565707\",\"1.1274\"\n"}
+,{"stream_name":"stdout","time":121.07369472,"data":"\"margin\",\"after competence and gain\",\"all\",\"1.27574\",\"6.14439\",\"0.0697223\",\"0.00512565\",\"0.0040178\",\"125\",\"10\",\"2\",\"1.11885\",\"1.41534\",\"0.0713417\",\"1.11201\",\"1.42115\",\"0.0713417\",\"1.16645\",\"1.38514\",\"0.0563754\",\"1.13029\"\n"}
+,{"stream_name":"stdout","time":121.073701323,"data":"\"accuracy\",\"full contrast set\",\"all\",\"1.07837\",\"8.59927\",\"0.0180988\",\"0.00514198\",\"0.00476827\",\"125\",\"10\",\"2\",\"0.99753\",\"1.15357\",\"0.037702\",\"0.992604\",\"1.15665\",\"0.037702\",\"0.975546\",\"1.18241\",\"0.0518228\",\"\"\n"}
+,{"stream_name":"stdout","time":121.073707958,"data":"\"accuracy\",\"batch-free contrast\",\"batch_free\",\"1.08379\",\"8.51358\",\"0.0193994\",\"0.00516042\",\"0.00476147\",\"125\",\"10\",\"1\",\"0.958365\",\"1.19613\",\"0.0572534\",\"0.938593\",\"1.20702\",\"0.0572534\",\"0.951654\",\"1.20735\",\"0.0657761\",\"\"\n"}
+,{"stream_name":"stdout","time":121.073715248,"data":"\"accuracy\",\"after competence\",\"all\",\"1.07595\",\"8.63804\",\"0.0175188\",\"0.00511608\",\"0.00475494\",\"125\",\"10\",\"2\",\"0.995524\",\"1.15077\",\"0.0375119\",\"0.991262\",\"1.15374\",\"0.0375119\",\"0.972595\",\"1.17979\",\"0.052273\",\"0.969085\"\n"}
+,{"stream_name":"stdout","time":121.073724857,"data":"\"accuracy\",\"after gain\",\"all\",\"1.09677\",\"8.31321\",\"0.022545\",\"0.00502552\",\"0.0045821\",\"125\",\"10\",\"2\",\"0.993039\",\"1.1915\",\"0.0478832\",\"0.979892\",\"1.19775\",\"0.0478832\",\"0.991836\",\"1.20037\",\"0.0532149\",\"1.23473\"\n"}
+,{"stream_name":"stdout","time":121.073733184,"data":"\"accuracy\",\"after competence and gain\",\"all\",\"1.09415\",\"8.35303\",\"0.0219078\",\"0.00499847\",\"0.00456835\",\"125\",\"10\",\"2\",\"0.989886\",\"1.18931\",\"0.0481124\",\"0.977282\",\"1.19609\",\"0.0481124\",\"0.986622\",\"1.19881\",\"0.0539596\",\"1.20134\"\n"}
+,{"stream_name":"stdout","time":121.073739872,"data":"\n"}
+,{"stream_name":"stdout","time":121.073744188,"data":"\n"}
+,{"stream_name":"stdout","time":121.073749168,"data":"===== tab_gates.csv\n"}
+,{"stream_name":"stdout","time":121.073754234,"data":"gate,condition,passed,fallback,m_cells_parsed,m_cells_expected,m_estimation_configs,m_min_estimation,m_median_ratio,m_min_ratio,m_max_ratio,m_max_z_asymmetry,m_max_relative_asymmetry,m_negative_diagonals,m_min_diagonal,m_has_field,m_field\n"}
+,{"stream_name":"stdout","time":121.073760804,"data":"\"G0\",\"per-item outputs parse for all 125 cells at the common step\",\"yes\",\"drop the cell; below 70 estimation configurations, report at reduced N\",\"125\",\"125\",\"125\",\"70\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"\n"}
+,{"stream_name":"stdout","time":121.073775126,"data":"\"G2\",\"information ratio at least 1.4 on the battery median\",\"yes\",\"the margin loses its more-informative framing; both arms reported flat\",\"\",\"\",\"\",\"\",\"1.60816\",\"1.57111\",\"1.73157\",\"\",\"\",\"\",\"\",\"\",\"\"\n"}
+,{"stream_name":"stdout","time":121.073782535,"data":"\"G3\",\"cross-half covariance is symmetric with a positive diagonal\",\"no\",\"re-split by source document; if still asymmetric, report leakage\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"2.44205\",\"0.0503754\",\"1\",\"-3.15049e-07\",\"\",\"\"\n"}
+,{"stream_name":"stdout","time":121.073789601,"data":"\"G7\",\"a held-out-loss field exists in the DataDecide metadata\",\"no\",\"the competence mediator is the leave-one-trait-out proxy x^(-j)\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"no\",\"\"\n"}
+,{"stream_name":"stdout","time":121.073796438,"data":"\n"}
+,{"stream_name":"stdout","time":121.073818467,"data":"\n"}
+,{"stream_name":"stdout","time":121.073828814,"data":"===== tab_reliability.csv\n"}
+,{"stream_name":"stdout","time":121.073834235,"data":"phenotype,trait,sigma_E2,noise2,reliability\n"}
+,{"stream_name":"stdout","time":121.073863693,"data":"\"margin\",\"arc_challenge\",\"1.5412e-05\",\"1.09757e-05\",\"0.584062\"\n"}
+,{"stream_name":"stdout","time":121.073869737,"data":"\"margin\",\"arc_easy\",\"8.21815e-05\",\"6.50813e-06\",\"0.926619\"\n"}
+,{"stream_name":"stdout","time":121.073875244,"data":"\"margin\",\"boolq\",\"0.00143369\",\"9.75099e-06\",\"0.993245\"\n"}
+,{"stream_name":"stdout","time":121.073881178,"data":"\"margin\",\"csqa\",\"0.000434014\",\"3.28384e-05\",\"0.92966\"\n"}
+,{"stream_name":"stdout","time":121.073886901,"data":"\"margin\",\"hellaswag\",\"6.7254e-07\",\"2.16017e-07\",\"0.75689\"\n"}
+,{"stream_name":"stdout","time":121.073892519,"data":"\"margin\",\"mmlu\",\"1.42063e-05\",\"2.31421e-06\",\"0.859919\"\n"}
+,{"stream_name":"stdout","time":121.073898282,"data":"\"margin\",\"openbookqa\",\"3.25515e-05\",\"5.05757e-05\",\"0.391586\"\n"}
+,{"stream_name":"stdout","time":121.073915223,"data":"\"margin\",\"piqa\",\"7.25654e-07\",\"1.92891e-06\",\"0.273361\"\n"}
+,{"stream_name":"stdout","time":121.073920218,"data":"\"margin\",\"socialiqa\",\"9.8193e-05\",\"1.2403e-05\",\"0.887853\"\n"}
+,{"stream_name":"stdout","time":121.073924937,"data":"\"margin\",\"winogrande\",\"-3.15049e-07\",\"3.99682e-06\",\"-0.0855699\"\n"}
+,{"stream_name":"stdout","time":121.073945336,"data":"\"accuracy\",\"arc_challenge\",\"2.5308e-05\",\"9.94537e-05\",\"0.202851\"\n"}
+,{"stream_name":"stdout","time":121.073951328,"data":"\"accuracy\",\"arc_easy\",\"9.12917e-05\",\"6.04067e-05\",\"0.601797\"\n"}
+,{"stream_name":"stdout","time":121.073957353,"data":"\"accuracy\",\"boolq\",\"0.00191879\",\"5.90912e-05\",\"0.970124\"\n"}
+,{"stream_name":"stdout","time":121.073962244,"data":"\"accuracy\",\"csqa\",\"0.000183335\",\"0.000115007\",\"0.614511\"\n"}
+,{"stream_name":"stdout","time":121.073967058,"data":"\"accuracy\",\"hellaswag\",\"6.29036e-06\",\"7.69808e-06\",\"0.449683\"\n"}
+,{"stream_name":"stdout","time":121.073972225,"data":"\"accuracy\",\"mmlu\",\"3.35289e-07\",\"1.5159e-05\",\"0.0216396\"\n"}
+,{"stream_name":"stdout","time":121.073976942,"data":"\"accuracy\",\"openbookqa\",\"2.31467e-05\",\"0.000231552\",\"0.0908786\"\n"}
+,{"stream_name":"stdout","time":121.073981642,"data":"\"accuracy\",\"piqa\",\"-1.49348e-06\",\"5.40494e-05\",\"-0.0284169\"\n"}
+,{"stream_name":"stdout","time":121.073986569,"data":"\"accuracy\",\"socialiqa\",\"4.95421e-05\",\"6.96218e-05\",\"0.415747\"\n"}
+,{"stream_name":"stdout","time":121.073991454,"data":"\"accuracy\",\"winogrande\",\"-2.2901e-05\",\"0.000247785\",\"-0.101834\"\n"}
+,{"stream_name":"stdout","time":121.073996233,"data":"\n"}
+,{"stream_name":"stderr","time":124.091054999,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":124.09115438,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":124.521400032,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":124.521440488,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":125.594622447,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":127.446658,"data":"[NbConvertApp] Writing 286848 bytes to __results__.html\n"}
+]

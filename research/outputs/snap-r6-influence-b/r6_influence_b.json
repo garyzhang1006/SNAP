@@ -1,0 +1,99 @@
+{
+ "design": "Which residual weighting produces the figures the original analysis record reported.\n\nDesign fixed before running (2026-09-16, written 00:30 EDT). snap-r6-influence shows that the largest\nrecipe's share of squared margin influence is 0.5199 under the plain cluster linearisation, under the\ndelta-method transfer to Lambda, and under the unscaled residual, while the analysis record reported\n0.543 with participation ratios 2.88 and 8.68 against the recomputed 3.081 and 9.016. The record's\nremoval figure does reproduce, so the discrepancy sits in the influence definition rather than in the\ndata or the cluster grouping. Every small-sample correction in this literature multiplies each cluster\nresidual by a function of that cluster's leverage h_g, which is the recipe's share of the denominator\nsum here, and any such correction raises the share held by the heaviest recipe. This run sweeps the\nstandard corrections, which are the plain residual, the CR1 factor sqrt(G/(G-1)), the CR2 factor\n1/sqrt(1-h_g), the CR3 factor 1/(1-h_g), and the jackknife recomputation that drops each recipe and\nrescales, and reports the resulting share and both participation ratios for each. A correction that\nreturns 0.543 with 2.88 and 8.68 explains the record. If none returns them, the record's figures have no\nreproducible definition behind them and the recomputed values stand alone, which is what the paper now\nsays either way.\n",
+ "target": {
+  "max_squared_share": 0.543,
+  "participation_ratio_margin": 2.88,
+  "participation_ratio_accuracy": 8.68
+ },
+ "phenotypes": {
+  "margin": {
+   "theta": 1.5474113828659908,
+   "n_clusters": 25,
+   "max_leverage": 0.1945757498047921,
+   "plain": {
+    "max_squared_share": 0.5199019718929418,
+    "participation_ratio_squared": 3.081484548402492,
+    "participation_ratio_from_abs_weights": 9.257280833717186
+   },
+   "cr1": {
+    "max_squared_share": 0.5199019718929418,
+    "participation_ratio_squared": 3.081484548402491,
+    "participation_ratio_from_abs_weights": 9.257280833717187
+   },
+   "cr2": {
+    "max_squared_share": 0.5291360604052969,
+    "participation_ratio_squared": 2.9980512872724776,
+    "participation_ratio_from_abs_weights": 9.033858764132248
+   },
+   "cr3": {
+    "max_squared_share": 0.5378648758003629,
+    "participation_ratio_squared": 2.921759794062915,
+    "participation_ratio_from_abs_weights": 8.81469237516823
+   },
+   "jackknife": {
+    "max_squared_share": 0.537864875800363,
+    "participation_ratio_squared": 2.9217597940629156,
+    "participation_ratio_from_abs_weights": 8.814692375168242
+   }
+  },
+  "accuracy": {
+   "theta": 1.1628891619835484,
+   "n_clusters": 25,
+   "max_leverage": 0.10908863127550936,
+   "plain": {
+    "max_squared_share": 0.25538550666472665,
+    "participation_ratio_squared": 9.01579268625827,
+    "participation_ratio_from_abs_weights": 16.46308611489956
+   },
+   "cr1": {
+    "max_squared_share": 0.2553855066647267,
+    "participation_ratio_squared": 9.015792686258267,
+    "participation_ratio_from_abs_weights": 16.463086114899564
+   },
+   "cr2": {
+    "max_squared_share": 0.26226026821508486,
+    "participation_ratio_squared": 8.78720314774138,
+    "participation_ratio_from_abs_weights": 16.34127713823647
+   },
+   "cr3": {
+    "max_squared_share": 0.2690767180448358,
+    "participation_ratio_squared": 8.560079239109065,
+    "participation_ratio_from_abs_weights": 16.213692347501322
+   },
+   "jackknife": {
+    "max_squared_share": 0.2690767180448356,
+    "participation_ratio_squared": 8.560079239109069,
+    "participation_ratio_from_abs_weights": 16.213692347501322
+   }
+  }
+ },
+ "match": {
+  "plain": {
+   "share_gap": 0.02309802810705819,
+   "pr_margin_gap": 0.20148454840249208,
+   "pr_accuracy_gap": 0.3357926862582694
+  },
+  "cr1": {
+   "share_gap": 0.02309802810705819,
+   "pr_margin_gap": 0.2014845484024912,
+   "pr_accuracy_gap": 0.33579268625826764
+  },
+  "cr2": {
+   "share_gap": 0.013863939594703112,
+   "pr_margin_gap": 0.11805128727247771,
+   "pr_accuracy_gap": 0.10720314774138018
+  },
+  "cr3": {
+   "share_gap": 0.005135124199637131,
+   "pr_margin_gap": 0.0417597940629153,
+   "pr_accuracy_gap": 0.11992076089093473
+  },
+  "jackknife": {
+   "share_gap": 0.00513512419963702,
+   "pr_margin_gap": 0.041759794062915745,
+   "pr_accuracy_gap": 0.11992076089093118
+  }
+ },
+ "closest_to_record": "jackknife",
+ "wall_seconds": 28.250214099884033
+}

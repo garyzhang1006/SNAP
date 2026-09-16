@@ -1,0 +1,17 @@
+# Vendored Python libraries and build artefacts, reproducible and large.
+work/python/
+work/*.aux
+work/*.log
+work/*.out
+work/*.bbl
+work/*.blg
+
+# Kernel payloads and downloaded datasets. Results are kept, raw arrays are not.
+research/outputs/**/*.npz
+research/outputs/**/*.safetensors
+research/outputs/**/datasets/
+research/outputs/**/requests_audit/
+research/kaggle/**/seed-noise/
+**/__pycache__/
+*.pyc
+.DS_Store

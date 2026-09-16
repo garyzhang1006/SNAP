@@ -1,0 +1,120 @@
+{
+ "design": "Third pass over the record, covering the battery reliability the b run measured with the wrong quantity.\n\nDesign fixed before running (2026-09-16, written 01:30 EDT). The b run tried to check the paper's\nbattery-level rho_g of 0.73 and computed the mean seed correlation instead, which is a different\nquantity and returned 0.0608. The package defines rho_g as Lambda squared over Lambda squared plus\nvbar, where vbar is the ratio of summed item-noise variance to summed seed variance, so this run\ncomputes it that way for both scales. It also recomputes the three information-ratio summaries the\npipeline reported without releasing the individual values, which are a median of 1.61, a minimum of\n1.571 and a maximum of 1.732, and it counts the accuracy traits with negative reliability and with\nreliability below 0.10, recorded as two and two. The planning comparison of 0.49 at Lambda squared\n1.819 is a fixed input rather than a measurement, so it needs no recomputation.\n",
+ "record": {
+  "rho_g": 0.73,
+  "planning_rho_g": 0.49,
+  "planning_lambda2": 1.819,
+  "information_ratio": {
+   "median": 1.61,
+   "min": 1.571,
+   "max": 1.732
+  },
+  "accuracy_reliability_negative": 2,
+  "accuracy_reliability_below_0.10": 2
+ },
+ "recomputed": {
+  "margin": {
+   "lambda_hat": 1.2439499117191137,
+   "lambda_squared": 1.5474113828659908,
+   "vbar": 0.06228657864460282,
+   "rho_g": 0.9613054249095582,
+   "rho_g_at_planning_lambda2": 0.9668914989605263,
+   "n_reliability_negative": 1,
+   "n_reliability_below_0.10": 0,
+   "n_reliability_undefined": 0,
+   "reliability": [
+    0.5840616394414372,
+    0.9266190876695725,
+    0.9932446343227505,
+    0.9296600641664801,
+    0.7568898281508208,
+    0.8599186108723474,
+    0.39158648053523043,
+    0.2733613420997581,
+    0.8878533565109717,
+    -0.08556993181838715
+   ],
+   "traits": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ]
+  },
+  "accuracy": {
+   "lambda_hat": 1.0783733870898096,
+   "lambda_squared": 1.1628891619835482,
+   "vbar": 0.4221524830918434,
+   "rho_g": 0.7336647371988992,
+   "rho_g_at_planning_lambda2": 0.8116359835947211,
+   "n_reliability_negative": 2,
+   "n_reliability_below_0.10": 2,
+   "n_reliability_undefined": 0,
+   "reliability": [
+    0.2028507406946345,
+    0.601797302178434,
+    0.9701240022988321,
+    0.6145114799844066,
+    0.4496825978955789,
+    0.021639566748051255,
+    0.09087863305134439,
+    -0.028416942024631395,
+    0.41574745923642337,
+    -0.10183447644466996
+   ],
+   "traits": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ]
+  },
+  "information_ratio": {
+   "median": 1.608158653069246,
+   "min": 1.5711079783172834,
+   "max": 1.7315689520749649,
+   "per_trait": [
+    1.707340744024495,
+    1.6173149406459306,
+    1.5990023654925614,
+    1.5711079783172834,
+    1.5724652902027756,
+    1.7152645593520888,
+    1.7120256336638626,
+    1.7315689520749649,
+    1.5745028241725527,
+    1.5788338351407405
+   ],
+   "mean_accuracy_per_trait": [
+    0.3164937428896472,
+    0.6114500561167225,
+    0.5875180428134555,
+    0.5093205155035638,
+    0.47844493128858795,
+    0.31187910022379983,
+    0.313744,
+    0.6970939426913314,
+    0.4679085636301604,
+    0.5471607105184033
+   ],
+   "record": {
+    "median": 1.61,
+    "min": 1.571,
+    "max": 1.732
+   }
+  }
+ },
+ "wall_seconds": 24.619797468185425
+}

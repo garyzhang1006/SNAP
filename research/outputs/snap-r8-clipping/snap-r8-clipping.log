@@ -1,0 +1,21 @@
+[{"stream_name":"stdout","time":1.298914996,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":23.752745489,"data":"[margin clip] {\"P0\": 0.0358, \"P1\": 0.0057, \"P1g\": 0.0063, \"P3\": 0.0068} nonpositive [[], ['openbookqa', 'winogrande'], ['winogrande'], ['winogrande'], []]\n"}
+,{"stream_name":"stdout","time":23.763833388,"data":"[margin drop] {\"P0\": 0.0355, \"P1\": 0.0063, \"P1g\": 0.0068, \"P3\": 0.0063} nonpositive [[], ['openbookqa', 'winogrande'], ['winogrande'], ['winogrande'], []]\n"}
+,{"stream_name":"stdout","time":23.774532842,"data":"[margin train_fill] {\"P0\": 0.0351, \"P1\": 0.0039, \"P1g\": 0.0043, \"P3\": 0.0045} nonpositive [[], ['openbookqa', 'winogrande'], ['winogrande'], ['winogrande'], []]\n"}
+,{"stream_name":"stdout","time":83.903351673,"data":"[bootstrap margin clip] 60s {\"P1-P0\": [-0.0585, -0.0006], \"P3-P0\": [-0.0599, -0.0036], \"P1g-P0\": [-0.0591, -0.0021], \"P1-P3\": [-0.0032, 0.0116]}\n"}
+,{"stream_name":"stdout","time":83.905953946,"data":"[bootstrap margin drop] 60s {\"P1-P0\": [-0.0592, -0.003], \"P3-P0\": [-0.06, -0.0035], \"P1g-P0\": [-0.0596, -0.0019], \"P1-P3\": [-0.0027, 0.004]}\n"}
+,{"stream_name":"stdout","time":83.908412133,"data":"[bootstrap margin train_fill] 60s {\"P1-P0\": [-0.0589, 0.0001], \"P3-P0\": [-0.0595, -0.0031], \"P1g-P0\": [-0.059, -0.0018], \"P1-P3\": [-0.0034, 0.0114]}\n"}
+,{"stream_name":"stdout","time":83.94380272,"data":"[accuracy clip] {\"P0\": 0.0143, \"P1\": 0.014, \"P1g\": 0.026, \"P3\": 0.0105} nonpositive [['mmlu', 'winogrande'], ['winogrande'], ['mmlu', 'openbookqa'], ['piqa', 'winogrande'], ['arc_challenge', 'piqa', 'winogrande']]\n"}
+,{"stream_name":"stdout","time":83.954548883,"data":"[accuracy drop] {\"P0\": 0.0152, \"P1\": 0.0154, \"P1g\": 0.0134, \"P3\": 0.009} nonpositive [['mmlu', 'winogrande'], ['winogrande'], ['mmlu', 'openbookqa'], ['piqa', 'winogrande'], ['arc_challenge', 'piqa', 'winogrande']]\n"}
+,{"stream_name":"stdout","time":83.965287406,"data":"[accuracy train_fill] {\"P0\": 0.0142, \"P1\": 0.0122, \"P1g\": 0.027, \"P3\": 0.0118} nonpositive [['mmlu', 'winogrande'], ['winogrande'], ['mmlu', 'openbookqa'], ['piqa', 'winogrande'], ['arc_challenge', 'piqa', 'winogrande']]\n"}
+,{"stream_name":"stdout","time":144.201552504,"data":"[bootstrap accuracy clip] 60s {\"P1-P0\": [-0.0135, 0.0362], \"P3-P0\": [-0.0168, 0.0231], \"P1g-P0\": [-0.0144, 0.0354], \"P1-P3\": [-0.0134, 0.0263]}\n"}
+,{"stream_name":"stdout","time":144.204063538,"data":"[bootstrap accuracy drop] 60s {\"P1-P0\": [-0.0176, 0.0337], \"P3-P0\": [-0.0204, 0.0203], \"P1g-P0\": [-0.0201, 0.0283], \"P1-P3\": [-0.009, 0.0259]}\n"}
+,{"stream_name":"stdout","time":144.206572354,"data":"[bootstrap accuracy train_fill] 60s {\"P1-P0\": [-0.0122, 0.0412], \"P3-P0\": [-0.0154, 0.0256], \"P1g-P0\": [-0.0123, 0.0398], \"P1-P3\": [-0.015, 0.0292]}\n"}
+,{"stream_name":"stdout","time":144.226280269,"data":"[done] 143s\n"}
+,{"stream_name":"stderr","time":147.210942652,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":147.211004981,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":147.576361248,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":147.576392031,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":148.51506638,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":150.221829515,"data":"[NbConvertApp] Writing 317738 bytes to __results__.html\n"}
+]

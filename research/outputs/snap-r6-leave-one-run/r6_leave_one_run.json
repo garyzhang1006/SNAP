@@ -1,0 +1,110 @@
+{
+ "design": "R6 whether one run, or one seed label, carries either conclusion.\n\nDesign fixed before running (2026-09-16, written 00:05 EDT). snap-r6-leave-one-out deleted recipes,\nsize bands, benchmarks and recipe pairs, which covers every way of dropping a column of the design. It\nnever drops a run, and the design has only three of them per configuration, so a single anomalous run\ninside each configuration is the deletion with the least data standing between it and the estimate. The\nrelease also reuses seed labels across recipes, with labels 2, 14 and 15 below 1B and 2, 4 and 5 at 1B,\nso dropping a label is a second deletion that a reader can name. This run does both. It re-estimates\nboth scales on each of the three pairs of runs, which is what remains after one run is deleted, and on\neach population that drops one seed label, with a recipe-clustered wild interval at 4,999 draws in every\ncase. With two runs left the contrast space has one direction rather than two, so the estimator uses\nless information and the intervals should widen, and the run reports the width beside the estimate so\nthat the widening is visible rather than assumed. A conclusion that holds under all six deletions is\none that no single run carries, and one that fails under a particular deletion names the run to check.\n",
+ "traits": [
+  "arc_challenge",
+  "arc_easy",
+  "boolq",
+  "csqa",
+  "hellaswag",
+  "mmlu",
+  "openbookqa",
+  "piqa",
+  "socialiqa",
+  "winogrande"
+ ],
+ "base": {
+  "margin": {
+   "lambda_hat": 1.2439499117191137,
+   "lo": 1.1429001912272696,
+   "hi": 1.3376841038790925,
+   "width": 0.19478391265182293,
+   "excludes_one": true
+  },
+  "accuracy": {
+   "lambda_hat": 1.0783733870898096,
+   "lo": 0.992604456794931,
+   "hi": 1.1566521851337639,
+   "width": 0.16404772833883285,
+   "excludes_one": false
+  }
+ },
+ "leave_one_run": {
+  "drop_slot_0/margin": {
+   "lambda_hat": 1.2555842071680108,
+   "lo": 1.0899322550806705,
+   "hi": 1.4001776870684166,
+   "width": 0.3102454319877461,
+   "excludes_one": true,
+   "kept_run_slots": [
+    1,
+    2
+   ]
+  },
+  "drop_slot_0/accuracy": {
+   "lambda_hat": 1.0837870401377363,
+   "lo": 0.9385925924504341,
+   "hi": 1.2070186154337523,
+   "width": 0.2684260229833182,
+   "excludes_one": false,
+   "kept_run_slots": [
+    1,
+    2
+   ]
+  },
+  "drop_slot_1/margin": {
+   "lambda_hat": 1.2415557296376574,
+   "lo": 1.1383623360955906,
+   "hi": 1.3388928303678314,
+   "width": 0.2005304942722408,
+   "excludes_one": true,
+   "kept_run_slots": [
+    0,
+    2
+   ]
+  },
+  "drop_slot_1/accuracy": {
+   "lambda_hat": 1.1144465843694378,
+   "lo": 0.9857722861303483,
+   "hi": 1.2361971926212545,
+   "width": 0.2504249064909062,
+   "excludes_one": false,
+   "kept_run_slots": [
+    0,
+    2
+   ]
+  },
+  "drop_slot_2/margin": {
+   "lambda_hat": 1.2345582806480158,
+   "lo": 1.0473397102805888,
+   "hi": 1.4031929036033228,
+   "width": 0.355853193322734,
+   "excludes_one": true,
+   "kept_run_slots": [
+    0,
+    1
+   ]
+  },
+  "drop_slot_2/accuracy": {
+   "lambda_hat": 1.0300912102988484,
+   "lo": 0.9120925758689417,
+   "hi": 1.139362225108654,
+   "width": 0.22726964923971227,
+   "excludes_one": false,
+   "kept_run_slots": [
+    0,
+    1
+   ]
+  }
+ },
+ "leave_one_seed_label": {
+  "skipped": true,
+  "reason": "pop.batch indexes run slots rather than seed labels, so the label deletion would repeat the slot deletion, and a label deletion needs the seed identity from the run filenames instead"
+ },
+ "seed_labels_present": [
+  0,
+  1,
+  2
+ ],
+ "batch_holds_slot_indices": true,
+ "wall_seconds": 30.22629714012146
+}

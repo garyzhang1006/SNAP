@@ -1,0 +1,278 @@
+{
+ "design": "R6 cross-half sensitivity, asking how much item-noise correlation would fake the observed estimate.\n\nDesign fixed before running (2026-09-15, written 20:20 EDT). The estimator assumes that item noise in\none half is independent of item noise in the other, and the coverage table shows that a cross-half\ncorrelation of 0.1 biases the estimate by -0.014 while cutting wild coverage to 0.933. The reverse\nquestion decides how much that assumption matters. With no seed covariance at all, how large would\nthe cross-half error correlation have to be before the estimator returns the observed 1.2439 on\nmargins and 1.0784 on accuracy? This run holds the true correlation at zero, sweeps the cross-half\nerror correlation over a grid from 0 to 0.5, and reports the mean estimate, its dispersion, and the\nshare of replicates at or above the observed value, with 1,000 replicates per grid point and seed\n20260919. A monotone interpolation of the mean curve gives the correlation that would reproduce each\nobserved estimate. Negative correlations are included because the bias can go either way.\n",
+ "seed": 20260919,
+ "reps": 1000,
+ "grid": [
+  -0.1,
+  -0.05,
+  -0.02,
+  0.0,
+  0.01,
+  0.02,
+  0.05,
+  0.1,
+  0.2,
+  0.3,
+  0.4,
+  0.5
+ ],
+ "observed": {
+  "margin": 1.2439499117191137,
+  "accuracy": 1.0783733870898096
+ },
+ "curves": {
+  "margin": {
+   "rows": [
+    {
+     "cross_half_error_correlation": -0.1,
+     "n_finite": 1000,
+     "mean": 0.9970183793577654,
+     "sd": 0.05474483431797218,
+     "median": 0.9956256244652122,
+     "share_at_or_above_observed": 0.0,
+     "truth": 1.0,
+     "seconds": 0.9703559875488281
+    },
+    {
+     "cross_half_error_correlation": -0.05,
+     "n_finite": 1000,
+     "mean": 0.9997135748928502,
+     "sd": 0.055624446157072883,
+     "median": 1.0001784418225845,
+     "share_at_or_above_observed": 0.0,
+     "truth": 1.0,
+     "seconds": 0.9429950714111328
+    },
+    {
+     "cross_half_error_correlation": -0.02,
+     "n_finite": 1000,
+     "mean": 0.9970326303255552,
+     "sd": 0.055162934323732316,
+     "median": 0.9962558806378714,
+     "share_at_or_above_observed": 0.0,
+     "truth": 1.0,
+     "seconds": 0.9452364444732666
+    },
+    {
+     "cross_half_error_correlation": 0.0,
+     "n_finite": 1000,
+     "mean": 0.9977164226561722,
+     "sd": 0.056651141511440156,
+     "median": 0.9966606442809836,
+     "share_at_or_above_observed": 0.0,
+     "truth": 1.0,
+     "seconds": 0.9515793323516846
+    },
+    {
+     "cross_half_error_correlation": 0.01,
+     "n_finite": 1000,
+     "mean": 0.9998038584197015,
+     "sd": 0.05355476247096029,
+     "median": 0.9973369875662036,
+     "share_at_or_above_observed": 0.0,
+     "truth": 1.0,
+     "seconds": 0.956228494644165
+    },
+    {
+     "cross_half_error_correlation": 0.02,
+     "n_finite": 1000,
+     "mean": 0.9980203698688532,
+     "sd": 0.0544448426361047,
+     "median": 0.9978112687436633,
+     "share_at_or_above_observed": 0.0,
+     "truth": 1.0,
+     "seconds": 0.9857747554779053
+    },
+    {
+     "cross_half_error_correlation": 0.05,
+     "n_finite": 1000,
+     "mean": 0.9968613232497625,
+     "sd": 0.054383973039195024,
+     "median": 0.9988671639068312,
+     "share_at_or_above_observed": 0.0,
+     "truth": 1.0,
+     "seconds": 0.9584436416625977
+    },
+    {
+     "cross_half_error_correlation": 0.1,
+     "n_finite": 1000,
+     "mean": 0.9983109743615776,
+     "sd": 0.05184469696419941,
+     "median": 0.9967451600785192,
+     "share_at_or_above_observed": 0.0,
+     "truth": 1.0,
+     "seconds": 0.9474337100982666
+    },
+    {
+     "cross_half_error_correlation": 0.2,
+     "n_finite": 1000,
+     "mean": 0.9999214813460979,
+     "sd": 0.05127099851695934,
+     "median": 1.0001144976938612,
+     "share_at_or_above_observed": 0.0,
+     "truth": 1.0,
+     "seconds": 0.9436662197113037
+    },
+    {
+     "cross_half_error_correlation": 0.3,
+     "n_finite": 1000,
+     "mean": 0.9998049717082844,
+     "sd": 0.05058311065789263,
+     "median": 0.9991834968225827,
+     "share_at_or_above_observed": 0.0,
+     "truth": 1.0,
+     "seconds": 0.9727485179901123
+    },
+    {
+     "cross_half_error_correlation": 0.4,
+     "n_finite": 1000,
+     "mean": 1.0011681911900232,
+     "sd": 0.047918822081729616,
+     "median": 1.000848798952537,
+     "share_at_or_above_observed": 0.0,
+     "truth": 1.0,
+     "seconds": 0.9578428268432617
+    },
+    {
+     "cross_half_error_correlation": 0.5,
+     "n_finite": 1000,
+     "mean": 0.9986784135668229,
+     "sd": 0.0461363129362834,
+     "median": 0.9970260004049569,
+     "share_at_or_above_observed": 0.0,
+     "truth": 1.0,
+     "seconds": 0.9660904407501221
+    }
+   ],
+   "monotone": false,
+   "matching_correlation": null
+  },
+  "accuracy": {
+   "rows": [
+    {
+     "cross_half_error_correlation": -0.1,
+     "n_finite": 1000,
+     "mean": 0.9906625609905036,
+     "sd": 0.12037651760200947,
+     "median": 0.994078602643029,
+     "share_at_or_above_observed": 0.242,
+     "truth": 1.0,
+     "seconds": 0.9641666412353516
+    },
+    {
+     "cross_half_error_correlation": -0.05,
+     "n_finite": 1000,
+     "mean": 0.9988131534321136,
+     "sd": 0.11031272358320011,
+     "median": 1.0003326894423215,
+     "share_at_or_above_observed": 0.247,
+     "truth": 1.0,
+     "seconds": 0.9476902484893799
+    },
+    {
+     "cross_half_error_correlation": -0.02,
+     "n_finite": 1000,
+     "mean": 0.9911872520270979,
+     "sd": 0.10340265227518435,
+     "median": 0.9984159687865722,
+     "share_at_or_above_observed": 0.207,
+     "truth": 1.0,
+     "seconds": 0.9509520530700684
+    },
+    {
+     "cross_half_error_correlation": 0.0,
+     "n_finite": 1000,
+     "mean": 0.9929242312064128,
+     "sd": 0.10034956509548097,
+     "median": 0.9991220110051504,
+     "share_at_or_above_observed": 0.189,
+     "truth": 1.0,
+     "seconds": 0.9436547756195068
+    },
+    {
+     "cross_half_error_correlation": 0.01,
+     "n_finite": 1000,
+     "mean": 0.9971024992589205,
+     "sd": 0.09134213449154363,
+     "median": 1.0021507989693124,
+     "share_at_or_above_observed": 0.198,
+     "truth": 1.0,
+     "seconds": 0.971022367477417
+    },
+    {
+     "cross_half_error_correlation": 0.02,
+     "n_finite": 1000,
+     "mean": 0.9953712898980213,
+     "sd": 0.09552777094999519,
+     "median": 1.0000806221458476,
+     "share_at_or_above_observed": 0.192,
+     "truth": 1.0,
+     "seconds": 0.9573347568511963
+    },
+    {
+     "cross_half_error_correlation": 0.05,
+     "n_finite": 1000,
+     "mean": 0.9948998826943134,
+     "sd": 0.08568738530575834,
+     "median": 1.000374052462857,
+     "share_at_or_above_observed": 0.155,
+     "truth": 1.0,
+     "seconds": 0.962122917175293
+    },
+    {
+     "cross_half_error_correlation": 0.1,
+     "n_finite": 1000,
+     "mean": 0.9970959705028545,
+     "sd": 0.08634054017426644,
+     "median": 0.9978887293532166,
+     "share_at_or_above_observed": 0.171,
+     "truth": 1.0,
+     "seconds": 0.9694802761077881
+    },
+    {
+     "cross_half_error_correlation": 0.2,
+     "n_finite": 1000,
+     "mean": 0.9983782605011968,
+     "sd": 0.07197009712149131,
+     "median": 0.9986714055466748,
+     "share_at_or_above_observed": 0.129,
+     "truth": 1.0,
+     "seconds": 0.9653000831604004
+    },
+    {
+     "cross_half_error_correlation": 0.3,
+     "n_finite": 1000,
+     "mean": 0.9974616211740281,
+     "sd": 0.06260237929714962,
+     "median": 0.9983845009299706,
+     "share_at_or_above_observed": 0.102,
+     "truth": 1.0,
+     "seconds": 0.9602806568145752
+    },
+    {
+     "cross_half_error_correlation": 0.4,
+     "n_finite": 1000,
+     "mean": 0.9991232668473494,
+     "sd": 0.060616242682434866,
+     "median": 0.9981452388096581,
+     "share_at_or_above_observed": 0.102,
+     "truth": 1.0,
+     "seconds": 0.9604344367980957
+    },
+    {
+     "cross_half_error_correlation": 0.5,
+     "n_finite": 1000,
+     "mean": 0.9996689022474456,
+     "sd": 0.05349081147939915,
+     "median": 0.9998453104668942,
+     "share_at_or_above_observed": 0.068,
+     "truth": 1.0,
+     "seconds": 0.9585683345794678
+    }
+   ],
+   "monotone": false,
+   "matching_correlation": null
+  }
+ },
+ "wall_seconds": 37.46776080131531
+}

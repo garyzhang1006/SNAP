@@ -1,0 +1,460 @@
+{
+ "design": "R9 the quarter standard deviation gap, which is the only cell the run sweeps never reached.\n\nDesign fixed before running (2026-09-16, written 12:05 EDT). snap-r9-runs-b took the run sweep to 80 runs\nper model and closed the one and the half standard deviation gaps, where four fifths arrives at 16 and 63\nruns. The quarter gap stayed open, because the closed form puts it at 252 runs and the sweep stopped far\nbelow that. A number that large deserves a simulation rather than a normal approximation alone, since the\nplug-in correction carries its own noise and the closed form ignores that entirely. This run sweeps 100,\n140, 180, 220, 252, 300 and 360 runs per model at gaps of zero and a quarter, on both populations, with\n8,000 replicates per combination. It reports the smallest swept count whose corrected rule reaches four\nfifths beside the closed-form prediction, so a reader can see whether estimating the correction costs\nanything at that scale, and it carries the zero gap through so the size claim extends to 360 runs.\nSeed 20260949 and a cell offset of twenty four hundred keep the draws distinct from both earlier sweeps.\n",
+ "seed": 20260949,
+ "reps": 8000,
+ "z": 1.959963984540054,
+ "runs_swept": [
+  100,
+  140,
+  180,
+  220,
+  252,
+  300,
+  360
+ ],
+ "cells": {
+  "margin_like": {
+   "name": "margin_like",
+   "lambda_true": 1.2445882853377657,
+   "lambda_hat_mean": 1.2417993693352651,
+   "lambda_hat_sd": 0.058538017929557214,
+   "undefined_estimates": 0.0,
+   "rules": {
+    "runs100/gap0.0": {
+     "independence": {
+      "declare_rate": 0.12225,
+      "mc_se": 0.003662392276572787
+     },
+     "plug_in": {
+      "declare_rate": 0.05775,
+      "mc_se": 0.0026080389543678218
+     },
+     "oracle": {
+      "declare_rate": 0.055125,
+      "mc_se": 0.00255162287512771
+     }
+    },
+    "runs100/gap0.25": {
+     "independence": {
+      "declare_rate": 0.576375,
+      "mc_se": 0.005524568528118282
+     },
+     "plug_in": {
+      "declare_rate": 0.424125,
+      "mc_se": 0.0055254296707925804
+     },
+     "oracle": {
+      "declare_rate": 0.421125,
+      "mc_se": 0.005520175884595979
+     }
+    },
+    "runs140/gap0.0": {
+     "independence": {
+      "declare_rate": 0.111625,
+      "mc_se": 0.0035207396129045103
+     },
+     "plug_in": {
+      "declare_rate": 0.049625,
+      "mc_se": 0.0024280228421238136
+     },
+     "oracle": {
+      "declare_rate": 0.04725,
+      "mc_se": 0.0023721677190915486
+     }
+    },
+    "runs140/gap0.25": {
+     "independence": {
+      "declare_rate": 0.705875,
+      "mc_se": 0.005094304225983662
+     },
+     "plug_in": {
+      "declare_rate": 0.56125,
+      "mc_se": 0.005548067653471793
+     },
+     "oracle": {
+      "declare_rate": 0.56225,
+      "mc_se": 0.0055466762288329035
+     }
+    },
+    "runs180/gap0.0": {
+     "independence": {
+      "declare_rate": 0.11775,
+      "mc_se": 0.0036035561862554607
+     },
+     "plug_in": {
+      "declare_rate": 0.054625,
+      "mc_se": 0.002540696493459028
+     },
+     "oracle": {
+      "declare_rate": 0.05375,
+      "mc_se": 0.002521431575018446
+     }
+    },
+    "runs180/gap0.25": {
+     "independence": {
+      "declare_rate": 0.7845,
+      "mc_se": 0.004597006498798974
+     },
+     "plug_in": {
+      "declare_rate": 0.655625,
+      "mc_se": 0.005312495404409777
+     },
+     "oracle": {
+      "declare_rate": 0.655375,
+      "mc_se": 0.005313410032349752
+     }
+    },
+    "runs220/gap0.0": {
+     "independence": {
+      "declare_rate": 0.116375,
+      "mc_se": 0.0035852450992749437
+     },
+     "plug_in": {
+      "declare_rate": 0.053125,
+      "mc_se": 0.002507556937912876
+     },
+     "oracle": {
+      "declare_rate": 0.050375,
+      "mc_se": 0.0024453363617046634
+     }
+    },
+    "runs220/gap0.25": {
+     "independence": {
+      "declare_rate": 0.85225,
+      "mc_se": 0.003967365900380252
+     },
+     "plug_in": {
+      "declare_rate": 0.743375,
+      "mc_se": 0.004883244430895816
+     },
+     "oracle": {
+      "declare_rate": 0.743375,
+      "mc_se": 0.004883244430895816
+     }
+    },
+    "runs252/gap0.0": {
+     "independence": {
+      "declare_rate": 0.114125,
+      "mc_se": 0.003554934675472251
+     },
+     "plug_in": {
+      "declare_rate": 0.051,
+      "mc_se": 0.0024596493652551373
+     },
+     "oracle": {
+      "declare_rate": 0.04775,
+      "mc_se": 0.002384060021790559
+     }
+    },
+    "runs252/gap0.25": {
+     "independence": {
+      "declare_rate": 0.886875,
+      "mc_se": 0.0035413227467819145
+     },
+     "plug_in": {
+      "declare_rate": 0.80075,
+      "mc_se": 0.004465834713410249
+     },
+     "oracle": {
+      "declare_rate": 0.801125,
+      "mc_se": 0.0044626748477650715
+     }
+    },
+    "runs300/gap0.0": {
+     "independence": {
+      "declare_rate": 0.11675,
+      "mc_se": 0.0035902548220843604
+     },
+     "plug_in": {
+      "declare_rate": 0.0535,
+      "mc_se": 0.002515893231041413
+     },
+     "oracle": {
+      "declare_rate": 0.053875,
+      "mc_se": 0.0025241950294846473
+     }
+    },
+    "runs300/gap0.25": {
+     "independence": {
+      "declare_rate": 0.92975,
+      "mc_se": 0.0028573356798773228
+     },
+     "plug_in": {
+      "declare_rate": 0.8645,
+      "mc_se": 0.0038265478894167777
+     },
+     "oracle": {
+      "declare_rate": 0.86375,
+      "mc_se": 0.003835458536798436
+     }
+    },
+    "runs360/gap0.0": {
+     "independence": {
+      "declare_rate": 0.11575,
+      "mc_se": 0.003576869048134136
+     },
+     "plug_in": {
+      "declare_rate": 0.0495,
+      "mc_se": 0.0024251224195904007
+     },
+     "oracle": {
+      "declare_rate": 0.0485,
+      "mc_se": 0.002401763674885604
+     }
+    },
+    "runs360/gap0.25": {
+     "independence": {
+      "declare_rate": 0.960875,
+      "mc_se": 0.0021677821147142525
+     },
+     "plug_in": {
+      "declare_rate": 0.918,
+      "mc_se": 0.0030674908312821403
+     },
+     "oracle": {
+      "declare_rate": 0.915875,
+      "mc_se": 0.0031033849337255928
+     }
+    }
+   },
+   "runs_for_four_fifths_plug_in": {
+    "gap0.25": 252
+   },
+   "runs_for_four_fifths_closed_form": {
+    "gap0.25": 252
+   },
+   "size_at_zero_gap": {
+    "runs100": 0.12225,
+    "runs140": 0.111625,
+    "runs180": 0.11775,
+    "runs220": 0.116375,
+    "runs252": 0.114125,
+    "runs300": 0.11675,
+    "runs360": 0.11575
+   },
+   "seconds": 9.990599155426025
+  },
+  "accuracy_like": {
+   "name": "accuracy_like",
+   "lambda_true": 1.0779610382569493,
+   "lambda_hat_mean": 1.0747821311355097,
+   "lambda_hat_sd": 0.09624446763069544,
+   "undefined_estimates": 0.0,
+   "rules": {
+    "runs100/gap0.0": {
+     "independence": {
+      "declare_rate": 0.0635,
+      "mc_se": 0.0027264388403189974
+     },
+     "plug_in": {
+      "declare_rate": 0.048375,
+      "mc_se": 0.002398824174856298
+     },
+     "oracle": {
+      "declare_rate": 0.044875,
+      "mc_se": 0.0023146607304041344
+     }
+    },
+    "runs100/gap0.25": {
+     "independence": {
+      "declare_rate": 0.47675,
+      "mc_se": 0.005584123000749536
+     },
+     "plug_in": {
+      "declare_rate": 0.42875,
+      "mc_se": 0.005533121152432865
+     },
+     "oracle": {
+      "declare_rate": 0.424,
+      "mc_se": 0.005525214927946243
+     }
+    },
+    "runs140/gap0.0": {
+     "independence": {
+      "declare_rate": 0.0705,
+      "mc_se": 0.0028620305291872762
+     },
+     "plug_in": {
+      "declare_rate": 0.056,
+      "mc_se": 0.0025706030420895405
+     },
+     "oracle": {
+      "declare_rate": 0.0525,
+      "mc_se": 0.0024935855208915534
+     }
+    },
+    "runs140/gap0.25": {
+     "independence": {
+      "declare_rate": 0.60425,
+      "mc_se": 0.005467311239311331
+     },
+     "plug_in": {
+      "declare_rate": 0.54975,
+      "mc_se": 0.00556242907258151
+     },
+     "oracle": {
+      "declare_rate": 0.553625,
+      "mc_se": 0.005557926314901539
+     }
+    },
+    "runs180/gap0.0": {
+     "independence": {
+      "declare_rate": 0.064125,
+      "mc_se": 0.002738909097957616
+     },
+     "plug_in": {
+      "declare_rate": 0.051875,
+      "mc_se": 0.0024795156879671076
+     },
+     "oracle": {
+      "declare_rate": 0.046,
+      "mc_se": 0.00234211442931382
+     }
+    },
+    "runs180/gap0.25": {
+     "independence": {
+      "declare_rate": 0.712375,
+      "mc_se": 0.005060840584515086
+     },
+     "plug_in": {
+      "declare_rate": 0.661875,
+      "mc_se": 0.005289098273512698
+     },
+     "oracle": {
+      "declare_rate": 0.66175,
+      "mc_se": 0.0052895762767446695
+     }
+    },
+    "runs220/gap0.0": {
+     "independence": {
+      "declare_rate": 0.06825,
+      "mc_se": 0.0028193957131803973
+     },
+     "plug_in": {
+      "declare_rate": 0.054375,
+      "mc_se": 0.0025352110211725966
+     },
+     "oracle": {
+      "declare_rate": 0.049,
+      "mc_se": 0.0024134777811283038
+     }
+    },
+    "runs220/gap0.25": {
+     "independence": {
+      "declare_rate": 0.79175,
+      "mc_se": 0.004539850458715573
+     },
+     "plug_in": {
+      "declare_rate": 0.744375,
+      "mc_se": 0.004876997787766056
+     },
+     "oracle": {
+      "declare_rate": 0.7465,
+      "mc_se": 0.004863611698110777
+     }
+    },
+    "runs252/gap0.0": {
+     "independence": {
+      "declare_rate": 0.07175,
+      "mc_se": 0.0028853495780407617
+     },
+     "plug_in": {
+      "declare_rate": 0.057875,
+      "mc_se": 0.002610686796012689
+     },
+     "oracle": {
+      "declare_rate": 0.05375,
+      "mc_se": 0.002521431575018446
+     }
+    },
+    "runs252/gap0.25": {
+     "independence": {
+      "declare_rate": 0.835375,
+      "mc_se": 0.004146136897387133
+     },
+     "plug_in": {
+      "declare_rate": 0.7925,
+      "mc_se": 0.0045338139297946495
+     },
+     "oracle": {
+      "declare_rate": 0.7995,
+      "mc_se": 0.004476323128416893
+     }
+    },
+    "runs300/gap0.0": {
+     "independence": {
+      "declare_rate": 0.067125,
+      "mc_se": 0.0027977498631712953
+     },
+     "plug_in": {
+      "declare_rate": 0.052625,
+      "mc_se": 0.0024963876245236837
+     },
+     "oracle": {
+      "declare_rate": 0.0495,
+      "mc_se": 0.0024251224195904007
+     }
+    },
+    "runs300/gap0.25": {
+     "independence": {
+      "declare_rate": 0.892,
+      "mc_se": 0.003470158497821101
+     },
+     "plug_in": {
+      "declare_rate": 0.86,
+      "mc_se": 0.003879432948254165
+     },
+     "oracle": {
+      "declare_rate": 0.86175,
+      "mc_se": 0.003859030602042435
+     }
+    },
+    "runs360/gap0.0": {
+     "independence": {
+      "declare_rate": 0.069625,
+      "mc_se": 0.0028455526566688234
+     },
+     "plug_in": {
+      "declare_rate": 0.053375,
+      "mc_se": 0.0025131183163303317
+     },
+     "oracle": {
+      "declare_rate": 0.050375,
+      "mc_se": 0.0024453363617046634
+     }
+    },
+    "runs360/gap0.25": {
+     "independence": {
+      "declare_rate": 0.9355,
+      "mc_se": 0.002746355539619734
+     },
+     "plug_in": {
+      "declare_rate": 0.915875,
+      "mc_se": 0.0031033849337255928
+     },
+     "oracle": {
+      "declare_rate": 0.918125,
+      "mc_se": 0.0030653605900244434
+     }
+    }
+   },
+   "runs_for_four_fifths_plug_in": {
+    "gap0.25": 300
+   },
+   "runs_for_four_fifths_closed_form": {
+    "gap0.25": 252
+   },
+   "size_at_zero_gap": {
+    "runs100": 0.0635,
+    "runs140": 0.0705,
+    "runs180": 0.064125,
+    "runs220": 0.06825,
+    "runs252": 0.07175,
+    "runs300": 0.067125,
+    "runs360": 0.069625
+   },
+   "seconds": 9.076453685760498
+  }
+ },
+ "wall_seconds": 19.074904918670654
+}

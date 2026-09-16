@@ -1,0 +1,38 @@
+{
+ "design": "R6 null calibration of the leave-one-out sweep, because a deletion sweep invites a false positive.\n\nDesign fixed before running (2026-09-15, written 23:00 EDT). snap-r6-leave-one-out found that the\nfull-battery accuracy interval stops including one under five of the 25 recipe deletions and under one of\nthe five size band deletions, and that every one of those exceptions puts the interval above one. The\npaper now says the deletions move the accuracy conclusion towards more inflation. That sentence is only\nworth keeping if five flips out of 25 is more than a deletion sweep produces by chance, and 25 correlated\ndeletions of the same data give plenty of chances. This run measures the null directly. It simulates two\npopulations with 2,000 replicates each, the first with a true ratio of exactly one under accuracy-like\nitem noise and the second calibrated to the observed 1.078, and for every replicate it computes the full\ninterval and then the 25 leave-one-recipe and five leave-one-band intervals with the shipped\nconstruction. It reports how many deletions flip in each replicate, conditioning on the replicates whose\nfull interval includes one, which is the situation the observed data is in. If five or more flips is\ncommon under a true ratio of one then the sentence in the paper overstates the evidence and has to go. If\nit is rare then the sentence stands with a number attached to it.\n",
+ "seed": 20260930,
+ "reps": 2000,
+ "cells": {
+  "true_one_accuracy_noise": {
+   "name": "true_one_accuracy_noise",
+   "truth": 1.0,
+   "n_rep": 2000,
+   "share_full_includes_one": 0.95,
+   "recipe_flips_mean": 0.3078947368421053,
+   "recipe_flips_median": 0.0,
+   "recipe_flips_p95": 2.0,
+   "recipe_flips_max": 12.0,
+   "share_recipe_flips_at_least_5": 0.020526315789473684,
+   "share_recipe_flips_at_least_1": 0.11578947368421053,
+   "size_flips_mean": 0.13105263157894737,
+   "share_size_flips_at_least_1": 0.10894736842105263,
+   "seconds": 1658.4008948802948
+  },
+  "accuracy_like": {
+   "name": "accuracy_like",
+   "truth": 1.0779610382569493,
+   "n_rep": 2000,
+   "share_full_includes_one": 0.899,
+   "recipe_flips_mean": 0.40044493882091214,
+   "recipe_flips_median": 0.0,
+   "recipe_flips_p95": 3.0,
+   "recipe_flips_max": 12.0,
+   "share_recipe_flips_at_least_5": 0.03170189098998888,
+   "share_recipe_flips_at_least_1": 0.12347052280311457,
+   "size_flips_mean": 0.13125695216907676,
+   "share_size_flips_at_least_1": 0.11345939933259176,
+   "seconds": 1653.9629530906677
+  }
+ },
+ "wall_seconds": 3328.2612240314484
+}

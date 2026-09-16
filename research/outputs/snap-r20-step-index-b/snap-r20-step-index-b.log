@@ -1,0 +1,61 @@
+[{"stream_name":"stdout","time":1.1382333789999999,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":7.569320596,"data":"  dclm-baseline-50p-dolma1.7-50p: 0.50/5.08 GB, 61 runs, 6s\n"}
+,{"stream_name":"stdout","time":12.640342925,"data":"  dclm-baseline-50p-dolma1.7-50p: 1.00/5.08 GB, 125 runs, 11s\n"}
+,{"stream_name":"stdout","time":18.623490264,"data":"  dclm-baseline-50p-dolma1.7-50p: 1.51/5.08 GB, 186 runs, 17s\n"}
+,{"stream_name":"stdout","time":23.532771501,"data":"  dclm-baseline-50p-dolma1.7-50p: 2.01/5.08 GB, 245 runs, 22s\n"}
+,{"stream_name":"stdout","time":28.303096564,"data":"  dclm-baseline-50p-dolma1.7-50p: 2.51/5.08 GB, 305 runs, 27s\n"}
+,{"stream_name":"stdout","time":33.612088795,"data":"  dclm-baseline-50p-dolma1.7-50p: 3.02/5.08 GB, 365 runs, 32s\n"}
+,{"stream_name":"stdout","time":38.468183543,"data":"  dclm-baseline-50p-dolma1.7-50p: 3.53/5.08 GB, 425 runs, 37s\n"}
+,{"stream_name":"stdout","time":43.902083079,"data":"  dclm-baseline-50p-dolma1.7-50p: 4.03/5.08 GB, 483 runs, 43s\n"}
+,{"stream_name":"stdout","time":48.971293826,"data":"  dclm-baseline-50p-dolma1.7-50p: 4.53/5.08 GB, 543 runs, 48s\n"}
+,{"stream_name":"stdout","time":54.148358947,"data":"  dclm-baseline-50p-dolma1.7-50p: 5.04/5.08 GB, 601 runs, 53s\n"}
+,{"stream_name":"stdout","time":54.600761905,"data":"[dclm-baseline-50p-dolma1.7-50p] 605 runs, 5.08 GB in 53s\n"}
+,{"stream_name":"stdout","time":62.005530255,"data":"  dclm-baseline-75p-dolma1.7-25p: 0.50/4.88 GB, 61 runs, 7s\n"}
+,{"stream_name":"stdout","time":66.750309241,"data":"  dclm-baseline-75p-dolma1.7-25p: 1.01/4.88 GB, 125 runs, 12s\n"}
+,{"stream_name":"stdout","time":71.595397383,"data":"  dclm-baseline-75p-dolma1.7-25p: 1.51/4.88 GB, 186 runs, 17s\n"}
+,{"stream_name":"stdout","time":76.02948059,"data":"  dclm-baseline-75p-dolma1.7-25p: 2.01/4.88 GB, 245 runs, 21s\n"}
+,{"stream_name":"stdout","time":81.055656507,"data":"  dclm-baseline-75p-dolma1.7-25p: 2.52/4.88 GB, 305 runs, 26s\n"}
+,{"stream_name":"stdout","time":85.401591291,"data":"  dclm-baseline-75p-dolma1.7-25p: 3.02/4.88 GB, 365 runs, 31s\n"}
+,{"stream_name":"stdout","time":89.939482529,"data":"  dclm-baseline-75p-dolma1.7-25p: 3.53/4.88 GB, 425 runs, 35s\n"}
+,{"stream_name":"stdout","time":94.928442158,"data":"  dclm-baseline-75p-dolma1.7-25p: 4.04/4.88 GB, 483 runs, 40s\n"}
+,{"stream_name":"stdout","time":99.111833468,"data":"  dclm-baseline-75p-dolma1.7-25p: 4.54/4.88 GB, 543 runs, 44s\n"}
+,{"stream_name":"stdout","time":102.344613929,"data":"[dclm-baseline-75p-dolma1.7-25p] 580 runs, 4.88 GB in 48s\n"}
+,{"stream_name":"stdout","time":111.674887731,"data":"  dclm-baseline-top-10p: 0.50/4.64 GB, 61 runs, 9s\n"}
+,{"stream_name":"stdout","time":123.220374457,"data":"  dclm-baseline-top-10p: 1.01/4.64 GB, 121 runs, 21s\n"}
+,{"stream_name":"stdout","time":142.710293959,"data":"  dclm-baseline-top-10p: 1.51/4.64 GB, 181 runs, 40s\n"}
+,{"stream_name":"stdout","time":160.088808625,"data":"  dclm-baseline-top-10p: 2.02/4.64 GB, 240 runs, 58s\n"}
+,{"stream_name":"stdout","time":168.885618485,"data":"  dclm-baseline-top-10p: 2.52/4.64 GB, 300 runs, 66s\n"}
+,{"stream_name":"stdout","time":178.220917657,"data":"  dclm-baseline-top-10p: 3.03/4.64 GB, 356 runs, 76s\n"}
+,{"stream_name":"stdout","time":187.911667868,"data":"  dclm-baseline-top-10p: 3.53/4.64 GB, 415 runs, 85s\n"}
+,{"stream_name":"stdout","time":199.118741793,"data":"  dclm-baseline-top-10p: 4.04/4.64 GB, 471 runs, 97s\n"}
+,{"stream_name":"stdout","time":213.150013173,"data":"  dclm-baseline-top-10p: 4.54/4.64 GB, 530 runs, 111s\n"}
+,{"stream_name":"stdout","time":214.861490381,"data":"[dclm-baseline-top-10p] 539 runs, 4.64 GB in 112s\n"}
+,{"stream_name":"stdout","time":226.903107364,"data":"  dclm-baseline-top-20p: 0.50/4.58 GB, 61 runs, 12s\n"}
+,{"stream_name":"stdout","time":238.360452035,"data":"  dclm-baseline-top-20p: 1.01/4.58 GB, 121 runs, 23s\n"}
+,{"stream_name":"stdout","time":247.677236014,"data":"  dclm-baseline-top-20p: 1.51/4.58 GB, 181 runs, 33s\n"}
+,{"stream_name":"stdout","time":256.730746974,"data":"  dclm-baseline-top-20p: 2.02/4.58 GB, 240 runs, 42s\n"}
+,{"stream_name":"stdout","time":267.719231531,"data":"  dclm-baseline-top-20p: 2.52/4.58 GB, 300 runs, 53s\n"}
+,{"stream_name":"stdout","time":276.318660249,"data":"  dclm-baseline-top-20p: 3.03/4.58 GB, 360 runs, 61s\n"}
+,{"stream_name":"stdout","time":286.23505922,"data":"  dclm-baseline-top-20p: 3.53/4.58 GB, 419 runs, 71s\n"}
+,{"stream_name":"stdout","time":296.120250341,"data":"  dclm-baseline-top-20p: 4.04/4.58 GB, 478 runs, 81s\n"}
+,{"stream_name":"stdout","time":305.663395794,"data":"  dclm-baseline-top-20p: 4.54/4.58 GB, 536 runs, 91s\n"}
+,{"stream_name":"stdout","time":306.529649471,"data":"[dclm-baseline-top-20p] 539 runs, 4.58 GB in 91s\n"}
+,{"stream_name":"stdout","time":317.618962621,"data":"  dclm-baseline-top-fw-10p: 0.50/5.27 GB, 61 runs, 11s\n"}
+,{"stream_name":"stdout","time":329.728459369,"data":"  dclm-baseline-top-fw-10p: 1.01/5.27 GB, 117 runs, 23s\n"}
+,{"stream_name":"stdout","time":339.917374937,"data":"  dclm-baseline-top-fw-10p: 1.52/5.27 GB, 176 runs, 33s\n"}
+,{"stream_name":"stdout","time":349.347650238,"data":"  dclm-baseline-top-fw-10p: 2.02/5.27 GB, 235 runs, 43s\n"}
+,{"stream_name":"stdout","time":358.040014011,"data":"  dclm-baseline-top-fw-10p: 2.53/5.27 GB, 294 runs, 51s\n"}
+,{"stream_name":"stdout","time":366.932893756,"data":"  dclm-baseline-top-fw-10p: 3.03/5.27 GB, 352 runs, 60s\n"}
+,{"stream_name":"stdout","time":378.804272265,"data":"  dclm-baseline-top-fw-10p: 3.54/5.27 GB, 412 runs, 72s\n"}
+,{"stream_name":"stdout","time":387.668328794,"data":"  dclm-baseline-top-fw-10p: 4.05/5.27 GB, 467 runs, 81s\n"}
+,{"stream_name":"stdout","time":396.548265742,"data":"  dclm-baseline-top-fw-10p: 4.55/5.27 GB, 526 runs, 90s\n"}
+,{"stream_name":"stdout","time":406.69312185,"data":"  dclm-baseline-top-fw-10p: 5.05/5.27 GB, 581 runs, 100s\n"}
+,{"stream_name":"stdout","time":410.358479158,"data":"[dclm-baseline-top-fw-10p] 603 runs, 5.27 GB in 104s\n"}
+,{"stream_name":"stdout","time":410.395408552,"data":"[done] 5 of 5 recipes indexed in 409s\n"}
+,{"stream_name":"stderr","time":413.195055546,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":413.19511886,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":413.595285153,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":413.595325015,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":415.323149268,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":416.930727849,"data":"[NbConvertApp] Writing 292794 bytes to __results__.html\n"}
+]

@@ -1,0 +1,105 @@
+{
+ "design": "Recomputation of the recipe influence concentration, to settle two numbers that disagree.\n\nDesign fixed before running (2026-09-15, written 23:55 EDT). Appendix A reports a participation ratio of\n2.88 on margins and 8.68 on accuracy, says that one recipe carries 0.543 of the squared margin influence,\nand says that removing that recipe moves the estimate by at most 0.037. Those figures come from the\noriginal analysis record. The fitted-scenario run snap-r6-matched-a recomputed the same concentration on\nthe same data with cluster_influence and returned 0.5199, which the coverage appendix prints as 0.520.\nBoth passages describe the largest recipe's share of squared influence, so one of them is wrong or the\ntwo use different definitions. This run recomputes every version. It reports the influence vector on\ntheta, its participation ratio under two conventions, the largest share of squared influence, the same\nquantities computed on Lambda rather than on theta through the delta method, the same quantities with\nthe theta residual left unscaled by the denominator, and the change in the estimate from removing each\nrecipe in turn. Whichever definition returns 0.543 is the one Appendix A used, and if none does then the\n0.543 figure doesn't survive and the paper carries the recomputed value.\n",
+ "n_config": 125,
+ "phenotypes": {
+  "margin": {
+   "lambda_hat": 1.2439499117191137,
+   "theta": 1.5474113828659908,
+   "on_theta": {
+    "max_squared_share": 0.5199019718929418,
+    "participation_ratio_squared": 3.081484548402492,
+    "participation_ratio_abs": 3.08148454840249,
+    "participation_ratio_from_abs_weights": 9.257280833717186,
+    "top_share_rank2": 0.2046393743952997,
+    "n_clusters": 25
+   },
+   "on_lambda": {
+    "max_squared_share": 0.519901971892942,
+    "participation_ratio_squared": 3.0814845484024906,
+    "participation_ratio_abs": 3.0814845484024906,
+    "participation_ratio_from_abs_weights": 9.257280833717187,
+    "top_share_rank2": 0.2046393743952997,
+    "n_clusters": 25
+   },
+   "unscaled_residual": {
+    "max_squared_share": 0.5199019718929418,
+    "participation_ratio_squared": 3.081484548402492,
+    "participation_ratio_abs": 3.0814845484024915,
+    "participation_ratio_from_abs_weights": 9.257280833717186,
+    "top_share_rank2": 0.20463937439529967,
+    "n_clusters": 25
+   },
+   "on_cluster_numerator": {
+    "max_squared_share": 0.33704648616741506,
+    "participation_ratio_squared": 4.291221471902848,
+    "participation_ratio_abs": 4.2912214719028485,
+    "participation_ratio_from_abs_weights": 9.035808692303231,
+    "top_share_rank2": 0.23386920270090578,
+    "n_clusters": 25
+   },
+   "on_cluster_denominator": {
+    "max_squared_share": 0.42568201893710633,
+    "participation_ratio_squared": 3.927196372120326,
+    "participation_ratio_abs": 3.927196372120326,
+    "participation_ratio_from_abs_weights": 11.24366455473775,
+    "top_share_rank2": 0.22392774811573468,
+    "n_clusters": 25
+   },
+   "removal": {
+    "max_abs_change": 0.03677935573238478,
+    "median_abs_change": 0.0034050503185143466,
+    "change_for_top_influence_recipe": 0.03677935573238478
+   }
+  },
+  "accuracy": {
+   "lambda_hat": 1.0783733870898096,
+   "theta": 1.1628891619835484,
+   "on_theta": {
+    "max_squared_share": 0.25538550666472665,
+    "participation_ratio_squared": 9.01579268625827,
+    "participation_ratio_abs": 9.01579268625827,
+    "participation_ratio_from_abs_weights": 16.46308611489956,
+    "top_share_rank2": 0.10988605692456302,
+    "n_clusters": 25
+   },
+   "on_lambda": {
+    "max_squared_share": 0.25538550666472665,
+    "participation_ratio_squared": 9.015792686258267,
+    "participation_ratio_abs": 9.015792686258266,
+    "participation_ratio_from_abs_weights": 16.463086114899564,
+    "top_share_rank2": 0.10988605692456305,
+    "n_clusters": 25
+   },
+   "unscaled_residual": {
+    "max_squared_share": 0.25538550666472665,
+    "participation_ratio_squared": 9.01579268625827,
+    "participation_ratio_abs": 9.01579268625827,
+    "participation_ratio_from_abs_weights": 16.46308611489956,
+    "top_share_rank2": 0.10988605692456296,
+    "n_clusters": 25
+   },
+   "on_cluster_numerator": {
+    "max_squared_share": 0.22918415556619937,
+    "participation_ratio_squared": 8.15544820377987,
+    "participation_ratio_abs": 8.15544820377987,
+    "participation_ratio_from_abs_weights": 15.947986579195884,
+    "top_share_rank2": 0.17026877858190614,
+    "n_clusters": 25
+   },
+   "on_cluster_denominator": {
+    "max_squared_share": 0.19670411097044968,
+    "participation_ratio_squared": 9.502486426485959,
+    "participation_ratio_abs": 9.50248642648596,
+    "participation_ratio_from_abs_weights": 16.52929958010134,
+    "top_share_rank2": 0.12334204233612381,
+    "n_clusters": 25
+   },
+   "removal": {
+    "max_abs_change": 0.020547984457319313,
+    "median_abs_change": 0.0059683867072923835,
+    "change_for_top_influence_recipe": 0.020547984457319313
+   }
+  }
+ },
+ "wall_seconds": 23.614038228988647
+}

@@ -1,0 +1,35 @@
+[{"stream_name":"stdout","time":1.146806058,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":16.571068391,"data":"[margin] ec=-0.1 mean 0.9970 sd 0.0547 share 0.000 1s\n"}
+,{"stream_name":"stdout","time":17.514117376,"data":"[margin] ec=-0.05 mean 0.9997 sd 0.0556 share 0.000 1s\n"}
+,{"stream_name":"stdout","time":18.459465988,"data":"[margin] ec=-0.02 mean 0.9970 sd 0.0552 share 0.000 1s\n"}
+,{"stream_name":"stdout","time":19.41099067,"data":"[margin] ec=0.0 mean 0.9977 sd 0.0567 share 0.000 1s\n"}
+,{"stream_name":"stdout","time":20.367346808,"data":"[margin] ec=0.01 mean 0.9998 sd 0.0536 share 0.000 1s\n"}
+,{"stream_name":"stdout","time":21.353189735,"data":"[margin] ec=0.02 mean 0.9980 sd 0.0544 share 0.000 1s\n"}
+,{"stream_name":"stdout","time":22.311771812,"data":"[margin] ec=0.05 mean 0.9969 sd 0.0544 share 0.000 1s\n"}
+,{"stream_name":"stdout","time":23.25925513,"data":"[margin] ec=0.1 mean 0.9983 sd 0.0518 share 0.000 1s\n"}
+,{"stream_name":"stdout","time":24.202940591,"data":"[margin] ec=0.2 mean 0.9999 sd 0.0513 share 0.000 1s\n"}
+,{"stream_name":"stdout","time":25.175761662,"data":"[margin] ec=0.3 mean 0.9998 sd 0.0506 share 0.000 1s\n"}
+,{"stream_name":"stdout","time":26.133689779,"data":"[margin] ec=0.4 mean 1.0012 sd 0.0479 share 0.000 1s\n"}
+,{"stream_name":"stdout","time":27.099813887,"data":"[margin] ec=0.5 mean 0.9987 sd 0.0461 share 0.000 1s\n"}
+,{"stream_name":"stdout","time":27.099855052,"data":"[margin] matching correlation None\n"}
+,{"stream_name":"stdout","time":28.06414932,"data":"[accuracy] ec=-0.1 mean 0.9907 sd 0.1204 share 0.242 1s\n"}
+,{"stream_name":"stdout","time":29.011914956,"data":"[accuracy] ec=-0.05 mean 0.9988 sd 0.1103 share 0.247 1s\n"}
+,{"stream_name":"stdout","time":29.962897316,"data":"[accuracy] ec=-0.02 mean 0.9912 sd 0.1034 share 0.207 1s\n"}
+,{"stream_name":"stdout","time":30.906629084,"data":"[accuracy] ec=0.0 mean 0.9929 sd 0.1003 share 0.189 1s\n"}
+,{"stream_name":"stdout","time":31.877790304,"data":"[accuracy] ec=0.01 mean 0.9971 sd 0.0913 share 0.198 1s\n"}
+,{"stream_name":"stdout","time":32.835135761,"data":"[accuracy] ec=0.02 mean 0.9954 sd 0.0955 share 0.192 1s\n"}
+,{"stream_name":"stdout","time":33.797296812,"data":"[accuracy] ec=0.05 mean 0.9949 sd 0.0857 share 0.155 1s\n"}
+,{"stream_name":"stdout","time":34.766865562,"data":"[accuracy] ec=0.1 mean 0.9971 sd 0.0863 share 0.171 1s\n"}
+,{"stream_name":"stdout","time":35.732192205,"data":"[accuracy] ec=0.2 mean 0.9984 sd 0.0720 share 0.129 1s\n"}
+,{"stream_name":"stdout","time":36.692569797,"data":"[accuracy] ec=0.3 mean 0.9975 sd 0.0626 share 0.102 1s\n"}
+,{"stream_name":"stdout","time":37.653041659,"data":"[accuracy] ec=0.4 mean 0.9991 sd 0.0606 share 0.102 1s\n"}
+,{"stream_name":"stdout","time":38.611666221,"data":"[accuracy] ec=0.5 mean 0.9997 sd 0.0535 share 0.068 1s\n"}
+,{"stream_name":"stdout","time":38.611705858,"data":"[accuracy] matching correlation None\n"}
+,{"stream_name":"stdout","time":38.615373199,"data":"[done] 37s\n"}
+,{"stream_name":"stderr","time":41.388284551,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":41.388328419,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":41.713987047,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":41.714015452,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":42.600235823,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":44.214790632,"data":"[NbConvertApp] Writing 309046 bytes to __results__.html\n"}
+]

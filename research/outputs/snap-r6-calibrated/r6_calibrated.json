@@ -1,0 +1,141 @@
+{
+ "design": "R6 iterated-bootstrap calibration of the shipped interval on the observed data.\n\nDesign fixed before running (2026-09-15, written 22:20 EDT). Two independent lines of evidence now say\nthe shipped wild interval undercovers. The twelve-population simulation puts its coverage between 0.933\nand 0.953 at 10,000 replicates, and ten repeats of the seed-label permutation on these data put it\nbetween 0.915 and 0.942 with a mean of 0.931. A reader is entitled to ask what the reported interval\nbecomes once that shortfall is corrected on the data itself rather than through a construction picked\nin simulation. This run answers that with Beran prepivoting, which is the standard iterated bootstrap\ncalibration and needs no new modelling assumption. For each of 1,999 outer wild resamples it computes\nthe studentised statistic against the observed point, runs a second wild bootstrap of 1,999 draws\ninside that resample, and records the fraction of inner statistics at or below the outer one. Those\nprepivoted values have a uniform distribution when the studentised statistic is correctly calibrated,\nso their empirical 2.5th and 97.5th percentiles give the levels the outer quantiles should be read at.\nThe calibrated interval reports those levels, the nominal levels they replace, and the implied coverage\nof the shipped interval, for the full battery and for the battery without BoolQ on both scales. A\ncalibrated interval that still excludes one leaves the paper's margin conclusion standing under its own\nmeasured miscalibration, and one that includes one is a finding the paper has to report.\n",
+ "traits": [
+  "arc_challenge",
+  "arc_easy",
+  "boolq",
+  "csqa",
+  "hellaswag",
+  "mmlu",
+  "openbookqa",
+  "piqa",
+  "socialiqa",
+  "winogrande"
+ ],
+ "b1": 1999,
+ "b2": 1999,
+ "seed": 20260926,
+ "batteries": {
+  "full/margin": {
+   "lambda_hat": 1.2439499117191137,
+   "n_traits": 10,
+   "shipped": [
+    1.1429001912272694,
+    1.3376841038790925
+   ],
+   "uncalibrated": [
+    1.1404280531059923,
+    1.3351280889147945
+   ],
+   "calibrated": [
+    1.1508733391386061,
+    1.3277937240873268
+   ],
+   "nominal_levels": [
+    0.025,
+    0.975
+   ],
+   "calibrated_levels": [
+    0.0404952476238119,
+    0.9619809904952477
+   ],
+   "implied_coverage_of_nominal": 0.9774887443721861,
+   "n_prepivot_ok": 1999,
+   "n_outer_ok": 1999,
+   "width_plain": 0.19470003580880224,
+   "width_calibrated": 0.17692038494872064,
+   "calibrated_excludes_one": true
+  },
+  "full/accuracy": {
+   "lambda_hat": 1.0783733870898093,
+   "n_traits": 10,
+   "shipped": [
+    0.992604456794931,
+    1.1566521851337637
+   ],
+   "uncalibrated": [
+    0.9935440228876198,
+    1.1587718234104922
+   ],
+   "calibrated": [
+    0.9939387931130778,
+    1.1610691021707038
+   ],
+   "nominal_levels": [
+    0.025,
+    0.975
+   ],
+   "calibrated_levels": [
+    0.021010505252626314,
+    0.974512256128064
+   ],
+   "implied_coverage_of_nominal": 0.9459729864932466,
+   "n_prepivot_ok": 1999,
+   "n_outer_ok": 1999,
+   "width_plain": 0.16522780052287245,
+   "width_calibrated": 0.16713030905762605,
+   "calibrated_excludes_one": false
+  },
+  "without_boolq/margin": {
+   "lambda_hat": 1.785617464617265,
+   "n_traits": 9,
+   "shipped": [
+    1.689103338576665,
+    1.8765174171308665
+   ],
+   "uncalibrated": [
+    1.690647265448244,
+    1.8761584622706244
+   ],
+   "calibrated": [
+    1.689372802864267,
+    1.8776256416604853
+   ],
+   "nominal_levels": [
+    0.025,
+    0.975
+   ],
+   "calibrated_levels": [
+    0.02148574287143572,
+    0.9775137568784392
+   ],
+   "implied_coverage_of_nominal": 0.9374687343671836,
+   "n_prepivot_ok": 1999,
+   "n_outer_ok": 1999,
+   "width_plain": 0.18551119682238038,
+   "width_calibrated": 0.18825283879621835,
+   "calibrated_excludes_one": true
+  },
+  "without_boolq/accuracy": {
+   "lambda_hat": 1.5578291363266619,
+   "n_traits": 9,
+   "shipped": [
+    1.411912196105271,
+    1.6870177418636014
+   ],
+   "uncalibrated": [
+    1.4144954123301832,
+    1.689827416709823
+   ],
+   "calibrated": [
+    1.396269889616217,
+    1.7043703437932574
+   ],
+   "nominal_levels": [
+    0.025,
+    0.975
+   ],
+   "calibrated_levels": [
+    0.011480740370185094,
+    0.9864932466233116
+   ],
+   "implied_coverage_of_nominal": 0.9254627313656828,
+   "n_prepivot_ok": 1999,
+   "n_outer_ok": 1999,
+   "width_plain": 0.2753320043796399,
+   "width_calibrated": 0.30810045417704046,
+   "calibrated_excludes_one": true
+  }
+ },
+ "wall_seconds": 86.13484120368958
+}

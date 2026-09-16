@@ -1,0 +1,176 @@
+{
+ "design": "R6 shared-noise diagnostic, testing whether the observed covariance carries the contamination pattern.\n\nDesign fixed before running (2026-09-15, written 20:45 EDT). snap-r6-sharednoise shows that a scalar\nhalf effect shared by every benchmark, at 0.124 of item-noise variance, reproduces the observed margin\nestimate, and at 0.009 reproduces the observed accuracy estimate. That contamination has a signature.\nIt adds q rho_f sigma_j sigma_k to every cross-half covariance entry, where sigma is the per-half item\nnoise standard deviation, so the off-diagonal entries of the estimated seed covariance should line up\nwith the outer product of those noise scales.\n\nWe regress the off-diagonal entries of the observed seed covariance on the corresponding entries of\nthat outer product, with no intercept, and read the slope as the contamination share that the pattern\nwould imply. We also record the cosine between the two off-diagonal vectors. A recipe-cluster bootstrap\nof 999 draws gives intervals. The null is 500 matched simulations with the observed seed covariance\nand no shared effect, which say what slope and cosine the honest model produces. A second set of 500\nsimulations adds the shared effect at the phenotype's matching share, so the diagnostic's power is\nvisible rather than assumed. The statistic can't separate contamination from a seed covariance that\nhappens to follow the noise scales, and the report says so.\n",
+ "n_boot": 999,
+ "n_rep": 500,
+ "matching_share": {
+  "margin": 0.1242,
+  "accuracy": 0.0091
+ },
+ "traits": [
+  "arc_challenge",
+  "arc_easy",
+  "boolq",
+  "csqa",
+  "hellaswag",
+  "mmlu",
+  "openbookqa",
+  "piqa",
+  "socialiqa",
+  "winogrande"
+ ],
+ "observed": {
+  "margin": {
+   "slope": 1.6745518541469844,
+   "cosine": 0.49399635199925873,
+   "lambda": 1.2439499117191137
+  },
+  "accuracy": {
+   "slope": 0.03274133917273996,
+   "cosine": 0.12754522643223765,
+   "lambda": 1.0783733870898096
+  }
+ },
+ "bootstrap": {
+  "margin": {
+   "slope": {
+    "p025": 0.5336971540382682,
+    "p50": 1.6364503594523452,
+    "p975": 3.067678818439719,
+    "n_finite": 999
+   },
+   "cosine": {
+    "p025": 0.35668317339926786,
+    "p50": 0.49736398830903045,
+    "p975": 0.6766249629218628,
+    "n_finite": 999
+   }
+  },
+  "accuracy": {
+   "slope": {
+    "p025": -0.005651707395466814,
+    "p50": 0.03291954090323302,
+    "p975": 0.07313602522483642,
+    "n_finite": 999
+   },
+   "cosine": {
+    "p025": -0.02146653659433737,
+    "p50": 0.11654042021446481,
+    "p975": 0.2775757942132459,
+    "n_finite": 999
+   }
+  }
+ },
+ "null": {
+  "margin": {
+   "slope": {
+    "mean": 1.6823331520817804,
+    "sd": 0.31220845973401357,
+    "p05": 1.1735796745570595,
+    "median": 1.6607323551135162,
+    "p95": 2.220105945484375,
+    "share_at_or_above_observed": 0.484
+   },
+   "cosine": {
+    "mean": 0.4848640743488684,
+    "sd": 0.09693246210912547,
+    "p05": 0.32471734282422826,
+    "median": 0.48711977961629216,
+    "p95": 0.6426245237378514,
+    "share_at_or_above_observed": 0.462
+   },
+   "lambda": {
+    "mean": 1.2439178982310457,
+    "sd": 0.04854087715573962,
+    "p05": 1.1674822284906505,
+    "median": 1.2421457981361754,
+    "p95": 1.3272535888003643,
+    "share_at_or_above_observed": 0.49
+   },
+   "psd_clipped": 2.5788848350259737e-07
+  },
+  "accuracy": {
+   "slope": {
+    "mean": 0.03067042136716314,
+    "sd": 0.01890515162263423,
+    "p05": -0.0021261348871779704,
+    "median": 0.03053199832612681,
+    "p95": 0.06241714413407962,
+    "share_at_or_above_observed": 0.452
+   },
+   "cosine": {
+    "mean": 0.18838820201727977,
+    "sd": 0.1146365528810991,
+    "p05": -0.01048217530371136,
+    "median": 0.18982743084320908,
+    "p95": 0.3809251130300897,
+    "share_at_or_above_observed": 0.692
+   },
+   "lambda": {
+    "mean": 1.115348194487394,
+    "sd": 0.06524859334713812,
+    "p05": 1.01105168699434,
+    "median": 1.116606611679062,
+    "p95": 1.2239799930713453,
+    "share_at_or_above_observed": 0.708
+   },
+   "psd_clipped": 1.393745415647441e-05
+  }
+ },
+ "power": {
+  "margin": {
+   "slope": {
+    "mean": 1.8079048981856436,
+    "sd": 0.32544092223571364,
+    "p05": 1.289863414012221,
+    "median": 1.7825857129636464,
+    "p95": 2.370894218600029,
+    "share_at_or_above_observed": 0.64
+   },
+   "cosine": {
+    "mean": 0.5109018730699241,
+    "sd": 0.09666068895246398,
+    "p05": 0.3501858835947336,
+    "median": 0.5134245401761555,
+    "p95": 0.6673637603948018,
+    "share_at_or_above_observed": 0.58
+   },
+   "lambda": {
+    "mean": 1.2613038015159415,
+    "sd": 0.04921352906029435,
+    "p05": 1.1839134847722663,
+    "median": 1.2598334113253917,
+    "p95": 1.3452953876120297,
+    "share_at_or_above_observed": 0.62
+   },
+   "psd_clipped": 2.5788848350259737e-07
+  },
+  "accuracy": {
+   "slope": {
+    "mean": 0.035643317279485574,
+    "sd": 0.019403410825833408,
+    "p05": 0.0036325994294390306,
+    "median": 0.03530413850374867,
+    "p95": 0.06869365411524304,
+    "share_at_or_above_observed": 0.558
+   },
+   "cosine": {
+    "mean": 0.21690108655383636,
+    "sd": 0.11655347842254353,
+    "p05": 0.018840603293047303,
+    "median": 0.21942829453718318,
+    "p95": 0.41780289107191804,
+    "share_at_or_above_observed": 0.78
+   },
+   "lambda": {
+    "mean": 1.1304872839665783,
+    "sd": 0.06597605136365979,
+    "p05": 1.021542678814751,
+    "median": 1.1319572789189378,
+    "p95": 1.242016333441122,
+    "share_at_or_above_observed": 0.796
+   },
+   "psd_clipped": 1.393745415647441e-05
+  }
+ },
+ "wall_seconds": 2822.762983083725
+}

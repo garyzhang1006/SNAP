@@ -1,0 +1,19 @@
+[{"stream_name":"stdout","time":1.059158375,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":20.927837021,"data":"[gain] {\"gain_sd\": 0.04197629368650801, \"gain_var\": 0.001762009231655972, \"leak_var\": 0.0019053067953328667, \"total_var\": 0.0036673160269888386, \"gain_sd_raw\": 0.0630228489768214, \"negative\": false} lambda {'margin': 1.2439499117191137, 'accuracy': 1.0783733870898096}\n"}
+,{"stream_name":"stdout","time":21.836546979,"data":"[bootstrap] {\"draws\": 999, \"p025\": 0.011478844034824472, \"p50\": 0.04082541625298848, \"p975\": 0.06309442534181899, \"share_nonpositive_variance\": 0.009009009009009009, \"sd\": 0.01292320483276171}\n"}
+,{"stream_name":"stdout","time":376.417617214,"data":"[estimate/default] g=0.0420 355s margin {'mean': 1.105376525095071, 'sd': 0.04683269109762651, 'n': 300} accuracy {'mean': 0.9957764273197847, 'sd': 0.04474293783190112, 'n': 300} share 0.432\n"}
+,{"stream_name":"stdout","time":734.983329057,"data":"[estimate/matched] g=0.0420 359s margin {'mean': 1.0123323547767324, 'sd': 0.03707917183522454, 'n': 300} accuracy {'mean': 0.9970561356930784, 'sd': 0.03793593406904412, 'n': 300} share 0.051\n"}
+,{"stream_name":"stdout","time":1092.733813229,"data":"[boot_p025/default] g=0.0115 358s margin {'mean': 1.0057755866906573, 'sd': 0.04326495122998641, 'n': 300} accuracy {'mean': 0.9957764273197847, 'sd': 0.04474293783190112, 'n': 300} share 0.024\n"}
+,{"stream_name":"stdout","time":1451.827342521,"data":"[boot_p025/matched] g=0.0115 359s margin {'mean': 0.9985653849122121, 'sd': 0.03401456421666262, 'n': 300} accuracy {'mean': 0.9970561356930784, 'sd': 0.03793593406904412, 'n': 300} share -0.006\n"}
+,{"stream_name":"stdout","time":1811.795517548,"data":"[boot_p50/default] g=0.0408 360s margin {'mean': 1.0999385838950617, 'sd': 0.04666515900848851, 'n': 300} accuracy {'mean': 0.9957764273197847, 'sd': 0.04474293783190112, 'n': 300} share 0.410\n"}
+,{"stream_name":"stdout","time":2168.741762343,"data":"[boot_p50/matched] g=0.0408 357s margin {'mean': 1.0115796936759425, 'sd': 0.03692167119133056, 'n': 300} accuracy {'mean': 0.9970561356930784, 'sd': 0.03793593406904412, 'n': 300} share 0.047\n"}
+,{"stream_name":"stdout","time":2527.546205807,"data":"[boot_p975/default] g=0.0631 359s margin {'mean': 1.2212406882114404, 'sd': 0.050038421862683646, 'n': 300} accuracy {'mean': 0.9957764273197847, 'sd': 0.04474293783190112, 'n': 300} share 0.907\n"}
+,{"stream_name":"stdout","time":2890.083405763,"data":"[boot_p975/matched] g=0.0631 363s margin {'mean': 1.0283972963552397, 'sd': 0.040025097431886494, 'n': 300} accuracy {'mean': 0.9970561356930784, 'sd': 0.03793593406904412, 'n': 300} share 0.116\n"}
+,{"stream_name":"stdout","time":2890.104814461,"data":"[done] 2889s\n"}
+,{"stream_name":"stderr","time":2892.883733858,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2892.883899718,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2893.212720318,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2893.212753845,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2894.095897887,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2895.684301021,"data":"[NbConvertApp] Writing 308373 bytes to __results__.html\n"}
+]

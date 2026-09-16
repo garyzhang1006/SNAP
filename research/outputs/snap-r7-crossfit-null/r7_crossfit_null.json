@@ -1,0 +1,306 @@
+{
+ "design": "R7 cross-fitted proxies against known seed covariance, so their adjusted values can be read.\n\nDesign fixed before running (2026-09-15, written 19:55 EDT). snap-r7-crossfit reports cross-fitted\ninflation of 0.9725 for the one-factor proxy on margins, together with an independence null near one.\nAn independence null only shows that a proxy doesn't create covariance. It doesn't say what a proxy\nreturns when the covariance is real and no competence variable exists, which is the value the\nobserved number must be read against. This run therefore repeats the four cross-fitted weightings on\n300 simulated populations for each of the three structures of Table 11, which are independence, a\nsingle common correlation that reproduces the observed inflation, and the nearest positive\nsemidefinite matrix to the observed seed covariance. The proxy code, the folds and the seeds follow\nsnap-r7-crossfit, and the simulator follows snap-r7-proxy-null2.\n",
+ "variants": [
+  "shipped",
+  "shrunk",
+  "factor",
+  "clip_drop"
+ ],
+ "n_folds": 5,
+ "n_rep": 300,
+ "traits": [
+  "arc_challenge",
+  "arc_easy",
+  "boolq",
+  "csqa",
+  "hellaswag",
+  "mmlu",
+  "openbookqa",
+  "piqa",
+  "socialiqa",
+  "winogrande"
+ ],
+ "observed": {
+  "margin": {
+   "unadjusted": 1.2439499117191137,
+   "shipped": 1.2453798709938577,
+   "shrunk": 0.7307216447059117,
+   "factor": 0.9725039247102899,
+   "clip_drop": 0.8889785059005512
+  },
+  "accuracy": {
+   "unadjusted": 1.0783733870898096,
+   "shipped": 1.0728453487732936,
+   "shrunk": 1.0041410032891818,
+   "factor": 1.0167293041491943,
+   "clip_drop": 0.9936410885404439
+  }
+ },
+ "cells": {
+  "margin/independence": {
+   "r": null,
+   "psd_clipped": null,
+   "unadjusted": {
+    "n_finite": 300,
+    "mean": 0.9999576188300429,
+    "sd": 0.032281571065336995,
+    "p05": 0.9528151804222478,
+    "median": 0.9967681333034846,
+    "p95": 1.0589893676775934
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 1.000487404749085,
+    "sd": 0.0296823809602303,
+    "p05": 0.9559877618286527,
+    "median": 0.998884970208599,
+    "p95": 1.0545638179007661
+   },
+   "shrunk": {
+    "n_finite": 300,
+    "mean": 1.0022660732668631,
+    "sd": 0.01970007116010974,
+    "p05": 0.9702373181704594,
+    "median": 1.0008623294608794,
+    "p95": 1.0335270050788246
+   },
+   "factor": {
+    "n_finite": 300,
+    "mean": 0.9986595544074881,
+    "sd": 0.025938868252046946,
+    "p05": 0.9591043574763604,
+    "median": 0.9994705191594048,
+    "p95": 1.0415223591648481
+   },
+   "clip_drop": {
+    "n_finite": 300,
+    "mean": 1.0007359519627521,
+    "sd": 0.022973984478926734,
+    "p05": 0.9658398289383783,
+    "median": 1.000460603495851,
+    "p95": 1.0374179496344753
+   }
+  },
+  "margin/equicorrelated": {
+   "r": 0.1779555494603412,
+   "psd_clipped": null,
+   "unadjusted": {
+    "n_finite": 300,
+    "mean": 1.2421170903866217,
+    "sd": 0.03653074638196605,
+    "p05": 1.1886130339538794,
+    "median": 1.2392363135295064,
+    "p95": 1.3075307208210565
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 1.1663478547697614,
+    "sd": 0.08099591256098115,
+    "p05": 1.02785694716309,
+    "median": 1.180991791234721,
+    "p95": 1.283657663938498
+   },
+   "shrunk": {
+    "n_finite": 300,
+    "mean": 0.8747066238305733,
+    "sd": 0.02280719235877332,
+    "p05": 0.839121456161978,
+    "median": 0.8736182377978235,
+    "p95": 0.910897887321767
+   },
+   "factor": {
+    "n_finite": 300,
+    "mean": 0.8523672361500246,
+    "sd": 0.032913714367627724,
+    "p05": 0.7994652153367724,
+    "median": 0.850432035564777,
+    "p95": 0.9076745168196965
+   },
+   "clip_drop": {
+    "n_finite": 300,
+    "mean": 1.0234515833740485,
+    "sd": 0.05960103642611829,
+    "p05": 0.9278753713608214,
+    "median": 1.0266937030413952,
+    "p95": 1.1164242524779864
+   }
+  },
+  "margin/matched": {
+   "r": null,
+   "psd_clipped": 2.5788848350259737e-07,
+   "unadjusted": {
+    "n_finite": 300,
+    "mean": 1.2430845709373444,
+    "sd": 0.0511434895165933,
+    "p05": 1.1578344186856637,
+    "median": 1.2406201157654961,
+    "p95": 1.330529529600829
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 1.097331364090609,
+    "sd": 0.09039570123782179,
+    "p05": 0.9713893849198707,
+    "median": 1.0795677240312482,
+    "p95": 1.253029512918992
+   },
+   "shrunk": {
+    "n_finite": 300,
+    "mean": 0.7449862938392506,
+    "sd": 0.0223923330064188,
+    "p05": 0.7095231968195347,
+    "median": 0.7436891300171493,
+    "p95": 0.7818969515605583
+   },
+   "factor": {
+    "n_finite": 300,
+    "mean": 0.979583291863285,
+    "sd": 0.014793083235802309,
+    "p05": 0.9585451486380054,
+    "median": 0.9786937168624804,
+    "p95": 1.0053086558743374
+   },
+   "clip_drop": {
+    "n_finite": 300,
+    "mean": 1.0288547408326598,
+    "sd": 0.0655350805516619,
+    "p05": 0.9076126818026939,
+    "median": 1.0280047691386276,
+    "p95": 1.128562453435848
+   }
+  },
+  "accuracy/independence": {
+   "r": null,
+   "psd_clipped": null,
+   "unadjusted": {
+    "n_finite": 300,
+    "mean": 0.997976727449564,
+    "sd": 0.05776874228411645,
+    "p05": 0.9071253876820774,
+    "median": 0.99925138451596,
+    "p95": 1.090137680282273
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 0.9982787030973401,
+    "sd": 0.056737965388590134,
+    "p05": 0.9081642374256091,
+    "median": 0.9997071736297863,
+    "p95": 1.0861286454692098
+   },
+   "shrunk": {
+    "n_finite": 300,
+    "mean": 0.9998088652031087,
+    "sd": 0.04137621868462533,
+    "p05": 0.9313231787737706,
+    "median": 0.9980343609930904,
+    "p95": 1.0645954420927597
+   },
+   "factor": {
+    "n_finite": 300,
+    "mean": 0.9987772181686458,
+    "sd": 0.05484512446813584,
+    "p05": 0.9105977448612005,
+    "median": 0.9997221863791432,
+    "p95": 1.0820956326402253
+   },
+   "clip_drop": {
+    "n_finite": 300,
+    "mean": 0.9988395469625104,
+    "sd": 0.04958535687506982,
+    "p05": 0.9160655442054767,
+    "median": 1.0000838156186127,
+    "p95": 1.0711486797319134
+   }
+  },
+  "accuracy/equicorrelated": {
+   "r": 0.07118216252506011,
+   "psd_clipped": null,
+   "unadjusted": {
+    "n_finite": 300,
+    "mean": 1.0926348967039765,
+    "sd": 0.057536163146474736,
+    "p05": 1.0007340283232233,
+    "median": 1.0924504962729849,
+    "p95": 1.1842761068224839
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 1.0915502060066502,
+    "sd": 0.05573056919165043,
+    "p05": 0.9962943542157755,
+    "median": 1.0915886946968043,
+    "p95": 1.1783992258619103
+   },
+   "shrunk": {
+    "n_finite": 300,
+    "mean": 1.0606038948005234,
+    "sd": 0.03777011298665943,
+    "p05": 0.9998119019500822,
+    "median": 1.0585854990513774,
+    "p95": 1.1218190292501597
+   },
+   "factor": {
+    "n_finite": 300,
+    "mean": 1.0792535611944094,
+    "sd": 0.04847400184073594,
+    "p05": 0.9969704804045717,
+    "median": 1.0778334657479667,
+    "p95": 1.1552553647087223
+   },
+   "clip_drop": {
+    "n_finite": 300,
+    "mean": 1.0738592549733594,
+    "sd": 0.0468663897016989,
+    "p05": 0.9983665632995813,
+    "median": 1.071134743027215,
+    "p95": 1.1484497164564833
+   }
+  },
+  "accuracy/matched": {
+   "r": null,
+   "psd_clipped": 1.393745415647441e-05,
+   "unadjusted": {
+    "n_finite": 300,
+    "mean": 1.115695655889787,
+    "sd": 0.06042601099745555,
+    "p05": 1.0074922768677343,
+    "median": 1.1144002451044561,
+    "p95": 1.20995990496742
+   },
+   "shipped": {
+    "n_finite": 300,
+    "mean": 1.1088512213764352,
+    "sd": 0.05708980564677075,
+    "p05": 1.0141553488051491,
+    "median": 1.1049460392914006,
+    "p95": 1.2000287959468463
+   },
+   "shrunk": {
+    "n_finite": 300,
+    "mean": 1.0484964100166947,
+    "sd": 0.03619596308937857,
+    "p05": 0.9931356941726437,
+    "median": 1.045428866838999,
+    "p95": 1.1064242020899422
+   },
+   "factor": {
+    "n_finite": 300,
+    "mean": 1.066035972677569,
+    "sd": 0.04741795985569819,
+    "p05": 0.996696473090708,
+    "median": 1.0638798058786216,
+    "p95": 1.1503967312656673
+   },
+   "clip_drop": {
+    "n_finite": 300,
+    "mean": 1.07238797528217,
+    "sd": 0.045841408830590055,
+    "p05": 1.0026521734170186,
+    "median": 1.0710113758300404,
+    "p95": 1.1510754077002172
+   }
+  }
+ },
+ "wall_seconds": 2520.206290960312
+}

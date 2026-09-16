@@ -1,0 +1,118 @@
+{
+ "design": "R12 analysis: OBSERVED PolyPythias transport and adjacent-checkpoint numbers from the new rescore.\n\nDesign fixed before the rescore finished (2026-09-15, 17:50 EDT). Inputs are the 63 runs written\nby snap-r12-polypythias with the original seednoise scorer on T4 GPUs with a 6,000-token cap.\n1. Transport. build_population on runs-arm2 with nine runs per configuration, for the three\n   sizes 70m, 160m, 410m and for all five sizes. Margin and accuracy Lambda, K_eff, the\n   configuration bootstrap interval (4,999 draws, seed 0) with its SE, and the excess ratio\n   (Lambda_PP - 1) / (Lambda_DD - 1) against DataDecide margin 1.243949911719114 and accuracy\n   1.0783733870898093. Reported values for comparison are 1.41372, 1.26199, 2.28589, 1.71085,\n   intervals 0.939 to 1.781 and 0.927 to 1.537, SEs 0.190 and 0.150.\n2. Adjacent checkpoints. The nine 160m runs at step143000 and step142000 on the nested 200-per-task\n   sample of nine non-MMLU traits. A run's aggregate is the equal-weight mean over traits of its\n   mean item score. Between-run SD (ddof 1) at step143000, RMS of the step change, their ratio,\n   and the across-run correlation of the two steps' aggregates, for margins and accuracy, plus the\n   same numbers for BoolQ alone. Reported values are 0.00513, 0.00456, 0.890, 0.573 for margins,\n   0.00451, 0.00710, 1.573, -0.070 for accuracy, and BoolQ margin SD 0.0438 with shift 0.0370.\n",
+ "transport": {
+  "three_sizes": {
+   "N": 3,
+   "R": 9,
+   "K": 10,
+   "dropped": [],
+   "margin": {
+    "Lambda": 1.4137201433906592,
+    "K_eff": 5.003490825901467,
+    "excess_ratio": 1.6959224968567326,
+    "config_lo": 0.939008039725714,
+    "config_hi": 1.7814714233453306,
+    "config_se": 0.19020603034027178
+   },
+   "accuracy": {
+    "Lambda": 2.2858883052946526,
+    "K_eff": 1.9137710844712623,
+    "excess_ratio": 16.407205979513584,
+    "config_lo": NaN,
+    "config_hi": 2.9707148363695604,
+    "config_se": 0.5774801138128745
+   }
+  },
+  "five_sizes": {
+   "N": 5,
+   "R": 9,
+   "K": 10,
+   "dropped": [],
+   "margin": {
+    "Lambda": 1.2619855939956985,
+    "K_eff": 6.279010443172716,
+    "excess_ratio": 1.0739319073718339,
+    "config_lo": 0.9266236847341515,
+    "config_hi": 1.5370107623795897,
+    "config_se": 0.15015305169276144
+   },
+   "accuracy": {
+    "Lambda": 1.7108480412944274,
+    "K_eff": 3.416466181699544,
+    "excess_ratio": 9.070018123369543,
+    "config_lo": 0.8686946646268198,
+    "config_hi": 2.427899473655094,
+    "config_se": 0.4383965597508756
+   }
+  }
+ },
+ "adjacent": {
+  "battery": {
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "n_traits": 9,
+   "n_items": 1800,
+   "margin": {
+    "between_run_sd": 0.005127019562995072,
+    "rms_shift": 0.004563211891952195,
+    "ratio": 0.89003208118958,
+    "rms_shift_centred": 0.004563187445453391,
+    "ratio_centred": 0.890027313019983,
+    "corr": 0.5725305779988542,
+    "mean_shift": -1.4936817281035402e-05
+   },
+   "accuracy": {
+    "between_run_sd": 0.0045114547092888315,
+    "rms_shift": 0.00709769181360622,
+    "ratio": 1.5732601280452783,
+    "rms_shift_centred": 0.005768220437641307,
+    "ratio_centred": 1.2785721700286308,
+    "corr": -0.06998108960320969,
+    "mean_shift": 0.004135802469135814
+   }
+  },
+  "boolq": {
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "n_traits": 1,
+   "n_items": 1800,
+   "margin": {
+    "between_run_sd": 0.04375737744808467,
+    "rms_shift": 0.03698832938869056,
+    "ratio": 0.8453049873149927,
+    "rms_shift_centred": 0.036971470265163946,
+    "ratio_centred": 0.844919700889941,
+    "corr": 0.5228795763845001,
+    "mean_shift": 0.0011166456010606545
+   },
+   "accuracy": {
+    "between_run_sd": 0.02345207879911713,
+    "rms_shift": 0.016499158227686113,
+    "ratio": 0.7035264706814491,
+    "rms_shift_centred": 0.01646170265558784,
+    "ratio_centred": 0.7019293597208769,
+    "corr": 0.7007202024278278,
+    "mean_shift": 0.0011111111111111243
+   }
+  }
+ },
+ "wall_seconds": 14.354382753372192
+}

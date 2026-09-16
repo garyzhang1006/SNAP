@@ -1,0 +1,24 @@
+{
+ "id": "garyzhang11111/snap-r21-matched-step",
+ "title": "snap-r21-matched-step",
+ "code_file": "snap-r21-matched-step.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_tpu": false,
+ "enable_internet": true,
+ "dataset_sources": [
+  "garyzhang11111/snap-compute-src"
+ ],
+ "competition_sources": [],
+ "kernel_sources": [
+  "garyzhang11111/snap-r2-grouped",
+  "garyzhang11111/snap-r20-step-index-b",
+  "garyzhang11111/snap-r20-step-index-c",
+  "garyzhang11111/snap-r20-step-index-d",
+  "garyzhang11111/snap-r20-step-index-e",
+  "garyzhang11111/snap-r20-step-index-f"
+ ],
+ "model_sources": []
+}

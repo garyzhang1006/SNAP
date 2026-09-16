@@ -1,0 +1,47 @@
+[{"stream_name":"stdout","time":1.161033561,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":24.486967238,"data":"[setup] truth_margin 1.2436 observed {\"margin\": {\"lambda\": 1.2439499117191137, \"max_recipe_influence_share\": 0.5199019718929418}, \"accuracy\": {\"lambda\": 1.0783733870898096, \"max_recipe_influence_share\": 0.25538550666472665}} clipped [1.5318422139172766e-06, 1.7303572714972133e-06, 2.132326519412189e-06, 1.844463074896418e-06, 3.308645606382728e-07]\n"}
+,{"stream_name":"stdout","time":26.021506819,"data":"[rep 0] 25s\n"}
+,{"stream_name":"stdout","time":197.848831013,"data":"[rep 100] 197s\n"}
+,{"stream_name":"stdout","time":359.620528652,"data":"[rep 200] 358s\n"}
+,{"stream_name":"stdout","time":516.013915223,"data":"[rep 300] 515s\n"}
+,{"stream_name":"stdout","time":672.512596121,"data":"[rep 400] 671s\n"}
+,{"stream_name":"stdout","time":830.37101115,"data":"[rep 500] 829s\n"}
+,{"stream_name":"stdout","time":986.811562011,"data":"[rep 600] 986s\n"}
+,{"stream_name":"stdout","time":1143.000865423,"data":"[rep 700] 1142s\n"}
+,{"stream_name":"stdout","time":1299.566191299,"data":"[rep 800] 1298s\n"}
+,{"stream_name":"stdout","time":1459.134129235,"data":"[rep 900] 1458s\n"}
+,{"stream_name":"stdout","time":1617.461196124,"data":"[rep 1000] 1616s\n"}
+,{"stream_name":"stdout","time":1775.273963206,"data":"[rep 1100] 1774s\n"}
+,{"stream_name":"stdout","time":1933.039943265,"data":"[rep 1200] 1932s\n"}
+,{"stream_name":"stdout","time":2089.90562857,"data":"[rep 1300] 2089s\n"}
+,{"stream_name":"stdout","time":2247.654058229,"data":"[rep 1400] 2246s\n"}
+,{"stream_name":"stdout","time":2405.465186824,"data":"[rep 1500] 2404s\n"}
+,{"stream_name":"stdout","time":2562.556642954,"data":"[rep 1600] 2561s\n"}
+,{"stream_name":"stdout","time":2719.279237748,"data":"[rep 1700] 2718s\n"}
+,{"stream_name":"stdout","time":2875.761706244,"data":"[rep 1800] 2875s\n"}
+,{"stream_name":"stdout","time":3032.544546652,"data":"[rep 1900] 3031s\n"}
+,{"stream_name":"stdout","time":3188.32818323,"data":"[margin] truth 1.2436 {\"estimate\": {\"mean\": 1.2426943065771172, \"bias\": -0.0009286837011115434, \"sd\": 0.05070674890511069, \"undefined\": 0}, \"max_recipe_influence_share\": {\"p05\": 0.14386424448260973, \"median\": 0.22849665766700217, \"p95\": 0.3997960612385432, \"share_at_or_above_observed\": 0.0095}, \"wild\": {\"coverage\": 0.9535, \"lower_miss\": 0.0145, \"upper_miss\": 0.032, \"undefined\": 0.0, \"median_width\": 0.21418965139759105, \"mc_se\": 0.004708383480558906}, \"cluster_t\": {\"coverage\": 0.9455, \"lower_miss\": 0.0205, \"upper_miss\": 0.034, \"undefined\": 0.0, \"median_width\": 0.20657387567948138, \"mc_se\": 0.005075911248239078}, \"centred\": {\"coverage\": 0.9535, \"lower_miss\": 0.0185, \"upper_miss\": 0.028, \"unbounded\": 0.0, \"median_width\": 0.2125107366222556, \"mc_se\": 0.004708383480558906}, \"restricted\": {\"coverage\": 0.9695, \"lower_miss\": 0.01, \"upper_miss\": 0.0205, \"unbounded\": 0.0, \"median_width\": 0.22903468896633938, \"mc_se\": 0.0038451105315712303}}\n"}
+,{"stream_name":"stdout","time":3188.346883941,"data":"[accuracy] truth 1.2624 {\"estimate\": {\"mean\": 1.2619938879201755, \"bias\": -0.0004266477216183784, \"sd\": 0.05347386767792468, \"undefined\": 0}, \"max_recipe_influence_share\": {\"p05\": 0.13653124906961536, \"median\": 0.22593279489995577, \"p95\": 0.40050230295654177, \"share_at_or_above_observed\": 0.347}, \"wild\": {\"coverage\": 0.947, \"lower_miss\": 0.0205, \"upper_miss\": 0.0325, \"undefined\": 0.0, \"median_width\": 0.2237125220406163, \"mc_se\": 0.005009540897128201}, \"cluster_t\": {\"coverage\": 0.94, \"lower_miss\": 0.0235, \"upper_miss\": 0.0365, \"undefined\": 0.0, \"median_width\": 0.21632283968001353, \"mc_se\": 0.005310367218940704}, \"centred\": {\"coverage\": 0.951, \"lower_miss\": 0.0215, \"upper_miss\": 0.0275, \"unbounded\": 0.0, \"median_width\": 0.22267877982546558, \"mc_se\": 0.004826955562256609}, \"restricted\": {\"coverage\": 0.966, \"lower_miss\": 0.0145, \"upper_miss\": 0.0195, \"unbounded\": 0.0, \"median_width\": 0.24000665089156137, \"mc_se\": 0.004052406692324946}}\n"}
+,{"stream_name":"stderr","time":3188.347828623,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":3188.347854602,"data":"  File \"/kaggle/src/script.py\", line 205, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":3188.348099193,"data":"    (W / f\"rows_{SCENARIO}.json\").write_text(json.dumps(rows))\n"}
+,{"stream_name":"stderr","time":3188.348198129,"data":"                                             ^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":3188.348206514,"data":"  File \"/usr/lib/python3.12/json/__init__.py\", line 231, in dumps\n"}
+,{"stream_name":"stderr","time":3188.349642594,"data":"    return _default_encoder.encode(obj)\n"}
+,{"stream_name":"stderr","time":3188.34970798,"data":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":3188.349717655,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 200, in encode\n"}
+,{"stream_name":"stderr","time":3188.350698314,"data":"    chunks = self.iterencode(o, _one_shot=True)\n"}
+,{"stream_name":"stderr","time":3188.350771604,"data":"             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":3188.350842811,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 258, in iterencode\n"}
+,{"stream_name":"stderr","time":3188.351067354,"data":"    return _iterencode(o, 0)\n"}
+,{"stream_name":"stderr","time":3188.351106108,"data":"           ^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":3188.351122189,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 180, in default\n"}
+,{"stream_name":"stderr","time":3188.351424131,"data":"    raise TypeError(f'Object of type {o.__class__.__name__} '\n"}
+,{"stream_name":"stderr","time":3188.351446694,"data":"TypeError: Object of type bool is not JSON serializable\n"}
+,{"stream_name":"stderr","time":3191.452807467,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":3191.452847916,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":3191.859083558,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":3191.859117014,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":3192.918298208,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":3194.795258432,"data":"[NbConvertApp] Writing 350782 bytes to __results__.html\n"}
+]

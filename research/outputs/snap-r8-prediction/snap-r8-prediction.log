@@ -1,0 +1,51 @@
+[{"stream_name":"stdout","time":0.973570721,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":41.236984782,"data":"{\n"}
+,{"stream_name":"stdout","time":41.237044782,"data":" \"configs\": 125,\n"}
+,{"stream_name":"stdout","time":41.237052688,"data":" \"runs\": 375,\n"}
+,{"stream_name":"stdout","time":41.237057258,"data":" \"items\": 37682,\n"}
+,{"stream_name":"stdout","time":41.23706159,"data":" \"half_A\": 18840,\n"}
+,{"stream_name":"stdout","time":41.237066071,"data":" \"half_B\": 18842,\n"}
+,{"stream_name":"stdout","time":41.237070335,"data":" \"items_per_trait\": {\n"}
+,{"stream_name":"stdout","time":41.237074559,"data":"  \"arc_challenge\": 1172,\n"}
+,{"stream_name":"stdout","time":41.237078772,"data":"  \"arc_easy\": 2376,\n"}
+,{"stream_name":"stdout","time":41.237082895,"data":"  \"boolq\": 3270,\n"}
+,{"stream_name":"stdout","time":41.237086921,"data":"  \"csqa\": 1221,\n"}
+,{"stream_name":"stdout","time":41.237091111,"data":"  \"hellaswag\": 10042,\n"}
+,{"stream_name":"stdout","time":41.237095277,"data":"  \"mmlu\": 14042,\n"}
+,{"stream_name":"stdout","time":41.237099392,"data":"  \"openbookqa\": 500,\n"}
+,{"stream_name":"stdout","time":41.237103441,"data":"  \"piqa\": 1838,\n"}
+,{"stream_name":"stdout","time":41.237107508,"data":"  \"socialiqa\": 1954,\n"}
+,{"stream_name":"stdout","time":41.237111577,"data":"  \"winogrande\": 1267\n"}
+,{"stream_name":"stdout","time":41.237115578,"data":" },\n"}
+,{"stream_name":"stdout","time":41.237119497,"data":" \"written\": {\n"}
+,{"stream_name":"stdout","time":41.237123559,"data":"  \"margin\": \"/kaggle/working/datasets/full/margin/scores.json\",\n"}
+,{"stream_name":"stdout","time":41.237127944,"data":"  \"accuracy\": \"/kaggle/working/datasets/full/accuracy/scores.json\"\n"}
+,{"stream_name":"stdout","time":41.237132384,"data":" }\n"}
+,{"stream_name":"stdout","time":41.237136285,"data":"}\n"}
+,{"stream_name":"stdout","time":41.405749568,"data":"[adapter] done at 40s\n"}
+,{"stream_name":"stdout","time":42.810442887,"data":"C01: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C01_margin/result.json\n"}
+,{"stream_name":"stdout","time":42.844321159,"data":"[C01] C01_margin in 1s\n"}
+,{"stream_name":"stdout","time":78.851624191,"data":"C07: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C07_margin/result.json\n"}
+,{"stream_name":"stdout","time":78.884589448,"data":"[C07] C07_margin in 36s\n"}
+,{"stream_name":"stdout","time":78.887454375,"data":"margin C07 {\"bootstrap_draws\": 2000, \"interpretation\": \"Exploratory operational variance-MSE comparison with full training refits and fixed recipe folds; not the original conditional log-SD prediction experiment\", \"invalid_bootstraps\": 0, \"mean_squared_errors\": {\"diagonal\": 5.006214564407772e-09, \"full\": 5.029602619630138e-09, \"rank_one_offdiagonal\": 5.031113455832607e-09, \"shrink_50\": 4.963787568110172e-09}, \"paired_difference_intervals_given_valid\": {\"full\": [-1.488675403499772e-10, 7.840325980979361e-10], \"rank_one_offdiagonal\": [-1.6445346359953224e-10, 9.479501277546178e-10], \"shrink_50\": [-2.2534904470943134e-10, 2.1638613442809212e-10]}, \"uncertainty_calibrated\": false}\n"}
+,{"stream_name":"stdout","time":79.166069433,"data":"{\"pairs\": 1500, \"median_sum_variance\": 9.301418784297667e-06, \"median_covariance\": -7.275177851060843e-08, \"share_cov_positive\": 0.4886666666666667, \"median_2cov_over_sum\": -0.02316033908753449}\n"}
+,{"stream_name":"stdout","time":79.567074762,"data":"C08: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C08_margin/result.json\n"}
+,{"stream_name":"stdout","time":79.597046413,"data":"[C08] C08_margin in 0s\n"}
+,{"stream_name":"stdout","time":79.610502171,"data":"margin C08 1500 keys ['covariance_ab', 'id', 'independence_sd', 'input_is_population_feasible', 'observed_gap', 'sd_difference', 'seeds', 'single_run_variance_a', 'single_run_variance_b', 'size', 'variance_a', 'variance_b', 'variance_difference']\n"}
+,{"stream_name":"stdout","time":80.52427144,"data":"C01: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C01_accuracy/result.json\n"}
+,{"stream_name":"stdout","time":80.556197731,"data":"[C01] C01_accuracy in 1s\n"}
+,{"stream_name":"stdout","time":116.217999669,"data":"C07: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C07_accuracy/result.json\n"}
+,{"stream_name":"stdout","time":116.257194167,"data":"[C07] C07_accuracy in 36s\n"}
+,{"stream_name":"stdout","time":116.259842317,"data":"accuracy C07 {\"bootstrap_draws\": 2000, \"interpretation\": \"Exploratory operational variance-MSE comparison with full training refits and fixed recipe folds; not the original conditional log-SD prediction experiment\", \"invalid_bootstraps\": 0, \"mean_squared_errors\": {\"diagonal\": 1.7222404777713565e-09, \"full\": 1.8208441405191805e-09, \"rank_one_offdiagonal\": 1.8132775235619035e-09, \"shrink_50\": 1.7620855460816176e-09}, \"paired_difference_intervals_given_valid\": {\"full\": [-1.5302332649507778e-11, 4.035607371785888e-10], \"rank_one_offdiagonal\": [-2.935699962303654e-11, 3.7462802055765073e-10], \"shrink_50\": [-3.474107169093448e-11, 1.784490228047589e-10]}, \"uncertainty_calibrated\": false}\n"}
+,{"stream_name":"stdout","time":116.537820569,"data":"{\"pairs\": 1500, \"median_sum_variance\": 1.2515066270399665e-05, \"median_covariance\": -4.08574195571179e-08, \"share_cov_positive\": 0.49266666666666664, \"median_2cov_over_sum\": -0.037853158541495846}\n"}
+,{"stream_name":"stdout","time":116.935443994,"data":"C08: FINISHED_UNCHECKED; inspect /kaggle/working/SNAP/C08_accuracy/result.json\n"}
+,{"stream_name":"stdout","time":116.97229089,"data":"[C08] C08_accuracy in 0s\n"}
+,{"stream_name":"stdout","time":116.986262085,"data":"accuracy C08 1500 keys ['covariance_ab', 'id', 'independence_sd', 'input_is_population_feasible', 'observed_gap', 'sd_difference', 'seeds', 'single_run_variance_a', 'single_run_variance_b', 'size', 'variance_a', 'variance_b', 'variance_difference']\n"}
+,{"stream_name":"stdout","time":117.017053031,"data":"[done] 116s\n"}
+,{"stream_name":"stderr","time":119.760789275,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":119.760851932,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":120.104468115,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":120.104501348,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":121.069074585,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":122.758073023,"data":"[NbConvertApp] Writing 294612 bytes to __results__.html\n"}
+]

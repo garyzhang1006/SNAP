@@ -1,0 +1,86 @@
+main.tex:26 [magnusson2025] Our empirical study uses DataDecide \citep{magnusson2025}, with 25 data recipes and five model sizes that each have three released replicates.
+
+main.tex:103 [vanderwal2025] We use PolyPythias \citep{vanderwal2025} for an exploratory transfer check, scoring nine seeds at each of 70M, 160M, and 410M on 4,755 nested items.
+
+main.tex:103 [heineman2025] We also examine released run-level scores from \citet{heineman2025}, whose single-configuration panels lack item-level outputs for the cross-half correction.
+
+main.tex:167 [heineman2025] The initialisation panel from \citet{heineman2025} gives likelihood inflation of 1.705 and accuracy inflation of 0.989.
+
+main.tex:200 [bouthillier2021] \citet{bouthillier2021} derive variance inflation from correlated repeated trainings and estimate its scalar correlation in case studies.
+
+main.tex:200 [reimers2017,madaan2024,dodge2020] \citet{reimers2017} and \citet{madaan2024} study seed-related evaluation variability, while \citet{dodge2020} examine whether favourable initialisations transfer across tasks.
+
+main.tex:200 [jordan2024] \citet{jordan2024} separates example-specific training variance from distribution-level variation and compares accuracies across related evaluation sets.
+
+main.tex:202 [spearman1904,cronbach1951,searle1992] The cross-half construction follows repeated-measurement and variance-component ideas, including \citet{spearman1904}, \citet{cronbach1951}, and \citet{searle1992}.
+
+main.tex:202 [cheverud1988] \citet{cheverud1988} motivates the phenotypic plug-in comparison, and its empirical failure here concerns this transfer of correlation structure between two sources of variation.
+
+main.tex:204 [heineman2025,magnusson2025,vanderwal2025] \citet{heineman2025} study evaluation signal and noise, while \citet{magnusson2025} and \citet{vanderwal2025} provide the replicate populations used here.
+
+main.tex:204 [dehghani2021] \citet{dehghani2021} show the consequences of benchmark composition, which our variance-weighted estimates also expose.
+
+main.tex:204 [cameron2008,mackinnon2017] Few-cluster inference follows the concerns studied by \citet{cameron2008} and \citet{mackinnon2017}, with calibration remaining specific to the implemented procedure and reference population.
+
+appendices_bcd.tex:5 [magnusson2025] DataDecide stops the two auxiliary runs below 1B at 25 percent of the 1B compute budget and trains three complete runs only at 1B \citep{magnusson2025}.
+
+appendices_bcd.tex:100 [sellam2022,mccoy2020] MultiBERTs provides 25 seeds for one configuration \citep{sellam2022}, whereas the 100 BERT runs of \citet{mccoy2020} vary fine-tuning from one pretrained checkpoint.
+
+appendices_bcd.tex:100 [biderman2023,teamolmo2025] Pythia's size ladder lacks seed replicates \citep{biderman2023}, and the OLMo-2 checkpoints considered here lack replicates at matched steps \citep{teamolmo2025}.
+
+appendices_bcd.tex:103 [reimers2017,madaan2024] \citet{reimers2017} compare score distributions across seeds within datasets, while \citet{madaan2024} report benchmark-level seed variance.
+
+appendices_bcd.tex:103 [hagmann2023] \citet{hagmann2023} model nondeterminism with scalar variance components and their interactions with data properties.
+
+appendices_bcd.tex:105 [jordan2024] \citet{jordan2024} attributes much test-set variance to per-example variation across seeds, and its Appendix C compares run accuracy across five ImageNet evaluation sets with $R^2$ at most 0.14.
+
+appendices_bcd.tex:105 [bui2025,hochlehnert2025] \citet{bui2025} vary fine-tuning seeds, and \citet{hochlehnert2025} vary decoding seeds, which address different variance components from the pretraining-run variation examined here.
+
+appendices_bcd.tex:105 [dodge2020] \citet[Section 4.3]{dodge2020} ask whether a seed performs well across datasets and compare four GLUE task rankings without estimating a covariance matrix.
+
+appendices_bcd.tex:107 [zhou2020] \citet[Figure 3]{zhou2020} report a $15\times15$ Spearman matrix across datasets.
+
+appendices_bcd.tex:107 [dufour2026,miller2024] \citet{dufour2026} separate training and sampling variation in FID, while \citet{miller2024} estimates item-level uncertainty for one model.
+
+appendices_bcd.tex:107 [zhao2026] \citet{zhao2026} report the three-seed standard deviation of a twelve-task average and combine twelve per-task Welch tests in their Appendix E.4 without estimating cross-task covariance.
+
+appendices_bcd.tex:109 [haupt2026] \citet{haupt2026} use the PolyPythias 410M panel to estimate per-item variation and prioritise items by welfare weight and improvability.
+
+appendices_bcd.tex:111 [cheverud2001,nyholt2004,li2005] \citet{cheverud2001}, \citet{nyholt2004}, and \citet{li2005} estimate effective numbers of independent tests from observed correlation matrices.
+
+appendices_bcd.tex:111 [searle1992] \citet{searle1992} explain negative variance-component estimates from moment methods when the true component lies near zero.
+
+appendices_bcd.tex:113 [schaeffer2023] \citet{schaeffer2023} show how discontinuous metrics can change the appearance of performance trends.
+
+appendices_bcd.tex:113 [dehghani2021] \citet{dehghani2021} show that benchmark selection can reorder methods, which concerns the composition sensitivity examined here.
+
+appendices_bcd.tex:115 [demsar2006,dror2017,card2020,gorman2019] \citet{demsar2006} and \citet{dror2017} develop inference across datasets, while \citet{card2020} examine statistical power and \citet{gorman2019} examine dependence on a single split.
+
+appendices_bcd.tex:115 [burnell2023] \citet{burnell2023} advocate per-instance reporting alongside aggregate scores.
+
+appendices_bcd.tex:115 [henderson2018,agarwal2021] \citet{henderson2018} and \citet{agarwal2021} address seed sensitivity and uncertainty in reinforcement learning.
+
+appendices_bcd.tex:117 [hardy2026] \citet{hardy2026} apply generalizability theory to 4,000 released models, which places replication across models rather than training seeds.
+
+appendices_bcd.tex:117 [kohli2026,messing2026] \citet{kohli2026} estimates roughly two independent votes among nine frontier judges, and \citet{messing2026} reports naive standard errors that are 40 to 60 percent too small after accounting for judge and prompt variation.
+
+appendices_bcd.tex:119 [spearman1904] The cross-half identity builds on the repeated-measurement approach to attenuation described by \citet{spearman1904}.
+
+appendices_bcd.tex:119 [cronbach1951] \citet{cronbach1951} relates split-half reliability to random halves of an item population, which motivates the reliability table and the 50 re-splits in N3.
+
+appendices_bcd.tex:121 [brown1910,spearman1910] The \citet{brown1910} and \citet{spearman1910} test-length formula contains $1+(k-1)\rho$, the same algebraic form used for $\Lambda^2$.
+
+appendices_bcd.tex:123 [campbell1959] \citet{campbell1959} compare traits and measurement methods in a crossed matrix.
+
+appendices_bcd.tex:123 [brennan2001] \citet{brennan2001} provides the variance-component framework for these distinctions.
+
+appendices_bcd.tex:125 [hofmann2025,heineman2025] \citet{hofmann2025} fit benchmark-specific item-response models to an overlapping evaluation panel, with seven authors shared with \citet{heineman2025}.
+
+appendices_bcd.tex:125 [kipnis2024] \citet{kipnis2024} estimate a factor across six benchmarks that correlates 0.94 with total score.
+
+appendices_bcd.tex:125 [hedges2010] \citet{hedges2010} estimate uncertainty for dependent effect sizes without requiring their complete covariance matrix, while our application estimates the covariance needed for an effective-count point estimate.
+
+appendices_bcd.tex:289 [bell2002] The bootstrap-t addresses concerns associated with few-cluster approximations, as discussed by \citet{bell2002}, but it doesn't guarantee coverage at 25 clusters.
+
+appendices_bcd.tex:317 [karamcheti2021] The Mistral release of \citet{karamcheti2021} provides five GPT-2 Small and five GPT-2 Medium runs with 610 checkpoints each, including WikiText-103 and OpenWebText validation perplexity.
+

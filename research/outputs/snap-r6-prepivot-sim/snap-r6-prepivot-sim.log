@@ -1,0 +1,13 @@
+[{"stream_name":"stdout","time":1.162947547,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":811.317213253,"data":"[margin_like_cross_half_error_corr_0.1] 793s {\"wild_shipped\": 0.938, \"wild_399\": 0.936, \"prepivoted\": 0.924}\n"}
+,{"stream_name":"stdout","time":1596.181018,"data":"[margin_like_one_dominant_recipe] 785s {\"wild_shipped\": 0.931, \"wild_399\": 0.928, \"prepivoted\": 0.933}\n"}
+,{"stream_name":"stdout","time":2369.200024661,"data":"[margin_like] 773s {\"wild_shipped\": 0.936, \"wild_399\": 0.938, \"prepivoted\": 0.931}\n"}
+,{"stream_name":"stdout","time":3145.383352838,"data":"[accuracy_like] 776s {\"wild_shipped\": 0.953, \"wild_399\": 0.949, \"prepivoted\": 0.944}\n"}
+,{"stream_name":"stdout","time":3145.387055623,"data":"[done] 3144s\n"}
+,{"stream_name":"stderr","time":3148.286285782,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":3148.286327029,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":3148.637007168,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":3148.637037809,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":3149.59104632,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":3151.30020506,"data":"[NbConvertApp] Writing 344913 bytes to __results__.html\n"}
+]

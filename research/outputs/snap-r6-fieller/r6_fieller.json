@@ -1,0 +1,1448 @@
+{
+ "design": "R6 addition: a cluster test-inversion interval for the pooled ratio, beside the shipped intervals.\n\nDesign fixed before running (2026-09-15, 18:15 EDT). The plan lists a ratio interval obtained by test\ninversion as a candidate family when the denominator is uncertain, and R6 hasn't evaluated one.\nFor theta = Lambda squared, recipe cluster sums t_g = sum T_c and u_g = sum U_c, and z_g = t_g - theta u_g,\ntwo statistics are inverted against the t(G-1) 97.5 percent point c.\n  restricted  S(theta) = sum z_g / sqrt(sum z_g^2), the null-imposed form of the shipped cluster SE,\n              which uses sum of squared cluster influences without a G/(G-1) factor.\n  centred     S(theta) = sum z_g / sqrt(G/(G-1) sum (z_g - mean z)^2), a Fieller interval with the\n              usual cluster-robust variance.\nEach acceptance set {theta >= 0 : S(theta)^2 <= c^2} is a quadratic inequality, so it can be a bounded\ninterval, a ray, two rays, or all of [0, inf). Lambda endpoints are square roots of theta endpoints.\n1. Observed data, 375 reduced runs, both phenotypes. Full battery, each size band, and each single\n   benchmark removal, with 25 recipe clusters. Report the set type, endpoints, and the shipped\n   cluster-t and wild bootstrap-t intervals (4,999 draws, seed 0) on the same T and U.\n2. Coverage on the twelve R6 populations with the R6 generator copied verbatim, seed 20260915, rng\n   [seed, cell index within its file, rep], 2,000 replicates, so each replicate reproduces the R6 data.\n   The cluster-t interval is recomputed on each replicate and its coverage must equal the R6 summary.\n   Record coverage, lower and upper misses, Monte Carlo SE, share of unbounded sets, and median width\n   of bounded sets, and save every replicate's endpoints so the wild rows of R6 can be paired locally.\n",
+ "observed": {
+  "margin": {
+   "full": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.2439499117191137,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.074180401331014,
+       1.3288788935351719
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.094915261912897,
+       1.3233713241465164
+      ]
+     ]
+    },
+    "cluster_t": [
+     1.1472991823302268,
+     1.3336143940271397
+    ],
+    "wild": [
+     1.1429001912272696,
+     1.3376841038790925
+    ]
+   },
+   "size_0": {
+    "N": 25,
+    "clusters": 25,
+    "lambda": 1.1011417989779244,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.7122618221228061,
+       1.3336380848785774
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.7551763501933538,
+       1.318060848657328
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.8254407761428129,
+     1.3204825057506178
+    ],
+    "wild": [
+     0.78140551764253,
+     1.3438557981652062
+    ]
+   },
+   "size_1": {
+    "N": 25,
+    "clusters": 25,
+    "lambda": 1.3502509815001629,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.0,
+       1.6804606445815757
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.0,
+       1.6612740869289084
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.8346921472208255,
+     1.7174528946821783
+    ],
+    "wild": [
+     0.6380373911355137,
+     1.802718220999956
+    ]
+   },
+   "size_2": {
+    "N": 25,
+    "clusters": 25,
+    "lambda": 1.5139107095732447,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.520280697008675,
+       1.751570484134779
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.765197682771562,
+       1.7368528491072206
+      ]
+     ]
+    },
+    "cluster_t": [
+     1.1912211377612898,
+     1.7790006953545094
+    ],
+    "wild": [
+     1.0640041259437911,
+     1.8366773365873978
+    ]
+   },
+   "size_3": {
+    "N": 25,
+    "clusters": 25,
+    "lambda": 1.1102274905258391,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.7827678206856978,
+       1.4490196444965027
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.8123037536604291,
+       1.4178135830443188
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.806493198666118,
+     1.34713729142352
+    ],
+    "wild": [
+     0.6862251443387851,
+     1.4065691637574498
+    ]
+   },
+   "size_4": {
+    "N": 25,
+    "clusters": 25,
+    "lambda": 1.148975609998131,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.684204704075367,
+       2.732647834259968
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.7342252381926978,
+       2.243563268404872
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.6320949810317112,
+     1.49691210152623
+    ],
+    "wild": [
+     NaN,
+     1.7512822111802127
+    ]
+   },
+   "drop_arc_challenge": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.1951876141145157,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0627384899339782,
+       1.2707591651615748
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0780460111311345,
+       1.2655260364025767
+      ]
+     ]
+    },
+    "cluster_t": [
+     1.1144913844483881,
+     1.2707697745287347
+    ],
+    "wild": [
+     1.1128346852055857,
+     1.272044129774861
+    ]
+   },
+   "drop_arc_easy": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.1605544833547892,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0417677981660194,
+       1.2256137857252454
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.055579846879018,
+       1.2212481304765104
+      ]
+     ]
+    },
+    "cluster_t": [
+     1.089579417714712,
+     1.2274323240660858
+    ],
+    "wild": [
+     1.0891047519610462,
+     1.2283506873741274
+    ]
+   },
+   "drop_boolq": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.785617464617265,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.3914344844720146,
+       1.840322685565503
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.5104863248513793,
+       1.837253305231111
+      ]
+     ]
+    },
+    "cluster_t": [
+     1.7100599908630312,
+     1.8581050259718657
+    ],
+    "wild": [
+     1.689103338576665,
+     1.8765174171308665
+    ]
+   },
+   "drop_csqa": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.0956031250583613,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.029975483624551,
+       1.136430373033904
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0367598274016023,
+       1.1336993715677353
+      ]
+     ]
+    },
+    "cluster_t": [
+     1.0524503132392786,
+     1.1371194983104627
+    ],
+    "wild": [
+     1.0535710364591506,
+     1.1371816816458105
+    ]
+   },
+   "drop_hellaswag": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.243523612593666,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0723491431139387,
+       1.3286188458460724
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0933110623539046,
+       1.3231177453244847
+      ]
+     ]
+    },
+    "cluster_t": [
+     1.1463976656744097,
+     1.333594519444448
+    ],
+    "wild": [
+     1.1420663974839793,
+     1.3377365875353746
+    ]
+   },
+   "drop_mmlu": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.205344522072298,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0607679089053417,
+       1.291914280361602
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0772206411452445,
+       1.2857472641490546
+      ]
+     ]
+    },
+    "cluster_t": [
+     1.1147844236670559,
+     1.2895605928100873
+    ],
+    "wild": [
+     1.1032642042353986,
+     1.3003366579133258
+    ]
+   },
+   "drop_openbookqa": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.1783685376606952,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0472083598434523,
+       1.2514436547171424
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0625924247724898,
+       1.2464169858693677
+      ]
+     ]
+    },
+    "cluster_t": [
+     1.0997572296738207,
+     1.2520538554221112
+    ],
+    "wild": [
+     1.0923788331625481,
+     1.2567591400160212
+    ]
+   },
+   "drop_piqa": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.2433120019313688,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0686569442758846,
+       1.329876541628923
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0900825285138818,
+       1.324286697080416
+      ]
+     ]
+    },
+    "cluster_t": [
+     1.144325219260563,
+     1.3349791237534168
+    ],
+    "wild": [
+     1.1393596330012625,
+     1.3395670923321514
+    ]
+   },
+   "drop_socialiqa": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.138890311219362,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0407921042559507,
+       1.2070580130650796
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0511846479774847,
+       1.2018769762773145
+      ]
+     ]
+    },
+    "cluster_t": [
+     1.0725946668040718,
+     1.2015335878460214
+    ],
+    "wild": [
+     1.068205671387672,
+     1.2046968266545068
+    ]
+   },
+   "drop_winogrande": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.2455886268188237,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.073639277715061,
+       1.3293793790668438
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.094830575682134,
+       1.3240269209475786
+      ]
+     ]
+    },
+    "cluster_t": [
+     1.149038624021417,
+     1.3351750053935905
+    ],
+    "wild": [
+     1.1441193720477658,
+     1.3397741824120681
+    ]
+   }
+  },
+  "accuracy": {
+   "full": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.0783733870898096,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9883576021231257,
+       1.169119115462872
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9953376314105182,
+       1.1620314288566478
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.997529948331163,
+     1.1535650506796415
+    ],
+    "wild": [
+     0.992604456794931,
+     1.1566521851337639
+    ]
+   },
+   "size_0": {
+    "N": 25,
+    "clusters": 25,
+    "lambda": 1.0278809589361417,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.8675367192041294,
+       1.235647924699604
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.8808474205734784,
+       1.2138134562880953
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.8756287955143653,
+     1.1603244132366717
+    ],
+    "wild": [
+     0.8779815142284924,
+     1.1648108947209168
+    ]
+   },
+   "size_1": {
+    "N": 25,
+    "clusters": 25,
+    "lambda": 1.0803786551072818,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.8894913947735842,
+       1.3740552512441309
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9025231947740969,
+       1.344186493541808
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.8651523955543197,
+     1.2593440392876998
+    ],
+    "wild": [
+     0.8358003478987638,
+     1.2878072602676005
+    ]
+   },
+   "size_2": {
+    "N": 25,
+    "clusters": 25,
+    "lambda": 1.2193598898281044,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9923306734156542,
+       1.4248586885046342
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0242555431766873,
+       1.3984322216418914
+      ]
+     ]
+    },
+    "cluster_t": [
+     1.0762546944225708,
+     1.3473503310485335
+    ],
+    "wild": [
+     1.0834245247107999,
+     1.3378639250815187
+    ]
+   },
+   "size_3": {
+    "N": 25,
+    "clusters": 25,
+    "lambda": 0.986986417661735,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.5911053872278477,
+       1.3650971964849559
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.6364753988714826,
+       1.3246621196373143
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.6608632903139002,
+     1.2294486930380526
+    ],
+    "wild": [
+     0.31013178361156746,
+     1.3200797252836567
+    ]
+   },
+   "size_4": {
+    "N": 25,
+    "clusters": 25,
+    "lambda": 1.2045431821199355,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.0,
+       1.5155191644786485
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.41190958245945347,
+       1.4907070769593744
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.8298524770330129,
+     1.4876805509064819
+    ],
+    "wild": [
+     0.805197060476282,
+     1.496797109234583
+    ]
+   },
+   "drop_arc_challenge": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.038891572626894,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.947993639439286,
+       1.1266490983702686
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9552241505193568,
+       1.1198934864146262
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.9591823937612314,
+     1.1129063459468795
+    ],
+    "wild": [
+     0.9519273537407317,
+     1.116390076853339
+    ]
+   },
+   "drop_arc_easy": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.0464950327898026,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9563310703974174,
+       1.1382508631432897
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9632924794443568,
+       1.1310528345348634
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.9650163787878643,
+     1.1220726785634776
+    ],
+    "wild": [
+     0.9571313708004888,
+     1.1255883575469707
+    ]
+   },
+   "drop_boolq": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.5578291363266619,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.3798502958438659,
+       1.732817863824826
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.3967902950636955,
+       1.7164268777069311
+      ]
+     ]
+    },
+    "cluster_t": [
+     1.4152602952291986,
+     1.6884020648898497
+    ],
+    "wild": [
+     1.411912196105271,
+     1.6870177418636014
+    ]
+   },
+   "drop_csqa": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.014272859244185,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9304218393384198,
+       1.0964909826251985
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.937027180280667,
+       1.090132420903198
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.9402029775980163,
+     1.0832900012990856
+    ],
+    "wild": [
+     0.9361574555055523,
+     1.0864547726982194
+    ]
+   },
+   "drop_hellaswag": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.0763473282618636,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9873047036830612,
+       1.1625194854303544
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.994354639660129,
+       1.1559019261158974
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.998181248804493,
+     1.1492090047715458
+    ],
+    "wild": [
+     0.9924174026288822,
+     1.1528036120887974
+    ]
+   },
+   "drop_mmlu": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.0679299967540181,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9806079184868614,
+       1.155004947977567
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.987414839409353,
+       1.1482365727081443
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.9900239565002149,
+     1.1405268613626491
+    ],
+    "wild": [
+     0.9842495485197998,
+     1.1434308265402229
+    ]
+   },
+   "drop_openbookqa": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.0741860407321928,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9835957807713998,
+       1.1597375047460472
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9908753871610192,
+       1.1532185551238077
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.9957800419003107,
+     1.1472460103922015
+    ],
+    "wild": [
+     0.9923775958202322,
+     1.1495093729612207
+    ]
+   },
+   "drop_piqa": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.0731729381419957,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9825548923502755,
+       1.1638429713574077
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9896102335454378,
+       1.1567815833291446
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.9920954670210995,
+     1.1485412028468256
+    ],
+    "wild": [
+     0.9880258901366044,
+     1.1499263128154522
+    ]
+   },
+   "drop_socialiqa": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.0323737842164717,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9460868112883515,
+       1.117733767438151
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9528647751018346,
+       1.1110968215443648
+      ]
+     ]
+    },
+    "cluster_t": [
+     0.9558217371162533,
+     1.1036285912982429
+    ],
+    "wild": [
+     0.9496854026835387,
+     1.1087761689578217
+    ]
+   },
+   "drop_winogrande": {
+    "N": 125,
+    "clusters": 25,
+    "lambda": 1.1023030423107425,
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.020380057129018,
+       1.1915348297551123
+      ]
+     ]
+    },
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0264862515349134,
+       1.1843382141381642
+      ]
+     ]
+    },
+    "cluster_t": [
+     1.0259256331034956,
+     1.173720831167373
+    ],
+    "wild": [
+     1.0226063928126052,
+     1.1775729914104869
+    ]
+   }
+  }
+ },
+ "coverage": {
+  "a0": {
+   "cell": "a0",
+   "name": "null_margin_noise",
+   "true_lambda": 1.0,
+   "reps": 2000,
+   "cluster_t_coverage_recomputed": 0.9455,
+   "restricted": {
+    "coverage": 0.9665,
+    "mc_se": 0.004023540107914917,
+    "lower_miss": 0.0085,
+    "upper_miss": 0.025,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.24149816620372166
+   },
+   "centred": {
+    "coverage": 0.9525,
+    "mc_se": 0.00475624589355933,
+    "lower_miss": 0.0145,
+    "upper_miss": 0.033,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.22411293235061824
+   }
+  },
+  "a1": {
+   "cell": "a1",
+   "name": "null_accuracy_noise",
+   "true_lambda": 1.0,
+   "reps": 2000,
+   "cluster_t_coverage_recomputed": 0.941,
+   "restricted": {
+    "coverage": 0.9575,
+    "mc_se": 0.004510751046111944,
+    "lower_miss": 0.013,
+    "upper_miss": 0.0295,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.44618095909541555
+   },
+   "centred": {
+    "coverage": 0.946,
+    "mc_se": 0.005053909377897473,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.0385,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.4125180958913665
+   }
+  },
+  "a2": {
+   "cell": "a2",
+   "name": "margin_like",
+   "true_lambda": 1.2445882853377657,
+   "reps": 2000,
+   "cluster_t_coverage_recomputed": 0.943,
+   "restricted": {
+    "coverage": 0.96,
+    "mc_se": 0.004381780460041331,
+    "lower_miss": 0.0125,
+    "upper_miss": 0.0275,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.2619435518037899
+   },
+   "centred": {
+    "coverage": 0.9475,
+    "mc_se": 0.004987171041783106,
+    "lower_miss": 0.019,
+    "upper_miss": 0.0335,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.24318176522243873
+   }
+  },
+  "a3": {
+   "cell": "a3",
+   "name": "accuracy_like",
+   "true_lambda": 1.0779610382569493,
+   "reps": 2000,
+   "cluster_t_coverage_recomputed": 0.94,
+   "restricted": {
+    "coverage": 0.957,
+    "mc_se": 0.004536022486716751,
+    "lower_miss": 0.009,
+    "upper_miss": 0.034,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.4363943009160831
+   },
+   "centred": {
+    "coverage": 0.9445,
+    "mc_se": 0.005119558086397692,
+    "lower_miss": 0.0135,
+    "upper_miss": 0.042,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.4037869098186452
+   }
+  },
+  "a4": {
+   "cell": "a4",
+   "name": "margin_like_boolq_trace",
+   "true_lambda": 1.1519072321506927,
+   "reps": 2000,
+   "cluster_t_coverage_recomputed": 0.9355,
+   "restricted": {
+    "coverage": 0.9595,
+    "mc_se": 0.004407933189148855,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.024,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.1856880540794439
+   },
+   "centred": {
+    "coverage": 0.9405,
+    "mc_se": 0.005289600646551685,
+    "lower_miss": 0.0245,
+    "upper_miss": 0.035,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.17234200134963829
+   }
+  },
+  "a5": {
+   "cell": "a5",
+   "name": "accuracy_like_boolq_trace",
+   "true_lambda": 1.0308411390725625,
+   "reps": 2000,
+   "cluster_t_coverage_recomputed": 0.95,
+   "restricted": {
+    "coverage": 0.966,
+    "mc_se": 0.004052406692324946,
+    "lower_miss": 0.0115,
+    "upper_miss": 0.0225,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.16824521989601382
+   },
+   "centred": {
+    "coverage": 0.957,
+    "mc_se": 0.004536022486716751,
+    "lower_miss": 0.015,
+    "upper_miss": 0.028,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.15600514916309066
+   }
+  },
+  "b0": {
+   "cell": "b0",
+   "name": "margin_like_recipe_shared",
+   "true_lambda": 1.2445882853377657,
+   "reps": 2000,
+   "cluster_t_coverage_recomputed": 0.9395,
+   "restricted": {
+    "coverage": 0.9575,
+    "mc_se": 0.004510751046111944,
+    "lower_miss": 0.0065,
+    "upper_miss": 0.036,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.33507839469503387
+   },
+   "centred": {
+    "coverage": 0.9465,
+    "mc_se": 0.005031786462082825,
+    "lower_miss": 0.0095,
+    "upper_miss": 0.044,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.31082720029396715
+   }
+  },
+  "b1": {
+   "cell": "b1",
+   "name": "margin_like_heavy_tails",
+   "true_lambda": 1.2445882853377657,
+   "reps": 2000,
+   "cluster_t_coverage_recomputed": 0.93,
+   "restricted": {
+    "coverage": 0.9695,
+    "mc_se": 0.0038451105315712303,
+    "lower_miss": 0.0035,
+    "upper_miss": 0.027,
+    "share_unbounded": 0.001,
+    "kinds": {
+     "bounded": 1998,
+     "ray": 1,
+     "two_pieces": 0,
+     "all": 1,
+     "empty": 0
+    },
+    "median_width_bounded": 0.34429792279256777
+   },
+   "centred": {
+    "coverage": 0.9545,
+    "mc_se": 0.004659922209651143,
+    "lower_miss": 0.008,
+    "upper_miss": 0.0375,
+    "share_unbounded": 0.0005,
+    "kinds": {
+     "bounded": 1999,
+     "ray": 0,
+     "two_pieces": 1,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.31873475264114837
+   }
+  },
+  "b2": {
+   "cell": "b2",
+   "name": "margin_like_one_dominant_recipe",
+   "true_lambda": 1.2445882853377657,
+   "reps": 2000,
+   "cluster_t_coverage_recomputed": 0.9105,
+   "restricted": {
+    "coverage": 0.969,
+    "mc_se": 0.003875499967746099,
+    "lower_miss": 0.009,
+    "upper_miss": 0.022,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.283929506872162
+   },
+   "centred": {
+    "coverage": 0.955,
+    "mc_se": 0.004635461142108735,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.0295,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.2601609712157712
+   }
+  },
+  "b3": {
+   "cell": "b3",
+   "name": "margin_like_cross_half_error_corr_0.1",
+   "true_lambda": 1.2445882853377657,
+   "reps": 2000,
+   "cluster_t_coverage_recomputed": 0.9255,
+   "restricted": {
+    "coverage": 0.9455,
+    "mc_se": 0.005075911248239078,
+    "lower_miss": 0.0045,
+    "upper_miss": 0.05,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.2542420830217169
+   },
+   "centred": {
+    "coverage": 0.9315,
+    "mc_se": 0.0056483515294287415,
+    "lower_miss": 0.0055,
+    "upper_miss": 0.063,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.23606176078121943
+   }
+  },
+  "b4": {
+   "cell": "b4",
+   "name": "accuracy_like_cross_half_error_corr_0.1",
+   "true_lambda": 1.0779610382569493,
+   "reps": 2000,
+   "cluster_t_coverage_recomputed": 0.9405,
+   "restricted": {
+    "coverage": 0.9615,
+    "mc_se": 0.004302194207610808,
+    "lower_miss": 0.006,
+    "upper_miss": 0.0325,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.36385021415247804
+   },
+   "centred": {
+    "coverage": 0.948,
+    "mc_se": 0.0049646752159632785,
+    "lower_miss": 0.009,
+    "upper_miss": 0.043,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.3373620837808386
+   }
+  },
+  "b5": {
+   "cell": "b5",
+   "name": "rho_0.2_margin_noise",
+   "true_lambda": 1.6733200530681511,
+   "reps": 2000,
+   "cluster_t_coverage_recomputed": 0.9425,
+   "restricted": {
+    "coverage": 0.961,
+    "mc_se": 0.004328914413568374,
+    "lower_miss": 0.0115,
+    "upper_miss": 0.0275,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.2800112799694221
+   },
+   "centred": {
+    "coverage": 0.948,
+    "mc_se": 0.0049646752159632785,
+    "lower_miss": 0.017,
+    "upper_miss": 0.035,
+    "share_unbounded": 0.0,
+    "kinds": {
+     "bounded": 2000,
+     "ray": 0,
+     "two_pieces": 0,
+     "all": 0,
+     "empty": 0
+    },
+    "median_width_bounded": 0.25991048596435795
+   }
+  }
+ },
+ "wall_seconds": 75.41983413696289
+}

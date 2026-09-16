@@ -1,0 +1,58 @@
+[{"stream_name":"stdout","time":0.726558641,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":6.165073685,"data":"  dolma1.7-no-code: 0.50/4.89 GB, 61 runs, 5s\n"}
+,{"stream_name":"stdout","time":10.166759896,"data":"  dolma1.7-no-code: 1.00/4.89 GB, 132 runs, 9s\n"}
+,{"stream_name":"stdout","time":16.094877383,"data":"  dolma1.7-no-code: 1.51/4.89 GB, 192 runs, 15s\n"}
+,{"stream_name":"stdout","time":20.819276986,"data":"  dolma1.7-no-code: 2.02/4.89 GB, 252 runs, 20s\n"}
+,{"stream_name":"stdout","time":25.280770472,"data":"  dolma1.7-no-code: 2.53/4.89 GB, 318 runs, 24s\n"}
+,{"stream_name":"stdout","time":29.885851056,"data":"  dolma1.7-no-code: 3.03/4.89 GB, 379 runs, 29s\n"}
+,{"stream_name":"stdout","time":33.953677856,"data":"  dolma1.7-no-code: 3.53/4.89 GB, 447 runs, 33s\n"}
+,{"stream_name":"stdout","time":38.477965253,"data":"  dolma1.7-no-code: 4.04/4.89 GB, 506 runs, 38s\n"}
+,{"stream_name":"stdout","time":42.726071003,"data":"  dolma1.7-no-code: 4.54/4.89 GB, 566 runs, 42s\n"}
+,{"stream_name":"stdout","time":45.668406257,"data":"[dolma1.7-no-code] 604 runs, 4.89 GB in 45s\n"}
+,{"stream_name":"stdout","time":52.010630996,"data":"  dolma1.7-no-flan: 0.50/4.89 GB, 61 runs, 6s\n"}
+,{"stream_name":"stdout","time":56.765553847,"data":"  dolma1.7-no-flan: 1.00/4.89 GB, 132 runs, 11s\n"}
+,{"stream_name":"stdout","time":62.131408204,"data":"  dolma1.7-no-flan: 1.51/4.89 GB, 191 runs, 16s\n"}
+,{"stream_name":"stdout","time":66.811823504,"data":"  dolma1.7-no-flan: 2.01/4.89 GB, 251 runs, 21s\n"}
+,{"stream_name":"stdout","time":72.182753321,"data":"  dolma1.7-no-flan: 2.52/4.89 GB, 318 runs, 26s\n"}
+,{"stream_name":"stdout","time":76.800506773,"data":"  dolma1.7-no-flan: 3.02/4.89 GB, 378 runs, 31s\n"}
+,{"stream_name":"stdout","time":82.509330857,"data":"  dolma1.7-no-flan: 3.53/4.89 GB, 445 runs, 37s\n"}
+,{"stream_name":"stdout","time":87.148414495,"data":"  dolma1.7-no-flan: 4.03/4.89 GB, 504 runs, 41s\n"}
+,{"stream_name":"stdout","time":91.649135662,"data":"  dolma1.7-no-flan: 4.53/4.89 GB, 564 runs, 46s\n"}
+,{"stream_name":"stdout","time":94.897100492,"data":"[dolma1.7-no-flan] 603 runs, 4.89 GB in 49s\n"}
+,{"stream_name":"stdout","time":100.66713597,"data":"  dolma1.7-no-math-no-code: 0.50/4.43 GB, 61 runs, 6s\n"}
+,{"stream_name":"stdout","time":105.045358199,"data":"  dolma1.7-no-math-no-code: 1.00/4.43 GB, 132 runs, 10s\n"}
+,{"stream_name":"stdout","time":109.316857801,"data":"  dolma1.7-no-math-no-code: 1.51/4.43 GB, 191 runs, 14s\n"}
+,{"stream_name":"stdout","time":113.903457418,"data":"  dolma1.7-no-math-no-code: 2.01/4.43 GB, 250 runs, 19s\n"}
+,{"stream_name":"stdout","time":119.875799957,"data":"  dolma1.7-no-math-no-code: 2.52/4.43 GB, 311 runs, 25s\n"}
+,{"stream_name":"stdout","time":127.556221186,"data":"  dolma1.7-no-math-no-code: 3.02/4.43 GB, 377 runs, 33s\n"}
+,{"stream_name":"stdout","time":131.550682125,"data":"  dolma1.7-no-math-no-code: 3.53/4.43 GB, 438 runs, 37s\n"}
+,{"stream_name":"stdout","time":137.771000888,"data":"  dolma1.7-no-math-no-code: 4.03/4.43 GB, 498 runs, 43s\n"}
+,{"stream_name":"stdout","time":141.898138801,"data":"[dolma1.7-no-math-no-code] 542 runs, 4.43 GB in 47s\n"}
+,{"stream_name":"stdout","time":148.496506873,"data":"  dolma1.7-no-reddit: 0.50/4.90 GB, 61 runs, 6s\n"}
+,{"stream_name":"stdout","time":153.922749996,"data":"  dolma1.7-no-reddit: 1.00/4.90 GB, 128 runs, 12s\n"}
+,{"stream_name":"stdout","time":158.869903776,"data":"  dolma1.7-no-reddit: 1.51/4.90 GB, 188 runs, 17s\n"}
+,{"stream_name":"stdout","time":163.444923006,"data":"  dolma1.7-no-reddit: 2.01/4.90 GB, 247 runs, 21s\n"}
+,{"stream_name":"stdout","time":168.200760619,"data":"  dolma1.7-no-reddit: 2.52/4.90 GB, 314 runs, 26s\n"}
+,{"stream_name":"stdout","time":172.713589047,"data":"  dolma1.7-no-reddit: 3.02/4.90 GB, 374 runs, 31s\n"}
+,{"stream_name":"stdout","time":180.128829506,"data":"  dolma1.7-no-reddit: 3.53/4.90 GB, 441 runs, 38s\n"}
+,{"stream_name":"stdout","time":187.280974949,"data":"  dolma1.7-no-reddit: 4.03/4.90 GB, 501 runs, 45s\n"}
+,{"stream_name":"stdout","time":193.482382874,"data":"  dolma1.7-no-reddit: 4.53/4.90 GB, 561 runs, 51s\n"}
+,{"stream_name":"stdout","time":197.452056171,"data":"[dolma1.7-no-reddit] 602 runs, 4.90 GB in 55s\n"}
+,{"stream_name":"stdout","time":203.157907609,"data":"  falcon: 0.50/4.87 GB, 61 runs, 6s\n"}
+,{"stream_name":"stdout","time":207.134698174,"data":"  falcon: 1.00/4.87 GB, 132 runs, 9s\n"}
+,{"stream_name":"stdout","time":211.854166704,"data":"  falcon: 1.50/4.87 GB, 191 runs, 14s\n"}
+,{"stream_name":"stdout","time":217.227209333,"data":"  falcon: 2.01/4.87 GB, 251 runs, 20s\n"}
+,{"stream_name":"stdout","time":223.130103834,"data":"  falcon: 2.52/4.87 GB, 318 runs, 25s\n"}
+,{"stream_name":"stdout","time":228.165335584,"data":"  falcon: 3.02/4.87 GB, 378 runs, 31s\n"}
+,{"stream_name":"stdout","time":232.234638136,"data":"  falcon: 3.53/4.87 GB, 445 runs, 35s\n"}
+,{"stream_name":"stdout","time":236.984815453,"data":"  falcon: 4.03/4.87 GB, 504 runs, 39s\n"}
+,{"stream_name":"stdout","time":241.473118292,"data":"  falcon: 4.53/4.87 GB, 564 runs, 44s\n"}
+,{"stream_name":"stdout","time":244.383888028,"data":"[falcon] 601 runs, 4.87 GB in 47s\n"}
+,{"stream_name":"stdout","time":244.421759377,"data":"[done] 5 of 5 recipes indexed in 244s\n"}
+,{"stream_name":"stderr","time":246.946491233,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":246.946543257,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":247.280761184,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":247.280788776,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":248.631995826,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":250.089341867,"data":"[NbConvertApp] Writing 292748 bytes to __results__.html\n"}
+]

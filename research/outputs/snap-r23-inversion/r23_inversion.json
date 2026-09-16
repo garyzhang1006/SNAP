@@ -1,0 +1,141 @@
+{
+ "design": "R23 addition: checkpoint-sensitivity intervals under the cluster test-inversion construction.\n\nDesign fixed before running (2026-09-15, written 18:58 EDT). The abstract states that the accuracy interval\nexcludes one at the previous shared step on 123 configurations. snap-r6-fieller showed that test inversion\ncan move a margin lower endpoint by 0.048, so this kernel recomputes the four estimates of snap-r23 with\nseednoise on the same 123 configurations and reports the wild bootstrap-t (4,999 draws, seed 0), the\ncluster-robust t(24), and the centred and restricted inversion intervals of snap-r6-fieller at both steps.\nThe selected-step and previous-step estimates must match snap-r23 (margin 1.233 and 1.192, accuracy 1.082\nand 1.130) to three decimals, and the kernel records the comparison either way.\n",
+ "kept": 123,
+ "reference": {
+  "margin": [
+   1.233,
+   1.192
+  ],
+  "accuracy": [
+   1.082,
+   1.13
+  ]
+ },
+ "steps": {
+  "selected": {
+   "margin": {
+    "lambda": 1.2325876449710622,
+    "clusters": 25,
+    "wild": [
+     1.1392650687518207,
+     1.3191100327712912
+    ],
+    "cluster_t": [
+     1.1469729456592836,
+     1.312630057173873
+    ],
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.098698783575775,
+       1.302335550271887
+      ]
+     ]
+    },
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0799900792898431,
+       1.307078954254855
+      ]
+     ]
+    }
+   },
+   "accuracy": {
+    "lambda": 1.0822983752909447,
+    "clusters": 25,
+    "wild": [
+     0.9917535289505057,
+     1.1627242540854825
+    ],
+    "cluster_t": [
+     0.9984293290891392,
+     1.1601200029003245
+    ],
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9962717544246902,
+       1.1688169085328
+      ]
+     ]
+    },
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       0.9890483855227173,
+       1.1761245158260394
+      ]
+     ]
+    }
+   }
+  },
+  "previous": {
+   "margin": {
+    "lambda": 1.1915213688320323,
+    "clusters": 25,
+    "wild": [
+     1.1037900467392776,
+     1.2748655748136277
+    ],
+    "cluster_t": [
+     1.107501628843479,
+     1.2699946798612036
+    ],
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0797162731559211,
+       1.26631823591226
+      ]
+     ]
+    },
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0667579936828806,
+       1.271893096771317
+      ]
+     ]
+    }
+   },
+   "accuracy": {
+    "lambda": 1.130310559600959,
+    "clusters": 25,
+    "wild": [
+     1.0441794579328711,
+     1.2101181622171409
+    ],
+    "cluster_t": [
+     1.0524101021473828,
+     1.2031778335678405
+    ],
+    "centred": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.058717274222258,
+       1.2219178207005086
+      ]
+     ]
+    },
+    "restricted": {
+     "kind": "bounded",
+     "lambda_sets": [
+      [
+       1.0534142559162771,
+       1.2307887022071957
+      ]
+     ]
+    }
+   }
+  }
+ },
+ "wall_seconds": 27.44923710823059
+}

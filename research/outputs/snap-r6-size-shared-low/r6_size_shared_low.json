@@ -1,0 +1,124 @@
+{
+ "design": "R6 coverage inside the band-shared region the data actually allows.\n\nDesign fixed before running (2026-09-15, written 23:15 EDT). snap-r6-size-shared swept the band-shared\nrun effect over 0, 0.25, 0.5 and 0.75, and found recipe-clustered coverage of 0.945, 0.810, 0.579 and\n0.348. snap-r6-band-share then bounded that share in the data itself, giving 0.008 on full-battery\nmargins with a 95 percent upper bound of 0.044 and 0.020 without BoolQ with an upper bound of 0.053. The\nappendix currently reports the bound and declines to quote a coverage figure inside it, because the\nsmallest share we simulated is five times the bound. This run fills that gap. It repeats the same sweep\nat shares of 0.02, 0.05 and 0.10, which brackets the point estimate, the upper bound, and twice the upper\nbound, with 4,000 replicates at each value so the Monte Carlo standard error falls near 0.0035. Seed\n20260933 and a cell index offset of seven hundred keep the datasets fresh. Coverage that stays near 0.94\nacross this range lets the paper say what the interval does in the region the data permits, rather than\nonly that the damaging region is excluded.\n",
+ "seed": 20260933,
+ "reps": 4000,
+ "cells": {
+  "size_shared_0.02": {
+   "name": "size_shared_0.02",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.02,
+   "wild_recipe": {
+    "coverage": 0.9455,
+    "mc_se": 0.0035892112643309253,
+    "lower_miss": 0.018,
+    "upper_miss": 0.0365,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24209459552812895
+   },
+   "wild_size": {
+    "coverage": 0.95275,
+    "mc_se": 0.0033547517605629186,
+    "lower_miss": 0.0135,
+    "upper_miss": 0.02625,
+    "undefined_or_unbounded": 0.0075,
+    "median_width": 0.36460934967393205
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9445,
+    "mc_se": 0.0036200742395702326,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.03675,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24142088243785775
+   },
+   "cluster_t_size": {
+    "coverage": 0.9455,
+    "mc_se": 0.0035892112643309253,
+    "lower_miss": 0.02,
+    "upper_miss": 0.0345,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3037435822468142
+   }
+  },
+  "size_shared_0.05": {
+   "name": "size_shared_0.05",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.05,
+   "wild_recipe": {
+    "coverage": 0.9405,
+    "mc_se": 0.0037403124869454423,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.041,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23976454612359532
+   },
+   "wild_size": {
+    "coverage": 0.951,
+    "mc_se": 0.003413173010557773,
+    "lower_miss": 0.01325,
+    "upper_miss": 0.02625,
+    "undefined_or_unbounded": 0.0095,
+    "median_width": 0.36284167909435033
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9395,
+    "mc_se": 0.003769607075014583,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.04175,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2389854198343736
+   },
+   "cluster_t_size": {
+    "coverage": 0.945,
+    "mc_se": 0.003604684452209376,
+    "lower_miss": 0.02025,
+    "upper_miss": 0.03475,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.30647271596428705
+   }
+  },
+  "size_shared_0.10": {
+   "name": "size_shared_0.10",
+   "truth": 1.2445882853377657,
+   "size_shared": 0.1,
+   "wild_recipe": {
+    "coverage": 0.9285,
+    "mc_se": 0.0040739339096259285,
+    "lower_miss": 0.024,
+    "upper_miss": 0.0475,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24071429950439338
+   },
+   "wild_size": {
+    "coverage": 0.94325,
+    "mc_se": 0.003658190724251538,
+    "lower_miss": 0.01325,
+    "upper_miss": 0.02975,
+    "undefined_or_unbounded": 0.01375,
+    "median_width": 0.3828183090474533
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.929,
+    "mc_se": 0.004060757318530619,
+    "lower_miss": 0.0225,
+    "upper_miss": 0.0485,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24023250177774058
+   },
+   "cluster_t_size": {
+    "coverage": 0.946,
+    "mc_se": 0.0035736535926135893,
+    "lower_miss": 0.017,
+    "upper_miss": 0.037,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.31959958267797417
+   }
+  }
+ },
+ "shipped_check": {
+  "size_shared_0.02": 0.0,
+  "size_shared_0.05": 0.0,
+  "size_shared_0.10": 0.0
+ },
+ "wall_seconds": 414.85876727104187
+}
