@@ -1,0 +1,14 @@
+[{"stream_name":"stdout","time":1.3337844589999999,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":505.277791102,"data":"[independent] 488s check 2.22e-16 {\"wild_recipe\": 0.9425, \"wild_cr3\": 0.9535, \"wild_log\": 0.94, \"wild_log_cr3\": 0.9495, \"cluster_t_recipe\": 0.9423}\n"}
+,{"stream_name":"stdout","time":997.167716579,"data":"[band_0.044] 492s check 0 {\"wild_recipe\": 0.9433, \"wild_cr3\": 0.954, \"wild_log\": 0.9397, \"wild_log_cr3\": 0.9495, \"cluster_t_recipe\": 0.9443}\n"}
+,{"stream_name":"stdout","time":1488.579650844,"data":"[band_0.25] 491s check 0 {\"wild_recipe\": 0.823, \"wild_cr3\": 0.8417, \"wild_log\": 0.8173, \"wild_log_cr3\": 0.8353, \"cluster_t_recipe\": 0.8233}\n"}
+,{"stream_name":"stdout","time":1975.939160847,"data":"[recipe_0.114] 487s check 0 {\"wild_recipe\": 0.9527, \"wild_cr3\": 0.9583, \"wild_log\": 0.9483, \"wild_log_cr3\": 0.9555, \"cluster_t_recipe\": 0.9515}\n"}
+,{"stream_name":"stdout","time":2459.728077609,"data":"[joint_bound] 484s check 0 {\"wild_recipe\": 0.9455, \"wild_cr3\": 0.9545, \"wild_log\": 0.9425, \"wild_log_cr3\": 0.951, \"cluster_t_recipe\": 0.9455}\n"}
+,{"stream_name":"stdout","time":2459.731951719,"data":"[done] 2458s\n"}
+,{"stream_name":"stderr","time":2462.788085113,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2462.788142809,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2463.201786121,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2463.201845397,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2464.339328347,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2466.155866896,"data":"[NbConvertApp] Writing 342441 bytes to __results__.html\n"}
+]

@@ -1,0 +1,280 @@
+{
+ "design": "R6 whether the interval is calibrated at the truth it reports rather than only near it.\n\nDesign fixed before running (2026-09-16, written 18:05 EDT). Almost every coverage cell in this paper\nsits at one of two true ratios, 1.2446 on margins and 1.078 on accuracy, because those are the values the\nobserved data produced. snap-r6-estimator-bias swept the truth from 1.00 to 1.40 and found the point\nestimate close to unbiased across it, and snap-r6-detect-power swept the same range for the exclusion\nrate, but neither one scored interval coverage across the sweep. A procedure can be calibrated at the\ntruth you happened to measure and drift elsewhere, and a reader applying this estimator to a battery with\nweaker or stronger dependence than DataDecide has no number for their own case.\nThis run scores coverage at true ratios of 1.00, 1.05, 1.10, 1.2446, 1.40 and 1.60, setting the\ncorrelation from the ratio through the compound-symmetric identity, at the margin battery's item noise\nand 4,000 replicates per cell. A ratio of exactly one is the interesting end, since that is where the\ninterval should include one 95 times in 100 and where a procedure that manufactures dependence would\nshow it. Seed 20260985 keeps the draws distinct.\n",
+ "seed": 20260985,
+ "reps": 4000,
+ "cells": {
+  "lambda_1.00": {
+   "name": "lambda_1.00",
+   "truth": 1.0,
+   "varied": {
+    "rho": 0.0,
+    "noise_sd": 0.73
+   },
+   "wild_recipe": {
+    "coverage": 0.94375,
+    "mc_se": 0.0036430048551985223,
+    "excludes_one_rate": 0.0175,
+    "lower_miss": 0.0175,
+    "upper_miss": 0.03875,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.22243620461492009
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.944,
+    "mc_se": 0.0036353816856005655,
+    "excludes_one_rate": 0.018,
+    "lower_miss": 0.018,
+    "upper_miss": 0.038,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.22218652491713664
+   },
+   "wild_size": {
+    "coverage": 0.936,
+    "mc_se": 0.0038698837191833025,
+    "excludes_one_rate": 0.01925,
+    "lower_miss": 0.01925,
+    "upper_miss": 0.02875,
+    "undefined_or_unbounded": 0.016,
+    "median_width": 0.32759759437123637
+   },
+   "cluster_t_size": {
+    "coverage": 0.94,
+    "mc_se": 0.003754996671103719,
+    "excludes_one_rate": 0.02475,
+    "lower_miss": 0.02475,
+    "upper_miss": 0.03525,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.27819279649027145
+   }
+  },
+  "lambda_1.05": {
+   "name": "lambda_1.05",
+   "truth": 1.05,
+   "varied": {
+    "rho": 0.011388888888888888,
+    "noise_sd": 0.73
+   },
+   "wild_recipe": {
+    "coverage": 0.93425,
+    "mc_se": 0.003918766945736885,
+    "excludes_one_rate": 0.1085,
+    "lower_miss": 0.021,
+    "upper_miss": 0.04475,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.22578148653959357
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.93475,
+    "mc_se": 0.0039048827607240663,
+    "excludes_one_rate": 0.106,
+    "lower_miss": 0.0205,
+    "upper_miss": 0.04475,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.22584300531055485
+   },
+   "wild_size": {
+    "coverage": 0.944,
+    "mc_se": 0.0036353816856005655,
+    "excludes_one_rate": 0.06175,
+    "lower_miss": 0.01375,
+    "upper_miss": 0.02975,
+    "undefined_or_unbounded": 0.0125,
+    "median_width": 0.33343700945333454
+   },
+   "cluster_t_size": {
+    "coverage": 0.946,
+    "mc_se": 0.0035736535926135893,
+    "excludes_one_rate": 0.08625,
+    "lower_miss": 0.01775,
+    "upper_miss": 0.03625,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.28316648801588934
+   }
+  },
+  "lambda_1.10": {
+   "name": "lambda_1.10",
+   "truth": 1.1,
+   "varied": {
+    "rho": 0.023333333333333334,
+    "noise_sd": 0.73
+   },
+   "wild_recipe": {
+    "coverage": 0.93875,
+    "mc_se": 0.003791386207576327,
+    "excludes_one_rate": 0.327,
+    "lower_miss": 0.01525,
+    "upper_miss": 0.046,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.23182111898352403
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94025,
+    "mc_se": 0.0037476638556572803,
+    "excludes_one_rate": 0.33225,
+    "lower_miss": 0.015,
+    "upper_miss": 0.04475,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2312390304182485
+   },
+   "wild_size": {
+    "coverage": 0.94775,
+    "mc_se": 0.0035185201967588594,
+    "excludes_one_rate": 0.172,
+    "lower_miss": 0.01475,
+    "upper_miss": 0.02875,
+    "undefined_or_unbounded": 0.00875,
+    "median_width": 0.3458006083492161
+   },
+   "cluster_t_size": {
+    "coverage": 0.94525,
+    "mc_se": 0.0035969583504677936,
+    "excludes_one_rate": 0.2245,
+    "lower_miss": 0.018,
+    "upper_miss": 0.03675,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2916853044637184
+   }
+  },
+  "lambda_1.2446": {
+   "name": "lambda_1.2446",
+   "truth": 1.2445882853377657,
+   "varied": {
+    "rho": 0.061,
+    "noise_sd": 0.73
+   },
+   "wild_recipe": {
+    "coverage": 0.9485,
+    "mc_se": 0.0034945582696529753,
+    "excludes_one_rate": 0.9675,
+    "lower_miss": 0.01475,
+    "upper_miss": 0.03675,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2410993795209302
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94725,
+    "mc_se": 0.0035343824602043273,
+    "excludes_one_rate": 0.9695,
+    "lower_miss": 0.01525,
+    "upper_miss": 0.0375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24055338299913476
+   },
+   "wild_size": {
+    "coverage": 0.94825,
+    "mc_se": 0.0035025682541529424,
+    "excludes_one_rate": 0.6215,
+    "lower_miss": 0.01575,
+    "upper_miss": 0.028,
+    "undefined_or_unbounded": 0.008,
+    "median_width": 0.361668148132351
+   },
+   "cluster_t_size": {
+    "coverage": 0.9435,
+    "mc_se": 0.003650607826102387,
+    "excludes_one_rate": 0.816,
+    "lower_miss": 0.0195,
+    "upper_miss": 0.037,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.30128511252568435
+   }
+  },
+  "lambda_1.40": {
+   "name": "lambda_1.40",
+   "truth": 1.4000000000000001,
+   "varied": {
+    "rho": 0.10666666666666667,
+    "noise_sd": 0.73
+   },
+   "wild_recipe": {
+    "coverage": 0.946,
+    "mc_se": 0.0035736535926135893,
+    "excludes_one_rate": 1.0,
+    "lower_miss": 0.0155,
+    "upper_miss": 0.0385,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.25080471188138154
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94425,
+    "mc_se": 0.003627738189974573,
+    "excludes_one_rate": 1.0,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.03925,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24998358028895828
+   },
+   "wild_size": {
+    "coverage": 0.95275,
+    "mc_se": 0.0033547517605629186,
+    "excludes_one_rate": 0.87375,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.02525,
+    "undefined_or_unbounded": 0.0055,
+    "median_width": 0.37090724600335057
+   },
+   "cluster_t_size": {
+    "coverage": 0.94725,
+    "mc_se": 0.0035343824602043273,
+    "excludes_one_rate": 0.98875,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.03425,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.31273291033658324
+   }
+  },
+  "lambda_1.60": {
+   "name": "lambda_1.60",
+   "truth": 1.6,
+   "varied": {
+    "rho": 0.17333333333333334,
+    "noise_sd": 0.73
+   },
+   "wild_recipe": {
+    "coverage": 0.943,
+    "mc_se": 0.003665753674212168,
+    "excludes_one_rate": 1.0,
+    "lower_miss": 0.022,
+    "upper_miss": 0.035,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2592516840124137
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.942,
+    "mc_se": 0.0036958084365940843,
+    "excludes_one_rate": 1.0,
+    "lower_miss": 0.02225,
+    "upper_miss": 0.03575,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2575610108373525
+   },
+   "wild_size": {
+    "coverage": 0.95925,
+    "mc_se": 0.0031260773143030212,
+    "excludes_one_rate": 0.96325,
+    "lower_miss": 0.015,
+    "upper_miss": 0.022,
+    "undefined_or_unbounded": 0.00375,
+    "median_width": 0.3919423083983362
+   },
+   "cluster_t_size": {
+    "coverage": 0.9525,
+    "mc_se": 0.0033631737243264726,
+    "excludes_one_rate": 1.0,
+    "lower_miss": 0.0205,
+    "upper_miss": 0.027,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3258934801551828
+   }
+  }
+ },
+ "shipped_check": {
+  "lambda_1.00": 0.0,
+  "lambda_1.05": 0.0,
+  "lambda_1.10": 0.0,
+  "lambda_1.2446": 0.0,
+  "lambda_1.40": 2.220446049250313e-16,
+  "lambda_1.60": 0.0
+ },
+ "wall_seconds": 1366.0748283863068
+}

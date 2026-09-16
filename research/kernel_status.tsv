@@ -54,3 +54,7 @@ snap-r6-boot-reps	COMPLETE	2026-09-16 17:48	2026-09-16 17:59	11	r6_boot_reps.jso
 snap-r7-availability-recheck	COMPLETE	2026-09-16 18:00	2026-09-16 18:01	1	r7_availability_recheck.json,snap-r7-availability-recheck.log	]
 snap-r6-alpha-levels	COMPLETE	2026-09-16 17:48	2026-09-16 18:07	19	r6_alpha_levels.json,snap-r6-alpha-levels.log	]
 snap-r6-structured-precise	COMPLETE	2026-09-16 17:54	2026-09-16 18:12	18	r6_structured_precise.json,snap-r6-structured-precise.log	]
+snap-r6-missing-acc	COMPLETE	2026-09-16 17:53	2026-09-16 18:14	21	r6_missing_acc.json,snap-r6-missing-acc.log	]
+snap-r6-truth-sweep	COMPLETE	2026-09-16 18:03	2026-09-16 18:27	23	r6_truth_sweep.json,snap-r6-truth-sweep.log	]
+snap-r6-band-shared-acc	COMPLETE	2026-09-16 18:08	2026-09-16 18:28	20	r6_band_shared_acc.json,snap-r6-band-shared-acc.log	]
+snap-r6-logscale-full	COMPLETE	2026-09-16 17:47	2026-09-16 18:29	41	r6_logscale_full.json,snap-r6-logscale-full.log	]

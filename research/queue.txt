@@ -1,2 +1,0 @@
-snap-r6-recipe-shared-acc
-snap-r6-weights
