@@ -16,15 +16,15 @@
     "uncontracted_negatives": 0
   },
   "appendices_bcd.tex": {
-    "sentence_count": 921,
+    "sentence_count": 926,
     "minimum_words": 8,
     "maximum_observed_not_a_limit": 61,
     "below_minimum": 0,
     "prose_colons_semicolons_dashes": 0,
-    "uncontracted_negatives": 5
+    "uncontracted_negatives": 6
   },
   "pdf": {
-    "pages": 51,
+    "pages": 52,
     "main_text_pages": 9,
     "statements_begin": 10,
     "empty_author_metadata": true,

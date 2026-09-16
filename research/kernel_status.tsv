@@ -66,3 +66,4 @@ snap-r6-cluster-count-acc	COMPLETE	2026-09-16 18:30	2026-09-16 18:58	27	r6_clust
 snap-r6-perm-power-acc	COMPLETE	2026-09-16 18:48	2026-09-16 19:08	19	r6_perm_power_acc.json,snap-r6-perm-power-acc.log	]
 snap-r6-band-noise	COMPLETE	2026-09-16 18:49	2026-09-16 19:13	24	r6_band_noise.json,snap-r6-band-noise.log	]
 snap-r6-ragged-runs	COMPLETE	2026-09-16 18:47	2026-09-16 19:27	40	r6_ragged_runs.json,snap-r6-ragged-runs.log	]
+snap-r6-cr3-acc	COMPLETE	2026-09-16 18:52	2026-09-16 19:35	43	r6_cr3_acc.json,snap-r6-cr3-acc.log	]
