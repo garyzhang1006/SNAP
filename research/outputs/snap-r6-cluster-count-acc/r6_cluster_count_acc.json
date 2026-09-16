@@ -1,0 +1,286 @@
+{
+ "design": "R6 how many clusters the accuracy scale needs, given that five already failed it.\n\nDesign fixed before running (2026-09-16, written 18:35 EDT). snap-r6-cluster-count swept the recipe count\non a margin-like population and found the wild interval collapsing only at five clusters, where it covers\n0.749 against 0.910 for the plain cluster-robust one. snap-r6-band-shared-acc has now shown the same\ninversion at the accuracy battery's noise with five size clusters, where the wild interval covers 0.832\nand its cluster-robust counterpart holds 0.935, even with no sharing present at all. That suggests the\ncluster count a reader needs depends on the item noise they carry, and the paper currently states the\nrequirement once, from the margin sweep alone.\nThis run repeats the recipe-count sweep at 5, 10, 15, 25, 40 and 60 clusters on an accuracy-like\npopulation, at 4,000 replicates per cell, scoring both the wild interval and the cluster-robust one. If\nthe accuracy scale needs more clusters than the margin scale, a reader planning a noisier battery gets a\nnumber rather than a shrug. Seed 20260987 keeps the draws distinct.\n",
+ "seed": 20260987,
+ "reps": 4000,
+ "cells": {
+  "acc_recipes_05": {
+   "name": "acc_recipes_05",
+   "truth": 1.0779610382569493,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45,
+    "recipes": 5
+   },
+   "wild_recipe": {
+    "coverage": 0.35975,
+    "mc_se": 0.007588312353547394,
+    "excludes_one_rate": 0.03225,
+    "lower_miss": 0.017,
+    "upper_miss": 0.01725,
+    "undefined_or_unbounded": 0.606,
+    "median_width": 0.8352729517439352
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.4515,
+    "mc_se": 0.007868413912600175,
+    "excludes_one_rate": 0.034,
+    "lower_miss": 0.01725,
+    "upper_miss": 0.01575,
+    "undefined_or_unbounded": 0.5155,
+    "median_width": 0.8973478476230008
+   },
+   "wild_size": {
+    "coverage": 0.35825,
+    "mc_se": 0.007581341198956818,
+    "excludes_one_rate": 0.03225,
+    "lower_miss": 0.0195,
+    "upper_miss": 0.0125,
+    "undefined_or_unbounded": 0.60975,
+    "median_width": 0.8418199083637079
+   },
+   "cluster_t_size": {
+    "coverage": 0.44725,
+    "mc_se": 0.007861574866081224,
+    "excludes_one_rate": 0.0345,
+    "lower_miss": 0.02,
+    "upper_miss": 0.01225,
+    "undefined_or_unbounded": 0.5205,
+    "median_width": 0.8922066094823901
+   }
+  },
+  "acc_recipes_10": {
+   "name": "acc_recipes_10",
+   "truth": 1.0779610382569493,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45,
+    "recipes": 10
+   },
+   "wild_recipe": {
+    "coverage": 0.869,
+    "mc_se": 0.005334768036194264,
+    "excludes_one_rate": 0.05525,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.023,
+    "undefined_or_unbounded": 0.0895,
+    "median_width": 0.6754874275191736
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.87525,
+    "mc_se": 0.005224639640683365,
+    "excludes_one_rate": 0.05075,
+    "lower_miss": 0.01725,
+    "upper_miss": 0.02175,
+    "undefined_or_unbounded": 0.08575,
+    "median_width": 0.677590835508532
+   },
+   "wild_size": {
+    "coverage": 0.59725,
+    "mc_se": 0.007754715299416221,
+    "excludes_one_rate": 0.039,
+    "lower_miss": 0.018,
+    "upper_miss": 0.0185,
+    "undefined_or_unbounded": 0.36625,
+    "median_width": 0.7412013889650747
+   },
+   "cluster_t_size": {
+    "coverage": 0.74625,
+    "mc_se": 0.006880423996746131,
+    "excludes_one_rate": 0.05075,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.0205,
+    "undefined_or_unbounded": 0.21475,
+    "median_width": 0.7321516827640577
+   }
+  },
+  "acc_recipes_15": {
+   "name": "acc_recipes_15",
+   "truth": 1.0779610382569493,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45,
+    "recipes": 15
+   },
+   "wild_recipe": {
+    "coverage": 0.94275,
+    "mc_se": 0.0036732967991982357,
+    "excludes_one_rate": 0.06175,
+    "lower_miss": 0.01575,
+    "upper_miss": 0.02875,
+    "undefined_or_unbounded": 0.01275,
+    "median_width": 0.5379709682506951
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9435,
+    "mc_se": 0.003650607826102387,
+    "excludes_one_rate": 0.05925,
+    "lower_miss": 0.0145,
+    "upper_miss": 0.02825,
+    "undefined_or_unbounded": 0.01375,
+    "median_width": 0.5406825957671986
+   },
+   "wild_size": {
+    "coverage": 0.70825,
+    "mc_se": 0.00718734891145546,
+    "excludes_one_rate": 0.04775,
+    "lower_miss": 0.019,
+    "upper_miss": 0.02625,
+    "undefined_or_unbounded": 0.2465,
+    "median_width": 0.6680489313473532
+   },
+   "cluster_t_size": {
+    "coverage": 0.85875,
+    "mc_se": 0.005506778493366153,
+    "excludes_one_rate": 0.05425,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.03075,
+    "undefined_or_unbounded": 0.092,
+    "median_width": 0.6378071426419772
+   }
+  },
+  "acc_recipes_25": {
+   "name": "acc_recipes_25",
+   "truth": 1.0779610382569493,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45,
+    "recipes": 25
+   },
+   "wild_recipe": {
+    "coverage": 0.9595,
+    "mc_se": 0.0031168794490643997,
+    "excludes_one_rate": 0.09525,
+    "lower_miss": 0.01625,
+    "upper_miss": 0.02425,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.395383476087376
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.96,
+    "mc_se": 0.003098386676965935,
+    "excludes_one_rate": 0.09725,
+    "lower_miss": 0.01575,
+    "upper_miss": 0.02425,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.39610679663518034
+   },
+   "wild_size": {
+    "coverage": 0.8495,
+    "mc_se": 0.005653533187308623,
+    "excludes_one_rate": 0.05975,
+    "lower_miss": 0.01375,
+    "upper_miss": 0.02225,
+    "undefined_or_unbounded": 0.1145,
+    "median_width": 0.5458432285651819
+   },
+   "cluster_t_size": {
+    "coverage": 0.94675,
+    "mc_se": 0.0035501562465615516,
+    "excludes_one_rate": 0.074,
+    "lower_miss": 0.01375,
+    "upper_miss": 0.02625,
+    "undefined_or_unbounded": 0.01325,
+    "median_width": 0.4981977501296334
+   }
+  },
+  "acc_recipes_40": {
+   "name": "acc_recipes_40",
+   "truth": 1.0779610382569493,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45,
+    "recipes": 40
+   },
+   "wild_recipe": {
+    "coverage": 0.94875,
+    "mc_se": 0.0034865254014562986,
+    "excludes_one_rate": 0.15075,
+    "lower_miss": 0.02025,
+    "upper_miss": 0.031,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.30682856300588
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.9515,
+    "mc_se": 0.0033966067626382654,
+    "excludes_one_rate": 0.14875,
+    "lower_miss": 0.02025,
+    "upper_miss": 0.02825,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.30769426345793555
+   },
+   "wild_size": {
+    "coverage": 0.91075,
+    "mc_se": 0.004507894117545355,
+    "excludes_one_rate": 0.082,
+    "lower_miss": 0.01725,
+    "upper_miss": 0.0225,
+    "undefined_or_unbounded": 0.0495,
+    "median_width": 0.45335893898974794
+   },
+   "cluster_t_size": {
+    "coverage": 0.94975,
+    "mc_se": 0.0034541618918342556,
+    "excludes_one_rate": 0.10925,
+    "lower_miss": 0.02225,
+    "upper_miss": 0.0275,
+    "undefined_or_unbounded": 0.0005,
+    "median_width": 0.3912208020928436
+   }
+  },
+  "acc_recipes_60": {
+   "name": "acc_recipes_60",
+   "truth": 1.0779610382569493,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45,
+    "recipes": 60
+   },
+   "wild_recipe": {
+    "coverage": 0.94975,
+    "mc_se": 0.0034541618918342556,
+    "excludes_one_rate": 0.20675,
+    "lower_miss": 0.019,
+    "upper_miss": 0.03125,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.2463872703515093
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.95175,
+    "mc_se": 0.0033882863478460618,
+    "excludes_one_rate": 0.20725,
+    "lower_miss": 0.01825,
+    "upper_miss": 0.03,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.24695172325343934
+   },
+   "wild_size": {
+    "coverage": 0.942,
+    "mc_se": 0.0036958084365940843,
+    "excludes_one_rate": 0.11325,
+    "lower_miss": 0.01675,
+    "upper_miss": 0.021,
+    "undefined_or_unbounded": 0.02025,
+    "median_width": 0.37177641611940027
+   },
+   "cluster_t_size": {
+    "coverage": 0.94825,
+    "mc_se": 0.0035025682541529424,
+    "excludes_one_rate": 0.14925,
+    "lower_miss": 0.02225,
+    "upper_miss": 0.0295,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3145182776419068
+   }
+  }
+ },
+ "shipped_check": {
+  "acc_recipes_05": 1.1102230246251565e-16,
+  "acc_recipes_10": 7.494005416219807e-16,
+  "acc_recipes_15": NaN,
+  "acc_recipes_25": 0.0,
+  "acc_recipes_40": 0.0,
+  "acc_recipes_60": 0.0
+ },
+ "wall_seconds": 1564.0501911640167
+}

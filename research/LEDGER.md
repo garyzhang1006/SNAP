@@ -578,3 +578,6 @@ the same 80 refusals, 40 open repositories and 5 invalid names over the identica
 no per-repository difference. It flagged the gap between them as six and a half hours rather than the
 seven the appendix claimed, which the run times of 11:31 and 18:01 confirm, and the appendix now says six
 and a half.
+
+| snap-r6-cluster-count-acc | COMPLETE at 4,000 replicates under seed 20260987. At the accuracy battery's item noise the wild interval covers 0.360 at five recipes with 0.606 undefined, 0.869 at ten, 0.943 at fifteen, 0.960 at 25, and 0.949 and 0.950 at forty and sixty. | Written in. The cluster floor is scale-dependent, since ten recipes suffice on margins and fall short on accuracy, and the size-clustered fallback recovers from 0.850 to 0.942 as the grid grows while holding five clusters throughout. |
+| snap-r6-cheap-acc | QUEUED. The ten to 25 recipe by two to four run grid priced at the accuracy battery's noise, with twenty recipes added because the floor sits between ten and fifteen. | The appendix tells a reader to buy recipes before runs, and that advice was measured only on margins. |
