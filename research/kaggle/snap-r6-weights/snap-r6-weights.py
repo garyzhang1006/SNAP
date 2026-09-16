@@ -1,18 +1,17 @@
-"""R6 sensitivity of both conclusions to the equal weighting of the ten benchmarks.
+"""R6 whether the interval survives a battery whose benchmarks are not weighted equally.
 
-Design fixed before running (2026-09-15, written 23:35 EDT). The estimator aggregates the ten benchmarks
-with a flat weight of one tenth each, and every interval in the paper inherits that choice. Dropping one
-benchmark at a time is already covered by snap-r6-leave-one-out, which is the coarsest possible probe of
-the weighting, since it moves one weight to zero and leaves the other nine flat. A reader who thinks the
-flat weight is doing work will ask the finer question, which is what happens across the whole simplex of
-weightings rather than at its ten corners. This run answers that directly. It rebuilds the numerator and
-the denominator under arbitrary weights from the same contrast projections the shipped estimator uses,
-checks that flat weights reproduce the shipped statistic to machine precision, and then draws 2,000
-weightings from a flat Dirichlet and 2,000 more from a Dirichlet concentrated near the flat point. Each
-weighting gets its own recipe-clustered wild interval at 4,999 draws, and the run reports the share of
-weightings whose interval still excludes one, the range of the point estimate, and the weighting that
-minimises it. A conclusion that survives the flat simplex is not resting on the equal weighting, and one
-that doesn't is a limitation the paper has to state in the same sentence as the estimate.
+Design fixed before running (2026-09-16, written 18:10 EDT). The estimand this paper reports uses flat
+weights over the ten benchmarks, because that is what the aggregate in the release implies, and every
+coverage cell we have run inherits that choice. A reader who weights by item count, or who drops to a
+weighted subset because two benchmarks matter more to them, is asking a question none of our simulations
+answer. Weights enter the estimator twice, once in the full quadratic form and once in the diagonal one,
+so an unequal weighting changes the true ratio as well as the estimate, and the two moves need not
+cancel.
+This run gives the ten benchmarks four weightings at the margin battery's correlation and item noise. It
+uses flat weights, weights proportional to the item counts the release ships, a four-fold linear ramp and
+a concentrated weighting that puts half the mass on two benchmarks. Each cell recomputes its own true
+ratio from the same weights the estimator uses, so coverage is scored against the truth that weighting
+implies rather than against the flat one. Seed 20260986 keeps the draws distinct.
 """
 import json, platform, shutil, subprocess, sys, time
 from pathlib import Path
@@ -31,116 +30,175 @@ src = [p for p in find_all("pyproject.toml") if "seed-noise" in str(p)][0]
 shutil.copytree(src.parent, W / "seed-noise", ignore=shutil.ignore_patterns("._*"))
 subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", str(W / "seed-noise")])
 
-sel = [p for p in find_all("*.npz") if "__seed-" in p.name]
-assert len(sel) == 375, len(sel)
-runs_dir = W / "runs"; runs_dir.mkdir(exist_ok=True)
-for p in sel:
-    shutil.copy(p, runs_dir / p.name)
-
+from scipy.stats import t as student_t  # noqa: E402
 from seednoise.build import build_population  # noqa: E402
 from seednoise.data.datadecide import TRAITS  # noqa: E402
-from seednoise.estimator import contrast_basis, estimate, half_projections  # noqa: E402
-from seednoise.inference import wild_bootstrap_t  # noqa: E402
+from seednoise.estimator import estimate  # noqa: E402
+from seednoise.inference import cluster_t_interval, wild_bootstrap_t  # noqa: E402
+from seednoise.population import Phenotype, Population  # noqa: E402
 
-TR = list(TRAITS)
+sel = [q for q in find_all("*.npz") if "__seed-" in q.name]
+assert len(sel) == 375, len(sel)
+runs_dir = W / "runs"; runs_dir.mkdir(exist_ok=True)
+for q in sel:
+    shutil.copy(q, runs_dir / q.name)
 pop, info = build_population(runs_dir, TRAITS, n_runs=3)
 print(f"[base] {json.dumps(info)}", flush=True)
-BASIS = np.atleast_2d(contrast_basis(pop.R))
+# The release ships the per-benchmark item counts, so we read them rather than retyping them.
+_ITEM_W = np.asarray(pop.n_items, float)
+assert _ITEM_W.size == 10 and _ITEM_W.sum() > 0, _ITEM_W
+print(f"[items] {_ITEM_W.tolist()} total {_ITEM_W.sum():.0f}", flush=True)
+
+CELLS = [
+ {"name": "flat", "rho": 0.061, "noise_sd": 0.73},
+ {"name": "item_count", "rho": 0.061, "noise_sd": 0.73, "weights": _ITEM_W},
+ {"name": "ramp_4x", "rho": 0.061, "noise_sd": 0.73,
+  "weights": [1.0, 1.333, 1.667, 2.0, 2.333, 2.667, 3.0, 3.333, 3.667, 4.0]},
+ {"name": "concentrated", "rho": 0.061, "noise_sd": 0.73,
+  "weights": [0.25, 0.25, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625]},
+]
+def r6_simulate(cell, rng):
+    k, r = cell.get("benchmarks", 10), cell.get("runs", 3)
+    recipes, sizes = cell.get("recipes", 25), cell.get("sizes", 5)
+    rho = cell.get("rho", 0.0)
+    scale = np.asarray(cell.get("trait_scales", [1.0] * k), float)
+    truth = ((1 - rho) * np.eye(k) + rho * np.ones((k, k))) * np.outer(scale, scale)
+    n = recipes * sizes
+    recipe = np.repeat(np.arange(recipes), sizes)
+    shared = cell.get("recipe_shared", 0.0)
+    size_shared = cell.get("size_shared", 0.0)
+    latent = np.sqrt(1 - shared - size_shared) * rng.multivariate_normal(np.zeros(k), truth, size=(n, r))
+    if shared > 0:
+        latent += np.sqrt(shared) * np.repeat(rng.multivariate_normal(np.zeros(k), truth, size=(recipes, r)), sizes, axis=0)
+    if size_shared > 0:
+        # Configuration c is recipe c // sizes and band c % sizes, so the band effect tiles.
+        latent += np.sqrt(size_shared) * np.tile(rng.multivariate_normal(np.zeros(k), truth, size=(sizes, r)), (recipes, 1, 1))
+    df = cell.get("student_df")
+    if df:
+        latent *= np.sqrt((df - 2) / rng.chisquare(df, size=(n, r, 1)))
+    rs = cell.get("recipe_variance_scales")
+    if rs:
+        latent *= np.sqrt(np.asarray(rs, float))[recipe][:, None, None]
+    noise = np.asarray(cell.get("noise_sd", 1.0), float) * np.ones(k)
+    ec = cell.get("cross_half_error_correlation", 0.0)
+    ea = rng.normal(size=latent.shape) * noise
+    eb = ec * ea + np.sqrt(1 - ec ** 2) * rng.normal(size=latent.shape) * noise
+    a, b = latent + ea, latent + eb
+    # An explicit weighting replaces the flat one, normalised so the estimand stays a ratio.
+    w = np.asarray(cell.get("weights", [1.0] * k), float)
+    w = w / w.sum()
+    da = a - a.mean(1, keepdims=True)
+    db = b - b.mean(1, keepdims=True)
+    cross = np.einsum("crj,crk->cjk", da, db) / (r - 1)
+    cov = (cross + cross.transpose(0, 2, 1)) / 2
+    T = np.einsum("j,cjk,k->c", w, cov, w)
+    U = np.einsum("j,cj->c", w * w, np.diagonal(cov, axis1=1, axis2=2))
+    true_lambda = float(np.sqrt((w @ truth @ w) / ((w * w) @ np.diag(truth))))
+    return T, U, recipe, true_lambda
 
 
-def projections(name):
-    """(N, D, K) contrast projections of each half, which every weighting reuses."""
-    ph = pop.pheno(name)
-    return half_projections(ph.A, BASIS), half_projections(ph.B, BASIS)
-
-
-def weighted_TU(pA, pB, w):
-    """Numerator and denominator under an arbitrary benchmark weight vector."""
-    w = np.asarray(w, float)
-    gA, gB = pA @ w, pB @ w
-    T = (gA * gB).mean(axis=1)
-    per_trait = (pA * pB).mean(axis=1)
-    U = per_trait @ (w * w)
-    return T, U
-
-
-def wild(T, U, cluster, n_boot=4999, alpha=0.05, seed=0):
-    """Recipe-clustered wild bootstrap-t on Lambda, matching the shipped estimator."""
+def _wild(T, U, cluster, n_boot=4999, alpha=0.05, seed=0, weights="rademacher", cr3=False):
+    """Wild cluster bootstrap-t, copied from the shipped estimator with two options added."""
     T, U = np.asarray(T, float), np.asarray(U, float)
     keys, inv = np.unique(np.asarray(cluster), return_inverse=True)
     G = keys.size
     sU = float(np.sum(U))
     th = float(np.sum(T)) / sU
     r = T - th * U
+    if cr3:
+        u_g = np.bincount(inv, weights=U, minlength=G)
+        h = np.clip(u_g / sU, 0.0, 0.99)
+        r = r / (1.0 - h)[inv]
     e = np.bincount(inv, weights=r, minlength=G)
     se = float(np.sqrt(np.sum(e ** 2))) / sU
     rng = np.random.default_rng(seed)
-    v = rng.choice([-1.0, 1.0], size=(n_boot, G))[:, inv]
-    Tb = th * U + v * r
+    if weights == "rademacher":
+        v = rng.choice([-1.0, 1.0], size=(n_boot, G))
+    elif weights == "mammen":
+        p5 = np.sqrt(5.0)
+        lo, hi = -(p5 - 1) / 2, (p5 + 1) / 2
+        v = np.where(rng.random((n_boot, G)) < (p5 + 1) / (2 * p5), lo, hi)
+    else:
+        w6 = np.array([-np.sqrt(1.5), -1.0, -np.sqrt(0.5), np.sqrt(0.5), 1.0, np.sqrt(1.5)])
+        v = w6[rng.integers(0, 6, size=(n_boot, G))]
+    vb = v[:, inv]
+    Tb = th * U + vb * r
     th_b = Tb.sum(axis=1) / sU
     rb = Tb - th_b[:, None] * U
     eb = np.zeros((n_boot, G))
-    np.add.at(eb, (np.arange(n_boot)[:, None], np.broadcast_to(inv, v.shape)), rb)
+    np.add.at(eb, (np.arange(n_boot)[:, None], np.broadcast_to(inv, vb.shape)), rb)
     se_b = np.sqrt((eb ** 2).sum(axis=1)) / sU
     ok = se_b > 0
-    tb = (th_b[ok] - th) / se_b[ok]
+    tb = ((th_b[ok] - th) / se_b[ok])
     tb = tb[np.isfinite(tb)]
     if tb.size < max(100, int(0.9 * n_boot)):
-        return float("nan"), float("nan"), th
+        return float("nan"), float("nan")
     lo_q, hi_q = np.percentile(tb, [100 * (1 - alpha / 2), 100 * (alpha / 2)])
     lo, hi = th - lo_q * se, th - hi_q * se
     return (float(np.sqrt(lo)) if lo >= 0 else float("nan"),
-            float(np.sqrt(hi)) if hi >= 0 else float("nan"), th)
+            float(np.sqrt(hi)) if hi >= 0 else float("nan"))
 
 
-K = len(TR)
-FLAT = np.full(K, 1.0 / K)
-DRAWS = 2000
-SEED = 20260935
-report = {"design": __doc__, "traits": TR, "draws_per_family": DRAWS, "seed": SEED, "batteries": {}}
-for name in ("margin", "accuracy"):
+def _cluster_t_cr1(T, U, cluster, alpha=0.05):
+    keys, inv = np.unique(np.asarray(cluster), return_inverse=True)
+    G = keys.size
+    sU = float(np.sum(U))
+    th = float(np.sum(T)) / sU
+    e = np.bincount(inv, weights=np.asarray(T, float) - th * np.asarray(U, float), minlength=G)
+    se = float(np.sqrt(G / (G - 1.0) * np.sum(e ** 2))) / sU
+    crit = float(student_t.ppf(1 - alpha / 2, G - 1))
+    lo, hi = th - crit * se, th + crit * se
+    return (float(np.sqrt(lo)) if lo >= 0 else float("nan"),
+            float(np.sqrt(hi)) if hi >= 0 else float("nan"))
+
+
+SEED, REPS = 20260986, 4000
+SIZES_PER_RECIPE = 5
+METHODS = ("wild_recipe", "cluster_t_recipe", "wild_size", "cluster_t_size")
+report = {"design": __doc__, "seed": SEED, "reps": REPS, "cells": {}, "shipped_check": {}}
+for ci, cell in enumerate(CELLS):
     t1 = time.time()
-    pA, pB = projections(name)
-    Tf, Uf = weighted_TU(pA, pB, FLAT)
-    ref = estimate(pop, name, check=False)
-    gap = max(float(np.max(np.abs(Tf - np.asarray(ref.T, float)))),
-              float(np.max(np.abs(Uf - np.asarray(ref.U, float)))))
-    assert gap < 1e-12, (name, gap)
-    lo_f, hi_f, th_f = wild(Tf, Uf, pop.recipe, seed=0)
-    shipped = wild_bootstrap_t(ref.T, ref.U, pop.recipe, n_boot=4999, seed=0)
-    cell = {"flat_check_max_abs_gap": gap,
-            "flat": {"lambda_hat": float(np.sqrt(th_f)), "lo": lo_f, "hi": hi_f},
-            "shipped": {"lo": float(shipped.lo), "hi": float(shipped.hi)}, "families": {}}
-    for fi, (fam, conc) in enumerate((("dirichlet_flat", 1.0), ("dirichlet_near_flat", 20.0))):
-        # String hashing is salted per process, so the family index seeds the stream instead.
-        rng = np.random.default_rng([SEED, fi, len(name)])
-        lam, excl, bad = [], 0, 0
-        worst = None
-        for d in range(DRAWS):
-            w = rng.dirichlet(np.full(K, conc))
-            T, U = weighted_TU(pA, pB, w)
-            lo, hi, th = wild(T, U, pop.recipe, seed=d)
-            l = float(np.sqrt(th)) if th >= 0 else float("nan")
-            lam.append(l)
+    acc = {m: {"cov": 0, "lo": 0, "up": 0, "bad": 0, "excl": 0, "w": []} for m in METHODS}
+    check = float("nan")
+    for rep in range(REPS):
+        rng = np.random.default_rng([SEED, ci + 500, rep])
+        T, U, recipe, truth = r6_simulate(cell, rng)
+        band = np.arange(T.size) % SIZES_PER_RECIPE
+        ivs = {"wild_recipe": _wild(T, U, recipe, seed=rep),
+               "cluster_t_recipe": _cluster_t_cr1(T, U, recipe)}
+        if np.unique(band).size > 1:
+            ivs["wild_size"] = _wild(T, U, band, seed=rep)
+            ivs["cluster_t_size"] = _cluster_t_cr1(T, U, band)
+        if rep == 0:
+            # Confirms the reimplemented wild interval matches the shipped estimator.
+            ref = wild_bootstrap_t(T, U, recipe, n_boot=4999, seed=rep)
+            a, b = ivs["wild_recipe"]
+            check = max(abs(a - ref.lo), abs(b - ref.hi))
+        for m, (lo, hi) in ivs.items():
             if np.isfinite(lo) and np.isfinite(hi):
-                e = lo > 1.0 or hi < 1.0
-                excl += e
-                if worst is None or (np.isfinite(l) and l < worst["lambda_hat"]):
-                    worst = {"lambda_hat": l, "lo": lo, "hi": hi, "excludes_one": bool(e),
-                             "weights": [round(float(x), 5) for x in w]}
+                acc[m]["cov"] += lo <= truth <= hi
+                acc[m]["lo"] += lo > truth; acc[m]["up"] += hi < truth
+                # The paper's conclusion is an exclusion of one, so we score that directly.
+                acc[m]["excl"] += lo > 1.0
+                acc[m]["w"].append(hi - lo)
             else:
-                bad += 1
-        v = np.asarray(lam, float); v = v[np.isfinite(v)]
-        cell["families"][fam] = {
-            "concentration": conc, "share_excluding_one": excl / DRAWS,
-            "undefined": bad / DRAWS, "lambda_mean": float(v.mean()),
-            "lambda_p05": float(np.percentile(v, 5)), "lambda_p95": float(np.percentile(v, 95)),
-            "lambda_min": float(v.min()), "lambda_max": float(v.max()), "lowest_estimate": worst}
-        print(f"[{name}/{fam}] excl {excl / DRAWS:.4f} lam "
-              f"{v.min():.3f}-{v.max():.3f} {time.time() - t1:.0f}s", flush=True)
-    report["batteries"][name] = cell
+                acc[m]["bad"] += 1
+    out = {"name": cell["name"], "truth": truth,
+           "varied": {k: v for k, v in cell.items() if k != "name"}}
+    for m, a in acc.items():
+        if not a["w"] and not a["bad"]:
+            continue
+        c = a["cov"] / REPS
+        out[m] = {"coverage": c, "mc_se": float(np.sqrt(c * (1 - c) / REPS)),
+                  "excludes_one_rate": a["excl"] / REPS,
+                  "lower_miss": a["lo"] / REPS, "upper_miss": a["up"] / REPS,
+                  "undefined_or_unbounded": a["bad"] / REPS,
+                  "median_width": float(np.median(a["w"])) if a["w"] else None}
+    report["cells"][cell["name"]] = out
+    report["shipped_check"][cell["name"]] = float(check)
+    print(f"[{cell['name']}] {time.time() - t1:.0f}s check {check:.3g} " + json.dumps({m: round(out[m]["coverage"], 4) for m in METHODS if m in out}), flush=True)
 
 report["wall_seconds"] = time.time() - t0
 (W / "r6_weights.json").write_text(json.dumps(report, indent=1))
-shutil.rmtree(W / "seed-noise", ignore_errors=True); shutil.rmtree(runs_dir, ignore_errors=True)
+shutil.rmtree(W / "seed-noise", ignore_errors=True)
 print(f"[done] {time.time() - t0:.0f}s", flush=True)
