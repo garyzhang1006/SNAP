@@ -61,3 +61,4 @@ snap-r6-logscale-full	COMPLETE	2026-09-16 17:47	2026-09-16 18:29	41	r6_logscale_
 snap-r6-recipe-shared-acc	COMPLETE	2026-09-16 18:13	2026-09-16 18:31	18	r6_recipe_shared_acc.json,snap-r6-recipe-shared-acc.log	]
 snap-r6-weights	ERROR	2026-09-16 18:15	2026-09-16 18:32	16	r6_weights.json,runs,snap-r6-weights.log	]
 snap-r6-weights	COMPLETE	2026-09-16 18:33	2026-09-16 18:43	9	r6_weights.json,runs,snap-r6-weights.log	]
+snap-r6-corner-acc	COMPLETE	2026-09-16 18:31	2026-09-16 18:51	20	r6_corner_acc.json,snap-r6-corner-acc.log	]

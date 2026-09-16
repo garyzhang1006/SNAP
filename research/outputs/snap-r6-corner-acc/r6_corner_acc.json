@@ -1,0 +1,241 @@
+{
+ "design": "R6 the sharing corner the limitation rests on, measured on the scale the paper reports second.\n\nDesign fixed before running (2026-09-16, written 18:40 EDT). The corner that carries the paper's\nlimitation puts band sharing at its 0.044 bound and recipe sharing at its 0.114 bound together, and we\nmeasured it at 12,000 replicates on a margin-like population, where it costs between half a point and a\npoint of coverage. The accuracy battery has a different correlation, twice the item noise and a true\nratio near 1.078, and none of the corner work has touched it. A limitation that applies to both reported\nscales should be measured on both rather than assumed to transfer.\nThis run scores five cells at the accuracy battery's correlation and item noise, which are no sharing,\nband sharing alone at its bound, recipe sharing alone at its bound, both bounds together, and twice both\nbounds. It reports the recipe-clustered interval and its leverage-corrected version, so the remedy the\nappendix prices on margins gets a price on accuracy too. Seed 20260988 keeps the draws distinct.\n",
+ "seed": 20260988,
+ "reps": 4000,
+ "cells": {
+  "acc_none": {
+   "name": "acc_none",
+   "truth": 1.0779610382569493,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45
+   },
+   "wild_recipe": {
+    "coverage": 0.95025,
+    "mc_se": 0.003437838619685338,
+    "excludes_one_rate": 0.09575,
+    "lower_miss": 0.019,
+    "upper_miss": 0.03075,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.39547787024499026
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.95125,
+    "mc_se": 0.003404902256306338,
+    "excludes_one_rate": 0.095,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.03025,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.39694935564140277
+   },
+   "wild_size": {
+    "coverage": 0.84025,
+    "mc_se": 0.005792882216565428,
+    "excludes_one_rate": 0.05625,
+    "lower_miss": 0.01675,
+    "upper_miss": 0.02375,
+    "undefined_or_unbounded": 0.11925,
+    "median_width": 0.5471457112861097
+   },
+   "cluster_t_size": {
+    "coverage": 0.9385,
+    "mc_se": 0.003798609943123932,
+    "excludes_one_rate": 0.07275,
+    "lower_miss": 0.021,
+    "upper_miss": 0.02825,
+    "undefined_or_unbounded": 0.01225,
+    "median_width": 0.5040452151190971
+   }
+  },
+  "acc_band_0.044": {
+   "name": "acc_band_0.044",
+   "truth": 1.0779610382569493,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45,
+    "size_shared": 0.044
+   },
+   "wild_recipe": {
+    "coverage": 0.942,
+    "mc_se": 0.0036958084365940843,
+    "excludes_one_rate": 0.1055,
+    "lower_miss": 0.01975,
+    "upper_miss": 0.03825,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.39387893312617567
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.942,
+    "mc_se": 0.0036958084365940843,
+    "excludes_one_rate": 0.1025,
+    "lower_miss": 0.01975,
+    "upper_miss": 0.03825,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3947776305781076
+   },
+   "wild_size": {
+    "coverage": 0.82925,
+    "mc_se": 0.005949673047739682,
+    "excludes_one_rate": 0.06275,
+    "lower_miss": 0.01875,
+    "upper_miss": 0.02325,
+    "undefined_or_unbounded": 0.12875,
+    "median_width": 0.5423359566676134
+   },
+   "cluster_t_size": {
+    "coverage": 0.937,
+    "mc_se": 0.003841581705495796,
+    "excludes_one_rate": 0.08675,
+    "lower_miss": 0.023,
+    "upper_miss": 0.02825,
+    "undefined_or_unbounded": 0.01175,
+    "median_width": 0.5004624946278662
+   }
+  },
+  "acc_recipe_0.114": {
+   "name": "acc_recipe_0.114",
+   "truth": 1.0779610382569493,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45,
+    "recipe_shared": 0.114
+   },
+   "wild_recipe": {
+    "coverage": 0.95125,
+    "mc_se": 0.003404902256306338,
+    "excludes_one_rate": 0.09125,
+    "lower_miss": 0.015,
+    "upper_miss": 0.03375,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3994467666980808
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.95225,
+    "mc_se": 0.0033715700163277035,
+    "excludes_one_rate": 0.092,
+    "lower_miss": 0.016,
+    "upper_miss": 0.03175,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.4002779533350663
+   },
+   "wild_size": {
+    "coverage": 0.8385,
+    "mc_se": 0.00581845662525725,
+    "excludes_one_rate": 0.06325,
+    "lower_miss": 0.01675,
+    "upper_miss": 0.02525,
+    "undefined_or_unbounded": 0.1195,
+    "median_width": 0.5376328873097858
+   },
+   "cluster_t_size": {
+    "coverage": 0.9425,
+    "mc_se": 0.0036808202210920327,
+    "excludes_one_rate": 0.078,
+    "lower_miss": 0.02125,
+    "upper_miss": 0.0275,
+    "undefined_or_unbounded": 0.00875,
+    "median_width": 0.5023748822644221
+   }
+  },
+  "acc_joint_bound": {
+   "name": "acc_joint_bound",
+   "truth": 1.0779610382569493,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45,
+    "size_shared": 0.044,
+    "recipe_shared": 0.114
+   },
+   "wild_recipe": {
+    "coverage": 0.9455,
+    "mc_se": 0.0035892112643309253,
+    "excludes_one_rate": 0.09875,
+    "lower_miss": 0.01975,
+    "upper_miss": 0.03475,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.3974149007820538
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.948,
+    "mc_se": 0.0035105555115964213,
+    "excludes_one_rate": 0.0995,
+    "lower_miss": 0.0185,
+    "upper_miss": 0.0335,
+    "undefined_or_unbounded": 0.0,
+    "median_width": 0.39857094435489465
+   },
+   "wild_size": {
+    "coverage": 0.84375,
+    "mc_se": 0.005740991584648074,
+    "excludes_one_rate": 0.0615,
+    "lower_miss": 0.01525,
+    "upper_miss": 0.028,
+    "undefined_or_unbounded": 0.113,
+    "median_width": 0.5396458674585977
+   },
+   "cluster_t_size": {
+    "coverage": 0.9355,
+    "mc_se": 0.003883933251228708,
+    "excludes_one_rate": 0.08075,
+    "lower_miss": 0.02375,
+    "upper_miss": 0.031,
+    "undefined_or_unbounded": 0.00975,
+    "median_width": 0.49650621488003255
+   }
+  },
+  "acc_joint_double": {
+   "name": "acc_joint_double",
+   "truth": 1.0779610382569493,
+   "varied": {
+    "rho": 0.018,
+    "noise_sd": 1.45,
+    "size_shared": 0.088,
+    "recipe_shared": 0.228
+   },
+   "wild_recipe": {
+    "coverage": 0.9395,
+    "mc_se": 0.003769607075014583,
+    "excludes_one_rate": 0.0945,
+    "lower_miss": 0.01725,
+    "upper_miss": 0.04275,
+    "undefined_or_unbounded": 0.0005,
+    "median_width": 0.4018801214673598
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.94225,
+    "mc_se": 0.003688324060464318,
+    "excludes_one_rate": 0.0935,
+    "lower_miss": 0.0165,
+    "upper_miss": 0.04075,
+    "undefined_or_unbounded": 0.0005,
+    "median_width": 0.4030526126570302
+   },
+   "wild_size": {
+    "coverage": 0.82225,
+    "mc_se": 0.006044727816452946,
+    "excludes_one_rate": 0.0645,
+    "lower_miss": 0.016,
+    "upper_miss": 0.03025,
+    "undefined_or_unbounded": 0.1315,
+    "median_width": 0.5475310972174089
+   },
+   "cluster_t_size": {
+    "coverage": 0.92975,
+    "mc_se": 0.004040882870735059,
+    "excludes_one_rate": 0.0755,
+    "lower_miss": 0.0205,
+    "upper_miss": 0.038,
+    "undefined_or_unbounded": 0.01175,
+    "median_width": 0.5071349180811383
+   }
+  }
+ },
+ "shipped_check": {
+  "acc_none": 0.0,
+  "acc_band_0.044": 0.0,
+  "acc_recipe_0.114": 0.0,
+  "acc_joint_bound": 0.0,
+  "acc_joint_double": 0.0
+ },
+ "wall_seconds": 1181.1642203330994
+}

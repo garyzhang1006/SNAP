@@ -570,3 +570,11 @@ accuracy sweeps they had been placed under. The 1B branch verification covers fi
 that resolve at 1B rather than all of them, since the run attempted three names that do not exist and
 never attempted falcon, fineweb-edu or fineweb-pro. Each of the five was re-verified against the source
 file before the appendix was edited, and all five are now corrected.
+
+| snap-r6-corner-acc | COMPLETE at 4,000 replicates under seed 20260988. On the accuracy scale the recipe-clustered interval covers 0.950 with no sharing, 0.942 at the band bound, 0.951 at the recipe bound, 0.946 at the joint corner and 0.940 at twice both bounds. | Written in. The corner costs the accuracy interval the same half point to a point it costs the margin one, so the limitation applies to both reported scales. Its design note promised a leverage-corrected column that the run did not compute, which is why snap-r6-cr3-acc is queued. |
+
+The verification agent also checked the provenance census and found it exact, since the two runs return
+the same 80 refusals, 40 open repositories and 5 invalid names over the identical 125 repositories with
+no per-repository difference. It flagged the gap between them as six and a half hours rather than the
+seven the appendix claimed, which the run times of 11:31 and 18:01 confirm, and the appendix now says six
+and a half.
