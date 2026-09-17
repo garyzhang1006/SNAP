@@ -1,0 +1,1863 @@
+ 
+ 
+ 
+ Signal and Noise: A Framework for Reducing Uncertainty in Language Model Evaluation 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report GitHub Issue 
+ × 
+ 
+
+ 
+ Title: 
+ 
+
+ Content selection saved. Describe the issue below: 
+
+ Description: 
+ 
+ 
+
+ 
+ Submit without GitHub 
+ Submit in GitHub 
+ 
+ 
+ 
+ 
+ arXiv is now an independent nonprofit! 
+ Learn more 
+ × 
+ 
+
+ 
+ 
+ 
+ Back to arXiv 
+ 
+ 
+ 
+ 
+ Why HTML? 
+ 
+ 
+ Report Issue 
+ 
+ 
+ 
+ Back to Abstract 
+ 
+ 
+ 
+ 
+ Download PDF 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Abstract 
+ 1 Introduction 
+ 2 Predicting Large Model Phenomena with Small Models 
+ 
+ 2.1 Decision Accuracy and Scaling Law Prediction Error 
+ 2.2 Evaluation Dataset 
+ 
+ 3 Quantifying Signal and Noise 
+ 
+ 3.1 Measuring Noise 
+ 3.2 Measuring Signal 
+ 3.3 Measuring Signal -to- noise Ratio 
+ 
+ 4 Signal and Noise Correlate with Better Predictions 
+ 
+ 4.1 Higher signal -to- noise ratio indicates higher decision accuracy 
+ 4.2 Tasks with higher noise also have higher scaling law error 
+ 
+ 5 Improving Predictions by Improving SNR 
+ 
+ 5.1 Filtering noisy sub-tasks improves signal -to- noise ratio 
+ 5.2 Averaging checkpoint-to-checkpoint noise leads to better predictions 
+ 5.3 Measuring bits-per-byte improves benchmark signal -to- noise ratio 
+ 
+ 6 Related Work and Discussion 
+ References 
+ A Methodology Details 
+ 
+ A.1 Scaling Law Details 
+ A.2 Decision Accuracy Details 
+ A.3 Measures of Modeling Noise 
+ 
+ A.3.1 Correlation between Sources of noise 
+ A.3.2 Selecting the Number of Checkpoints in Noise 
+ 
+ A.4 Measures of Signal 
+ 
+ Measurements. 
+ Choosing the a signal measurement. 
+ 
+ A.5 Dataset Details 
+ 
+ A.5.1 Models 
+ A.5.2 Benchmarks 
+ 
+ 
+ B Full Results 
+ 
+ B.1 Noise measures the reliability of decision accuracy. 
+ B.2 Increasing benchmark size has diminishing returns 
+ B.3 Signal-to-Noise Ratio at Large (>32B) Scales 
+ 
+ C Additional Results 
+ 
+ 
+ 
+ 
+ 
+ License: CC BY 4.0
+ 
+ 
+arXiv:2508.13144v1 [cs.CL] 18 Aug 2025 
+ 
+ 
+ Signal and Noise: A Framework for Reducing Uncertainty in Language Model Evaluation 
+ 
+ 
+ David Heineman Valentin Hofmann Ian Magnusson Yuling Gu
+ 
+ Affiliation: Allen Institute for Artificial Intelligence
+ 
+ Affiliation: Paul G. Allen School of Computer Science & Engineering, University of Washington contact: davidh@allenai.org 
+ 
+    
+ Noah A. Smith Hannaneh Hajishirzi
+Kyle Lo Jesse Dodge
+ 
+ Affiliation: Allen Institute for Artificial Intelligence
+ 
+ Affiliation: Paul G. Allen School of Computer Science & Engineering, University of Washington contact: davidh@allenai.org 
+ 
+
+ Abstract 
+ 
+ Developing large language models is expensive and involves making decisions with small experiments, typically by evaluating on large, multi-task evaluation suites.
+In this work, we analyze specific properties which make a benchmark more reliable for such decisions, and interventions to design higher-quality evaluation benchmarks.
+We introduce two key metrics that show differences in current benchmarks: signal , a benchmark’s ability to separate better models from worse models, and noise , a benchmark’s sensitivity to random variability between training steps.
+We demonstrate that benchmarks with a better signal -to- noise ratio are more reliable when making decisions at small scale, and those with less noise have lower scaling law prediction error.
+These results suggest that improving signal or noise will lead to more useful benchmarks, so we introduce three interventions designed to directly affect signal or noise .
+For example, we propose that switching to a metric that has better signal and noise (e.g., perplexity rather than accuracy) leads to better reliability and improved scaling law error.
+We also find that filtering noisy subtasks, to improve an aggregate signal -to- noise ratio, leads to more reliable multi-task evaluations.
+We also find that averaging the output of a model’s intermediate checkpoints to reduce noise leads to consistent improvements.
+We conclude by recommending that those creating new benchmarks, or selecting which existing benchmarks to use, aim for high signal and low noise .
+We use 30 benchmarks for these experiments, and 375 open-weight language models from 60M to 32B parameters, resulting in a new, publicly available dataset of 900K evaluation benchmark results, totaling 200M instances. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   allenai/signal-and-noise   
+ 
+ 
+   datasets/allenai/signal-and-noise 
+ 
+ 
+ 
+ 
+ 1 Introduction 
+
+ 
+ 
+ Language model development is expensive.
+During the development process, researchers need to make decisions such as what architecture to use, what training methods to employ, and what data to train on.
+These decisions rely on measuring phenomena at smaller, more economical scales, then hoping the trends measured hold for large scale models.
+This paradigm exists across the research community; many papers experiment with small baselines then scale up the best-performing model [ 31 , 17 , 38 , inter alia ] , and there has been extensive research on using scaling laws to predict the performance of larger models [ 9 , 19 , inter alia ] .
+While there is a large and ever-growing number of benchmarks, prior work has shown these scaling procedures only works for some benchmarks and not others [ 66 , 56 , 15 , 50 ] .
+This poses a significant challenge because, as we develop more general-purpose language models, developers need to be evaluating on even more diverse benchmarks, some of which may not be well-suited for this critical approach.
+We need a deeper understanding of what intrinsic properties we can measure to tell if a benchmark provides useful information, if it needs to be reformulated, or if it is best discarded altogether. 
+ 
+ 
+ To formalize this setup, we study two common experimental settings for language model development: (i) train a pair of small models (e.g., on different pretraining corpora) and use their ranking to predict the ranking of two large models [ 38 ] , and (ii) fit a scaling law on a set of small models and predict the performance of a large model [ 19 , 3 ] .
+We hypothesize that the ability to predict both settings are related to a measure which is cheaper to compute and easier to improve: signal and noise .
+ Signal measures how spread out scores are for different models on a single benchmark and noise measures the variability of a benchmark score during training. 
+ 
+ 
+ To illustrate the connection from signal and noise to an experimental setting, consider an example of comparing models trained using different pretraining corpora (illustrated in Figure 1 ); the tasks where scores are either too close (HellaSwag, left) or too noisy (ARC Challenge, center) are the benchmarks where we would be less confident that a ranking of models at a small scale would hold at a large scale.
+Following this observation, we show in Section 4 that the signal -to- noise ratio (SNR) is highly correlated with the likelihood that a ranking of models at a small scale will hold at a large scale, and then show that noise is highly correlated with the prediction error of a scaling law fit. 
+ 
+ 
+ Based on these observations, in Section 5 we propose a set of interventions designed to reduce noise or increase signal , and then we measure their impact on our experimental setups of decision accuracy and scaling law error.
+For example, we show that by averaging out the checkpoint-to-checkpoint noise for a model, we improve our ability to predict performance of large models from small models.
+We also show that it is possible to find subsets of existing benchmarks that have higher signal -to- noise ratios than the full evaluation sets, and that even though those subsets can have fewer than half as many instances, they improve both experimental setups.
+Finally, we show that SNR can be used to improve metric construction, where choosing a metric that has better SNR leads to consistent improvements on a wide variety of benchmarks. 
+ 
+ 
+ Our core contributions are as follows: (i) we introduce definitions for signal , noise , and signal -to- noise ratio in the setting of evaluating language models, and show this framework is useful for measuring the utility of benchmarks, and
+(ii) we demonstrate interventions based on this framework which improve both prediction settings.
+Our core results evaluate 465 language models on 30 benchmarks across 14 model sizes.
+We release our data, evaluation results, and trained models. 
+ 
+ 
+ 
+ 2 Predicting Large Model Phenomena with Small Models 
+
+ 
+ Using small scale experiments to make predictions about large model behavior is ubiquitous in language model development [ 27 , 60 , 31 , 42 ] .
+This process can take many forms.
+
+For example, finding a good mix of data from multiple sources to train on typically involves evaluation of small models to calculate an optimal weighting of datasets, then training a large model on the optimized mix [ 35 , 66 ] .
+In Blakeney et al. [5] , mid-training runs on a sample of candidate pretraining datasets are used to estimate the quality of training from-scratch.
+ Dubey et al. [17] predicted the downstream task using scaling laws to compare candidate data mixes.
+Hyperparameter transfer methods, such as maximal update
+parametrization ( ), also rely on small scale experiments [ 68 ] .
+However, the results from small scale experiments are not always reliable. Work on so-called emergent capabilities [ 65 ] shows that for some benchmarks, language model performance only rises above random chance for models trained at large compute budgets. Later work has further explored emergence behavior in particular tasks, such as MCQA tasks [ 67 ] or generative math and code tasks [ 57 ] , or by observing the capabilities of open-weight models [ 51 ] . 
+ 
+ 
+ While these different experimental setups are all important, we focus on two straightforward and common setups in making data decisions for language model development: decision accuracy and scaling law prediction error. In this section, we present the motivation for both experimental settings, and in Section 3 we show how the signal -to- noise ratio is an effective framework for predicting how useful a benchmark in these scenarios. 
+ 
+ 
+ 2.1 Decision Accuracy and Scaling Law Prediction Error 
+
+ 
+ Decision Accuracy. Consider a scenario where a practitioner intends to train a large model, and needs to decide between training on Dataset or Dataset to get the best performance on some downstream task, represented by a scalar . A simple and intuitive approach is to train a small model on Dataset and another, , on Dataset , then choose the dataset that led to the best downstream task performance for training the large model. We evaluate this procedure by training two large models, and , one on each of the datasets, and see if the ranking of the two small models, and , on the benchmark is the same as for the large models. 
+ 1 
+ 
+ 
+ 
+ Training multiple large models is too expensive for most development scenarios, but is necessary to evaluate how accurate this process is. In the scenario where we are deciding between more than two choices, we consider pairwise rankings between all pairs . Following Magnusson et al. [38] we refer to this small-to-large agreement as “decision accuracy”: 
+ 
+ We use models of 7 sizes (from 60M parameters up to 1B parameters) trained on 25 different pretraining corpora from Magnusson et al. [38] . Our prediction task is to use a set of small models (e.g., 60M parameter models) to predict the ranking of the 1B models on a given benchmark (e.g., MMLU). High decision accuracy means the ranking of the small models accurately predicts the ranking of the large models on that benchmark; this is an indication that the benchmark is useful for this process of using small models to make decisions about which dataset to train on. We illustrate an example of this in Figure 1 , which shows training curves for 25 data recipes on 3 model sizes. We hypothesize that if model scores are very close together, or the evaluations are very noisy, it is more likely that the ranking from small to large models will change, leading to worse decision accuracy; we formalize and test this hypothesis in the following sections. 
+ 2 
+ 
+ 
+ 
+ We observe similar findings on other rank agreement metrics, like Spearman rank correlation (Table 3 ). Decision accuracy, in particular, is equivalent to Kendall’s tau modulo a scale and shift (App. A.2 ). 
+ 
+ 
+ Scaling Law Prediction Error. 
+Scaling laws [ 27 , 24 , inter alia] have been used extensively to predict the validation loss of a large model using a set of smaller “scaling law” models.
+Recent work has also used scaling laws to predict downstream task performance [ 19 , 3 ] by first predicting task loss then using the predicted loss to predict task performance (e.g., accuracy); this is the setup we use in this work.
+The prediction error for the scaling law fit is defined as the relative error between the predicted and true performance of the large model:
+ . 
+ 
+ 
+ Calculating prediction error requires training a set of scaling law models on the same corpus with varying tokens/sizes (e.g., 190M to 1B params), training a large model (e.g., 13B), and fitting a scaling law to the smaller models to predict the larger model performance. 
+ 3 
+ 
+ 
+ 
+ Scaling law predictions can be used to make development decisions (e.g., about which training dataset is best) by training a set of models and fitting a scaling law for each option being considered [ 17 ] , but in this work we just evaluate scaling law error directly. 
+We describe the scaling law functional form and fitting details in App. A.1 , following the setup in Bhagia et al. [3] . 
+ 
+ 
+ 
+ 2.2 Evaluation Dataset 
+
+ 
+ We perform our analysis using existing development benchmarks and models: 
+ 
+ 
+ Models. Our set of models includes: (i) a suite of scaling law models from 190M to 3.2B, with a corresponding target at 7B and 13B [ 3 ] , (ii) a suite of 25 models each trained with different pre-training corpora from 60M to 1.3B [ 38 ] , (iii) the final 30 checkpoints for OLMo 2 1B, 7B, 13B and 32B [ 42 ] , and (iv) 73 open-weight base models.
+Additionally, in our comparison between sources of modeling noise in § 3.1 , we train and release 20 1B models, with 10 models trained varying the data order initialization and 10 varying the random seed initialization, along with evaluation on 3.2K intermediate checkpoints. 
+ 
+ 
+ Benchmarks. We evaluate 30 development tasks which we categorize as knowledge QA, math, and code. We use the OLMES [ 22 ] standard where applicable, and reproduce the OLMo 2 evaluation setup [ 42 ] for all other benchmarks.
+Following Gadre et al. [19] , we also include multi-task averages for each group, and for the OLMES core tasks.
+For our test of subset selection in § 5.1 , we include a synthetically generated benchmark, generated using AutoBencher [ 32 ] . 
+ 
+ 
+ We include full details on the sets of models and benchmarks in App. A.5 . 
+ 
+ 
+ 
+ 
+ 3 Quantifying Signal and Noise 
+
+ 
+ To illustrate the impact of noise on a decision-making setup, Figure 1 shows training curves for 25 1B models trained with different data recipes and, in inset plots, the training curve for a single 1B model on three tasks. Some tasks (left, HellaSwag) exhibit low noise between training checkpoints but low signal between models, and others (center, ARC-Challenge) exhibit high noise and high signal .
+In this section we define signal and noise , and define two simple metrics to estimate the signal -to- noise ratio that can be calculated from a set of model evaluations on a given benchmark. 
+ 
+ 
+ 3.1 Measuring Noise 
+
+ 
+ There are numerous sources of noise in the language model development pipeline. Previous work has shown multiple training runs under the same configuration can lead to different performance as a result of a different initialization or data order [ 14 , 13 ] . In addition, as illustrated in Figure 1 , performance can even vary significantly from one checkpoint to the next: within the final 30 checkpoints of training for 1B models on ARC Challenge, we observe a range of 1.7% accuracy.
+With these motivations, we consider four potential noise measurements, each calculated on using evaluation on a single benchmark: (i) training multiple models and varying only the random initialization, (ii) training models and varying the training data order, (iii) measuring the total checkpoint-to-checkpoint noise across a full, single training run, and (iv) measuring the checkpoint-to-checkpoint noise of the final checkpoints of a single training run. We formalize these definitions in App. A.3 . 
+ 
+ 
+ To get estimates for four potential sources of noise, we train 10 different 1B-5xC models varying the initialization and data orders, and evaluate all intermediate checkpoints. We find that the initialization noise, data order noise, and checkpoint-to-checkpoint noise across the whole training run all correlate highly with the relative standard deviation of the final checkpoints ( of 0.82, 0.86, and 0.95, respectively, see Figure 3 ; and see the training curves in Figure C ).
+These results lead us to define noise as the relative standard deviation of the final checkpoints, as this requires no additional training cost and only uses the final checkpoints rather than the full training curve. We define noise as:
+ . 
+ 
+ 
+ 
+ 3.2 Measuring Signal 
+
+ 
+ A benchmark is most useful during language model development if it can detect a true difference between a good model and a poor model, assuming a true difference exists between the models in the ability that the benchmark aims to measure.
+This statistical power is what enables us to use small models for development decisions like training dataset to use.
+To formalize this idea, we consider a benchmark to have high signal when models evaluated on it have a wide and evenly distributed range of scores.
+We measure signal using a metric from the numerical integration literature: dispersion, calculated as the maximum difference between the scores of any two models, divided by the mean score of all models to account for different scales.
+This metric is designed specifically to measure how well a set of points cover a space; that is, how spread out the points are from each other.
+We also considered 20 different measures of spread, including variance, mean pairwise distance, Gini coefficient, etc., in Appendix A.4 . 
+ 
+ 
+ In the following section we introduce signal -to- noise ratio, and find that this definition of signal leads to signal -to- noise ratio with the highest correlation with decision accuracy.
+We define signal as , the normalized maximum difference between any pair of models , . 
+ 
+ 
+ 
+ 3.3 Measuring Signal -to- noise Ratio 
+
+ 
+ Using our measures of signal (§ 3.2 ) and noise (§ 3.1 ), we propose measuring the signal -to- noise ratio. For both measures, we first divide by the average to be independent of particular units (e.g., to compare accuracy to unbounded task perplexity). We define the signal -to- noise ratio: 
+ 
+ where signal ( Rel. Dispersion ) is measured over a population of models trained using a similar compute budget, and noise ( Rel. Std. ) is measured over the final intermediate training checkpoints of a single model. We emphasize that, while this is one particular instantiation of the signal -to- noise ratio, our framework is designed to be independent of a particular metric: we find many other measures of signal produce similar results in Appendix A.4 and measures of noise have high correlation in Appendix A.3 . 
+ 
+ 
+ 
+ 
+ 
+ 4 Signal and Noise Correlate with Better Predictions 
+
+ 
+ In this section, we show that the signal -to- noise ratio correlates with decision accuracy for small scale experiments, and that the noise of the target model correlates with scaling law prediction. These findings motivate our use of SNR to improve benchmarks’ statistical properties in Section 5 . 
+ 
+ 
+ 4.1 Higher signal -to- noise ratio indicates higher decision accuracy 
+
+ 
+ Setup. 
+We hypothesize that a higher signal -to- noise ratio makes it easier to distinguish between models. To test this, we measure decision accuracy using the ranking of the small DataDecide models (60M to 750M) to predict the ranking of the large DataDecide model (1B). To calculate signal we use the final checkpoint of each of the 25 small models, and to calculate noise , we use the standard deviation around the final 5 checkpoints of the small-scale models. Since we have a measure of noise for each model, we use the average of the noise across the small models.
+ 
+ Signal -to- noise is predictive of decision accuracy. Figure 3.3 shows the signal , noise and signal -to- noise ratio plotted against the decision accuracy across the OLMES benchmarks. While the signal or noise alone do not correlate with decision accuracy, we find a strong correlation between SNR and decision accuracy ( , ). We conclude that benchmarks which have higher SNR at small scales exhibit higher decision accuracy, and are more likely for their results to hold at a larger scale. In Appendix B.1 , we observe benchmarks with a higher SNR also exhibit lower variance when calculating decision accuracy using different checkpoints around the end of training. 
+ 
+ 
+ 
+ 
+ 4.2 Tasks with higher noise also have higher scaling law error 
+
+ 
+ Setup. 
+We fit scaling laws to predict the performance of OLMo 2 13B using final checkpoint of the set of scaling models trained by Bhagia et al. [3] .
+We calculate the scaling law prediction error as the relative error of the predicted and final 13B checkpoint.
+To estimate the noise, we calculate the relative standard deviation of the final 30 checkpoints of the 13B training run, each spaced 1000 training steps until the end of training. 
+ 4 
+ 
+ 
+ 
+ We found 30 checkpoints to be an adequate trade-off between sample size and compute cost. We provide guidance on selecting when calculating noise, and its impact on experimental results, in Appendix A.3.2 . 
+We hypothesize that the range of the final checkpoints of the prediction target (the large, 13B model) acts as an lower-bound on the true minimum scaling law prediction error.
+An example of the prediction error and noise around the prediction target is illustraed using SocialIQA in Figure 1 (right).
+Assuming a scaling law with no bias, we expect tasks with a lower standard deviation of the prediction target to also have a lower prediction error. 
+ 
+ Noise measures the reliability of scaling law prediction errors. 
+In Figure 1 (left), we show the scaling law error and standard deviation for predicting the 13B model performance over 30 tasks.
+We observe a correlation between the standard deviation of the prediction target and the prediction error across tasks ( , ), however the fit is not perfect.
+For example, we observe four tasks (MBPP+, SocialIQA, MMLU and TriviaQA) which exhibit similar error (around 2–3%), but exhibit different amounts of noise around the prediction target.
+For these benchmarks with similar error but lower noise , we can be confident that the error we observe from the single scaling law fit is the result of the true error of the scaling law fit rather than random chance.
+In practice, we recommend practitioners prefer making decisions based on scaling law predictions using tasks with low error and low noise .
+ 
+Previous work has fit multi-task averages to predict scaling laws. In particular, Gadre et al. [19] find that the error from the individual tasks in their work to be too difficult to predict accurately. In Figure 1 we also plot results for multi-task averages for each task group (‘Knowledge’, ‘Math’, ‘Code’) and an average across ‘All Tasks’. We find that some individual tasks are easier to predict than multi-task averages, and have lower noise around the prediction target. In particular, generative tasks like TriviaQA or Jeopardy which evaluate the exact match of a short-form generation exhibit lower error than the multi-task averages, and exhibit lower noise around the prediction target. For practitioners, we argue using individual tasks may be a better decision in some cases than the multi-task average, if that task better represents the ability than a multi-task average. 
+ 
+Our core results report SNR at the scales of our experimental settings for decision accuracy and prediction error. However, SNR can be calculated at any model size, so we show how the signal -to- noise ratio changes for tasks at larger 1B, 7B, 13B and 32B scales in Appendix B.3 . 
+ 
+ 
+ 
+ 
+ 5 Improving Predictions by Improving SNR 
+
+ 
+ In this section, we introduce three interventions designed to improve the signal , noise , or SNR: filtering subtasks by SNR (§ 5.1 ), averaging checkpoint scores during a training run (§ 5.2 ), measuring language modeling loss over the test set using bits-per-byte (§ 5.3 ). In each setup, we show using signal -to- noise ratio to intervene on the task improved the resulting error in both prediction settings. 
+ 
+ 
+ 5.1 Filtering noisy sub-tasks improves signal -to- noise ratio 
+
+ 
+ 
+ Setup. Many tasks are a macro-average of subtasks. We hypothesize that some subset of subtasks is usually higher quality than the rest of the set, and that the signal -to- noise ratio may be an indicator of high quality subtasks.
+To test this, we first calculate the signal -to- noise ratio of each subtask, then rank the subtasks by signal -to- noise ratio and greedily add the highest SNR subtasks.
+As a baseline, we randomly shuffle the subtasks, and report the average of 10 calculations of each metric, with the shading indicating standard deviation.
+ 
+ Results. We show results in Figure 5.1 .
+For MMLU, using only 16 subtasks had a higher signal -to- noise ratio than using the full test set. For AutoBencher, we observe the same but with only 6 tasks.
+The lower signal -to- noise ratio also led to a higher decision accuracy: +2.6% for MMLU and +5% for AutoBencher by using the high SNR subset compared to the full benchmark.
+
+We hypothesize that the quality of a task subset may influce that task’s signal -to- noise ratio. To test this, we use the data collected from MMLU Redux, which identified MMLU subtasks with high labeling error [ 21 ] .
+We find that out of the 20 MMLU subtasks which contain errors in least 5% of instances, half of these subtasks (10 of 20) are also in the lowest 20 tasks sorted by their signal-to-noise ratio. This presents evidence that low SNR may indicate low quality tasks, and we believe this is a good opportunity for future work in evaluation development. 
+ 
+ 
+ Intuitively, a benchmark developer may increase the statistical power of a comparison between models: by
+sampling more data by the original process used to construct the benchmark, in order to
+make a benchmark larger [ 64 ] , or collect a larger number of tasks in an evaluation suite [ 58 ] .
+Our evidence in Figure 5.1 suggests that larger benchmarks may not necessarily be better for comparing models. We further explore this phenomenon in App. B.2 by sub-sampling instances of benchmarks, finding some benchmarks can exhibit a higher SNR despite having 10 times fewer instances. 
+ 
+ 
+ 
+ 5.2 Averaging checkpoint-to-checkpoint noise leads to better predictions 
+
+ 
+ 
+ Setup. 
+Typically, models are only compared using the evaluation of the final checkpoint. In the previous sections, we argued that noise is a good indicator of whether we can use a benchmark to predict a large scale phenomenon.
+In this section, we want to measure the effect of averaging this particular source of step-to-step noise , as a way of improving our ability to make a prediction.
+In the decision accuracy setting, we can average the results of the small model, the large model (in this case, the 1B model), or both.
+In the prediction error setting, averaging the small models will help in fitting the scaling law, but averaging the target model will just make the result more reliable, so we average the target model in both settings and only change whether we average the models used to fit the scaling law.
+Finally, we introduce an additional way to average step-to-step noise during a training run, by evaluating whether the ranking of the 1B models during training agrees with the ranking at the end of training.
+Note, as our measure of noise is between intermediate training checkpoints, we are only reducing one of many sources of modeling noise . 
+ 
+ 
+ Results on Final Checkpoints. 
+In Table 1 , we observe averaging the noise improved both measures of error. Averaging noise improved decision accuracy by +2.4% for the 30-task average, this procedure improved decision accuracy in all but two tasks.
+For reducing the scaling law prediction error, averaging the training checkpoints improved prediction error for 20 of 30 tasks. 
+ 
+ 
+ Results on Early Stopping. Another prediction setting is to determine whether the ranking of two partially trained models will exhibit the same order at the end of training. We hypothesize that averaging the step-to-step noise will similarly improve this setting. In Figure 5.2 , we report the decision accuracy for early stopping by using a single checkpoint (red), compared to an exponential moving average of the training curve (blue).
+We find for almost any training step, applying smoothing led to a higher decision accuracy when comparing models during training.
+In both settings, reducing the checkpoint-to-checkpoint noise allowed a more accurate extrapolation. 
+ 
+ 
+ 
+ 
+ 5.3 Measuring bits-per-byte improves benchmark signal -to- noise ratio 
+
+ 
+ 
+ Setup. 
+Recent work has begun to evaluate by using the test set as a perplexity set, with the intuition that the discontinuous metrics like accuracy or exact match erode the relationship between the language modeling perplexity and the downstream metric [ 54 , 25 ] .
+We aim to measure whether the intervention to use a continuous metric improves the signal -to- noise ratio and corresponding error. We calculate the bits-per-byte (BPB) using the correct continuations of each test set – the bits-per-byte is the negative log likelihood of the correct answer divided by the number of UTF-8 bytes in the answer string [ 20 , 37 ] .
+We compare BPB to the ‘primary’ task metric (accuracy, exact match, pass@1, etc.) on the signal -to- noise ratio, and whether it improves decision-making using decision accuracy from 150M to 1B and reduces the scaling law prediction error at 13B. 
+ 
+ 
+ Results. 
+In Figure 2 we report the signal -to- noise ratio, scaling law error and decision accuracy for benchmarks using BPB instead of the primary metric, along with an example training curves for Minerva.
+Most benchmarks have higher signal -to- noise ratio when using the BPB, particularly generative math and code benchmarks like GSM8K ( to ) and MBPP ( to ).
+To verify this improvement in signal -to- noise ratio corresponds to an improvement in our decision-making setups, we observe an improvement in decision accuracy at the small scale for 90.0% of all benchmarks and a lower scaling law prediction error for 73.3% of all benchmarks.
+We see BPB results in dramatic improvement for tasks that small scale models are not able to accomplish at all, primarily generative tasks.
+Our results confirm that BPB is a useful metric is both a higher quality development benchmark, particularly for challenging tasks at small scales that do not show above random-chance signal . 
+ 
+ 
+ 
+ 
+ 6 Related Work and Discussion 
+
+ 
+ Predicting model behavior at large scales is crucial aspect to language model development, as discussed in the beginning of § 2 . Noise within evaluation benchmarks is frequently studied as the intrinsic noise of the dataset [ 2 , 7 , 40 , 6 ] , rather than the noise as a result of differences in the model during training.
+Closest to our work is Madaan et al. [36] , which report a measure of SNR using the benchmark score of a single model and noise using 10 seed models, rather than a population of models. We find that the noise of a single model alone, while a useful measure of modeling noise, is not sufficient as a measure of correlation to decision accuracy (§ 4 ), and show the step-to-step noise is a cheap alternative to seed noise.
+Similarly, Kydlíček et al. [29] focus on identifying high quality translations of tasks, but do not focus on decision making. Finally, EvalArena [ 63 ] also reports a measure of SNR using the final checkpoints of a small/large model pair (e.g., Llama 3 7B vs. 70B).
+While statistical measures based on intrinsic noise rather than modeling noise are important indicators of dataset noise, we find that many benchmarks may have low statistical variability but high checkpoint-to-checkpoint noise (such as BoolQ, as observed in Figure B.2 ), which can only be captured with a measure of modeling noise. 
+ 
+ 
+ Interventions to improve evaluation have been well explored, such as constructing higher quality benchmarks by identifying errors [ 62 , 21 ] , expanding test sets [ 64 ] , selecting high quality instances from benchmarks [ 45 ] , or generating entirely new synthetic benchmarks from a model [ 32 ] . These works typically justify their decisions using inter-annotator agreement, or a high correlation with the original benchmark. We believe this body of work can benefit from verifying their methods using SNR, rather than noise or reconstruction error alone, to indicate whether the benchmark serves as a useful development tool. 
+ 
+ 
+ Notably, this scope of our connection between the signal -to- noise ratio and predicting large scale phenomena is limited to the two decision accuracy and prediction error settings, and only studies the noise of the model during training. Future work may explore how signal -to- noise ratio indicates other small-to-large phenomena [ 65 , 57 ] , and the effects of additional sources of noise on the ability to extrapolate from small-scale experiments, such as from the evaluation configuration [ 55 , 22 ] . 
+ 
+ 
+ In this work, we identify signal and noise as a cheap way of estimating whether a benchmark is useful in predicting large-scale phenomena with small scale experiments. We conclude that new benchmark development should use these measures of modeling noise as a guide for building evaluation tools for model developers, and practitioners adopt interventions, such as those introduced in this work, that improve their ability to compare models. 
+ 
+ 
+ 
+ Acknowledgments and Disclosure of Funding 
+
+ 
+ We would like to thank Pang Wei Koh for feedback on the manuscript; and Dany Haddad, Dirk Groeneveld, Luca Soldaini, Matt Jordan, Oyvind Tafjord, Ronan Le Bras and Saumya Malik for insightful discussions.
+This material is based upon work supported by the U.S. National Science Foundation under Grant No. 2313998. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the U.S. National Science Foundation. IM is supported by the NSF CSGrad4US Fellowship. 
+ 
+ 
+ 
+ References 
+
+ 
+ 
+ [1] 
+ 
+Jacob Austin, Augustus Odena, Maxwell Nye, Maarten Bosma, Henryk Michalewski,
+David Dohan, Ellen Jiang, Carrie Cai, Michael Terry, Quoc Le, and Charles
+Sutton.
+
+ 
+ Program synthesis with large language models.
+
+ 
+ arXiv preprint arXiv:2108.07732 , 2021.
+
+ 
+ 
+ [2] 
+ 
+Taylor Berg-Kirkpatrick, David Burkett, and Dan Klein.
+
+ 
+ An empirical investigation of statistical significance in NLP.
+
+ 
+ In Jun’ichi Tsujii, James Henderson, and Marius Paşca,
+editors, Proceedings of the 2012 Joint Conference on Empirical Methods
+in Natural Language Processing and Computational Natural Language Learning ,
+pages 995–1005, Jeju Island, Korea, July 2012. Association for Computational
+Linguistics.
+
+ 
+ URL https://aclanthology.org/D12-1091/ .
+
+ 
+ 
+ [3] 
+ 
+Akshita Bhagia, Jiacheng Liu, Alexander Wettig, David Heineman, Oyvind Tafjord,
+Ananya Harsh Jha, Luca Soldaini, Noah A Smith, Dirk Groeneveld, Pang Wei Koh,
+et al.
+
+ 
+ Establishing task scaling laws via compute-efficient model ladders.
+
+ 
+ arXiv preprint arXiv:2412.04403 , 2024.
+
+ 
+ 
+ [4] 
+ 
+Yonatan Bisk, Rowan Zellers, Ronan Le Bras, Jianfeng Gao, and Yejin Choi.
+
+ 
+ Piqa: Reasoning about physical commonsense in natural language.
+
+ 
+ In Proceedings of the AAAI Conference on Artificial
+Intelligence , pages 7432–7439, 2020.
+
+ 
+ 
+ [5] 
+ 
+Cody Blakeney, Mansheej Paul, Brett W. Larsen, Sean Owen, and Jonathan Frankle.
+
+ 
+ Does your data spark joy? performance gains from domain upsampling at
+the end of training, 2024.
+
+ 
+ URL https://arxiv.org/abs/2406.03476 .
+
+ 
+ 
+ [6] 
+ 
+Sam Bowyer, Laurence Aitchison, and Desi R Ivanova.
+
+ 
+ Position: Don’t use the clt in llm evals with fewer than a few
+hundred datapoints.
+
+ 
+ arXiv preprint arXiv:2503.01747 , 2025.
+
+ 
+ 
+ [7] 
+ 
+Dallas Card, Peter Henderson, Urvashi Khandelwal, Robin Jia, Kyle Mahowald, and
+Dan Jurafsky.
+
+ 
+ With little power comes great responsibility.
+
+ 
+ In Bonnie Webber, Trevor Cohn, Yulan He, and Yang Liu, editors,
+ Proceedings of the 2020 Conference on Empirical Methods in Natural
+Language Processing (EMNLP) , pages 9263–9274, Online, November 2020.
+Association for Computational Linguistics.
+
+ 
+ doi: 10.18653/v1/2020.emnlp-main.745 .
+
+ 
+ URL https://aclanthology.org/2020.emnlp-main.745/ .
+
+ 
+ 
+ [8] 
+ 
+Mark Chen, Jerry Tworek, Heewoo Jun, Qiming Yuan, Henrique Ponde de
+Oliveira Pinto, Jared Kaplan, Harri Edwards, Yuri Burda, Nicholas Joseph,
+Greg Brockman, et al.
+
+ 
+ Evaluating large language models trained on code.
+
+ 
+ arXiv preprint arXiv:2107.03374 , 2021.
+
+ 
+ 
+ [9] 
+ 
+Leshem Choshen, Yang Zhang, and Jacob Andreas.
+
+ 
+ A hitchhiker’s guide to scaling law estimation.
+
+ 
+ arXiv preprint arXiv:2410.11840 , 2024.
+
+ 
+ 
+ [10] 
+ 
+Christopher Clark, Kenton Lee, Ming-Wei Chang, Tom Kwiatkowski, Michael
+Collins, and Kristina Toutanova.
+
+ 
+ Boolq: Exploring the surprising difficulty of natural yes/no
+questions.
+
+ 
+ In Proceedings of the 2019 Conference of the North American
+Chapter of the Association for Computational Linguistics: Human Language
+Technologies , pages 2924–2936, 2019.
+
+ 
+ 
+ [11] 
+ 
+Peter Clark, Isaac Cowhey, Oren Etzioni, Tushar Khot, Ashish Sabharwal, Carissa
+Schoenick, and Oyvind Tafjord.
+
+ 
+ Think you have solved question answering? try arc, the ai2 reasoning
+challenge.
+
+ 
+ arXiv preprint arXiv:1803.05457 , 2018.
+
+ 
+ 
+ [12] 
+ 
+Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz
+Kaiser, Matthias Plappert, Jerry Tworek, Jacob Hilton, Reiichiro Nakano,
+Christopher Hesse, and John Schulman.
+
+ 
+ Training verifiers to solve math word problems.
+
+ 
+ arXiv preprint arXiv:2110.14168 , 2021.
+
+ 
+ 
+ [13] 
+ 
+Alexander D’Amour, Katherine Heller, Dan Moldovan, Ben Adlam, Babak Alipanahi,
+Alex Beutel, Christina Chen, Jonathan Deaton, Jacob Eisenstein, Matthew D
+Hoffman, et al.
+
+ 
+ Underspecification presents challenges for credibility in modern
+machine learning.
+
+ 
+ Journal of Machine Learning Research , 23(226):1–61, 2022.
+
+ 
+ 
+ [14] 
+ 
+Jesse Dodge, Gabriel Ilharco, Roy Schwartz, Ali Farhadi, Hannaneh Hajishirzi,
+and Noah Smith.
+
+ 
+ Fine-tuning pretrained language models: Weight initializations, data
+orders, and early stopping.
+
+ 
+ arXiv preprint arXiv:2002.06305 , 2020.
+
+ 
+ 
+ [15] 
+ 
+Zhengxiao Du, Aohan Zeng, Yuxiao Dong, and Jie Tang.
+
+ 
+ Understanding emergent abilities of language models from the loss
+perspective.
+
+ 
+ arXiv preprint arXiv:2403.15796 , 2024.
+
+ 
+ 
+ [16] 
+ 
+Dheeru Dua, Yizhong Wang, Pradeep Dasigi, Gabriel Stanovsky, Sameer Singh, and
+Matt Gardner.
+
+ 
+ Drop: A reading comprehension benchmark requiring discrete reasoning
+over paragraphs.
+
+ 
+ In Proceedings of the 2019 Conference of the North American
+Chapter of the Association for Computational Linguistics: Human Language
+Technologies , pages 2368–2378, 2019.
+
+ 
+ 
+ [17] 
+ 
+Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Kadian, Ahmad
+Al-Dahle, Aiesha Letman, Akhil Mathur, Alan Schelten, Amy Yang, Angela Fan,
+et al.
+
+ 
+ The llama 3 herd of models.
+
+ 
+ arXiv preprint arXiv:2407.21783 , 2024.
+
+ 
+ 
+ [18] 
+ 
+Clémentine Fourrier, Nathan Habib, Alina Lozovskaya, Konrad Szafer, and Thomas
+Wolf.
+
+ 
+ Open llm leaderboard v2.
+
+ 
+ https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard ,
+2024.
+
+ 
+ 
+ [19] 
+ 
+Samir Yitzhak Gadre, Georgios Smyrnis, Vaishaal Shankar, Suchin Gururangan,
+Mitchell Wortsman, Rulin Shao, Jean Mercat, Alex Fang, Jeffrey Li, Sedrick
+Keh, et al.
+
+ 
+ Language models scale reliably with over-training and on downstream
+tasks.
+
+ 
+ arXiv preprint arXiv:2403.08540 , 2024.
+
+ 
+ 
+ [20] 
+ 
+Leo Gao, Stella Biderman, Sid Black, Laurence Golding, Travis Hoppe, Charles
+Foster, Jason Phang, Horace He, Anish Thite, Noa Nabeshima, et al.
+
+ 
+ The pile: An 800gb dataset of diverse text for language modeling.
+
+ 
+ arXiv preprint arXiv:2101.00027 , 2020.
+
+ 
+ 
+ [21] 
+ 
+Aryo Pradipta Gema, Joshua Ong Jun Leang, Giwon Hong, Alessio Devoto, Alberto
+Carlo Maria Mancino, Rohit Saxena, Xuanli He, Yu Zhao, Xiaotang Du, Mohammad
+Reza Ghasemi Madani, et al.
+
+ 
+ Are we done with mmlu?
+
+ 
+ arXiv preprint arXiv:2406.04127 , 2024.
+
+ 
+ 
+ [22] 
+ 
+Yuling Gu, Oyvind Tafjord, Bailey Kuehl, Dany Haddad, Jesse Dodge, and Hannaneh
+Hajishirzi.
+
+ 
+ Olmes: A standard for language model evaluations.
+
+ 
+ arXiv preprint arXiv:2406.08446 , 2024.
+
+ 
+ 
+ [23] 
+ 
+Dan Hendrycks, Collin Burns, Steven Basart, Andy Zou, Mantas Mazeika, Dawn
+Song, and Jacob Steinhardt.
+
+ 
+ Measuring massive multitask language understanding.
+
+ 
+ arXiv preprint arXiv:2009.03300 , 2021.
+
+ 
+ 
+ [24] 
+ 
+Jordan Hoffmann, Sebastian Borgeaud, Arthur Mensch, Elena Buchatskaya, Trevor
+Cai, Eliza Rutherford, Diego de Las Casas, Lisa Anne Hendricks, Johannes
+Welbl, Aidan Clark, et al.
+
+ 
+ Training compute-optimal large language models.
+
+ 
+ arXiv preprint arXiv:2203.15556 , 2022.
+
+ 
+ 
+ [25] 
+ 
+Yuzhen Huang, Jinghan Zhang, Zifei Shan, and Junxian He.
+
+ 
+ Compression represents intelligence linearly.
+
+ 
+ arXiv preprint arXiv:2404.09937 , 2024.
+
+ 
+ 
+ [26] 
+ 
+Mandar Joshi, Eunsol Choi, Daniel Weld, and Luke Zettlemoyer.
+
+ 
+ Triviaqa: A large scale distantly supervised challenge dataset for
+reading comprehension.
+
+ 
+ In Proceedings of the 55th Annual Meeting of the Association
+for Computational Linguistics , pages 1601–1611, 2017.
+
+ 
+ 
+ [27] 
+ 
+Jared Kaplan, Sam McCandlish, Tom Henighan, Tom B Brown, Benjamin Chess, Rewon
+Child, Scott Gray, Alec Radford, Jeffrey Wu, and Dario Amodei.
+
+ 
+ Scaling laws for neural language models.
+
+ 
+ arXiv preprint arXiv:2001.08361 , 2020.
+
+ 
+ 
+ [28] 
+ 
+Tom Kwiatkowski, Jennimaria Palomaki, Olivia Redfield, Michael Collins, Ankur
+Parikh, Chris Alberti, Danielle Epstein, Illia Polosukhin, Jacob Devlin,
+Kenton Lee, et al.
+
+ 
+ Natural questions: A benchmark for question answering research.
+
+ 
+ Transactions of the Association for Computational Linguistics ,
+7:452–466, 2019.
+
+ 
+ 
+ [29] 
+ 
+Hynek Kydlíček, Guilherme Penedo, Clémentine Fourier, Nathan Habib, and
+Thomas Wolf.
+
+ 
+ Finetasks: Finding signal in a haystack of 200+ multilingual tasks,
+2024.
+
+ 
+ URL
+ https://huggingface.co/spaces/HuggingFaceFW/blogpost-fine-tasks .
+
+ 
+ 
+ [30] 
+ 
+Aitor Lewkowycz, Anders Andreassen, David Dohan, Ethan Dyer, Henryk
+Michalewski, Vinay Ramasesh, Ambrose Slone, Cem Anil, Imanol Schlag, Theo
+Gutman-Solo, et al.
+
+ 
+ Solving quantitative reasoning problems with language models.
+
+ 
+ arXiv preprint arXiv:2206.14858 , 2022.
+
+ 
+ 
+ [31] 
+ 
+Jeffrey Li, Alex Fang, Georgios Smyrnis, Maor Ivgi, Matt Jordan, Samir Yitzhak
+Gadre, Hritik Bansal, Etash Guha, Sedrick Scott Keh, Kushal Arora, et al.
+
+ 
+ Datacomp-lm: In search of the next generation of training sets for
+language models.
+
+ 
+ Advances in Neural Information Processing Systems ,
+37:14200–14282, 2024a.
+
+ 
+ 
+ [32] 
+ 
+Xiang Lisa Li, Evan Zheran Liu, Percy Liang, and Tatsunori Hashimoto.
+
+ 
+ Autobencher: Creating salient, novel, difficult datasets for language
+models.
+
+ 
+ arXiv preprint arXiv:2407.08351 , 2024b.
+
+ 
+ 
+ [33] 
+ 
+Percy Liang, Rishi Bommasani, Tony Lee, Dimitris Tsipras, Dilara Soylu,
+Michihiro Yasunaga, Yian Zhang, Deepak Narayanan, Yuhuai Wu, Ananya Kumar,
+et al.
+
+ 
+ Holistic evaluation of language models.
+
+ 
+ arXiv preprint arXiv:2211.09110 , 2022.
+
+ 
+ 
+ [34] 
+ 
+Jiawei Liu, Chunqiu Steven Xia, Yuyao Wang, and Lingming Zhang.
+
+ 
+ Is your code generated by chatgpt really correct? rigorous evaluation
+of large language models for code generation.
+
+ 
+ Advances in Neural Information Processing Systems ,
+36:21558–21572, 2023.
+
+ 
+ 
+ [35] 
+ 
+Qian Liu, Xiaosen Zheng, Niklas Muennighoff, Guangtao Zeng, Longxu Dou, Tianyu
+Pang, Jing Jiang, and Min Lin.
+
+ 
+ Regmix: Data mixture as regression for language model pre-training.
+
+ 
+ arXiv preprint arXiv:2407.01492 , 2024.
+
+ 
+ 
+ [36] 
+ 
+Lovish Madaan, Aaditya K Singh, Rylan Schaeffer, Andrew Poulton, Sanmi Koyejo,
+Pontus Stenetorp, Sharan Narang, and Dieuwke Hupkes.
+
+ 
+ Quantifying variance in evaluation benchmarks.
+
+ 
+ arXiv preprint arXiv:2406.10229 , 2024.
+
+ 
+ 
+ [37] 
+ 
+Ian Magnusson, Akshita Bhagia, Valentin Hofmann, Luca Soldaini, Ananya Harsh
+Jha, Oyvind Tafjord, Dustin Schwenk, Evan Pete Walsh, Yanai Elazar, Kyle Lo,
+et al.
+
+ 
+ Paloma: A benchmark for evaluating language model fit.
+
+ 
+ arXiv preprint arXiv:2312.10523 , 2024.
+
+ 
+ 
+ [38] 
+ 
+Ian Magnusson, Tai Nguyen, David Heineman, Jena D. Hwang, Luca Soldaini,
+Akshita Bhagia, Jiacheng Liu, Dirk Groeneveld, Oyvind Tafjord, Noah A. Smith,
+Pang Wei Koh, Ben Bogin, and Jesse Dodge.
+
+ 
+ Datadecide: How to predict best pretraining data with small
+experiments.
+
+ 
+ under submission , 2025.
+
+ 
+ 
+ [39] 
+ 
+Todor Mihaylov, Peter Clark, Tushar Khot, and Ashish Sabharwal.
+
+ 
+ Can a suit of armor conduct electricity? a new dataset for open book
+question answering.
+
+ 
+ In Proceedings of the 2018 Conference on Empirical Methods in
+Natural Language Processing , pages 2381–2391, 2018.
+
+ 
+ 
+ [40] 
+ 
+Evan Miller.
+
+ 
+ Adding error bars to evals: A statistical approach to language model
+evaluations.
+
+ 
+ arXiv preprint arXiv:2411.00640 , 2024.
+
+ 
+ 
+ [41] 
+ 
+Iman Mirzadeh, Keivan Alizadeh, Hooman Shahrokhi, Oncel Tuzel, Samy Bengio, and
+Mehrdad Farajtabar.
+
+ 
+ Gsm-symbolic: Understanding the limitations of mathematical reasoning
+in large language models.
+
+ 
+ arXiv preprint arXiv:2410.05229 , 2024.
+
+ 
+ 
+ [42] 
+ 
+Team OLMo, Pete Walsh, Luca Soldaini, Dirk Groeneveld, Kyle Lo, Shane Arora,
+Akshita Bhagia, Yuling Gu, Shengyi Huang, Matt Jordan, et al.
+
+ 
+ 2 olmo 2 furious.
+
+ 
+ arXiv preprint arXiv:2501.00656 , 2024.
+
+ 
+ 
+ [43] 
+ 
+Ankit Pal, Logesh Kumar Umapathi, and Malaikannan Sankarasubbu.
+
+ 
+ Medmcqa: A large-scale multi-subject multi-choice dataset for medical
+domain question answering.
+
+ 
+ In Proceedings of the Conference on Health, Inference, and
+Learning (CHIL) , pages 248–260, 2022.
+
+ 
+ 
+ [44] 
+ 
+Tim Pearce and Jinyeop Song.
+
+ 
+ Reconciling kaplan and chinchilla scaling laws.
+
+ 
+ arXiv preprint arXiv:2406.12907 , 2024.
+
+ 
+ 
+ [45] 
+ 
+Felipe Maia Polo, Lucas Weber, Leshem Choshen, Yuekai Sun, Gongjun Xu, and
+Mikhail Yurochkin.
+
+ 
+ tinybenchmarks: evaluating llms with fewer examples.
+
+ 
+ arXiv preprint arXiv:2402.14992 , 2024.
+
+ 
+ 
+ [46] 
+ 
+Kun Qian, Shunji Wan, Claudia Tang, Youzhi Wang, Xuanming Zhang, Maximillian
+Chen, and Zhou Yu.
+
+ 
+ Varbench: Robust language model benchmarking through dynamic variable
+perturbation.
+
+ 
+ arXiv preprint arXiv:2406.17681 , 2024.
+
+ 
+ 
+ [47] 
+ 
+Pranav Rajpurkar, Jian Zhang, Konstantin Lopyrev, and Percy Liang.
+
+ 
+ Sq u ad: 100,000+ questions for machine comprehension of text.
+
+ 
+ In Proceedings of the 2016 Conference on Empirical Methods in
+Natural Language Processing , pages 2383–2392, 2016.
+
+ 
+ 
+ [48] 
+ 
+Siva Reddy, Danqi Chen, and Christopher D. Manning.
+
+ 
+ Coqa: A conversational question answering challenge.
+
+ 
+ Transactions of the Association for Computational Linguistics ,
+7:249–266, 2019.
+
+ 
+ 
+ [49] 
+ 
+David Rein, Betty Li Hou, Asa C. Stickland, Jackson Petty, Richard Yuanzhe
+Pang, Julien Dirani, Julian Michael, and Samuel R. Bowman.
+
+ 
+ Gpqa: A graduate-level google-proof q&a benchmark.
+
+ 
+ arXiv preprint arXiv:2311.12022 , 2023.
+
+ 
+ 
+ [50] 
+ 
+Nicholas Roberts, Niladri Chatterji, Sharan Narang, Mike Lewis, and Dieuwke
+Hupkes.
+
+ 
+ Compute optimal scaling of skills: Knowledge vs reasoning.
+
+ 
+ arXiv preprint arXiv:2503.10061 , 2025.
+
+ 
+ 
+ [51] 
+ 
+Yangjun Ruan, Chris J Maddison, and Tatsunori B Hashimoto.
+
+ 
+ Observational scaling laws and the predictability of langauge model
+performance.
+
+ 
+ Advances in Neural Information Processing Systems ,
+37:15841–15892, 2025.
+
+ 
+ 
+ [52] 
+ 
+Keisuke Sakaguchi, Ronan Le Bras, Chandra Bhagavatula, and Yejin Choi.
+
+ 
+ Winogrande: An adversarial winograd schema challenge at scale.
+
+ 
+ In Proceedings of the AAAI Conference on Artificial
+Intelligence , pages 8732–8740, 2020.
+
+ 
+ 
+ [53] 
+ 
+Maarten Sap, Hannah Rashkin, Derek Chen, Ronan Le Bras, and Yejin Choi.
+
+ 
+ Social iqa: Commonsense reasoning about social interactions.
+
+ 
+ In Proceedings of the 2019 Conference on Empirical Methods in
+Natural Language Processing , pages 4463–4473, 2019.
+
+ 
+ 
+ [54] 
+ 
+Rylan Schaeffer, Hailey Schoelkopf, Brando Miranda, Gabriel Mukobi, Varun
+Madan, Adam Ibrahim, Herbie Bradley, Stella Biderman, and Sanmi Koyejo.
+
+ 
+ Why has predicting downstream capabilities of frontier ai models with
+scale remained elusive?
+
+ 
+ arXiv preprint arXiv:2406.04391 , 2024.
+
+ 
+ 
+ [55] 
+ 
+Melanie Sclar, Yejin Choi, Yulia Tsvetkov, and Alane Suhr.
+
+ 
+ Quantifying language models’ sensitivity to spurious features in
+prompt design or: How i learned to start worrying about prompt formatting,
+2024.
+
+ 
+ URL https://arxiv.org/abs/2310.11324 .
+
+ 
+ 
+ [56] 
+ 
+Kashun Shum, Yuzhen Huang, Hongjian Zou, Ding Qi, Yixuan Liao, Xiaoxin Chen,
+Qian Liu, and Junxian He.
+
+ 
+ Predictive data selection: The data that predicts is the data that
+teaches.
+
+ 
+ arXiv preprint arXiv:2503.00808 , 2025.
+
+ 
+ 
+ [57] 
+ 
+Charlie Snell, Eric Wallace, Dan Klein, and Sergey Levine.
+
+ 
+ Predicting emergent capabilities by finetuning, 2024.
+
+ 
+ URL https://arxiv.org/abs/2411.16035 .
+
+ 
+ 
+ [58] 
+ 
+Aarohi Srivastava, Abhinav Rastogi, Abhishek Rao, Abu Awal Md Shoeb, Abubakar
+Abid, Adam Fisch, Adam R Brown, Adam Santoro, Aditya Gupta, Adrià
+Garriga-Alonso, et al.
+
+ 
+ Beyond the imitation game: Quantifying and extrapolating the
+capabilities of language models.
+
+ 
+ arXiv preprint arXiv:2206.04615 , 2022.
+
+ 
+ 
+ [59] 
+ 
+Alon Talmor, Jonathan Herzig, Nicholas Lourie, and Jonathan Berant.
+
+ 
+ Commonsenseqa: A question answering challenge targeting commonsense
+knowledge.
+
+ 
+ In Proceedings of the 2019 Conference of the North American
+Chapter of the Association for Computational Linguistics: Human Language
+Technologies , pages 4149–4158, 2019.
+
+ 
+ 
+ [60] 
+ 
+Hugo Touvron, Louis Martin, Kevin Stone, Peter Albert, Amjad Almahairi, Yasmine
+Babaei, Nikolay Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti Bhosale,
+Dan Bikel, Lukas Blecher, Cristian Canton Ferrer, Moya Chen, Guillem
+Cucurull, David Esiobu, Jude Fernandes, Jeremy Fu, Wenyin Fu, Brian Fuller,
+Cynthia Gao, Vedanuj Goswami, Naman Goyal, Anthony Hartshorn, Saghar
+Hosseini, Rui Hou, Hakan Inan, Marcin Kardas, Viktor Kerkez, Madian Khabsa,
+Isabel Kloumann, Artem Korenev, Punit Singh Koura, Marie-Anne Lachaux,
+Thibaut Lavril, Jenya Lee, Diana Liskovich, Yinghai Lu, Yuning Mao, Xavier
+Martinet, Todor Mihaylov, Pushkar Mishra, Igor Molybog, Yixin Nie, Andrew
+Poulton, Jeremy Reizenstein, Rashi Rungta, Kalyan Saladi, Alan Schelten, Ruan
+Silva, Eric Michael Smith, Ranjan Subramanian, Xiaoqing Ellen Tan, Binh Tang,
+Ross Taylor, Adina Williams, Jian Xiang Kuan, Puxin Xu, Zheng Yan, Iliyan
+Zarov, Yuchen Zhang, Angela Fan, Melanie Kambadur, Sharan Narang, Aurelien
+Rodriguez, Robert Stojnic, Sergey Edunov, and Thomas Scialom.
+
+ 
+ Llama 2: Open foundation and fine-tuned chat models, 2023.
+
+ 
+ URL https://arxiv.org/abs/2307.09288 .
+
+ 
+ 
+ [61] 
+ 
+(Kaggle Datasets) Tunguz.
+
+ 
+ 200,000+ jeopardy! questions.
+
+ 
+ https://www.kaggle.com/datasets/tunguz/200000-jeopardy-questions , 2019.
+
+ 
+ 
+ [62] 
+ 
+Joshua Vendrow, Edward Vendrow, Sara Beery, and Aleksander Madry.
+
+ 
+ Do large language model benchmarks test reliability?
+
+ 
+ arXiv preprint arXiv:2502.03461 , 2025.
+
+ 
+ 
+ [63] 
+ 
+Sida I. Wang, Alex Gu, Lovish Madaan, Dieuwke Hupkes, Jiawei Liu, Yuxiang Wei,
+Naman Jain, Yuhang Lai, Sten Sootla, Ofir Press, Baptiste Rozière, and
+Gabriel Synnaeve.
+
+ 
+ Eval-Arena: noise and errors on llm evaluations.
+
+ 
+ https://github.com/crux-eval/eval-arena , 2024a.
+
+ 
+ 
+ [64] 
+ 
+Yubo Wang, Xueguang Ma, Ge Zhang, Yuansheng Ni, Abhranil Chandra, Shiguang Guo,
+Weiming Ren, Aaran Arulraj, Xuan He, Ziyan Jiang, et al.
+
+ 
+ Mmlu-pro: A more robust and challenging multi-task language
+understanding benchmark.
+
+ 
+ In The Thirty-eight Conference on Neural Information Processing
+Systems Datasets and Benchmarks Track , 2024b.
+
+ 
+ 
+ [65] 
+ 
+Jason Wei, Yi Tay, Rishi Bommasani, Colin Raffel, Barret Zoph, Sebastian
+Borgeaud, Dani Yogatama, Maarten Bosma, Denny Zhou, Donald Metzler, et al.
+
+ 
+ Emergent abilities of large language models.
+
+ 
+ arXiv preprint arXiv:2206.07682 , 2022.
+
+ 
+ 
+ [66] 
+ 
+Alexander Wettig, Kyle Lo, Sewon Min, Hannaneh Hajishirzi, Danqi Chen, and Luca
+Soldaini.
+
+ 
+ Organize the web: Constructing domains enhances pre-training data
+curation.
+
+ 
+ arXiv preprint arXiv:2502.10341 , 2025.
+
+ 
+ 
+ [67] 
+ 
+Sarah Wiegreffe, Oyvind Tafjord, Yonatan Belinkov, Hannaneh Hajishirzi, and
+Ashish Sabharwal.
+
+ 
+ Answer, assemble, ace: Understanding how transformers answer multiple
+choice questions.
+
+ 
+ arXiv preprint arXiv:2407.15018 , 2024.
+
+ 
+ 
+ [68] 
+ 
+Greg Yang, Edward J. Hu, Igor Babuschkin, Szymon Sidor, Xiaodong Liu, David
+Farhi, Nick Ryder, Jakub Pachocki, Weizhu Chen, and Jianfeng Gao.
+
+ 
+ Tensor programs v: Tuning large neural networks via zero-shot
+hyperparameter transfer, 2022.
+
+ 
+ URL https://arxiv.org/abs/2203.03466 .
+
+ 
+ 
+ [69] 
+ 
+Rowan Zellers, Ari Holtzman, Yonatan Bisk, Ali Farhadi, and Yejin Choi.
+
+ 
+ Hellaswag: Can a machine really finish your sentence?
+
+ 
+ In Proceedings of the 57th Annual Meeting of the Association
+for Computational Linguistics , pages 4791–4800, 2019.
+
+ 
+ 
+ [70] 
+ 
+Wanjun Zhong, Ruixiang Cui, Yiduo Guo, Yaobo Liang, Shuai Lu, Yanlin Wang, Amin
+Saied, Weizhu Chen, and Nan Duan.
+
+ 
+ Agieval: A human-centric benchmark for evaluating foundation models.
+
+ 
+ arXiv preprint arXiv:2304.06364 , 2023.
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Appendix A Methodology Details 
+
+ 
+ A.1 Scaling Law Details 
+
+ 
+ Hoffmann et al. [24] models the improvement for larger model training budgets as a power function, proportional to the model parameters and training tokens , with the exact functional form and prediction setup varying between work [ 44 ] . Recent work has begun using the downstream task as the prediction target [ 17 , 19 ] , in this work we follow Bhagia et al. [3] by fitting a scaling law function to the language modeling loss over the correct continuation, then from the task loss to the downstream evaluation. We use the following functional form: 
+ 
+ 
+ 
+ We follow the same methodology as Bhagia et al. [3] and use the Huber loss to fit and use a non-linear least squares optimizer to fit . The prediction error is defined as the relative error of the scaling law fit: 
+ 
+ 
+ 
+ 
+ A.2 Decision Accuracy Details 
+
+ 
+ Decision accuracy is one of many rank agreement metrics we could use to show that models trained across pre-training corpora agree at a small scale and a large scale. We present two alternatives here: 
+ 
+ 
+ Kendall’s . 
+Here, rather than report Kendall’s , we show it is proportional to decision accuracy. Kendall’s is defined as the difference between the concordant pairs and discordant pairs , divided by the total pairs of models:
+ .
+We can then rewrite decision accuracy defined only by the number of concordant pairs :
+ . 
+ 
+ 
+ Since we do not allow ties, and make up the total number of pairs , we can rewrite decision accuracy as follows: 
+ 
+ 
+ 
+ Therefore, the decision accuracy measure in Magnusson et al. [38] is equivalent to Kendall’s modulo a scale and shift. 
+ 
+ 
+ Spearman’s Rank Correlation. Kendall’s is not sensitive to outliers, and instead we can incorporate the strength of the difference in rank with Spearman’s : . This statistic will be more sensitive to large differences in model ranking. 
+ 
+ 
+ We use decision accuracy in this work for consistency, and to provide a more interpretable metric of rank agreement (for instance, a decision accuracy of 80% indicates that 80% of the pairs of mixes agree between the small scale and large scale). To show that both additional measures of agreement produce similar conclusions, we include correlation with these additional measures of agreement in Table 3 . 
+ 
+ 
+ 
+ A.3 Measures of Modeling Noise 
+
+ 
+ Seed Noise . To measure the noise introduced from changing the random seed initialization between training runs, we can compute the standard deviation of the final checkpoint from multiple training runs with different random seeds. To estimate seed noise , we train models using the same configuration, and average the scores over the final checkpoints of total training checkpoints to smooth the checkpoint-to-checkpoint noise , then compute the standard deviation: 
+ 
+ 
+ 
+ Data Order Noise . This is noise introduced from changing the order of sampled documents from the training data. We estimate the data order noise using the same method as seed noise . 
+ 
+ 
+ Total Variation. To measure the checkpoint-to-checkpoint noise throughout an entire training run, we measure the total variation of the intermediate training checkpoints on the downstream benchmark. We measure total variation as the average change in metric score across training checkpoints minus an improvement term: 
+ 
+ 
+ 
+ Checkpoint-to-checkpoint Noise . 
+Calculating the above sources of noise are either too expensive to estimate at large scales (e.g., training LLMs by varying the random seed) or difficult to run (e.g., evaluating every checkpoint on an LLM training curve). Instead, we propose an estimate measuring only the noise of the final training checkpoints of training: 
+ 
+ 
+ 
+ A.3.1 Correlation between Sources of noise 
+
+ 
+ 
+ To measure the relationship between each source of noise , we train 10 1B-5xC models varying the random seed initializations and 10 models varying the data order. In Figure 3 , we measure the correlation between the seed noise , data order noise and total variation against the step-to-step noise . Each source of noise is highly correlated with the step-to-step noise ( for all measures). While it would be ideal to calculate and reduce all sources of noise , seed noise and data order noise are too expensive to measure (e.g., for large model runs as in Madaan et al. [36] ), so only calculating step-to-step noise is a reasonable estimate for the modeling noise . Thus, we use step-to-step noise in as our estimate of the modeling noise. 
+ 
+ 
+ 
+ A.3.2 Selecting the Number of Checkpoints in Noise 
+
+ 
+ The noise calculation introduced in Section 3.1 requires selecting some intermediate checkpoints to estimate the checkpoint-to-checkpoint noise. In this section, we provide guidance on selecting , and discuss its impact on our findings. Increasing the number of intermediate checkpoints will lead to a less biased estimate of noise. Thus, we can calculate the minimum number of intermediate checkpoint samples such that the sample noise is a reasonable estimate of the population noise . 
+ 
+ 
+ We first assume the checkpoint to checkpoint scores are independent and normally distributed (which we observe when computing decision accuracy on intermediate checkpoints in Figure 7). Under this assumption, the ratio between the sample variance and the population variance follows a scaled chi squared distribution: 
+ 
+ 
+ Therefore we would like to calculate the probability that the sample standard deviation is within one standard deviation of the population standard deviation : 
+ 
+ 
+ We can rewrite this inequality: 
+ 
+ 
+ 
+ 
+ 
+ And then, can substitute the chi-squared distribution to compute the likelihood w.r.t. : 
+ 
+ 
+ 
+ 
+ 
+ We can then solve the inequality for the smallest value of for a particular threshold : 
+ 
+ 
+ 
+ 
+ 
+ Solving this inequality numerically with for increasing values of , we find that provides the smallest sample size such that the probability that the sample standard deviation (the observed noise) is within one standard deviation of the population standard deviation (the true noise) with 95% confidence. In addition, we can specify a stricter bound by defining the sample standard deviation to be within of the population standard deviation: 
+ 
+ 
+ We then verify this empirically using our estimate for noise at the 7B scale (from § 5.2 ). If we assume the 30 intermediate checkpoints provide a reasonable estimate of the population standard deviation, we then compute the sample standard deviation for . We re-compute 1000 times for different subsets to calculate the likelihood that the sampled standard deviation is within of the population standard deviation . In the below table, we report this likelihood with tolerances for subsets and bold all results with a likelihood above . 
+ 
+ 
+ 
+ In practice, we find that for a large bound ( std. dev.) can be satisfied for almost all benchmarks with intermediate checkpoints, but for smaller bounds, (20% of std. dev.), using gives an adequate estimate for 34 of 39 benchmarks we considered in our work. 
+ 
+ 
+ For our experiment on the 1B-5xC checkpoints, we estimate noise using the average noise of the last 5 checkpoints for all 25 models, so our estimate of noise considers scores. 
+ 
+ 
+ 
+ 
+ A.4 Measures of Signal 
+
+ 
+ Measurements. 
+
+ 
+ When designing an measure of signal , we want to incorporate the uniformity of benchmark scores and the overall range of scores. Given the final checkpoints of training runs under similar compute spend , we evaluate multiple approaches to measuring signal : 
+ 
+ 
+ 
+ • 
+ 
+ Variance measures average squared distance from the mean: 
+ 
+ • 
+ 
+ Mean distance measures average pairwise distance between points: 
+ 
+ • 
+ 
+ Relative standard deviation , or the coefficient of variation, measures the standard deviation divided by the mean: 
+ 
+ • 
+ 
+ Star Discrepancy measures the largest difference between any point and the uniform distribution: . 
+ 
+ • 
+ 
+ Dispersion measures the largest difference between any two points, or the largest unfilled space in the range of performance: . 
+ 
+ 
+ 
+ 
+ 
+ Note, we include metrics that are sensitive and non sensitive to outliers, and find our results hold when measuring both types of spread (Table 3 ). We also include variants of these terms, such using a min-max normalization or scaling by the mean. 
+ 
+ 
+ 
+ Choosing the a signal measurement. 
+
+ 
+ In Table 3 , we calculate the correlation between signal -to- noise ratio and decision accuracy when using each of the signal variants. We see that many straight forward measures have similarly high correlations. We use relative dispersion, the highest correlated among them, as our measure of signal . 
+ 
+ 
+ 
+ 
+ A.5 Dataset Details 
+
+ 
+ A.5.1 Models 
+
+ 
+ We evaluate 465 models which represent stages of the decision-making process during pre-training. Unlike existing collections of model evaluations [ 18 , 33 ] , our set is targeted at development models: 
+ 
+ 
+ Scaling Law Models. 25 ladder models from Bhagia et al. [3] . {190M, 370M, 760M, 1.3B, 3.2B} {0.5xC, 1xC, 2xC, 5xC, 10xC} trained on OLMoE mix, and 7B-4T / 13B-5T as prediction targets. 
+ 
+ 
+ Decision Accuracy Models. 225 models from Magnusson et al. [38] trained on 25 data recepies for {4M, 20M, 60M, 90M, 150M, 300M, 530M, 750M, 1.3B} trained to 5x Chinchilla optimal. 
+ 
+ 
+ Random Seed & Data Order Models. 20 models 1B-5xC models trained on the OLMoE mix, 10 models trained with different random seed initializations and 10 models trained with different data order seeds. 
+ 
+ 
+ Final Checkpoints. 120 models representing the 30 final checkpoints before the end of training for OLMo 2 1B, 7B, 13B and 32B [ 42 ] , with checkpoints spaced by 1000 training checkpoints. 
+ 
+ 
+ External Models. 73 open-weight base models from the DCLM, DeepSeek, Gemma, Llama, Orca, Phi, Pythia, Qwen, SmolLM, StableLM and Yi model families. We estimate the training FLOPs using the reported token count. 
+ 
+ 
+ We perform all evaluation using up to 2 H100s for a particular model, and use 94K H100 hours total for all evaluation. For training our randomly initialized seed and data order models, we use 23K GPU hours, using a cluster of 2x8 H100s for each training run. 
+ 
+ 
+ 
+ A.5.2 Benchmarks 
+
+ 
+ We intentionally select benchmarks that are widely adopted in pre-training evaluation. We use the OLMES [ 22 ] standard when applicable, and for other benchmarks, we reproduce the evaluation setup from OLMo 2 [ 42 ] . Notably, all tasks use few-shot examples and we evaluate MCQA benchmarks in both the rank choice (RC) and multiple choice (MC) setting, since our small ( 1B parameter) models show random-chance performance on MCQA benchmarks. 
+ 
+ 
+ Knowledge QA. MMLU [ 23 ] , ARC [ 11 ] , BoolQ [ 10 ] , CSQA [ 59 ] , OBQA [ 39 ] , PiQA [ 4 ] , SocialIQA [ 53 ] , HellaSwag [ 69 ] , WinoGrande [ 52 ] , DROP [ 16 ] , CoQA [ 48 ] , Jeopardy [ 61 ] , NaturalQs [ 28 ] , SQuAD [ 47 ] , TriviaQA [ 26 ] , MedMCQA [ 43 ] , MMLU Pro [ 64 ] , AGI Eval [ 70 ] , GPQA [ 49 ] 
+ 
+ 
+ Math. GSM [ 12 ] , GSM Plus [ 46 ] , GSM Symbolic [ 41 ] , Minerva [ 30 ] 
+ 
+ 
+ Code. HumanEval [ 8 ] , HumanEval+ [ 34 ] , MBPP [ 1 ] , MBPP+ [ 34 ] 
+ 
+ 
+ Using strong LLMs have become a tool for augmenting existing benchmarks with more difficult questions or answer choices [ 64 ] and re-evaluating benchmark quality [ 62 ] , and may provide a cheap method for improving signal . To test this, we add an additional synthetic benchmark: 
+ 
+ 
+ Autobencher. To test whether fully generated benchmarks can act as an adequate development benchmark, we generate a dataset of 30K MCQA questions using Autobencher [ 32 ] . Autobencher iteratively mines for Wikipedia articles and uses a strong LM to generate and prune questions based on saliency, novelty and difficulty constraints. 
+ 
+ 
+ 
+ 
+ 
+ Appendix B Full Results 
+
+ 
+ 
+ B.1 Noise measures the reliability of decision accuracy. 
+
+ 
+ As discussed in § 3.1 , the checkpoint-to-checkpoint noise can change the ranking of models, which may effect the decision accuracy we observe by only evaluating the final DataDecide model. To measure the impact of checkpoint-to-checkpoint noise on decision accuracy, we can estimate the distribution of possible decision accuracies given the step to step noise . To do this, we sample one of the final 5 checkpoints for both the small and large model, and repeatedly sample to estimate the distribution. A wider distribution would indicate that one should be less confident in the decision accuracy. 
+ 
+ 
+ We show the distribution of decision accuracies for 10K random samples in Figure B . For tasks with a higher signal -to- noise ratio, the sampled decision accuracy distribution has a higher mean and lower variance. Additionally, we find that tasks with similar signal , but different noise (e.g., CSQA and MMLU, where CSQA has higher noise ), the tasks with lower noise also have a lower variance of sampled decision accuracy distribution. 
+ 
+ 
+ 
+ B.2 Increasing benchmark size has diminishing returns 
+
+ 
+ 
+ Setup. 
+One intuitive way to reduce modeling noise is to increase the size of the benchmark, while this is expensive in practice, recent work has given LLMs access to privileged information to generate distractor options or full benchmarks [ 32 , 64 ] .
+To test the impact of sample size on modeling noise , we use the existing set of benchmarks, select a random sample of instances and recalculate SNR, decision accuracy and scaling law error.
+To test the limits of synthetic benchmarks, we use our version of AutoBencher, which has 33K instances, or 2x more test instances than the next largest benchmark in our dataset (MMLU). 
+ 
+ 
+ Results. 
+Figure B.2 shows how each metric improves as the number of instances increases.
+Initially, all benchmarks benefit from more samples (up until 1K samples) as expected.
+However, we find dimishing returns for some benchmarks after only 1K instances, in particular the signal -to- noise ratio for AutoBencher shows an inflection point at around 2K instances.
+This is due to the AutoBencher having high noise , as shown by the scaling law standard deviation (right figure) – despite having the largest sample size, AutoBencher has the highest checkpoint-to-checkpoint noise .
+In fact, the 300 instance subset of ARC-Easy has lower noise than the full 30K instance AutoBench.
+As using LLMs as part of benchmark construction has become a more popular method of constructing benchmarks, a high quality, small benchmark can actually show a less noisy signal . 
+ 
+ 
+ 
+ B.3 Signal-to-Noise Ratio at Large (>32B) Scales 
+
+ 
+ 
+ Setup. 
+For models larger than the DataDecide scale (1B-100B), we can rely on the signal -to- noise ratio directly to indicate development benchmarks which may not be useful.
+We estimate the signal -to- noise ratio at the compute scales used to train the OLMo 2 models: 1.5B-4T, 7B-4T, 13B-5T and 32B-6T.
+For noise , we use the final 30 intermediate checkpoints, one checkpoint for every 1000 training steps until the end of training.
+For signal , we do not have access to different data recepies trained on the same model, so instead we use a population of open-weight base models trained to similar compute budget as the OLMo 2 models. We use models trained using of the estimated FLOPs, which results in a population of at least 8 models for each size. 
+ 
+ 
+ Results. 
+Table 4 reports the SNR for each compute budget, sorted by SNR at the 1.5B-4T model scale.
+SNR can indicate when benchmarks saturated, for example ARC Easy and SocialIQA have high SNR at 1.5B-4T, but low SNR at 32B-6T: 7.89 to 5.10 and 8.73 to 1.95 respectively. For these benchmarks, they have less powerful comparisons at larger sizes.
+SNR also indicates when particular benchmarks become useful. For example, Minerva MATH 500 has the lowest SNR of all tasks at 1.5B-4T ( ) but much higher SNR already at 7B-4T ( ). 
+ 
+ 
+ Additionally, some individual tasks show better SNR than mutli-task averages. For the OLMES Core 9 average, HellaSwag has higher SNR at all model sizes. For OLMES Gen, TriviaQA has higher SNR at all model sizes. In cases where the SNR of the mutli-task average is low, like the OLMES Average, we recommend comparing models based on individual, high SNR tasks. 
+ 
+ 
+ 
+ 
+ Appendix C Additional Results 
+
+ 
+ We include for our core experiments across all benchmarks we study: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Experimental support, please
+ view the build logs 
+ for errors. Generated by
+ 
+ 
+ L
+ A 
+ T
+ E 
+ 
+ xml 
+ 
+ .
+ 
+ 
+ Instructions for reporting errors 
+ We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+ support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+ methods listed below: 
+ 
+ Click the "Report Issue" ( ) button, located in the page header. 
+ 
+ Tip: You can select the relevant text first, to include it in your report. 
+ Our team has already identified the following issues . We appreciate your time reviewing and reporting rendering errors we
+ may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+ should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+ all. 
+ Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion , and welcome developer contributions . 
+ 
+ 
+ 
+ 
+ 
+ We gratefully acknowledge support from
+ our major funders ,
+ member institutions , ,
+ and all contributors.
+ 
+ 
+ About 
+ · 
+ Help 
+ · 
+ Contact 
+ · 
+ Subscribe 
+ · 
+ Copyright 
+ · 
+ Privacy 
+ · 
+ Accessibility 
+ · 
+ Operational Status (opens in new tab) 
+ 
+ 
+
+ 
+ Major funding support from 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

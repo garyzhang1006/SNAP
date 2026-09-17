@@ -1139,3 +1139,62 @@ more heavily than care. A paper with this profile draws scores around six with r
 comfortable accept. The earlier 6.7 was defensible on craft and optimistic on how referees actually
 weight a careful null on small models. Twenty-three scans have not changed that, because no scan can, and
 saying so is the point.
+
+## Scan 24. A style corpus collected in this session, and imitation driven by it
+
+Permission. Fetching papers is a bulk network download, and the standing rule is to ask before any
+download or compute, so this scan began by asking. The user approved fetching about 25 papers as plain
+text and chose style imitation as the focus for the remaining work. Nothing was run before that answer.
+
+The corpus, collected now rather than inherited. All 23 papers from the earlier study were re-fetched
+from arXiv by identifier, at 332,000 words. Eleven more were then added by taking the arXiv identifiers
+out of this paper's own bibliography, on the reasoning that a submission's related work is by
+construction venue-matched and human-written. Four of those eleven are the ones that failed to fetch in
+the earlier session, which are The Benchmark Lottery, DataDecide, PolyPythias and Signal and Noise, and
+the rest are metabench, Adding Error Bars to Evals, Fluid Benchmarking, OLMo 2 Furious, Fine-Tuning
+Pretrained Language Models, and the random-seed macro and micro effects paper. One duplicate was removed
+after the first analysis showed two filenames with identical statistics. The corpus is 33 papers and 2.9
+MB of text on disk, and analyze.py now runs end to end against it instead of against a stored table.
+
+What the larger corpus changed. Measured against 33 papers rather than 23, the draft now sits inside the
+range of every one of them on 21 of 22 metrics. The single exception is the colon count, at 3.82 against
+a floor of 5.93, which is the house rule and stays. Two metrics that were outside the old corpus are now
+inside, and both vindicate earlier refusals. Median sentence length sits at 20.5 against a new ceiling of
+22, because metabench and Adding Error Bars are long-sentence papers. More usefully, the hedge count of
+0.91 is no longer below the floor, because DataDecide hedges at 0.64, and DataDecide is the release this
+paper analyses. Scan 21 declined to sprinkle may and might to clear a floor of 1.00 and instead removed an
+overclaim. A wider sample of the genre says that refusal was right, and that the floor was an artefact of
+which 23 papers happened to be in the study.
+
+Defect, subject-first monotony. The measurement table does not capture sentence openers, so they were
+mined directly. Across 8,846 prose sentences in the 33 papers, with bibliographies cut so that reference
+lines do not pose as sentences, the corpus opens 6.0 percent of sentences with The and 24.2 percent with a
+fronted circumstance such as In, For, To, As, While or Since. The draft opened 18.7 percent with The and
+17.1 percent with a fronted circumstance. Nearly three times the corpus rate of definite-article openers
+is real monotony and is the kind of thing that reads as mechanical even when every individual sentence is
+sound. Nine sentences were rewritten to front a circumstantial phrase that the sentence already contained,
+which is length-neutral, so the main text held nine pages with no compression. Examples are that the
+largest checkpoint step sentence now opens In each configuration, the permutation shortfall now opens
+Across those ten runs, and the gain simulation now opens At a gain standard deviation of 0.05. The rate
+moved from 18.7 to 15.0 percent and the fronted rate from 17.1 to 18.3.
+
+Measured and declined, again. Closing the remaining distance to 6.0 percent would take roughly
+twenty-five more rewrites, and the sentences that remain are ones where the definite article is carrying
+the sentence, including the short verdicts that give the prose its rhythm, such as that the denominator
+falls by more and that the shortfall is not simulation noise. The residual gap is also partly genre. The
+corpus contains motivation-heavy papers whose subjects are people and ideas, while this is a
+results-dense paper whose subjects are named quantities, so The margin interval and The accuracy estimate
+are the natural subjects of most of its sentences. Nine natural conversions were worth making and
+twenty-five contorted ones would not be. This is the same judgement as the hedge decision and it is
+recorded for the same reason, which is that a metric moved toward a target is not evidence unless the
+sentences got better.
+
+Humanizer and slop suite, run after the last prose change. Zero slop-detector hits and zero non-ASCII
+codepoints across the three prose files. Nine pages, 53 total, official style byte-identical, zero
+unresolved references, zero short-sentence violations, six checksums matching.
+
+Honest ranking after scan 24. 6.4 with acceptance near 0.58, unchanged from scan 23. The opener work
+makes the paper read less mechanically and removes one detectable signature, and a corpus of 33 rather
+than 23 raises confidence that the prose now sits inside the human range. Neither changes what a referee
+scores, which is the design, the evidence and the scope. The downward revision in scan 23 stands, and
+nothing in this scan argues against it.

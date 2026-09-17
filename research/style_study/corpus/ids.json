@@ -1,0 +1,94 @@
+{
+ "Deep Reinforcement Learning at the Edge of the Statistical Precipice": [
+  "2108.13264v4",
+  "Deep Reinforcement Learning at the Edge of the Statistical Precipice"
+ ],
+ "With Little Power Comes Great Responsibility": [
+  "2010.06595v1",
+  "With Little Power Comes Great Responsibility"
+ ],
+ "On the State of the Art of Evaluation in Neural Language Models": [
+  "1707.05589v2",
+  "On the State of the Art of Evaluation in Neural Language Models"
+ ],
+ "Quantifying Variance in Evaluation Benchmarks": [
+  "2406.10229v1",
+  "Quantifying Variance in Evaluation Benchmarks"
+ ],
+ "Are GANs Created Equal? A Large-Scale Study": [
+  "1711.10337v4",
+  "Are GANs Created Equal? A Large-Scale Study"
+ ],
+ "Deep Reinforcement Learning that Matters": [
+  "1709.06560v3",
+  "Deep Reinforcement Learning that Matters"
+ ],
+ "Do ImageNet Classifiers Generalize to ImageNet?": [
+  "1902.10811v2",
+  "Do ImageNet Classifiers Generalize to ImageNet?"
+ ],
+ "Accuracy on the Line: On the Strong Correlation Between Out-of-Distribution and In-Distribution Generalization": [
+  "2107.04649v2",
+  "Accuracy on the Line: On the Strong Correlation Between Out-of-Distribution and In-Distribution Generalization"
+ ],
+ "Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling": [
+  "2304.01373v2",
+  "Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling"
+ ],
+ "Show Your Work: Improved Reporting of Experimental Results": [
+  "1909.03004v1",
+  "Show Your Work: Improved Reporting of Experimental Results"
+ ],
+ "A Metric Learning Reality Check": [
+  "2003.08505v3",
+  "A Metric Learning Reality Check"
+ ],
+ "Measuring the Reliability of Reinforcement Learning Algorithms": [
+  "1912.05663v2",
+  "Measuring the Reliability of Reinforcement Learning Algorithms"
+ ],
+ "Randomness In Neural Network Training: Characterizing The Impact of Tooling": [
+  "2106.11872v1",
+  "Randomness In Neural Network Training: Characterizing The Impact of Tooling"
+ ],
+ "Evaluating Large Language Models Trained on Code": [
+  "2107.03374v2",
+  "Evaluating Large Language Models Trained on Code"
+ ],
+ "Holistic Evaluation of Language Models": [
+  "2211.09110v2",
+  "Holistic Evaluation of Language Models"
+ ],
+ "A Sober Look at Progress in Language Model Reasoning": [
+  "2504.07086",
+  ""
+ ],
+ "Measuring all the noises of LLM Evals": [
+  "2512.21326",
+  ""
+ ],
+ "Constructing Confidence Intervals for the Generalization Error": [
+  "2409.18836",
+  ""
+ ],
+ "When +1 Percent Is Not Enough A Paired Bootstrap Protocol": [
+  "2511.19794",
+  ""
+ ],
+ "torch manual seed 3407 is all you need": [
+  "2109.08203",
+  ""
+ ],
+ "Troubling Trends in Machine Learning Scholarship": [
+  "1807.03341",
+  ""
+ ],
+ "Green AI": [
+  "1907.10597",
+  ""
+ ],
+ "Accounting for Variance in Machine Learning Benchmarks": [
+  "2103.03098",
+  ""
+ ]
+}

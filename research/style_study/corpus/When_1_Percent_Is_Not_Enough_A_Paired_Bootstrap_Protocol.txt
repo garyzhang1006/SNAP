@@ -1,0 +1,811 @@
+ 
+ 
+ 
+ When +1% Is Not Enough: A Paired Bootstrap Protocol for Evaluating Small Improvements 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report GitHub Issue 
+ × 
+ 
+
+ 
+ Title: 
+ 
+
+ Content selection saved. Describe the issue below: 
+
+ Description: 
+ 
+ 
+
+ 
+ Submit without GitHub 
+ Submit in GitHub 
+ 
+ 
+ 
+ 
+ arXiv is now an independent nonprofit! 
+ Learn more 
+ × 
+ 
+
+ 
+ 
+ 
+ Back to arXiv 
+ 
+ 
+ 
+ 
+ Why HTML? 
+ 
+ 
+ Report Issue 
+ 
+ 
+ 
+ Back to Abstract 
+ 
+ 
+ 
+ 
+ Download PDF 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Abstract 
+ 1 Introduction 
+ 2 Related Work 
+ 
+ 2.1 Reproducibility and variance in ML experiments 
+ 2.2 Statistical comparison of learning algorithms 
+ 2.3 Multi-seed reporting and paired evaluation 
+ 
+ 3 Paired Bootstrap Evaluation Protocol 
+ 
+ 3.1 Problem setting 
+ 3.2 Paired multi-seed design 
+ 3.3 BCa bootstrap confidence intervals 
+ 3.4 Sign-flip permutation test 
+ 3.5 Decision rule 
+ 
+ 4 Experimental Setup 
+ 
+ 4.1 Datasets and models 
+ 
+ CIFAR-10. 
+ CIFAR-10N. 
+ AG News. 
+ 
+ 4.2 Synthetic scenarios S0/S1/S2 
+ 4.3 Evaluation protocols compared 
+ 
+ 5 Results 
+ 
+ 5.1 Main quantitative results 
+ 5.2 Effect sizes and p-values across tasks 
+ 5.3 Case study: CIFAR-10 learning curves 
+ 
+ 6 Discussion and Limitations 
+ 
+ When is the protocol most useful? 
+ Conservatism vs. power. 
+ Limitations. 
+ Practical recommendations. 
+ 
+ 7 Ethical and Societal Considerations 
+ 8 Reproducibility 
+ 9 Conclusion 
+ References 
+ 
+ 
+ 
+ 
+ 
+ License: CC BY 4.0
+ 
+ 
+arXiv:2511.19794v1 [cs.LG] 24 Nov 2025 
+ 
+ 
+ When +1% Is Not Enough: A Paired Bootstrap Protocol for Evaluating Small Improvements 
+ 
+ 
+ Du Wenzhang
+ 
+ 
+ Affiliation:  Dept. of Computer Engineering, Mahanakorn University of Technology, International
+ College (MUTIC)
+ Bangkok, Thailand
+ 
+ E-mail  dqswordman@gmail.com 
+ 
+
+ Abstract 
+ 
+ Recent machine learning papers often report one–two percentage point improvements from a single run. These gains are measured on standard benchmarks and are highly sensitive to random seeds, data ordering, and implementation details, yet are rarely accompanied by uncertainty estimates or significance tests. It is therefore unclear when a reported “+1–2%” reflects a real algorithmic advance versus noise. 
+ 
+ We revisit this problem under realistic compute budgets, where only a few runs are affordable. We propose a simple, PC-friendly protocol based on paired multi-seed runs, bias-corrected and accelerated (BCa) bootstrap confidence intervals, and a sign-flip permutation test on per-seed deltas. The protocol is intentionally conservative and is meant as a guardrail against over-claiming. 
+ 
+ We instantiate it on CIFAR-10, CIFAR-10N, and AG News using synthetic “no-improvement”, small-gain, and medium-gain scenarios. Single runs and unpaired -tests often suggest significant gains for 0.6–2.0 point improvements, especially on text. With only three seeds, our paired protocol never declares significance in these settings. We argue that such conservative evaluation is a safer default for small gains under tight budgets. 
+ 
+ 
+ 
+ Keywords:  evaluation protocol bootstrap permutation test reproducibility
+ 
+ 
+ 1 Introduction 
+
+ 
+ Single numbers still dominate empirical reporting in machine learning. A typical paper trains a baseline and a new variant once, reports a difference of one or two percentage points on a benchmark, and concludes that the new method “significantly outperforms” the baseline. Yet a growing body of work has shown that performance can vary substantially across random seeds, data orderings, and even hardware and library versions  [ 1 , 2 , 3 , 8 , 9 ] . Small improvements are particularly fragile: a different seed or slightly different environment may erase or reverse the observed gain. 
+ 
+ 
+ Despite this, multi-seed reporting and principled uncertainty quantification remain the exception rather than the rule. When authors do repeat experiments, they often apply unpaired -tests that assume independence and approximate normality, conditions that may not hold for small samples and skewed metric distributions  [ 5 , 6 , 7 ] . Moreover, many practitioners can afford at most a handful of seeds (e.g., three), making classical asymptotic arguments even less convincing. 
+ 
+ 
+ In this paper we do not propose yet another training trick. Instead, we turn the knife toward evaluation itself and ask: 
+ 
+ 
+ 
+ Given a small number of runs and a small apparent improvement, how can we avoid over-claiming success? 
+ 
+ 
+ 
+ Our answer is a simple protocol that any lab can run on a single consumer GPU. For each of random seeds, we train both the baseline and the new variant under identical conditions (same data split, same seed, same number of epochs), record the per-seed metric difference, and then analyse these deltas with a BCa bootstrap interval and a sign-flip permutation test. A method is allowed to claim a “significant improvement” only if the BCa interval lies entirely above zero and the permutation -value is below a chosen threshold (we use 0.05). Otherwise, the default recommendation is not to claim significance. 
+ 
+ 
+ We study how this protocol behaves in realistic small-gain settings by constructing controlled scenarios on three benchmarks—CIFAR-10, CIFAR-10N, and AG News—with no, small, and medium modifications. We compare three evaluation schemes:
+(i) single-run deltas;
+(ii) unpaired Welch -tests on independent runs; and
+(iii) our paired BCa+permutation procedure.
+Empirically we find that single-run comparisons and unpaired tests frequently report apparently significant gains, especially on noisy labels and text  [ 14 , 15 ] , while our protocol systematically refuses to endorse – percentage-point gains when only three seeds are available. 
+ 
+ 
+ Our contributions are: 
+ 
+ 1. 
+ 
+ A simple, paired evaluation protocol for small improvements that combines per-seed deltas, BCa bootstrap confidence intervals, and sign-flip permutation tests into a conservative decision rule. 
+ 
+ 2. 
+ 
+ A controlled case study across three benchmarks and synthetic S0/S1/S2 scenarios, showing how standard practice overstates evidence for small gains, while our protocol behaves as a guardrail against over-claiming. 
+ 
+ 3. 
+ 
+ Practical guidance for authors and reviewers on interpreting small improvements under tight compute budgets. 
+ 
+ 
+ 
+ 
+ 
+ 2 Related Work 
+
+ 
+ 2.1 Reproducibility and variance in ML experiments 
+
+ 
+ Multiple studies have documented substantial run-to-run variance in deep learning experiments, arising from random initialisation, mini-batch sampling, data ordering, and implementation quirks  [ 1 , 2 , 3 , 8 , 14 ] . Such variance can reorder model rankings and invalidate conclusions drawn from single runs, especially on modest-size benchmarks. 
+ 
+ 
+ Reproducibility initiatives and checklists for major conferences encourage authors to report seeds, hyperparameters, and environment details, and to release code when possible  [ 4 , 9 ] . These efforts improve transparency but do not by themselves answer the question of how many runs are enough, or how to aggregate a small number of runs into a statistically grounded conclusion. Our work is complementary: we focus not on open-sourcing or environment management, but on the statistical layer on top of a handful of runs. 
+ 
+ 
+ 
+ 2.2 Statistical comparison of learning algorithms 
+
+ 
+ Classical work on comparing classifiers advocates a variety of tests, including cross-validated -tests, the 5 2CV test, Wilcoxon signed-rank tests, and permutation methods  [ 5 , 6 , 12 ] . These approaches typically assume reasonably large sample sizes (either many datasets or many folds) and i.i.d. conditions. In modern deep learning, we often have the opposite: a single dataset, few seeds, and complicated dependence structures. 
+ 
+ 
+ Bootstrap methods have been proposed as more robust alternatives for non-Gaussian, skewed metrics. The BCa bootstrap adjusts for bias and skewness in the resampled distribution and enjoys good asymptotic properties  [ 10 , 11 ] . Permutation tests provide finite-sample control of type-I error under symmetry assumptions  [ 12 ] . Our protocol builds on these tools but adapts them to the per-seed delta setting, where we explicitly exploit pairing and accept that the number of deltas is tiny ( ). 
+ 
+ 
+ 
+ 2.3 Multi-seed reporting and paired evaluation 
+
+ 
+ In NLP and vision, several recent papers have argued for reporting score distributions over random seeds and for stronger statistical testing  [ 8 , 7 , 9 ] . They show that rankings between models can flip when new seeds are added, and that standard practice often underestimates variance. These works typically use unpaired tests or cross-dataset comparisons. We extend this line by (i) formalising a paired delta + bootstrap + permutation pipeline, and (ii) empirically characterising its behaviour as a conservative filter in realistic small-gain scenarios. 
+ 
+ 
+ 
+ 
+ 3 Paired Bootstrap Evaluation Protocol 
+
+ 
+ 3.1 Problem setting 
+
+ 
+ We consider two models: a baseline and a variant . Given a dataset and a performance metric (e.g., test accuracy), each training run produces a random outcome due to stochastic optimisation and data sampling. Let and denote the metric for and respectively in one run. 
+ 
+ 
+ The quantity of interest is the expected improvement 
+ 
+ We aim to answer: Is clearly positive, zero, or negative? Given only a small number of runs , how cautious should we be in claiming ? 
+ 
+ 
+ 
+ 3.2 Paired multi-seed design 
+
+ 
+ We adopt a paired design. For each seed , : 
+ 
+ 1. 
+ 
+ Fix all randomness (initialisation, data shuffling, augmentation) via seed . 
+ 
+ 2. 
+ 
+ Train and evaluate on a fixed test set. 
+ 
+ 3. 
+ 
+ Under the same seed , train and evaluate . 
+ 
+ 4. 
+ 
+ Record the per-seed delta . 
+ 
+ 
+ This mimics a counterfactual experiment: “holding the world defined by seed fixed, how much better is than ?” 
+ 
+ 
+ If and denote the random metrics in a paired run, basic variance algebra gives 
+ 
+ In typical settings, and are positively correlated: both models perform slightly better on easy splits and slightly worse on hard ones, so . Thus pairing reduces the variance of relative to independent runs. We denote the sample mean of deltas by . 
+ 
+ 
+ 
+ 3.3 BCa bootstrap confidence intervals 
+
+ 
+ Given , we estimate uncertainty via the bias-corrected and accelerated (BCa) bootstrap  [ 10 , 11 ] : 
+ 
+ 1. 
+ 
+ Generate bootstrap samples by resampling the deltas with replacement, each time computing the bootstrap mean . 
+ 
+ 2. 
+ 
+ Compute the bias-correction and acceleration terms from the bootstrap and jackknife distributions. 
+ 
+ 3. 
+ 
+ Derive adjusted quantiles for the lower and upper bounds of the interval, . 
+ 
+ 
+ The BCa interval adjusts for bias and skewness in the empirical distribution of and is particularly useful when is small and the distribution is asymmetric. Under standard regularity conditions and large , BCa intervals are asymptotically valid. 
+ 
+ 
+ 
+ 3.4 Sign-flip permutation test 
+
+ 
+ To test , we use a sign-flip permutation test  [ 12 ] : 
+ 
+ 1. 
+ 
+ Compute the observed test statistic . 
+ 
+ 2. 
+ 
+ For each of permutations, sample random signs and compute . 
+ 
+ 3. 
+ 
+ Estimate the two-sided p-value as . 
+ 
+ 
+ Under symmetry of the distribution, this test controls type-I error exactly at finite . In practice, it behaves conservatively when is very small, which we accept and even desire for our guardrail purpose. 
+ 
+ 
+ 
+ 3.5 Decision rule 
+
+ 
+ Our final decision rule is intentionally strict: 
+ 
+ • 
+ 
+ Call “significant improvement” only if the BCa interval satisfies and the permutation p-value (we use ). 
+ 
+ • 
+ 
+ In all other cases—including ambiguous intervals or borderline p-values—our default recommendation is: Do not claim a statistically significant improvement. 
+ 
+ 
+ This rule is designed as a brake, not an accelerator: when evidence is weak or sample size is tiny, it pushes authors toward neutrality. 
+ 
+ 
+ 
+ 
+ 4 Experimental Setup 
+
+ 
+ 4.1 Datasets and models 
+
+ 
+ We evaluate the protocol on three benchmarks, chosen to cover both vision and text, and both clean and noisy labels. 
+ 
+ 
+ CIFAR-10. 
+
+ 
+ 50k training and 10k test 32 32 colour images over 10 classes  [ 13 ] . We train a standard ResNet-18 with SGD (momentum 0.9, batch size 128) and moderate data augmentation (random crop and horizontal flip). 
+ 
+ 
+ 
+ CIFAR-10N. 
+
+ 
+ CIFAR-10 with human-annotated noisy labels  [ 14 ] . We train the same ResNet-18 backbone but use noisy labels for training and the clean test set for evaluation. 
+ 
+ 
+ 
+ AG News. 
+
+ 
+ A text classification dataset with 120k training and 7.6k test news headlines in four categories  [ 15 ] . We join title and description, tokenise with a simple word tokenizer, build a 20k-word vocabulary, and train a lightweight TextCNN model, a standard convolutional architecture used in prior work on text classification and vision  [ 15 , 16 ] . 
+ 
+ 
+ All experiments are run on a single consumer GPU (NVIDIA GeForce RTX 5090, CUDA 12.8) with PyTorch 2.8.0 under Windows 10, using Python 3.9.21 and num_workers=0 . For each configuration we use exactly the same training schedule across protocols and seeds. 
+ 
+ 
+ 
+ 
+ 4.2 Synthetic scenarios S0/S1/S2 
+
+ 
+ For each dataset we define scenarios that approximate no, small, and medium gains: 
+ 
+ 
+ 
+ • 
+ 
+ S0 (no-improve). Baseline and variant are identical. This approximates and is used to measure false positive behaviour. 
+ 
+ • 
+ 
+ S1 (small gain). 
+ 
+ – 
+ 
+ CIFAR-10 and CIFAR-10N: add label smoothing with to the cross-entropy loss. 
+ 
+ – 
+ 
+ AG News: TextCNN with label smoothing . 
+ 
+ 
+ 
+ • 
+ 
+ S2 (medium gain). 
+ 
+ – 
+ 
+ CIFAR-10 and CIFAR-10N: combine label smoothing with stronger augmentation. 
+ 
+ – 
+ 
+ AG News: label smoothing plus word dropout (10% tokens dropped to PAD during training). 
+ 
+ 
+ 
+ 
+ 
+ 
+ Table  1 summarises the datasets and scenarios. All runs use paired seeds. 
+ 
+ 
+ 
+ 
+ 4.3 Evaluation protocols compared 
+
+ 
+ We compare three evaluation schemes: 
+ 
+ 1. 
+ 
+ Single. A single baseline run vs. a single variant run. We report only the difference in test accuracy, with no uncertainty measure. 
+ 
+ 2. 
+ 
+ Unpaired -test ( ). We train 3 independent runs of the baseline and 3 independent runs of the variant, ignoring pairing, and apply Welch’s -test on the two sets of accuracies  [ 5 , 6 , 7 ] . 
+ 
+ 3. 
+ 
+ Paired BCa+perm ( ). Our proposed protocol: three paired runs, BCa confidence interval on deltas, and sign-flip permutation test, with the strict decision rule in Section 3. 
+ 
+ 
+ 
+ 
+ For each protocol we record per-scenario means, intervals, p-values, and decisions. Tables and figures in the paper are generated directly from the logged CSV files, in the spirit of transparent reporting advocated in prior work  [ 8 , 9 ] . 
+ 
+ 
+ 
+ 
+ 5 Results 
+
+ 
+ 5.1 Main quantitative results 
+
+ 
+ Table  2 summarises the small-gain experiments across datasets and scenarios. Each row corresponds to one dataset–scenario pair and compares:
+(i) a single-run delta;
+(ii) the mean delta and BCa 95% interval under our paired protocol; and
+(iii) permutation and unpaired -test p-values. 
+ 
+ 
+ 
+ Several patterns emerge. 
+ 
+ 
+ First, the S0 rows confirm a sanity check: in all no-improvement scenarios, the average delta is exactly zero, the BCa interval degenerates to , and both permutation and unpaired tests give . Our protocol does not introduce spurious differences. 
+ 
+ 
+ Second, for S1 and S2 the single-run deltas frequently look attractive: between and percentage points. On AG News S2, for example, a single run shows a +0.76pp gain; on CIFAR-10 S1 some runs exceed +2pp. 
+ 
+ 
+ Third, unpaired -tests on three seeds tend to be optimistic. On AG News, unpaired p-values are 0.03 (S1) and 0.003 (S2), which many papers would describe as “significant” or even “highly significant”. On CIFAR-10N S2 the unpaired p-value is 0.09, suggestive but not conclusive. 
+ 
+ 
+ In contrast, our paired BCa+perm protocol is consistently conservative at . It never declares significance:
+all permutation p-values are either 0.24, 0.25, or larger, even when BCa intervals are strictly positive (e.g., AG News S2 with ).
+This is a direct consequence of the small discrete sample of deltas and our strict decision rule, and we intentionally embrace this behaviour as a guardrail. 
+ 
+ 
+ 
+ 5.2 Effect sizes and p-values across tasks 
+
+ 
+ Figure  1 visualises the mean improvements and BCa 95% intervals under the paired protocol. S0 bars cluster tightly around zero, confirming no systematic bias. S1/S2 bars lie mostly between +0.5 and +2.0pp, with CIFAR-10N showing the widest intervals due to label noise. Overall effect sizes are small and uncertainty is non-trivial, which supports our view that aggressive significance claims are risky at . 
+ 
+ 
+ 
+ Figure  2 compares unpaired -test p-values (x-axis) with paired permutation p-values (y-axis) across S1/S2 scenarios. Points below the horizontal dashed line and to the left of the vertical line would correspond to cases where both tests call significance. In practice, all S1/S2 points lie in the region where unpaired p-values are small (sometimes ) but paired p-values remain around . Thus, at our protocol systematically refuses to turn suggestive trends into “wins”. 
+ 
+ 
+ 
+ 
+ 5.3 Case study: CIFAR-10 learning curves 
+
+ 
+ To illustrate how small gains emerge over training, Figure  3 plots test accuracy vs. epoch for CIFAR-10 S1 (label smoothing), for three seeds and both baseline and variant. The variant consistently tracks slightly above the baseline after the early epochs, with end-of-training gaps between 1–3pp depending on the seed. However, the curves also show non-monotonicity and seed-to-seed variability: some seeds close the gap late, others diverge. Our protocol interprets this as suggestive but not conclusive evidence at . 
+ 
+ 
+ 
+ 
+ 
+ 6 Discussion and Limitations 
+
+ 
+ Our study argues for a simple but strong practical position: if your improvement is on the order of one to two percentage points and you only have three seeds, you should expect a careful paired bootstrap protocol to say: “This evidence is too weak to claim significance.” 
+ 
+ 
+ When is the protocol most useful? 
+
+ 
+ The protocol is most useful when compute budgets limit you to very few seeds (3–5), effect sizes are small ( pp), and you want a principled way to avoid fooling yourself or your readers. In such settings, our guardrail helps ensure that papers do not over-interpret fragile differences. 
+ 
+ 
+ 
+ Conservatism vs. power. 
+
+ 
+ At the permutation test is deliberately conservative: the discrete null distribution makes it hard to obtain very small p-values. One could relax our decision rule by requiring only CI or , which would mark several S1/S2 scenarios as “significant”. We intentionally adopt the stricter “CI & ” rule to prevent over-claiming at minimal and to encourage richer reporting. When larger budgets allow , the same protocol becomes less conservative and can detect moderate effect sizes with reasonable power. 
+ 
+ 
+ 
+ Limitations. 
+
+ 
+ There are clear limitations. First, we only study small models on CIFAR-10/10N and AG News; larger-scale tasks may exhibit different variance structure. Second, we focus on accuracy; extending the protocol to fairness, robustness or calibration metrics is straightforward in principle but may raise issues with multiple testing and dependency. Third, the permutation test assumes approximate symmetry of the delta distribution; severe skewness may require alternative non-parametric tests or Bayesian treatment. Finally, our protocol does not replace domain judgment: a statistically significant +1% may or may not be practically important. 
+ 
+ 
+ 
+ Practical recommendations. 
+
+ 
+ Based on our findings, we recommend: (1) always report deltas across multiple seeds; (2) exploit pairing by training baseline and variant under the same seeds and data splits; (3) use bootstrap intervals and permutation p-values, not only parametric -tests, especially when is small or metrics are skewed; (4) be explicit about decision rules; and (5) when in doubt, under-claim. 
+ 
+ 
+ 
+ 
+ 7 Ethical and Societal Considerations 
+
+ 
+ Our work concerns evaluation methodology and uses only standard public datasets (CIFAR-10, CIFAR-10N, AG News) that contain no personally identifiable information. It does not involve human subjects or sensitive attributes. The primary societal impact is indirect and positive: if widely adopted, conservative small-gain evaluation could reduce publication of spurious improvements and encourage more rigorous empirical practice. At the same time, stricter evaluation might raise the bar for publishing modest but practically valuable tweaks. Statistical significance should not be the only criterion of value: effect sizes, computational cost, and domain needs should all be considered. Our protocol is meant as a tool to calibrate claims, not as a gatekeeping mechanism. 
+ 
+ 
+ 
+ 8 Reproducibility 
+
+ 
+ All experiments are designed to be reproducible on a single consumer GPU. We fix random seeds at both the Python and framework level; log system fingerprints (OS, Python, PyTorch, CUDA, GPU model); store per-seed metrics and configuration files; and provide scripts to re-run experiments and regenerate tables and figures. Three key artefacts are:
+(i) data loading and training scripts for CIFAR-10/CIFAR-10N (ResNet-18) and AG News (TextCNN);
+(ii) an evaluation script that implements the paired BCa+perm protocol and outputs a summary CSV; and
+(iii) analysis code that reads the summary CSV and produces Figures  1 – 3 and the main tables.
+These artefacts allow other researchers to reproduce our findings, extend the protocol to new tasks, or stress-test it under different sample sizes and decision rules. 
+ 
+ 
+ 
+ 9 Conclusion 
+
+ 
+ We revisited a mundane but pervasive situation: a new method shows a +1–2 percentage-point improvement on a benchmark under a few random seeds. Should we believe this improvement? Should we call it statistically significant? 
+ 
+ 
+ Our answer is deliberately cautious. Through a simple paired bootstrap protocol evaluated on CIFAR-10, CIFAR-10N, and AG News, we show that standard practices—single runs and unpaired -tests—readily interpret such gains as significant, especially in noisy or textual settings. In contrast, our protocol acts as a guardrail: it never produces false positives in carefully constructed no-improvement scenarios and systematically declines to endorse small gains when only three seeds are available, even when p-values from unpaired tests look impressive. We view this conservatism not as a weakness, but as a feature: when evidence is weak, the default should be “no strong conclusion yet.” We hope this work helps shift the culture around empirical claims in machine learning, especially for small improvements under tight budgets, and encourages the community to invest as much care in evaluation design as in model design. 
+ 
+ 
+ 
+ References 
+
+ 
+ 
+ [1] 
+ 
+Bouthillier, X., Laurent, C., Vincent, P.:
+Unreproducible research is reproducible.
+In: Chaudhuri, K., Salakhutdinov, R. (eds.)
+Proceedings of the 36th International Conference on Machine Learning (ICML 2019).
+Proceedings of Machine Learning Research, vol. 97, pp. 725–734 (2019)
+
+ 
+ 
+ [2] 
+ 
+Bouthillier, X., et al.:
+Accounting for variance in machine learning benchmarks.
+Proceedings of Machine Learning and Systems, vol. 3, pp. 747–769 (2021)
+
+ 
+ 
+ [3] 
+ 
+Henderson, P., Islam, R., Bachman, P., Pineau, J., Precup, D., Meger, D.:
+Deep reinforcement learning that matters.
+In: Proceedings of the 32nd AAAI Conference on Artificial Intelligence (AAAI 2018),
+pp. 3207–3214. AAAI Press (2018)
+
+ 
+ 
+ [4] 
+ 
+Pineau, J., Vincent-Lamarre, P., Sinha, K., Larivière, V., Beygelzimer, A.,
+d’Alché-Buc, F., Fox, E., Larochelle, H.:
+Improving reproducibility in machine learning research:
+a report from the NeurIPS 2019 reproducibility program.
+Journal of Machine Learning Research 22(164), 1–20 (2021)
+
+ 
+ 
+ [5] 
+ 
+Dietterich, T.G.:
+Approximate statistical tests for comparing supervised classification learning algorithms.
+Neural Computation 10(7), 1895–1923 (1998)
+
+ 
+ 
+ [6] 
+ 
+Demšar, J.:
+Statistical comparisons of classifiers over multiple data sets.
+Journal of Machine Learning Research 7, 1–30 (2006)
+
+ 
+ 
+ [7] 
+ 
+Dror, R., Baumer, G., Bogomolov, M., Reichart, R.:
+The Hitchhiker’s Guide to Testing Statistical Significance in Natural Language Processing.
+In: Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (ACL 2018),
+pp. 1383–1392. Association for Computational Linguistics (2018)
+
+ 
+ 
+ [8] 
+ 
+Reimers, N., Gurevych, I.:
+Reporting score distributions makes a difference:
+Performance study of LSTM-networks for sequence tagging.
+In: Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing (EMNLP 2017),
+pp. 338–348. Association for Computational Linguistics (2017)
+
+ 
+ 
+ [9] 
+ 
+Dodge, J., Gururangan, S., Card, D., Schwartz, R., Smith, N.A.:
+Show your work: Improved reporting of experimental results in NLP.
+In: Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing
+and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP 2019),
+pp. 2185–2194. Association for Computational Linguistics (2019)
+
+ 
+ 
+ [10] 
+ 
+Efron, B.:
+Better bootstrap confidence intervals.
+Journal of the American Statistical Association 82(397), 171–185 (1987)
+
+ 
+ 
+ [11] 
+ 
+Efron, B., Tibshirani, R.J.:
+An Introduction to the Bootstrap.
+Chapman & Hall/CRC, New York (1994)
+
+ 
+ 
+ [12] 
+ 
+Good, P.I.:
+Permutation, Parametric, and Bootstrap Tests of Hypotheses, 3rd edn.
+Springer Series in Statistics. Springer, New York (2005)
+
+ 
+ 
+ [13] 
+ 
+Krizhevsky, A.:
+Learning multiple layers of features from tiny images.
+Technical Report, Department of Computer Science, University of Toronto (2009)
+
+ 
+ 
+ [14] 
+ 
+Wei, J., Zhu, Z., Cheng, H., Liu, T., Niu, G., Liu, Y.:
+Learning with noisy labels revisited:
+A study using real-world human annotations.
+In: Proceedings of the 10th International Conference on Learning Representations (ICLR 2022) (2022)
+
+ 
+ 
+ [15] 
+ 
+Zhang, X., Zhao, J., LeCun, Y.:
+Character-level convolutional networks for text classification.
+In: Cortes, C., Lawrence, N.D., Lee, D.D., Sugiyama, M., Garnett, R. (eds.)
+Advances in Neural Information Processing Systems 28 (NeurIPS 2015),
+pp. 649–657. Curran Associates, Inc. (2015)
+
+ 
+ 
+ [16] 
+ 
+Szegedy, C., Vanhoucke, V., Ioffe, S., Shlens, J., Wojna, Z.:
+Rethinking the Inception architecture for computer vision.
+In: Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR 2016),
+pp. 2818–2826. IEEE (2016)
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Experimental support, please
+ view the build logs 
+ for errors. Generated by
+ 
+ 
+ L
+ A 
+ T
+ E 
+ 
+ xml 
+ 
+ .
+ 
+ 
+ Instructions for reporting errors 
+ We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+ support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+ methods listed below: 
+ 
+ Click the "Report Issue" ( ) button, located in the page header. 
+ 
+ Tip: You can select the relevant text first, to include it in your report. 
+ Our team has already identified the following issues . We appreciate your time reviewing and reporting rendering errors we
+ may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+ should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+ all. 
+ Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion , and welcome developer contributions . 
+ 
+ 
+ 
+ 
+ 
+ We gratefully acknowledge support from
+ our major funders ,
+ member institutions , ,
+ and all contributors.
+ 
+ 
+ About 
+ · 
+ Help 
+ · 
+ Contact 
+ · 
+ Subscribe 
+ · 
+ Copyright 
+ · 
+ Privacy 
+ · 
+ Accessibility 
+ · 
+ Operational Status (opens in new tab) 
+ 
+ 
+
+ 
+ Major funding support from 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

@@ -1,0 +1,2099 @@
+ 
+ 
+ 
+ metabenchA Sparse Benchmark to Measure General Abilityin Large Language Models 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report GitHub Issue 
+ × 
+ 
+
+ 
+ Title: 
+ 
+
+ Content selection saved. Describe the issue below: 
+
+ Description: 
+ 
+ 
+
+ 
+ Submit without GitHub 
+ Submit in GitHub 
+ 
+ 
+ 
+ 
+ arXiv is now an independent nonprofit! 
+ Learn more 
+ × 
+ 
+
+ 
+ 
+ 
+ Back to arXiv 
+ 
+ 
+ 
+ 
+ Why HTML? 
+ 
+ 
+ Report Issue 
+ 
+ 
+ 
+ Back to Abstract 
+ 
+ 
+ 
+ 
+ Download PDF 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Abstract 
+ 1 Introduction 
+ 
+ 1.1 Related Work 
+ 
+ 2 Benchmark Distillation 
+ 
+ 2.1 Data Collection and Preprocessing 
+ 2.2 Cross-Validated Subsampling 
+ 2.3 Item Response Theory 
+ 2.4 Information Filtering 
+ 2.5 Going Meta 
+ 2.6 Adaptive Testing 
+ 
+ 3 Conclusion 
+ 
+ 3.1 Limitations 
+ 3.2 Future Work 
+ 
+ References 
+ References 
+ A Preprocessing Details 
+ 
+ A.1 Part-Whole Correlation 
+ A.2 Numbers Before vs. After 
+ 
+ B Score Recovery 
+ 
+ B.1 Distributions of Point Scores 
+ B.2 Cross-validated Subsampling 
+ B.3 Score Reconstruction with Logistic Regression Models 
+ B.4 Score Reconstruction with Latent Abilities 
+ B.5 Mean Absolute Errors for Score Recovery 
+ B.6 Most Informative Items Per Benchmark 
+ 
+ C Factor Analysis 
+ 
+ C.1 Latent Linear Modeling with FA 
+ C.2 Factor Models for Benchmarks 
+ 
+ D Computerized Adaptive Testing Procedure 
+ 
+ 
+ 
+ 
+ 
+ License: CC BY-NC-SA 4.0
+ 
+ 
+arXiv:2407.12844v1 [cs.CL] 04 Jul 2024 
+ 
+ 
+ metabench
+ A Sparse Benchmark to Measure General Ability
+ in Large Language Models 
+ 
+ 
+ Alex Kipnis
+ thanks: Correspondence to adkipnis@mailbox.org   contributed equally 
+ Affiliation:  Human-Centered AI, Helmholtz Munich
+ 
+    
+ Konstantinos Voudouris
+ 
+ Affiliation:  Human-Centered AI, Helmholtz Munich
+ 
+ Affiliation:  University of Cambridge
+ 
+    
+ Luca M. Schulze Buschoff
+ 
+ Affiliation:  Human-Centered AI, Helmholtz Munich
+ 
+    
+ Eric Schulz
+ 
+ Affiliation:  Human-Centered AI, Helmholtz Munich
+ 
+
+ Abstract 
+ 
+ Large Language Models (LLMs) vary in their abilities on a range of tasks. Initiatives such as the Open LLM Leaderboard aim to quantify these differences with several large benchmarks (sets of test items to which an LLM can respond either correctly or incorrectly).
+However, high correlations within and between benchmark scores suggest that (1) there exists a small set of common underlying abilities that these benchmarks measure, and (2) items tap into redundant information and the benchmarks may thus be considerably compressed.
+We use data from LLMs to identify the most informative items of six benchmarks, ARC , GSM8K , HellaSwag , MMLU , TruthfulQA and WinoGrande (with items in total). From them we distill a sparse benchmark, metabench , that has less than of the original size of all six benchmarks combined. This new sparse benchmark goes beyond point scores by yielding estimators of the underlying benchmark-specific abilities.
+We show that these estimators (1) can be used to reconstruct each original individual benchmark score with, on average, root mean square error (RMSE), (2) reconstruct the original total score with RMSE, and (3) have a single underlying common factor whose Spearman correlation with the total score is . 
+ 
+ 
+ 
+   
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 1 Introduction 
+
+ 
+ Large Language Models (LLMs) represent a significant leap forward in our quest to emulate human-like understanding and generation of language Brown et al., 2020a . These sophisticated algorithms are designed to process, interpret, and produce language with unprecedented accuracy and fluency Bubeck et al., 2023a . By training on vast datasets encompassing a myriad of linguistic patterns, LLMs have demonstrated remarkable capabilities in tasks ranging from simple text completion Radford et al., 2019a to complex problem-solving Chen et al., 2021b and creative writing Elkins & Chun, 2020a . Their potential to transform various fields—education Kasneci et al., 2023a , customer service Pandya & Holia, 2023a , content creation Zhang et al., 2023a , and beyond—has captured the imagination of researchers and practitioners alike Bommasani et al., 2021a ; Bubeck et al., 2023a . However, as these models grow in complexity, so does the challenge of effectively evaluating their diverse abilities Burnell et al., 2023b ; Ke et al., 2023a . 
+ 
+ 
+ Traditionally, research has relied on extensive benchmarks—vast arrays of tasks—to assess the abilities of LLMs Srivastava & authors, 2023a ; Raji et al., 2021a . However, these benchmarks often measure overlapping skills, leading to redundancy and inefficiency. This paper introduces metabench , a sparse benchmark engineered to distill the essence of six prominent benchmarks—ARC Clark et al., 2018a , GSM8K Cobbe et al., 2021a , HellaSwag Zellers et al., 2019a , MMLU Hendrycks et al., 2021a , TruthfulQA Lin et al., 2022a , and WinoGrande Sakaguchi et al., 2020a —into a more concise and informative benchmark. By analyzing data from over LLMs, we identified the most revealing items within these benchmarks, reducing their combined size to less than 3% of the original. We also provide adaptive testing simulations that suggest that the number of items administered to LLMs can be lowered even further. This volume reduction not only maintains the benchmarks’ ability to measure underlying abilities but greatly enhances efficiency by eliminating redundancy. 
+ 
+ 
+ The metabench framework leverages psychometric techniques Hambleton & Swaminathan, 2013a ; Wang et al., 2023c to estimate the latent abilities captured by these benchmarks Burnell et al., 2023c . These estimates can reconstruct individual and total benchmark scores with minimal error, and reveal a single underlying factor that captures most of their variability. By refining how we measure the abilities of LLMs, metabench offers a new lens through which we can understand and improve them. Practitioners can run their own models on this efficient, cheap, yet highly informative benchmark, obtain approximated scores for whole benchmarks, and compute an overall estimate of models’ general ability. Our work underscores the potential for more streamlined and psychologically meaningful evaluation methods Coda-Forno et al., 2024a ; Huang et al., 2023a . All reported analyses and and results are available on https://github.com/adkipnis/metabench . 
+ 
+ 
+ 
+ 1.1 Related Work 
+
+ 
+ Recent years have seen significant advancements in the development and evaluation of Large Language Models (LLMs), resulting in an increased need for efficient benchmarking methods due to the expense of running and querying them. Traditional benchmarks, such as those used in the Open LLM Leaderboard Beeching et al., 2023a , encompass a wide range of tasks. In the current work, we focus on six different benchmarks:
+ ARC (AI2 Reasoning Challenge) Clark et al., 2018a was designed to test the reasoning abilities of AI through a series of challenging science questions. Similarly, GSM8K (Grade School Math) Cobbe et al., 2021a evaluates the mathematical reasoning capabilities of LLMs by training verifiers on complex word problems. HellaSwag Zellers et al., 2019a tests commonsense reasoning by asking models to choose the most plausible continuation of a story from several options. MMLU (Massive Multitask Language Understanding) Hendrycks et al., 2021a assesses the breadth of expert knowledge and reasoning skills across various disciplines, presenting a comprehensive challenge for LLMs. TruthfulQA Lin et al., 2022a aims to measure the tendency of language models to generate truthful responses, tackling the issue of misinformation and model-generated falsehoods. Finally, WinoGrande Sakaguchi et al., 2020a tests models on pronoun resolution, a task that requires understanding context and commonsense reasoning. We use these benchmarks to distill an informative, sparse set of items to form metabench . 
+ 
+ 
+ Psychometric methods including Item Response Theory are increasingly used in the evaluation of machine learning models Martínez-Plumed et al., 2016a ; Martínez-Plumed et al., 2019a ; Wang et al., 2023c . Zhuang and colleagues Zhuang et al., 2023a propose using IRT for adaptive testing of LLMs but only used this approach to distinguish between a small set of models and restricted domains and compared models to human responses. Burden and colleagues Burden et al., 2023a use Bayesian probabilistic programming to infer agents’ capabilities from diverse task performances, building computational models to link task features to system capabilities. However, these methods are applied to reinforcement learning agents and not to LLMs. There also have been several attempts to create completely new questionnaires to evaluate LLMs using psychometric tools Jiang et al., 2024a ; Wang et al., 2023d . 
+ 
+ 
+ Redundancy in benchmark items has been established, analyzed and combated by several recent works Rodriguez et al., 2021a ; Vania et al., 2021a ; Wang et al., 2023e ; Ye et al., 2023a ; Hewitt et al., 2024a . Most related to our proposal is recent work by Polo et al. Polo et al., 2024b introducing tinyBenchmarks . The authors advocate for reducing the number of evaluation examples in benchmarks to lower costs while maintaining accurate performance assessments of LLMs. They demonstrate that evaluating LLMs on curated subsets of 100 examples can reliably estimate the performance on large benchmarks like MMLU and HELM Liang et al., 2022a within a 2% mean absolute error. However, their proposal differs from our approach on several dimensions. Polo and colleagues analyzed LLMs with high-dimensional IRT models and clustering to create four smaller benchmarks. We use over LLMs, make direct use of estimated item properties by applying principled item selection, go beyond point scores by estimating multiple latent abilities and show that they jointly allow better score reconstruction for each benchmark’s score and the grand mean. 
+ 1 
+ 
+ 
+ 
+ Note, that we report root mean squared errors (RMSEs), which are more sensitive to outliers than the mean absolute errors (MAEs) used in tinyBenchmarks . For comparability, we also report MAEs in the appendix Appendix  B.5 . In short, metabench achieves an average MAE of over benchmarks and an MAE of for the grand mean. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 2 Benchmark Distillation 
+
+ 
+ 2.1 Data Collection and Preprocessing 
+
+ 
+ We collected openly available item-wise accuracies from Hugging Face Datasets for the six benchmarks that are part of the Open LLM Leaderboard Beeching et al., 2023a : ARC , GSM8K , HellaSwag , MMLU , TruthfulQA and WinoGrande .
+After excluding flagged and merged models, we obtained data from unique users, yielding unique LLMs and responses in total. Out of all LLMs, had data for each of the six benchmarks. Whenever possible, we used all available LLMs per benchmark for the analyses. For the remainder of this paper, we use the terms "subjects" and "LLMs" interchangeably, since many of the methods below were designed to analyze human behavior and abilities. 
+ 
+ 
+ All analyses were performed in R 4.4.0 R Core Team, 2024a . For comparability across benchmarks, we normalized the benchmark scores on a percent scale and saved them for reference before removing any items. Per benchmark, we discarded subjects with the lowest of scores to further reduce noise.
+Items with standard deviations below (too little variability) and mean accuracies above (too easy) were removed.
+We then estimated the part-whole correlation between each item and the total score using the point-biserial correlation coefficient, . This coefficient grows if subjects who responded correctly to the item have a higher than average score, especially if the item has medium difficulty ( 2 , see Appendix  A.1 for details).
+We removed items with and was set to except for WinoGrande with , as otherwise hundreds of items would have been removed. The exact number of items removed per benchmark can be found in Appendix  A.2 . 
+ 
+ 
+ For comparability across benchmarks, we conducted a train-test-validation split of the LLMs in the following manner: For stratification, we calculated the grand average of the original benchmark scores for LLMs that ran on all six benchmarks, and used it to create a stratified split as the global test set. For cross-validation per benchmark, we split off further subset of the LLMs as a local validation set, this time stratifying by the specific benchmark score. 
+ 
+ 
+ 
+ 2.2 Cross-Validated Subsampling 
+
+ 
+ For a set of items it becomes quickly impossible to consider all subsets of size , as there are unique subsets and any exhaustive search algorithm would have time complexity for fixed . Nevertheless, it is astounding how well the given benchmarks can be reduced in a theory-free way using random sampling: Wang et al., 2023e , Ye et al., 2023a and Polo et al., 2024c showed that random samples of benchmark items can in principle produce smaller benchmarks that retain enough information to reconstruct their original score with negligible error. One basic procedure for this is: 
+ 
+ 
+ 
+ 1. 
+ 
+ Uniformly sample items and calculate the subtest scores for each subject . 
+ 
+ 2. 
+ 
+ Fit some regression model on the training set. 
+ 
+ 3. 
+ 
+ Calculate some summary statistic of on the validation set, e.g. its root mean square error (RMSE). 
+ 
+ 4. 
+ 
+ Repeat steps (1-3) a large number of times. 
+ 
+ 5. 
+ 
+ Choose the sample with the smallest validation error and check if the performance is still good on the test set. 
+ 
+ 
+ For one can use generalized additive models (GAMs, Hastie & Tibshirani, 1987a ; Fahrmeir et al., 2013a ; Wood, 2017a ), which are a flexible class of regression models utilizing basis functions. They can be seen as the frequentist version of the fully Bayesian framework of Gaussian Process regression Duvenaud et al., 2011a . 
+ 
+ 
+ We ran the described procedure on each benchmark with varying and repetitions to gauge how information is spread across items. GAMs were fitted using the mgcv package Wood, 2017a with default options. Appendix  B.2 contains the results for between and in steps of . As shown in Figure  2 B, even for , test errors have high density on relatively small intervals and all median RMSEs are below : Many different (but potentially overlapping samples) are informative. This suggests (1) few items are un informative, (2) the information they carry is partially redundant, and (3) the useful information saturates swiftly as more items are considered. This notion is further explored in Section  2.4 . 
+ 
+ 
+ This has two practical implications: If we just want medium-sized versions of the six benchmarks, we can simply use cross-validated subsampling. If we want to tap into (or even breach) the boundary of the test RMSE distribution, a more principled approach that models properties of items is required. However, principled item selection can be a follow-up after an initial subsampling sweep, as this preselection still permits reliable score reconstruction. For comparability across item models and to increase the ratio between observations and parameters, we subsampled all six benchmarks to items. This number is a compromise between predictive performance and subject-to-item ratio (see Appendix  B.2 ). We next describe the approach to modeling item properties. 
+ 
+ 
+ 
+ 2.3 Item Response Theory 
+
+ 
+ Item response theory (IRT) is a statistical branch of psychometrics used for the design and analysis of standardized tests Chen et al., 2021c ; Cai et al., 2016a ; 2 ; Hambleton et al., 1991a . It aims to model the relationship between a subject’s abilities and the probability of a correct response to an item. This framework is closely related to other latent trait models such as factor analysis Koch, 2013a , but assumes binary or polytomous responses Chen & Zhang, 2020a ; Zanon et al., 2016a .
+Let be the binary accuracy of item for subject with some (unknown) latent ability vector : 
+ 
+ where is a link function and are the item parameters. We use one-dimensional , as higher-dimensional IRT models require much larger subjects-to-items ratios than in our case, but the framework generalizes to multidimensional abilities in a straightforward manner. A simple and common IRT model is the 2-parameter logistic (2PL) model with and . Here is the logistic function, is the loading parameter and is the difficulty parameter.
+Note that this has the same form as logistic regression with the subtle but important difference that is unknown.
+The main goal is to estimate item parameters which capture their test-relevant properties. Due to favorable asymptotic behavior, the standard approach is to use marginal maximum likelihood methods Wirth & Edwards, 2007a ; Chen & Zhang, 2020a , which treat the latent ability as a random variable and attempt to maximize the marginal likelihood 
+ 
+ with .
+Because of the integral, there is no analytical solution to this problem, but it can be approximated using Expectation-Maximization Dempster et al., 1977a ; Bock & Aitkin, 1981b ; Bock & Schilling, 1997a algorithms and stochastic approximations exist for multidimensional latent abilities Zhang & Chen, 2022a ; Zhang et al., 2020a .
+After model fitting, can be estimated for each subject using, e.g., maximum a posteriori estimation 
+ 2 
+ 
+ 
+ 
+ Any likelihood-based estimator profits from large , as the link functions have sigmoidal shapes: A hill in the function product only arises after aggregating a sufficient number of item-likelihoods with varying midpoint and steepness. This raises the trade-off that many subjects per item are required to get stable parameter estimates, but many items per subject are required to recover their latent ability.
+ : 
+ 
+ 
+ 
+ 
+ We used the mirt Chalmers, 2012a package with default options to fit the following IRT models to preselected subsets of 350 items each - a 2PL model, a 3PL model with an additional lower asymptote parameter, a 4PL model with an additional upper asymptote parameter. After IRT model fitting, we separately used the maximum a posteriori (MAP) method as well as the expected a posteriori sum (EAPsum) method to estimate each benchmark-specific latent ability Bock & Aitkin, 1981c ; Thissen et al., 1995a . We trained a GAM with adaptive smoothers to predict the original benchmark score using the latent ability estimate, and tested the GAM on the test set. 
+ 
+ 
+ Table  1 shows the test RMSE of the predicted scores as well as the Spearman correlations between the estimated latent variables and the original point scores. In the appendix, Figure  6 visualizes the results. All correlation coefficients are above , indicating that the ranking between and is largely preserved. The best models achieve an RMSE of on average and all but one model have an RMSE well below . For out of benchmarks, the best model outperforms the cross-validated subsampling approach. For the remaining , the RMSE is at most worse. While we use single-predictor GAMs to reconstruct scores from (a) random subtest scores and (b) latent abilities , the latter seem to preserve the information about scores and are at times less noisy. This proof of concept reinforces our general approach of going beyond random subsampling and opens up the possibility of information filtering. 
+ 
+ 
+ 
+ 2.4 Information Filtering 
+
+ 
+ Item parameters have a natural interpretation because of how they affect the link function : The difficulty shifts its midpoint and the loading alters its scale. Thus, the difficulty parameter determines the probability of a correct response for an LLM with , and the loading determines how much this probability changes with the LLM’s ability. Intuitively, an item with a high loading discriminates well between subjects whose ability is close to the item’s difficulty. Fisher information functions quantify this property: Since the distribution of is an exponential family, any response-based estimator for will have a variance bounded from below by the expected Fisher information 
+ 3 
+ 
+ 
+ 
+ The observed Fisher information , , is the curvature of the observed likelihood. Its expectation is denoted as and . Then, for unbiased , . If is biased, the numerator becomes . The larger becomes, the more reliably one can estimate from the observed responses. Pawitan, 2013a ; Lehmann & Casella, 1998a .
+For the 2PL model with one-dimensional ability, 
+ 
+ On a high level, this is a measure of how informative an item is about a test taker’s ability conditioned on the ability , and opens up a more principled approach to item selection. For each benchmark we use the following procedure to pick the most predictive items: 
+ 
+ 1. 
+ 
+ Estimate the item parameters using an IRT model . 
+ 
+ 2. 
+ 
+ Estimate the ability using a method . 
+ 
+ 3. 
+ 
+ Use the item parameters to calculate Fisher information functions for all items. 
+ 
+ 4. 
+ 
+ Partition the the support of into quantiles. 
+ 
+ 5. 
+ 
+ In each quantile, select the item with the highest information (above a threshold ) and remove it from the search space. 
+ 
+ 
+ 
+ 
+ We ran the same models as described in Section  2.3 , this time subsampling items using information filtering. We used the rBayesianOptimization package Yan, 2024a with default settings to fine-tune the hyperparameters ( , , , ) on the validation set to minimize the term RMSE where is the size of the chosen subset and is the regularization coefficient. The selected subset is then evaluated on the test set. For each resulting selection we re-run the random subsampling procedure with the same size and check how many random samples have a worse RMSE. 
+ 
+ 
+ Table  2 shows the score reconstruction results for each benchmark’s final model. The mean RMSE over benchmarks is . All IRT models have an RMSE well below . Except for TruthfulQA , all test RMSEs are better than at least 94% of all random subsamples (see Figure  2 B for their distributions). The two very large benchmarks MMLU and HellaSwag have breached the test accuracy boundary of random subsampling. Although this indicates that information filtering is in general effective, we can further improve score reconstruction if we do not limit ourselves to using a single latent ability for prediction. 
+ 
+ 
+ 
+ 
+ 2.5 Going Meta 
+
+ 
+ The idea behind metabench is to go beyond established benchmarking practices for LLMs (cf. Burnell et al., 2023c ; Wang et al., 2023c ). This also means going beyond independent latent abilities for each benchmark. As benchmark scores are highly correlated (going from to , see Appendix  C.2 ), each benchmark also carries some information about the others. Thus, if an LLM is run on several reduced benchmarks, the resulting scores may mutually fill in each other’s blanks. We test this hypothesis by using the resulting IRT models from 2.4 to predict each benchmark’s original score by jointly using all six latent ability estimates as predictors in the GAM. As always, IRT models, latent abilities and GAMs were estimated on the train set and the RMSEs reflect the score prediction accuracy on the test set. The Figure  2 and the right side of Table  2 show the results: The mean RMSE has shrunk to and is well below in all cases. Two models are better than over of all random subsamples, the remaining four surpass the best random subsample by a substantial margin. This synergy effect underlines the advantage of running all components of metabench . 
+ 
+ 
+ We then applied this method to predict the grand average score: The mean across all normalized scores for the six benchmarks constituting the Open LLM Leaderboad . Random subsets are sampled from each benchmark using its corresponding (e.g. items from HellaSwag ), totalling items. Figure  2 C and the bottom row of Table  2 show the score reconstruction results. We were able to reconstruct the grand average with a Spearman correlation of and an RMSE of , which surpassed all random subsamples. 
+ 
+ 
+ Finally, we investigated the relationship between all latent abilities by using factor analysis Kim & Mueller, 1978a ; Koch, 2013a ; Murphy, 2022a , which is a linear latent modeling framework closely related to Principle Component Analysis McDonald, 2014a ; Murphy, 2022a and with a long history in psychometrics Cattell, 1966a ; Carroll, 1997a . In a nutshell, factor analysis of a set of continuous variables attempts a low-rank approximation of their covariance matrix. As its latent factors have the same interpretation as the latent abilities in IRT, it is commonly applied to analyze the relationship between multiple tests 2 . See Appendix  C.1 for a more detailed introduction. We applied FA to the estimated latent abilities using the psych package William Revelle, 2023a (for details, see Appendix  C.2 ). We find that a single factor is sufficient to capture of the total variability across latent abilities. This meta-ability has a Pearson correlation of with the original grand average score. Its loadings range from ( MMLU ) to ( WinoGrande ): Separately, all six latent abilities contribute a comparable amount to the meta-ability, but the added unique information decreases with each addition. This result is in line with the synergy effect as described above. It consolidates the utility of metabench for efficiently measuring the abilities of LLMs. 
+ 
+ 
+ 
+ 2.6 Adaptive Testing 
+
+ 
+ In terms of efficiency, the fixed set of items can still be outperformed: A significant benefit of IRT analysis is that it allows for adaptive testing, in which items can be administered conditional upon the current estimate of the subject’s ability. The information filtering procedure can be seen as a one-size fits most approach, covering as much ground as necessary to get a good estimate of the latent ability (within quantiles populated by the majority of models). However, there is also a made-to-measure alternative which can further reduce item administration costs. By asking the most informative questions sequentially, one can get a good estimate of the latent ability with fewer items. This is the idea behind computerized adaptive tests (CATs, Chang, 2015a ; 2 ). 
+ 
+ 
+ We used the catR package Magis & Raiche, 2012a to simulate CATs on our sample of LLMs using items from each benchmark (for details, see Appendix  D ). The goal was to re-estimate for each subject as provided by an IRT model fitted to the training set, using as few items as possible. Our CAT procedure for each subject is as follows: 
+ 
+ 1. 
+ 
+ Initialize an estimate of around . 
+ 
+ 2. 
+ 
+ Select an item, , with the Maximum Fisher Information with respect to . 
+ 
+ 3. 
+ 
+ Update given ’s response to item . 
+ 
+ 4. 
+ 
+ Repeat steps (2-3) until the estimated standard error of is less than or all items have been administered. 
+ 
+ 
+ 
+ 
+ Using this approach, we found that the latent ability could be reliably re-estimated for every benchmark (RMSE ) with significantly fewer items than the previous approach (as low as items for the most predictive IRT model). The results of our CAT simulations are presented in Table  3 .
+The estimated latent abilities are predictive of performance across each benchmark. By applying computerized adaptive testing, practitioners can estimate for their models using a small fraction of the items in available benchmarks. 
+ 
+ 
+ 
+ 
+ 
+ 3 Conclusion 
+
+ 
+ The findings presented in this study underscore the viability and advantages of using a sparse benchmark, metabench , to measure the abilities of Large Language Models (LLMs). The successful distillation of six prominent benchmarks — ARC , GSM8K , HellaSwag , MMLU , TruthfulQA , and WinoGrande — into a much smaller set of items with minimal information loss. By identifying and utilizing the most informative items, metabench retains the evaluative power of the original, larger benchmarks while reducing redundancy and inefficiency. This demonstrates significant potential for efficient LLM benchmarking and has important implications for the design of future benchmarks. The successful distillation of six large benchmarks to less than of the original volume highlights the potential for more streamlined, cost-effective evaluation methods. This efficiency is particularly valuable for researchers and developers who need to frequently evaluate and compare models during prototyping - without the computational and time constraints associated with larger benchmarks. 
+ 
+ 
+ One of the key strengths of metabench lies in its ability to not only provide point scores but also yield estimators of underlying benchmark-specific abilities, both through its use in full and in an adaptive testing context. These estimators facilitate a deeper understanding of the competencies measured by each benchmark and the relationships between them. They retain a sort of backwards compatibility, as the psychometric techniques used to estimate these abilities enable accurate reconstruction of individual and total benchmark scores, as well as the original ranking. This ensures that metabench maintains a high level of fidelity to the original benchmarks, despite its significantly reduced size. 
+ 
+ 
+ Moreover, the identification of a single common factor underlying all benchmark scores suggests that a general ability can be effectively measured through a consolidated, sparse benchmark. This finding supports the hypothesis that LLM performance across various tasks is influenced by a core set of underlying competencies. By distilling these competencies into a concise benchmark, metabench offers a more focused and insightful evaluation tool. 
+ 
+ 
+ 3.1 Limitations 
+
+ 
+ Most users who submitted results to the OpenLLM Leaderboard contributed several models, potentially violating the IRT model assumption that the response patterns of different subjects are independent (conditional on the item parameters). This may result in biased parameter estimates and therefor distorted item information functions. Indeed, the population of LLMs presumably has a different dependence structure than than that of human test takers: Many LLMs are fine-tuned versions of others or at least share the same base structure and are trained on overlapping data. In the extreme case, treating them as subjects for IRT models is akin to analyzing a test on several batches of clones. On the other hand, the same can be said about human subjects - despite sharing many fundamental properties of the human mind and brain, and experiencing overlapping school curricula, human subjects measurably differ in their knowledge, problem solving abilities, linguistic skills and memory Tyler, 1947a ; Eysenck, 2014a .
+Typically, clustering in human data is treated by including random effects to (generalized) regression models Fahrmeir et al., 2013a . This is not possible for IRT models, as these random effects would become indistinguishable from latent abilities without introducing further constraints. 
+ 
+ 
+ However, as the latent abilities are strongly related to the point scores, we checked if the latter have different empirical distributions if we only include the latest LLM per leaderboard user (see Appendix  B.1 ). The distributions are largely identical and the ratio between subjects and items is already low for IRT standards, prohibiting substantial discarding of subjects without also reducing the item sets before model fitting. Future work with more data should analyze to what extent similarities in fine-tuning and architecture deflate predictive performance for scores and (more importantly) change the ranking outcomes. Finally, it is likely that new LLMs tested on these benchmarks are themselves not far out of distribution with respect to the training set. Thus, for practical purposes, our results should still hold. 
+ 
+ 
+ 
+ 3.2 Future Work 
+
+ 
+ Future research could explore several avenues to build upon the findings of this study. First, further validation of metabench across a broader range of LLMs would test the generalizability of our results. Additionally, investigating the potential for extending the metabench framework to other domains beyond natural language processing could provide valuable insights into the applicability of sparse benchmarks in different modalities such as vision, reinforcement learning, and visual question answering. Another promising direction for future research is the development of adaptive testing algorithms and interfaces that can further reduce the number of items required for accurate LLM evaluation. By continuously refining the selection process based on real-time performance data, these algorithms could enhance the efficiency and precision of LLM assessments. Finally, the core set of cognitive abilities in LLMs remains largely unknown. Future research should closely investigate its structure, as well as uncover the properties of model architecture and training data that facilitate ability development. This would constitute a good basis for more goal-directed and theoretically grounded benchmarks, driving the field of LLM research into a more insightful future. 
+ 
+ 
+ 
+ 
+ 
+ References 
+
+ 
+ 
+ Brown et al. (2020) 
+ Tom. Brown et al.
+ 
+ “Language models are few-shot learners”
+ 
+ In NeurIPS , 2020
+ 
+ 
+ Bubeck et al. (2023) 
+ Sébastien Bubeck et al.
+ 
+ “Sparks of artificial general intelligence: Early experiments with gpt-4”
+ 
+ In arXiv preprint arXiv:2303.12712 , 2023
+ 
+ 
+ Radford et al. (2019) 
+ Alec Radford et al.
+ 
+ “Language Models are Unsupervised Multitask Learners”
+ 
+ In OpenAI Blog 1 , 2019, pp. 9
+ 
+ URL: https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf 
+ 
+ 
+ Chen et al. (2021) 
+ Mark Chen et al.
+ 
+ “Evaluating Large Language Models Trained on Code”
+ 
+ In arXiv preprint arXiv:2107.03374 , 2021
+ 
+ 
+ Elkins & Chun (2020) 
+ Katherine Elkins and Jon Chun
+ 
+ “Can GPT-3 pass a Writer’s turing test?”
+ 
+ In Journal of Cultural Analytics 5.2 , 2020
+ 
+ 
+ Kasneci et al. (2023) 
+ Enkelejda Kasneci et al.
+ 
+ “ChatGPT for good? On opportunities and challenges of large language models for education”
+ 
+ In Learning and Individual Differences 103 
+ 
+ Elsevier, 2023
+ 
+ 
+ Pandya & Holia (2023) 
+ Keivalya Pandya and Mehfuza Holia
+ 
+ “Automating Customer Service using LangChain: Building custom open-source GPT Chatbot for organizations”
+ 
+ In arXiv preprint arXiv:2310.05421 , 2023
+ 
+ 
+ Zhang et al. (2023) 
+ Yifan Zhang et al.
+ 
+ “Large Language Models are Human-Level Prompt Engineers”
+ 
+ In arXiv preprint arXiv:2301.12720 , 2023
+ 
+ 
+ Bommasani et al. (2021) 
+ Rishi Bommasani et al.
+ 
+ “On the opportunities and risks of foundation models”
+ 
+ In arXiv:2108.07258 , 2021
+ 
+ 
+ Burnell et al. (2023) 
+ Ryan Burnell et al.
+ 
+ “Rethink reporting of evaluation results in AI”
+ 
+ In Science 380.6641 
+ 
+ American Association for the Advancement of Science, 2023, pp. 136–138
+ 
+ 
+ Ke et al. (2023) 
+ Pei Ke et al.
+ 
+ “Critiquellm: Scaling llm-as-critic for effective and explainable evaluation of large language model generation”
+ 
+ In arXiv preprint arXiv:2311.18702 , 2023
+ 
+ 
+ Srivastava & authors (2023) 
+ Aarohi Srivastava and authors
+ 
+ “Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models”, 2023
+ 
+ arXiv: 2206.04615 [cs.CL] 
+ 
+ 
+ Raji et al. (2021) 
+ Inioluwa Raji et al.
+ 
+ “AI and the Everything in the Whole Wide World Benchmark”
+ 
+ arXiv, 2021
+ 
+ arXiv: 2111.15366 [cs] 
+ 
+ 
+ Clark et al. (2018) 
+ Peter Clark et al.
+ 
+ “Think you have solved Question Answering? Try ARC, the AI2 Reasoning Challenge”
+ 
+ In Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing (EMNLP) , 2018, pp. 4578–4587
+ 
+ Association for Computational Linguistics
+ 
+ 
+ Cobbe et al. (2021) 
+ Karl Cobbe et al.
+ 
+ “Training Verifiers to Solve Math Word Problems”
+ 
+ In arXiv preprint arXiv:2110.14168 , 2021
+ 
+ 
+ Zellers et al. (2019) 
+ Rowan Zellers et al.
+ 
+ “HellaSwag: Can a Machine Really Finish Your Sentence?”
+ 
+ In Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics (ACL) , 2019, pp. 4791–4800
+ 
+ Association for Computational Linguistics
+ 
+ 
+ Hendrycks et al. (2021) 
+ Dan Hendrycks et al.
+ 
+ “Measuring Massive Multitask Language Understanding”
+ 
+ In ICLR , 2021
+ 
+ 
+ Lin et al. (2022) 
+ Stephanie Lin, Jacob Hilton and Owain Evans
+ 
+ “TruthfulQA: Measuring How Models Mimic Human Falsehoods”
+ 
+ In ACL , 2022
+ 
+ 
+ Sakaguchi et al. (2020) 
+ Keisuke Sakaguchi, Ronan Le, Chandra Bhagavatula and Yejin Choi
+ 
+ “WinoGrande: An Adversarial Winograd Schema Challenge at Scale”
+ 
+ In Proceedings of the AAAI Conference on Artificial Intelligence , 2020, pp. 8732–8740
+ 
+ AAAI
+ 
+ 
+ Hambleton & Swaminathan (2013) 
+ Ronald Hambleton and Hariharan Swaminathan
+ 
+ “Item response theory: Principles and applications”
+ 
+ Springer Science & Business Media, 2013
+ 
+ 
+ Wang et al. (2023) 
+ Xiting Wang et al.
+ 
+ “Evaluating General-Purpose AI with Psychometrics”
+ 
+ arXiv, 2023
+ 
+ arXiv: 2310.16379 [cs] 
+ 
+ 
+ Burnell et al. (2023a) 
+ Ryan Burnell et al.
+ 
+ “Rethink Reporting of Evaluation Results in AI”
+ 
+ In Science 380.6641 , 2023, pp. 136–138
+ 
+ DOI: 10.1126/science.adf6369 
+ 
+ 
+ Coda-Forno et al. (2024) 
+ Julian Coda-Forno, Marcel Binz, Jane Wang and Eric Schulz
+ 
+ “CogBench: a large language model walks into a psychology lab”
+ 
+ In arXiv preprint arXiv:2402.18225 , 2024
+ 
+ 
+ Huang et al. (2023) 
+ Jen-tse Huang et al.
+ 
+ “Who is ChatGPT? Benchmarking LLMs’ Psychological Portrayal Using PsychoBench”
+ 
+ In arXiv preprint arXiv:2310.01386 , 2023
+ 
+ 
+ Beeching et al. (2023) 
+ Edward Beeching et al.
+ 
+ “Open LLM Leaderboard”
+ 
+ Hugging Face, https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard , 2023
+ 
+ 
+ Martínez-Plumed et al. (2016) 
+ Fernando Martínez-Plumed, Ricardo Prudêncio, Adolfo Martínez-Usó and José Hernández-Orallo
+ 
+ “Making sense of item response theory in machine learning”
+ 
+ In ECAI 2016 
+ 
+ IOS Press, 2016, pp. 1140–1148
+ 
+ 
+ Martínez-Plumed et al. (2019) 
+ Fernando Martínez-Plumed, Ricardo Prudêncio, Adolfo Martínez-Usó and José Hernández-Orallo
+ 
+ “Item response theory in AI: Analysing machine learning classifiers at the instance level”
+ 
+ In Artificial intelligence 271 
+ 
+ Elsevier, 2019, pp. 18–42
+ 
+ 
+ Zhuang et al. (2023) 
+ Yan Zhuang et al.
+ 
+ “Efficiently measuring the cognitive ability of llms: An adaptive testing perspective”
+ 
+ In arXiv preprint arXiv:2306.10512 , 2023
+ 
+ 
+ Burden et al. (2023) 
+ John Burden et al.
+ 
+ “Inferring Capabilities from Task Performance with Bayesian Triangulation”
+ 
+ In arXiv preprint arXiv:2309.11975 , 2023
+ 
+ 
+ Jiang et al. (2024) 
+ Guangyuan Jiang et al.
+ 
+ “Evaluating and inducing personality in pre-trained language models”
+ 
+ In Advances in Neural Information Processing Systems 36 , 2024
+ 
+ 
+ Wang et al. (2023a) 
+ Xuena Wang et al.
+ 
+ “Emotional intelligence of large language models”
+ 
+ In Journal of Pacific Rim Psychology 17 
+ 
+ SAGE Publications Sage UK: London, England, 2023, pp. 18344909231213958
+ 
+ 
+ Rodriguez et al. (2021) 
+ Pedro Rodriguez et al.
+ 
+ “Evaluation Examples Are Not Equally Informative: How Should That Change NLP Leaderboards?”
+ 
+ In Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers) 
+ 
+ Online: Association for Computational Linguistics, 2021, pp. 4486–4503
+ 
+ DOI: 10.18653/v1/2021.acl-long.346 
+ 
+ 
+ Vania et al. (2021) 
+ Clara Vania et al.
+ 
+ “Comparing Test Sets with Item Response Theory”
+ 
+ arXiv, 2021
+ 
+ arXiv: 2106.00840 [cs] 
+ 
+ 
+ Wang et al. (2023b) 
+ Yudong Wang et al.
+ 
+ “A Challenging Benchmark for Low-Resource Learning”
+ 
+ arXiv, 2023
+ 
+ arXiv: 2303.03840 [cs] 
+ 
+ 
+ Ye et al. (2023) 
+ Qinyuan Ye, Harvey Fu, Xiang Ren and Robin Jia
+ 
+ “How Predictable Are Large Language Model Capabilities? A Case Study on BIG-bench”
+ 
+ arXiv, 2023
+ 
+ arXiv: 2305.14947 [cs] 
+ 
+ 
+ Hewitt et al. (2024) 
+ John Hewitt et al.
+ 
+ “Model Editing with Canonical Examples”
+ 
+ arXiv, 2024
+ 
+ arXiv: 2402.06155 [cs] 
+ 
+ 
+ Polo et al. (2024) 
+ Felipe Polo et al.
+ 
+ “tinyBenchmarks: evaluating LLMs with fewer examples”
+ 
+ In arXiv preprint arXiv:2402.14992 , 2024
+ 
+ 
+ Liang et al. (2022) 
+ Percy Liang et al.
+ 
+ “Holistic evaluation of language models”
+ 
+ In arXiv preprint arXiv:2211.09110 , 2022
+ 
+ 
+ R Core Team (2024) 
+ R Core Team
+ 
+ “R: A Language and Environment for Statistical Computing”, 2024
+ 
+ R Foundation for Statistical Computing
+ 
+ URL: https://www.R-project.org/ 
+ 
+ 
+ [1] 
+ “The Wiley Handbook of Psychometric Testing: A Multidisciplinary Reference on Survey, Scale and Test Development”
+ 
+ Wiley, 2018
+ 
+ DOI: 10.1002/9781118489772 
+ 
+ 
+ Polo et al. (2024a) 
+ Felipe Polo et al.
+ 
+ “tinyBenchmarks: Evaluating LLMs with Fewer Examples”
+ 
+ arXiv, 2024
+ 
+ arXiv: 2402.14992 [cs, stat] 
+ 
+ 
+ Hastie & Tibshirani (1987) 
+ Trevor Hastie and Robert Tibshirani
+ 
+ “Generalized additive models: some applications”
+ 
+ In Journal of the American Statistical Association 82.398 
+ 
+ Taylor & Francis, 1987, pp. 371–386
+ 
+ 
+ Fahrmeir et al. (2013) 
+ Ludwig Fahrmeir, Thomas Kneib, Stefan Lang and Brian Marx
+ 
+ “Regression: Models, Methods and Applications”
+ 
+ Berlin, Heidelberg: Springer Berlin Heidelberg, 2013
+ 
+ DOI: 10.1007/978-3-642-34333-9 
+ 
+ 
+ Wood (2017) 
+ Simon. Wood
+ 
+ “Generalized Additive Models: An Introduction with R”, Chapman & Hall/CRC Texts in Statistical Science
+ 
+ Boca Raton: CRC Press/Taylor & Francis Group, 2017
+ 
+ 
+ Duvenaud et al. (2011) 
+ David Duvenaud, Hannes Nickisch and Carl Rasmussen
+ 
+ “Additive Gaussian Processes”, 2011
+ 
+ 
+ Chen et al. (2021a) 
+ Yunxiao Chen, Xiaoou Li, Jingchen Liu and Zhiliang Ying
+ 
+ “Item Response Theory – A Statistical Framework for Educational and Psychological Measurement”
+ 
+ arXiv, 2021
+ 
+ arXiv: 2108.08604 [stat] 
+ 
+ 
+ Cai et al. (2016) 
+ Li Cai, Kilchan Choi, Mark Hansen and Lauren Harrell
+ 
+ “Item Response Theory”
+ 
+ In Annual Review of Statistics and Its Application 3.1 , 2016, pp. 297–321
+ 
+ DOI: 10.1146/annurev-statistics-041715-033702 
+ 
+ 
+ Hambleton et al. (1991) 
+ Ronald Hambleton, Hariharan Swaminathan and H Rogers
+ 
+ “Fundamentals of item response theory”
+ 
+ Sage, 1991
+ 
+ 
+ Koch (2013) 
+ Inge Koch
+ 
+ “Analysis of Multivariate and High-Dimensional Data”, Cambridge Series in Statistical and Probabilistic Mathematics
+ 
+ Cambridge University Press, 2013
+ 
+ 
+ Chen & Zhang (2020) 
+ Yunxiao Chen and Siliang Zhang
+ 
+ “Estimation Methods for Item Factor Analysis: An Overview”
+ 
+ arXiv, 2020
+ 
+ arXiv: 2004.07579 [stat] 
+ 
+ 
+ Zanon et al. (2016) 
+ Cristian Zanon, Claudio Hutz, Hanwook Yoo and Ronald Hambleton
+ 
+ “An application of item response theory to psychological test development”
+ 
+ In Psicologia: Reflexão e Crítica 29.0 
+ 
+ SciELO Brasil, 2016, pp. 18
+ 
+ 
+ Wirth & Edwards (2007) 
+ R.. Wirth and Michael. Edwards
+ 
+ “Item Factor Analysis: Current Approaches and Future Directions.”
+ 
+ In Psychological Methods 12.1 , 2007, pp. 58–79
+ 
+ DOI: 10.1037/1082-989X.12.1.58 
+ 
+ 
+ Dempster et al. (1977) 
+ A.. Dempster, N.. Laird and D.. Rubin
+ 
+ “Maximum Likelihood from Incomplete Data Via the EM Algorithm”
+ 
+ In Journal of the Royal Statistical Society Series B: Statistical Methodology 39.1 , 1977, pp. 1–22
+ 
+ DOI: 10.1111/j.2517-6161.1977.tb01600.x 
+ 
+ 
+ Bock & Aitkin (1981) 
+ R. Bock and Murray Aitkin
+ 
+ “Marginal Maximum Likelihood Estimation of Item Parameters: Application of an EM Algorithm”
+ 
+ In Psychometrika 46.4 , 1981, pp. 443–459
+ 
+ DOI: 10.1007/BF02293801 
+ 
+ 
+ Bock & Schilling (1997) 
+ R. Bock and Steven Schilling
+ 
+ “High-Dimensional Full-information Item Factor Analysis”
+ 
+ In Latent Variable Modeling and Applications to Causality , Lecture Notes in Statistics
+ 
+ New York, NY: Springer, 1997, pp. 163–176
+ 
+ DOI: 10.1007/978-1-4612-1842-5_8 
+ 
+ 
+ Zhang & Chen (2022) 
+ Siliang Zhang and Yunxiao Chen
+ 
+ “Computation for Latent Variable Model Estimation: A Unified Stochastic Proximal Framework”
+ 
+ In Psychometrika 87.4 , 2022, pp. 1473–1502
+ 
+ DOI: 10.1007/s11336-022-09863-9 
+ 
+ 
+ Zhang et al. (2020) 
+ Siliang Zhang, Yunxiao Chen and Yang Liu
+ 
+ “An Improved Stochastic EM Algorithm for Large-scale Full-information Item Factor Analysis”
+ 
+ In British Journal of Mathematical and Statistical Psychology 73.1 , 2020, pp. 44–71
+ 
+ DOI: 10.1111/bmsp.12153 
+ 
+ 
+ Chalmers (2012) 
+ R. Chalmers
+ 
+ “mirt: A Multidimensional Item Response Theory Package for the R Environment”
+ 
+ In Journal of Statistical Software 48.6 , 2012, pp. 1–29
+ 
+ DOI: 10.18637/jss.v048.i06 
+ 
+ 
+ Bock & Aitkin (1981a) 
+ R Bock and Murray Aitkin
+ 
+ “Marginal maximum likelihood estimation of item parameters: Application of an EM algorithm”
+ 
+ In Psychometrika 46.4 
+ 
+ Springer, 1981, pp. 443–459
+ 
+ 
+ Thissen et al. (1995) 
+ David Thissen, Mary Pommerich, Kathleen Billeaud and Valerie Williams
+ 
+ “Item response theory for scores on tests including polytomous items with ordered responses”
+ 
+ In Applied psychological measurement 19.1 
+ 
+ Sage Publications Sage CA: Thousand Oaks, CA, 1995, pp. 39–49
+ 
+ 
+ Pawitan (2013) 
+ Y. Pawitan
+ 
+ “In All Likelihood: Statistical Modelling and Inference Using Likelihood”, In All Likelihood: Statistical Modelling and Inference Using Likelihood
+ 
+ OUP Oxford, 2013
+ 
+ URL: https://books.google.de/books?id=8T8fAQAAQBAJ 
+ 
+ 
+ Lehmann & Casella (1998) 
+ E.L. Lehmann and George Casella
+ 
+ “Theory of Point Estimation”, Springer Texts in Statistics
+ 
+ New York: Springer-Verlag, 1998
+ 
+ DOI: 10.1007/b98854 
+ 
+ 
+ Yan (2024) 
+ Yachen Yan
+ 
+ “rBayesianOptimization: Bayesian Optimization of Hyperparameters” R package version 1.2.1
+ 
+ CRAN, https://cran.r-project.org/web/packages/rBayesianOptimization/index.html , 2024
+ 
+ URL: https://github.com/yanyachen/rBayesianOptimization 
+ 
+ 
+ Kim & Mueller (1978) 
+ Jae-On Kim and Charles Mueller
+ 
+ “Introduction to factor analysis: What it is and how to do it”
+ 
+ Sage, 1978
+ 
+ 
+ Murphy (2022) 
+ Kevin. Murphy
+ 
+ “Probabilistic Machine Learning: An introduction”
+ 
+ MIT Press, 2022
+ 
+ URL: probml.ai 
+ 
+ 
+ McDonald (2014) 
+ Roderick McDonald
+ 
+ “Factor analysis and related methods”
+ 
+ Psychology Press, 2014
+ 
+ 
+ Cattell (1966) 
+ Raymond Cattell
+ 
+ “The meaning and strategic use of factor analysis”
+ 
+ In Handbook of multivariate experimental psychology 
+ 
+ Springer, 1966, pp. 131–203
+ 
+ 
+ Carroll (1997) 
+ John. Carroll
+ 
+ “The three-stratum theory of cognitive abilities”
+ 
+ In Contemporary intellectual assessment: Theories, tests, and issues 
+ 
+ New York, NY, US: The Guilford Press, 1997, pp. 122–130
+ 
+ 
+ William Revelle (2023) 
+ William Revelle
+ 
+ “psych: Procedures for Psychological, Psychometric, and Personality Research” R package version 2.3.9, 2023
+ 
+ Northwestern University
+ 
+ URL: https://CRAN.R-project.org/package=psych 
+ 
+ 
+ Chang (2015) 
+ Hua-Hua Chang
+ 
+ “Psychometrics Behind Computerized Adaptive Testing”
+ 
+ In Psychometrika 80.1 , 2015, pp. 1–20
+ 
+ DOI: 10.1007/s11336-014-9401-5 
+ 
+ 
+ Magis & Raiche (2012) 
+ D. Magis and G. Raiche
+ 
+ “Random Generation of Response Patterns under Computerized Adaptive Testing with the R Package catR.”
+ 
+ In Journal of Statistical Software 48.8 , 2012
+ 
+ 
+ Tyler (1947) 
+ Leona Tyler
+ 
+ “The psychology of human differences”
+ 
+ D Appleton-Century Company, 1947
+ 
+ 
+ Eysenck (2014) 
+ Michael Eysenck
+ 
+ “Fundamentals of psychology”
+ 
+ Psychology Press, 2014
+ 
+ 
+ Harman & Jones (1966) 
+ Harry. Harman and Wayne. Jones
+ 
+ “Factor Analysis by Minimizing Residuals (Minres)”
+ 
+ In Psychometrika 31.3 , 1966, pp. 351–368
+ 
+ DOI: 10.1007/BF02289468 
+ 
+ 
+ Wright & Masters (1982) 
+ Benjamin Wright and Geofferey Masters
+ 
+ “Rating scale analysis”
+ 
+ MESA press, 1982
+ 
+ 
+ Bassett & Deride (2019) 
+ Robert Bassett and Julio Deride
+ 
+ “Maximum a posteriori estimators as a limit of Bayes estimators”
+ 
+ In Mathematical Programming 174 
+ 
+ Springer, 2019, pp. 129–144
+ 
+ 
+ 
+ 
+ 
+ References 
+
+ 
+ 
+ Brown et al. (2020a) 
+ Tom. Brown et al.
+ 
+ “Language models are few-shot learners”
+ 
+ In NeurIPS , 2020
+ 
+ 
+ Bubeck et al. (2023a) 
+ Sébastien Bubeck et al.
+ 
+ “Sparks of artificial general intelligence: Early experiments with gpt-4”
+ 
+ In arXiv preprint arXiv:2303.12712 , 2023
+ 
+ 
+ Radford et al. (2019a) 
+ Alec Radford et al.
+ 
+ “Language Models are Unsupervised Multitask Learners”
+ 
+ In OpenAI Blog 1 , 2019, pp. 9
+ 
+ URL: https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf 
+ 
+ 
+ Chen et al. (2021b) 
+ Mark Chen et al.
+ 
+ “Evaluating Large Language Models Trained on Code”
+ 
+ In arXiv preprint arXiv:2107.03374 , 2021
+ 
+ 
+ Elkins & Chun (2020a) 
+ Katherine Elkins and Jon Chun
+ 
+ “Can GPT-3 pass a Writer’s turing test?”
+ 
+ In Journal of Cultural Analytics 5.2 , 2020
+ 
+ 
+ Kasneci et al. (2023a) 
+ Enkelejda Kasneci et al.
+ 
+ “ChatGPT for good? On opportunities and challenges of large language models for education”
+ 
+ In Learning and Individual Differences 103 
+ 
+ Elsevier, 2023
+ 
+ 
+ Pandya & Holia (2023a) 
+ Keivalya Pandya and Mehfuza Holia
+ 
+ “Automating Customer Service using LangChain: Building custom open-source GPT Chatbot for organizations”
+ 
+ In arXiv preprint arXiv:2310.05421 , 2023
+ 
+ 
+ Zhang et al. (2023a) 
+ Yifan Zhang et al.
+ 
+ “Large Language Models are Human-Level Prompt Engineers”
+ 
+ In arXiv preprint arXiv:2301.12720 , 2023
+ 
+ 
+ Bommasani et al. (2021a) 
+ Rishi Bommasani et al.
+ 
+ “On the opportunities and risks of foundation models”
+ 
+ In arXiv:2108.07258 , 2021
+ 
+ 
+ Burnell et al. (2023b) 
+ Ryan Burnell et al.
+ 
+ “Rethink reporting of evaluation results in AI”
+ 
+ In Science 380.6641 
+ 
+ American Association for the Advancement of Science, 2023, pp. 136–138
+ 
+ 
+ Ke et al. (2023a) 
+ Pei Ke et al.
+ 
+ “Critiquellm: Scaling llm-as-critic for effective and explainable evaluation of large language model generation”
+ 
+ In arXiv preprint arXiv:2311.18702 , 2023
+ 
+ 
+ Srivastava & authors (2023a) 
+ Aarohi Srivastava and authors
+ 
+ “Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models”, 2023
+ 
+ arXiv: 2206.04615 [cs.CL] 
+ 
+ 
+ Raji et al. (2021a) 
+ Inioluwa Raji et al.
+ 
+ “AI and the Everything in the Whole Wide World Benchmark”
+ 
+ arXiv, 2021
+ 
+ arXiv: 2111.15366 [cs] 
+ 
+ 
+ Clark et al. (2018a) 
+ Peter Clark et al.
+ 
+ “Think you have solved Question Answering? Try ARC, the AI2 Reasoning Challenge”
+ 
+ In Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing (EMNLP) , 2018, pp. 4578–4587
+ 
+ Association for Computational Linguistics
+ 
+ 
+ Cobbe et al. (2021a) 
+ Karl Cobbe et al.
+ 
+ “Training Verifiers to Solve Math Word Problems”
+ 
+ In arXiv preprint arXiv:2110.14168 , 2021
+ 
+ 
+ Zellers et al. (2019a) 
+ Rowan Zellers et al.
+ 
+ “HellaSwag: Can a Machine Really Finish Your Sentence?”
+ 
+ In Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics (ACL) , 2019, pp. 4791–4800
+ 
+ Association for Computational Linguistics
+ 
+ 
+ Hendrycks et al. (2021a) 
+ Dan Hendrycks et al.
+ 
+ “Measuring Massive Multitask Language Understanding”
+ 
+ In ICLR , 2021
+ 
+ 
+ Lin et al. (2022a) 
+ Stephanie Lin, Jacob Hilton and Owain Evans
+ 
+ “TruthfulQA: Measuring How Models Mimic Human Falsehoods”
+ 
+ In ACL , 2022
+ 
+ 
+ Sakaguchi et al. (2020a) 
+ Keisuke Sakaguchi, Ronan Le, Chandra Bhagavatula and Yejin Choi
+ 
+ “WinoGrande: An Adversarial Winograd Schema Challenge at Scale”
+ 
+ In Proceedings of the AAAI Conference on Artificial Intelligence , 2020, pp. 8732–8740
+ 
+ AAAI
+ 
+ 
+ Hambleton & Swaminathan (2013a) 
+ Ronald Hambleton and Hariharan Swaminathan
+ 
+ “Item response theory: Principles and applications”
+ 
+ Springer Science & Business Media, 2013
+ 
+ 
+ Wang et al. (2023c) 
+ Xiting Wang et al.
+ 
+ “Evaluating General-Purpose AI with Psychometrics”
+ 
+ arXiv, 2023
+ 
+ arXiv: 2310.16379 [cs] 
+ 
+ 
+ Burnell et al. (2023c) 
+ Ryan Burnell et al.
+ 
+ “Rethink Reporting of Evaluation Results in AI”
+ 
+ In Science 380.6641 , 2023, pp. 136–138
+ 
+ DOI: 10.1126/science.adf6369 
+ 
+ 
+ Coda-Forno et al. (2024a) 
+ Julian Coda-Forno, Marcel Binz, Jane Wang and Eric Schulz
+ 
+ “CogBench: a large language model walks into a psychology lab”
+ 
+ In arXiv preprint arXiv:2402.18225 , 2024
+ 
+ 
+ Huang et al. (2023a) 
+ Jen-tse Huang et al.
+ 
+ “Who is ChatGPT? Benchmarking LLMs’ Psychological Portrayal Using PsychoBench”
+ 
+ In arXiv preprint arXiv:2310.01386 , 2023
+ 
+ 
+ Beeching et al. (2023a) 
+ Edward Beeching et al.
+ 
+ “Open LLM Leaderboard”
+ 
+ Hugging Face, https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard , 2023
+ 
+ 
+ Martínez-Plumed et al. (2016a) 
+ Fernando Martínez-Plumed, Ricardo Prudêncio, Adolfo Martínez-Usó and José Hernández-Orallo
+ 
+ “Making sense of item response theory in machine learning”
+ 
+ In ECAI 2016 
+ 
+ IOS Press, 2016, pp. 1140–1148
+ 
+ 
+ Martínez-Plumed et al. (2019a) 
+ Fernando Martínez-Plumed, Ricardo Prudêncio, Adolfo Martínez-Usó and José Hernández-Orallo
+ 
+ “Item response theory in AI: Analysing machine learning classifiers at the instance level”
+ 
+ In Artificial intelligence 271 
+ 
+ Elsevier, 2019, pp. 18–42
+ 
+ 
+ Zhuang et al. (2023a) 
+ Yan Zhuang et al.
+ 
+ “Efficiently measuring the cognitive ability of llms: An adaptive testing perspective”
+ 
+ In arXiv preprint arXiv:2306.10512 , 2023
+ 
+ 
+ Burden et al. (2023a) 
+ John Burden et al.
+ 
+ “Inferring Capabilities from Task Performance with Bayesian Triangulation”
+ 
+ In arXiv preprint arXiv:2309.11975 , 2023
+ 
+ 
+ Jiang et al. (2024a) 
+ Guangyuan Jiang et al.
+ 
+ “Evaluating and inducing personality in pre-trained language models”
+ 
+ In Advances in Neural Information Processing Systems 36 , 2024
+ 
+ 
+ Wang et al. (2023d) 
+ Xuena Wang et al.
+ 
+ “Emotional intelligence of large language models”
+ 
+ In Journal of Pacific Rim Psychology 17 
+ 
+ SAGE Publications Sage UK: London, England, 2023, pp. 18344909231213958
+ 
+ 
+ Rodriguez et al. (2021a) 
+ Pedro Rodriguez et al.
+ 
+ “Evaluation Examples Are Not Equally Informative: How Should That Change NLP Leaderboards?”
+ 
+ In Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers) 
+ 
+ Online: Association for Computational Linguistics, 2021, pp. 4486–4503
+ 
+ DOI: 10.18653/v1/2021.acl-long.346 
+ 
+ 
+ Vania et al. (2021a) 
+ Clara Vania et al.
+ 
+ “Comparing Test Sets with Item Response Theory”
+ 
+ arXiv, 2021
+ 
+ arXiv: 2106.00840 [cs] 
+ 
+ 
+ Wang et al. (2023e) 
+ Yudong Wang et al.
+ 
+ “A Challenging Benchmark for Low-Resource Learning”
+ 
+ arXiv, 2023
+ 
+ arXiv: 2303.03840 [cs] 
+ 
+ 
+ Ye et al. (2023a) 
+ Qinyuan Ye, Harvey Fu, Xiang Ren and Robin Jia
+ 
+ “How Predictable Are Large Language Model Capabilities? A Case Study on BIG-bench”
+ 
+ arXiv, 2023
+ 
+ arXiv: 2305.14947 [cs] 
+ 
+ 
+ Hewitt et al. (2024a) 
+ John Hewitt et al.
+ 
+ “Model Editing with Canonical Examples”
+ 
+ arXiv, 2024
+ 
+ arXiv: 2402.06155 [cs] 
+ 
+ 
+ Polo et al. (2024b) 
+ Felipe Polo et al.
+ 
+ “tinyBenchmarks: evaluating LLMs with fewer examples”
+ 
+ In arXiv preprint arXiv:2402.14992 , 2024
+ 
+ 
+ Liang et al. (2022a) 
+ Percy Liang et al.
+ 
+ “Holistic evaluation of language models”
+ 
+ In arXiv preprint arXiv:2211.09110 , 2022
+ 
+ 
+ R Core Team (2024a) 
+ R Core Team
+ 
+ “R: A Language and Environment for Statistical Computing”, 2024
+ 
+ R Foundation for Statistical Computing
+ 
+ URL: https://www.R-project.org/ 
+ 
+ 
+ [2] 
+ “The Wiley Handbook of Psychometric Testing: A Multidisciplinary Reference on Survey, Scale and Test Development”
+ 
+ Wiley, 2018
+ 
+ DOI: 10.1002/9781118489772 
+ 
+ 
+ Polo et al. (2024c) 
+ Felipe Polo et al.
+ 
+ “tinyBenchmarks: Evaluating LLMs with Fewer Examples”
+ 
+ arXiv, 2024
+ 
+ arXiv: 2402.14992 [cs, stat] 
+ 
+ 
+ Hastie & Tibshirani (1987a) 
+ Trevor Hastie and Robert Tibshirani
+ 
+ “Generalized additive models: some applications”
+ 
+ In Journal of the American Statistical Association 82.398 
+ 
+ Taylor & Francis, 1987, pp. 371–386
+ 
+ 
+ Fahrmeir et al. (2013a) 
+ Ludwig Fahrmeir, Thomas Kneib, Stefan Lang and Brian Marx
+ 
+ “Regression: Models, Methods and Applications”
+ 
+ Berlin, Heidelberg: Springer Berlin Heidelberg, 2013
+ 
+ DOI: 10.1007/978-3-642-34333-9 
+ 
+ 
+ Wood (2017a) 
+ Simon. Wood
+ 
+ “Generalized Additive Models: An Introduction with R”, Chapman & Hall/CRC Texts in Statistical Science
+ 
+ Boca Raton: CRC Press/Taylor & Francis Group, 2017
+ 
+ 
+ Duvenaud et al. (2011a) 
+ David Duvenaud, Hannes Nickisch and Carl Rasmussen
+ 
+ “Additive Gaussian Processes”, 2011
+ 
+ 
+ Chen et al. (2021c) 
+ Yunxiao Chen, Xiaoou Li, Jingchen Liu and Zhiliang Ying
+ 
+ “Item Response Theory – A Statistical Framework for Educational and Psychological Measurement”
+ 
+ arXiv, 2021
+ 
+ arXiv: 2108.08604 [stat] 
+ 
+ 
+ Cai et al. (2016a) 
+ Li Cai, Kilchan Choi, Mark Hansen and Lauren Harrell
+ 
+ “Item Response Theory”
+ 
+ In Annual Review of Statistics and Its Application 3.1 , 2016, pp. 297–321
+ 
+ DOI: 10.1146/annurev-statistics-041715-033702 
+ 
+ 
+ Hambleton et al. (1991a) 
+ Ronald Hambleton, Hariharan Swaminathan and H Rogers
+ 
+ “Fundamentals of item response theory”
+ 
+ Sage, 1991
+ 
+ 
+ Koch (2013a) 
+ Inge Koch
+ 
+ “Analysis of Multivariate and High-Dimensional Data”, Cambridge Series in Statistical and Probabilistic Mathematics
+ 
+ Cambridge University Press, 2013
+ 
+ 
+ Chen & Zhang (2020a) 
+ Yunxiao Chen and Siliang Zhang
+ 
+ “Estimation Methods for Item Factor Analysis: An Overview”
+ 
+ arXiv, 2020
+ 
+ arXiv: 2004.07579 [stat] 
+ 
+ 
+ Zanon et al. (2016a) 
+ Cristian Zanon, Claudio Hutz, Hanwook Yoo and Ronald Hambleton
+ 
+ “An application of item response theory to psychological test development”
+ 
+ In Psicologia: Reflexão e Crítica 29.0 
+ 
+ SciELO Brasil, 2016, pp. 18
+ 
+ 
+ Wirth & Edwards (2007a) 
+ R.. Wirth and Michael. Edwards
+ 
+ “Item Factor Analysis: Current Approaches and Future Directions.”
+ 
+ In Psychological Methods 12.1 , 2007, pp. 58–79
+ 
+ DOI: 10.1037/1082-989X.12.1.58 
+ 
+ 
+ Dempster et al. (1977a) 
+ A.. Dempster, N.. Laird and D.. Rubin
+ 
+ “Maximum Likelihood from Incomplete Data Via the EM Algorithm”
+ 
+ In Journal of the Royal Statistical Society Series B: Statistical Methodology 39.1 , 1977, pp. 1–22
+ 
+ DOI: 10.1111/j.2517-6161.1977.tb01600.x 
+ 
+ 
+ Bock & Aitkin (1981b) 
+ R. Bock and Murray Aitkin
+ 
+ “Marginal Maximum Likelihood Estimation of Item Parameters: Application of an EM Algorithm”
+ 
+ In Psychometrika 46.4 , 1981, pp. 443–459
+ 
+ DOI: 10.1007/BF02293801 
+ 
+ 
+ Bock & Schilling (1997a) 
+ R. Bock and Steven Schilling
+ 
+ “High-Dimensional Full-information Item Factor Analysis”
+ 
+ In Latent Variable Modeling and Applications to Causality , Lecture Notes in Statistics
+ 
+ New York, NY: Springer, 1997, pp. 163–176
+ 
+ DOI: 10.1007/978-1-4612-1842-5_8 
+ 
+ 
+ Zhang & Chen (2022a) 
+ Siliang Zhang and Yunxiao Chen
+ 
+ “Computation for Latent Variable Model Estimation: A Unified Stochastic Proximal Framework”
+ 
+ In Psychometrika 87.4 , 2022, pp. 1473–1502
+ 
+ DOI: 10.1007/s11336-022-09863-9 
+ 
+ 
+ Zhang et al. (2020a) 
+ Siliang Zhang, Yunxiao Chen and Yang Liu
+ 
+ “An Improved Stochastic EM Algorithm for Large-scale Full-information Item Factor Analysis”
+ 
+ In British Journal of Mathematical and Statistical Psychology 73.1 , 2020, pp. 44–71
+ 
+ DOI: 10.1111/bmsp.12153 
+ 
+ 
+ Chalmers (2012a) 
+ R. Chalmers
+ 
+ “mirt: A Multidimensional Item Response Theory Package for the R Environment”
+ 
+ In Journal of Statistical Software 48.6 , 2012, pp. 1–29
+ 
+ DOI: 10.18637/jss.v048.i06 
+ 
+ 
+ Bock & Aitkin (1981c) 
+ R Bock and Murray Aitkin
+ 
+ “Marginal maximum likelihood estimation of item parameters: Application of an EM algorithm”
+ 
+ In Psychometrika 46.4 
+ 
+ Springer, 1981, pp. 443–459
+ 
+ 
+ Thissen et al. (1995a) 
+ David Thissen, Mary Pommerich, Kathleen Billeaud and Valerie Williams
+ 
+ “Item response theory for scores on tests including polytomous items with ordered responses”
+ 
+ In Applied psychological measurement 19.1 
+ 
+ Sage Publications Sage CA: Thousand Oaks, CA, 1995, pp. 39–49
+ 
+ 
+ Pawitan (2013a) 
+ Y. Pawitan
+ 
+ “In All Likelihood: Statistical Modelling and Inference Using Likelihood”, In All Likelihood: Statistical Modelling and Inference Using Likelihood
+ 
+ OUP Oxford, 2013
+ 
+ URL: https://books.google.de/books?id=8T8fAQAAQBAJ 
+ 
+ 
+ Lehmann & Casella (1998a) 
+ E.L. Lehmann and George Casella
+ 
+ “Theory of Point Estimation”, Springer Texts in Statistics
+ 
+ New York: Springer-Verlag, 1998
+ 
+ DOI: 10.1007/b98854 
+ 
+ 
+ Yan (2024a) 
+ Yachen Yan
+ 
+ “rBayesianOptimization: Bayesian Optimization of Hyperparameters” R package version 1.2.1
+ 
+ CRAN, https://cran.r-project.org/web/packages/rBayesianOptimization/index.html , 2024
+ 
+ URL: https://github.com/yanyachen/rBayesianOptimization 
+ 
+ 
+ Kim & Mueller (1978a) 
+ Jae-On Kim and Charles Mueller
+ 
+ “Introduction to factor analysis: What it is and how to do it”
+ 
+ Sage, 1978
+ 
+ 
+ Murphy (2022a) 
+ Kevin. Murphy
+ 
+ “Probabilistic Machine Learning: An introduction”
+ 
+ MIT Press, 2022
+ 
+ URL: probml.ai 
+ 
+ 
+ McDonald (2014a) 
+ Roderick McDonald
+ 
+ “Factor analysis and related methods”
+ 
+ Psychology Press, 2014
+ 
+ 
+ Cattell (1966a) 
+ Raymond Cattell
+ 
+ “The meaning and strategic use of factor analysis”
+ 
+ In Handbook of multivariate experimental psychology 
+ 
+ Springer, 1966, pp. 131–203
+ 
+ 
+ Carroll (1997a) 
+ John. Carroll
+ 
+ “The three-stratum theory of cognitive abilities”
+ 
+ In Contemporary intellectual assessment: Theories, tests, and issues 
+ 
+ New York, NY, US: The Guilford Press, 1997, pp. 122–130
+ 
+ 
+ William Revelle (2023a) 
+ William Revelle
+ 
+ “psych: Procedures for Psychological, Psychometric, and Personality Research” R package version 2.3.9, 2023
+ 
+ Northwestern University
+ 
+ URL: https://CRAN.R-project.org/package=psych 
+ 
+ 
+ Chang (2015a) 
+ Hua-Hua Chang
+ 
+ “Psychometrics Behind Computerized Adaptive Testing”
+ 
+ In Psychometrika 80.1 , 2015, pp. 1–20
+ 
+ DOI: 10.1007/s11336-014-9401-5 
+ 
+ 
+ Magis & Raiche (2012a) 
+ D. Magis and G. Raiche
+ 
+ “Random Generation of Response Patterns under Computerized Adaptive Testing with the R Package catR.”
+ 
+ In Journal of Statistical Software 48.8 , 2012
+ 
+ 
+ Tyler (1947a) 
+ Leona Tyler
+ 
+ “The psychology of human differences”
+ 
+ D Appleton-Century Company, 1947
+ 
+ 
+ Eysenck (2014a) 
+ Michael Eysenck
+ 
+ “Fundamentals of psychology”
+ 
+ Psychology Press, 2014
+ 
+ 
+ Harman & Jones (1966a) 
+ Harry. Harman and Wayne. Jones
+ 
+ “Factor Analysis by Minimizing Residuals (Minres)”
+ 
+ In Psychometrika 31.3 , 1966, pp. 351–368
+ 
+ DOI: 10.1007/BF02289468 
+ 
+ 
+ Wright & Masters (1982a) 
+ Benjamin Wright and Geofferey Masters
+ 
+ “Rating scale analysis”
+ 
+ MESA press, 1982
+ 
+ 
+ Bassett & Deride (2019a) 
+ Robert Bassett and Julio Deride
+ 
+ “Maximum a posteriori estimators as a limit of Bayes estimators”
+ 
+ In Mathematical Programming 174 
+ 
+ Springer, 2019, pp. 129–144
+ 
+ 
+ 
+ 
+ 
+ 
+ Appendix A Preprocessing Details 
+
+ 
+ A.1 Part-Whole Correlation 
+
+ 
+ To estimate the part-whole correlation between a binary item outcome and a non-binary aggregate point score, psychometrics 2 offers the point-biserial correlation coefficient : 
+ 
+ where the set of correct responders has the average score and size (in comparison to the total mean and size ). The empirical standard deviation of the total group is denoted as . This coefficient is bounded in and grows if subjects who responded correctly to the item have higher than average scores. Note that it is customary to remove items with negative , as they appear to measure something different from what the remaining majority of items measures or even point to annotation errors Rodriguez et al., 2021a . However, items with a negative do contain information about the benchmark score: Correct subjects are on average worse on the remaining items. We therefore chose to keep them. 
+ 
+ 
+ 
+ A.2 Numbers Before vs. After 
+
+ 
+ Table  4 shows the numbers of LLMs and items before and after preprocessing. Apart from GSM8K , there is no benchmark for which many LLMs were discarded for having a score at the st percentile (meaning that of scores were greater than the threshold). In fact, all discarded models in the GSM8K dataset had achieved points. For ARC , items were too easy (mean accuracy ) and items were uninformative ( ). For GSM8K , items were uninformative. For HellaSwag , item had too little variance ( ), further items were too easy, and items were uninformative. For MMLU , items had duplicate prompts 
+ 4 
+ 
+ 
+ 
+ This is the case for all subjects. Per LLM, responses were identical for duplicates. It is unclear if duplicate items were also presented to LLMs or if incorrect item details were saved on the server-side. , and items were uninformative. For TruthfulQA , items had too little variance, items were too easy and items were uninformative. For WinoGrande , items were too easy and items were uninformative. 
+ 
+ 
+ 
+ 
+ 
+ 
+ Appendix B Score Recovery 
+
+ 
+ B.1 Distributions of Point Scores 
+
+ 
+ The empirical distributions of scores after preprocessing are shown in Figure  3 , taking data from either all LLMs or reducing the set to the last occurring LLM per user. The distributions are very similar, but the former tend to have higher density in bigger scores. Notably, all distributions are far from normal, but appear to be mixtures with several local maxima. Future work should investigate if LLMs can be clustered (according to some independent property) such that these clusters can be mapped on different intervals in the score distributions. 
+ 
+ 
+ 
+ 
+ 
+ B.2 Cross-validated Subsampling 
+
+ 
+ We ran the cross-validated subsampling procedure in Section  2.2 on each benchmark with ranging from to in steps of , and using repetitions. Figure  4 shows that the validation set error shrinks monotonically with an increasing number of items, but the corresponding test error is not always optimal. This suggests that the best selection for the validation set does not always generalize to the test set, which might be remedied by using -fold cross-validation instead. Notably, this algorithm struggles with HellaSwag - this can not solely be explained by the benchmark’s size, as the procedure appears to work well for the even larger MMLU . This suggests, the procedure could be refined by making it an evolutionary algorithm: Instead of sampling the goal in one go, one could discard items times, take the best intermediate subset, and continue from there until only items remain. 
+ 
+ 
+ 
+ B.3 Score Reconstruction with Logistic Regression Models 
+
+ 
+ If an essential goal of metabench is to encode information about the test score in the item parameters , one may raise the question: Why should we use latent abilities as presented in Section  2.3 ? Is it not more parsimonious to directly provide the achieved score? To address this question, we reformulated the 2PL model as logistic regression: 
+ 
+ where . Using the built-in stats package R Core Team, 2024a we fitted a generalized linear model to each item per benchmark, providing the normalized score as the single predictor. For comparability, we took the item subsets from Section  2.2 . Using the estimated parameters and setting the prior to the empirical distribution of the scores, we evaluated the log-posteriors of each subject’s response vector as a function of the score on a grid of values between and . The estimated score was set as the argmax on that grid. Concretely, 
+ 
+ with .
+This is numerical MAP estimation, but the implementation probably has room for improvement. Figure  5 shows the reconstructed scores for each benchmark. The mean and standard deviation of the training RMSEs are resp. . The results should be compared with the 2PL column for Table  1 , and they reveal two things: (1) this method works in principle, but (2) it has strictly worse reconstruction accuracy in comparison to latent ability estimates even on the training set and to random sampling. In summary, this gives further justification for using IRT methods in our analyses. 
+ 
+ 
+ 
+ 
+ 
+ B.4 Score Reconstruction with Latent Abilities 
+
+ 
+ Figure  6 visualizes the results discussed in Section  2.3 for the best IRT models shown in Table  1 . 
+ 
+ 
+ 
+ 
+ B.5 Mean Absolute Errors for Score Recovery 
+
+ 
+ Table  5 compares the reported root mean square errors (RMSEs) from Section  2.4 with corresponding mean absolute errors (MAEs). RMSEs are more sensitive to outliers and are therefore larger. When using MAEs, the error is roughly points lower for single benchmarks. 
+ 
+ 
+ 
+ 
+ 
+ B.6 Most Informative Items Per Benchmark 
+
+ 
+ To get a better grasp on the item selection in Section  2.4 , the following table shows each benchmark’s most informative prompt for five latent ability intervals. Answer options are not included due to space constraints. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Appendix C Factor Analysis 
+
+ 
+ C.1 Latent Linear Modeling with FA 
+
+ 
+ Factor Analysis (FA, Koch, 2013a ; Murphy, 2022a ; Kim & Mueller, 1978a ) is a linear multivariate method for finding a latent low-dimensional representation of observed data. Let be a random variable with mean and covariance , then FA models it as 
+ 
+ with some -dimensional latent 
+ 5 
+ 
+ 
+ 
+ The assumption that has zero mean and identity covariance is wlog, as any other expected value resp. covariance can be absorbed by resp. . and an independent error with diagonal . The dimension typically has a much smaller size than . The loading matrix thus projects the -dimensional latent into some -dimensional space and some anisotropic noise is added by . This model implies the decomposition 
+ 
+ This decomposition is not uniquely identifiable, as it is invariant wrt. orthogonal rotations of and 
+ 6 
+ 
+ 
+ 
+ In practice, non-orthogonal rotations (also called ”oblique”) are preferred, as they allow correlations among factors and potentially improve fit and interpretability. . Note that the decomposition implies 
+ 
+ which gives a natural way of calculating the proportion of data variance explained by the factors.
+If we know that the data is (close to) Gaussian, we can formulate a likelihood function in and and maximize it with EM. Alternatively, can be estimated with the minimum residual (minres) method, which is a form of ordinary least squares minimizing the summed squares of the off-diagonal elements of William Revelle, 2023a ; Harman & Jones, 1966a . Like in item response theory models, the latent variable can be estimated once there are estimates for and . Koch Koch, 2013a shows multiple ways to arrive at the generalized least squares solution with regularization coefficient , 
+ 
+ 
+ 
+ 
+ C.2 Factor Models for Benchmarks 
+
+ 
+ As already established, there is a lot of shared information across benchmarks. Figure  7 shows the Pearson correlations benchmark point scores and corresponding latent abilities, respectively. While some correlations (e.g. between ARC and HellaSwag ) are invariant over the two matrices, the exact pattern is not identical. The (meta-)correlation between the unique off-diagonal correlation coefficients in both matrices is , indicating moderately strong agreement. Nonetheless, all entries are highly positive, suggesting the existence of few latent factors governing the correlation structure. 
+ 
+ 
+ We used factor analysis as implemented in the psych package William Revelle, 2023a to estimate FA models of these correlation matrices with the minres method. Table  7 shows the loadings of - and -factor solutions, and the proportions of variance explained.
+ For the point scores , the -factor solution explains the least variance ( ) and is not further discussed. The -factor solution explains variance, while the -factor solution explains more and its two factors have a correlation of . The latter proposes to separate TruthfulQA from the remaining benchmarks. While both fits are similarly decent (RMSEA: 0.308 vs. 0.302, corrected RMSR: 0.052 vs. 0.048, CFI: 0.899 vs. 0.957, TLI: 0.832 vs. 0.839), the -factor solution should be preferred due to parsimony and the little additional contribution of a second factor. After estimating for each LLM, the Spearman correlation between and the grand average point score is . 
+ 
+ 
+ The picture is similar but not identical for the latent abilities : The -factor solution explains the least variance ( ) and is not further discussed. The -factor solution again explains variance, while the -factor solution explains more and its two factors have a correlation of . It proposes to separate MMLU and GSM8K from the remaining benchmarks. While both fits are similarly decent (RMSEA: 0.327 vs. 0.246, corrected RMSR: 0.079 vs. 0.024, CFI: 0.881 vs. 0.97, TLI: 0.802 vs. 0.888), the latter is consistently slightly better. For comparability and the same reasons as above, the -factor solution should be preferred. After estimating for each LLM, the Spearman correlation between and the grand average point score is .
+In summary, the results indicate the existence of a single overarching general ability tested by all benchmarks. 
+ 
+ 
+ 
+ Figure 7: Correlations among benchmarks (for training set subjects that ran all benchmarks). 
+ 
+ 
+ 
+ 
+ 
+ 
+ Appendix D Computerized Adaptive Testing Procedure 
+
+ 
+ We used the catR package Magis & Raiche, 2012a to simulate Computerized Adaptive Tests (CATs) on our sample of LLMs using items from each benchmark. The goal was to re-estimate for each subject, , as provided by an IRT model fitted to the training set, using as few items as possible.
+CATs proceed by selecting an item that is most useful for updating the estimated , administering it to subject , and then updating the estimate of . This process is repeated until some stopping criterion is achieved, at which point the final estimate is computed. CATs can be simulated on subjects who have already completed a full bank of items by simply returning their responses to each administered item. This assumes that the responses of each subject to each item is deterministic and would not change. The usefulness of an item can be formalized in several ways. We used the maximum Fisher information criterion, selecting the item that has the highest expected Fisher information with respect to the current estimate of (cf. Section  2.4 ). 
+ 
+ 
+ A classical approach in IRT is to filter out items by their infit and outfit statistics Wright & Masters, 1982a before the automated selection process. An item’s infit and outfit, and , are defined as 
+ 
+ 
+ 
+ 
+ 
+ where , and . Both infit and outfit are thus derived from statistics. Outfit is used to detect the presence of unexpected responses to items with low information with respect to the model and estimated , while infit detects the presence of unexpected responses to items with high information with respect to the model and estimated . Items with and are standardly considered outliers. 
+ 
+ 
+ For each benchmark, the latent ability was estimated using Maximum A Posteriori (MAP) estimation Bassett & Deride, 2019a (see Eq. 3 ). An alternative estimation method is Expected A Posteriori (EAP, Thissen et al., 1995a ) estimation: 
+ 
+ 
+ 
+ For both MAP and EAP estimations, a standard normal prior was used. The final estimate of was computed using the same estimator as during the simulation. The responses to each item were deterministic in our simulations, and so each item was only administered once per subject 
+ 7 
+ 
+ 
+ 
+ Future work will explore whether this constraint should be loosened. Moreover, when running CATs on novel LLMs, repeating test items could be informative. So long as items are not presented within the same context window, over-exposure is not detrimental to inference, as it is in human psychometric testing where subjects remember previously administered items. . Testing was stopped when either (a) all items had been administered or (b) the standard error of the distribution over was . It has been noted that standard errors may not be computed exactly in catR for multi-parameter IRT models with as many items as used here, therefore this stopping criterion may fail in some cases. 
+ 
+ 
+ Our CAT simulations can be optimized in several ways. First, they could be initialized with the mode of the empirical distribution, and a larger number of informative items could be used for the initial estimate. Second, alternative item selection methods could be employed, such as Urry’s procedure, optimal theta selection, weighted information criteria, or the progressive or proportional methods Magis & Raiche, 2012a , which select items using more sophisticated policies than the maximum Fisher information criterion. Third, estimation could benefit from the EAP method, and the priors for MAP and EAP could be altered to their respective empirical distributions. Fourth, removing items by their infits and outfits may have hindered accurate estimation for some values of . Finally, the stopping criterion could be changed such that testing stops only once there are no items that are sufficiently informative with respect to the currently estimated . Note, that this method does not incur problems with numerical stability. Future work will investigate these potential optimizations to the CAT simulation procedure. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Experimental support, please
+ view the build logs 
+ for errors. Generated by
+ 
+ 
+ L
+ A 
+ T
+ E 
+ 
+ xml 
+ 
+ .
+ 
+ 
+ Instructions for reporting errors 
+ We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+ support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+ methods listed below: 
+ 
+ Click the "Report Issue" ( ) button, located in the page header. 
+ 
+ Tip: You can select the relevant text first, to include it in your report. 
+ Our team has already identified the following issues . We appreciate your time reviewing and reporting rendering errors we
+ may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+ should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+ all. 
+ Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion , and welcome developer contributions . 
+ 
+ 
+ 
+ 
+ 
+ We gratefully acknowledge support from
+ our major funders ,
+ member institutions , ,
+ and all contributors.
+ 
+ 
+ About 
+ · 
+ Help 
+ · 
+ Contact 
+ · 
+ Subscribe 
+ · 
+ Copyright 
+ · 
+ Privacy 
+ · 
+ Accessibility 
+ · 
+ Operational Status (opens in new tab) 
+ 
+ 
+
+ 
+ Major funding support from 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

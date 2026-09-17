@@ -1,0 +1,655 @@
+ 
+ 
+ 
+ Assessing the Macro and Micro Effects of Random Seeds on Fine-Tuning Large Language Models 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report GitHub Issue 
+ × 
+ 
+
+ 
+ Title: 
+ 
+
+ Content selection saved. Describe the issue below: 
+
+ Description: 
+ 
+ 
+
+ 
+ Submit without GitHub 
+ Submit in GitHub 
+ 
+ 
+ 
+ 
+ arXiv is now an independent nonprofit! 
+ Learn more 
+ × 
+ 
+
+ 
+ 
+ 
+ Back to arXiv 
+ 
+ 
+ 
+ 
+ Why HTML? 
+ 
+ 
+ Report Issue 
+ 
+ 
+ 
+ Back to Abstract 
+ 
+ 
+ 
+ 
+ Download PDF 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Abstract 
+ 1 Introduction 
+ 2 Macro Metric: Variance 
+ 3 Micro Metric: Consistency 
+ 4 Experimental Setup 
+ 
+ 4.1 Benchmarks 
+ 4.2 Settings 
+ 
+ 5 Results and Discussion 
+ 
+ 5.1 Macro impact 
+ 5.2 Micro impact 
+ 5.3 Training size impact 
+ 
+ 6 Conclusion 
+ 7 Limitations 
+ References 
+ A Appendix 
+ 
+ A.1 Data Description 
+ A.2 Hyperparameter Settings 
+ A.3 Replicated SOTA Scores 
+ A.4 Additional Results 
+ 
+ 
+ 
+ 
+ 
+ 
+ License: arXiv.org perpetual non-exclusive license
+ 
+ 
+arXiv:2503.07329v1 [cs.CL] 10 Mar 2025 
+ 
+ 
+ Assessing the Macro and Micro Effects of Random Seeds on Fine-Tuning Large Language Models 
+ 
+ 
+ Hao Zhou
+ 
+ Affiliation:  New Jersey Institute of Technology
+ 
+    
+ Guergana Savova
+ 
+ Affiliation:  Boston Children’s Hospital and Harvard Medical School
+ 
+    
+ Lijing Wang
+ 
+ Affiliation:  New Jersey Institute of Technology
+ 
+
+ Abstract 
+ 
+ The impact of random seeds in fine-tuning large language models (LLMs) has been largely overlooked despite its potential influence on model performance.
+In this study, we systematically evaluate the effects of random seeds on LLMs using the GLUE and SuperGLUE benchmarks. We analyze the macro-level impact through traditional metrics like accuracy and F1, calculating their mean and variance to quantify performance fluctuations. To capture the micro-level effects, we introduce a novel metric, consistency , measuring the stability of individual predictions across runs. Our experiments reveal significant variance at both macro and micro levels, underscoring the need for careful consideration of random seeds in fine-tuning and evaluation. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 1 Introduction 
+
+ 
+ The impact of random seeds in neural network training has long been recognized across various domains, such as general machine learning classification and regression tasks  Ganesh et al. (2023) ; Madhyastha and Jain (2019) , computer vision  Picard (2021) ; Åkesson et al. (2024) , natural language processing (NLP) Bethard (2022) ; Lucic et al. (2022) . Random seeds influence initialization and training dynamics, introducing variability in model outcomes that can lead to significant fluctuations in performance  Bengio (2012) . 
+ 
+ 
+ In the field of NLP, large language models (LLMs) have achieved remarkable success across a wide range of NLP tasks, setting new state-of-the-art results on benchmarks like GLUE and SuperGLUE. These benchmarks have became the de facto standard for evaluating the capabilities of LLMs in understanding, reasoning, and generating natural language. Despite the success of LLMs, the pretrained transformer architectures, such as BERT  Devlin et al. (2019) and RoBERTa  Liu (2019) , have been found to be particularly sensitive to random seeds  Risch and Krestel (2020) ; Dodge et al. (2020) ; Mosbach et al. (2021) . This sensitivity can result in substantial performance variations, complicating the interpretation of experimental results and undermining confidence in benchmarking or state-of-the-art outcomes. A recent analysis of 85 papers from the ACL Anthology  Bethard (2022) revealed risky practices in the use of random seeds: over 50% of the papers exhibited potential misuse, with 24 using a single fixed random seed. This highlights that the influence of random seeds on LLM performance is still an underexplored area. 
+ 
+ 
+ 
+ Existing studies examining the impact of random seeds  Ganesh et al. (2023) ; Madhyastha and Jain (2019) ; Picard (2021) typically evaluate performance variations by measuring the variance of standard metrics, such as accuracy and F1 score for classification tasks, or Pearson correlation for regression tasks, across multiple seeds. These evaluations focus on the macro-level agreement of model performance across the entire test set, offering insights into overall variability. However, they overlook the micro-level impact of how individual test points are influenced by random seed variations . As shown in Figure  1 , model performance is robust to random seeds 42 and 52 at the macro level (both achieve 60% accuracy) but lacks consistency at the micro level (only 20% overlapping predictions). This micro-level inconsistency can have severe consequences in real-world applications, especially in fields where model predictions are highly sensitive to individual test points, such as medical diagnosis and autonomous driving. Understanding this micro-level effect is crucial for assessing model robustness at the level of individual predictions, ensuring that specific test samples are not inconsistently misclassified or predicted due to seed-induced variations. Additionally, it helps pinpoint specific areas where models may exhibit significant instability, such as consistently misclassifying certain types of data points or showing highly variable predictions for similar inputs. Recognizing these areas of instability can guide targeted improvements in both model design and evaluation practices, ensuring that assessments account for seed-induced variations in performance. 
+ 
+ 
+ Major contributions :
+To address these gaps, in this work, (1) we analyze the impact of random seeds on pretrained LLMs using the GLUE and SuperGLUE benchmarks, covering both macro and micro-level variability;
+(2) We introduce a novel consistency metric to assess prediction stability on individual test points, capturing the micro-level effects of random seeds;
+(3) Our extensive experiments reveal significant variability in both standard and consistency metrics, underscoring the need to consider seed-induced variations in fine-tuning and evaluation, and incorporate random seed sensitivity into benchmarking and reporting for more reliable and reproducible results. 
+ 
+ 
+ 
+ 2 Macro Metric: Variance 
+
+ 
+ To measure the macro-level impact of random seeds on LLM performance, we calculate the variance of a standard metric across multiple seeds.
+Let represent the values of a model performance metric for LLMs fine-tuned with random seeds, the variance is calculated by: 
+ 
+ 
+ 
+ 
+ 
+ where . can be any standard metrics, such as F1 score for classification tasks or Pearson correlation for regression tasks.
+A smaller VAR indicates less variation in macro-level performance. 
+ 
+ 
+ 
+ 3 Micro Metric: Consistency 
+
+ 
+ ’Consistency’ can have varying definitions across domains. Building on prior work, Wang et al. (2020) formally defined the consistency of a deep learning model as its ability to produce consistent predictions for the same input when periodically retrained with streaming data in deployment settings. Extending this idea, we define the consistency of an LLM as its ability to generate consistent predictions for the same input across models fine-tuned with different hyperparameter settings, with correct-consistency further specifying its ability to make consistent correct predictions in this context. 
+ 
+ 
+ More specifically, consider two LLMs and , given a dataset of data points, and are the prediction of , for a data point with ground truth . For classification tasks , we calculate the consistency as follows: 
+ 
+ 
+ 
+ 
+ 
+ where is the indicator function that equals 1 if , otherwise 0. And the correct-consistency is calculated by: 
+ 
+ 
+ 
+ 
+ 
+ where is the indicator function that equals 1 if , otherwise 0. 
+ 
+ 
+ For regression tasks , we calculate the consistency as the Pearson correlation between two sets of predictions and : 
+ 
+ 
+ 
+ 
+ 
+ CON and ACC-CON range from [0, 1], while CON-PEAR ranges from [-1, 1], where higher values indicate smaller variations in micro-level predictions.
+While consistency metrics can generally be used for quantifying the agreement of individual predictions from any two LLMs with different architectures, hyperparameters, or training settings, in our study, they are specifically used to serve as metrics to evaluate the micro-level impact of random seeds on the same pretrained LLM. 
+ 
+ 
+ 
+ 4 Experimental Setup 
+
+ 
+ In this section, we will show the details of our experiment settings. More setting details can be found in Appendix. 
+ 
+ 
+ 4.1 Benchmarks 
+
+ 
+ In this study, we conduct experiments on a range of NLP tasks
+including COLA (Matthews Correlation Coefficient), SST2 (Accuracy), MRPC (Accuracy), STSB (Pearson correlations), QQP (Accuracy), QNLI (Accuracy), and RTE (Accuracy) from GLUE  Wang et al. (2018) benchmark;
+RTE (Accuracy), CB (Accuracy), WiC (Accuracy), BoolQ (Accuracy), MultiRC (Accuracy), and COPA (Accuracy) from SuperGLUE  Wang et al. (2019) benchmark.
+In our paper, we use RTEG to denote RTE task from GLUE and RTES for SuperGLUE. 
+ 
+ 
+ To ensure our experiments are conducted with proper settings and are reproducible, we followed the configurations and replicated the state-of-the-art (SOTA) scores reported in  Liu (2019) . We choose RoBERTa-large as the pretrained LLM.
+We were unable to replicate the representation (special token extractions) and model settings (unpublished pretrained model) for the WSC and MNLI tasks, so they are omitted from the experiment. 
+ 
+ 
+ 
+ 4.2 Settings 
+
+ 
+ Our experiments were implemented using Hugging Face Transformers (v4.30.0) and PyTorch (v2.0), conducted on NVIDIA A100 GPUs with 40GB of memory across two GPUs. With limited computational resources, we perform fully fine-tuning for each task with five random seeds: 42, 52, 62, 72, 82 (i.e., ), which are randomly chosen except 42 (see Section  5.1 ). To calculate CON, ACC-CON, and CON-PEAR, we compute the metric for each of the 10 random seed pairs (e.g., 42 and 52) and then take the average of these 10 values as the final consistency score.
+We used the run_glue.py PyTorch script for fine-tuning, and default settings were applied unless otherwise specified. Although differences in the fine-tuning script and missing settings from the original authors prevented us from reproducing the exact SOTA scores, our results are close to the reported SOTA. A comparison of our implementation with the reference SOTA scores and detailed data and learning settings are provided in Appendix Table  2 , Table  3 , and Table  4 . 
+ 
+ 
+ 
+ 
+ 
+ 5 Results and Discussion 
+
+ 
+ In this section, we will show experimental results at both macro- and micro-level and discuss key findings. 
+ 
+ 
+ 5.1 Macro impact 
+
+ 
+ Table  1 presents the averaged accuracy (ACC) and variance (VAR) for GLUE and SuperGLUE tasks across five random seeds. Significant variance in macro-level performance is observed in many tasks, reflecting sensitivity to random seed selection. Tasks like RTES (VAR = 18.22), COPA (VAR = 12.83), and MultiRC (VAR = 12.21) exhibit high variability in ACC, highlighting the need for robust evaluation methods and stability-enhancing techniques, such as more robust optimization methods, better hyperparameter tuning, or ensembling across multiple seeds . In contrast, tasks like QQP (VAR = 0.07) and QNLI (VAR = 0.16) show much greater stability, likely due to their inherent properties such as larger datasets or simpler decision boundaries. High variability undermines the reliability of single-seed evaluations, emphasizing the importance of averaging results and addressing task-specific challenges to improve model robustness. 
+ 
+ 
+ There is a "common belief" in the machine learning community that random seed 42 may outperform others.
+To investigate whether a specific random seed consistently leads to better results across different models or tasks, in Figure  2 we present a heatmap of normalized ACC for each task across five random seeds. There is no significant difference in color distribution between each row, indicating that no discernible pattern or evidence supporting the existence of a universally superior random seed . 
+ 
+ 
+ 
+ 
+ 5.2 Micro impact 
+
+ 
+ Table  1 reports consistency (CON) and correct-consistency (ACC-CON) for GLUE and SuperGLUE tasks across five random seeds. High CON values in tasks like SST2 (98.1%), QNLI (96.84%), and QQP (96%) indicate stable predictions, while lower values for RTES (71.84%) and COPA (67.7%) highlight their sensitivity to random seeds, potentially due to smaller training sizes or task complexity. High ACC-CON in SST2 (94.58%) and QNLI (92.95%) suggest stable correct predictions, whereas low ACC-CON in RTES (56.6%) and MRPC (52.33%) reveal that consistent predictions are not always accurate, emphasizing the need to evaluate both stability and correctness . Additionally, MRPC’s low VAR (0.93) value demonstrates that similar macro-level accuracy does not necessarily imply true reproducibility, underscoring the importance of micro-level analysis beyond macro-level metrics . 
+ 
+ 
+ Identifying robust data points—those consistently predicted correctly through micro-level analysis—and leveraging them to enhance data collection, preprocessing, prompt engineering, or synthetic data generation offer a potential solution for mitigating seed-induced variability and improving LLM robustness. 
+ 
+ 
+ 
+ 5.3 Training size impact 
+
+ 
+ . 
+ 
+ 
+ Training size significantly influences a model’s predictive performance, with larger datasets generally improving accuracy, though this is not guaranteed due to factors like task complexity and label noise  Shahinfar et al. (2020) ; Althnian et al. (2021) ; Bailly et al. (2022) . Will increasing training data size improve variance and consistency in general? To answer the question, we show Pearson correlation analysis between training size, variance, and consistency in Figure  3 . It reveals a weak negative correlation (-0.25) between training size and VAR, indicating that smaller datasets tends to increase performance variance, as seen in RTES (highest VAR of 18.22 with relatively small training size). However, the effect is not pronounced or consistent across all tasks, as MultiRC and WiC exhibit high VAR despite a relatively large dataset. A weak or moderate positive correlation is observed between training size and both CON (0.41) and ACC-CON (0.43), suggesting larger datasets generally improve consistency and prediction stability across random seeds, but with no guarantee. 
+ 
+ 
+ Increasing training size can reduce both macro and micro variability to random seeds, but its effectiveness depends on factors like data quality, task complexity, and label noise. Alternatively, as discussed in Section  5.2 , identifying robust data points and augmenting the training data with data points having similar robust patterns (either real data or generated synthetic data) provide a more targeted strategy to mitigate seed-induced variability and improve LLM robustness. 
+ 
+ 
+ 
+ 
+ 
+ 6 Conclusion 
+
+ 
+ In conclusion, this work highlights the significant impact of random seeds on pretrained LLMs, revealing variability at both macro and micro levels. By introducing a novel consistency metric, we emphasize the importance of considering seed-induced variations in individual predictions in model evaluation. Our findings stress the need for incorporating random seed sensitivity into benchmarking for more reliable and reproducible results. 
+ 
+ 
+ 
+ 7 Limitations 
+
+ 
+ Due to limited computing resources, our experiments were conducted with only five random seeds, which may not be sufficient for drawing broader generalizations of the findings and implications. Additionally, the reference SOTA scores for GLUE and SuperGLUE tasks were obtained using the pretrained LLM RoBERTa-large , and therefore, we conducted experiments solely on RoBERTa-large . Expanding the experiments to include various LLMs, particularly larger-scale models, would strengthen our findings and conclusions. Furthermore, incorporating more NLP benchmark datasets would provide a more comprehensive evaluation, as diverse datasets would better capture variability across tasks, domains, and data distributions, ultimately enhancing the robustness and applicability of our analysis.
+Additionally, our findings and implications are more suited for classification tasks, as only 1 out of the 13 tasks in our experiments is a regression task. Therefore, more comprehensive experiments should be conducted specifically on various regression tasks. The ACC-CON metric, which is not directly applicable to regression tasks, hinders the ability to evaluate correct consistency in this context. 
+ 
+ 
+ 
+ References 
+
+ 
+ 
+ Åkesson et al. (2024) 
+ 
+Julius Åkesson, Johannes Töger, and Einar Heiberg. 2024.
+
+ 
+ Random effects during training: Implications for deep learning-based medical image segmentation.
+
+ 
+ Computers in Biology and Medicine , 180:108944.
+
+ 
+ 
+ Althnian et al. (2021) 
+ 
+Alhanoof Althnian, Duaa AlSaeed, Heyam Al-Baity, Amani Samha, Alanoud Bin Dris, Najla Alzakari, Afnan Abou Elwafa, and Heba Kurdi. 2021.
+
+ 
+ Impact of dataset size on classification performance: an empirical evaluation in the medical domain.
+
+ 
+ Applied Sciences , 11(2):796.
+
+ 
+ 
+ Bailly et al. (2022) 
+ 
+Alexandre Bailly, Corentin Blanc, Élie Francis, Thierry Guillotin, Fadi Jamal, Béchara Wakim, and Pascal Roy. 2022.
+
+ 
+ Effects of dataset size and interactions on the prediction performance of logistic regression and deep learning models.
+
+ 
+ Computer Methods and Programs in Biomedicine , 213:106504.
+
+ 
+ 
+ Bengio (2012) 
+ 
+Yoshua Bengio. 2012.
+
+ 
+ Practical recommendations for gradient-based training of deep architectures.
+
+ 
+ In Neural networks: Tricks of the trade: Second edition , pages 437–478. Springer.
+
+ 
+ 
+ Bethard (2022) 
+ 
+Steven Bethard. 2022.
+
+ 
+ We need to talk about random seeds.
+
+ 
+ arXiv preprint arXiv:2210.13393 .
+
+ 
+ 
+ Devlin et al. (2019) 
+ 
+Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. 2019.
+
+ 
+ BERT: Pre-training of deep bidirectional transformers for language understanding .
+
+ 
+ In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers) , pages 4171–4186, Minneapolis, Minnesota. Association for Computational Linguistics.
+
+ 
+ 
+ Dodge et al. (2020) 
+ 
+Jesse Dodge, Gabriel Ilharco, Roy Schwartz, Ali Farhadi, Noah Smith, and Hannaneh Hajishirzi. 2020.
+
+ 
+ Fine-tuning pretrained language models: Weight initializations, data orders, and early stopping.
+
+ 
+ arXiv preprint arXiv:2002.06305 .
+
+ 
+ 
+ Ganesh et al. (2023) 
+ 
+Prakhar Ganesh, Hongyan Chang, Martin Strobel, and Reza Shokri. 2023.
+
+ 
+ On the impact of machine learning randomness on group fairness.
+
+ 
+ In Proceedings of the 2023 ACM Conference on Fairness, Accountability, and Transparency , pages 1789–1800.
+
+ 
+ 
+ Liu (2019) 
+ 
+Yinhan Liu. 2019.
+
+ 
+ Roberta: A robustly optimized bert pretraining approach.
+
+ 
+ arXiv preprint arXiv:1907.11692 , 364.
+
+ 
+ 
+ Lucic et al. (2022) 
+ 
+Ana Lucic, Maurits Bleeker, Samarth Bhargav, Jessica Forde, Koustuv Sinha, Jesse Dodge, Sasha Luccioni, and Robert Stojnic. 2022.
+
+ 
+ Towards reproducible machine learning research in natural language processing .
+
+ 
+ In Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics: Tutorial Abstracts , pages 7–11, Dublin, Ireland. Association for Computational Linguistics.
+
+ 
+ 
+ Madhyastha and Jain (2019) 
+ 
+Pranava Madhyastha and Rishabh Jain. 2019.
+
+ 
+ On model stability as a function of random seed.
+
+ 
+ arXiv preprint arXiv:1909.10447 .
+
+ 
+ 
+ Mosbach et al. (2021) 
+ 
+Marian Mosbach, Maksym Andriushchenko, and Dietrich Klakow. 2021.
+
+ 
+ On the stability of fine-tuning bert: Misconceptions, explanations, and strong baselines.
+
+ 
+ arXiv preprint arXiv:2006.04884 .
+
+ 
+ 
+ Picard (2021) 
+ 
+David Picard. 2021.
+
+ 
+ Torch. manual_seed (3407) is all you need: On the influence of random seeds in deep learning architectures for computer vision.
+
+ 
+ arXiv preprint arXiv:2109.08203 .
+
+ 
+ 
+ Risch and Krestel (2020) 
+ 
+Julian Risch and Ralf Krestel. 2020.
+
+ 
+ Bagging BERT models for robust aggression identification .
+
+ 
+ In Proceedings of the Second Workshop on Trolling, Aggression and Cyberbullying , pages 55–61, Marseille, France. European Language Resources Association (ELRA).
+
+ 
+ 
+ Shahinfar et al. (2020) 
+ 
+Saleh Shahinfar, Paul Meek, and Greg Falzon. 2020.
+
+ 
+ “how many images do i need?” understanding how sample size per class affects deep learning model performance metrics for balanced designs in autonomous wildlife monitoring.
+
+ 
+ Ecological Informatics , 57:101085.
+
+ 
+ 
+ Wang et al. (2019) 
+ 
+Alex Wang, Yada Pruksachatkun, Nikita Nangia, Amanpreet Singh, Julian Michael, Felix Hill, Omer Levy, and Samuel R Bowman. 2019.
+
+ 
+ Superglue: A stickier benchmark for general-purpose language understanding systems.
+
+ 
+ arXiv preprint arXiv:1905.00537 .
+
+ 
+ 
+ Wang et al. (2018) 
+ 
+Alex Wang, Amanpreet Singh, Julian Michael, Felix Hill, Omer Levy, and Samuel R Bowman. 2018.
+
+ 
+ Glue: A multi-task benchmark and analysis platform for natural language understanding.
+
+ 
+ arXiv preprint arXiv:1804.07461 .
+
+ 
+ 
+ Wang et al. (2020) 
+ 
+Lijing Wang, Dipanjan Ghosh, Maria Gonzalez Diaz, Ahmed Farahat, Mahbubul Alam, Chetan Gupta, Jiangzhuo Chen, and Madhav Marathe. 2020.
+
+ 
+ Wisdom of the ensemble: Improving consistency of deep learning models.
+
+ 
+ Advances in Neural Information Processing Systems , 33:19750–19761.
+
+ 
+ 
+ 
+ 
+ 
+ Appendix A Appendix 
+
+ 
+ A.1 Data Description 
+
+ 
+ Table  3 presents the statistics of the dataset used in our experiments. Each dataset consists of predefined train, dev and test data in CSV format. We use the train and dev sets for training and evaluation. Since the test set does not include gold-standard labels, the dev set also serves as the test set. For datasets where each instance may have multiple correct answers, such as MultiRC, we split the data at the question-answer pair level rather than the passage level. This ensures a more balanced distribution of instances across the train and dev sets.
+In the COPA dataset, each instance is originally described by six fields—premise, choice1, choice2, question, idx, and label. To adapt these instances into a multiple-choice format, we construct two candidate sequences for every sample. Specifically, for each candidate, we concatenate the premise with the question and the corresponding choice using a dedicated separation token (e.g., “[SEP]”) to clearly delineate the different textual components. We then maintain the original label field, converting it from 1/2 to 0/1 to match the 0-based index convention in multiple-choice classification. This preprocessing ensures consistency with other classification tasks and allows the model to effectively learn the relationships between the premise and possible choices. 
+ 
+ 
+ 
+ A.2 Hyperparameter Settings 
+
+ 
+ Table  4 provides the detailed hyperparameter configurations. Unless stated otherwise, we adopt the default hyperparameter values from the Hugging Face framework. 
+ 
+ 
+ 
+ A.3 Replicated SOTA Scores 
+
+ 
+ To ensure the reproducibility of our experiments in SuperGLUE and GLUE tasks, we adhered to the specified settings and reproduced the state-of-the-art (SOTA) accuracy scores reported in:
+ https://github.com/facebookresearch/fairseq/tree/main/examples/roberta .
+Our replicated accuracy scores for the GLUE and SuperGLUE tasks, presented in Table  2 , are directly comparable and align with those shown in Table  1 of the main paper and Table  5 in Section  A.4 . 
+ 
+ 
+ 
+ A.4 Additional Results 
+
+ 
+ Table  5 presents model performance across various metrics, including precision (P), recall (R), F1 score, accuracy, CON, and ACC-CON, with average values and standard deviations (VAR). In Section  5 of the main paper, significant variance in macro-level performance across many tasks highlights sensitivity to random seed selection. Similar patterns in the VAR values for P, R, and F1 further confirm the robustness of our findings across various standard metrics. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Experimental support, please
+ view the build logs 
+ for errors. Generated by
+ 
+ 
+ L
+ A 
+ T
+ E 
+ 
+ xml 
+ 
+ .
+ 
+ 
+ Instructions for reporting errors 
+ We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+ support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+ methods listed below: 
+ 
+ Click the "Report Issue" ( ) button, located in the page header. 
+ 
+ Tip: You can select the relevant text first, to include it in your report. 
+ Our team has already identified the following issues . We appreciate your time reviewing and reporting rendering errors we
+ may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+ should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+ all. 
+ Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion , and welcome developer contributions . 
+ 
+ 
+ 
+ 
+ 
+ We gratefully acknowledge support from
+ our major funders ,
+ member institutions , ,
+ and all contributors.
+ 
+ 
+ About 
+ · 
+ Help 
+ · 
+ Contact 
+ · 
+ Subscribe 
+ · 
+ Copyright 
+ · 
+ Privacy 
+ · 
+ Accessibility 
+ · 
+ Operational Status (opens in new tab) 
+ 
+ 
+
+ 
+ Major funding support from 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

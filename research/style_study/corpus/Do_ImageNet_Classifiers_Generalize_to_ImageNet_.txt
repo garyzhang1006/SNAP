@@ -1,0 +1,3634 @@
+ 
+ 
+ 
+ Do ImageNet Classifiers Generalize to ImageNet? 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report GitHub Issue 
+ × 
+ 
+
+ 
+ Title: 
+ 
+
+ Content selection saved. Describe the issue below: 
+
+ Description: 
+ 
+ 
+
+ 
+ Submit without GitHub 
+ Submit in GitHub 
+ 
+ 
+ 
+ 
+ arXiv is now an independent nonprofit! 
+ Learn more 
+ × 
+ 
+
+ 
+ 
+ 
+ Back to arXiv 
+ 
+ 
+ 
+ 
+ Why HTML? 
+ 
+ 
+ Report Issue 
+ 
+ 
+ 
+ Back to Abstract 
+ 
+ 
+ 
+ 
+ Download PDF 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Abstract 
+ 1 Introduction 
+ 2 Potential Causes of Accuracy Drops 
+ 
+ Generalization Gap. 
+ Adaptivity Gap. 
+ Distribution Gap. 
+ 2.1 Distinguishing Between the Two Mechanisms 
+ 
+ 3 Summary of Our Experiments 
+ 
+ 3.1 Choice of Datasets 
+ 3.2 Dataset Creation Methodology 
+ 
+ Gathering Data. 
+ Cleaning Data. 
+ 
+ 3.3 Results on the New Test Sets 
+ 
+ A Significant Drop in Accuracy. 
+ Few Changes in the Relative Order. 
+ 
+ 3.4 Experiments to Test Follow-Up Hypotheses 
+ 
+ 4 Understanding the Impact of Data Cleaning on ImageNet 
+ 
+ MTurk Tasks. 
+ Sampling Strategies. 
+ Results. 
+ 
+ 5 Discussion 
+ 
+ 5.1 Adaptivity Gap 
+ 
+ The Ladder Mechanism. 
+ Limited Model Class. 
+ 
+ 5.2 Distribution Gap 
+ 5.3 A Model for the Linear Fit 
+ 
+ 6 Related Work 
+ 
+ Dataset Biases. 
+ Transfer Learning From ImageNet. 
+ Adversarial Examples. 
+ Non-Adversarial Image Perturbations. 
+ 
+ 7 Conclusion & Future Work 
+ 
+ Understanding Adaptive Overfitting. 
+ Characterizing the Distribution Gap. 
+ Learning More Robust Models. 
+ Measuring Human Accuracy. 
+ Building Further Test Sets. 
+ Suggestions For Future Datasets. 
+ 
+ References 
+ A Overview of the Appendix 
+ B Details of the CIFAR-10 Experiments 
+ 
+ Tiny Images. 
+ CIFAR-10. 
+ B.1 Dataset Creation Methodology 
+ 
+ Understanding the Sub-Class Distribution. 
+ Collecting New Images. 
+ Final Assembly. 
+ 
+ B.2 Follow-up Hypotheses 
+ 
+ B.2.1 Statistical Error 
+ B.2.2 Differences in Near-Duplicate Removal 
+ B.2.3 Hyperparameter Tuning 
+ B.2.4 Visually Inspecting Hard Images 
+ B.2.5 Human Accuracy Comparison 
+ B.2.6 Training on Part of Our New Test Set 
+ B.2.7 Cross-validation 
+ B.2.8 Training a Discriminator for Original vs. New Test Set 
+ B.2.9 An Exactly Class-balanced Test Set 
+ 
+ B.3 Additional Figures, Tables, and Lists 
+ 
+ B.3.1 Keyword Distribution in CIFAR-10 
+ B.3.2 Full List of Models Evaluated on CIFAR-10 
+ B.3.3 Full Results Table 
+ B.3.4 Full Results Table for the Exactly Class-Balanced Test Set 
+ B.3.5 Hard Images 
+ 
+ 
+ C Details of the ImageNet Experiments 
+ 
+ ImageNet. 
+ C.1 Dataset Creation Methodology 
+ 
+ C.1.1 Creating a Candidate Pool 
+ 
+ Downloading images from Flickr. 
+ Amazon Mechanical Turk. 
+ Removing near-duplicate images. 
+ 
+ C.1.2 Sampling a Clean Dataset 
+ 
+ Matching the Per-class Selection Frequency. 
+ Final Reviewing. 
+ 
+ 
+ C.2 Model Performance Results 
+ C.3 Follow-up Hypotheses 
+ 
+ C.3.1 Cross Validation 
+ C.3.2 Impact of Dataset Revisions 
+ 
+ C.4 Additional Figures, Tables, and Lists 
+ 
+ C.4.1 MTurk User Interfaces 
+ C.4.2 User Interface for our Final Reviewing Process 
+ C.4.3 Full List of Models Evaluated on ImageNet 
+ C.4.4 Full Results Tables 
+ C.4.5 Accuracy Plots for All ImageNet Test Sets 
+ C.4.6 Example Images 
+ C.4.7 Effect of Selection Frequency on Model Accuracy 
+ C.4.8 Ambiguous Class Examples 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ License: arXiv.org perpetual non-exclusive license
+ 
+ 
+arXiv:1902.10811v2 [cs.CV] 12 Jun 2019 
+ 
+ 
+ Do ImageNet Classifiers Generalize to ImageNet? 
+ 
+ 
+ Benjamin Recht
+ thanks: Authors ordered alphabetically. Ben did none of the work. 
+ Affiliation:  UC Berkeley
+ 
+    
+ Rebecca Roelofs
+ 
+ Affiliation:  UC Berkeley
+ 
+    
+ Ludwig Schmidt
+ 
+ Affiliation:  UC Berkeley
+ 
+    
+ Vaishaal Shankar
+ 
+ Affiliation:  UC Berkeley
+ 
+
+ Abstract 
+ 
+ We build new test sets for the CIFAR-10 and ImageNet datasets.
+Both benchmarks have been the focus of intense research for almost a decade, raising the danger of overfitting to excessively re-used test sets.
+By closely following the original dataset creation processes, we test to what extent current classification models generalize to new data.
+We evaluate a broad range of models and find accuracy drops of 3% – 15% on CIFAR-10 and 11% – 14% on ImageNet.
+However, accuracy gains on the original test sets translate to larger gains on the new test sets.
+Our results suggest that the accuracy drops are not caused by adaptivity, but by the models’ inability to generalize to slightly “harder” images than those found in the original test sets. 
+ 
+ 
+ 
+ 1 Introduction 
+
+ 
+ The overarching goal of machine learning is to produce models that generalize .
+We usually quantify generalization by measuring the performance of a model on a held-out test set.
+What does good performance on the test set then imply?
+At the very least, one would hope that the model also performs well on a new test set assembled from the same data source by following the same data cleaning protocol. 
+ 
+ 
+ In this paper, we realize this thought experiment by replicating the dataset creation process for two prominent benchmarks, CIFAR-10 and ImageNet [ 35 , 10 ] .
+In contrast to the ideal outcome, we find that a wide range of classification models fail to reach their original accuracy scores.
+The accuracy drops range from 3% to 15% on CIFAR-10 and 11% to 14% on ImageNet.
+On ImageNet, the accuracy loss amounts to approximately five years of progress in a highly active period of machine learning research. 
+ 
+ 
+ Conventional wisdom suggests that such drops arise because the models have been adapted to the specific images in the original test sets, e.g., via extensive hyperparameter tuning.
+However, our experiments show that the relative order of models is almost exactly preserved on our new test sets: the models with highest accuracy on the original test sets are still the models with highest accuracy on the new test sets.
+Moreover, there are no diminishing returns in accuracy.
+In fact, every percentage point of accuracy improvement on the original test set translates to a larger improvement on our new test sets.
+So although later models could have been adapted more to the test set, they see smaller drops in accuracy.
+These results provide evidence that exhaustive test set evaluations are an effective way to improve image classification models.
+Adaptivity is therefore an unlikely explanation for the accuracy drops. 
+ 
+ 
+ Instead, we propose an alternative explanation based on the relative difficulty of the original and new test sets.
+We demonstrate that it is possible to recover the original ImageNet accuracies almost exactly if we only include the easiest images from our candidate pool.
+This suggests that the accuracy scores of even the best image classifiers are still highly sensitive to minutiae of the data cleaning process.
+This brittleness puts claims about human-level performance into context [ 31 , 20 , 48 ] .
+It also shows that current classifiers still do not generalize reliably even in the benign environment of a carefully controlled reproducibility experiment. 
+ 
+ 
+ Figure 1 shows the main result of our experiment.
+Before we describe our methodology in Section 3 , the next section provides relevant background.
+To enable future research, we release both our new test sets and the corresponding code. 
+ 1 
+ 
+ 
+ 
+ https://github.com/modestyachts/CIFAR-10.1 and https://github.com/modestyachts/ImageNetV2 
+ 
+ 
+ 
+ 
+ Figure 1 : 
+Model accuracy on the original test sets vs. our new test sets.
+Each data point corresponds to one model in our testbed (shown with 95% Clopper-Pearson confidence intervals).
+The plots reveal two main phenomena:
+(i) There is a significant drop in accuracy from the original to the new test sets.
+(ii) The model accuracies closely follow a linear function with slope greater than 1 ( for CIFAR-10 and for ImageNet).
+This means that every percentage point of progress on the original test set translates into more than one percentage point on the new test set.
+The two plots are drawn so that their aspect ratio is the same, i.e., the slopes of the lines are visually comparable.
+The red shaded region is a 95% confidence region for the linear fit from 100,000 bootstrap samples.
+
+ 
+ 
+ 
+ 
+ 2 Potential Causes of Accuracy Drops 
+
+ 
+ We adopt the standard classification setup and posit the existence of a “true” underlying data distribution over labeled examples .
+The overall goal in classification is to find a model that minimizes the population loss 
+ 
+ 
+ 
+ Since we usually do not know the distribution , we instead measure the performance of a trained classifier via a test set drawn from the distribution : 
+ 
+ 
+ 
+ We then use this test error as a proxy for the population loss .
+If a model achieves a low test error, we assume that it will perform similarly well on future examples from the distribution .
+This assumption underlies essentially all empirical evaluations in machine learning since it allows us to argue that the model generalizes. 
+ 
+ 
+ In our experiments, we test this assumption by collecting a new test set from a data distribution that we carefully control to resemble the original distribution .
+Ideally, the original test accuracy and new test accuracy would then match up to the random sampling error.
+In contrast to this idealized view, our results in Figure 1 show a large drop in accuracy from the original test set set to our new test set .
+To understand this accuracy drop in more detail, we decompose the difference between and into three parts (dropping the dependence on to simplify notation): 
+ 
+ We now discuss to what extent each of the three terms can lead to accuracy drops. 
+ 
+ 
+ Generalization Gap. 
+
+ 
+ By construction, our new test set is independent of the existing classifier .
+Hence the third term is the standard generalization gap commonly studied in machine learning.
+It is determined solely by the random sampling error. 
+ 
+ 
+ A first guess is that this inherent sampling error suffices to explain the accuracy drops in Figure 1 (e.g., the new test set could have sampled certain “harder” modes of the distribution more often).
+However, random fluctuations of this magnitude are unlikely for the size of our test sets.
+With 10,000 data points (as in our new ImageNet test set), a Clopper-Pearson 95% confidence interval for the test accuracy has size of at most .
+Increasing the confidence level to 99.99% yields a confidence interval of size at most .
+Moreover, these confidence intervals become smaller for higher accuracies, which is the relevant regime for the best-performing models.
+Hence random chance alone cannot explain the accuracy drops observed in our experiments. 
+ 2 
+ 
+ 
+ 
+ We remark that the sampling process for the new test set could indeed systematically sample harder modes more often than under the original data distribution .
+Such a systematic change in the sampling process would not be an effect of random chance but captured by the distribution gap described below. 
+ 
+ 
+ 
+ Adaptivity Gap. 
+
+ 
+ We call the term the adaptivity gap .
+It measures how much adapting the model to the test set causes the test error to underestimate the population loss .
+If we assumed that our model is independent of the test set , this terms would follow the same concentration laws as the generalization gap above. But this assumption is undermined by the common practice of tuning model hyperparameters directly on the test set, which introduces dependencies between the model and the test set . In the extreme case, this can be seen as training directly on the test set.
+But milder forms of adaptivity may also artificially inflate accuracy scores by increasing the gap between and beyond the purely random error. 
+ 
+ 
+ 
+ Distribution Gap. 
+
+ 
+ We call the term the distribution gap .
+It quantifies how much the change from the original distribution to our new distribution affects the model .
+Note that this term is not influenced by random effects but quantifies the systematic difference between sampling the original and new test sets.
+While we went to great lengths to minimize such systematic differences, in practice it is hard to argue whether two high-dimensional distributions are exactly the same.
+We typically lack a precise definition of either distribution, and collecting a real dataset involves a plethora of design choices. 
+ 
+ 
+ 
+ 2.1 Distinguishing Between the Two Mechanisms 
+
+ 
+ For a single model , it is unclear how to disentangle the adaptivity and distribution gaps.
+To gain a more nuanced understanding, we measure accuracies for multiple models .
+This provides additional insights because it allows us to determine how the two gaps have evolved over time. 
+ 
+ 
+ For both CIFAR-10 and ImageNet, the classification models come from a long line of papers that incrementally improved accuracy scores over the past decade.
+A natural assumption is that later models have experienced more adaptive overfitting since they are the result of more successive hyperparameter tuning on the same test set.
+Their higher accuracy scores would then come from an increasing adaptivity gap and reflect progress only on the specific examples in the test set but not on the actual distribution .
+In an extreme case, the population accuracies would plateau (or even decrease) while the test accuracies would continue to grow for successive models . 
+ 
+ 
+ However, this idealized scenario is in stark contrast to our results in Figure 1 .
+Later models do not see diminishing returns but an increased advantage over earlier models.
+Hence we view our results as evidence that the accuracy drops mainly stem from a large distribution gap.
+After presenting our results in more detail in the next section, we will further discuss this point in Section 5 . 
+ 
+ 
+ 
+ 
+ 3 Summary of Our Experiments 
+
+ 
+ We now give an overview of the main steps in our reproducibility experiment.
+Appendices B and C describe our methodology in more detail.
+We begin with the first decision, which was to choose informative datasets. 
+ 
+ 
+ 3.1 Choice of Datasets 
+
+ 
+ We focus on image classification since it has become the most prominent task in machine learning and underlies a broad range of applications.
+The cumulative progress on ImageNet is often cited as one of the main breakthroughs in computer vision and machine learning [ 42 ] .
+State-of-the-art models now surpass human-level accuracy by some measure [ 20 , 48 ] .
+This makes it particularly important to check if common image classification models can reliably generalize to new data from the same source. 
+ 
+ 
+ We decided on CIFAR-10 and ImageNet, two of the most widely-used image classification benchmarks [ 18 ] .
+Both datasets have been the focus of intense research for almost ten years now.
+Due to the competitive nature of these benchmarks, they are an excellent example for testing whether adaptivity has led to overfitting.
+In addition to their popularity, their carefully documented dataset creation process makes them well suited for a reproducibility experiment [ 35 , 10 , 48 ] . 
+ 
+ 
+ Each of the two datasets has specific features that make it especially interesting for our replication study.
+CIFAR-10 is small enough so that many researchers developed and tested new models for this dataset.
+In contrast, ImageNet requires significantly more computational resources, and experimenting with new architectures has long been out of reach for many research groups.
+As a result, CIFAR-10 has likely experienced more hyperparameter tuning, which may also have led to more adaptive overfitting. 
+ 
+ 
+ On the other hand, the limited size of CIFAR-10 could also make the models more susceptible to small changes in the distribution.
+Since the CIFAR-10 models are only exposed to a constrained visual environment, they may be unable to learn a robust representation.
+In contrast, ImageNet captures a much broader variety of images: it contains about more training images than CIFAR-10 and roughly more pixels per image.
+So conventional wisdom (such as the claims of human-level performance) would suggest that ImageNet models also generalize more reliably . 
+ 
+ 
+ As we will see, neither of these conjectures is supported by our data: CIFAR-10 models do not suffer from more adaptive overfitting, and ImageNet models do not appear to be significantly more robust. 
+ 
+ 
+ 
+ 3.2 Dataset Creation Methodology 
+
+ 
+ One way to test generalization would be to evaluate existing models on new i.i.d. data from the original test distribution.
+For example, this would be possible if the original dataset authors had collected a larger initial dataset and randomly split it into two test sets, keeping one of the test sets hidden for several years.
+Unfortunately, we are not aware of such a setup for CIFAR-10 or ImageNet. 
+ 
+ 
+ In this paper, we instead mimic the original distribution as closely as possible by repeating the dataset curation process that selected the original test set 
+ 3 
+ 
+ 
+ 
+ For ImageNet, we repeat the creation process of the validation set because most papers developed and tested models on the validation set. We discuss this point in more detail in Appendix C.1 . In the context to this paper, we use the terms “validation set” and “test set” interchangeably for ImageNet. from a larger data source.
+While this introduces the difficulty of disentangling the adaptivity gap from the distribution gap, it also enables us to check whether independent replication affects current accuracy scores.
+In spite of our efforts, we found that it is astonishingly hard to replicate the test set distributions of CIFAR-10 and ImageNet. At a high level, creating a new test set consists of two parts: 
+ 
+ 
+ Gathering Data. 
+
+ 
+ To obtain images for a new test set, a simple approach would be to use a different dataset, e.g., Open Images [ 34 ] .
+However, each dataset comes with specific biases [ 54 ] .
+For instance, CIFAR-10 and ImageNet were assembled in the late 2000s, and some classes such as car or cell_phone have changed significantly over the past decade.
+We avoided such biases by drawing new images from the same source as CIFAR-10 and ImageNet.
+For CIFAR-10, this was the larger Tiny Image dataset [ 55 ] .
+For ImageNet, we followed the original process of utilizing the Flickr image hosting service and only considered images uploaded in a similar time frame as for ImageNet.
+In addition to the data source and the class distribution, both datasets also have rich structure within each class.
+For instance, each class in CIFAR-10 consists of images from multiple specific keywords in Tiny Images.
+Similarly, each class in ImageNet was assembled from the results of multiple queries to the Flickr API.
+We relied on the documentation of the two datasets to closely match the sub-class distribution as well. 
+ 
+ 
+ 
+ Cleaning Data. 
+
+ 
+ Many images in Tiny Images and the Flickr results are only weakly related to the query (or not at all).
+To obtain a high-quality dataset with correct labels, it is therefore necessary to manually select valid images from the candidate pool.
+While this step may seem trivial, our results in Section 4 will show that it has major impact on the model accuracies. 
+ 
+ 
+ The authors of CIFAR-10 relied on paid student labelers to annotate their dataset.
+The researchers in the ImageNet project utilized Amazon Mechanical Turk (MTurk) to handle the large size of their dataset.
+We again replicated both annotation processes.
+Two graduate students authors of this paper impersonated the CIFAR-10 labelers, and we employed MTurk workers for our new ImageNet test set.
+For both datasets, we also followed the original labeling instructions, MTurk task format, etc. 
+ 
+ 
+ After collecting a set of correctly labeled images, we sampled our final test sets from the filtered candidate pool.
+We decided on a test set size of 2,000 for CIFAR-10 and 10,000 for ImageNet.
+While these are smaller than the original test sets, the sample sizes are still large enough to obtain 95% confidence intervals of about .
+Moreover, our aim was to avoid bias due to CIFAR-10 and ImageNet possibly leaving only “harder” images in the respective data sources.
+This effect is minimized by building test sets that are small compared to the original datasets (about 3% of the overall CIFAR-10 dataset and less than 1% of the overall ImageNet dataset). 
+ 
+ 
+ 
+ 
+ 3.3 Results on the New Test Sets 
+
+ 
+ 
+ Table 1 : Model accuracies on the original CIFAR-10 test set, the original ImageNet validation set, and our new test sets.
+ Rank is the relative difference in the ranking from the original test set to the new test set in the full ordering of all models (see Appendices B.3.3 and C.4.4 ).
+For example, means that a model dropped by two places on the new test set compared to the original test set.
+The confidence intervals are 95% Clopper-Pearson intervals.
+Due to space constraints, references for the models can be found in Appendices B.3.2 and C.4.3 . 
+ 
+ 
+ After assembling our new test sets, we evaluated a broad range of image classification models spanning a decade of machine learning research.
+The models include the seminal AlexNet [ 36 ] , widely used convolutional networks [ 49 , 21 , 27 , 52 ] , and the state-of-the-art [ 8 , 39 ] .
+For all deep architectures, we used code previously published online.
+We relied on pre-trained models whenever possible and otherwise ran the training commands from the respective repositories.
+In addition, we also evaluated the best-performing approaches preceding convolutional networks on each dataset.
+These are random features for CIFAR-10 [ 46 , 7 ] and Fisher vectors for ImageNet [ 44 ] . 
+ 4 
+ 
+ 
+ 
+ We remark that our implementation of Fisher vectors yields top-5 accuracy numbers that are 17% lower than the published numbers in ILSVRC 2012 [ 48 ] .
+Unfortunately, there is no publicly available reference implementation of Fisher vector models achieving this accuracy score.
+Hence our implementation should not be seen as an exact reproduction of the state-of-the-art Fisher vector model, but as a baseline inspired by this approach.
+The main goal of including Fisher vector models in our experiment is to investigate if they follow the same overall trends as convolutional neural networks. 
+We wrote our own implementations for these models, which we also release publicly. 
+ 5 
+ 
+ 
+ 
+ https://github.com/modestyachts/nondeep 
+ 
+ 
+ Overall, the top-1 accuracies range from 83% to 98% on the original CIFAR-10 test set and 21% to 83% on the original ImageNet validation set.
+We refer the reader to Appendices C.4.3 and B.3.2 for a full list of models and source repositories. 
+ 
+ 
+ Figure 1 in the introduction plots original vs. new accuracies, and Table 1 in this section summarizes the numbers of key models.
+The remaining accuracy scores can be found in Appendices B.3.3 and C.4.4 .
+We now briefly describe the two main trends and discuss the results further in Section 5 . 
+ 
+ 
+ A Significant Drop in Accuracy. 
+
+ 
+ All models see a large drop in accuracy from the original test sets to our new test sets.
+For widely used architectures such as VGG [ 49 ] and ResNet [ 21 ] , the drop is 8% on CIFAR-10 and 11% on ImageNet.
+On CIFAR-10, the state of the art [ 8 ] is more robust and only drops by 3% from 98.4% to 95.5%.
+In contrast, the best model on ImageNet [ 39 ] sees an 11% drop from 83% to 72% in top-1 accuracy and a 6% drop from 96% to 90% in top-5 accuracy.
+So the top-1 drop on ImageNet is larger than what we observed on CIFAR-10. 
+ 
+ 
+ To put these accuracy numbers into perspective, we note that the best model in the ILSVRC 
+ 6 
+ 
+ 
+ 
+ ILSVRC is the ImageNet Large Scale Visual Recognition Challenge [ 48 ] . 2013 competition achieved 89% top-5 accuracy, and the best model from ILSVRC 2014 achieved 93% top-5 accuracy.
+So the 6% drop in top-5 accuracy from the 2018 state-of-the-art corresponds to approximately five years of progress in a very active period of machine learning research. 
+ 
+ 
+ 
+ Few Changes in the Relative Order. 
+
+ 
+ When sorting the models in order of their original and new accuracy, there are few changes in the respective rankings.
+Models with comparable original accuracy tend to see a similar decrease in performance.
+In fact, Figure 1 shows that the original accuracy is highly predictive of the new accuracy and that the relationship can be summarized well with a linear function.
+On CIFAR-10, the new accuracy of a model is approximately given by the following formula: 
+ 
+ On ImageNet, the top-1 accuracy of a model is given by 
+ 
+ Computing a 95% confidence interval from 100,000 bootstrap samples gives for the slope and for the offset on CIFAR-10, and and respectively for ImageNet. 
+ 
+ 
+ On both datasets, the slope of the linear fit is greater than 1. 
+So models with higher original accuracy see a smaller drop on the new test sets.
+In other words, model robustness improves with increasing accuracy.
+This effect is less pronounced on ImageNet (slope 1.1) than on CIFAR-10 (slope 1.7).
+In contrast to a scenario with strong adaptive overfitting, neither dataset sees diminishing returns in accuracy scores when going from the original to the new test sets. 
+ 
+ 
+ 
+ 
+ 3.4 Experiments to Test Follow-Up Hypotheses 
+
+ 
+ Since the drop from original to new accuracies is concerningly large, we investigated multiple hypotheses for explaining this drop.
+Appendices B.2 and C.3 list a range of follow-up experiments we conducted, e.g., re-tuning hyperparameters, training on part of our new test set, or performing cross-validation.
+However, none of these effects can explain the size of the drop.
+We conjecture that the accuracy drops stem from small variations in the human annotation process.
+As we will see in the next section, the resulting changes in the test sets can significantly affect model accuracies. 
+ 
+ 
+ 
+ 
+ 4 Understanding the Impact of Data Cleaning on ImageNet 
+
+ 
+ A crucial aspect of ImageNet is the use of MTurk.
+There is a broad range of design choices for the MTurk tasks and how the resulting annotations determine the final dataset.
+To better understand the impact of these design choices, we assembled three different test sets for ImageNet.
+All of these test sets consist of images from the same Flickr candidate pool, are correctly labeled, and selected by more than 70% of the MTurk workers on average.
+Nevertheless, the resulting model accuracies vary by 14%.
+To put these numbers in context, we first describe our MTurk annotation pipeline. 
+ 
+ 
+ MTurk Tasks. 
+
+ 
+ We designed our MTurk tasks and user interface to closely resemble those originally used for ImageNet.
+As in ImageNet, each MTurk task contained a grid of 48 candidate images for a given target class.
+The task description was derived from the original ImageNet instructions and included the definition of the target class with a link to a corresponding Wikipedia page.
+We asked the MTurk workers to select images belonging to the target class regardless of “occlusions, other objects, and clutter or text in the scene” and to avoid drawings or paintings (both as in ImageNet).
+Appendix C.4.1 shows a screenshot of our UI and a screenshot of the original UI for comparison. 
+ 
+ 
+ For quality control, we embedded at least six randomly selected images from the original validation set in each MTurk task (three from the same class, three from a class that is nearby in the WordNet hierarchy).
+These images appeared in random locations of the image grid for each task.
+In total, we collected sufficient MTurk annotations so that we have at least 20 annotated validation images for each class. 
+ 
+ 
+ The main outcome of the MTurk tasks is a selection frequency for each image, i.e., what fraction of MTurk workers selected the image in a task for its target class.
+We recruited at least ten MTurk workers for each task (and hence for each image), which is similar to ImageNet.
+Since each task contained original validation images, we could also estimate how often images from the original dataset were selected by our MTurk workers. 
+ 
+ 
+ 
+ Sampling Strategies. 
+
+ 
+ In order to understand how the MTurk selection frequency affects the model accuracies, we explored three sampling strategies. 
+ 
+ • 
+ 
+ MatchedFrequency : First, we estimated the selection frequency distribution for each class from the annotated original validation images.
+We then sampled ten images from our candidate pool for each class according to these class-specific distributions (see Appendix C.1.2 for details). 
+ 
+ • 
+ 
+ Threshold0.7 : For each class, we sampled ten images with selection frequency at least 0.7. 
+ 
+ • 
+ 
+ TopImages : For each class, we chose the ten images with highest selection frequency. 
+ 
+ 
+ In order to minimize labeling errors, we manually reviewed each dataset and removed incorrect images.
+The average selection frequencies of the three final datasets range from 0.93 for TopImages over 0.85 for Threshold0.7 to 0.73 for MatchedFrequency .
+For comparison, the original validation set has an average selection frequency of 0.71 in our experiments.
+Hence all three of our new test sets have higher selection frequencies than the original ImageNet validation set.
+In the preceding sections, we presented results on MatchedFrequency for ImageNet since it is closest to the validation set in terms of selection frequencies. 
+ 
+ 
+ 
+ Results. 
+
+ 
+ Table 2 shows that the MTurk selection frequency has significant impact on both top-1 and top-5 accuracy.
+In particular, TopImages has the highest average MTurk selection frequency and sees a small increase of about 2% in both average top-1 and top-5 accuracy compared to the original validation set.
+This is in stark contrast to MatchedFrequency , which has the lowest average selection frequency and exhibits a significant drop of 12% and 8%, respectively.
+The Threshold0.7 dataset is in the middle and sees a small decrease of 3% in top-1 and 1% in top-5 accuracy. 
+ 
+ 
+ In total, going from TopImages to MatchedFrequency decreases the accuracies by about 14% (top-1) and 10% (top-5).
+For comparison, note that after excluding AlexNet (and the SqueezeNet models tuned to match AlexNet [ 28 ] ), the range of accuracies spanned by all remaining convolutional networks is roughly 14% (top-1) and 8% (top-5).
+So the variation in accuracy caused by the three sampling strategies is larger than the variation in accuracy among all post-AlexNet models we tested. 
+ 
+ 
+ 
+ Figure 2 plots the new vs. original top-1 accuracies on Threshold0.7 and TopImages , similar to Figure 1 for MatchedFrequency before.
+For easy comparison of top-1 and top-5 accuracy plots on all three datasets, we refer the reader to Figure 1 in Appendix C.4.4 .
+All three plots show a good linear fit. 
+ 
+ 
+ 
+ 
+ Figure 2 : Model accuracy on the original ImageNet validation set vs. accuracy on two variants of our new test set.
+We refer the reader to Section 4 for a description of these test sets.
+Each data point corresponds to one model in our testbed (shown with 95% Clopper-Pearson confidence intervals).
+On Threshold0.7 , the model accuracies are 3% lower than on the original test set.
+On TopImages , which contains the images most frequently selected by MTurk workers, the models perform 2% better than on the original test set.
+The accuracies on both datasets closely follow a linear function, similar to MatchedFrequency in Figure 1 .
+The red shaded region is a 95% confidence region for the linear fit from 100,000 bootstrap samples.
+ 
+ 
+ 
+ 
+ 
+ 5 Discussion 
+
+ 
+ We now return to the main question from Section 2 : What causes the accuracy drops? 
+As before, we distinguish between two possible mechanisms. 
+ 
+ 
+ 5.1 Adaptivity Gap 
+
+ 
+ In its prototypical form, adaptive overfitting would manifest itself in diminishing returns observed on the new test set (see Section 2.1 ).
+However, we do not observe this pattern on either CIFAR-10 or ImageNet.
+On both datasets, the slope of the linear fit is greater than 1, i.e., each point of accuracy improvement on the original test set translates to more than 1% on the new test set.
+This is the opposite of the standard overfitting scenario.
+So at least on CIFAR-10 and ImageNet, multiple years of competitive test set adaptivity did not lead to diminishing accuracy numbers. 
+ 
+ 
+ While our experiments rule out the most dangerous form of adaptive overfitting, we remark that they do not exclude all variants.
+For instance, it could be that any test set adaptivity leads to a roughly constant drop in accuracy.
+Then all models are affected equally and we would see no diminishing returns since later models could still be better.
+Testing for this form of adaptive overfitting likely requires a new test set that is truly i.i.d. and not the result of a separate data collection effort.
+Finding a suitable dataset for such an experiment is an interesting direction for future research. 
+ 
+ 
+ The lack of adaptive overfitting contradicts conventional wisdom in machine learning.
+We now describe two mechanisms that could have prevented adaptive overfitting: 
+ 
+ 
+ The Ladder Mechanism. 
+
+ 
+ Blum and Hardt introduced the Ladder algorithm to protect machine learning competitions against adaptive overfitting [ 3 ] .
+The core idea is that constrained interaction with the test set can allow a large number of model evaluations to succeed, even if the models are chosen adaptively.
+Due to the natural form of their algorithm, the authors point out that it can also be seen as a mechanism that the machine learning community implicitly follows. 
+ 
+ 
+ 
+ Limited Model Class. 
+
+ 
+ Adaptivity is only a problem if we can choose among models for which the test set accuracy differs significantly from the population accuracy.
+Importantly, this argument does not rely on the number of all possible models (e.g., all parameter settings of a neural network), but only on those models that could actually be evaluated on the test set.
+For instance, the standard deep learning workflow only produces models trained with SGD-style algorithms on a fixed training set, and requires that the models achieve high training accuracy (otherwise we would not consider the corresponding hyperparameters).
+Hence the number of different models arising from the current methodology may be small enough so that uniform convergence holds. 
+ 
+ 
+ Our experiments offer little evidence for favoring one explanation over the other.
+One observation is that the convolutional networks shared many errors on CIFAR-10, which could be an indicator that the models are rather similar.
+But to gain a deeper understanding into adaptive overfitting, it is likely necessary to gather further data from more machine learning benchmarks, especially in scenarios where adaptive overfitting does occur naturally. 
+ 
+ 
+ 
+ 
+ 5.2 Distribution Gap 
+
+ 
+ The lack of diminishing returns in our experiments points towards the distribution gap as the primary reason for the accuracy drops.
+Moreover, our results on ImageNet show that changes in the sampling strategy can indeed affect model accuracies by a large amount, even if the data source and other parts of the dataset creation process stay the same. 
+ 
+ 
+ So in spite of our efforts to match the original dataset creation process, the distribution gap is still our leading hypothesis for the accuracy drops.
+This demonstrates that it is surprisingly hard to accurately replicate the distribution of current image classification datasets.
+The main difficulty likely is the subjective nature of the human annotation step.
+There are many parameters that can affect the quality of human labels such as the annotator population (MTurk vs. students, qualifications, location & time, etc.), the exact task format, and compensation.
+Moreover, there are no exact definitions for many classes in ImageNet (e.g., see Appendix C.4.8 ).
+Understanding these aspects in more detail is an important direction for designing future datasets that contain challenging images while still being labeled correctly. 
+ 
+ 
+ The difficulty of clearly defining the data distribution, combined with the brittle behavior of the tested models, calls into question whether the black-box and i.i.d. framework of learning can produce reliable classifiers.
+Our analysis of selection frequencies in Figure 15 (Appendix C.4.7 ) shows that we could create a new test set with even lower model accuracies.
+The images in this hypothetical dataset would still be correct, from Flickr, and selected by more than half of the MTurk labelers on average.
+So in spite of the impressive accuracy scores on the original validation set, current ImageNet models still have difficulty generalizing from “easy” to “hard” images. 
+ 
+ 
+ 
+ 5.3 A Model for the Linear Fit 
+
+ 
+ Finally, we briefly comment on the striking linear relationship between original and new test accuracies that we observe in all our experiments (for instance, see Figure 1 in the introduction or Figures 12 and 13 in the appendix).
+To illustrate how this phenomenon could arise, we present a simple data model where a small modification of the data distribution can lead to significant changes in accuracy, yet the relative order of models is preserved as a linear relationship.
+We emphasize that this model should not be seen as the true explanation.
+Instead, we hope it can inform future experiments that explore natural variations in test distributions. 
+ 
+ 
+ First, as we describe in Appendix  C.2 , we find that we achieve better fits to our data under a probit scaling of the accuracies.
+Over a wide range from 21% to 83% (all models in our ImageNet testbed), the accuracies on the new test set, , are related to the accuracies on the original test set, , by the relationship 
+ 
+ where is the Gaussian CDF, and and are scalars. The probit scale is in a sense more natural than a linear scale as the accuracy numbers are probabilities. When we plot accuracies on a probit scale in Figures 6 and 13 , we effectively visualize instead of . 
+ 
+ 
+ We now provide a simple plausible model where the original and new accuracies are related linearly on a probit scale. Assume that every example has a scalar “difficulty” that quantifies how easy it is to classify.
+Further assume the probability of a model correctly classifying an image with difficulty is given by an increasing function .
+We show that for restricted classes of difficulty functions , we find a linear relationship between average accuracies after distribution shifts. 
+ 
+ 
+ To be specific, we focus on the following parameterization. Assume the difficulty distribution of images in a test set follows a normal distribution with mean and variance . Further assume that 
+ 
+ where is the CDF of a standard normal distribution, and is the “skill” of model .
+Models with higher skill have higher classification accuracy, and images with higher difficulty lead to smaller classification accuracy.
+Again, the choice of here is somewhat arbitrary: any sigmoidal function that maps to is plausible.
+But using the Gaussian CDF yields a simple calculation illustrating the linear phenomenon. 
+ 
+ 
+ Using the above notation, the accuracy of a model on a test set with difficulty mean and variance is then given by 
+ 
+ We can expand the CDF into an expectation and combine the two expectations by utilizing the fact that a linear combination of two Gaussians is again Gaussian.
+This yields: 
+ 
+ On a probit scale, the quantities we plot are given by 
+ 
+ 
+ 
+ Next, we consider the case where we have multiple models and two test sets with difficulty parameters and respectively for .
+Then , the probit-scaled accuracy on the second test set, is a linear function of the accuracy on the first test set, : 
+ 
+ with 
+ 
+ Hence, we see that the Gaussian difficulty model above yields a linear relationship between original and new test accuracy in the probit domain. While the Gaussian assumptions here made the calculations simple, a variety of different simple classes of will give rise to the same linear relationship between the accuracies on two different test sets. 
+ 
+ 
+ 
+ 
+ 6 Related Work 
+
+ 
+ We now briefly discuss related threads in machine learning.
+To the best of our knowledge, there are no reproducibility experiments directly comparable to ours in the literature. 
+ 
+ 
+ Dataset Biases. 
+
+ 
+ The computer vision community has a rich history of creating new datasets and discussing their relative merits, e.g., [ 15 , 60 , 45 , 54 , 13 , 10 , 48 , 38 ] .
+The paper closest to ours is [ 54 ] , which studies dataset biases by measuring how models trained on one dataset generalize to other datasets.
+The main difference to our work is that the authors test generalization across different datasets, where larger changes in the distribution (and hence larger drops in accuracy) are expected.
+In contrast, our experiments explicitly attempt to reproduce the original data distribution and demonstrate that even small variations arising in this process can lead to significant accuracy drops.
+Moreover, [ 54 ] do not test on previously unseen data, so their experiments cannot rule out adaptive overfitting. 
+ 
+ 
+ 
+ Transfer Learning From ImageNet. 
+
+ 
+ Kornblith et al. [33] study how well accuracy on ImageNet transfers to other image classification datasets.
+An important difference from both our work and [ 54 ] is that the the ImageNet models are re-trained on the target datasets.
+The authors find that better ImageNet models usually perform better on the target dataset as well.
+Similar to [ 54 ] , these experiments cannot rule out adaptive overfitting since the authors do not use new data.
+Moreover, the experiments do not measure accuracy drops due to small variations in the data generating process since the models are evaluated on a different task with an explicit adaptation step.
+Interestingly, the authors also find an approximately linear relationship between ImageNet and transfer accuracy. 
+ 
+ 
+ 
+ Adversarial Examples. 
+
+ 
+ While adversarial examples [ 50 , 2 ] also show that existing models are brittle, the perturbations have to be finely tuned since models are much more robust to random perturbations.
+In contrast, our results demonstrate that even small, benign variations in the data sampling process can already lead to a significant accuracy drop without an adversary. 
+ 
+ 
+ A natural question is whether adversarially robust models are also more robust to the distribution shifts observed in our work.
+As a first data point, we tested the common -robustness baseline from [ 41 ] for CIFAR-10.
+Interestingly, the accuracy numbers of this model fall almost exactly on the linear fit given by the other models in our testbed.
+Hence -robustness does not seem to offer benefits for the distribution shift arising from our reproducibility experiment.
+However, we note that more forms of adversarial robustness such as spatial transformations or color space changes have been studied [ 12 , 24 , 57 , 14 , 30 ] .
+Testing these variants is an interesting direction for future work. 
+ 
+ 
+ 
+ Non-Adversarial Image Perturbations. 
+
+ 
+ Recent work also explores less adversarial changes to the input, e.g., [ 17 , 23 ] .
+In these papers, the authors modify the ImageNet validation set via well-specified perturbations such as Gaussian noise, a fixed rotation, or adding a synthetic snow-like pattern.
+Standard ImageNet models then achieve significantly lower accuracy on the perturbed examples than on the unmodified validation set.
+While this is an interesting test of robustness, the mechanism underlying the accuracy drops is significantly different from our work.
+The aforementioned papers rely on an intentional, clearly-visible, and well-defined perturbation of existing validation images.
+Moreover, some of the interventions are quite different from the ImageNet validation set (e.g., ImageNet contains few images of falling snow).
+In contrast, our experiments use new images and match the distribution of the existing validation set as closely as possible.
+Hence it is unclear what properties of our new images cause the accuracy drops. 
+ 
+ 
+ 
+ 
+ 7 Conclusion & Future Work 
+
+ 
+ The expansive growth of machine learning rests on the aspiration to deploy trained systems in a variety of challenging environments.
+Common examples include autonomous vehicles, content moderation, and medicine.
+In order to use machine learning in these areas responsibly, it is important that we can both train models with sufficient generalization abilities, and also reliably measure their performance.
+As our results show, these goals still pose significant hurdles even in a benign environment. 
+ 
+ 
+ Our experiments are only one step in addressing this reliability challenge.
+There are multiple promising avenues for future work: 
+ 
+ 
+ Understanding Adaptive Overfitting. 
+
+ 
+ In contrast to conventional wisdom, our experiments show that there are no diminishing returns associated with test set re-use on CIFAR-10 and ImageNet.
+A more nuanced understanding of this phenomenon will require studying whether other machine learning problems are also resilient to adaptive overfitting.
+For instance, one direction would be to conduct similar reproducibility experiments on tasks in natural language processing, or to analyze data from competition platforms such as Kaggle and CodaLab. 
+ 7 
+ 
+ 
+ 
+ https://www.kaggle.com/competitions and https://competitions.codalab.org/ . 
+ 
+ 
+ 
+ Characterizing the Distribution Gap. 
+
+ 
+ Why do the classification models in our testbed perform worse on the new test sets?
+The selection frequency experiments in Section 4 suggest that images selected less frequently by the MTurk workers are harder for the models.
+However, the selection frequency analysis does not explain what aspects of the images make them harder.
+Candidate hypotheses are object size, special filters applied to the images (black & white, sepia, etc.), or unusual object poses.
+Exploring whether there is a succinct description of the difference between the original and new test distributions is an interesting direction for future work. 
+ 
+ 
+ 
+ Learning More Robust Models. 
+
+ 
+ An overarching goal is to make classification models more robust to small variations in the data.
+If the change from the original to our new test sets can be characterized accurately, techniques such as data augmentation or robust optimization may be able to close some of the accuracy gap.
+Otherwise, one possible approach could be to gather particularly hard examples from Flickr or other data sources and expand the training set this way.
+However, it may also be necessary to develop entirely novel approaches to image classification. 
+ 
+ 
+ 
+ Measuring Human Accuracy. 
+
+ 
+ One interesting question is whether our new test sets are also harder for humans.
+As a first step in this direction, our human accuracy experiment on CIFAR-10 (see Appendix B.2.5 ) shows that average human performance is not affected significantly by the distribution shift between the original and new images that are most difficult for the models.
+This suggests that the images are only harder for the trained models and not for humans.
+But a more comprehensive understanding of the human baseline will require additional human accuracy experiments on both CIFAR-10 and ImageNet. 
+ 
+ 
+ 
+ Building Further Test Sets. 
+
+ 
+ The dominant paradigm in machine learning is to evaluate the performance of a classification model on a single test set per benchmark.
+Our results suggest that this is not comprehensive enough to characterize the reliability of current models.
+To understand their generalization abilities more accurately, new test data from various sources may be needed.
+One intriguing question here is whether accuracy on other test sets will also follow a linear function of the original test accuracy. 
+ 
+ 
+ 
+ Suggestions For Future Datasets. 
+
+ 
+ We found that it is surprisingly difficult to create a new test set that matches the distribution of an existing dataset.
+Based on our experience with this process, we provide some suggestions for improving machine learning datasets in the future: 
+ 
+ 
+ 
+ • 
+ 
+ Code release. It is hard to fully document the dataset creation process in a paper because it involves a long list of design choices.
+Hence it would be beneficial for reproducibility efforts if future dataset papers released not only the data but also all code used to create the datasets. 
+ 
+ • 
+ 
+ Annotator quality. Our results show that changes in the human annotation process can have significant impact on the difficulty of the resulting datasets.
+To better understand the quality of human annotations, it would be valuable if authors conducted a standardized test with their annotators (e.g., classifying a common set of images) and included the results in the description of the dataset.
+Moreover, building variants of the test set with different annotation processes could also shed light on the variability arising from this data cleaning step. 
+ 
+ • 
+ 
+ “Super hold-out”. Having access to data from the original CIFAR-10 and ImageNet data collection could have clarified the cause of the accuracy drops in our experiments.
+By keeping an additional test set hidden for multiple years, future benchmarks could explicitly test for adaptive overfitting after a certain time period. 
+ 
+ • 
+ 
+ Simpler tasks for humans. The large number of classes and fine distinctions between them make ImageNet a particularly hard problem for humans without special training.
+While classifying a large variety of objects with fine-grained distinctions is an important research goal, there are also trade-offs.
+Often it becomes necessary to rely on images with high annotator agreement to ensure correct labels, which in turn leads to bias by excluding harder images.
+Moreover, the large number of classes causes difficulties when characterizing human performance.
+So an alternative approach for a dataset could be to choose a task that is simpler for humans in terms of class structure (fewer classes, clear class boundaries), but contains a larger variety of object poses, lighting conditions, occlusions, image corruptions, etc. 
+ 
+ • 
+ 
+ Test sets with expert annotations. Compared to building a full training set, a test set requires a smaller number of human annotations.
+This makes it possible to employ a separate labeling process for the test set that relies on more costly expert annotations.
+While this violates the assumption that train and test splits are i.i.d. from the same distribution, the expert labels can also increase quality both in terms of correctness and example diversity. 
+ 
+ 
+ 
+ 
+ Finally, we emphasize that our recommendations here should not be seen as flaws in CIFAR-10 or ImageNet.
+Both datasets were assembled in the late 2000s for an accuracy regime that is very different from the state-of-the-art now.
+Over the past decade, especially ImageNet has successfully guided the field to increasingly better models, thereby clearly demonstrating the immense value of this dataset.
+But as models have increased in accuracy and our reliability expectations have grown accordingly, it is now time to revisit how we create and utilize datasets in machine learning. 
+ 
+ 
+ 
+ 
+ Acknowledgements 
+
+ 
+ We would like to thank Tudor Achim, Alex Berg, Orianna DeMasi, Jia Deng, Alexei Efros, David Fouhey, Moritz Hardt, Piotr Indyk, Esther Rolf, and Olga Russakovsky for helpful discussions while working on this paper.
+Moritz Hardt has been particularly helpful in all stages of this project and – among other invaluable advice – suggested the title of this paper and a precursor to the data model in Section 5.3 .
+We also thank the participants of our human accuracy experiment in Appendix B.2.5 (whose names we keep anonymous following our IRB protocol). 
+ 
+ 
+ This research was generously supported in part by ONR awards N00014-17-1-2191, N00014-17-1-2401, and N00014-18-1-2833, the DARPA Assured Autonomy (FA8750-18-C-0101) and Lagrange (W911NF-16-1-0552) programs, an Amazon AWS AI Research Award, and a gift from Microsoft Research.
+In addition, LS was supported by a Google PhD fellowship and a Microsoft Research Fellowship at the Simons Institute for the Theory of Computing. 
+ 
+ 
+ 
+ References 
+
+ 
+ 
+ [1] 
+ 
+Alex Berg.
+
+ 
+ Personal communication, 2018.
+
+ 
+ 
+ [2] 
+ 
+Battista Biggio and Fabio Roli.
+
+ 
+ Wild patterns: Ten years after the rise of adversarial machine
+learning.
+
+ 
+ Pattern Recognition , 2018.
+
+ 
+ https://arxiv.org/abs/1712.03141 .
+
+ 
+ 
+ [3] 
+ 
+Avrim Blum and Moritz Hardt.
+
+ 
+ The Ladder: A reliable leaderboard for machine learning
+competitions.
+
+ 
+ In International Conference on Machine Learning (ICML) , 2015.
+
+ 
+ http://arxiv.org/abs/1502.04585 .
+
+ 
+ 
+ [4] 
+ 
+Yunpeng Chen, Jianan Li, Huaxin Xiao, Xiaojie Jin, Shuicheng Yan, and Jiashi
+Feng.
+
+ 
+ Dual path networks.
+
+ 
+ In Neural Information Processing Systems (NIPS) , 2017.
+
+ 
+ https://arxiv.org/abs/1707.01629 .
+
+ 
+ 
+ [5] 
+ 
+François Chollet.
+
+ 
+ Xception: Deep learning with depthwise separable convolutions.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2017.
+
+ 
+ https://arxiv.org/abs/1610.02357 .
+
+ 
+ 
+ [6] 
+ 
+Stephane Clinchant, Gabriela Csurka, Florent Perronnin, and Jean-Michel
+Renders.
+
+ 
+ XRCE’s participation to ImagEval.
+
+ 
+ http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.102.6670&rep=rep1&type=pdf ,
+2007.
+
+ 
+ 
+ [7] 
+ 
+Adam Coates, Andrew Ng, and Honglak Lee.
+
+ 
+ An analysis of single-layer networks in unsupervised feature
+learning.
+
+ 
+ In Conference on Artificial Intelligence and Statistics
+(AISTATS) , 2011.
+
+ 
+ http://proceedings.mlr.press/v15/coates11a.html .
+
+ 
+ 
+ [8] 
+ 
+Ekin D. Cubuk, Barret Zoph, Dandelion Mane, Vijay Vasudevan, and Quoc V. Le.
+
+ 
+ AutoAugment: Learning augmentation policies from data.
+
+ 
+ https://arxiv.org/abs/1805.09501 , 2018.
+
+ 
+ 
+ [9] 
+ 
+Jia Deng.
+
+ 
+ Large Scale Visual Recognition .
+
+ 
+ PhD thesis, Princeton University, 2012.
+
+ 
+ ftp://ftp.cs.princeton.edu/techreports/2012/923.pdf .
+
+ 
+ 
+ [10] 
+ 
+Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li Fei-Fei.
+
+ 
+ ImageNet: A large-scale hierarchical image database.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2009.
+
+ 
+ http://www.image-net.org/papers/imagenet_cvpr09.pdf .
+
+ 
+ 
+ [11] 
+ 
+Terrance DeVries and Graham W Taylor.
+
+ 
+ Improved regularization of convolutional neural networks with
+Cutout.
+
+ 
+ https://arxiv.org/abs/1708.04552 , 2017.
+
+ 
+ 
+ [12] 
+ 
+Logan Engstrom, Dimitris Tsipras, Ludwig Schmidt, and Aleksander Madry.
+
+ 
+ A rotation and a translation suffice: Fooling CNNs with simple
+transformations.
+
+ 
+ http://arxiv.org/abs/1712.02779 , 2017.
+
+ 
+ 
+ [13] 
+ 
+Mark Everingham, Luc Gool, Christopher K. Williams, John Winn, and Andrew
+Zisserman.
+
+ 
+ The Pascal Visual Object Classes (VOC) challenge.
+
+ 
+ International Journal of Computer Vision , 2010.
+
+ 
+ http://dx.doi.org/10.1007/s11263-009-0275-4 .
+
+ 
+ 
+ [14] 
+ 
+Alhussein Fawzi and Pascal Frossard.
+
+ 
+ Manitest: Are classifiers really invariant?
+
+ 
+ In British Machine Vision Conference (BMVC) , 2015.
+
+ 
+ https://arxiv.org/abs/1507.06535 .
+
+ 
+ 
+ [15] 
+ 
+Li Fei-Fei, Rob Fergus, and Pietro Perona.
+
+ 
+ Learning generative visual models from few training examples: An
+incremental Bayesian approach tested on 101 object categories.
+
+ 
+ Computer Vision and Image Understanding , 2007.
+
+ 
+ http://dx.doi.org/10.1016/j.cviu.2005.09.012 .
+
+ 
+ 
+ [16] 
+ 
+Xavier Gastaldi.
+
+ 
+ Shake-shake regularization.
+
+ 
+ https://arxiv.org/abs/1705.07485 , 2017.
+
+ 
+ 
+ [17] 
+ 
+Robert Geirhos, Carlos R. M. Temme, Jonas Rauber, Heiko H. Schütt, Matthias
+Bethge, and Felix A. Wichmann.
+
+ 
+ Generalisation in humans and deep neural networks.
+
+ 
+ In Advances in Neural Information Processing Systems
+(NeurIPS) . 2018.
+
+ 
+ http://papers.nips.cc/paper/7982-generalisation-in-humans-and-deep-neural-networks.pdf .
+
+ 
+ 
+ [18] 
+ 
+Ben Hamner.
+
+ 
+ Popular datasets over time.
+
+ 
+ https://www.kaggle.com/benhamner/popular-datasets-over-time/data , 2017.
+
+ 
+ 
+ [19] 
+ 
+Dongyoon Han, Jiwhan Kim, and Junmo Kim.
+
+ 
+ Deep pyramidal residual networks.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2017.
+
+ 
+ https://arxiv.org/abs/1610.02915 .
+
+ 
+ 
+ [20] 
+ 
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+
+ 
+ Delving deep into rectifiers: Surpassing human-level performance on
+imagenet classification.
+
+ 
+ In International Conference on Computer Vision (ICCV) , 2015.
+
+ 
+ https://arxiv.org/abs/1502.01852 .
+
+ 
+ 
+ [21] 
+ 
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+
+ 
+ Deep residual learning for image recognition.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2016a.
+
+ 
+ https://arxiv.org/abs/1512.03385 .
+
+ 
+ 
+ [22] 
+ 
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+
+ 
+ Identity mappings in deep residual networks.
+
+ 
+ In European Conference on Computer Vision (ECCV) ,
+2016b.
+
+ 
+ https://arxiv.org/abs/1603.05027 .
+
+ 
+ 
+ [23] 
+ 
+Dan Hendrycks and Thomas Dietterich.
+
+ 
+ Benchmarking neural network robustness to common corruptions and
+perturbations.
+
+ 
+ In International Conference on Learning Representations
+(ICLR) , 2019.
+
+ 
+ https://arxiv.org/abs/1807.01697 .
+
+ 
+ 
+ [24] 
+ 
+Hossein Hosseini and Radha Poovendran.
+
+ 
+ Semantic adversarial examples.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition (CVPR)
+Workshops , 2018.
+
+ 
+ https://arxiv.org/abs/1804.00499 .
+
+ 
+ 
+ [25] 
+ 
+Andrew G Howard, Menglong Zhu, Bo Chen, Dmitry Kalenichenko, Weijun Wang,
+Tobias Weyand, Marco Andreetto, and Hartwig Adam.
+
+ 
+ Mobilenets: Efficient convolutional neural networks for mobile vision
+applications.
+
+ 
+ https://arxiv.org/abs/1704.04861 , 2017.
+
+ 
+ 
+ [26] 
+ 
+Jie Hu, Li Shen, and Gang Sun.
+
+ 
+ Squeeze-and-excitation networks.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2018.
+
+ 
+ https://arxiv.org/abs/1709.01507 .
+
+ 
+ 
+ [27] 
+ 
+Gao Huang, Zhuang Liu, Kilian Q Weinberger, and Laurens van der Maaten.
+
+ 
+ Densely connected convolutional networks.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2017.
+
+ 
+ https://arxiv.org/abs/1608.06993 .
+
+ 
+ 
+ [28] 
+ 
+Forrest N. Iandola, Song Han, Matthew W. Moskewicz, Khalid Ashraf, William J.
+Dally, and Kurt Keutzer.
+
+ 
+ SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and
+<0.5MB model size.
+
+ 
+ https://arxiv.org/abs/1602.07360 , 2016.
+
+ 
+ 
+ [29] 
+ 
+Sergey Ioffe and Christian Szegedy.
+
+ 
+ Batch normalization: Accelerating deep network training by reducing
+internal covariate shift.
+
+ 
+ In International Conference on Machine Learning (ICML) , 2015.
+
+ 
+ https://arxiv.org/abs/1502.03167 .
+
+ 
+ 
+ [30] 
+ 
+Can Kanbak, Seyed-Mohsen Moosavi-Dezfooli, and Pascal Frossard.
+
+ 
+ Geometric robustness of deep networks: Analysis and improvement.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2018.
+
+ 
+ https://arxiv.org/abs/1711.09115 .
+
+ 
+ 
+ [31] 
+ 
+Andrej Karpathy.
+
+ 
+ Lessons learned from manually classifying CIFAR-10.
+
+ 
+ http://karpathy.github.io/2011/04/27/manually-classifying-cifar10/ ,
+2011.
+
+ 
+ 
+ [32] 
+ 
+Kenji Kawaguchi, Leslie Pack Kaelbling, and Yoshua Bengio.
+
+ 
+ Generalization in deep learning.
+
+ 
+ https://arxiv.org/abs/1710.05468 , 2017.
+
+ 
+ 
+ [33] 
+ 
+Simon Kornblith, Jonathon Shlens, and Quoc V. Le.
+
+ 
+ Do better ImageNet models transfer better?
+
+ 
+ http://arxiv.org/abs/1805.08974 , 2018.
+
+ 
+ 
+ [34] 
+ 
+Ivan Krasin, Tom Duerig, Neil Alldrin, Vittorio Ferrari, Sami Abu-El-Haija,
+Alina Kuznetsova, Hassan Rom, Jasper Uijlings, Stefan Popov, Shahab Kamali,
+Matteo Malloci, Jordi Pont-Tuset, Andreas Veit, Serge Belongie, Victor Gomes,
+Abhinav Gupta, Chen Sun, Gal Chechik, David Cai, Zheyun Feng, Dhyanesh
+Narayanan, and Kevin Murphy.
+
+ 
+ Openimages: A public dataset for large-scale multi-label and
+multi-class image classification.
+
+ 
+ https://storage.googleapis.com/openimages/web/index.html , 2017.
+
+ 
+ 
+ [35] 
+ 
+Alex Krizhevsky.
+
+ 
+ Learning multiple layers of features from tiny images.
+
+ 
+ https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf ,
+2009.
+
+ 
+ 
+ [36] 
+ 
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey E Hinton.
+
+ 
+ Imagenet classification with deep convolutional neural networks.
+
+ 
+ In Advances in Neural Information Processing Systems (NIPS) ,
+2012.
+
+ 
+ https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks .
+
+ 
+ 
+ [37] 
+ 
+Fei-Fei Li and Jia Deng.
+
+ 
+ ImageNet: Where have we been? where are we going?
+
+ 
+ http://image-net.org/challenges/talks_2017/imagenet_ilsvrc2017_v1.0.pdf ,
+2017.
+
+ 
+ 
+ [38] 
+ 
+Tsung-Yi Lin, Michael Maire, Serge J. Belongie, Lubomir D. Bourdev, Ross B.
+Girshick, James Hays, Pietro Perona, Deva Ramanan, Piotr Dollár, and
+C. Lawrence Zitnick.
+
+ 
+ Microsoft COCO: Common objects in context.
+
+ 
+ In European Conference on Computer Vision (ECCV) , 2014.
+
+ 
+ https://arxiv.org/abs/1405.0312 .
+
+ 
+ 
+ [39] 
+ 
+Chenxi Liu, Barret Zoph, Maxim Neumann, Jonathon Shlens, Wei Hua, Li-Jia Li,
+Li Fei-Fei, Alan Yuille, Jonathan Huang, and Kevin Murphy.
+
+ 
+ Progressive neural architecture search.
+
+ 
+ In European Conference on Computer Vision (ECCV) , 2018.
+
+ 
+ https://arxiv.org/abs/1712.00559 .
+
+ 
+ 
+ [40] 
+ 
+Shuying Liu and Weihong Deng.
+
+ 
+ Very deep convolutional neural network based image classification
+using small training sample size.
+
+ 
+ In Asian Conference on Pattern Recognition (ACPR) , 2015.
+
+ 
+ https://ieeexplore.ieee.org/document/7486599/ .
+
+ 
+ 
+ [41] 
+ 
+Aleksander Madry, Aleksandar Makelov, Ludwig Schmidt, Dimitris Tsipras, and
+Adrian Vladu.
+
+ 
+ Towards deep learning models resistant to adversarial attacks.
+
+ 
+ In International Conference on Learning Representations
+(ICLR) , 2018.
+
+ 
+ https://arxiv.org/abs/1706.06083 .
+
+ 
+ 
+ [42] 
+ 
+Jitendra Malik.
+
+ 
+ Technical perspective: What led computer vision to deep learning?
+
+ 
+ Communications of the ACM , 2017.
+
+ 
+ http://doi.acm.org/10.1145/3065384 .
+
+ 
+ 
+ [43] 
+ 
+George A. Miller.
+
+ 
+ Wordnet: A lexical database for english.
+
+ 
+ Communications of the ACM , 1995.
+
+ 
+ URL http://doi.acm.org/10.1145/219717.219748 .
+
+ 
+ 
+ [44] 
+ 
+Florent Perronnin, Jorge Sánchez, and Thomas Mensink.
+
+ 
+ Improving the Fisher kernel for large-scale image classification.
+
+ 
+ In European Conference on Computer Vision (ECCV) , 2010.
+
+ 
+ URL
+ https://www.robots.ox.ac.uk/~vgg/rg/papers/peronnin_etal_ECCV10.pdf .
+
+ 
+ 
+ [45] 
+ 
+Jean Ponce, Tamara L. Berg, Mark Everingham, David A. Forsyth, Martial Hebert,
+Sveltana Lazebnik, Marcin Marszalek, Cordelia Schmid, Bryan C. Russell,
+Antionio Torralba, Chris. K. I. Williams, Jianguo Zhang, and Andrew
+Zisserman.
+
+ 
+ Dataset issues in object recognition .
+
+ 
+ 2006.
+
+ 
+ https://link.springer.com/chapter/10.1007/11957959_2 .
+
+ 
+ 
+ [46] 
+ 
+Ali Rahimi and Benjamin Recht.
+
+ 
+ Weighted Sums of Random Kitchen Sinks: Replacing minimization with
+randomization in learning.
+
+ 
+ In Advances in Neural Information Processing Systems (NIPS) ,
+2009.
+
+ 
+ https://papers.nips.cc/paper/3495-weighted-sums-of-random-kitchen-sinks-replacing-minimization-with-randomization-in-learning .
+
+ 
+ 
+ [47] 
+ 
+Esteban Real, Alok Aggarwal, Yanping Huang, and Quoc V. Le.
+
+ 
+ Regularized evolution for image classifier architecture search.
+
+ 
+ http://arxiv.org/abs/1802.01548 , 2018.
+
+ 
+ 
+ [48] 
+ 
+Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma,
+Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein,
+Alexander C. Berg, and Fei-Fei Li.
+
+ 
+ ImageNet large scale visual recognition challenge.
+
+ 
+ International Journal of Computer Vision , 2015.
+
+ 
+ https://arxiv.org/abs/1409.0575 .
+
+ 
+ 
+ [49] 
+ 
+Karen Simonyan and Andrew Zisserman.
+
+ 
+ Very deep convolutional networks for large-scale image recognition.
+
+ 
+ https://arxiv.org/abs/1409.1556 , 2014.
+
+ 
+ 
+ [50] 
+ 
+Christian Szegedy, Wojciech Zaremba, Ilya Sutskever, Joan Bruna, Dumitru Erhan,
+Ian J. Goodfellow, and Rob Fergus.
+
+ 
+ Intriguing properties of neural networks.
+
+ 
+ In International Conference on Learning Representations
+(ICLR) , 2013.
+
+ 
+ http://arxiv.org/abs/1312.6199 .
+
+ 
+ 
+ [51] 
+ 
+Christian Szegedy, Wei Liu, Yangqing Jia, Pierre Sermanet, Scott Reed, Dragomir
+Anguelov, Dumitru Erhan, Vincent Vanhoucke, and Andrew Rabinovich.
+
+ 
+ Going deeper with convolutions.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2015.
+
+ 
+ https://arxiv.org/abs/1409.4842v1 .
+
+ 
+ 
+ [52] 
+ 
+Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jon Shlens, and Zbigniew
+Wojna.
+
+ 
+ Rethinking the Inception architecture for computer vision.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2016.
+
+ 
+ https://arxiv.org/abs/1512.00567 .
+
+ 
+ 
+ [53] 
+ 
+Christian Szegedy, Sergey Ioffe, Vincent Vanhoucke, and Alexander A. Alemi.
+
+ 
+ Inception-v4, Inception-Resnet and the impact of residual
+connections on learning.
+
+ 
+ In Conference On Artificial Intelligence (AAAI) , 2017.
+
+ 
+ https://arxiv.org/abs/1602.07261 .
+
+ 
+ 
+ [54] 
+ 
+Antonio Torralba and Alexei A. Efros.
+
+ 
+ Unbiased look at dataset bias.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2011.
+
+ 
+ http://people.csail.mit.edu/torralba/publications/datasets_cvpr11.pdf .
+
+ 
+ 
+ [55] 
+ 
+Antonio Torralba, Rob Fergus, and William. T. Freeman.
+
+ 
+ 80 Million Tiny Images: A Large Data Set for Nonparametric Object
+and Scene Recognition.
+
+ 
+ IEEE Transactions on Pattern Analysis and Machine
+Intelligence , 2008.
+
+ 
+ https://ieeexplore.ieee.org/document/4531741/ .
+
+ 
+ 
+ [56] 
+ 
+Zhou Wang, Alan C. Bovik, Hamid R. Sheikh, and Eero P. Simoncelli.
+
+ 
+ Image quality assessment: from error visibility to structural
+similarity.
+
+ 
+ IEEE Transactions on Image Processing , 2004.
+
+ 
+ http://www.cns.nyu.edu/pub/lcv/wang03-preprint.pdf .
+
+ 
+ 
+ [57] 
+ 
+Chaowei Xiao, Jun-Yan Zhu, Bo Li, Warren He, Mingyan Liu, and Dawn Song.
+
+ 
+ Spatially transformed adversarial examples.
+
+ 
+ In International Conference on Learning Representations
+(ICLR) , 2018.
+
+ 
+ https://arxiv.org/abs/1801.02612 .
+
+ 
+ 
+ [58] 
+ 
+Saining Xie, Ross Girshick, Piotr Dollár, Zhuowen Tu, and Kaiming He.
+
+ 
+ Aggregated residual transformations for deep neural networks.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2017.
+
+ 
+ https://arxiv.org/abs/1611.05431 .
+
+ 
+ 
+ [59] 
+ 
+Yoshihiro Yamada, Masakazu Iwamura, and Koichi Kise.
+
+ 
+ Shakedrop regularization.
+
+ 
+ https://arxiv.org/abs/1802.02375 , 2018.
+
+ 
+ 
+ [60] 
+ 
+Benjamin Z. Yao, Xiong Yang, and Song-Chun Zhu.
+
+ 
+ Introduction to a large-scale general purpose ground truth database:
+methodology, annotation tool and benchmarks.
+
+ 
+ In Energy Minimization Methods in Computer Vision and Pattern
+Recognition (EMMCVPR) , 2007.
+
+ 
+ https://link.springer.com/chapter/10.1007/978-3-540-74198-5_14 .
+
+ 
+ 
+ [61] 
+ 
+Sergey Zagoruyko and Nikos Komodakis.
+
+ 
+ Wide residual networks.
+
+ 
+ In British Machine Vision Conference (BMVC) , 2016.
+
+ 
+ https://arxiv.org/abs/1605.07146 .
+
+ 
+ 
+ [62] 
+ 
+Xingcheng Zhang, Zhizhong Li, Chen Change Loy, and Dahua Lin.
+
+ 
+ Polynet: A pursuit of structural diversity in very deep networks.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2017.
+
+ 
+ https://arxiv.org/abs/1611.05725 .
+
+ 
+ 
+ [63] 
+ 
+Barret Zoph, Vijay Vasudevan, Jonathon Shlens, and Quoc V Le.
+
+ 
+ Learning transferable architectures for scalable image recognition.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2018.
+
+ 
+ https://arxiv.org/abs/1707.07012 .
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Appendix A Overview of the Appendix 
+
+ 
+ The following appendix contains a detailed description of our experiments on CIFAR-10 and ImageNet.
+To ease navigation, we first provide a table of contents for the appendix. 
+ 
+ 
+ 
+ Contents 
+
+ 
+ 
+ Appendix B Details of the CIFAR-10 Experiments 
+
+ 
+ We first present our reproducibility experiment for the CIFAR-10 image classification dataset [ 35 ] .
+There are multiple reasons why CIFAR-10 is an important example for measuring how well current models generalize to unseen data. 
+ 
+ • 
+ 
+ CIFAR-10 is one of the most widely used datasets in machine learning and serves as a test ground for many image classification methods.
+A concrete measure of popularity is the fact that CIFAR-10 was the second most common dataset in NIPS 2017 (after MNIST) [ 18 ] . 
+ 
+ • 
+ 
+ The dataset creation process for CIFAR-10 is transparent and well documented [ 35 ] .
+Importantly, CIFAR-10 draws from the larger Tiny Images repository that has more fine-grained labels than the ten CIFAR-10 classes [ 55 ] .
+This enables us to minimize various forms of distribution shift between the original and new test set. 
+ 
+ • 
+ 
+ CIFAR-10 poses a difficult enough problem so that the dataset is still the subject of active research (e.g., see [ 11 , 16 , 59 , 63 , 47 , 8 ] ).
+Moreover, there is a wide range of classification models that achieve significantly different accuracy scores.
+Since code for these models has been published in various open source repositories, they can be treated as independent of our new test set. 
+ 
+ 
+ 
+ 
+ Compared to ImageNet, CIFAR-10 is significantly smaller both in the number of images and in the size of each image.
+This makes it easier to conduct various follow-up experiments that require training new classification models.
+Moreover, the smaller size of CIFAR-10 also means that the dataset has been accessible to more researchers for a longer time.
+Hence it is plausible that CIFAR-10 experienced more test set adaptivity than ImageNet, where it is much more costly to tune hyperparameters. 
+ 
+ 
+ Before we describe how we created our new test set, we briefly review relevant background on CIFAR-10 and Tiny Images. 
+ 
+ 
+ Tiny Images. 
+
+ 
+ The dataset contains 80 million RGB color images with resolution 32 32 pixels and was released in 2007 [ 55 ] .
+The images are organized by roughly 75,000 keywords that correspond to the non-abstract nouns from the WordNet database [ 43 ] 
+Each keyword was entered into multiple Internet search engines to collect roughly 1,000 to 2,500 images per keyword.
+It is important to note that Tiny Images is a fairly noisy dataset.
+Many of the images filed under a certain keyword do not clearly (or not at all) correspond to the respective keyword. 
+ 
+ 
+ 
+ CIFAR-10. 
+
+ 
+ The CIFAR-10 dataset was created as a cleanly labeled subset of Tiny Images for experiments with multi-layer networks.
+To this end, the researchers assembled a dataset consisting of ten classes with 6,000 images per class, which was published in 2009 [ 35 ] .
+These classes are airplane , automobile , bird , cat , deer , dog , frog , horse , ship , and truck .
+The standard train / test split is class-balanced and contains 50,000 training images and 10,000 test images. 
+ 
+ 
+ The CIFAR-10 creation process is well-documented [ 35 ] .
+First, the researchers assembled a set of relevant keywords for each class by using the hyponym relations in WordNet [ 43 ] (for instance, “Chihuahua” is a hyponym of “dog”).
+Since directly using the corresponding images from Tiny Images would not give a high quality dataset, the researchers paid student annotators to label the images from Tiny Images.
+The labeler instructions can be found in Appendix C of [ 35 ] and include a set of specific guidelines (e.g., an image should not contain two object of the corresponding class).
+The researchers then verified the labels of the images selected by the annotators and removed near-duplicates from the dataset via an nearest neighbor search. 
+ 
+ 
+ 
+ B.1 Dataset Creation Methodology 
+
+ 
+ Our overall goal was to create a new test set that is as close as possible to being drawn from the same distribution as the original CIFAR-10 dataset.
+One crucial aspect here is that the CIFAR-10 dataset did not exhaust any of the Tiny Image keywords it is drawn from.
+So by collecting new images from the same keywords as CIFAR-10, our new test set can match the sub-class distribution of the original dataset. 
+ 
+ 
+ Understanding the Sub-Class Distribution. 
+
+ 
+ As the first step, we determined the Tiny Image keyword for every image in the CIFAR-10 dataset.
+A simple nearest-neighbor search sufficed since every image in CIFAR-10 had an exact duplicate ( -distance ) in Tiny Images.
+Based on this information, we then assembled a list of the 25 most common keywords for each class.
+We decided on 25 keywords per class since the 250 total keywords make up more than 95% of CIFAR-10.
+Moreover, we wanted to avoid accidentally creating a harder dataset with infrequent keywords that the classifiers had little incentive to learn based on the original CIFAR-10 dataset. 
+ 
+ 
+ The keyword distribution can be found in Appendix B.3.1 .
+Inspecting this list reveals the importance of matching the sub-class distribution.
+For instance, the most common keyword in the airplane class is stealth_bomber and not a more common civilian type of airplane.
+In addition, the third most common keyword for the airplane class is stealth_fighter .
+Both types of planes are highly distinctive.
+There are more examples where certain sub-classes are considerably different.
+For instance, trucks from the keyword fire_truck are mostly red, which is quite different from pictures for dump_truck or other keywords. 
+ 
+ 
+ 
+ Collecting New Images. 
+
+ 
+ After determining the keywords, we collected corresponding images.
+To simulate the student / researcher split in the original CIFAR-10 collection procedure, we introduced a similar split among two authors of this paper.
+Author A took the role of the original student annotators and selected new suitable images for the 250 keywords.
+In order to ensure a close match between the original and new images for each keyword, we built a user interface that allowed Author A to first look through existing CIFAR-10 images for a given keyword and then select new candidates from the remaining pictures in Tiny Images.
+Author A followed the labeling guidelines in the original instruction sheet [ 35 ] .
+The number of images Author A selected per keyword was so that our final dataset would contain between 2,000 and 4,000 images.
+We decided on 2,000 images as a target number for two reasons: 
+ 
+ • 
+ 
+ While the original CIFAR-10 test set contains 10,000 images, a test set of size 2,000 is already sufficient for a fairly small confidence interval.
+In particular, a conservative confidence interval (Clopper-Pearson at confidence level 95%) for accuracy 90% has size about with 2,000 (to be precise, ).
+Since we considered a potential discrepancy between original and new test accuracy only interesting if it is significantly larger than 1%, we decided that a new test set of size 2,000 was large enough for our study. 
+ 
+ • 
+ 
+ As with very infrequent keywords, our goal was to avoid accidentally creating a harder test set.
+Since some of the Tiny Image keywords have only a limited supply of remaining adequate images, we decided that a smaller target size for the new dataset would reduce bias to include images of more questionable difficulty. 
+ 
+ 
+ After Author A had selected a set of about 9,000 candidate images, Author B adopted the role of the researchers in the original CIFAR-10 dataset creation process.
+In particular, Author B reviewed all candidate images and removed images that were unclear to Author B or did not conform to the labeling instructions in their opinion (some of the criteria are subjective).
+In the process, a small number of keywords did not have enough images remaining to reach the 2,000 threshold.
+Author B then notified Author A about the respective keywords and Author A selected a further set of images for these keywords.
+In this process, there was only one keyword where Author A had to carefully examine all available images in Tiny Images.
+This keyword was alley_cat and comprises less than 0.3% of the overall CIFAR-10 dataset. 
+ 
+ 
+ 
+ Final Assembly. 
+
+ 
+ After collecting a sufficient number of high-quality images for each keyword, we sampled a random subset from our pruned candidate set.
+The sampling procedure was such that the keyword-level distribution of our new dataset matches the
+keyword-level distribution of CIFAR-10 (see Appendix B.3.1 ).
+In the final stage, we again proceeded similar to the original CIFAR-10 dataset creation process and used -nearest neighbors to filter out near duplicates.
+In particular, we removed near-duplicates within our new dataset and also images that had a near duplicate in the original CIFAR-10 dataset (train or test).
+The latter aspect is particularly important since our reproducibility study is only interesting if we evaluate on truly unseen data.
+Hence we manually reviewed the top-10 nearest neighbors for each image in our new test set.
+After removing near-duplicates in our dataset, we re-sampled the respective keywords until this process converged to our final dataset. 
+ 
+ 
+ Figure 3(b) shows a random subset of images from the original and our new test set. 
+ 
+ 
+ We remark that we did not run any classifiers on our new dataset during the data collection phase of our study.
+In order to ensure that the new data does not depend on the existing classifiers, it is important to strictly separate the data collection phase from the following evaluation phase. 
+ 
+ 
+ 
+ Figure 3 : Randomly selected images from the original and new CIFAR-10 test sets.
+Each grid contains two images for each of the ten classes.
+The following footnote reveals which of the two grids corresponds to the new test set. 
+ 9 
+ 
+ 
+ 
+ Test Set A is the new test set and Test Set B is the original test set. 
+ 
+ 
+ 
+ 
+ B.2 Follow-up Hypotheses 
+
+ 
+ Since the gap between original and new accuracy is concerningly large, we investigated multiple hypotheses for explaining this gap. 
+ 
+ 
+ B.2.1 Statistical Error 
+
+ 
+ A first natural guess is that the gap is simply due to statistical fluctuations.
+But as noted before, the sample size of our new test set is large enough so that a 95% confidence interval has size about .
+Since a 95% confidence interval for the original CIFAR-10 test accuracy is even smaller (roughly for 90% classification accuracy and for 97% classification accuracy), we can rule out statistical error as the main explanation. 
+ 
+ 
+ 
+ B.2.2 Differences in Near-Duplicate Removal 
+
+ 
+ As mentioned in Section B.1 , the final step of both the original CIFAR-10 and our dataset creation procedure is to remove near-duplicates.
+While removing near-duplicates between our new test set and the original CIFAR-10 dataset, we noticed that the original test set contained images that we would have ruled out as near-duplicates.
+A large number of near-duplicates between CIFAR-10 train and test, combined with our more stringent near-duplicate removal, could explain some of the accuracy drop.
+Indeed, we found about 800 images in the original CIFAR-10 test set that we would classify as near-duplicates (8% of the entire test set).
+Moreover, most classifiers have accuracy between 99% and 100% on these near-duplicates (recall that most models achieve 100% training error).
+However, the following calculation shows that the near-duplicates can explain at most 1% of the observed difference. 
+ 
+ 
+ For concreteness, we consider a model with 93% original test set accuracy such as a common VGG or ResNet architecture.
+Let be the “true” accuracy of the model on test images that are not near-duplicates, and let be the accuracy on near-duplicates.
+Then for 8% near-duplicates, the overall accuracy is given by 
+ 
+ Using , , and solving for then yields .
+So the accuracy on original test images that are not near-duplicates is indeed lower, but only by a small amount (0.6%).
+This is in contrast to the 8% - 9% accuracy drop that VGG and ResNet models with 93% original accuracy see in our experiments. 
+ 
+ 
+ For completeness, we describe our process for finding near duplicates in detail.
+For every test image, we visually inspected the top-10 nearest neighbors in both -distance and the SSIM (structural similarity) metric.
+We compared the original test set to the CIFAR-10 training set, and our new test set to both the original training and test sets.
+We consider an image pair as near-duplicates if both images have the same object in the same pose.
+We include images that have different zoom, color scale, stretch in the horizontal or vertical direction, or small shifts in vertical or horizontal position.
+If the object was rotated or in a different pose, we did not include it as a near-duplicate. 
+ 
+ 
+ 
+ B.2.3 Hyperparameter Tuning 
+
+ 
+ Another conjecture is that we can recover some of the missing accuracy by re-tuning hyperparameters of a model.
+To this end, we performed a grid search over multiple parameters of a VGG model.
+We selected three standard hyperparameters known to strongly influence test set performance: initial learning rate, dropout, and weight decay.
+The vgg16_keras architecture uses different amounts of dropout across different layers of the network, so we chose to tune a multiplicative scaling factor for the amount of dropout.
+This keeps the ratio of dropout across different layers constant. 
+ 
+ 
+ We initialized a hyperparameter configuration from values tuned to the original test set (learning
+rate , dropout ratio , weight decay ), and performed a grid search across the following values: 
+ 
+ • 
+ 
+ Learning rate in . 
+ 
+ • 
+ 
+ Dropout ratio in . 
+ 
+ • 
+ 
+ Weight decay in , , , , . 
+ 
+ 
+ 
+ 
+ We ensured that the best performance was never at an extreme point of any range we tested for an individual hyperparameter.
+Overall, we did not find a hyperparameter setting with a significantly better accuracy on the new test set (the biggest improvement was from 85.3% to 85.8%). 
+ 
+ 
+ 
+ B.2.4 Visually Inspecting Hard Images 
+
+ 
+ It is also possible that we accidentally created a more difficult test set by including a set of “harder” images.
+To explore this question, we visually inspected the set of images that most models incorrectly classified.
+Figure 4 in Appendix B.3.5 shows examples of the hard images in our new test set that no model correctly classified.
+We find that all the new images are valid images that are recognizable to humans. 
+ 
+ 
+ 
+ B.2.5 Human Accuracy Comparison 
+
+ 
+ The visual inspection of hard images in the previous section is one way to compare the original and new test sets.
+However, our conclusion may be biased since we have created the new test set ourselves.
+To compare the relative hardness of the two test sets more objectively, we also conducted a small experiment to measure human accuray on the two test sets. 
+ 10 
+ 
+ 
+ 
+ Use of this data was permitted by the Berkelely Committee for Protection of Human Subjects (CPHS). 
+The goal of the experiment was to measure if human accuracy is significantly different on the original and new test sets. 
+ 
+ 
+ Since we conjectured that our new test set included particularly hard images, we focused our experiment on the approximately 5% hardest images in both test sets.
+Here, “hardness” is defined by how many models correctly classified an image.
+After rounding to include all images that were classified by the same number of models, we obtained 500 images from the original test set and 115 images from our new test set. 
+ 
+ 
+ We recruited nine graduate students from three different research groups in the Electrical Engineering & Computer Sciences Department at UC Berkeley.
+We wrote a simple user interface that allowed the participants to label images with one of the ten CIFAR-10 classes.
+To ensure that the participants did not know which dataset an image came from, we presented the images in random order. 
+ 
+ 
+ Table 3 shows the results of our experiment.
+We find that four participants performed better on the original test set and five participants were better on our new test set.
+The average difference is -0.8%, i.e., the participants do not see a drop in average accuracy on this subset of original and new test images.
+This suggests that our new test set is not significantly harder for humans.
+However, we remark that our results here should only be seen as a preliminary study.
+Understanding human accuracy on CIFAR-10 in more detail will require further experiments. 
+ 
+ 
+ 
+ 
+ B.2.6 Training on Part of Our New Test Set 
+
+ 
+ If our new test set distribution is significantly different from the original CIFAR-10 distribution, retraining on part of our new test set (plus the original training data) may improve the accuracy on the held-out fraction of our new test set. 
+ 
+ 
+ We conducted this experiment by randomly drawing a class-balanced split containing about 1,000 images from the new test set.
+We then added these images to the full CIFAR-10 training set and retrained the vgg16_keras model.
+After training, we tested the model on the remaining half of the new test set.
+We repeated this experiment twice with different randomly selected splits from our test set, obtaining accuracies of 85.1% and 85.4% (compared to 84.9% without the extra training data 
+ 11 
+ 
+ 
+ 
+ This number is slightly lower than the accuracy of vgg16_keras on our new test set in Table 11 , but still within the 95% confidence interval . Hence we conjecture that the difference is due to the random fluctuation arising from randomly initializing the model. ).
+This provides evidence that there is no large distribution shift between our new test set and the original CIFAR-10 dataset, or that the model is unable to learn the modified distribution. 
+ 
+ 
+ 
+ B.2.7 Cross-validation 
+
+ 
+ Cross-validation can be a more reliable way of measuring a model’s generalization ability than using only a single train / test split.
+Hence we tested if cross-validation on the original CIFAR-10 dataset could predict a model’s error on our new test set.
+We created cross-validation data by randomly dividing the training set into 5 class-balanced splits.
+We then randomly shuffled together 4 out of the 5 training splits with the original test set.
+The leftover held-out split from the training set then became the new test set. 
+ 
+ 
+ We retrained the models vgg_15_BN_64 , wide_resnet_28_10 , and shake_shake_64d_cutout on each of the 5 new datasets we created.
+The accuracies are reported in Table 4 .
+The accuracies on the cross-validation splits did not differ much from the accuracy on the original test set.
+The variation among the cross-validation splits is significantly smaller than the drop on our new test set. 
+ 
+ 
+ 
+ 
+ B.2.8 Training a Discriminator for Original vs. New Test Set 
+
+ 
+ Our main hypothesis for the accuracy drop is that small variations in the test set creation process suffice to significantly reduce a model’s accuracy.
+To test whether these variations could be detected by a convolutional network, we investigated whether a discriminator model could distinguish between the two test sets. 
+ 
+ 
+ We first created a training set consisting of images (1,600 from the original test set and 1,600 from our new test set) and a test set of images (consisting of 400 images from original and new test set each).
+Each image had a binary label indicating whether it came from the original or new test set.
+Additionally, we ensured that that both datasets were class balanced. 
+ 
+ 
+ We then trained resnet_32 and resnet_110 models for 160 epochs using a standard SGD optimizer to learn a binary classifier between the two datasets.
+We conducted two variants of this experiment: in one variant, we traind the model from scratch.
+In the other variant, we started with a model pre-trained on the regular CIFAR-10 classification task. 
+ 
+ 
+ Our results are summarized in Table  5 .
+Overall we found that the resulting models could not discriminate well between the original and our new test set: the best accuracy we obtained is 53.1%. 
+ 
+ 
+ 
+ 
+ B.2.9 An Exactly Class-balanced Test Set 
+
+ 
+ The top 25 keywords of each class in CIFAR-10 capture approximately 95% of the dataset.
+However, the remaining 5% of the dataset are skewed towards the class ship .
+As a result, our new dataset was not exactly class-balanced and contained only 8% images of class ship (as opposed to 10% in the original test set). 
+ 
+ 
+ To measure whether this imbalance affected the acccuracy scores, we created an exactly class-balanced version of our new test set with 2,000 images (200 per class).
+In this version, we selected the top 50 keywords in each class and computed a fractional number of images for each keyword.
+We then rounded these numbers so that images for keywords with the largest fractional part were added first.
+The resulting model accuracies can be found in Table 12 (Appendix B.3.4 ).
+Models with lower original accuracies achieve a small accuracy improvement on the exactly class-balanced test set (around 0.3%), but the accuracy drop of the best-performing model remains unchanged. 
+ 
+ 
+ 
+ 
+ B.3 Additional Figures, Tables, and Lists 
+
+ 
+ In this appendix we provide large figures etc. that did not fit into the preceding sections about our CIFAR-10 experiments. 
+ 
+ 
+ B.3.1 Keyword Distribution in CIFAR-10 
+
+ 
+ The sub-tables in Table 6 show the keyword distribution for each of the ten classes in the original CIFAR-10 test set and our new test set. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ B.3.2 Full List of Models Evaluated on CIFAR-10 
+
+ 
+ The following list contains all models we evaluated on CIFAR-10 with references and links to the corresponding source code. 
+ 
+ 
+ 
+ 1. 
+ 
+ autoaug_pyramid_net [ 8 , 19 ] https://github.com/tensorflow/models/tree/master/research/autoaugment 
+ 
+ 2. 
+ 
+ autoaug_shake_shake_112 [ 8 , 16 ] https://github.com/tensorflow/models/tree/master/research/autoaugment 
+ 
+ 3. 
+ 
+ autoaug_shake_shake_32 [ 8 , 16 ] https://github.com/tensorflow/models/tree/master/research/autoaugment 
+ 
+ 4. 
+ 
+ autoaug_shake_shake_96 [ 8 , 16 ] https://github.com/tensorflow/models/tree/master/research/autoaugment 
+ 
+ 5. 
+ 
+ autoaug_wrn [ 8 , 61 ] https://github.com/tensorflow/models/tree/master/research/autoaugment 
+ 
+ 6. 
+ 
+ cudaconvnet [ 36 ] https://github.com/akrizhevsky/cuda-convnet2 
+ 
+ 7. 
+ 
+ darc [ 32 ] http://lis.csail.mit.edu/code/gdl.html 
+ 
+ 8. 
+ 
+ densenet_BC_100_12 [ 27 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 9. 
+ 
+ nas [ 63 ] https://github.com/tensorflow/models/blob/master/research/slim/nets/nasnet/nasnet.py#L32 
+ 
+ 10. 
+ 
+ pyramidnet_basic_110_270 [ 19 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 11. 
+ 
+ pyramidnet_basic_110_84 [ 19 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 12. 
+ 
+ random_features_256k_aug [ 7 ] https://github.com/modestyachts/nondeep Random 1 layer convolutional network with 256k filters sampled from image patches, patch size = , pool size , pool stride , and horizontal flip data augmentation. 
+ 
+ 13. 
+ 
+ random_features_256k [ 7 ] https://github.com/modestyachts/nondeep Random 1 layer convolutional network with 256k filters sampled from image patches, patch size = , pool size , pool stride . 
+ 
+ 14. 
+ 
+ random_features_32k_aug [ 7 ] https://github.com/modestyachts/nondeep Random 1 layer convolutional network with 32k filters sampled from image patches, patch size = , pool size , pool stride , and horizontal flip data augmentation. 
+ 
+ 15. 
+ 
+ random_features_32k [ 7 ] Random 1 layer convolutional network with 32k filters sampled from image patches, patch size = , pool size , pool stride . 
+ 
+ 16. 
+ 
+ resnet_basic_32 [ 21 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 17. 
+ 
+ resnet_basic_44 [ 21 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 18. 
+ 
+ resnet_basic_56 [ 21 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 19. 
+ 
+ resnet_basic_110 [ 21 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 20. 
+ 
+ resnet_preact_basic_110 [ 22 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 21. 
+ 
+ resnet_preact_bottleneck_164 [ 22 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 22. 
+ 
+ resnet_preact_tf [ 22 ] https://github.com/tensorflow/models/tree/b871670b5ae29aaa6cad1b2d4e004882f716c466/resnet 
+ 
+ 23. 
+ 
+ resnext_29_4x64d [ 58 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 24. 
+ 
+ resnext_29_8x64d [ 58 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 25. 
+ 
+ shake_drop [ 59 ] https://github.com/imenurok/ShakeDrop 
+ 
+ 26. 
+ 
+ shake_shake_32d [ 16 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 27. 
+ 
+ shake_shake_64d [ 16 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 28. 
+ 
+ shake_shake_96d [ 16 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 29. 
+ 
+ shake_shake_64d_cutout [ 16 , 11 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 30. 
+ 
+ vgg16_keras [ 49 , 40 ] https://github.com/geifmany/cifar-vgg 
+ 
+ 31. 
+ 
+ vgg_15_BN_64 [ 49 , 40 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 32. 
+ 
+ wide_resnet_tf [ 61 ] https://github.com/tensorflow/models/tree/b871670b5ae29aaa6cad1b2d4e004882f716c466/resnet 
+ 
+ 33. 
+ 
+ wide_resnet_28_10 [ 61 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 34. 
+ 
+ wide_resnet_28_10_cutout [ 61 , 11 ] https://github.com/hysts/pytorch_image_classification/ 
+ 
+ 
+ 
+ 
+ 
+ B.3.3 Full Results Table 
+
+ 
+ Table 11 contains the detailed accuracy scores for the original CIFAR-10 test set and our new test set. 
+ 
+ 
+ 
+ 
+ B.3.4 Full Results Table for the Exactly Class-Balanced Test Set 
+
+ 
+ Table 12 contains the detailed accuracy scores for the original CIFAR-10 test set and the exactly class-balanced variant of our new test set. 
+ 
+ 
+ 
+ 
+ B.3.5 Hard Images 
+
+ 
+ Figure 4 shows the images in our new CIFAR-10 test set that were misclassified by all models in our testbed.
+As can be seen in the figure, the class labels for these images are correct. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Appendix C Details of the ImageNet Experiments 
+
+ 
+ Our results on CIFAR-10 show that current models fail to reliably generalize in the presence of small variations in the data distribution.
+One hypothesis is that the accuracy drop stems from the limited nature of the CIFAR-10 dataset.
+Compared to other datasets, CIFAR-10 is relatively small, both in terms of image resolution and the number of images in the dataset.
+Since the CIFAR-10 models are only exposed to a constrained visual environment, they may be unable to learn a more reliable representation. 
+ 
+ 
+ To investigate whether ImageNet models generalize more reliably, we assemble a new test set for ImageNet.
+ImageNet captures a much broader variety of natural images: it contains about more training images than CIFAR-10 with roughly more pixels per image.
+As a result, ImageNet poses a significantly harder problem and is among the most prestigious machine learning benchmarks.
+The steadily improving accuracy numbers have also been cited as an important breakthrough in machine learning [ 42 ] .
+If popular ImageNet models are indeed more robust to natural variations in the data (and there is again no adaptive overfitting), the accuracies on our new test set should roughly match the existing accuracies. 
+ 
+ 
+ Before we proceed to our experiments, we briefly describe the relevant background concerning the ImageNet dataset.
+For more details, we refer the reader to the original ImageNet publications [ 10 , 48 ] . 
+ 
+ 
+ ImageNet. 
+
+ 
+ ImageNet [ 10 , 48 ] is a large image database consisting of more than 14 million human-annotated images depicting almost 22,000 classes.
+The images do not have a uniform size, but most of them are stored as RGB color images with a resolution around pixels.
+The classes are derived from the WordNet hierarchy [ 43 ] , which represents each class by a set of synonyms (“synset”) and is organized into semantically meaningful relations.
+Each class has an associated definition (“gloss”) and a unique WordNet ID (“wnid”). 
+ 
+ 
+ The ImageNet team populated the classes with images downloaded from various image search engines, using the WordNet synonyms as queries.
+The researchers then annotated the images via Amazon Mechanical Turk (MTurk).
+A class-specific threshold decided how many agreements among the MTurk workers were necessary for an image to be considered valid.
+Overall, the researchers employed over 49,000 workers from 167 countries [ 37 ] . 
+ 
+ 
+ Since 2010, the ImageNet team has run the yearly ImageNet Large Scale Visual Recognition Challenge (ILSVRC), which consists of separate tracks for object classification, localization, and detection.
+All three tracks are based on subsets of the ImageNet data.
+The classification track has received the most attention and is also the focus of our paper. 
+ 
+ 
+ The ILSVRC2012 competition data has become the de facto benchmark version of the dataset and comprises 1.2 million training images, 50,000 validation images, and 100,000 test images depicting 1,000 categories.
+We generally refer to this data as the ImageNet training, validation, and test set.
+The labels for the ImageNet test set were never publicly released in order to minimize adaptive overfitting.
+Instead, teams could submit a limited number of requests to an evaluation server in order to obtain accuracy scores.
+There were no similar limitations in place for the validation set.
+Most publications report accuracy numbers on the validation set. 
+ 
+ 
+ The training, validation, and test sets were not drawn strictly i.i.d. from the same distribution (i.e., there was not a single data collection run with the result split randomly into training, validation, and test).
+Instead, the data collection was an ongoing process and both the validation and test sets were refreshed in various years of the ILSVRC.
+One notable difference is that the ImageNet training and validation sets do not have the same data source: while the ImageNet training set consists of images from several search engines (e.g., Google, MSN, Yahoo, and Flickr), the validation set consists almost entirely of images from Flickr [ 1 ] . 
+ 
+ 
+ 
+ C.1 Dataset Creation Methodology 
+
+ 
+ Since the existing training, validation, and test sets are not strictly i.i.d. (see above), the first question was which dataset part to replicate.
+For our experiment, we decided to match the distribution of the validation set .
+There are multiple reasons for this choice: 
+ 
+ • 
+ 
+ In contrast to the training set, the validation set comes from only one data source (Flickr).
+Moreover, the Flickr API allows fine-grained searches, which makes it easier to control the data source and match the original distribution. 
+ 
+ • 
+ 
+ In contrast to the original test set, the validation set comes with label information.
+This makes it easier to inspect the existing image distribution for each class, which is important to ensure that we match various intricacies of the dataset (e.g., see Appendix C.4.8 for examples of ambiguous classes). 
+ 
+ • 
+ 
+ Most papers report accuracy numbers on the validation set.
+Hence comparing new vs. existing accuracies is most relevant for the validation set. 
+ 
+ • 
+ 
+ The validation set is commonly used to develop new architectures and tune hyperparameters, which leads to the possibility of adaptive overfitting.
+If we again observe no diminishing returns in accuracy on our new test set, this indicates that even the validation set is resilient to adaptive overfitting. 
+ 
+ 
+ 
+ 
+ Therefore, our goal was to replicate the distribution of the original validation set as closely as possible.
+We aimed for a new test set of size 10,000 since this would already result in accuracy scores with small confidence intervals (see Section 2 ).
+While a larger dataset would result in even smaller confidence intervals, we were also concerned that searching for more images might lead to a larger distribution shift.
+In particular, we decided to use a time range for our Flickr queries after the original ImageNet collection period (see below for the corresponding considerations).
+Since a given time period only has a limited supply of high quality images, a larger test set would have required a longer time range.
+This in turn may create a larger temporal distribution shift.
+To balance these two concerns, we decided on a size of 10,000 images for the new test set. 
+ 
+ 
+ Figure 5 presents a visual overview of our dataset creation pipeline.
+It consists of two parts: creating a pool of candidate images and sampling a clean dataset from this candidate pool.
+We now describe each part in detail to give the reader insights into the design choices potentially affecting the final distribution. 
+ 
+ 
+ 
+ C.1.1 Creating a Candidate Pool 
+
+ 
+ Similar to the creation procedure for the original ImageNet validation set, we collected candidate images from the Flickr image hosting service and then annotated them with Amazon Mechanical Turk (MTurk). 
+ 
+ 
+ Downloading images from Flickr. 
+
+ 
+ The Flickr API has a range of parameters for image searches such as the query terms, an allowed time range, a maximum number of returned images, and a sorting order.
+We summarize the main points here: 
+ 
+ • 
+ 
+ Query terms: For each class, we used each of the WordNet synonyms as a search term in separate queries. 
+ 
+ • 
+ 
+ Date range: There were two main options for the date range associated with our queries to Flickr: either the same date range as the original ImageNet data collection, or a date range directly after ImageNet.
+The advantage of using the ImageNet date range is that it avoids a distribution shift due to the time the images were taken.
+However, this option also comes with two important caveats:
+First, the pool of high quality images in the original ImageNet date range could have been largely exhausted by ImageNet.
+Second, the new dataset could end up with near-duplicates of images in the original validation or training set that are hard to detect.
+Especially the first issue is difficult to quantify, so we decided on a time range directly after the ImageNet collection period. 
+ 
+ 
+ In particular, we initially searched for images taken and uploaded to Flickr between July 11, 2012 and July 11, 2013 because the final ILSVRC2012 public data release was on July 10, 2012.
+Since we used a period of only one year (significantly shorter than the ImageNet collection period), we believe that the temporal component of the distribution shift is small. 
+ 
+ • 
+ 
+ Result size: We initially downloaded up to 100 images for each class.
+If a class has synonyms associated with it, we requested 100/ images for each synonym.
+We decided on 100 images per class since we aimed for 10,000 images overall and estimated that 10% of the candidate images would be of sufficiently high quality (similar to ImageNet [ 10 ] ). 
+ 
+ • 
+ 
+ Result order: Flickr offers the sorting options “relevance”, “interestingness”, and various temporal orderings.
+Note that the “relevance” and “interestingness” orderings may rely on machine learning models trained on ImageNet.
+Since these orderings may introduce a significant bias (e.g., by mainly showing images that current ImageNet models recognize for the respective search term), we chose to order the images by their upload date.
+This helps to ensure that our new test set is independent of current classifiers. 
+ 
+ 
+ 
+ 
+ After our first data collection, we found it necessary to expand the initial candidate pool for particular classes in order to reach a sufficient number of valid images.
+This is similar to the original ImageNet creation process, where the authors expanded the set of queries using two methods [ 10 , 48 ] .
+The first method appended a word from the parent class to the queries if this word also appeared in the gloss of the target class.
+The second method included translations of the queries into other languages such as Chinese, Spanish, Dutch, and Italian. 
+ 
+ 
+ We took the following steps to expand our search queries, only proceeding to the next step for a given class when in need of more images. 
+ 
+ 1. 
+ 
+ Append a word from the parent class if the word appears in the gloss of the target class. 
+ 
+ 2. 
+ 
+ Expand the maximum number of images to 200 for this class. 
+ 
+ 3. 
+ 
+ Expand the search range to include photos taken or uploaded before July 11, 2014 (i.e., a time span of two years instead of one). 
+ 
+ 4. 
+ 
+ Concatenate compound queries, i.e., search for “dialphone” instead of “dial phone”. 
+ 
+ 5. 
+ 
+ Manually pick alternative query words, including translations of the queries. 
+ 
+ 
+ 
+ 
+ In total, we obtained 208,145 candidate images from Flickr. 
+ 
+ 
+ 
+ Amazon Mechanical Turk. 
+
+ 
+ While the candidate images from Flickr are correlated with their corresponding class, a large number of images are still unsuitable for an image classification dataset.
+For instance, the images may be of low quality (blurry, unclear object presence, etc.), violate dataset rules (e.g., no paintings), or be simply unrelated to the target class.
+So similar to ImageNet, we utilized MTurk to filter our pool of candidate images. 
+ 
+ 
+ We designed our MTurk tasks and UI to be close to those used in ImageNet.
+As in ImageNet, we showed each MTurk worker a grid of 48 candidate images for a given target class.
+The task description was derived from the original ImageNet instructions and included the definition of the target class with a link to a corresponding Wikipedia page.
+We asked the MTurk workers to select images belonging to the target class regardless of “occlusions, other objects, and clutter or text in the scene” and to avoid drawings or paintings (both as in ImageNet).
+Appendix C.4.1 shows a screenshot of our UI and a screenshot of the original UI for comparison. 
+ 
+ 
+ For quality control, we embedded at least six randomly selected images from the original validation set in each MTurk task (three from the same class, three from a class that is nearby in the WordNet hierarchy).
+These images appeared in random locations of the image grid for each task.
+We obfuscated all image URLs and resized our images to match the most common size of the existing validation images so that the original validation images were not easy to spot. 
+ 
+ 
+ The main outcome of the MTurk tasks is a selection frequency for each image, i.e., what fraction of MTurk workers selected the image in a task for its target class.
+We recruited at least ten MTurk workers for each task (and hence for each image), which is similar to ImageNet.
+Since each task contained original validation images, we could also estimate how often images from the original dataset were selected by our MTurk workers. 
+ 
+ 
+ 
+ Removing near-duplicate images. 
+
+ 
+ The final step in creating the candidate pool was to remove near-duplicates, both within our new test set and between our new test set and the original ImageNet dataset.
+Both types of near-duplicates could harm the quality of our dataset. 
+ 
+ 
+ Since we obtained results from Flickr in a temporal ordering, certain events (e.g., the 2012 Olympics) led to a large number of similar images depicting the same scene (e.g., in the class for the “horizontal bar“ gymnastics instrument).
+Inspecting the ImageNet validation set revealed only very few sets of images from a single event.
+Moreover, the ImageNet paper also remarks that they removed near-duplicates [ 10 ] .
+Hence we decided to remove near-duplicates within our new test set. 
+ 
+ 
+ Near-duplicates between our dataset and the original test set are also problematic.
+Since the models typically achieve high accuracy on the training set, testing on a near-duplicate of a training image checks for memorization more than generalization.
+A near-duplicate between the existing validation set and our new test set also defeats the purpose of measuring generalization to previously unseen data (as opposed to data that may already have been the victim of adaptive overfitting). 
+ 
+ 
+ To find near-duplicates, we computed the 30 nearest neighbors for each candidate image in three different metrics:
+ -distance on raw pixels, -distance on features extracted from a pre-trained VGG [ 49 ] model (fc7), and SSIM (structural similarity) [ 56 ] , which is a popular image similarity metric.
+For metrics that were cheap to evaluate ( -distance on pixels and -distance on fc7), we computed nearest neighbor distances to all candidate images and all of the original ImageNet data.
+For the more compute-intensive SSIM metric, we restricted the set of reference images to include all candidate images and the five closest ImageNet classes based on the tree distance in the WordNet hierarchy.
+We then manually reviewed nearest neighbor pairs below certain thresholds for each metric and removed any duplicates we discovered. 
+ 
+ 
+ To the best of our knowledge, ImageNet used only nearest neighbors in the -distance to find near-duplicates [ 1 ] .
+While this difference may lead to a small change in distribution, we still decided to use multiple metrics since including images that have near-duplicates in ImageNet would be contrary to the main goal of our experiment.
+Moreover, a manual inspection of the original validation set revealed only a very small number of near-duplicates within the existing dataset. 
+ 
+ 
+ 
+ 
+ C.1.2 Sampling a Clean Dataset 
+
+ 
+ The result of collecting a candidate pool was a set of images with annotations from MTurk, most importantly the selection frequency of each image.
+In the next step, we used this candidate pool to sample a new test set that closely resembles the distribution of the existing validation set.
+There were two main difficulties in this process. 
+ 
+ 
+ First, the ImageNet publications do not provide the agreement thresholds for each class that were used to determine which images were valid.
+One possibility could be to run the algorithm the ImageNet authors designed to compute the agreement thresholds.
+However, this algorithm would need to be exactly specified, which is unfortunately not the case to the best of our knowledge. 
+ 12 
+ 
+ 
+ 
+ To be precise: Jia Deng’s PhD thesis [ 9 ] provides a clear high-level description of their algorithm for computing agreement thresholds. However – as is commonly the case in synopses of algorithms – the description still omits some details such as the binning procedure or the number of images used to compute the thresholds. Since it is usually hard to exactly reconstruct a non-trivial algorithm from an informal summary, we instead decided to implement three different sampling strategies and compare their outcomes. Potential deviations from the ImageNet sampling procedure are also alleviated by the fact that our MTurk tasks always included at least a few images from the original validation set, which allowed us to calibrate our sampling strategies to match the existing ImageNet data. 
+ 
+ 
+ Second, and more fundamentally, it is impossible to exactly replicate the MTurk worker population from 2010 – 2012 with a reproducibility experiment in 2018.
+Even if we had access to the original agreement thresholds, it is unclear if they would be meaningful for our MTurk data collection (e.g., because the judgments of our annotations could be different).
+Similarly, re-running the algorithm for computing agreement thresholds could give different results with our MTurk worker population. 
+ 
+ 
+ So instead of attempting to directly replicate the original agreement thresholds, we instead explored three different sampling strategies.
+An important asset in this part of our experiment was that we had inserted original validation images into the MTurk tasks (see the previous subsection).
+So at least for our MTurk worker population, we could estimate how frequently the MTurk workers select the original validation images. 
+ 
+ 
+ In this subsection, we describe our sampling strategy that closely matches the selection frequency distribution of the original validation set.
+The follow-up experiments in Section 4 then explore the impact of this design choice in more detail.
+As we will see, the sampling strategy has significant influence on the model accuracies. 
+ 
+ 
+ Matching the Per-class Selection Frequency. 
+
+ 
+ A simple approach to matching the selection frequency of the existing validation set would be to sample new images so that the mean selection frequency is the same as for the original dataset.
+However, a closer inspection of the selection frequencies reveals significant differences between the various classes.
+For instance, well-defined and well-known classes such as “African elephant” tend to have high selection frequencies ranging from 0.8 to 1.0.
+At the other end of the spectrum are classes with an unclear definition or easily confused alternative classes.
+For instance, the MTurk workers in our experiment often confused the class “nail” (the fastener) with fingernails, which led to significantly lower selection frequencies for the original validation images belonging to this class.
+In order to match these class-level details, we designed a sampling process that approximately matches the selection frequency distribution for each class. 
+ 
+ 
+ As a first step, we built an estimate of the per-class distribution of selection frequencies.
+For each class, we divided the annotated validation images into five histogram bins based on their selection frequency.
+These frequency bins were , , , , and .
+Intuitively, these bins correspond to a notion of image quality assessed by the MTurk workers, with the bin containing the worst images and the bin containing the best images.
+Normalizing the resulting histograms then yielded a distribution over these selection frequency bins for each class. 
+ 
+ 
+ Next, we sampled ten images for each class from our candidate pool, following the distribution given by the class-specific selection frequency histograms.
+More precisely, we first computed the target number of images for each histogram bin, and then sampled from the candidates images falling into this histogram bin uniformly at random.
+Since we only had a limited number of images for each class, this process ran out of images for a small number of classes.
+In these cases, we then sampled candidate images from the next higher bin until we found a histogram bin that still had images remaining.
+While this slightly changes the distribution, we remark that it makes our new test set easier and only affected 0.8% of the images in the new test set. 
+ 
+ 
+ At the end of this sampling process, we had a test set with images and an average sampling frequency of .
+This is close to the average sampling frequency of the annotated validation images ( ). 
+ 
+ 
+ 
+ Final Reviewing. 
+
+ 
+ While the methodology outlined so far closely matches the original ImageNet distribution, it is still hard to ensure that no unintended biases crept into the dataset (e.g., our MTurk workers could interpret some of the class definitions differently and select different images).
+So for quality control, we added a final reviewing step to our dataset creation pipeline.
+Its purpose was to rule out obvious biases and ensure that the dataset satisfies our quality expectations before we ran any models on the new dataset.
+This minimizes dependencies between the new test set and the existing models. 
+ 
+ 
+ In the final reviewing step, the authors of this paper manually reviewed every image in the dataset.
+Appendix C.4.2 includes a screenshot and brief description of the user interface.
+When we found an incorrect image or a near-duplicate, we removed it from the dataset.
+After a pass through the dataset, we then re-sampled new images from our candidate pool.
+In some cases, this also required new targeted Flickr searches for certain classes.
+We repeated this process until the dataset converged after 33 iterations.
+We remark that the majority of iterations only changed a small number of images. 
+ 
+ 
+ One potential downside of the final reviewing step is that it may lead to a distribution shift.
+However, we accepted this possibility since we view dataset correctness to be more important than minimizing distribution shift.
+In the end, a test set is only interesting if it has correct labels.
+Note also that removing incorrect images from the dataset makes it easier, which goes against the main trend we observe (a drop in accuracy).
+Finally, we kept track of all intermediate iterations of our dataset so that we could measure the impact of this final reviewing step (see Section C.3.2 ).
+This analysis shows that the main trends (a significant accuracy drop and an approximately linear relationship between original and new accuracy) also hold for the first iteration of the dataset without any additional reviewing. 
+ 
+ 
+ 
+ 
+ 
+ C.2 Model Performance Results 
+
+ 
+ After assembling our new test sets, we evaluated a broad range of models on both the original validation set and our new test sets.
+Section C.4.3 contains a list of all models we evaluated with corresponding references and links to source code repositories.
+Tables 14 and 15 show the top-1 and top-5 accuracies for our main test set MatchedFrequency .
+Figure 12 visualizes the top-1 and top-5 accuracies on all three test sets. 
+ 
+ 
+ In the main text of the paper and Figure 12 , we have chosen to exclude the Fisher Vector models and show accuracies only for the convolutional neural networks (convnets).
+Since the Fisher Vector models achieve significantly lower accuracy, a plot involving both model families would have sacrificed resolution among the convnets.
+We decided to focus on convnets in the main text because they have become the most widely used model family on ImageNet. 
+ 
+ 
+ Moreover, a linear model of accuracies (as shown in previous plots) is often not a good fit when the accuracies span a wide range.
+Instead, a non-linear model such as a logistic or probit model can sometimes describe the data better.
+Indeed, this is also the case for our data on ImageNet.
+Figure 6 shows the accuracies both on a linear scale as in the previous plots, and on a probit scale, i.e., after applying the inverse of the Gaussian CDF to all accuracy scores.
+As can be seen by comparing the two plots in Figure 6 , the probit model is a better fit for our data.
+It accurately summarizes the relationship between original and new test set accuracy for all models from both model families in our testbed. 
+ 
+ 
+ Similar to Figure 12 , we also show the top-1 and top-5 accuracies for all three datasets in the probit domain in Figure 13 .
+Section 5.3 describes a possible generative model that leads to a linear fit in the probit domain as exhibited by the plots in Figures 6 and 13 . 
+ 
+ 
+ 
+ 
+ Figure 6 : 
+Model accuracy on the original ImageNet validation set vs. our new test set MatchedFrequency .
+Each data point corresponds to one model in our testbed (shown with 95% Clopper-Pearson confidence intervals), and we now also include the Fisher Vector models.
+The left plot shows the model accuracies with a linear scale on the axes.
+The right plot instead uses a probit scale, i.e., accuracy appears at , where is the Gaussian CDF.
+Comparing the two plot provides evidence that the probit model is a better fit for the accuracy scores.
+Over a range of 60 percentage points, the linear fit in the probit domain accurately describes the relationship between original and new test set accuracy.
+The shaded region around the linear fit is a 95% confidence region from 100,000 bootstrap samples.
+The confidence region is present in both plots but is significantly smaller in the right plot due to the better fit in the probit domain.
+
+ 
+ 
+ 
+ 
+ C.3 Follow-up Hypotheses 
+
+ 
+ As for CIFAR-10, the gap between original and new accuracy is concerningly large.
+Hence we investigated multiple hypotheses for explaining this gap. 
+ 
+ 
+ C.3.1 Cross Validation 
+
+ 
+ A natural question is whether cross-validation with the existing ImageNet data could have pointed towards a significant drop in accuracy.
+If adaptive overfitting to the images in the validation set is a cause for the accuracy drop, testing on different images from another cross-validation fold could produce lower accuracies. 
+ 13 
+ 
+ 
+ 
+ Note however that the training images may also be affected by adaptive overfitting since the model hyperparameters are often tuned for fast training speed and high training accuracy. 
+Moreover, recall that the ImageNet validation set is not a strictly i.i.d. sample from the same distribution as the training set (see the beginning of Section 4 ).
+This also raises the question of how well a model would perform on a cross-validation fold from the training data. 
+ 
+ 
+ To investigate these two effects, we conducted a cross-validation experiment with the ImageNet training and validation sets.
+In order to ensure that the new cross-validation folds contain only training images, we treated the existing validation set as one fold and created five additional folds with 50,000 images each.
+To this end, we drew a class-balanced sample of 250,000 images from the training set and then randomly partitioned this sample into five cross-validation folds (again class-balanced).
+For each of these five folds, we added the validation set (and the other training folds) to the training data so that the size of the training set was unchanged.
+We then trained one resnet50 model 
+ 14 
+ 
+ 
+ 
+ To save computational resources, we used the optimized training code from https://github.com/fastai/imagenet-fast . Hence the top-5 accuracy on the original validation set is 0.4% lower than in Table 15 . [ 21 ] for each of the five training sets and evaluated them on the corresponding held-out data.
+Table 13 shows the resulting accuracies for each split. 
+ 
+ 
+ 
+ Overall, we do not see a large difference in accuracy on the new cross validation splits: all differences fall within the 95% confidence intervals around the accuracy scores.
+This is in contrast to the significantly larger accuracy drops on our new test sets. 
+ 
+ 
+ 
+ C.3.2 Impact of Dataset Revisions 
+
+ 
+ As mentioned in Section C.1.2 , our final reviewing pass may have led to a distribution shift compared to the original ImageNet validation set.
+In general, our reviewing criterion was to blacklist images that were 
+ 
+ • 
+ 
+ not representative of the target class, 
+ 
+ • 
+ 
+ cartoons, paintings, drawings, or renderings, 
+ 
+ • 
+ 
+ significantly different in distribution from the original ImageNet validation set, 
+ 
+ • 
+ 
+ unclear, blurry, severely occluded, overly edited, or including only a small target object. 
+ 
+ 
+ For each class, our reviewing UI (screenshot in Appendix C.4.2 ) displayed a random sample of ten original validation images directly next to the ten new candidate images currently chosen.
+At least to some extent, this allowed us to detect and correct distribution shifts between the original validation set and our candidate pool.
+As a concrete example, we noted in one revision of our dataset that approximately half of the images for “great white shark” were not live sharks in the water but models in museums or statues outside.
+In contrast, the ImageNet validation set had fewer examples of such artificial sharks.
+Hence we decided to remove some non-live sharks from our candidate pool and sampled new shark images as a replacement in the dataset. 
+ 
+ 
+ Unfortunately, some of these reviewing choices are subjective.
+However, such choices are often an inherent part of creating a dataset and it is unclear whether a more “hands-off” approach would lead to more meaningful conclusions.
+For instance, if the drop in accuracy was mainly caused by a distribution shift that is easy to identify and correct (e.g., an increase in black-and-white images), the resulting drop may not be an interesting phenomenon (beyond counting black-and-white images).
+Hence we decided to both remove distribution shifts that we found easy to identify visually, and also to measure the effect of these interventions. 
+ 
+ 
+ Our reviewing process was iterative, i.e., we made a full pass over every incomplete class in a given dataset revision before sampling new images to fill the resulting gaps.
+Each time we re-sampled our dataset, we saved the current list of images in our version control system.
+This allowed us to track the datasets over time and later measure the model accuracy for each dataset revision.
+We remark that we only computed model accuracies on intermediate revisions after we had arrived at the final revision of the corresponding dataset. 
+ 
+ 
+ Figure 7 plots the top-1 accuracy of a resnet50 model versus the dataset revision for our new MatchedFrequency test set.
+Overall, reviewing improved model accuracy by about 4% for this dataset.
+This is evidence that our manual reviewing did not cause the drop in accuracy between the original and new dataset. 
+ 
+ 
+ 
+ In addition, we also investigated whether the linear relationship between original and new test accuracy was affected by our final reviewing passes.
+To this end, we evaluated our model testbed on the first revision of our MatchedFrequency test set.
+As can be seen in Figure 8 , the resulting accuracies still show a good linear fit that is of similar quality as in Figure 12 .
+This shows that the linear relationship between the test accuracies is not a result of our reviewing intervention. 
+ 
+ 
+ 
+ 
+ Figure 8 : Model accuracy on the original ImageNet validation set vs. accuracy on the first revision of our MatchedFrequency test set.
+Each data point corresponds to one model in our testbed (shown with 95% Clopper-Pearson confidence intervals).
+The red shaded region is a 95% confidence region for the linear fit from 100,000 bootstrap samples.
+The plots show that the linear relationship between original and new test accuracy also occurs without our final dataset reviewing step.
+The accuracy plots for the final revision of MatchedFrequency can be found in Figure 12 . 
+ 
+ 
+ 
+ 
+ C.4 Additional Figures, Tables, and Lists 
+
+ 
+ In this appendix we provide large figures etc. that did not fit into the preceding sections about our ImageNet experiments. 
+ 
+ 
+ C.4.1 MTurk User Interfaces 
+
+ 
+ For comparison, we include the original ImageNet MTurk user interface (UI) in Figure 9 and the MTurk UI we used in our experiments in Figure 10 .
+Each UI corresponds to one task for the MTurk workers, which consists of 48 images in both cases.
+In contrast to the original ImageNet UI, our UI takes up more than one screen.
+This requires the MTurk workers to scroll but also provides more details in the images.
+While the task descriptions are not exactly the same, they are very similar and contain the same directions (e.g., both descriptions ask the MTurk workers to exclude drawings or paintings). 
+ 
+ 
+ 
+ 
+ 
+ C.4.2 User Interface for our Final Reviewing Process 
+
+ 
+ Figure 11 shows a screenshot of the reviewing UI that the paper authors used to manually review the new ImageNet datasets.
+At the top, the UI displays the wnid (“n01667114”), the synset ( mud turtle ), and the gloss.
+Next, a grid of 20 images is shown in 4 rows. 
+ 
+ 
+ The top two rows correspond to the candidate images currently sampled for the new dataset.
+Below each image, our UI shows a unique identifier for the image and the date the image was taken.
+There is also a check box to blacklist any incorrect images.
+In addition, there is a check box for each image to add it to the blacklist of incorrect images.
+If an image is added to the blacklist, it will be removed in the next revision of the dataset and replaced with a new image from the candidate pools.
+The candidate images are sorted by the date they were taken, which makes it easier to spot and remove near-duplicates.
+Images are marked as near-duplicates by adding their identifier to the “Near-duplicate set” text field. 
+ 
+ 
+ The bottom two rows correspond to a random sample of images from the validation set that belong to the target class.
+We display these images to make it easier to detect and correct for distribution shifts between our new test sets and the original ImageNet validation dataset. 
+ 
+ 
+ 
+ 
+ C.4.3 Full List of Models Evaluated on ImageNet 
+
+ 
+ The following list contains all models we evaluated on ImageNet with references and links to the corresponding source code. 
+ 
+ 1. 
+ 
+ alexnet [ 36 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 2. 
+ 
+ bninception [ 29 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 3. 
+ 
+ cafferesnet101 [ 21 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 4. 
+ 
+ densenet121 [ 27 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 5. 
+ 
+ densenet161 [ 27 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 6. 
+ 
+ densenet169 [ 27 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 7. 
+ 
+ densenet201 [ 27 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 8. 
+ 
+ dpn107 [ 4 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 9. 
+ 
+ dpn131 [ 4 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 10. 
+ 
+ dpn68b [ 4 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 11. 
+ 
+ dpn68 [ 4 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 12. 
+ 
+ dpn92 [ 4 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 13. 
+ 
+ dpn98 [ 4 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 14. 
+ 
+ fbresnet152 [ 21 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 15. 
+ 
+ fv_4k [ 44 , 6 ] https://github.com/modestyachts/nondeep FisherVector model using SIFT, local color statistic features, and 16 GMM centers. 
+ 
+ 16. 
+ 
+ fv_16k [ 44 , 6 ] https://github.com/modestyachts/nondeep FisherVector model using SIFT, local color statistic features, and 64 GMM centers. 
+ 
+ 17. 
+ 
+ fv_64k [ 44 , 6 ] https://github.com/modestyachts/nondeep FisherVector model using SIFT, local color statistic features, and 256 GMM centers. 
+ 
+ 18. 
+ 
+ inception_resnet_v2_tf [ 53 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 19. 
+ 
+ inception_v1_tf [ 51 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 20. 
+ 
+ inception_v2_tf [ 29 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 21. 
+ 
+ inception_v3_tf [ 52 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 22. 
+ 
+ inception_v3 [ 52 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 23. 
+ 
+ inception_v4_tf [ 53 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 24. 
+ 
+ inceptionresnetv2 [ 29 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 25. 
+ 
+ inceptionv3 [ 52 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 26. 
+ 
+ inceptionv4 [ 53 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 27. 
+ 
+ mobilenet_v1_tf [ 25 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 28. 
+ 
+ nasnet_large_tf [ 63 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 29. 
+ 
+ nasnet_mobile_tf [ 63 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 30. 
+ 
+ nasnetalarge [ 63 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 31. 
+ 
+ nasnetamobile [ 63 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 32. 
+ 
+ pnasnet5large [ 39 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 33. 
+ 
+ pnasnet_large_tf [ 39 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 34. 
+ 
+ pnasnet_mobile_tf [ 39 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 35. 
+ 
+ polynet [ 62 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 36. 
+ 
+ resnet101 [ 21 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 37. 
+ 
+ resnet152 [ 21 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 38. 
+ 
+ resnet18 [ 21 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 39. 
+ 
+ resnet34 [ 21 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 40. 
+ 
+ resnet50 [ 21 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 41. 
+ 
+ resnet_v1_101_tf [ 21 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 42. 
+ 
+ resnet_v1_152_tf [ 21 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 43. 
+ 
+ resnet_v1_50_tf [ 21 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 44. 
+ 
+ resnet_v2_101_tf [ 22 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 45. 
+ 
+ resnet_v2_152_tf [ 22 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 46. 
+ 
+ resnet_v2_50_tf [ 22 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 47. 
+ 
+ resnext101_32x4d [ 58 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 48. 
+ 
+ resnext101_64x4d [ 58 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 49. 
+ 
+ se_resnet101 [ 26 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 50. 
+ 
+ se_resnet152 [ 26 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 51. 
+ 
+ se_resnet50 [ 26 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 52. 
+ 
+ se_resnext101_32x4d [ 26 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 53. 
+ 
+ se_resnext50_32x4d [ 26 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 54. 
+ 
+ senet154 [ 26 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 55. 
+ 
+ squeezenet1_0 [ 28 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 56. 
+ 
+ squeezenet1_1 [ 28 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 57. 
+ 
+ vgg11_bn [ 29 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 58. 
+ 
+ vgg11 [ 49 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 59. 
+ 
+ vgg13_bn [ 29 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 60. 
+ 
+ vgg13 [ 49 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 61. 
+ 
+ vgg16_bn [ 29 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 62. 
+ 
+ vgg16 [ 49 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 63. 
+ 
+ vgg19_bn [ 29 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 64. 
+ 
+ vgg19 [ 49 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 65. 
+ 
+ vgg_16_tf [ 49 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 66. 
+ 
+ vgg_19_tf [ 49 ] https://github.com/tensorflow/models/tree/master/research/slim/ 
+ 
+ 67. 
+ 
+ xception [ 5 ] https://github.com/Cadene/pretrained-models.pytorch 
+ 
+ 
+ 
+ 
+ 
+ C.4.4 Full Results Tables 
+
+ 
+ Tables 14 and 15 contain the detailed accuracy scores (top-1 and top-5, respectively) for the original ImageNet validation set and our main new test set MatchedFrequency .
+Tables 16 – 19 contain the accuracy scores for our Threshold0.7 and TopImages test sets. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ C.4.5 Accuracy Plots for All ImageNet Test Sets 
+
+ 
+ Figure 12 shows the top-1 and top-5 accuracies for our three test sets and all convolutional networks in our model testbed.
+Figure 13 shows the accuracies for all models (including Fisher Vector models) with a probit scale on the axes. 
+ 
+ 
+ 
+ 
+ 
+    
+ 
+ 
+ 
+ 
+    
+ 
+ 
+ 
+ 
+ 
+ Figure 12 : 
+Model accuracy on the original ImageNet validation set vs. our new test sets.
+See Section 4 for a description of these test sets.
+Each data point corresponds to one model in our testbed (shown with 95% Clopper-Pearson confidence intervals).
+The red shaded region is a 95% confidence region for the linear fit from 100,000 bootstrap samples.
+For MatchedFrequency , the accuracies on the new test set are significantly below the original accuracies.
+The accuracies for Threshold0.7 are still below the original counterpart, but for TopImages they improve over the original test accuracies.
+This shows that small variations in the data generation process can have significant impact on the accuracy scores.
+As for CIFAR-10, all plots reveal an approximatly linear relationship between original and new test accuracy.
+Only the slope for the top-5 accuracies on TopImages is significantly smaller than 1 (0.88, 95% confidence interval from 100,000 bootstrap samples: ).
+It is unclear if this is a sign of adaptive overfitting or due to the models approaching the 100% accuracy regime.
+Investigating this further is an interesting question for future work.
+
+ 
+ 
+ 
+ 
+ 
+ 
+    
+ 
+ 
+ 
+ 
+    
+ 
+ 
+ 
+ 
+ 
+ Figure 13 : 
+Model accuracy on the original ImageNet validation set vs. our new test sets.
+The structure of the plots is similar to Figure 12 and we refer the reader to the description there.
+In contrast to Figure 12 , the plots here contain also the Fisher Vector models.
+Moreover, the axes are scaled according to the probit transformation, i.e., accuracy appears at , where is the Gaussian CDF.
+For all three datasets and both top-1 and top-5 accuracy, the plots reveal a good linear fit in the probit domain spanning around 60 percentage points of accuracy.
+All plots include a 95% confidence region for the linear fit as in Figure 12 , but the red shaded region is hard to see in some of the plots due to its small size.
+
+ 
+ 
+ 
+ 
+ C.4.6 Example Images 
+
+ 
+ Figure 16 shows randomly selected images for three randomly selected classes for both the original ImageNet validation set and our three new test sets. 
+ 
+ 
+ 
+ 
+ 
+ Figure 14 : Randomly selected images from the original ImageNet validation set and our new ImageNet test sets.
+We display four images from three randomly selected classes for each of the four datasets (the original validation set and our three test sets described in Section 4 ).
+The displayed classes are ‘‘Cypripedium calceolus’’, ‘‘gyromitra’’, and ‘‘mongoose’’.
+The following footnote reveals which datasets correspond to original and new ImageNet test sets. 
+ 16 
+ 
+ 
+ 
+ Test Set A is the original validation set, Test Set B is the MatchedFrequency dataset, Test Set C is the Threshold0.7 , Test set D is TopImages . 
+ 
+ 
+ 
+ C.4.7 Effect of Selection Frequency on Model Accuracy 
+
+ 
+ To better understand how the selection frequency of an image impacts the model accuracies, Figures 15 , 16 , and 17 show model accuracies stratified into five selection frequency bins. 
+ 
+ 
+ 
+ Figure 15 : Model accuracy on the original ImageNet validation set vs. accuracy on our new test set MatchedFrequency , stratified into five selection frequency bins.
+Every bin contains the images with MTurk selection frequency falling into the corresponding range.
+Each data point corresponds to one model and one of the five frequency bins (indicated by the different colors).
+The x-value of each data point is given by the model’s accuracy on the entire original validation set.
+The y-value is given by the model’s accuracy on our new test images falling into the respective selection frequency bin.
+The plot shows that the selection frequency has strong influence on the model accuracy.
+For instance, images with selection frequencies in the bin lead to an average model accuracy about 20% lower than for the entire test set MatchedFrequency , and 30% lower than the original validation set.
+We remark that we manually reviewed all images in MatchedFrequency to ensure that (almost) all images have the correct class label, regardless of selection frequency bin. 
+ 
+ 
+ 
+ Figure 16 : Model accuracy on the original ImageNet validation set stratified into five selection frequency bins.
+This plot has a similar structure as Figure 15 above, but contains the original validation set accuracy on both axes (as before, the images are binned on the y-axis and not binned on the x-axis, i.e., the x-value is the accuracy on the entire validation set).
+The plot shows that the selection frequency has strong influence on the model accuracy on the original ImageNet validation set as well.
+For instance, images with selection frequencies in the bin lead to an average model accuracy about 10 – 15% lower than for the entire validation set.
+ 
+ 
+ 
+ 
+ Figure 17 : Model accuracy on the original ImageNet validation set vs. accuracy on our new test set MatchedFrequency .
+In contrast to the preceding Figures 15 and 16 , both original and new test accuracy is now stratified into five selection frequency bins.
+Each data point corresponds to the accuracy achieved by one model on the images from one of the five frequency bins (indicated by the different colors).
+The plot shows that the model accuracies in the various bins are strongly correlated, but the accuracy on images in our new test is consistently lower.
+The gap is largest for images in the middle frequency bins (about 20% accuracy difference) and smallest for images in the lowest and highest frequency bins (5 – 10 % difference).
+ 
+ 
+ 
+ 
+ C.4.8 Ambiguous Class Examples 
+
+ 
+ Figure 18 shows randomly selected images from the original ImageNet validation set for three pairs of classes with ambiguous class boundaries.
+We remark that several more classes in ImageNet have ill-defined boundaries.
+The three pairs of classes here were chosen only as illustrative examples. 
+ 
+ 
+ The following list shows names and definitions for the three class pairs: 
+ 
+ 
+ 
+ • 
+ 
+ Pair 1 
+ 
+ a. 
+ 
+ projectile, missile : “a weapon that is forcibly thrown or projected at a targets but is not self-propelled” 
+ 
+ b. 
+ 
+ missile : “a rocket carrying a warhead of conventional or nuclear explosives; may be ballistic or directed by remote control” 
+ 
+ 
+ 
+ • 
+ 
+ Pair 2 
+ 
+ c. 
+ 
+ tusker : “any mammal with prominent tusks (especially an elephant or wild boar)” 
+ 
+ d. 
+ 
+ Indian elephant, Elephas maximus : “Asian elephant having smaller ears and tusks primarily in the male” 
+ 
+ 
+ 
+ • 
+ 
+ Pair 3 
+ 
+ e. 
+ 
+ screen, CRT screen : “the display that is electronically created on the surface of the large end of a cathode-ray tube” 
+ 
+ f. 
+ 
+ monitor : “electronic equipment that is used to check the quality or content of electronic transmissions” 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Figure 18 : Random images from the original ImageNet validation set for three pairs of classes with ambiguous class boundaries. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Experimental support, please
+ view the build logs 
+ for errors. Generated by
+ 
+ 
+ L
+ A 
+ T
+ E 
+ 
+ xml 
+ 
+ .
+ 
+ 
+ Instructions for reporting errors 
+ We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+ support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+ methods listed below: 
+ 
+ Click the "Report Issue" ( ) button, located in the page header. 
+ 
+ Tip: You can select the relevant text first, to include it in your report. 
+ Our team has already identified the following issues . We appreciate your time reviewing and reporting rendering errors we
+ may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+ should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+ all. 
+ Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion , and welcome developer contributions . 
+ 
+ 
+ 
+ 
+ 
+ We gratefully acknowledge support from
+ our major funders ,
+ member institutions , ,
+ and all contributors.
+ 
+ 
+ About 
+ · 
+ Help 
+ · 
+ Contact 
+ · 
+ Subscribe 
+ · 
+ Copyright 
+ · 
+ Privacy 
+ · 
+ Accessibility 
+ · 
+ Operational Status (opens in new tab) 
+ 
+ 
+
+ 
+ Major funding support from 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

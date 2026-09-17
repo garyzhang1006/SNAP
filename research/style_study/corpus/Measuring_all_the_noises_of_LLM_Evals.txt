@@ -1,0 +1,1203 @@
+ 
+ 
+ 
+ Measuring all the noises of LLM Evals 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report GitHub Issue 
+ × 
+ 
+
+ 
+ Title: 
+ 
+
+ Content selection saved. Describe the issue below: 
+
+ Description: 
+ 
+ 
+
+ 
+ Submit without GitHub 
+ Submit in GitHub 
+ 
+ 
+ 
+ 
+ arXiv is now an independent nonprofit! 
+ Learn more 
+ × 
+ 
+
+ 
+ 
+ 
+ Back to arXiv 
+ 
+ 
+ 
+ 
+ Why HTML? 
+ 
+ 
+ Report Issue 
+ 
+ 
+ 
+ Back to Abstract 
+ 
+ 
+ 
+ 
+ Download PDF 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Abstract 
+ 1 Introduction 
+ 
+ Contributions. 
+ Contents. 
+ 
+ 2 Main concepts and examples 
+ 
+ 2.1 Types of noise 
+ 
+ Prediction noise. 
+ Data noise. 
+ Total noise = prediction + data noise. 
+ Paired analysis. 
+ All-pairs paired method. 
+ Finding: predictable total noise. 
+ Finding: typically prediction noise data noise. 
+ 
+ 
+ 3 Method 
+ 
+ 3.1 Setup and notations 
+ 
+ Paired comparison. 
+ 
+ 3.2 Sampling multiple predictions on each question 
+ 
+ Paired comparison. 
+ 
+ 
+ 4 Experiments 
+ 
+ 4.1 Exploratory analysis and findings 
+ 
+ 4.1.1 Data heatmap 
+ 
+ 4.2 All-pairs paired noises and predictable total noise 
+ 
+ 4.2.1 The Beta theory makes good noise predictions and fits the data 
+ 
+ 
+ 5 Related work 
+ 6 Discussions 
+ 
+ 6.1 Remarks on the main findings 
+ 
+ Predictable total noise. 
+ Prediction noise data noise. 
+ 
+ 6.2 Solving hard and special problems 
+ 6.3 Applications and Recommendations 
+ 6.4 Caveats of the expected metric 
+ 6.5 Limitations 
+ 
+ References 
+ A Method details 
+ 
+ A.1 Estimating the prediction noise two ways 
+ A.2 Estimating from samples 
+ 
+ Small correction. 
+ Same model correction. 
+ 
+ A.3 Implementation in array notation 
+ 
+ B The Beta theory predicts the noise and fits the distribution 
+ C Caveats and exceptions 
+ 
+ C.1 Caveats of the expected metric 
+ C.2 Exceptions to main findings 
+ 
+ D Applications and Recommendations 
+ 
+ Noise-aware Meta-analysis of multiple evals. 
+ 
+ E Equivalence to the bootstrap and the sign test 
+ 
+ The bootstrap. 
+ The sign test. 
+ 
+ F Estimator testing 
+ 
+ Accuracy vs. sample size. 
+ Bias Testing. 
+ 
+ 
+ 
+ 
+ 
+ 
+ License: CC BY 4.0
+ 
+ 
+arXiv:2512.21326v2 [cs.LG] 29 Mar 2026 
+ 
+ 
+ Measuring all the noises of LLM Evals 
+ 
+ 
+ Sida I. Wang
+ 
+ Email:  sida@meta.com 
+ 
+ Affiliation:  FAIR at Meta
+ 
+
+ Abstract 
+ 
+ Separating signal from noise is central to experiments. Applying well-established statistical methods effectively to LLM evals requires consideration of their unique noise characteristics. We clearly define and measure three types of noise: prediction noise from generating different answers on a given question, data noise from sampling questions, and their combined total noise following the law of total variance. To emphasize relative comparisons and gain statistical power, we propose the all-pairs paired method, which applies the paired analysis to all pairs of LLMs and measures all the noise components based on millions of question-level predictions across many evals and settings, revealing clear patterns. First, each eval exhibits a characteristic and highly predictable total noise level across all model pairs. Second, paired prediction noise typically exceeds paired data noise, which means reducing prediction noise by averaging can significantly increase statistical power. By measuring all the noises together, we can assess eval results in context, lowering the barrier of using the best analysis to make sound empirical decisions. 
+ 
+ 
+ 
+ 1 Introduction 
+
+ 
+ Identifying signal from noise is important for interpreting experiment results.
+Well-established methods from statistics can increase the rigor of the conclusions drawn from data Benjamini et al. (2021) .
+Even though these methods are in classic textbooks and clearly described for LLM evals Miller (2024) , there are some choices and confusions which lead to misleading measurements and low statistical power (Example  1 ). 
+ 
+ 
+ We have to consider the prediction noise of LLMs. Unlike previous probabilistic models that typically have a clear best prediction, LLMs produce persistently diverse predictions.
+For a model evaluated on questions with prediction seed , we have 
+ 
+ The prediction variance is due to the model generating different answers on a fixed question. The data variance measures how the questions vary in difficulty level and thus vary in their expected metrics. Prediction variance can be reduced but usually persists in practice. Data variance matters for reliability beyond the specific question set. The total variance is what matters in an experiment. 
+ 
+ 
+ While prediction variance can be reduced by averaging, the data variance is irreducible and can be large when the questions vary in their difficulties.
+As we will see, similar models do similarly on each question, so greatly reduced data noise is possible only with the paired analysis. This combination is 3-6 times and 4 times more powerful in Example  1 and Example  2 b.
+A difficulty is that the paired method only applies to pairs of models rather than a list of models in a table or leaderboard, thus not widely adopted.
+In this work, we propose the all-pairs paired method to measure all the noises, which uses the paired analysis on all pairs of results to measure the data, prediction, and total paired variances , for all model pairs , and across many evals and settings, revealing clear patterns applicable to a table of results. 
+ 
+ 
+ We highlight two findings and their applications. First, each eval has a characteristic total noise level that holds across all pairs of LLMs or agents.
+Specifically, the paired test usually gives a total paired variance similar to the basic variance predicted by the accuracy of model , resulting in this rule of thumb on correctness evals 
+ 
+ For better accuracy, Figure  1 Left shows the paired total noise on SWEBench-Verified against our theoretical prediction.
+This allows us to have accurate-enough noise measurements without custom analysis and even to infer the likely significance of results reported by others. 
+ 
+ 
+ Second, by clearly separating prediction noise from data noise, we find that the paired prediction noise is typically greater than the paired data noise. For example, Figure  1 Right shows that the prediction noise is around two times the data noise on MATH500, which means that reducing the prediction noise can lead to a significant increase in statistical power, or a significant decrease in the minimum detectable effect size (Example  1 ). Even greater reductions can be expected for controlled experiments between close model pairs. When this condition holds, inferring the noise from the training curve becomes useful (Example 2 ).
+The importance of these choices means that we must specify what noise we are measuring: data, prediction, or total noise using paired vs. unpaired method; otherwise we cannot interpret reported noise measurements Chan et al. (2025) ; Merrill et al. (2026) . 
+ 
+ 
+ We speculate that the uniformity of these results comes from the relative similarity among LLMs training on similar data using similar methods. Like models, eval questions also have a global identity analogous to the ability to repeat experiments on the same subjects anywhere. By summarizing the noise measurements on many pairs of results, we can put noise measurements in context and infer their likely values, lowering the barrier of the most powerful paired, averaged analysis. 
+ 
+ 
+ 
+ Contributions. 
+
+ 
+ We clearly define and measure prediction noise, data noise, and total noise on many models and evals.
+Our general findings enable practitioners to assess significance without custom statistical testing, and often allow us to detect much smaller effects. 
+ 
+ 
+ 
+ Contents. 
+
+ 
+ We present the main concepts informally and through examples in § 2 ; then more precisely in § 3 . To ensure correctness, we validate our method by comparing with the well-established bootstrap and sign test methods (§ E ), and test our sample estimators (§ A.3 ) against several generative models as well as on common LLM evals.
+§ 4 describes exploratory data visualization methods and the Beta model that fits the empirical distribution well. For discussions, § 6.1 explains why we observe these results; § C.1 for some caveats of averaging; § 6.2 on why harder questions cannot yet compensate for small sample sizes; § D provide recommendations for practitioners to better deal with noise and how to use multiple evals. 
+ 
+ 
+ The data and analysis can be found at https://all-the-noises.github.io ,
+which shows the results of this paper in interactive figures across evals, temperatures, based on millions of question-level metrics from public leaderboards and controlled experiments. 
+ 
+ 
+ 
+ 
+ 2 Main concepts and examples 
+
+ 
+ 2.1 Types of noise 
+
+ 
+ We should clearly distinguish three types of noise: the prediction sampling noise when answering a given question, the data sampling noise due to using a finite sample from the population of possible questions, and their sum total noise. 
+ 
+ 
+ Prediction noise. 
+
+ 
+ The prediction noise comes from generating different answers on a given question with the same model. LLMs have the remarkable ability to sample independent predictions that are especially diverse on reasoning and agentic questions.
+In the physical world, the prediction noise typically cannot be measured directly — humans cannot completely forget their previous thoughts and medical treatments cannot be undone to get more independent samples. Previous probabilistic ML models such as classifiers can typically make their best prediction directly and do not have interesting prediction noise. 
+ 
+ 
+ The prediction noise is also persistent even though we can try to reduce it by fixing the random seed, decreasing the temperature, averaging over many samples per question, or applying an aggregation method such as majority voting and verification.
+Fixing the random seed or lowering the temperature is brittle, which only works on the exact same model. Trying to produce the best answer by aggregation is perhaps the most sound method, though this still leaves some prediction noise due to the diversity of samples.
+Among these noise reductions, only averaging and fixing the random seed gives the same mean while others change the mean as well. Averaging is the most general and effective, which we will focus on. 
+ 
+ 
+ Other than sampling, additional prediction noise can come from inference-time choices such as prompt formatting, hyperparameters, and answer extraction; and training-time choices such as the random seeds, hyperparameters, and training steps. All of these can in theory be measured by changing the choice then drawing predictions on each question. The prediction noise can be further decomposed to separate these effects from the model’s prediction sampling noise Romanou et al. (2026) . While training is not typically considered a noise, it can result in more noise than signal over a small number of steps. 
+ 
+ 
+ 
+ Data noise. 
+
+ 
+ The eval data sampling noise comes from sampling a particular set of questions instead of another equally good questions from the unobservable population of questions. As long as the model has different expected accuracy on different questions (i.e. some questions are harder), the mean will vary when a different set of questions is sampled.
+Unlike the prediction noise, the data noise cannot be directly measured by evaluating on the fixed, given set of questions; and it cannot be reduced. Though the data noise can be inferred using the bootstrap or the variance estimator, it is not observed in experiments such as the training curve (Example  2 ) and varying the training seeds ( Madaan et al., 2024 ) . 
+ 
+ 
+ To see the presence of data noise, suppose that out of 100 True and False questions, model is correct on 50 random questions, is correct on 52 random questions out of the same 100 questions. Then is not reliably better than even when each question is answered deterministically with no prediction noise. Suppose we have chance of sampling a question that is answered correctly by , then the number of correctly answered questions has a standard deviation of , and thus it is typical to see a difference of more than 2 questions.
+Statistical methods such as computing the standard error or bootstrap focus on the data noise and will show that is not reliably better in this case. 
+ 
+ 
+ If we only care about a specific set of questions, then we can ignore the data noise. There are real life situations when the goal is to memorize a specific list of questions such as a driving knowledge test where the set of questions is published, or to solve specific important problems (AGI/ASI, P vs. NP). On most evals, we care about the underlying ability measured by the eval rather than the specific questions of the eval, so the data noise must not be ignored. 
+ 
+ 
+ 
+ Total noise = prediction + data noise. 
+
+ 
+ We can make this relation precise using the law of total variance. The extensive literature about noise focuses on the total noise or the data noise, perhaps because the prediction noise is uninteresting as in classification, or not measurable directly as in most non-digital experiments. 
+ 
+ 
+ 
+ Paired analysis. 
+
+ 
+ Whereas insights, skills, and resources are required to improve LLM ability, the paired methods can increase the signal significantly. Thus they should be recommended, especially given the enormous resources devoted to improving models. The paired method makes use of prediction differences on the same question to gain more information.
+To see why the paired method is better on real data, Figure  3 shows the heatmap of correctness where models at a similar overall accuracy (close in -axis) also do similarly on the individual questions. Thus, the paired method has the potential to reduce the data noise significantly.
+Examples  2 b and 1 show the potential increase in power using paired methods, especially when prediction noise > data noise, leading to the ability to detect differences several times smaller.
+Example  3 shows the basic idea of paired analysis. 
+ 
+ 
+ Example 1 (HumanEval) . 
+ 
+ HumanEval Chen et al. (2021) has questions, if a model has accuracy, then the unpaired standard error (SE) is 4%. Since a factor of is needed when comparing pairs of models, we need to get -value. The table below shows the reductions with paired and averaging, and how the combination can significantly reduce the minimum detectable difference between typical pairs of LLMs. 
+ 
+ 
+ 
+ Table 10 of Llama 3 Grattafiori et al. (2024) reports the unpaired 95% confidence intervals of around , thus many of the comparisons do not clear the difference with their method. 
+ 
+ 
+ 
+ Example 2 . 
+ 
+ a) The training curve is invalid in theory. 
+The training curve plots the eval result as a function of training steps and graphically shows the variance of eval results as a function of training steps (Figure  2 , col 1). While separated training curves are intuitively needed for reliable results, it is not sufficient. The training curve is insufficient because it only shows the prediction noise and completely ignores the data noise as it evaluates on the same questions repeatedly. In theory, the data noise can be much higher than the prediction noise. 
+ 
+ 
+ b) The training curve is valid when prediction noise is dominant. 
+In practice, if the prediction noise dominates the data noise, then the training curve method is valid. Figure  2 shows increasingly powerful analysis on the training curve Wei et al. (2025) visualized by the bootstrap. 
+ 
+ 
+ 
+ 
+ Example 3 (Paired vs unpaired) . 
+ 
+ In the unpaired case, suppose scored on this year’s exam, scored on last year’s exam where each exam contains different questions drawn from the same distribution. So might have done better because last year’s exam contained easier questions. In the paired case, suppose scored on the same exam as containing exactly the same questions, then the same difference is more significant. 
+ 
+ 
+ 
+ 
+ All-pairs paired method. 
+
+ 
+ We measure the paired standard error of all model pairs and , where the total noise is always measured, and the data and prediction noises are measured whenever possible.
+While this approach can be inconclusive in general (Example  4 ), our measurements show that on LLM evals this turned out to be quite informative, so we highlight the following two findings. 
+ 
+ 
+ 
+ Finding: predictable total noise. 
+
+ 
+ Figure  1 shows the total noise vs. the accuracy of . We observe that the total noise is quite predictable and agrees well with a theoretical model. This means each eval has a characteristic total noise as a function of the accuracy. This is the right noise number to use for experiments where one prediction is made per question. 
+ 
+ 
+ 
+ Finding: typically prediction noise data noise. 
+
+ 
+ When this holds, we can gain much statistical power by using the expected metric where the prediction noise is averaged away to be comparable to the data noise remaining. Figure  1 Right shows that on MATH500, the data standard error (SE) is typically less than of the prediction SE between different final models. Example  2 b and Figure  2 show training curves evaluated on SWEBench-verified starting with the same checkpoint, the data SE is of the prediction SE. If we average over 36 predictions, then the total SE would be , allowing us to detect effects that are the size with the same -value and power. Example  1 shows that the reduction on HumanEval is smaller but still a factor of 2.
+For controlled experiments, this allows us to detect differences several times smaller at the same significance level and power. Important caveats are discussed in § C.1 . 
+ 
+ 
+ Example 4 (Error bars for leaderboards) . 
+ 
+ Gu et al. (2024) ; Chiang et al. (2024) tried to put error bars on a leaderboard. To do this, they use a fixed baseline for paired comparison. However, this is not generally meaningful: let be the baseline, and are a pair of similar predictions very different from , so . This example shows it’s not in general possible to have one error bar per model, or per accuracy with the paired method. However, at least for the total noise of LLM evals, this work shows that there is almost no such surprises, thus we can compute meaningful error bars. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 3 Method 
+
+ 
+ 3.1 Setup and notations 
+
+ 
+ To make these concepts precise, suppose there are eval questions , which are typically text prompts.
+The model makes prediction and we get , typically 0 for incorrect and 1 for correct but can be a real number or an aggregate metric. Any information needed to compute the metric such as the ground truth answer or agent environments are included implicitly.
+We use to denote the metric function evaluating model on the question . 
+ 
+ 
+ On an eval, we compute the average of all questions to get the mean metric 
+ 
+ 
+ 
+ The estimated variance of and standard error (SE) of the mean are respectively 
+ 
+ where the standard error is normalized to the right scale for comparison to the effect size. We just say noise when there is no need to distinguish the variance and the standard error.
+ should be large enough for estimating the variance accurately, so a bias correction on using is not useful. 
+ 
+ 
+ With models and , the score difference 
+can be compared to to determine if the difference is likely due to chance. While this is simple and correct, it is also unnecessarily weak (Example  1 ). 
+ 
+ 
+ Paired comparison. 
+
+ 
+ Whereas innovation, insight, or compute is required to get real signal, tightening the analysis is easy with the paired methods and should be recommended generally.
+ and are correlated when the same question is used to evaluate both and .
+To be more powerful for free, we can use the paired variance 
+ 
+ The term may potentially reduce the paired variance to 0 when and are perfectly correlated. 
+ 
+ 
+ From the standard errors we can obtain the -score . When is moderately large, then the Central Limit Theorem applies and the -scores can be converted to -values. For example, is very weak, is beyond doubt, and for a -value of is a reasonable conventional standard. 
+ 
+ 
+ 
+ 
+ 3.2 Sampling multiple predictions on each question 
+
+ 
+ To capture this setting, we use for the random seed that generates the prediction, which is independent of the question , thus allowing the concise notation .
+As before, but now also averaging over the samples for each question , we consider the average score 
+ 
+ The estimated variance is then 
+ 
+ While we can use for the metric function, we decompose into components that are independent of but can be estimated using samples per question, 
+ 
+ 
+ 
+ is the total variance of first drawing a question from the pool of questions, and then drawing a sample answer for this question. is the variance of the expected score , which we call the data variance.
+ is the variance due to sampling from the model, which we call the prediction variance. See § A.1 for why is the same as the prediction variance that can be directly measured on a fixed eval. 
+ 
+ 
+ All the variances can be normalized to be their respective standard errors, 
+ 
+ 
+ 
+ Paired comparison. 
+
+ 
+ When we have two models and , we can consider the paired variance ,
+which also satisfies the law of total variance on , 
+ 
+ See § A for how to estimate from samples, the importance of small- correction, and implementation details. 
+ 
+ 
+ 
+ 
+ 
+ 4 Experiments 
+
+ 
+ The experimental results of this paper can be found at https://all-the-noises.github.io , where the method is tested on more evals and where the figures are interactive to support more detailed investigations and case studies. We can use this to check that the main conclusion indeed holds on all the evals.
+See § C.2 for a discussion of some exceptions. 
+ 
+ 
+ 4.1 Exploratory analysis and findings 
+
+ 
+ 4.1.1 Data heatmap 
+
+ 
+ To get an overview of our data, we use a heatmap shown in Figure  3 . Each row is a different question, sorted from the easiest to the hardest. Each column is a model whose -coordinate is the overall accuracy of this model. Like models, we might consider showing questions with -coordinate at their average accuracy instead of rank, but that would depend on which models are included, and less intrinsic to the eval. We immediately observe that models at a similar overall accuracy also do similarly on individual questions.
+Around 1000 samples are drawn for each question and model for MATH500 in Figure  3 . The SWEbench figure is based on the leaderboard data, which had to commit to single answers, but the same overall pattern holds, though with more noise. On MATH500, most of the red regions of bad models are still non-zero. 
+ 
+ 
+ 
+ 
+ 
+ 4.2 All-pairs paired noises and predictable total noise 
+
+ 
+ Figure  1 shows that the total SE agrees well with the theory predictions described in 4.2.1 and the range of the data noise and prediction noises. Only model pairs that are close in performance are plotted to avoid pointless comparisons between models whose difference is not in doubt. 
+ 
+ 
+ The noise components can be traded off to some extent so they can depend on the setting and not as predictable as the total. We find at more natural temperatures of , the prediction noise tends to be higher than the data noise across evals. Figure  4 shows the noise components at two different temperatures on CRUXEval, where the breakdown differs but the total noise remains the same. 
+ 
+ 
+ 
+ 4.2.1 The Beta theory makes good noise predictions and fits the data 
+
+ 
+ The distribution, where is the model’s mean accuracy, fits the empirical distribution of question-level expected accuracies well and predicts a paired prediction variance of , explaining the observed trend in Figure  1 . The details are in § B . 
+ 
+ 
+ 
+ 
+ 
+ 5 Related work 
+
+ 
+ Much work deals with noise in science and machine learning ( Lehmann and Romano, 2005 ; Dror et al., 2018 ; Hermann et al., 2024 ; Card et al., 2020 , among many others) , we adopt the approach of Miller (2024) to estimate the variance directly. While using samples to estimate the population follows from the law of large numbers, their approach is clarifying, has unique considerations and recommendations for LLMs, and is directly generalizable to all metric functions.
+Their method is also consistent with the bootstrap Efron (1979) and the sign test Dixon and Mood (1946) when applicable (§ E ). Efron and Tibshirani (1986) clearly described estimating the standard error as the example of not needing bootstrap. The concept of total variance decomposition is present in the analysis of variance , but Section 3 of Miller (2024) applied this concept to LLMs under variance of
+the conditional mean and mean conditional variance , which we call the prediction noise and the data noise. They also advocated for averaging (resample), but it is not clear how much gains can be expected. In this work, we develop and test the methods of estimating noise types from samples and then empirically measure these variance components on all pairs of models. 
+ 
+ 
+ For leaderboards, Chatbot arena Chiang et al. (2024) and CRUXEval Gu et al. (2024) computed confidence intervals using bootstrap
+with a fixed reference model, which allowed them to obtain per-model confidence intervals but is incorrect (Example  4 ). Furthermore, Chatbot arena aggregates comparisons with all other models to compute their confidence intervals, which necessarily loses any special properties of a particular pair of models.This work actually compares all pairs of models, and uses the summary statistics of all the comparisons to get meaningful noise levels. 
+ 
+ 
+ Madaan et al. (2024) measured the noise due to random seeds, which is a form of prediction noise in our view. Any direct approach to measure the noise necessarily ignores the data noise (Example  2 ). For the data noise, they also proposed using unpaired Bernoulli confidence intervals. This method was adopted by Llama 3 Grattafiori et al. (2024) but is much looser than the paired methods (Example  1 ) and does not separate the data noise and the prediction noise. Improving model ability is hard and expensive while tightening the analysis is easy. 
+ 
+ 
+ 
+ 6 Discussions 
+
+ 
+ 6.1 Remarks on the main findings 
+
+ 
+ Predictable total noise. 
+
+ 
+ When the prediction noise is much greater than the data noise, then total noise prediction noise, and prediction noise is predicted by the Beta theory, so the predictable total noise is a consequence of prediction noise data noise.
+However, Figure  4 shows non-negligible data noise, yet the total noise still follows the Beta theory prediction even when the data noise exceeds the prediction noise at low temperature, except for chain-of-thought predictions.
+More data is needed to further test if this continues to hold, and if low temperature can reduce prediction noise as the model is training. 
+ 
+ 
+ 
+ Prediction noise data noise. 
+
+ 
+ It is not surprising that current LLMs are similar to each other on question level metrics, as they are trained on similar data using similar architecture and learning methods. So it is expected that LLMs perform similarly on each question if they have similar overall abilities. In theory, the prediction noise can still be arbitrarily small, but LLMs seem to be both positively correlated and have sufficient prediction noise for this result to hold. 
+ 
+ 
+ Another implication is that modeling question difficulty using the Item Response Theory (IRT) or filtering questions Polo et al. (2024) should deal with the prediction noise first. Section 5 of Madaan et al. (2024) and Wang et al. (2024) find that IRT does not work well. The data filtering method of Wang et al. (2024) finds questions that are inversely correlated with the overall model performance.
+When there is high prediction noise, there is no way to get a reliable signal from a small number of questions or to reliably blame the questions for noise. 
+ 
+ 
+ 
+ 
+ 6.2 Solving hard and special problems 
+
+ 
+ Leading agentic evals often have fewer than 1000 questions, with terminal bench Merrill et al. (2026) having fewer than 100 questions. In contrast, 100 multiple choice questions clearly have a lot of noise that can be realized by guessing.
+Perhaps the reason for believing that very small evals are okay in the agentic setting is that the setting can capture very hard problems that are not guessable. For example, if a model solved an important open problem then we would not object to the sample size of one. Here the prior probability of success is near 0, so while observing a success gives a lot of information, we are expected to fail and get no information. In other words, either we get no information or the problems are not that special.
+More directly, one can still use the mixed predictor ( 30 ) to generate variance from the differences in model predictions, just like guessing. Such evals still need to satisfy the regular statistical standard to be meaningful. 
+ 
+ 
+ In human evaluations, we seem to get a lot of signal by evaluating on hard problems with a number of steps (e.g. interviews, math). The key is to reflect on the details of how the problem was solved, and if it seems to be memorized. In contrast, LLM evals and RLVR settings only give 1 bit back after doing a lot of work. If we continue in the direction of smaller and harder evals, we probably need to also generate more information per question. 
+ 
+ 
+ 
+ 6.3 Applications and Recommendations 
+
+ 
+ Practical recommendations for practitioners and eval builders, including a noise-aware method for meta-analysis across multiple evals, are in § D . 
+ 
+ 
+ 
+ 6.4 Caveats of the expected metric 
+
+ 
+ We recommend averaging for most controlled experiments not expected to have a large effect. However, there are caveats when targeting a particular eval metric or when the variable affects the distribution’s sharpness. See § C.1 for detailed examples. 
+ 
+ 
+ 
+ 6.5 Limitations 
+
+ 
+ While the method is general, all the empirical data are from correctness evals, so whether the empirical findings generalize to other evals remains to be tested.
+ Bowyer et al. (2025) show that CLT does not work well for less than a few hundred questions, though with 100 questions the errors are only significant in the tails.
+For simplicity, we did not consider the potentially impactful clustered correction of Miller (2024) . 
+ 
+ 
+ Acknowledgments. 
+
+ 
+ I thank Sean O’Brien, Lovish Madaan, Dieuwke Hupkes, Weina Xie, Alex Gu, Jiawei Liu, Yuhang Lai, Linyuan Gong, and Sten Sootla for making question-level data available for analysis. I am grateful to Evan Miller, Nicolas Usunier, Zach Rait, Yuxiang Wei, Jannik Kossen, and Ari Holtzman for valuable discussions and feedback; Pedro Rodriguez, Ofir Press, Naman Jain, Baptiste Rozière, Gabriel Synnaeve, Dawn Song, and Zijian Wang for their advice and support. The all-pairs approach is inspired by Chatbot Arena and the clarity of Miller (2024) greatly helped. 
+ 
+ 
+ 
+ 
+ 
+ References 
+
+ 
+ Benjamini et al. (2021) 
+ Y. Benjamini, R. D. De Veaux, B. Efron, S. Evans, M. Glickman, B. I. Graubard, X. He, X. Meng, N. Reid, S. M. Stigler, S. B. Vardeman, C. K. Wikle, T. Wright, L. J. Young, and K. Kafadar 
+ 
+ The asa president’s task force statement on statistical significance and replicability .
+ 
+ The Annals of Applied Statistics 15 ( 3 ), pp. 1084–1085 .
+ 
+ External Links: Document ,
+ Link 
+ 
+ Cited by: §1 .
+ 
+ Bowyer et al. (2025) 
+ S. Bowyer, L. Aitchison, and D. R. Ivanova 
+ 
+ Position: don’t use the CLT in LLM evals with fewer than a few hundred datapoints .
+ 
+ In ICML ,
+ 
+ External Links: Link 
+ 
+ Cited by: §6.5 .
+ 
+ Card et al. (2020) 
+ D. Card, P. Henderson, U. Khandelwal, R. Jia, K. Mahowald, and D. Jurafsky 
+ 
+ With little power comes great responsibility .
+ 
+ In EMNLP ,
+ 
+ External Links: Link 
+ 
+ Cited by: §5 .
+ 
+ Chan et al. (2025) 
+ J. S. Chan, N. Chowdhury, O. Jaffe, J. Aung, D. Sherburn, E. Mays, G. Starace, K. Liu, L. Maksin, T. Patwardhan, L. Weng, and A. Mądry 
+ 
+ MLE-bench: evaluating machine learning agents on machine learning engineering .
+ 
+ External Links: 2410.07095v6 ,
+ Link 
+ 
+ Cited by: Appendix D ,
+ §1 .
+ 
+ Chen et al. (2021) 
+ M. Chen, J. Tworek, H. Jun, Q. Yuan, H. P. de Oliveira Pinto, et al. 
+ 
+ Evaluating large language models trained on code .
+ 
+ arXiv preprint arXiv:2107.03374 .
+ 
+ External Links: Link 
+ 
+ Cited by: Example 1 .
+ 
+ Chiang et al. (2024) 
+ W. Chiang, L. Zheng, Y. Sheng, A. N. Angelopoulos, T. Li, D. Li, H. Zhang, B. Zhu, M. Jordan, J. E. Gonzalez, and I. Stoica 
+ 
+ Chatbot arena: an open platform for evaluating llms by human preference .
+ 
+ arXiv preprint arXiv:2403.04132 .
+ 
+ External Links: Link 
+ 
+ Cited by: §5 ,
+ Example 4 .
+ 
+ Dixon and Mood (1946) 
+ W. J. Dixon and A. M. Mood 
+ 
+ The statistical sign test .
+ 
+ Journal of the American Statistical Association 41 ( 236 ), pp. 557–566 .
+ 
+ External Links: Document ,
+ Link 
+ 
+ Cited by: Appendix E ,
+ §5 .
+ 
+ Dror et al. (2018) 
+ R. Dror, G. Baumer, S. Shlomov, and R. Reichart 
+ 
+ The hitchhiker’s guide to testing statistical significance in natural language processing .
+ 
+ In ACL ,
+ 
+ External Links: Link 
+ 
+ Cited by: §5 .
+ 
+ Efron and Tibshirani (1986) 
+ B. Efron and R. Tibshirani 
+ 
+ Bootstrap methods for standard errors, confidence intervals, and other measures of statistical accuracy .
+ 
+ Statistical Science 1 ( 1 ), pp. 54–75 .
+ 
+ External Links: Link 
+ 
+ Cited by: Appendix E ,
+ §5 .
+ 
+ Efron (1979) 
+ B. Efron 
+ 
+ Bootstrap methods: another look at the jackknife .
+ 
+ The Annals of Statistics 7 ( 1 ), pp. 1–26 .
+ 
+ External Links: Link 
+ 
+ Cited by: §5 .
+ 
+ Grattafiori et al. (2024) 
+ A. Grattafiori, A. Dubey, A. Jauhri, et al. 
+ 
+ The llama 3 herd of models .
+ 
+ External Links: 2407.21783 ,
+ Link 
+ 
+ Cited by: §5 ,
+ Example 1 .
+ 
+ Gu et al. (2024) 
+ A. Gu, B. Rozière, H. Leather, A. Solar-Lezama, G. Synnaeve, and S. I. Wang 
+ 
+ CRUXEval: a benchmark for code reasoning, understanding and execution .
+ 
+ arXiv preprint arXiv:2401.03065 .
+ 
+ External Links: Link 
+ 
+ Cited by: §5 ,
+ Example 4 .
+ 
+ Hermann et al. (2024) 
+ K. Hermann, J. Hu, and M. Mozer 
+ 
+ Experimental design and analysis for AI researchers .
+ 
+ Note: Tutorial at NeurIPS 
+ 
+ External Links: Link 
+ 
+ Cited by: §5 .
+ 
+ Jain et al. (2024) 
+ N. Jain, K. Han, A. Gu, W. Li, F. Yan, T. Zhang, S. Wang, A. Solar-Lezama, K. Sen, and I. Stoica 
+ 
+ LiveCodeBench: holistic and contamination free evaluation of large language models for code .
+ 
+ arXiv preprint arXiv:2403.07974 .
+ 
+ External Links: Link 
+ 
+ Cited by: Appendix D .
+ 
+ Jimenez et al. (2024) 
+ C. E. Jimenez, J. Yang, A. Wettig, S. Yao, K. Pei, O. Press, and K. R. Narasimhan 
+ 
+ SWE-bench: can language models resolve real-world github issues? .
+ 
+ In ICLR ,
+ 
+ External Links: Link 
+ 
+ Cited by: Appendix D .
+ 
+ Lehmann and Romano (2005) 
+ E. L. Lehmann and J. P. Romano 
+ 
+ Testing statistical hypotheses .
+ 
+ Third edition , Springer Texts in Statistics , Springer , New York .
+ 
+ External Links: ISBN 978-0-387-98864-1 ,
+ Document ,
+ Link 
+ 
+ Cited by: §5 .
+ 
+ Madaan et al. (2024) 
+ L. Madaan, A. K. Singh, R. Schaeffer, A. Poulton, S. Koyejo, P. Stenetorp, S. Narang, and D. Hupkes 
+ 
+ Quantifying variance in evaluation benchmarks .
+ 
+ arXiv preprint arXiv:2406.10229 .
+ 
+ External Links: Link 
+ 
+ Cited by: §2.1 ,
+ §5 ,
+ §6.1 .
+ 
+ Merrill et al. (2026) 
+ M. A. Merrill, A. G. Shaw, N. Carlini, B. Li, H. Raj, I. Bercovich, L. Shi, et al. 
+ 
+ Terminal-bench: benchmarking agents on hard, realistic tasks in command line interfaces .
+ 
+ External Links: 2601.11868v1 
+ 
+ Cited by: Appendix D ,
+ §1 ,
+ §6.2 .
+ 
+ Miller (2024) 
+ E. Miller 
+ 
+ Adding error bars to evals: a statistical approach to language model evaluations .
+ 
+ arXiv preprint arXiv:2411.00640 .
+ 
+ External Links: Link 
+ 
+ Cited by: Appendix D ,
+ §1 ,
+ §5 ,
+ §6.5 ,
+ §6.5 .
+ 
+ Polo et al. (2024) 
+ F. M. Polo, L. Weber, L. Choshen, Y. Sun, G. Xu, and M. Yurochkin 
+ 
+ TinyBenchmarks: evaluating LLMs with fewer examples .
+ 
+ In ICML ,
+ 
+ Vol. 235 .
+ 
+ External Links: Link 
+ 
+ Cited by: §6.1 .
+ 
+ Romanou et al. (2026) 
+ A. Romanou, M. Ibrahim, C. Ross, C. Shaib, K. Oktar, S. Bell, E. Ovalle, J. Dodge, A. Bosselut, K. Sinha, and A. Williams 
+ 
+ Brittlebench: quantifying LLM robustness via prompt sensitivity .
+ 
+ arXiv preprint arXiv:2603.13285 .
+ 
+ External Links: Link 
+ 
+ Cited by: §2.1 .
+ 
+ Wang et al. (2024) 
+ S. I. Wang, A. Gu, L. Madaan, D. Hupkes, J. Liu, Y. Wei, N. Jain, Y. Lai, S. Sootla, O. Press, B. Rozière, and G. Synnaeve 
+ 
+ Eval-Arena: noise and errors on llm evaluations .
+ 
+ GitHub .
+ 
+ Note: https://github.com/crux-eval/eval-arena 
+ 
+ Cited by: §6.1 .
+ 
+ Wei et al. (2025) 
+ Y. Wei, Z. Sun, E. McMilin, J. Gehring, D. Zhang, G. Synnaeve, D. Fried, L. Zhang, and S. Wang 
+ 
+ Toward training superintelligent software agents through self-play SWE-RL .
+ 
+ External Links: 2512.18552 ,
+ Link 
+ 
+ Cited by: Example 2 .
+ 
+ Xie (2025) 
+ C. Xie 
+ 
+ SWE-Fixer: training open-source llms for effective and efficient github issue resolution .
+ 
+ arXiv preprint arXiv:2501.05040 .
+ 
+ External Links: Link 
+ 
+ Cited by: §C.2 .
+ 
+ Zaykin (2011) 
+ D. V. Zaykin 
+ 
+ Optimally weighted z-test is a powerful method for combining probabilities in meta-analysis .
+ 
+ Journal of Evolutionary Biology 24 ( 8 ), pp. 1836–1841 .
+ 
+ External Links: Link 
+ 
+ Cited by: Appendix D .
+ 
+ 
+ 
+ 
+ 
+ Appendix A Method details 
+
+ 
+ A.1 Estimating the prediction noise two ways 
+
+ 
+ For a infinite set of questions, presumably . For specific questions, corresponds to the prediction noise that we can measure directly 
+ 
+ Here is taken over the uniform distribution of the questions. Estimating the left side directly with a finite number of random seeds has the correct expectation but has higher variance. In this case, we run the eval times and measure the variance of the final results where . This fails to use the fact that random samples are draw on each question independently. 
+ 
+ 
+ If we have the ability to draw any data samples from the population, we can also measure the data noise directly. 
+ 
+ 
+ 
+ 
+ A.2 Estimating from samples 
+
+ 
+ While ( 15 ) allows us to estimate the variance components directly from paired samples for , this is inaccurate since the seeds or predictions are interchangeable.
+We can use this to derive formulas for estimating from samples accurately, as if using all pairs of collected predictions for and . First, the prediction variance decomposes by independence on each question , 
+ 
+ 
+ 
+ Next, the data variance decomposes by linearity of expectation.
+Finally, the total variance is slightly tricky, where 
+ 
+ The equality is by the law of total covariance, where the second term is 0 since different random predictions on a given are independent. 
+ 
+ 
+ Small correction. 
+
+ 
+ To estimate from sampled predictions per question, a correction from the direct estimator can significantly increase the accuracy. We describe the concept for the unpaired case for simplicity but it matters the most in the paired case. By the law of total variance on , we have 
+ 
+ where the hats mean sample estimate. This correction for small is important because we will average over questions. If the estimate on each question is biased by , the average error will still be off by the bias no matter how big is. Whereas if the estimate is unbiased on each question, then the average error can decrease as increases. Figure  5 shows this observation on MATH500, where the small- correction is needed to reduce the error to an acceptable level even with bootstrapped questions. The high relative error is because the paired data noise is much smaller than the prediction noise.
+An instructive example is to consider when but an estimate using samples will not be 0 due to non-zero prediction noise. 
+ 
+ 
+ 
+ 
+ Same model correction. 
+
+ 
+ Using ( 21 ) to compute is too small when using the same set of samples for . Instead, we can use the following equality and an unbiased estimator for with , . 
+ 
+ 
+ 
+ Equivalently, we can still use ( 21 ) and Table  2 if we sample without replacement when estimating to avoid the bias over-estimating the covariance using the same set of samples.
+Suppose we have samples for a question with scores . To estimate we must use . 
+ 
+ 
+ 
+ 
+ A.3 Implementation in array notation 
+
+ 
+ In an experiment, we typically evaluate the model on all questions, and may draw answers for each question. In this section, we overload our notation with actual samples and present the formulas in § A.2 in numpy-style code. For simplicity, we use the same number of predictions on all questions . For the unpaired case, we have Table  2 . For paired, we have Table  2 . 
+ 
+ 
+ 
+ 
+ 
+ Appendix B The Beta theory predicts the noise and fits the distribution 
+
+ 
+ 
+ Figure  6 shows the comparison between a distribution and the empirical cumulative distribution (CDF) of the metrics, where the models are binned by range of accuracy. Then is computed for each question across the combined predictions among the binned models, is the total number of predictions that evaluated as correct on question . Smaller means more bimodal where tend to decrease when the model accuracy is higher, showing that better models become more bimodal whereas very bad models is usually unimodal. For an extreme example, guessing uniformly on multiple choice questions with choices means the expected accuracy for all questions, which has a single mode at . 
+ 
+ 
+ The Beta theoretical model says that the expected accuracy of each question follows the distribution where is the mean of the model. More precisely, the expected accuracy of question is so that and . Too see that this leads to the observed SE, the models draw independent predictions on each so . Thus we have , which integrates to 
+ 
+ where is the normalization constant for the distribution. One consideration to fit the data better is that all models fail on some questions, so we suppose those questions actually have instead of . 
+ 
+ 
+ 
+ Appendix C Caveats and exceptions 
+
+ 
+ C.1 Caveats of the expected metric 
+
+ 
+ With the impressive increase in power, we recommend averaging for most controlled experiments on model architecture, optimization, loss function, etc. that are not expected to have a large effect on the eval and do not target the eval specifically.
+However, there are some caveats if our goal is to improve a particular eval metric using all the best available methods, and when the independent experiment variable is expected to affect the “sharpness" of the distribution.
+Example  5 shows how improvement in expected accuracy leads to no increase after aggregation, and how sharpening the distribution on good-enough model can lead to much better expected accuracy. Example  6 shows how increased expected accuracy leads to a decrease the final performance when the trade-off is less diversity, which can happen in post-training. Example  7 compares the expected metric vs. alternatives and shows that arbitrarily small but consistent changes is significant using the expected metric, clarifying that an independent standard of effect size is also needed. 
+ 
+ 
+ Example 5 (majority voting) . 
+ 
+ Suppose the expected accuracies on all questions are the same with , where the expectation averages out the prediction noise. This big improvement in expected accuracy might be trivially achievable by majority voting if we try to put forward the best prediction instead. Whenever the equivalence of sampled predictions can be checked, majority voting can increase the accuracy to 100% if the equivalence class with the correct answer has the highest probability, which is the case when . 
+ 
+ 
+ 
+ Example 6 (reliable verification) . 
+ 
+ Suppose that on half of the questions and , but on the other half of questions and . While with having a much higher average, is better if the predictions can be verified (search problems or formal proofs) where is 100% with a verifier but is only 50%. If a reliable verifier is available, then the pass-at-large-K metric is a more meaningful metric than the average. 
+ 
+ 
+ 
+ Example 7 (Expected metric and alternatives) . 
+ 
+ Suppose we have 100 True/False questions, model has an expected accuracy of 60% and Model 61% on each question. 
+ 
+ 
+ Expected metric. We draw enough samples per question to be sure that is 60% and that is 61%. Conclusion : and are significantly different. This metric is used by many papers of the area, and corresponds to the data noise after averaging away some prediction noise. 
+ 
+ 
+ Best prediction metric. Since the probability of correct is greater than half, both models can achieve 100% accuracy if they predict by majority voting or thresholding. Conclusion : is the same as . This is used by most classification evals and should be used when pushing the eval. 
+ 
+ 
+ One prediction metric. One sampled prediction per question is evaluated, so and do about 60% with a standard error on the difference. Conclusion : is not significantly different from . This metric is based on a single answer per question, is used in most of the sciences and tests for humans, and corresponds to the total noise . 
+ 
+ 
+ Suppose that on question , , , then with enough samples we can conclude that and are significantly different no matter how small is. Still, pure noise without the bias is not expected to produce a significant result. 
+ 
+ 
+ 
+ 
+ C.2 Exceptions to main findings 
+
+ 
+ We note a few exceptions to the general findings. On guessable evals such as MMLU, when the performance is near random chance, the observed noise is closer to the independent prediction rather than the Beta prediction.
+In Figure  1 , swebench-verified, we see 2 outlier results near that come from SWE-Fixer  ( Xie, 2025 ) , due to using a deterministic filter instead of drawing another prediction from the model.
+The predictions of Llama on vLLM is more deterministic than expected and thus has higher data noise than others, likely due to faulty settings. Distilled models tend to have less sharp distribution at the same performance level. 
+ 
+ 
+ 
+ 
+ Appendix D Applications and Recommendations 
+
+ 
+ In addition to the recommendation of Miller (2024) , we advocate for more global noise measurements to decouple noise analysis from most experiments, so practitioners can focus on their experiments instead of the noise analysis.
+For some motivating examples, in the Llama 3 report many tables show the unpaired standard errors, which is too loose and gives no additional information since they are just a simple function of the accuracy. Merrill et al. (2026) measured the prediction noise (incorrect) and Chan et al. (2025) measured the total noise with different number of seeds (correct but under-specified).
+We recommend that eval and leaderboard builders run all-pairs-paired method to measure all the noise types on their eval, thus providing well-specified noise measurements and taking responsibility for the statistical reliability of their evals. This can even be done by a third-party as in this work, as long as leaderboard maintainers release their question level results like Jimenez et al. (2024) ; Jain et al. (2024) , ideally with multiple predictions per question so the noise components can be estimated.
+This might be a unique possibility in the LLM paradigm, where both models and evals have global identities to enable this approach. 
+ 
+ 
+ For model developers, we offer in increasing accuracy and overhead: 
+ 
+ • 
+ 
+ use the heuristics and read these SEs from our tables 
+ 
+ • 
+ 
+ read our paired total noise curves (Figure  1 ) to obtain the ranges of each type of noise. Total noise levels can be used when evaluating using one prediction per question and data noise can be used to determine how effective averaging is. 
+ 
+ • 
+ 
+ use method and estimators to measure the noise components on any data, which enables the detection of much smaller signal in controlled experiments. 
+ 
+ 
+ 
+ 
+ If it is verified that prediction noise is dominant, then averaging can be used to greatly increase the power, and the usual method of inferring noise from the training curve can also be justified. 
+ 
+ 
+ Noise-aware Meta-analysis of multiple evals. 
+
+ 
+ We have an increasing number of evals of varying quality and size, so we want to get more signal from more evals. Directly averaging MMLU where and HumanEval where likely leads to worse results than using MMLU alone, so some weighting is necessary.
+We advocate using the -score because it is signed and well-behaved.
+Recall the -score . This work measured the paired and unpaired versions of prediction, data, and total s and is suitable here.
+Inspecting this list of -scores, one per eval, and checking their consistency is a good start.
+To get a meta- -score given the -score of eval , an intuitive method is
+ ,
+where some prior beliefs can be incorporated into .
+For example, means that we believe each eval has equal weight, whereas means each question has equal weight. While incorporating our prior belief of the importance of each eval into the weight is best suited in LLM evals, is recommended as a baseline. See Zaykin (2011) for more related work and analysis, on which we have two remarks specific to LLMs: 1) the effect size of increasing the model size (scaling law) can be a reference on the expected effect size on an eval if desired; 2) giving each question from different evals the same weight is less valid for evals since different evals may capture different abilities, even if this has the most statistical power for a pool of iid questions. 
+ 
+ 
+ 
+ 
+ Appendix E Equivalence to the bootstrap and the sign test 
+
+ 
+ Two other very well-established methods are the bootstrap Efron and Tibshirani (1986) and paired difference tests such as the sign test Dixon and Mood (1946) . These methods ask if the observed results are likely when the questions are random for bootstrap, and when the comparison outcomes are random for the sign test. We show they all give the same answer. 
+ 
+ 
+ Bootstrap is a general method where resampling the given questions uniformly with replacement is shown to give the right answer for many estimation problems, including estimating the standard error. That is, resampling the given questions uniformly with replacement gives the same answer as getting more real questions from the population . Applied to the problem of noise, the natural question is how likely we are to get the opposite result as opposed to the observed result . If the opposite outcome also has significant probability, then the conclusion is not statistically significant. 
+ 
+ 
+ The sign test predates bootstrap and instead of randomly resampling the questions, it randomizes the comparison outcomes. It supposes that any difference actually happens with a random probability (null hypothesis) and asks how likely we are to get a more extreme outcome than what we actually observe. The sign test suggests a mix predictor that mixes the predictions of and with probability 0.5, which generates variance from different predictions. Let be the prediction to be evaluated then, 
+ 
+ If it is quite likely to observe a more extreme outcome under the null hypothesis or equivalently with the mixed predictor, then the conclusion is not statistically significant. 
+ 
+ 
+ The key step in both methods is estimating the variance of their respective random procedure. Under the same variance, then the probability to observe the opposite result from an observed mean (bootstrap) is also the same as the probability of observing a more extreme result if the real mean is 0 (sign test). The details follow. 
+ 
+ 
+ To setup both methods, let be the number of times model wins against model and vice versa for , and let’s assume for convenience. The question is how likely we have the same conclusion under the randomness prescribed by bootstrap or the sign-test. 
+ 
+ 
+ The bootstrap. 
+
+ 
+ We draw another samples with replacement from the existing samples to obtain with , where the outcome probabilities are for win, for win, and for tie. The mean and variance of the resamples are respectively , 
+ 
+ Under bootstrap, a natural question is how likely we would see the opposite result .
+With an approximation that (else the result is probably significant already), the bootstrap asks if for standard normal . 
+ 
+ 
+ Directly estimating the variance from the samples also gives the same answer as ( 33 ). While this is a consequence of bootstrap variance equal to the sample variance, a direct calculation is this 
+ 
+ 
+ 
+ 
+ The sign test. 
+
+ 
+ When comparing model vs. model , the null-hypothesis is that model and each has a 1/2 chance of being better (win) on each question. wins if gets a question correct but does not, tie if and are both correct or incorrect. The question is if the observed results are likely to happen under this null-hypothesis. 
+ 
+ 
+ The -values is then for with and . The question is how likely is to be as extreme as as observed. When is large, the normal approximation is accurate and reduces to for standard normal (i.e. one sided). If we also consider how might be worse, then we should consider the two-sided question. Table  3 shows our variance components in terms of the win rates used in the sign test. 
+ 
+ 
+ So the main empirical variance method, the bootstrap, and the sign test give the same answer. A slight approximation was used on the sign test. Without the approximation, due to using 0.5 for the null hypothesis instead of the empirical win rate. 
+ 
+ 
+ 
+ 
+ 
+ Appendix F Estimator testing 
+
+ 
+ We validate our variance estimators by sampling from generative models where the ground truth is known. Our primary focus is measuring estimation accuracy and how it scales with sample size, though we also check the bias and test some properties as well. 
+ 
+ 
+ For each test scenario, we generate data from models with known variance components, apply our estimators, and compare against ground truth over many independent attempts. We use two primary metrics: (1) root mean square (rms) relative error to measure accuracy, and (2) -scores to detect systematic bias. 
+ 
+ 
+ We test under three generative processes. The Bernoulli model samples problems with replacement from a population of size parameterized by , then sample Bernoulli trials for each of the problems. The stratified Bernoulli model evaluates when every question is sampled exactly once, simulating the case of drawing samples from real eval, breaking independence and introduces tricky effects. The bootstrap model resamples from empirical metric matrices, useful for comparisons to bootstrap and testing based on real data. 
+ 
+ 
+ Accuracy vs. sample size. 
+
+ 
+ Our main concern is practical accuracy. Tests establish that estimators achieve rms error below 0.25 for sample sizes and below 0.13 for larger samples ( ). We verify this across diverse probability distributions including uniform, Beta, specific distributions and real data. For paired comparisons, tests confirm we get reasonable accuracy (relative rms ) on the total variance and prediction variance. The data variance is the hardest to estimate since it tend to be the smallest where correcting for the bias in is critical (Figure  5 ). 
+ 
+ 
+ 
+ Bias Testing. 
+
+ 
+ Deriving and testing unbiased estimators proved useful for understanding estimator for each type of sampling procedure. The process of eliminating bias forced us to carefully account for all sources of estimation error—finite sample corrections in both and , paired sampling effects, and stratified sampling adjustments. Moderately large is necessary for accurate estimation anyway. We test corrections for and found they always led to larger errors and thus not recommended. On the other hand, small is common in practice, so we focus on , and found it to be more than just a bit of bias correction but critical in the case of large small . 
+ 
+ 
+ This testing builds confidence that our estimators behave as predicted and that we understand how to get unbiased estimators in each situation, even as we only recommend two of the simplest estimators. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Experimental support, please
+ view the build logs 
+ for errors. Generated by
+ 
+ 
+ L
+ A 
+ T
+ E 
+ 
+ xml 
+ 
+ .
+ 
+ 
+ Instructions for reporting errors 
+ We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+ support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+ methods listed below: 
+ 
+ Click the "Report Issue" ( ) button, located in the page header. 
+ 
+ Tip: You can select the relevant text first, to include it in your report. 
+ Our team has already identified the following issues . We appreciate your time reviewing and reporting rendering errors we
+ may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+ should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+ all. 
+ Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion , and welcome developer contributions . 
+ 
+ 
+ 
+ 
+ 
+ We gratefully acknowledge support from
+ our major funders ,
+ member institutions , ,
+ and all contributors.
+ 
+ 
+ About 
+ · 
+ Help 
+ · 
+ Contact 
+ · 
+ Subscribe 
+ · 
+ Copyright 
+ · 
+ Privacy 
+ · 
+ Accessibility 
+ · 
+ Operational Status (opens in new tab) 
+ 
+ 
+
+ 
+ Major funding support from 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
