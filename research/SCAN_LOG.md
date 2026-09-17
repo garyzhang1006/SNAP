@@ -2675,3 +2675,35 @@ field.
 
 Ranking holds at 6.5. Nothing in the manuscript changed in this scan. What changed is that the
 instrument now reports a band the paper should actually be measured against.
+
+## Scan 44, the appendix traces I had dismissed as a class
+
+Every earlier pass over the de-AI checker treated its appendix output as one block and moved on, on
+the grounds that the pattern clusters are graded llm-only and cannot be established by a word count.
+That reasoning is sound for the clusters and unsound as an excuse for not reading them. This scan read
+each one. The priority table's figure of 64 traces turned out to be a density over a section spanning
+two files, and the detailed listing holds thirteen for the appendix, of which four had never been
+looked at.
+
+Three of the four are correct as written. The seed-label passage says we checked that those labels
+mean what we take them to mean rather than assuming it, which is a verification claim the appendix
+then cashes with the repository evidence. The size-band simulation says it was built exactly as the
+existing recipe-shared effect is built, and exactly is the right word because the construction is
+reused so the true ratio cannot move. The accuracy grid says its cheapest corner does not work at all,
+which is an absolute, and it earns the absolute in the same breath by reporting coverage of 0.602 with
+0.369 of replicates undefined against a nominal 0.95.
+
+The fourth was a real defect and it is the kind this paper has been careful about everywhere else. A
+single fp16 comparison was said to demonstrate sensitivity at that scale. Demonstrates is the wrong
+strength for one comparison, and it was also a vocabulary outlier, the only occurrence of that verb
+anywhere in the manuscript, while shows appears nine times and indicates and suggests appear never.
+It now reads shows, which is both the honest strength and the house verb, and the clause that follows
+still says the comparison does not establish a universal portability threshold for fp16 kernels.
+
+The rebuild holds nine main-text pages and 53 total, zero overfull boxes, no rerun request, unchanged
+style files, 53 bibliography entries all cited and resolved, 24 embedded subset fonts, an empty author
+field, and 1,003 appendix sentences at a mean of 23.42 words with no prose colons, semicolons or
+dashes.
+
+Ranking holds at 6.5. One appendix verb is not worth a tenth, and saying otherwise after the
+measurement error of scans 39 to 42 would be exactly the wrong lesson to take from it.

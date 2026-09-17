@@ -798,7 +798,7 @@ The step table and disagreement checks expose some inconsistencies without repla
 \subsection{Sensitivity to GPU architecture}
 The primary Arm 2 scores use one card type. A separate Turing-versus-Ada comparison on one configuration reports mostly identical item scores, a mean absolute margin difference of $1.0\times10^{-3}$, and a largest difference of $3.5\times10^{-2}$. Relative to a margin standard deviation of 0.391, the mean difference has ratio $2.6\times10^{-3}$.
 
-Eighteen of 4,755 accuracy bits change, or 0.38 percent. Their median absolute margin is $1.3\times10^{-3}$, and battery accuracy changes from 0.430074 to 0.430494, a difference of $4.2\times10^{-4}$. That difference is approximately eight percent of the reported accuracy seed standard deviation. This single comparison demonstrates sensitivity at that scale, but it does not establish a universal portability threshold for fp16 kernels.
+Eighteen of 4,755 accuracy bits change, or 0.38 percent. Their median absolute margin is $1.3\times10^{-3}$, and battery accuracy changes from 0.430074 to 0.430494, a difference of $4.2\times10^{-4}$. That difference is approximately eight percent of the reported accuracy seed standard deviation. This single comparison shows sensitivity at that scale, but it does not establish a universal portability threshold for fp16 kernels.
 
 Arm 1 uses released per-item outputs without recomputing forward passes, so this study does not add the same hardware variation to those scores. Shared hardware across Arm 2's 27 runs reduces one source of variation but does not independently validate accuracy across architectures.
 
