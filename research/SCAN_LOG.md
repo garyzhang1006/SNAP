@@ -2400,3 +2400,46 @@ limits are exactly where they were. What changed is that a reviewer who reads th
 and the figures now meets the consequence twice instead of once, and the cost was a coverage figure
 stated three times reduced to twice. I would not defend more than a tenth for that, and anyone who
 reports this change as larger is inflating it.
+
+## Scan 37, ten sub-scans looking for anything left to buy
+
+Scan 36 found a working lever, which was to fund a better sentence by deleting a fact the paper
+states three times, so this scan went looking for the next place to apply it and for anything that
+could cost more than the tenth that lever returns. Ten sub-scans, each with its own purpose, and the
+result is that the lever has no second application worth taking.
+
+Sub-scan one mapped every decimal the main text states more than twice. The headline 1.244 appears
+seven times and 1.078 six, which is expected for the two numbers the paper exists to report, and the
+remaining nine repeated values each appear exactly three times across the abstract, the introduction
+and one body statement. That is the minimum a reader needs, since cutting the body statement would
+leave a number asserted in front matter and never established. No budget available there.
+
+Sub-scan two audited whether Related work establishes the delta, since novelty is where the rubric in
+scan 35 scored a three. It does, in one sentence that says among the studies located none estimates
+the covariance of run noise between benchmarks or an effective benchmark count for a fixed battery.
+The gap is stated plainly and the four nearest papers are each given their own scope. Nothing to fix.
+
+Sub-scan three checked the venue statements, which is the only category of defect that could cost
+more than a rounding error. All three exist, all three sit after the main-text label so none consumes
+page budget, and the AI use statement discloses hypothesis work, code assistance, manuscript revision,
+literature survey and review assistance, alongside the separate role of the synthetic simulations.
+The reproducibility statement discloses the missing timestamp, the unimplemented screening split, and
+which analyses were not rerun for this revision. Both are more candid than the venue requires.
+
+Sub-scan four tested whether the largest remaining limit can be repaired. It cannot. The margin
+result is inseparable from scoring format because each benchmark appears in exactly one format, and
+producing a second format for any benchmark means re-rendering prompts and running inference across
+375 runs. That is new model compute rather than reanalysis, so no notebook can produce it from the
+released per-item outputs, and the paper already ships the partial answer available, a cross-format
+diagnostic of 0.921 against 1.244 for the full matrix.
+
+Sub-scans five through ten were conformance and integrity. The abstract runs 264 words, every figure
+and table carries both a caption and a label, no reference is dangling, every citation resolves and
+every bibliography entry is cited, no sentence longer than twelve words appears twice anywhere in the
+manuscript or its appendices, and the body contains zero prose semicolons, colons, em dashes or en
+dashes. Ten sub-scans, zero edits.
+
+Ranking stays 6.5. The prose work is finished, and I am saying that as a measurement rather than as
+fatigue. The page budget is spent to within a hundred characters, seven independent slop detectors
+return clean, the filler sweep finds one compressible phrase in the whole body, and the two axes that
+hold the score down are properties of the data rather than of the writing.
