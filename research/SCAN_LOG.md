@@ -2817,3 +2817,48 @@ with Figure 2 the only thing standing between the pointer and the table.
 
 Ranking holds at 6.5. Two appendix cross-references repair a navigation defect a reader would have
 felt on page twenty-six, and navigation is not what the three open limits turn on.
+
+## Scan 48, the gate re-run that the scan 47 edits made necessary
+
+The goal text puts the humanizer and slop gate last, after everything else has changed. Scan 47 changed
+two appendix sentences, which made the scan 45 gate stale by construction, so this scan re-ran it. It
+also turned up an instrument problem of the same family as the one scan 42 found in the corpus.
+
+Extracting the manuscript prose directly from the three LaTeX sources, with floats and inline maths
+stripped, gives 32,087 words and a stylometry score of 0.2125, against the 0.1225 that scan 45
+recorded. Two sentences cannot move a document of that size by nine hundredths, so the difference had
+to be the instrument. Re-scoring the scan 45 file returns 0.1225 unchanged, which clears the service.
+The cause is the sentence splitter. Scan 45's text kept its decimal numbers, and this manuscript is
+dense with them, so every 1.244 and every 0.05 was counted as a sentence boundary. That inflates the
+sentence count from 1,358 to 1,510 and burstiness from 0.540 to 0.626, and higher burstiness lowers
+the score. The favourable number was partly an artefact of how many numbers the paper contains.
+
+Fixing the comparison rather than the paper, I neutralised decimal points in both the manuscript and
+eight accepted ICLR papers from the corpus, and cut each corpus paper at its reference list. The first
+attempt at that cut kept only about 130 words per paper, because the regex matched the References entry
+in each paper's table of contents rather than the section itself. Cutting at the last occurrence gives
+4,250 to 6,557 words per paper, which is a real body.
+
+Measured that way the manuscript scores 0.1225 and CLEAN, and so do all eight accepted papers, every
+one of them. The AI n-gram density is the discriminating column and it favours the manuscript, at
+0.0157 against a corpus range of 0.0136 to 0.3454, so seven of the eight accepted papers use more
+AI-associated n-grams than this one does. Burstiness is the column where the manuscript sits low, 0.607
+against a corpus range of 0.596 to 0.836, and only one accepted paper is below it.
+
+I am not acting on that burstiness gap, and the reason is scan 42. The corpus text still carries figure
+captions, table cells and heading fragments, all of which read as very short sentences and lift
+burstiness, while the manuscript extraction strips exactly that material. The two sides are not
+measured on the same thing, which is the precise error that sent scans 39 and 40 chasing a contaminated
+target. A burstiness difference that survives only under an asymmetric extraction is not evidence.
+
+The vocabulary pass returns the established profile and nothing new. Robust appears 24 times and is
+cluster-robust every time, effective appears 21 times inside effective benchmark count and effective
+coefficient, and leverage appears 6 times as statistical leverage, including the cr3 correction. Harness
+appears twice and both are the noun, a shared scoring harness and harness revisions, rather than the
+banned verb. Delve, crucial, seamless, tapestry, pivotal and the rest return zero. The build already
+reports prose colons, semicolons and dashes at zero across all three files.
+
+No edit follows. The build from scan 47, kernel version 21, stands.
+
+Ranking holds at 6.5. The gate confirms the manuscript sits where accepted papers sit, and sitting there
+is a floor the paper had already cleared rather than a gain.
