@@ -60,7 +60,8 @@
    "mean_words": 20.17,
    "fragments_under_four_words": 0,
    "share_under_eight_words": 0.059,
-   "corpus_target_under_eight": "0.058 to 0.238",
+   "corpus_target_under_eight": "p25 0.022, median 0.038, p75 0.055 (body prose, 40 papers)",
+   "corpus_target_mean_words": "p25 22.1, median 24.0, p75 26.4 (body prose, 40 papers)",
    "prose_colons_semicolons_dashes": 0,
    "the_openers_share": 0.167,
    "corpus_target_the_openers": "0.15 observed across twenty prior-year and twenty recent abstracts"
@@ -72,7 +73,8 @@
    "mean_words": 16.73,
    "fragments_under_four_words": 0,
    "share_under_eight_words": 0.01,
-   "corpus_target_under_eight": "0.058 to 0.238",
+   "corpus_target_under_eight": "p25 0.022, median 0.038, p75 0.055 (body prose, 40 papers)",
+   "corpus_target_mean_words": "p25 22.1, median 24.0, p75 26.4 (body prose, 40 papers)",
    "prose_colons_semicolons_dashes": 0,
    "the_openers_share": 0.238,
    "corpus_target_the_openers": "0.15 observed across twenty prior-year and twenty recent abstracts"
@@ -84,7 +86,8 @@
    "mean_words": 23.42,
    "fragments_under_four_words": 0,
    "share_under_eight_words": 0.037,
-   "corpus_target_under_eight": "0.058 to 0.238",
+   "corpus_target_under_eight": "p25 0.022, median 0.038, p75 0.055 (body prose, 40 papers)",
+   "corpus_target_mean_words": "p25 22.1, median 24.0, p75 26.4 (body prose, 40 papers)",
    "prose_colons_semicolons_dashes": 0,
    "the_openers_share": 0.299,
    "corpus_target_the_openers": "0.15 observed across twenty prior-year and twenty recent abstracts"
@@ -230,7 +233,7 @@
   "appendices_bcd.tex": "ef4579bd9790adfd2bfca5a8a5f605458ce744fb73485b0fea5304e214abfed1",
   "references.tex": "2aef5af998176980200ee7e53b96c8552850429057b84c1b4c4d264eb04dd933",
   "iclr2027_conference.sty": "797deef41724e93761426ac0cbcca46279a91cc650dd1f0ce76a4f08d2098ea6",
-  "SNAP_revised_draft.pdf": "edc84414fb4b1954c9e3de34bfef69aeb737066b6fd8c6b49d3ca43a87b83aaf"
+  "SNAP_revised_draft.pdf": "2cf0e399a89ccb956b41b00b637778f8a7517733fa94e215457978a3edb997a2"
  },
- "wall_seconds": 55.701021909713745
+ "wall_seconds": 53.9963002204895
 }

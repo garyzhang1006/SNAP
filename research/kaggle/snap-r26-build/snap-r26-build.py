@@ -194,7 +194,13 @@ for name in ("main.tex", "appendix_a.tex", "appendices_bcd.tex"):
         "mean_words": round(sum(counts) / len(counts), 2),
         "fragments_under_four_words": len(lows),
         "share_under_eight_words": round(sum(1 for c in counts if c < 8) / len(counts), 3),
-        "corpus_target_under_eight": "0.058 to 0.238",
+        # Scan 42 found the old band, 0.058 to 0.238, was measured on whole arXiv HTML dumps, so a
+        # paper's fifty to eighty reference entries counted as short sentences and inflated it by
+        # roughly a factor of four. It was never a body-prose target and acting on it in scans 39
+        # and 40 pushed this manuscript outside the real distribution in both directions. These
+        # figures come from the same 40 papers with everything from the reference list onward cut.
+        "corpus_target_under_eight": "p25 0.022, median 0.038, p75 0.055 (body prose, 40 papers)",
+        "corpus_target_mean_words": "p25 22.1, median 24.0, p75 26.4 (body prose, 40 papers)",
         "prose_colons_semicolons_dashes": len(re.findall(r"[:;\u2014\u2013]|--", t)),
         "the_openers_share": round(sum(1 for s in sents if s.startswith("The ")) / len(sents), 3),
         "corpus_target_the_openers": "0.15 observed across twenty prior-year and twenty recent abstracts",

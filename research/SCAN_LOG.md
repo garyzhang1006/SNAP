@@ -2640,3 +2640,38 @@ was never evidence of a problem. It was the band being wrong.
 
 Ranking holds at 6.5. Two scans of work were undone, nothing was gained, and the honest summary is
 that a measurement error cost thirty edits and produced one real lesson about the instrument.
+
+## Scan 43, fixing the instrument and re-running the gate on the restored text
+
+Two jobs, both consequences of scan 42. The gate had to run again because prose changed after scan 41
+ran it, and the build kernel had to stop printing a number that scan 42 proved wrong.
+
+The corrected band comes from all 40 corpus papers with everything from the reference list onward
+removed. Body-prose short-sentence share has a first quartile of 0.022, a median of 0.038 and a third
+quartile of 0.055, against the old printed band of 0.058 to 0.238. The old figure was inflated about
+fourfold because fifty to eighty bibliography entries per paper were being counted as short sentences.
+Mean sentence length has a first quartile of 22.1, a median of 24.0 and a third quartile of 26.4.
+
+Read against the corrected band, this manuscript was never short on short sentences. Its share of
+0.059 sits just above the corpus third quartile, so it carries more short sentences than three papers
+in four, and its mean of 20.17 words sits at the corpus minimum of 20.0, so its sentences are already
+the shortest in the collection. Scans 39 and 40 spent thirty edits pushing a paper further in the
+direction it was already furthest. The kernel now prints both corrected bands with a comment recording
+why the old one was wrong, so the next run cannot repeat the mistake.
+
+The gate re-ran clean on the restored text. deai_check.py at the heavy tier returns the same nine,
+six, five, four and two profile it has returned since scan 34. Fourteen pattern classes are zero,
+covering puffery, participial pseudo-depth, promotional language, vague attribution, AI vocabulary,
+negative parallelism, filler, hedge stacks, smart punctuation, the content-humanizer vocabulary list,
+bold, dashes, bullets and the banned adjectives. Six first-person admissions remain against a floor of
+two. Four staccato triples flagged and all four are artefacts, three from display-math continuation
+lines counted as sentences and one from a caption tail abutting body text, so genuine body prose has
+none.
+
+The rebuild holds nine main-text pages and 53 total, zero overfull boxes, no rerun request, unchanged
+style files, 269 sentences at a mean of 20.17 and a median of 19, zero prose colons or semicolons or
+dashes, 53 bibliography entries all cited and resolved, 24 embedded subset fonts, and an empty author
+field.
+
+Ranking holds at 6.5. Nothing in the manuscript changed in this scan. What changed is that the
+instrument now reports a band the paper should actually be measured against.
