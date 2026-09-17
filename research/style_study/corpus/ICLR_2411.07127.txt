@@ -1,0 +1,1957 @@
+ 
+ 
+ 
+ Benchmarking LLMs’ Judgments with No Gold Standard 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report GitHub Issue 
+ × 
+ 
+
+ 
+ Title: 
+ 
+
+ Content selection saved. Describe the issue below: 
+
+ Description: 
+ 
+ 
+
+ 
+ Submit without GitHub 
+ Submit in GitHub 
+ 
+ 
+ 
+ 
+ arXiv is now an independent nonprofit! 
+ Learn more 
+ × 
+ 
+
+ 
+ 
+ 
+ Back to arXiv 
+ 
+ 
+ 
+ 
+ Why HTML? 
+ 
+ 
+ Report Issue 
+ 
+ 
+ 
+ Back to Abstract 
+ 
+ 
+ 
+ 
+ Download PDF 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Abstract 
+ 1 Introduction 
+ 
+ 1.1 Our Contributions 
+ 
+ Results Overview 
+ 
+ 1.2 Related Work 
+ 
+ LLMs in academic peer review. 
+ Information Elicitation. 
+ Estimation of Mutual Information. 
+ 
+ 
+ 2 Preliminaries 
+ 
+ Model 
+ Benchmarking the candidate 
+ Shannon Mutual Information 
+ Point-wise Mutual Information as an Estimator 
+ 
+ 3 Generative Estimator for Mutual Information (GEM) 
+ 
+ 3.1 Theoretical Guarantees: Benchmarking LLMs with No Gold Standard 
+ 3.2 Filtering Out Shortcuts 
+ 
+ Preprocessing 
+ GEM-S: conditioning out the synopsis 
+ 
+ 
+ 4 Experiment: Validating GEM’s Effectiveness 
+ 
+ GEM setup 
+ Baselines 
+ 4.1 Result 1: Positive Correlation with Human Annotation 
+ 4.2 Result 2: Better Sensitivity to Degradation 
+ 4.3 Result 3: Better Robustness against Manipulation 
+ 
+ 5 GRE-bench: Benchmarking LLMs with GEM 
+ 
+ GRE-bench vs. Other benchmarks 
+ Consistent results over various Evaluation LMs. 
+ 
+ 6 Conclusion and Discussion 
+ Complete Theoretical Proof 
+ Ready-to-Use Code 
+ Clear Implementation and Experimental Details 
+ References 
+ A Additional Results 
+ 
+ A.1 Result 2 and 3 with Confidence Intervals 
+ A.2 Detailed Results of GRE-bench 
+ 
+ GRE-bench vs. Other benchmarks 
+ Consistent results over various Evaluation LMs. 
+ Numerical results. 
+ 
+ A.3 Consistent Results over Preprocessing Models 
+ 
+ Positive Correlation with Human Annotation 
+ Sensitivity to Degradation 
+ Weaker Robustness than GPT-4o Preprocessing 
+ Consistent GRE-bench Results 
+ 
+ A.4 Validation on Yelp Restaurant Review Dataset 
+ 
+ Yelp Review 
+ GEM Setup 
+ GEM demonstrates sensitivity to degradations. 
+ GEM demonstrates robustness to manipulation. 
+ 
+ A.5 Exploration of Properties of LLM Estimated Distribution 
+ 
+ B Omitted Proofs 
+ C Implementation Details 
+ 
+ C.1 Judgments Preprocessing 
+ C.2 Judgments Prediction 
+ C.3 Peer-review Judgments Generation in GRE-bench 
+ C.4 Summary of Author-stated Strengths and Weaknesses 
+ 
+ D Experimental Details 
+ 
+ D.1 Baseline Metrics 
+ D.2 Validation Workflow for Degradations and Manipulations 
+ D.3 Degradations 
+ 
+ D.3.1 Review Degradation: Sentence Deletion 
+ D.3.2 Review Degradation: Deletion & Completion 
+ D.3.3 Review Degradation: Abstract-only Review 
+ 
+ D.4 Manipulations 
+ 
+ D.4.1 Review Manipulation: LLM Rephrasing 
+ D.4.2 Review Manipulation: Meaningless Elongation 
+ 
+ 
+ E GEM / GEM-S with Fine-tuned Evaluation-LM 
+ 
+ E.1 Implementation 
+ E.2 Experimental Results 
+ E.3 GRE-bench based on finetuned GEM and GEM-S 
+ 
+ 
+ 
+ 
+ 
+ 
+ License: arXiv.org perpetual non-exclusive license
+ 
+ 
+arXiv:2411.07127v2 [cs.CL] 29 Apr 2025 
+ 
+ 
+ Benchmarking LLMs’ Judgments with No Gold Standard 
+ 
+ 
+ Shengwei Xu
+ thanks: Both authors contributed equally to the paper. thanks: Supported by United States National Science Foundation award number 2313137. 
+ Affiliation:  School of Information
+ 
+ Affiliation:  University of Michigan, Ann Arbor, USA
+ 
+ Email:  shengwei@umich.edu 
+ 
+    
+ Yuxuan Lu footnotemark: 
+ 1 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ thanks: Supported by National Natural Science Foundation of China award number 62372007. 
+ Affiliation:  School of Computer Science
+ 
+ Affiliation:  Peking University, Beijing, China
+ 
+ Email:  yx_lu@pku.edu.cn 
+ 
+    
+ Grant Schoenebeck footnotemark: 
+ 2 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Affiliation:  School of Information
+ 
+ Affiliation:  University of Michigan, Ann Arbor, USA
+ 
+ Email:  schoeneb@umich.edu 
+ 
+    
+ Yuqing Kong footnotemark: 
+ 3 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Affiliation:  School of Computer Science
+ 
+ Affiliation:  Peking University, Beijing, China
+ 
+ Email:  yuqing.kong@pku.edu.cn 
+ 
+
+ Abstract 
+ 
+ We introduce the GEM (Generative Estimator for Mutual Information), an evaluation metric for assessing language generation by Large Language Models (LLMs), particularly in generating informative judgments, without the need for a gold standard reference. GEM broadens the scenarios where we can benchmark LLM generation performance-from traditional ones, like machine translation and summarization, where gold standard references are readily available, to subjective tasks without clear gold standards, such as academic peer review. 
+ 
+ GEM uses a generative model to estimate mutual information between candidate and reference responses, without requiring the reference to be a gold standard. In experiments on a human-annotated dataset, GEM demonstrates competitive correlations with human scores compared to the state-of-the-art GPT-4o Examiner, and outperforms all other baselines. Additionally, GEM is more robust against strategic manipulations, such as rephrasing or elongation, which can artificially inflate scores under a GPT-4o Examiner. 
+ 
+ We also present GRE-bench (Generating Review Evaluation Benchmark) which evaluates LLMs based on how well they can generate high-quality peer reviews for academic research papers. Because GRE-bench is based upon GEM, it inherits its robustness properties. Additionally, GRE-bench circumvents data contamination problems (or data leakage) by using the continuous influx of new open-access research papers and peer reviews each year. We show GRE-bench results of various popular LLMs on their peer review capabilities using the ICLR2023 dataset. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 1 Introduction 
+
+ 
+ High-quality and reliable Large Language Model (LLM) benchmarks can effectively guide research, encourage innovation, monitor their advancement, and inform users of which model to use for their purpose. The importance of the final goal is underscored by the over 900k models currently available on Hugging Face, an online platform for open-source LLMs 
+ 1 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ https://huggingface.co/docs/hub/en/index . Various benchmarks are proposed for evaluating LLMs’ ability in different aspects, including ARC ( Chollet, 2019 ) , HellaSwag ( Zellers et al., 2019 ) , Massive Multitask Language Understanding (MMLU) ( Hendrycks et al., 2020 ) , MT Bench ( Zheng et al., 2023a ) , GSM8K ( Cobbe et al., 2021 ) , TruthfulQA ( Lin et al., 2021 ) , Natural Questions ( Kwiatkowski et al., 2019 ) , etc. 
+ 
+ 
+ Most benchmarks are based on multiple-choice questions or other questions with objective gold standard answers, since it is easy to verify the LLMs’ outputs. While they provide valuable evaluation for LLMs, open-ended tasks, e.g. providing judgment about a research paper, encompass a broader array of skills and require both objective and subjective reasoning. In addition, concern has been raised about data contamination (also called data leakage), where the training data contains information about the tasks in the benchmarks, as the LLMs are pre-trained on massive online data, which is also the source of some of the benchmark tasks. LLMs can show unreliably good performance due to data contamination ( Sainz et al., 2023 ; Golchin & Surdeanu, 2023 ; Oren et al., 2023 ) . In contrast, with open-ended questions, LLMs can be asked to provide judgments about newly created content, e.g. the latest academic papers, for which LLMs have yet to index human evaluations or responses. 
+ 
+ 
+ However, it is not clear how to automate the evaluation of subjective response quality. An added challenge is that there is no gold standard quality response with which to compare. 
+ 
+ 
+ We would like an evaluator to have two properties. First, it should be accurate and be sensitive to the semantic content response. As current LLMs have already shown strong language ability, we want to focus on evaluating the semantic informativeness of candidate responses instead of their syntax or style. Second, the evaluator should be manipulation-resistant -we should not be able to manipulate a response in a trivial fashion to consistently increase evaluation scores. This is important because otherwise one cannot determine whether a high evaluation score indicates that the LLM output a high-quality response or merely results from manipulation designed to achieve an artificially inflated score. 
+ 
+ 
+ Given these gaps in previous research, our research question is: Can we develop accurate, manipulation-resistant, and automated evaluation metrics for textual responses with no gold standard reference to compare with? 
+ 
+ 
+ A straightforward approach may involve utilizing an alternative LLM as an oracle examiner to directly provide the evaluation, which has demonstrated efficacy in evaluating open-response QA ( Bai et al., 2024 ) , chatbot ( Zheng et al., 2023b ) , etc. However,
+LLM examiners are susceptible to certain manipulations. In our experiments, elongating all responses by adding the same fixed sentences can significantly increase the GPT-4o LM examiner’s score. Interestingly, previous research has shown that even human evaluations can be manipulated by adding meaningless text ( Goldberg et al., 2023 ) .
+Meanwhile, other automated natural language generation (NLG) evaluation metrics, including BLEU ( Papineni et al., 2002 ) , ROUGE ( Lin, 2004 ) , BERTScore ( Zhang et al., 2019 ) , BARTScore ( Yuan et al., 2021 ) and GPTScore ( Fu et al., 2023 ) , rely on comparison with a gold standard reference. 
+ 
+ 
+ 1.1 Our Contributions 
+
+ 
+ We propose the Generative Estimator for Mutual information (GEM) which uses the estimated Shannon mutual information (MI) between a set of candidate responses and a set of peer reference responses, which need not be of gold standard quality. The mutual information measures the amount of information revealed about the reference responses by obtaining the candidate responses. By artificially removing stylistic and syntactical information, our approach measures how much semantic information the candidate responses can reveal about the reference responses, which is related to the concept of semantic coverage ( Yuan et al., 2021 ; Nenkova & Passonneau, 2004 ) . We additionally propose a variant of our method,
+ Generative Estimator for Mutual Information with Synopsis (GEM-S) , which estimates the mutual information conditional on a synopsis of the task, e.g. the abstract of the paper. This prevents a candidate response from receiving a high score based solely on superficial information. Consequently, the score emphasizes the additional semantic information gained from the candidate responses. 
+ 
+ 
+ For implementation, we utilize a generative language model to estimate the conditional distribution between two text responses. Thus, the GEM can be categorized as an LLM-probability-based metric, with techniques similar to BARTScore ( Yuan et al., 2021 ) and GPTScore ( Fu et al., 2023 ) , from which our metric inherits the effectiveness of evaluating objective tasks with a gold standard. 
+ 
+ 
+ Our work establishes a bridge between the information theoretical framework in the literature of information elicitation without verification ( Kong & Schoenebeck, 2019 ; Lu et al., 2024 ) and the NLG evaluation problem. Though GEM and GEM-S resemble the GPPM and GSPPM mechanisms in Lu et al. (2024) , with manipulation resistance aligned to their incentive compatibility, we make a necessary change to make the score more suitable for the NLG evaluation problem. Specifically, for incentive compatibility, the score can rely solely on accuracy of predicting the peer reference, while we use mutual information to capture the gain in that accuracy for evaluation purposes. 
+ 
+ 
+ Results Overview 
+
+ 
+ The results of experiments validate GEM’s accuracy and resistance to manipulation, and compare it with many different NLG evaluation metrics. 
+ 
+ 
+ 
+ 1. 
+ 
+ Positive Correlation with Human Annotation (Section  4.1 ) On a human-annotated dataset, the GEM metrics, especially GEM-S, achieve a significant positive correlation with human-labeled quality scores and demonstrate competitive performance with GPT4-o Examiner while outperforming all other baseline metrics. 
+ 
+ 2. 
+ 
+ Better Sensitivity to Degradations (Section  4.2 ) Compared to various baseline metrics, GEM and GEM-S are the only metrics that demonstrate significant sensitivity to all semantic degradations in our experiment, by effectively penalizing degraded responses. 
+ 
+ 3. 
+ 
+ Better Robustness against Manipulations (Section  4.3 ) GEM and GEM-S are the only metrics that exhibit no significant score increases after meaningless elongation (Figure  4 ) and GPT-4o/Llama-3.1 rephrase, whereas LMExaminer show vulnerabilities by significantly increasing scores after all manipulations. 
+ 
+ 
+ 
+ 
+ Building on GEM and GEM-S, we introduce the GRE-bench (Generating Review Evaluation Benchmark) to evaluate LLMs’ peer review capabilities with data from open-access research papers and peer reviews. With the continuous influx of new data each year, GRE-bench can mitigate data contamination issues. In addition, since GRE-bench is based on GEM or GEM-S, it inherits their nice properties demonstrated in the experiments above. 
+ 
+ 
+ We run GRE-bench for various state-of-the-art LLMs on the ICLR 2023 dataset, and present the results in Section  5 . We find a strong correlation between parameter size and GRE-bench score within LLM families, which further validates the effectiveness of GEM and GEM-S. 
+ 
+ 
+ 
+ 
+ 1.2 Related Work 
+
+ 
+ LLMs in academic peer review. 
+
+ 
+ Given the success of LLMs, they have the potential to assist with peer reviews when used appropriately ( Robertson, 2023 ; Kuznetsov et al., 2024 ) . Liang et al. (2023) use a survey to evaluate GPT-4-generated reviews, and find that the GPT-generated reviews are thought helpful by more than 50% of participants. However, there have been concerns regarding issues such as hallucinations ( Donker, 2023 ) and inconsistent performance Liu & Shah (2023) . While our study uses the peer review scenario to evaluate LLM capabilities, it also provides a quantitative comparison for the effectiveness of various LLMs in generating informative reviews. 
+ 
+ 
+ 
+ Information Elicitation. 
+
+ 
+ Both information elicitation and machine learning employ a principal-agent model ( Ali & Silvey, 1966 ) . Specifically, the principal aims to elicit information from the agent, e.g. the probability of rain tomorrow. To incentivize the agent to provide truthful and informative reports, payment mechanisms are employed that reward truthful and informative reports more than untruthful or uninformative ones. 
+ 
+ 
+ When the information is verifiable, e.g., we will eventually know whether it rains tomorrow, proper scoring rules ( Good, 1952 ; Brier, 1950 ; Hendrickson & Buehler, 1971 ) can be applied, which are similar to the loss functions in supervised learning. When the information is subjective and unverifiable, Miller et al. (2005) propose the peer prediction mechanism, suggesting rewarding data by how well it predicts a peer’s subjective report which is judged by a proper scoring rule. Prelec (2004) propose the Bayesian Truth Serum mechanism. Kong & Schoenebeck (2019) propose an information-theoretic framework, suggesting paying the agents according to the f-mutual information between their reports. The framework provides a unified theoretical view of previous mechanisms in Dasgupta & Ghosh (2013) , and Prelec (2004) . Lu et al. (2024) first generalize the peer prediction to elicit informative textual responses with LLMs, providing the foundation for our GEM metrics. 
+ 
+ 
+ Most information elicitation mechanisms theoretically ensure that truthful and informative reports yield higher expected scores. However, high ex-post correlation between scores and report qualities is critical for practical application, as highlighted by Burrell & Schoenebeck (2021) ; Xu et al. (2024) . In our study, to validate GEM’s effectiveness in evaluating textual reports, we measure both the ex-post correlation with human-annotated quality scores and expected score change after several degradation and manipulation strategies. 
+ 
+ 
+ 
+ Estimation of Mutual Information. 
+
+ 
+ Kong & Schoenebeck (2018b) bridges information elicitation without verification and co-training, by formulating an optimization problem that maximizes the mutual information between two Bayesian predictors with two data sources. Cao et al. (2019) ; Xu et al. (2019) apply this information theoretical approach in co-training and de-noising respectively. Concurrently and independently, Belghazi et al. (2018) and Hjelm et al. (2018) propose neural network-based methods for estimating mutual information, which can be used as an optimization goal in unsupervised and self-supervised learning settings. 
+ 
+ 
+ 
+ 
+ 
+ 2 Preliminaries 
+
+ 
+ In this section, we first introduce our model for benchmarking LLMs’ judgments with no gold standard and then present Shannon mutual information (MI) and pointwise mutual information (PMI) as an unbiased estimator of MI. 
+ 
+ 
+ Model 
+
+ 
+ We consider a scenario with a candidate under evaluation and a peer reference working on the same tasks. We denote as the space of all tasks, with an underlying distribution over it, denoted as . Given a sample task , both the candidate and the reference generate a response, represented by the random variable and respectively. The response space for both and is denoted by . The tuple follows an underlying distribution . Note that the reference’s responses do not need to be gold standard. We assume that and are independent conditioning on the task . 
+ 
+ 
+ 
+ Empirically, in a dataset , we have a list of sampled tasks , and a list of corresponding reference responses . Let the candidate generate a list of responses to the corresponding tasks. We adopt a common assumption that all the samples are generated i.i.d. following the underlying distribution . 
+ 
+ 
+ 
+ Benchmarking the candidate 
+
+ 
+ The evaluation metric maps a tuple to a score . Note that some evaluation metrics only utilize one or two of the items in the tuple. If the evaluation metric utilizes a language model to compute the score, we call the model used as the evaluation-LM . Different evaluation-LMs may lead to different evaluation results. A nice property of our GRE-bench is the consistency over evaluation-LMs, i.e., using a smaller evaluation-LM will not significantly change the evaluation results, we will discuss it in Section  5 . Given a dataset and an evaluation metric , we can estimate , by using the average of the evaluation metrics over all samples, which is named the benchmark . 
+ 
+ 
+ 
+ Shannon Mutual Information 
+
+ 
+ Ideally, we aim to score the candidate according to the informativeness of her responses, thus, Shannon Mutual Information (MI) ( Shannon, 1948 ) is a suitable metric. The MI between two random variables, and , provides a quantitative measure of the information shared between them. Specifically, it assesses how much knowing one variable can inform us about the other. This is formally defined as:
+ The conditional mutual information measures the mutual information between and , conditioned on a random variable : 
+ 
+ In an academic peer review scenario, can be some superficial information of a paper (e.g. the abstract), the conditional MI measures how much information is revealed beyond the abstract and
+emphasizes the MI gained from the semantics judgment. 
+ 
+ 
+ 
+ Point-wise Mutual Information as an Estimator 
+
+ 
+ To estimate the MI with samples, we employ Point-wise Mutual Information (PMI) ( Fano & Hawkins, 1961 ; Church & Hanks, 1990 ) , an unbiased estimator of the MI. Formally, the PMI between realization and is defined as 
+ 
+ Similarly, the PMI between and conditional on is defined as 
+ 
+ 
+ 
+ 
+ 
+ 3 Generative Estimator for Mutual Information (GEM) 
+
+ 
+ In this section, we propose the Generative Estimator for Mutual Information (GEM), prove its theoretical effectiveness even if the reference’s responses are not gold standard under certain assumptions, and discuss its empirical practice. 
+ 
+ 
+ As discussed in Section  2 , we use the mean of sample PMIs as an unbiased estimator of the MI. Given a sampled tuple with a task , a candidate response and a reference response , we aim to compute . 
+ 
+ 
+ Following Yuan et al. (2021) ; Fu et al. (2023) ; Lu et al. (2024) , we use a generative language model to estimate the probability distribution of the reference response conditional on the candidate’s output, denoted by , and the marginal distribution, denoted by . 
+ 
+ 
+ Specifically, we use the LLMs’ inherent token prediction function. We tokenize as , and then integrate into the prompt. Given any length- prefix , we use the LLM to predict . With Bayesian rule, by multiplying over , we have 
+ 
+ Similarly, we can estimate the marginal distribution . Thus, we have the estimated PMI, denoted as , and consequently, the estimated MI over dataset is
+ 
+ 
+ 
+ 3.1 Theoretical Guarantees: Benchmarking LLMs with No Gold Standard 
+
+ 
+ We now show that even when the reference is not gold standard, the estimated MI can still be a benchmark where better candidates achieve higher scores theoretically. We adopt a widely-used model in decision-making theory ( Blackwell, 1951 ; Blackwell, 1953 ) . The candidate’s response follows an information structure , a mapping , where is the response space. It represents the distribution of responses conditional on the task. 
+ 
+ 
+ Within this model, Blackwell’s order ( Blackwell, 1951 ; Blackwell, 1953 ) provides a partial order of the informativeness of information structures. Consider two candidates, H and L, whose responses and follow information structures and respectively. Information structure is more informative than in the sense of Blackwell order if there exists a stochastic mapping , such that . Intuitively, the information structure with a lower Blackwell order is more noisy, and thus, can be regarded as lower quality. 
+ 
+ 
+ We now show that higher Blackwell order information leads to (approximately) higher GEM scores when the LLM can provide a “good” estimation. Formally, we have 
+ 
+ 
+ Proposition 3.1 . 
+ 
+ When the KL-divergence 
+ 2 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ The KL-divergence between two distributions over the same probability space is between the LLM estimated distribution and the underlying distribution satisfies 
+ 
+ For the two candidates and discussed above, the information structure of Blackwell dominates ’s, when the size of dataset goes to infinity, we have
+ . 
+ 
+ 
+ 
+ The proof is provided in Appendix  B , following previous information elicitation literature ( Lu et al., 2024 ) . It mainly relies on the data processing inequality ( Shannon, 1948 ; Thomas & Joy, 2006 ) . Additionally, we provide a similar proposition for conditional MI in Appendix  B . 
+ 
+ 
+ We highlight that while this theoretical result requires a strong assumption, it gives intuitions of why and how our GEM scores could work. In the next several sections, we present our experiment validating the effectiveness of GEM with real data. 
+ 
+ 
+ 
+ 3.2 Filtering Out Shortcuts 
+
+ 
+ Textual data is inherently high-dimensional, encompassing various aspects. For example, peer reviews may have a hierarchical information structure, including language style, the topic of the paper, and critical judgments, as shown in Figure  2 . While each of these dimensions influences LLM predictions and consequently contributes to the mutual information, they are not equally important when assessing the quality of LLM-generated responses, particularly in the context of peer reviews. 
+ 
+ 
+ Empirically, the correlation between superficial information can act as “shortcuts” ( Geirhos et al., 2020 ) confounding LLM predictions, cause unintended bias in the estimated mutual information, and consequently distort the evaluation metric towards superficial correlations rather than thorough judgments. Since we focus on the semantic quality of these responses, we aim to filter out dimensions like language styles that could skew the evaluation metric by offering “shortcuts” in LLM predictions. 
+ 
+ 
+ 
+ Preprocessing 
+
+ 
+ A straightforward yet effective method proposed by Lu et al. (2024) , is preprocessing responses using a specific LLM to rephrase and summarize the content. This preprocessing step standardizes language style and eliminates superficial information, thereby reducing the influence of irrelevant dimensions. We denote the preprocessed versions of responses and as and respectively. 
+ 
+ 
+ 
+ We have now outlined all steps of our Generative Estimator for Mutual Information (GEM) framework, as illustrated in Figure  3 . The GEM metric between a candidate response and a reference response is defined as follows: 
+ 
+ 
+ 
+ By taking the arithmetic average of all over the dataset , we have an estimated mutual information between random variables and , as shown in Figure  3 . 
+ 
+ 
+ For comparison, we also introduce the GEM-raw metric calculated without preprocessing as follows: , which serves as a baseline. 
+ 
+ 
+ 
+ GEM-S: conditioning out the synopsis 
+
+ 
+ Kong & Schoenebeck (2018a) suggest surface-level information can inflate mutual information through simple correlations, reducing the mutual information’s effectiveness in reflecting semantic informativeness, especially when the responses have a hierarchical information structure as shown in Figure  2 . As some superficial information can be contained in a synopsis of the task, e.g. the abstract of the paper to be reviewed, conditional mutual information can be used to distill the semantic informativeness ( Lu et al., 2024 ) . 
+ 
+ 
+ The GEM-S metric is designed to mitigate this issue by conditioning out the synopsis of the task, denoted as . The GEM-S metric is formally defined as: 
+ 
+ 
+ 
+ With the conditional formulation above, only the additional, non-trivial mutual information is measured, thereby offering a more accurate assessment of the candidate’s performance in providing information beyond superficial content. 
+ 
+ 
+ Moreover, we can adjust the granularity of the synopsis to make the GEM-S metric focus on evaluating different aspects of the candidate LLMs’ ability. In the example of Figure  2 , the standard GEM measures the general ability to produce relevant reviews. By conditioning on the abstract, GEM-S (abstract) evaluates the LLM’s ability to generate judgments, including retrieving author-stated strengths and weaknesses (ASSW) and providing critical feedback. By further conditioning on a summary of these author-stated strengths and weaknesses, GEM-S (ASSW) narrows the focus to the LLM’s capacity for critical thinking and delivering constructive feedback. 
+ 
+ 
+ 
+ 
+ 
+ 4 Experiment: Validating GEM’s Effectiveness 
+
+ 
+ In this section, we provide our experiment setup to validate the effectiveness of the GEM metric in benchmarking LLMs without gold-standard references, and show the results. Code repository is at https://github.com/yx-lu/Benchmarking-LLMs--Judgments-with-No-Gold-Standard . 
+ 
+ 
+ GEM setup 
+
+ 
+ We present the empirical setup of the GEM metric and its variants. In the validation experiment in this section, Llama-3.1 8B is used as the evaluation-LM to estimate and . After confirming the effectiveness of GEM metrics using the small model, for even better performance, we scaled up to a larger, 70B-parameter version of Llama-3.1 for computing the GRE-bench on the ICLR 2023 dataset in Section  5 , where we also show the correlation between results of the smaller (8B) and larger (70B) models, to ensure consistency of our approach. 
+ 
+ 
+ For text preprocessing, we employ GPT-4o. We also present the results with Llama-3.2 90B preprocessing in Appendix  A.3 , and demonstrate the robustness of GEM metrics with various preprocessing models. For GEM-S, without further indication, we use the abstract of the paper as the synopsis in this section. The prompts for probability estimation and preprocessing can be found in Appendix C . 
+ 
+ 
+ 
+ Baselines 
+
+ 
+ We compare the performance of GEM and its variants with the following established evaluation metrics commonly used in NLG evaluation, including two metrics from the pre-LLM era, BLEU ( Papineni et al., 2002 ) and ROUGE-L ( Lin, 2004 ) , and an embedding-based metric, BERTScore ( Zhang et al., 2019 ) , a probability-based metric BARTScore ( Yuan et al., 2021 ) , and a GPT-based metric LMExaminer (Language Model as Examiner) ( Bai et al., 2024 ) . Here, we mainly discuss the LLM-based metrics, the detailed implementation of all baselines is provided in Appendix D.1 . 
+ 
+ 
+ BERTScore ( Zhang et al., 2019 ) evaluates generated text by measuring the cosine similarity between token embeddings from a pre-trained language model. Instead of BERT, we use a recent model stella_en_400M_v5 ( Zhang, 2024 ) as the evaluation-LM for better token embedding performance. 
+ 
+ 
+ BARTScore ( Yuan et al., 2021 ) is a probability-based metric. It has three variants, precision, recall, and F1-score. Instead of BART, we use the state-of-the-art Llama3.1-8b as the evaluation-LM for estimating the probability, which is the same as our GEM metrics. 
+ 
+ 
+ LMExaminer ( Bai et al., 2024 ) is one of the recently popular methods where a language model (LM) is used to evaluate the quality of generated text based on specific evaluation criteria, serving as an examiner. With empirical evidence suggesting that GPT-4 outperforms open-source models and even finetuned models of pointwise grading on AlignBench ( Ke et al., 2023 ) , we use GPT-4o as a baseline in our experiment. For peer review tasks, our prompt adopts criteria based on Review Quality Indicators (RQIs) ( Goldberg et al., 2023 ; Van Rooyen et al., 1999 ; Superchi et al., 2019 ) including four aspects, understanding, coverage, substantiation, constructiveness. 
+ 
+ 
+ 
+ 4.1 Result 1: Positive Correlation with Human Annotation 
+
+ 
+ In this section, we show the experiment results utilizing a human-annotated dataset to validate how well the GEM metrics correlate with human-labeled quality scores compared to various baselines. A higher correlation indicates that the evaluation metric better aligns with human preference. 
+ 
+ 
+ Note that, a perfect correlation can be impossible to achieve for several reasons: Human annotations are inherently noisy ( Goldberg et al., 2023 ) , evaluation of individual responses can also be noisy due to subjectivity, and there is no gold-standard reference. Nonetheless, our goal is to demonstrate systematic-level positive correlation. 
+ 
+ 
+ Score. For task with corresponding responses where is the -th response. The score of response is computed by where is the evaluation metric. 
+ 
+ 
+ Human-Annotated Peer Grading Dataset. This dataset contains 30 student project proposals in a graduate-level class on machine learning and about 180 peer evaluations of the proposals. We use GPT-4o to generate a short abstract for each proposal. Each proposal has at least 4 reviews, and each review contains an overall score and textual feedback, including “Strengths of the project”, “Weaknesses of the project/likely roadblocks”, and “Ideas for improvement or specific directions”. According to the quality of students’ textual feedback, an instructor manually grades the reviews with grade A, B, or C. 
+ 
+ 
+ 
+ Statistics Metric and Results. Table  1 shows Spearman’s correlation coefficient between the scores of various evaluation metrics and the instructors’ grades. All variants of our GEM metrics show a significant positive correlation. The GEM-S has the highest correlation over all three GEM variants, implying the effectiveness of filtering out shortcuts. It also shows competitive performance compared to GPT-4o LMExaminer which has the highest correlation. All other baselines perform worse than GEM, and only BARTScore-Recall has a significant positive correlation. In later sections, we provide further comparisons between GEM and LMExaminer. 
+ 
+ 
+ 
+ 4.2 Result 2: Better Sensitivity to Degradation 
+
+ 
+ We now compare how sensitive the evaluation metrics are to degradations that obviously reduce the semantic informativeness of the responses. A statistically significant score decrease indicates the sensitivity of the metric. We first introduce our validation workflow in Algorithm  2 , the ICLR peer review dataset, and then introduce several degradation strategies. The workflow and dataset will also be used in the robustness check again manipulation strategies in Section  4.3 . 
+ 
+ 
+ 
+ Note that the evaluation metrics that we compare are in different scales, thus, instead of comparing the mean difference, we standardize the scores with pooled standard deviation , and compare the standardized mean difference (SMD) ( Andrade, 2020 ) . This form of SMD is also known as Cohen’s d ( Cohen, 1988 ) . 
+ 
+ 
+ ICLR Dataset. We use the ICLR 2023 
+ 3 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ At the time of our experiment, ICLR 2024 review data was not yet available through the OpenReview API. peer review data publicly available on OpenReview. We randomly select 300 papers as our dataset, and for each paper, we randomly select 3 original human reviews: one review to serve as a human candidate, and the other two as reference responses. 
+ 
+ 
+ Degradation Strategies. We introduce three degradation strategies as follows. Note that the degraded responses after Sentence Deletion or Deletion & Completion can be regarded as Blackwell-dominated by the original one. The detailed setup is provided in Appendix  D.3 . 
+ 
+ 
+ 
+ 1. 
+ 
+ Sentence Deletion. We delete every other sentence of to get a degraded response . 
+ 
+ 2. 
+ 
+ Deletion & Completion. After deletion, we use GPT-4o to complete the deleted sentence with consistent language style and semantics to the original response, which provides an informatively degraded response but with a similar length to the original one. 
+ 
+ 3. 
+ 
+ Abstract-only Review. We use Claude-3-sonnet 
+ 4 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ We intentionally use a different LLM from Deletion & Completion to make sure the effect of score decrease is not caused only by the LM. to create a fictitious review with only the abstract of the paper, and use to replace . 
+ 
+ 
+ 
+ 
+ Statistics and Results. We compare the standardized mean differences (SMD) of evaluation metrics in Table  2 : GEM and GEM-S are only two metrics that consistently have significant negative SMD on all three degradations. The LMExaminer shows the highest effectiveness on Sentence Deletion and Deletion & Completion, but failed to penalize reviews only based on the abstract. 
+ 
+ 
+ 
+ 
+ 4.3 Result 3: Better Robustness against Manipulation 
+
+ 
+ Evidence has been found that the LLM evaluators, and even humans, are not robust against specific manipulation strategies, they may rely on language style or length as shortcuts instead of providing an evaluation based on semantic quality ( Panickssery et al., 2024 ; Bai et al., 2024 ; Goldberg et al., 2023 ) , thus, it is important to further check our metric’s robustness against several manipulations. 
+ 
+ 
+ Specifically, we employ two manipulation strategies, which do not significantly change the semantics, but may change the language style or add meaningless starting sentences. After manipulation, if the score significantly increases, the evaluation metric fails to pass the robustness check. We use the same workflow and dataset introduced in Section  4.2 . 
+ 
+ 
+ Manipulation Strategies. We now introduce the manipulation strategies. The detailed setup, including the prompts and examples, is provided in Appendix  D.4 . 
+ 
+ 
+ 
+ 1. 
+ 
+ GPT-4o/Llama-3.1 Rephrase. Following Bai et al. (2024) , we use GPT-4o and Llama-3.1 to rephrase the response while trying to keep the semantics unchanged. We test whether the evaluation metrics have preference towards GPT-4o or Llama-3.1 generated language. 
+ 
+ 2. 
+ 
+ Meaningless Elongation. We adopt a meaningless elongation method similar to Goldberg et al. (2023) ’s human subject experiment where a set of fixed meaningless sentences is added to each section of all the reviews as shown in Figure  4 . 
+ 
+ 
+ 
+ 
+ 
+ Statistics and Results. The SMDs shown in Table  2 demonstrate that LMexaminer has significant score increases after all three manipulations, indicating its lack of manipulation-resistance. In contrast, GEM and GEM-S exhibit no significant score increase across these manipulations. Furthermore, comparing SMDs after degradations and manipulations in Table  2 , we observe that the scores of GEM and GEM-S decrease less after manipulations compared to degradations, indicating that manipulations result in less information loss than degradations. 
+ 
+ 
+ 
+ 
+ 5 GRE-bench: Benchmarking LLMs with GEM 
+
+ 
+ After validating our evaluation metrics GEM and GEM-S in Section  4.1 , 4.2 , and 4.3 , we now show the results of GRE-bench (Generating Review Evaluation Benchmark) based on GEM and GEM-S. We use the same ICLR 2023 peer review dataset introduced in Section  4.2 . 
+ 
+ 
+ We prompt LLMs to generate detailed reviews for each paper in the dataset, with the prompt inspired by Liang et al. (2023) , which covers various aspects, including paper summary, strengths, weaknesses, questions, etc. Details of the prompts are provided in Appendix  C.3 . 
+ 
+ 
+ We then use GEM and GEM-S to score the LLM-generated reviews. Specifically, as discussed in Section  3.2 , we use GEM-S (abstract) and GEM-S (ASSW), where the synopsis consists of an abstract for GEM-S (abstract), and an abstract supplemented with a summary of author-stated strengths and weaknesses (ASSW) for GEM-S (ASSW). We prompt GPT-4o to get the ASSW summary of each paper, the prompt is shown in Appendix  C.4 . We visualize the results of the GRE-bench based on GEM, GEM-S (abstract), and GEM-S (ASSW) respectively in Figure  6 . More detailed numerical results are provided in Table  7 of Appendix  A.2 . 
+ 
+ 
+ 
+ Figure  6 shows that, within each LLM family, such as the Llama-3 or Claude series, models with larger parameter sizes tend to perform better. Moreover, newer versions tend to outperform their predecessors with similar model sizes, as seen in comparisons between Llama-3.1 and Llama-3. These observations further validate the effectiveness of our GEM and GEM-S metrics in accurately evaluating LLMs. 
+ 
+ 
+ Notably, several models with large parameter sizes surpass the human baseline (gray line) when using GEM and GEM-S (abstract) metrics. We hypothesize this is because strong LLMs like Claude-3 opus can effectively retrieve contributions and limitations stated by the authors, and will include that in their reviews. In contrast, human reviewers tend to omit judgments that are less important or already stated by the authors due to writing costs, resulting in a loss of mutual information. This hypothesis is supported by the observation that, when we condition out the author-stated strengths and weaknesses, the human reviewer has the highest GRE-bench score based on GEM-S (ASSW). 
+ 
+ 
+ This observation further validates the hierarchical information structure discussed in Section  3.2 . By conditioning out different levels of information, the benchmark captures subtly different abilities. GEM-S (ASSW) emphasizes the quality of critical judgment, while GEM and GEM-S (abstract) focus more on evaluating LLMs’ foundational abilities, including retrieving useful information from the paper, which is especially valuable for differentiating LLMs with smaller parameter size. 
+ 
+ 
+ GRE-bench vs. Other benchmarks 
+
+ 
+ The ability to generate informative reviews relies on several key factors, including logical reasoning, critical thinking, and fact-checking. Various widely used benchmarks measure different aspects of LLM performance. To better understand which abilities are most critical for generating high-quality reviews, in the sense of GRE-bench scores, we compared our results with several other benchmarks. 
+ 
+ 
+ We present the Spearman’s correlation coefficients between the GRE-bench scores of all the models and their corresponding scores on other benchmarks 
+ 7 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ We collect benchmark data from online sources, such as technical reports of language models. Since some models have missing results for specific benchmarks, we exclude those entries when computing correlation. For more details, please refer to our code repository. in Table  6 in Appendix  A.2 , providing insights into which factors most strongly influence review generation quality. Notably, GRE-bench highly correlates with HellaSWAG and ARC-C which measures reasoning ability, and less correlates with benchmarks for coding ability (HumanEval) or math ability (MATH, GSM8K). 
+ 
+ 
+ 
+ 
+ Consistent results over various Evaluation LMs. 
+
+ 
+ The Spearman’s correlation coefficients between the GRE-bench scores based on GEM metric computed using Llama-3.1 8B and that same score computed with Llama-3.1 70B is 0.93. This indicates that the score is largely robust with respect to the specific evaluation LM used. The analogous coefficient for the GRE-bench scores based on GEM-S (abstract) and GEM-S (ASSW) are 0.92 and 0.90 respectively. We further provide the comprehensive results of GRE-bench with Llama-3.1 8B in Table  8 in Appendix  A.2 . This consistency shows that with our metrics, a small model with 8B parameters that can be deployed on a single NVIDIA L4 GPU, plus proper preprocessing, is still effective in evaluating the quality of judgments generated by much larger models, though larger evaluation LM may have better evaluation performance. 
+ 
+ 
+ 
+ 
+ 6 Conclusion and Discussion 
+
+ 
+ In conclusion, we introduce GEM and GEM-S, two metrics for evaluating LLMs on tasks without gold-standard references. They have proved to be accurate and manipulation-resistant, outperforming other metrics in the experiment. Based on GEM and GEM-S, we present GRE-bench for assessing LLMs’ peer review capabilities while minimizing the risk of data contamination. 
+ 
+ 
+ Our approach has certain limitations. First, although our experiments demonstrate its effectiveness, the theoretical results depend on the accurate estimation of the underlying distribution by the LLM, which may not always be reliable. With ongoing advancements in LLM technology, we hope that these estimations will become more accurate over time. Second, while our method does not require gold-standard references, it requires reference that includes original human-generated information. If all reviewers submit solely LLM-generated reviews—such as those only from GPT-4o—the mutual information-based approach may unfairly assign the highest score to GPT-4o. This echoes recent research demonstrating that the absence of original human-generated data in AI evaluation can result in model collapse ( Shumailov et al., 2024 ) . 
+ 
+ 
+ For future work, we can use new open-access peer review data to update GRE-bench every year and observe how the evaluation evolves over time, to monitor any improvements in LLMs’ peer review capabilities. This will also ensure the benchmark stays current and minimizes data contamination. Additionally, exploring GEM’s potential to evaluate subjective content in other scenarios, such as book reviews and movie reviews, could broaden its applicability and further demonstrate its versatility. We provide initial results in validating GEM on a Yelp restaurant review dataset in Appendix  A.4 . 
+ 
+ 
+ 
+ 
+ Acknowledgment 
+
+ 
+ We would like to thank Sanzeed Anwar from University of Michigan for data processing. We also thank Zebang Xu and Tianzi Liu from Cornell University for their valuable consultation on the statistical methods employed in our experiments. Additionally, we appreciate the insightful feedback and suggestions provided by the anonymous reviewers at ICLR 2025. 
+ 
+ 
+ 
+ Reproducibility Statement 
+
+ 
+ In this section, we demonstrate the efforts we have made to ensure better reproducibility of the paper. 
+ 
+ 
+ Complete Theoretical Proof 
+
+ 
+ In Appendix   B , we provide a full proof of the conclusions claimed in the paper. 
+ 
+ 
+ 
+ Ready-to-Use Code 
+
+ 
+ We have made all the code for data collection, model fine-tuning, metric computation, and experiments available on GitHub. The repository is at https://github.com/yx-lu/Benchmarking-LLMs--Judgments-with-No-Gold-Standard . Additionally, to address potential hardware issues for reproducing the results, our code can be deployed on Google Colab (requiring a T4 or higher GPU, with A100 being recommended). Experiments with Llama-3.1-8B as the evaluation LM are conducted on Google Colab instances with NVIDIA A100 GPU. Experiments in Section  5 employ Llama-3.1-70B as the evaluation LM requiring more GPU VRAM, thus, we use rental instances with a configuration of two NVIDIA H100 GPUs. 
+ 
+ 
+ 
+ Clear Implementation and Experimental Details 
+
+ 
+ In Appendix   C , we thoroughly discuss the implementation of our GEM and GEM-S metrics. In Appendix   D , we provide detailed explanations of the experimental procedures, including how we degrade and manipulate reviews, as well as the methodology for computing the baseline metrics. 
+ 
+ 
+ 
+ 
+ References 
+
+ 
+ 
+ Ali & Silvey (1966) 
+ 
+Syed Mumtaz Ali and Samuel D Silvey.
+
+ 
+ A general class of coefficients of divergence of one distribution from another.
+
+ 
+ Journal of the Royal Statistical Society: Series B (Methodological) , 28(1):131–142, 1966.
+
+ 
+ 
+ Andrade (2020) 
+ 
+Chittaranjan Andrade.
+
+ 
+ Mean difference, standardized mean difference (smd), and their use in meta-analysis: as simple as it gets.
+
+ 
+ The Journal of clinical psychiatry , 81(5):11349, 2020.
+
+ 
+ 
+ Bai et al. (2024) 
+ 
+Yushi Bai, Jiahao Ying, Yixin Cao, Xin Lv, Yuze He, Xiaozhi Wang, Jifan Yu, Kaisheng Zeng, Yijia Xiao, Haozhe Lyu, et al.
+
+ 
+ Benchmarking foundation models with language-model-as-an-examiner.
+
+ 
+ Advances in Neural Information Processing Systems , 36, 2024.
+
+ 
+ 
+ Belghazi et al. (2018) 
+ 
+Mohamed Ishmael Belghazi, Aristide Baratin, Sai Rajeswar, Sherjil Ozair, Yoshua Bengio, Aaron Courville, and R Devon Hjelm.
+
+ 
+ Mine: mutual information neural estimation.
+
+ 
+ arXiv preprint arXiv:1801.04062 , 2018.
+
+ 
+ 
+ Blackwell (1951) 
+ 
+David Blackwell.
+
+ 
+ Comparison of experiments.
+
+ 
+ In Proceedings of the second Berkeley symposium on mathematical statistics and probability , volume 2, pp. 93–103. University of California Press, 1951.
+
+ 
+ 
+ Blackwell (1953) 
+ 
+David Blackwell.
+
+ 
+ Equivalent comparisons of experiments.
+
+ 
+ The annals of mathematical statistics , pp. 265–272, 1953.
+
+ 
+ 
+ Brier (1950) 
+ 
+Glenn W Brier.
+
+ 
+ Verification of forecasts expressed in terms of probability.
+
+ 
+ Monthly weather review , 78(1):1–3, 1950.
+
+ 
+ 
+ Burrell & Schoenebeck (2021) 
+ 
+Noah Burrell and Grant Schoenebeck.
+
+ 
+ Measurement integrity in peer prediction: A peer assessment case study.
+
+ 
+ arXiv preprint arXiv:2108.05521 , 2021.
+
+ 
+ 
+ Cao et al. (2019) 
+ 
+Peng Cao, Yilun Xu, Yuqing Kong, and Yizhou Wang.
+
+ 
+ Max-mig: an information theoretic approach for joint learning from crowds.
+
+ 
+ arXiv preprint arXiv:1905.13436 , 2019.
+
+ 
+ 
+ Chollet (2019) 
+ 
+François Chollet.
+
+ 
+ On the measure of intelligence.
+
+ 
+ arXiv preprint arXiv:1911.01547 , 2019.
+
+ 
+ 
+ Church & Hanks (1990) 
+ 
+Kenneth Church and Patrick Hanks.
+
+ 
+ Word association norms, mutual information, and lexicography.
+
+ 
+ Computational linguistics , 16(1):22–29, 1990.
+
+ 
+ 
+ Cobbe et al. (2021) 
+ 
+Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz Kaiser, Matthias Plappert, Jerry Tworek, Jacob Hilton, Reiichiro Nakano, et al.
+
+ 
+ Training verifiers to solve math word problems.
+
+ 
+ arXiv preprint arXiv:2110.14168 , 2021.
+
+ 
+ 
+ Cohen (1988) 
+ 
+J Cohen.
+
+ 
+ Statistical power analysis for the behavioral sciences .
+
+ 
+ 1988.
+
+ 
+ 
+ Dasgupta & Ghosh (2013) 
+ 
+Anirban Dasgupta and Arpita Ghosh.
+
+ 
+ Crowdsourced judgement elicitation with endogenous proficiency.
+
+ 
+ In Proceedings of the 22nd international conference on World Wide Web , pp. 319–330, 2013.
+
+ 
+ 
+ Donker (2023) 
+ 
+Tjibbe Donker.
+
+ 
+ The dangers of using large language models for peer review.
+
+ 
+ The Lancet Infectious Diseases , 2023.
+
+ 
+ 
+ Fano & Hawkins (1961) 
+ 
+Robert M Fano and David Hawkins.
+
+ 
+ Transmission of information: A statistical theory of communications.
+
+ 
+ American Journal of Physics , 29(11):793–794, 1961.
+
+ 
+ 
+ Fu et al. (2023) 
+ 
+Jinlan Fu, See-Kiong Ng, Zhengbao Jiang, and Pengfei Liu.
+
+ 
+ Gptscore: Evaluate as you desire.
+
+ 
+ arXiv preprint arXiv:2302.04166 , 2023.
+
+ 
+ 
+ Geirhos et al. (2020) 
+ 
+Robert Geirhos, Jörn-Henrik Jacobsen, Claudio Michaelis, Richard Zemel, Wieland Brendel, Matthias Bethge, and Felix A Wichmann.
+
+ 
+ Shortcut learning in deep neural networks.
+
+ 
+ Nature Machine Intelligence , 2(11):665–673, 2020.
+
+ 
+ 
+ Golchin & Surdeanu (2023) 
+ 
+Shahriar Golchin and Mihai Surdeanu.
+
+ 
+ Time travel in llms: Tracing data contamination in large language models.
+
+ 
+ arXiv preprint arXiv:2308.08493 , 2023.
+
+ 
+ 
+ Goldberg et al. (2023) 
+ 
+Alexander Goldberg, Ivan Stelmakh, Kyunghyun Cho, Alice Oh, Alekh Agarwal, Danielle Belgrave, and Nihar B Shah.
+
+ 
+ Peer reviews of peer reviews: A randomized controlled trial and other experiments.
+
+ 
+ arXiv preprint arXiv:2311.09497 , 2023.
+
+ 
+ 
+ Good (1952) 
+ 
+Irving John Good.
+
+ 
+ Rational decisions.
+
+ 
+ Journal of the Royal Statistical Society: Series B (Methodological) , 14(1):107–114, 1952.
+
+ 
+ 
+ Hendrickson & Buehler (1971) 
+ 
+Arlo D Hendrickson and Robert J Buehler.
+
+ 
+ Proper scores for probability forecasters.
+
+ 
+ The Annals of Mathematical Statistics , 42(6):1916–1921, 1971.
+
+ 
+ 
+ Hendrycks et al. (2020) 
+ 
+Dan Hendrycks, Collin Burns, Steven Basart, Andy Zou, Mantas Mazeika, Dawn Song, and Jacob Steinhardt.
+
+ 
+ Measuring massive multitask language understanding.
+
+ 
+ arXiv preprint arXiv:2009.03300 , 2020.
+
+ 
+ 
+ Hjelm et al. (2018) 
+ 
+R Devon Hjelm, Alex Fedorov, Samuel Lavoie-Marchildon, Karan Grewal, Phil Bachman, Adam Trischler, and Yoshua Bengio.
+
+ 
+ Learning deep representations by mutual information estimation and maximization.
+
+ 
+ arXiv preprint arXiv:1808.06670 , 2018.
+
+ 
+ 
+ Ke et al. (2023) 
+ 
+Pei Ke, Bosi Wen, Zhuoer Feng, Xiao Liu, Xuanyu Lei, Jiale Cheng, Shengyuan Wang, Aohan Zeng, Yuxiao Dong, Hongning Wang, et al.
+
+ 
+ Critiquellm: Scaling llm-as-critic for effective and explainable evaluation of large language model generation.
+
+ 
+ arXiv preprint arXiv:2311.18702 , 2023.
+
+ 
+ 
+ Kong & Schoenebeck (2018a) 
+ 
+Yuqing Kong and Grant Schoenebeck.
+
+ 
+ Eliciting expertise without verification.
+
+ 
+ In Proceedings of the 2018 ACM Conference on Economics and Computation , pp. 195–212, 2018a.
+
+ 
+ 
+ Kong & Schoenebeck (2018b) 
+ 
+Yuqing Kong and Grant Schoenebeck.
+
+ 
+ Water from two rocks: Maximizing the mutual information.
+
+ 
+ In Proceedings of the 2018 ACM Conference on Economics and Computation , pp. 177–194, 2018b.
+
+ 
+ 
+ Kong & Schoenebeck (2019) 
+ 
+Yuqing Kong and Grant Schoenebeck.
+
+ 
+ An information theoretic framework for designing information elicitation mechanisms that reward truth-telling.
+
+ 
+ ACM Transactions on Economics and Computation (TEAC) , 7(1):1–33, 2019.
+
+ 
+ 
+ Kuznetsov et al. (2024) 
+ 
+Ilia Kuznetsov, Osama Mohammed Afzal, Koen Dercksen, Nils Dycke, Alexander Goldberg, Tom Hope, Dirk Hovy, Jonathan K Kummerfeld, Anne Lauscher, Kevin Leyton-Brown, et al.
+
+ 
+ What can natural language processing do for peer review?
+
+ 
+ arXiv preprint arXiv:2405.06563 , 2024.
+
+ 
+ 
+ Kwiatkowski et al. (2019) 
+ 
+Tom Kwiatkowski, Jennimaria Palomaki, Olivia Redfield, Michael Collins, Ankur Parikh, Chris Alberti, Danielle Epstein, Illia Polosukhin, Jacob Devlin, Kenton Lee, et al.
+
+ 
+ Natural questions: a benchmark for question answering research.
+
+ 
+ Transactions of the Association for Computational Linguistics , 7:453–466, 2019.
+
+ 
+ 
+ Liang et al. (2023) 
+ 
+Weixin Liang, Yuhui Zhang, Hancheng Cao, Binglu Wang, Daisy Ding, Xinyu Yang, Kailas Vodrahalli, Siyu He, Daniel Smith, Yian Yin, Daniel McFarland, and James Zou.
+
+ 
+ Can large language models provide useful feedback on research papers? a large-scale empirical analysis, 2023.
+
+ 
+ 
+ Lin (2004) 
+ 
+Chin-Yew Lin.
+
+ 
+ Rouge: A package for automatic evaluation of summaries.
+
+ 
+ In Text summarization branches out , pp. 74–81, 2004.
+
+ 
+ 
+ Lin et al. (2021) 
+ 
+Stephanie Lin, Jacob Hilton, and Owain Evans.
+
+ 
+ Truthfulqa: Measuring how models mimic human falsehoods.
+
+ 
+ arXiv preprint arXiv:2109.07958 , 2021.
+
+ 
+ 
+ Liu & Shah (2023) 
+ 
+Ryan Liu and Nihar B. Shah.
+
+ 
+ Reviewergpt? an exploratory study on using large language models for paper reviewing, 2023.
+
+ 
+ 
+ Lu et al. (2024) 
+ 
+Yuxuan Lu, Shengwei Xu, Yichi Zhang, Yuqing Kong, and Grant Schoenebeck.
+
+ 
+ Eliciting informative text evaluations with large language models.
+
+ 
+ arXiv preprint arXiv:2405.15077 , 2024.
+
+ 
+ 
+ Miller et al. (2005) 
+ 
+Nolan Miller, Paul Resnick, and Richard Zeckhauser.
+
+ 
+ Eliciting informative feedback: The peer-prediction method.
+
+ 
+ Management Science , 51(9):1359–1373, 2005.
+
+ 
+ 
+ Nenkova & Passonneau (2004) 
+ 
+Ani Nenkova and Rebecca J Passonneau.
+
+ 
+ Evaluating content selection in summarization: The pyramid method.
+
+ 
+ In Proceedings of the human language technology conference of the north american chapter of the association for computational linguistics: Hlt-naacl 2004 , pp. 145–152, 2004.
+
+ 
+ 
+ Oren et al. (2023) 
+ 
+Yonatan Oren, Nicole Meister, Niladri Chatterji, Faisal Ladhak, and Tatsunori B Hashimoto.
+
+ 
+ Proving test set contamination in black box language models.
+
+ 
+ arXiv preprint arXiv:2310.17623 , 2023.
+
+ 
+ 
+ Panickssery et al. (2024) 
+ 
+Arjun Panickssery, Samuel R Bowman, and Shi Feng.
+
+ 
+ Llm evaluators recognize and favor their own generations.
+
+ 
+ arXiv preprint arXiv:2404.13076 , 2024.
+
+ 
+ 
+ Papineni et al. (2002) 
+ 
+Kishore Papineni, Salim Roukos, Todd Ward, and Wei-Jing Zhu.
+
+ 
+ Bleu: a method for automatic evaluation of machine translation.
+
+ 
+ In Proceedings of the 40th annual meeting of the Association for Computational Linguistics , pp. 311–318, 2002.
+
+ 
+ 
+ Prelec (2004) 
+ 
+Drazen Prelec.
+
+ 
+ A bayesian truth serum for subjective data.
+
+ 
+ science , 306(5695):462–466, 2004.
+
+ 
+ 
+ Robertson (2023) 
+ 
+Zachary Robertson.
+
+ 
+ Gpt4 is slightly helpful for peer-review assistance: A pilot study, 2023.
+
+ 
+ 
+ Sainz et al. (2023) 
+ 
+Oscar Sainz, Jon Ander Campos, Iker García-Ferrero, Julen Etxaniz, Oier Lopez de Lacalle, and Eneko Agirre.
+
+ 
+ Nlp evaluation in trouble: On the need to measure llm data contamination for each benchmark.
+
+ 
+ arXiv preprint arXiv:2310.18018 , 2023.
+
+ 
+ 
+ Shannon (1948) 
+ 
+Claude Elwood Shannon.
+
+ 
+ A mathematical theory of communication.
+
+ 
+ The Bell system technical journal , 27(3):379–423, 1948.
+
+ 
+ 
+ Shumailov et al. (2024) 
+ 
+Ilia Shumailov, Zakhar Shumaylov, Yiren Zhao, Nicolas Papernot, Ross Anderson, and Yarin Gal.
+
+ 
+ Ai models collapse when trained on recursively generated data.
+
+ 
+ Nature , 631(8022):755–759, Jul 2024.
+
+ 
+ ISSN 1476-4687.
+
+ 
+ doi: 10.1038/s41586-024-07566-y .
+
+ 
+ URL https://doi.org/10.1038/s41586-024-07566-y .
+
+ 
+ 
+ Superchi et al. (2019) 
+ 
+Cecilia Superchi, José Antonio González, Ivan Solà, Erik Cobo, Darko Hren, and Isabelle Boutron.
+
+ 
+ Tools used to assess the quality of peer review reports: a methodological systematic review.
+
+ 
+ BMC medical research methodology , 19:1–14, 2019.
+
+ 
+ 
+ Thomas & Joy (2006) 
+ 
+MTCAJ Thomas and A Thomas Joy.
+
+ 
+ Elements of information theory .
+
+ 
+ Wiley-Interscience, 2006.
+
+ 
+ 
+ Van Rooyen et al. (1999) 
+ 
+Susan Van Rooyen, Nick Black, and Fiona Godlee.
+
+ 
+ Development of the review quality instrument (rqi) for assessing peer reviews of manuscripts.
+
+ 
+ Journal of clinical epidemiology , 52(7):625–629, 1999.
+
+ 
+ 
+ Xu et al. (2024) 
+ 
+Shengwei Xu, Yichi Zhang, Paul Resnick, and Grant Schoenebeck.
+
+ 
+ Spot check equivalence: an interpretable metric for information elicitation mechanisms.
+
+ 
+ arXiv preprint arXiv:2402.13567 , 2024.
+
+ 
+ 
+ Xu et al. (2019) 
+ 
+Yilun Xu, Peng Cao, Yuqing Kong, and Yizhou Wang.
+
+ 
+ L_dmi: A novel information-theoretic loss function for training deep nets robust to label noise.
+
+ 
+ Advances in neural information processing systems , 32, 2019.
+
+ 
+ 
+ Yuan et al. (2021) 
+ 
+Weizhe Yuan, Graham Neubig, and Pengfei Liu.
+
+ 
+ Bartscore: Evaluating generated text as text generation.
+
+ 
+ Advances in Neural Information Processing Systems , 34:27263–27277, 2021.
+
+ 
+ 
+ Zellers et al. (2019) 
+ 
+Rowan Zellers, Ari Holtzman, Yonatan Bisk, Ali Farhadi, and Yejin Choi.
+
+ 
+ Hellaswag: Can a machine really finish your sentence?
+
+ 
+ arXiv preprint arXiv:1905.07830 , 2019.
+
+ 
+ 
+ Zhang (2024) 
+ 
+Dun Zhang.
+
+ 
+ stella_en_400m_v5.
+
+ 
+ https://huggingface.co/dunzhang/stella_en_400M_v5 , 2024.
+
+ 
+ 
+ Zhang et al. (2019) 
+ 
+Tianyi Zhang, Varsha Kishore, Felix Wu, Kilian Q Weinberger, and Yoav Artzi.
+
+ 
+ Bertscore: Evaluating text generation with bert.
+
+ 
+ arXiv preprint arXiv:1904.09675 , 2019.
+
+ 
+ 
+ Zheng et al. (2023a) 
+ 
+Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao Zhuang, Zi Lin, Zhuohan Li, Dacheng Li, Eric Xing, et al.
+
+ 
+ Judging llm-as-a-judge with mt-bench and chatbot arena.
+
+ 
+ Advances in Neural Information Processing Systems , 36:46595–46623, 2023a.
+
+ 
+ 
+ Zheng et al. (2023b) 
+ 
+Lianmin Zheng, Ying Sheng, Wei-Lin Chiang, Hao Zhang, Joseph E Gonzalez, and Ion Stoica.
+
+ 
+ Chatbot arena: Benchmarking llms in the wild with elo ratings.
+
+ 
+ Blog post, May , 2023b.
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Appendix A Additional Results 
+
+ 
+ In this section, we provide additional detailed results that were omitted from the main paper and present the results of additional experiments to further validate our GEM metrics. 
+ 
+ 
+ A.1 Result 2 and 3 with Confidence Intervals 
+
+ 
+ We present the SMDs with 95% confidence intervals of various evaluation metrics under degradations and manipulations in Table  4 and  5 . 
+ 
+ 
+ 
+ 
+ 
+ 
+ A.2 Detailed Results of GRE-bench 
+
+ 
+ GRE-bench vs. Other benchmarks 
+
+ 
+ The ability to generate informative reviews relies on several key factors, including logical reasoning, critical thinking, and fact-checking. Various widely used benchmarks measure different aspects of LLM performance. To better understand which abilities are most critical for generating high-quality reviews, in the sense of GRE-bench scores, we compared our results with several other benchmarks. 
+ 
+ 
+ We present the Spearman’s correlation coefficients between the GRE-bench scores of all the models and their corresponding scores on other benchmarks 
+ 8 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ We collect benchmark data from online sources, such as technical reports of language models. Since some models have missing results for specific benchmarks, we exclude those entries when computing correlation. For more details, please refer to our code repository. in Table  6 , providing insights into which factors most strongly influence review generation quality. Notably, GRE-bench highly correlates with HellaSWAG and ARC-C which measures reasoning ability, and less correlates with benchmarks for coding ability (HumanEval) or math ability (MATH, GSM8K). 
+ 
+ 
+ 
+ 
+ Consistent results over various Evaluation LMs. 
+
+ 
+ The Spearman’s correlation coefficients between the GRE-bench scores based on GEM metric computed using Llama-3.1 8B and that same score computed with Llama-3.1 70B is 0.93. This indicates that the score is largely robust with respect to the specific evaluation LM used. The analogous coefficient for the GRE-bench scores based on GEM-S (abstract) and GEM-S (ASSW) are 0.92 and 0.90 respectively. We further provide the comprehensive results of GRE-bench with Llama-3.1 8B in Table  8 . This consistency shows that with our metrics, a small model with 8B parameters that can be deployed on a single NVIDIA L4 GPU, plus proper preprocessing, is still effective in evaluating the quality of judgments generated by much larger models, though larger evaluation LM may have better evaluation performance. 
+ 
+ 
+ 
+ Numerical results. 
+
+ 
+ We present numerical results of various language models on the GRE-bench based on GEM, GEM-S (abstract), and GEM-S (ASSW) computed with Llama3.1 70B as the evaluation LM, alongside their estimated parameter sizes in Table  7 . Note that some estimations of the parameter sizes are from unofficial sources. This information is only to provide context, and none of our conclusions depend on these estimates. The corresponding results of GRE-bench computed with Llama3.1 8B is shown in Table  8 . 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ A.3 Consistent Results over Preprocessing Models 
+
+ 
+ To answer the question “Does using an open-sourced preprocessing model (rather than GPT4o) still lead to effective GEM metric and similar GRE-bench results?” , we use a Llama3.2-90B-Vision-Instruct model for preprocessing and re-run all validating experiments mentioned in Section  4 . We find that most experimental results remain valid except for two manipulation tests. The GRE-bench results also remain highly consistent with the results of using GPT4o preprocessing. 
+ 
+ 
+ Positive Correlation with Human Annotation 
+
+ 
+ GEM still shows a significant positive correlation with human annotation in the proposal peer grading dataset (Section  4.1 ), however, the Spearman’s correlation coefficient between GEM scores and instructor grades drops from 0.433 (GPT4o preprocessing) to 0.274 (Llama3.2-90b preprocessing). 
+ 
+ 
+ 
+ Sensitivity to Degradation 
+
+ 
+ In the degradation experiment (Section  4.2 ), GEM with Llama3.2-90b preprocessing also shows significant sensitivity to all degradations and even performs better in “sentence deletion” than using GPT4o to preprocess. 
+ 
+ 
+ 
+ 
+ Weaker Robustness than GPT-4o Preprocessing 
+
+ 
+ In the manipulation experiments (Section  4.2 ), GEM with Llama3.2-90b preprocessing is robust against “GPT4 rephrase” but fails in the “Llama-3.1 rephrase” and “Meaningless Elongation”. 
+ 
+ 
+ 
+ 
+ Consistent GRE-bench Results 
+
+ 
+ Based on the GEM metric with llama3.2-90b preprocessing, we re-compute the GRE-bench scores with ICLR 2023 dataset (Section  5 ). The Spearman’s correlation coefficient between the GRE-bench scores based on the GEM metric with Llama3.2-90B preprocessing and the scores with GPT-4o preprocessing shown in Table  8 is 0.89. The analogous coefficient for the GRE-bench scores based on GEM-S (abstract) and GEM-S (ASSW) are 0.85 and 0.83 respectively. All detailed numerical results are provided in Table  11 . 
+ 
+ 
+ 
+ 
+ Overall, as more advanced models can preprocess reports more accurately, the GEM metric will be more accurate and manipulation-resistant with superior preprocessing. Considering the frequent release and update of LLMs, utilizing more advanced LLMs for preprocessing enhances both the accuracy and robustness of the GEM metric. Consequently, our GEM metrics stand to benefit from the continuous advancements in LLM technology. 
+ 
+ 
+ 
+ 
+ 
+ A.4 Validation on Yelp Restaurant Review Dataset 
+
+ 
+ To further validate our GEM metrics’ effectiveness in evaluating judgments without gold-standard references in scenarios in addition to peer review. We use an open-access online business review data from Yelp, and repeat the same workflow in Section  4.2 and 4.3 , to check how sensitive GEM metrics are to degradations and how robust GEM metrics are to manipulations. 
+ 
+ 
+ The results are similar to those observed in experiments on ICLR dataset (Section  4.2 and 4.3 ). Our GEM and GEM-S demonstrates significant sensitivity to degradations and robustness against manipulations. 
+ 
+ 
+ Yelp Review 
+
+ 
+ We randomly sample 300 restaurants from the entire dataset which have at least 50 reviews with at least 1000 characters. For each restaurant, we randomly sample 3 customer reviews among all reviews with at least 1000 characters. Yelp reviews quality varies much more than ICLR reviews, thus, we use length as a heuristic filter to get reasonable quality reviews. 
+ 
+ 
+ 
+ GEM Setup 
+
+ 
+ We use GPT-4o for text preprocessing, and use Llama-3.1 8B as the evaluation-LM. For GEM-S, we use the categories of the restaurant as the synopsis, which is given by the Yelp dataset. 
+ 
+ 
+ 
+ GEM demonstrates sensitivity to degradations. 
+
+ 
+ We reuse the Sentence Deletion and Deletion & Completion degradation methods described in Section  4.2 . However, since restaurant reviews lack “abstract”, the Abstract-only Review degradation cannot be applied. Instead, we propose Random Replacement degradation, where we degrade the original review by replacing it with a random review of another randomly selected restaurant. 
+ 
+ 
+ Table  12 presents the standardized mean differences (SMD) with 95% confidence intervals for GEM and baseline metrics before and after these degradations. The results align with those observed in the ICLR dataset (Section  4.2 ): GEM and GEM-S consistently exhibit significant SMD across all three degradations. Additionally, while LMExaminer is more sensitive to degradations like Sentence Deletion and Deletion & Completion , which impair presentation quality, GEM shows greater sensitivity to the Random Replacement degradation, which severely compromises semantic informativeness. 
+ 
+ 
+ 
+ 
+ GEM demonstrates robustness to manipulation. 
+
+ 
+ Similarly, we reuse the GPT-4o Rephrase and Llama-3.1 Rephrase manipulations to test whether our metric is robust against specific language styles. However, since Yelp restaurant reviews lack a structured format like ICLR peer reviews (as illustrated in Figure  4 ), it is unclear how to construct a suitable Meaningless Elongation manipulation. 
+ 
+ 
+ Table  13 shows the standardized mean differences (SMD) with 95% confidence intervals for GEM and baseline metrics before and after these manipulations. The results remain similar to those observed in Section  4.3 . GEM metrics remain robust against both types of manipulation, while LMExaminer shows a significant increase in scores after LLM rephrasing. 
+ 
+ 
+ 
+ 
+ 
+ 
+ A.5 Exploration of Properties of LLM Estimated Distribution 
+
+ 
+ An interesting question raised by our anonymous reviewer is: 
+ 
+ 
+ As we know , does this symmetry also applies to the LLM estimated probability, i.e., ? 
+ 
+ 
+ To answer this question, we randomly select 500 papers from ICLR 2023 and 1874 corresponding reviews in total. For each pair of reviews , for the same paper, we use our method to compute , , , and . For those 5328 pairs, we compute the Spearman correlation coefficient between and . The Spearman correlation coefficient is 0.943, which indicates that they are highly positively correlated, despite minor differences. Potential noise in the estimation process may account for these differences. 
+ 
+ 
+ The results revealed a high positive correlation between these two values, although they were not precisely equal. Despite this difference, the empirical results in our paper indicate that this does not negatively impact the desired properties, including the accuracy and manipulation resistance. 
+ 
+ 
+ 
+ 
+ 
+ Appendix B Omitted Proofs 
+
+ 
+ See 3.1 
+ 
+ 
+ Proof of Proposition  3.1 . 
+ 
+ By the definition of estimated PMI, , we have 
+ 
+ 
+ 
+ Note that does not change whatever the candidate response follows or . In addition, recall that we assume that all task-response tuples are i.i.d. sampled from the underlying distribution . Therefore, with the law of large numbers, we have further equivalent to 
+ 
+ 
+ 
+ On the left hand side, we have 
+ 
+ 
+ 
+ On the right hand side, we have 
+ 
+ 
+ 
+ Since follows an information structure Blackwell dominates that follows, by the information process inequality, we have . 
+ 
+ 
+ Therefore, combining all these together, we have 
+ 
+ and consequently, we have . 
+ 
+ 
+ ∎ 
+ 
+ 
+ 
+ Proposition B.1 . 
+ 
+ For a given random variable , when the KL-divergence between the LLM estimated distribution and the underlying distribution satisfies 
+ 
+ For the two candidates and discussed above, and the information structure of Blackwell dominates ’s, when the size of dataset goes to infinity, we have 
+ 
+ 
+ 
+ 
+ Proof. 
+ 
+ By following similar steps of the proof of Proposition  3.1 , we reduce the problem to showing 
+ 
+ Again, following similar steps, we have that the left hand side follows 
+ 
+ Similarly, we have the right hand side 
+ 
+ 
+ 
+ Therefore, combining all these together, we have 
+ 
+ ∎ 
+ 
+ 
+ 
+ 
+ 
+ Appendix C Implementation Details 
+
+ 
+ In this section, we provide a detailed interpretation of how we implement our proposed metrics to facilitate the replication of our results. This includes comprehensive descriptions of all prompts utilized for generating peer-review judgments, preprocessing the judgments, predicting the judgments, as well as other details that help reproduce the implementation. In all LLM API calls in our experiments, for reproducibility, we keep the temperature at 0 and the maximum (output) token count at 4000, unless otherwise specified. 
+ 
+ 
+ C.1 Judgments Preprocessing 
+
+ 
+ To filter out the shortcuts in the review judgments, we use a preprocessing procedure. We employ an LLM to rewrite the original review judgments in a certain compressed format, eliminating the impact of various aspects such as semantics, syntax, and language styles. Here, we employ the LLM GPT-4o (specifically, gpt-4o-2024-05-13 ) to preprocess the judgments generated by all candidate LLMs (and human reviewers). Here is the prompt we use: 
+ 
+ 
+ 
+ 
+ 
+ C.2 Judgments Prediction 
+
+ 
+ We compute our metric, the Generative Estimator for Mutual Information (GEM), by utilizing both the original and fine-tuned versions of Llama-3.1-8B-Instruct 
+ 9 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ We employ 4-bit quantization. to predict the conditional probability and the marginal probability . In this context, and represent preprocessed review judgments. The same methodology is employed for calculating the GEM-S score. Below is the prompt used for prediction. 
+ 
+ 
+ 
+ 
+ 
+ C.3 Peer-review Judgments Generation in GRE-bench 
+
+ 
+ We provide the implementation details of GRE-bench where we employ academic peer review as the task to evaluate LLMs’ ability to generate informative judgments. Following Liang et al. (2023) ’s research about LLM-generated peer review, we use the Sciencebeam pdf parser to convert the ICLR submissions in pdf format to text format, and removed the references and all appendices. When using the sciencebeam PDF parser, it retains all image and table titles and captions while disregarding other content. While a few ICLR submissions require OCR before parsing into text (5 out of all submissions in 2023), none of the 300 papers we experimented with required OCR, ensuring no OCR errors. Additionally, we have verified that the parsed text of papers in our dataset does not exceed the input token limit of the LLM. 
+ 
+ 
+ While we acknowledge that PDF parsing is an inherently imperfect process that may occasionally introduce artifacts or miss certain elements, our experimental design mitigates potential biases because all LLM models in our evaluation receive identical parsed versions of each paper, and any parsing inconsistencies would affect all models equally, making the relative performance comparisons robust to such noise. 
+ 
+ 
+ Below is the prompt utilized to request each candidate LLM to produce its review judgments. 
+ 
+ 
+ 
+ 
+ 
+ C.4 Summary of Author-stated Strengths and Weaknesses 
+
+ 
+ In GEM-S (ASSW), we need to embed the strength and weakness text stated by the authors into the input of LLM. To do this, we employ gpt-4o to summarize it using the following prompt. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Appendix D Experimental Details 
+
+ 
+ In this section, we provide detailed information regarding the experiments we conducted. This includes the specific processes used to degrade and manipulate reviews, as well as the implementation of the baseline metrics. 
+ 
+ 
+ D.1 Baseline Metrics 
+
+ 
+ In the paper, we use BLEU, ROUGE-L, BERTScore and LMExaminer as the baseline metrics. BLEU and ROUGE-L are both detail free. We employ NLTK as the tokenizer and utilized existing library functions to compute the BLEU and ROUGE-L scores. 
+ 
+ 
+ BERTScore ( Zhang et al., 2019 ) evaluates generated text by measuring the cosine similarity between token embeddings from a pre-trained language model. Instead of BERT, we use a recent model stella_en_400M_v5 ( Zhang, 2024 ) as the evaluation-LM for better token embedding performance. 
+ 
+ 
+ BARTScore ( Yuan et al., 2021 ) is a probability-based metric. It has three variants, precision, recall, and F1-score. Instead of BART, we use the state-of-the-art Llama3.1-8b as the evaluation-LM for estimating the probability, which is the same as our GEM metrics. 
+ 
+ 
+ LMExaminer ( Bai et al., 2024 ) is one of the recently popular methods where a language model (LM) is used to evaluate the quality of generated text based on specific evaluation criteria, serving as an examiner. With empirical evidence suggesting that GPT-4 outperforms open-source models and even finetuned models of pointwise grading on AlignBench ( Ke et al., 2023 ) , we use GPT-4o as a baseline in our experiment. For peer review tasks, our prompt adopts criteria based on Review Quality Indicators (RQIs) ( Goldberg et al., 2023 ; Van Rooyen et al., 1999 ; Superchi et al., 2019 ) including four aspects, understanding, coverage, substantiation, constructiveness. 
+ 
+ 
+ We input the full text of the paper along with the review to be judged into the LLM and prompt it to score based on RQIs. We show our prompts below. 
+ 
+ 
+ 
+ 
+ 
+ D.2 Validation Workflow for Degradations and Manipulations 
+
+ 
+ 
+ 
+ D.3 Degradations 
+
+ 
+ D.3.1 Review Degradation: Sentence Deletion 
+
+ 
+ The ICLR 2023 review comments must follow a specific formatting with four sections including “Summary Of The Paper”, “Strengths And Weaknesses”, “Clarity, Quality, Novelty And Reproducibility” and “Summary Of The Review”. When performing sentence deletion, we maintain the original format unchanged. Other sentences are identified based on periods, question marks, exclamation points, and line breaks, which mark the end of a sentence. In each section, we retain all sentences with odd-numbered positions and delete those in even-numbered positions. Below is a toy example for illustration. 
+ 
+ 
+ 
+ 
+ 
+ D.3.2 Review Degradation: Deletion & Completion 
+
+ 
+ When applying the deletion & completion method to degrade reviews, we initially delete half of the sentences, similar to the sentence deletion process, and replace the omitted content with “[There is one missing sentence]”. Subsequently, we utilize GPT-4o to complete these sentences. Below is a toy example. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ D.3.3 Review Degradation: Abstract-only Review 
+
+ 
+ In this degradation process, we utilize claude-3-sonnet to generate a review based solely on the paper’s abstract, which serves as a substitute for the original review. Below is the prompt we use to complete this task. 
+ 
+ 
+ 
+ 
+ 
+ 
+ D.4 Manipulations 
+
+ 
+ D.4.1 Review Manipulation: LLM Rephrasing 
+
+ 
+ To rephrase the review without altering the semantics, we employ GPT-4o and Llama-3.1-instruct to rewrite the original review judgments, modifying the phrasing while maintaining the original meaning. The same prompt is used for both models to accomplish this task. 
+ 
+ 
+ 
+ 
+ 
+ D.4.2 Review Manipulation: Meaningless Elongation 
+
+ 
+ We employ a verbose and uninformative template content alongside summaries of the existing review to achieve a meaningless elongation of the original review judgments. Specifically, we adhere to the fixed review format established by ICLR 2023, which consists of four sections. At the beginning of each content section within these sections, we incorporate an identical introductory statement. Additionally, we utilize GPT-4o to generate a one-sentence summary for the “Strengths and Weaknesses” section of the review, embedding this summary within the added text. Below is an example, including the meaningless content we add to the original review. 
+ 
+ 
+ 
+ 
+ The prompts that request GPT-4o to generate the Strength Summary and Weakness Summary are presented as follows. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Appendix E GEM / GEM-S with Fine-tuned Evaluation-LM 
+
+ 
+ We not only use the original Llama-3.1-8B-Instruct as the Evaluation-LM, but also fine-tune it to to better estimate the conditional and marginal probabilities. In this section, we provide the details of how we fine-tune the model, as well as the experimental results. 
+ 
+ 
+ E.1 Implementation 
+
+ 
+ We fine-tune the original Llama-3.1-8B-Instruct model using 1,000 papers and their corresponding reviews from ICLR 2023 (which are separate from the papers used for experiments). Let represent the function that generates the full prompt for predicting judgments (both input and output), where indicates that we are estimating the marginal probability. For each paper, we randomly selected three reviews, denoted as , , and , along with their preprocessed versions , , and . From each paper, we generated nine data points for GEM and nine data points for GEM-S as follows: ,
+ ,
+ ,
+ ,
+ ,
+ ,
+ ,
+ ,
+ . 
+ 
+ 
+ In total, this process yield 18,000 input-output pairs. We used the Unsloth framework to fine-tune the model, running on a physical server equipped with a single NVIDIA A100 GPU, provided by Google Colab. Here is the settings we use for fine-tuning: 
+ 
+ 
+ 
+ 
+ 
+ E.2 Experimental Results 
+
+ 
+ 
+ 
+ 
+ E.3 GRE-bench based on finetuned GEM and GEM-S 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Experimental support, please
+ view the build logs 
+ for errors. Generated by
+ 
+ 
+ L
+ A 
+ T
+ E 
+ 
+ xml 
+ 
+ .
+ 
+ 
+ Instructions for reporting errors 
+ We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+ support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+ methods listed below: 
+ 
+ Click the "Report Issue" ( ) button, located in the page header. 
+ 
+ Tip: You can select the relevant text first, to include it in your report. 
+ Our team has already identified the following issues . We appreciate your time reviewing and reporting rendering errors we
+ may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+ should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+ all. 
+ Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion , and welcome developer contributions . 
+ 
+ 
+ 
+ 
+ 
+ We gratefully acknowledge support from
+ our major funders ,
+ member institutions , ,
+ and all contributors.
+ 
+ 
+ About 
+ · 
+ Help 
+ · 
+ Contact 
+ · 
+ Subscribe 
+ · 
+ Copyright 
+ · 
+ Privacy 
+ · 
+ Accessibility 
+ · 
+ Operational Status (opens in new tab) 
+ 
+ 
+
+ 
+ Major funding support from 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

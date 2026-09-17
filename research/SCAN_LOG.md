@@ -2481,3 +2481,45 @@ it, at no cost to the page budget.
 Ranking stays 6.5. Nothing changed in the manuscript, and the value of this scan is negative evidence,
 namely that the closest published work is cited and distinguished, and that the one preprint which
 looked like a collision measures a different quantity.
+
+## Scan 39, the venue corpus finally used as a band rather than a range
+
+The hook kept saying the corpus was thin on this venue and that no searching happened, and testing
+that properly produced the largest prose change since the early scans. Three accepted ICLR papers were
+retrieved, one from 2025 on benchmarking judgments without a gold standard and two from 2026 on 3D
+spatial understanding and on chain-of-thought robustness. Recency is a hazard for a style corpus, so
+admission was gated on the stylometry scorer rather than assumed. All three score CLEAN, and all three
+carry markers this manuscript has none of, including in conclusion, to summarize, furthermore,
+moreover, state-of-the-art, it is important to note, underscores the need, and thirteen uses of
+utilize or leverage in one paper. This manuscript scores 0.0325 against their 0.1225 with zero matched
+markers, so it sits cleaner than the venue bar and no action follows, particularly since the house
+style bans the exact words they use.
+
+The rhythm comparison is where the finding was. The three ICLR papers run mean sentence lengths of
+19.1, 19.5 and 20.6 with short-sentence shares between 0.127 and 0.150. The manuscript ran a mean of
+23.2 with a short share of 0.057. Checking that against the full corpus settled it. Across 33 measured
+papers the short-sentence share has a median of 0.161 and an interquartile range of 0.132 to 0.177,
+and only one of the 33 sits below this manuscript. Only three of 33 have a longer mean sentence.
+
+That means the band I had been quoting since scan 23 was wrong in use rather than in fact. The figure
+0.058 to 0.238 is the minimum and maximum across the corpus, and I had been treating the edge of a
+range as membership in a distribution. Sitting at the third percentile is not conforming to a corpus.
+Worse, scan 34 moved the paper further out, since the stop-slop joins took the share from 0.074 down
+to 0.060 in the name of breaking staccato runs that the venue evidently tolerates.
+
+Twelve edits followed and none added a word. Five split the longest sentences at clause boundaries,
+including one of 68 words and one of 61, and seven carved a trailing clause into a standing verdict,
+such as the two procedures disagree on accuracy, and unequal variances require a different
+denominator, and we give none of them a mechanistic reading. Every number, citation and reference is
+untouched, and the net is 47 characters shorter than where the scan started.
+
+The build confirms nine main-text pages, 53 total, zero overfull boxes, no rerun request, unchanged
+style files and 24 embedded subset fonts. Its own prose measurement moves the main-text sentence count
+from 269 to 280, the mean from 20.24 words to 19.34 against a corpus median of 19.4, and the median
+from 19 to 18. The long-sentence share falls from 0.143 to 0.114, which lands inside the 0.090 to
+0.117 the three ICLR papers occupy. The short share improves only from 0.059 to 0.068 and remains well
+under the corpus first quartile, so this is a partial fix and calling it finished would be false.
+
+Ranking holds at 6.5. The improvement is real and measured, but reviewers do not score sentence-length
+distributions, they only experience them, so I will not claim a number for it. What I will claim is
+that the paper now reads at the venue's own pace rather than four words a sentence slower.

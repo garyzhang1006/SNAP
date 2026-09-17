@@ -1,32 +1,32 @@
-[{"stream_name":"stdout","time":0.917207644,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]\n"}
-,{"stream_name":"stdout","time":0.940347586,"data":"[input] /kaggle/input/datasets/garyzhang11111/snap-paper-src -\u003e ['before_format_pass', 'citation_keys.json', 'src', 'template']\n"}
-,{"stream_name":"stdout","time":1.015055084,"data":"[stage] ['appendices_bcd.tex', 'appendix_a.tex', 'fancyhdr.sty', 'figures', 'iclr2027_conference.sty', 'main.tex', 'natbib.sty', 'references.tex']\n"}
-,{"stream_name":"stdout","time":1.030396905,"data":"[tex] installing\n"}
-,{"stream_name":"stdout","time":47.24063467,"data":"[tex] install rc 0 tail /sbin/ldconfig.real: /usr/local/lib/libtbbmalloc.so.2 is not a symbolic link\n"}
-,{"stream_name":"stdout","time":47.240684049,"data":"\n"}
-,{"stream_name":"stdout","time":47.240690669,"data":"/sbin/ldconfig.real: /usr/local/lib/libhwloc.so.15 is not a symbolic link\n"}
-,{"stream_name":"stdout","time":47.240695925,"data":"\n"}
-,{"stream_name":"stdout","time":47.240700489,"data":"Processing triggers for man-db (2.10.2-1) ...\n"}
-,{"stream_name":"stdout","time":47.24070536,"data":"Processing triggers for tex-common (6.17) ...\n"}
-,{"stream_name":"stdout","time":47.240710032,"data":"Running updmap-sys. This may take some time... done.\n"}
-,{"stream_name":"stdout","time":47.240714891,"data":"Running mktexlsr /var/lib/texmf ... done.\n"}
-,{"stream_name":"stdout","time":47.240720075,"data":"Building format(s) --all.\n"}
-,{"stream_name":"stdout","time":47.240724595,"data":"\tThis may take some time... done.\n"}
-,{"stream_name":"stdout","time":47.240729439,"data":"\n"}
-,{"stream_name":"stdout","time":47.245315644,"data":"[tex] pdfTeX 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian)\n"}
-,{"stream_name":"stdout","time":47.995677257,"data":"[pass 1] rc 0 main 9 total 53 rerun True\n"}
-,{"stream_name":"stdout","time":48.74753712,"data":"[pass 2] rc 0 main 9 total 53 rerun True\n"}
-,{"stream_name":"stdout","time":49.510651809,"data":"[pass 3] rc 0 main 9 total 53 rerun False\n"}
-,{"stream_name":"stdout","time":50.374352531,"data":"[pages] main_text 9 total 53\n"}
-,{"stream_name":"stdout","time":50.374389703,"data":"[style] unchanged True\n"}
-,{"stream_name":"stdout","time":50.374394177,"data":"[refs] unresolved []\n"}
-,{"stream_name":"stdout","time":50.374397635,"data":"[short] []\n"}
-,{"stream_name":"stdout","time":50.374401812,"data":"[summary] {\"main_text_pages\": 9, \"total_pages\": 53, \"official_style_unchanged\": true, \"table_numeric_tokens_preserved\": false}\n"}
-,{"stream_name":"stdout","time":50.374405878,"data":"[done] 49s\n"}
-,{"stream_name":"stderr","time":53.25985896,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
-,{"stream_name":"stderr","time":53.260090366,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
-,{"stream_name":"stderr","time":53.66062155,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
-,{"stream_name":"stderr","time":53.660659175,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
-,{"stream_name":"stderr","time":55.412557851,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
-,{"stream_name":"stderr","time":57.168254096,"data":"[NbConvertApp] Writing 352668 bytes to __results__.html\n"}
+[{"stream_name":"stdout","time":0.869030557,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]\n"}
+,{"stream_name":"stdout","time":0.90500081,"data":"[input] /kaggle/input/datasets/garyzhang11111/snap-paper-src -\u003e ['before_format_pass', 'citation_keys.json', 'src', 'template']\n"}
+,{"stream_name":"stdout","time":0.972793928,"data":"[stage] ['appendices_bcd.tex', 'appendix_a.tex', 'fancyhdr.sty', 'figures', 'iclr2027_conference.sty', 'main.tex', 'natbib.sty', 'references.tex']\n"}
+,{"stream_name":"stdout","time":0.985603171,"data":"[tex] installing\n"}
+,{"stream_name":"stdout","time":53.133792833,"data":"[tex] install rc 0 tail /sbin/ldconfig.real: /usr/local/lib/libtbbmalloc.so.2 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":53.133836369,"data":"\n"}
+,{"stream_name":"stdout","time":53.133843673,"data":"/sbin/ldconfig.real: /usr/local/lib/libhwloc.so.15 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":53.133849941,"data":"\n"}
+,{"stream_name":"stdout","time":53.133855943,"data":"Processing triggers for man-db (2.10.2-1) ...\n"}
+,{"stream_name":"stdout","time":53.133859933,"data":"Processing triggers for tex-common (6.17) ...\n"}
+,{"stream_name":"stdout","time":53.133863739,"data":"Running updmap-sys. This may take some time... done.\n"}
+,{"stream_name":"stdout","time":53.133867566,"data":"Running mktexlsr /var/lib/texmf ... done.\n"}
+,{"stream_name":"stdout","time":53.133871436,"data":"Building format(s) --all.\n"}
+,{"stream_name":"stdout","time":53.133875211,"data":"\tThis may take some time... done.\n"}
+,{"stream_name":"stdout","time":53.133879201,"data":"\n"}
+,{"stream_name":"stdout","time":53.138359084,"data":"[tex] pdfTeX 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian)\n"}
+,{"stream_name":"stdout","time":53.936217675,"data":"[pass 1] rc 0 main 9 total 53 rerun True\n"}
+,{"stream_name":"stdout","time":54.762448986,"data":"[pass 2] rc 0 main 9 total 53 rerun True\n"}
+,{"stream_name":"stdout","time":55.563991729,"data":"[pass 3] rc 0 main 9 total 53 rerun False\n"}
+,{"stream_name":"stdout","time":56.444782611,"data":"[pages] main_text 9 total 53\n"}
+,{"stream_name":"stdout","time":56.444822328,"data":"[style] unchanged True\n"}
+,{"stream_name":"stdout","time":56.444830303,"data":"[refs] unresolved []\n"}
+,{"stream_name":"stdout","time":56.444836031,"data":"[short] []\n"}
+,{"stream_name":"stdout","time":56.444842025,"data":"[summary] {\"main_text_pages\": 9, \"total_pages\": 53, \"official_style_unchanged\": true, \"table_numeric_tokens_preserved\": false}\n"}
+,{"stream_name":"stdout","time":56.444848815,"data":"[done] 56s\n"}
+,{"stream_name":"stderr","time":59.490675308,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":59.490736534,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":59.890469589,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":59.890499746,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":61.591359725,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":63.479130774,"data":"[NbConvertApp] Writing 352668 bytes to __results__.html\n"}
 ]
