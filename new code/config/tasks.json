@@ -1,0 +1,27 @@
+{
+ "schema": "snap-new-tasks-v1",
+ "olmes_commit": "5a51f502d463b8cdc4a2dcad7d7096c41ff1197e",
+ "note": "Frozen before any held-out score exists. Changing anything under heldout after scoring starts voids the pre-registration; record the change and its date in PROTOCOL_heldout.md instead.",
+ "heldout": [
+  {"name": "sciq", "olmes_alias": "sciq:rc::olmo3", "overrides": {"limit": null}, "max_items": null, "group_field": null},
+  {"name": "medmcqa", "olmes_alias": "medmcqa:rc::none", "overrides": {"limit": null}, "max_items": 1000, "group_field": null},
+  {"name": "logiqa_en", "olmes_alias": "agi_eval_logiqa-en:rc::none", "overrides": {"limit": null}, "max_items": null, "group_field": "passage"},
+  {"name": "lsat_lr", "olmes_alias": "agi_eval_lsat-lr:rc::none", "overrides": {"limit": null}, "max_items": null, "group_field": "passage"}
+ ],
+ "backups_in_order": [
+  {"name": "drop_mc", "olmes_alias": "drop:rc::gen2mc", "overrides": {"limit": null}, "max_items": 1000, "group_field": "passage"},
+  {"name": "coqa_mc", "olmes_alias": "coqa:rc::gen2mc", "overrides": {"limit": null}, "max_items": 1000, "group_field": "story"}
+ ],
+ "backup_rule": "A held-out task is replaced, in the listed backup order, only if the pilot's three 1B runs give mean accuracy below chance plus 0.02, where chance is the mean of 1/choice_count over its items. The rule reads accuracy only, never margins or covariance.",
+ "verification": {"name": "arc_easy", "olmes_alias": "arc_easy:rc::olmes", "overrides": {"limit": null}, "max_items": 300, "group_field": null,
+                  "release_task": "arc_easy",
+                  "pass_median_abs_diff_nats_per_byte": 0.002,
+                  "pass_p99_abs_diff_nats_per_byte": 0.02},
+ "subsample_seed": 20260917,
+ "half_split_seed": 20260917,
+ "scoring": {"dtype": "float32", "max_length": 2048, "add_bos_token": false, "contexts_per_batch": 8, "max_batch_tokens": 6000,
+             "kv_check_items": 16, "kv_check_tolerance_nats": 0.001},
+ "pilot": {"configs": [["c4", "150M"], ["c4", "1B"]]},
+ "scope": {"full": ["150M", "300M", "530M", "750M", "1B"], "fallback": ["530M", "750M", "1B"],
+           "fallback_if_projected_t4_hours_above": 30.0}
+}
