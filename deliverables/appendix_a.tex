@@ -20,7 +20,7 @@ $c,r,j,i$ & Configuration, replicate run, benchmark, and item indices\\
 $N,R,K$ & Configuration, replicate, and benchmark counts, with values 125, 3, and 10\\
 $\Sigma_{E,c},\Sig$ & Configuration covariance and its average across the design\\
 $R_E,R_P$ & Run-effect correlation and between-configuration score correlation\\
-$y^M,y^A$ & Mean per-byte margin and accuracy on the specified item set\\
+$y^{\mathrm{marg}},y^{\mathrm{acc}}$ & Mean per-byte margin and accuracy on the specified item set\\
 $d^H_{crj},g^H_{cr}$ & Centred benchmark score and its benchmark average on half $H$\\
 $T_c,U_c$ & Cross-half aggregate covariance and its diagonal-only contribution\\
 $\Lam,\bar r_E$ & Standard-deviation inflation and effective covariance coefficient\\
@@ -78,6 +78,7 @@ With average marginal variance $\bar\sigma_E^2=K^{-1}\operatorname{tr}\Sig$, the
 \begin{equation}
 \sigma_{\mathrm{agg}}^2=\bar\sigma_E^2\left[\frac1K+\frac{K-1}{K}\bar r_E\right].
 \end{equation}
+Independent benchmark deviations at the same average variance give $\sigma_{\mathrm{indep}}^2=\bar\sigma_E^2/K$, so $\Lam=\sigma_{\mathrm{agg}}/\sigma_{\mathrm{indep}}$ is the factor we report.
 A nonzero asymptotic floor follows only for a sequence of batteries whose average variance and effective coefficient converge to suitable limits. Bounded variances alone do not imply that convergence. The present ten-benchmark study does not estimate such a sequence. We use the finite-battery identity for the reported effective counts.
 
 For the raw, gain-adjusted, and auxiliary-contrast rows, the reported effective margin coefficients are 0.0608, 0.0695, and 0.0641. The corresponding accuracy coefficients are 0.0181, 0.0225, and 0.0194, retaining the covariance normalisation of Equation~\ref{eq:effective}.

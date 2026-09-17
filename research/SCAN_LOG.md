@@ -448,3 +448,55 @@ that the strongest existing result now sits where a reviewer reads it in the fir
 null moved out of that position. The single-population scope, the exploratory status, the accuracy
 interval that includes one, and the novelty framing as an established construction applied to a new unit
 are all untouched and all still cap this paper below a 7.
+
+## Scan 10. Notation, derivations, and the stylometric residual
+
+Review of scan 9. The abstract reads correctly in the built PDF and now closes on the 0.113 to 0.051
+correction rather than on advice. The two self-inflicted defects scan 9 recorded are both repaired in the
+built text. Nothing needed reverting.
+
+Twenty-two sub-scans across the estimator exposition, the stored numeric ledger, and the style corpus.
+
+Defect 1, a symbol collision two rows apart in the notation table. The accuracy trait was written
+$y^A$ while the half index runs over $\{A,B\}$, so $y^A_{crj}$ could be read as either the accuracy score
+or the half-A score. The table listed both meanings on consecutive rows. The trait superscripts are now
+$y^{\mathrm{marg}}$ and $y^{\mathrm{acc}}$, which leaves the half index unambiguous everywhere. The trait
+symbols appeared only twice in the whole paper, so the rename was cheap and the halves keep the letters
+they carry in the prose.
+
+Defect 2, dead notation. The table declared $\sigma_{\mathrm{indep}}$ and no equation or sentence ever
+used it. Rather than delete the row, the identity it belongs to is now stated, since
+$\sigma_{\mathrm{indep}}^2=\bar\sigma_E^2/K$ makes $\Lam=\sigma_{\mathrm{agg}}/\sigma_{\mathrm{indep}}$
+explicit, which is the paper's headline quantity written as a ratio for the first time.
+
+Defect 3, the paper's largest stylometric deviation from the corpus. Across the 23 human papers, passive
+constructions run between 1.91 and 9.33 per thousand words with a median of 5.79. This paper's main text
+ran 0.75, below every one of them. That is the fingerprint of a style rule rather than of a writer, since
+banning passive voice is standard advice in generated-prose guidance and is not how evaluation-methodology
+papers actually read. Five main-text sentences were converted where passive is the better academic choice,
+including two that had an inanimate subject performing a human verb, and the main text now runs 2.10.
+
+What was deliberately not fixed, and why. The appendices run 1.27 and the whole paper 1.50, both still
+below the corpus minimum. Closing that gap needs roughly fifty more conversions, and an inspection of the
+candidates shows why it should not happen. Of fifty-six procedural sentences in the appendices, almost all
+are first-person accountability statements, such as choosing subsets after seeing the full-sample
+estimates, not implementing a planned separation, and not testing an additional assumption. Rewriting
+those in the passive would hide the agent in exactly the sentences where naming the agent is the point.
+The candor is worth more to a reviewer than the statistic, so three genuine false-agency constructions
+were converted and the rest were left alone. The deviation is recorded here as accepted rather than closed.
+
+Non-defects recorded rather than edited. Every effective-count entry in Table 1 was recomputed as
+$K/\widehat\Lam^2$ and all six agree to the reported digits. The two derived off-diagonal sums were
+recomputed from the stored trace shares of 0.679 and 0.844 and give -0.155 and -0.061 against the reported
+-0.15 and -0.06. The illustrative resolution ratio at $p=0.35$ recomputes to 1.658 against the reported
+1.66, and its stated minimum of $\pi/2$ is correct. Every unbiasedness claim in Section 2 was checked by
+expanding the expectations, and the $R/(R-1)$ factors cancel as the text states. All seventeen ledger
+claims resolve to numbers present in the manuscript once rounding is applied, and the two that first
+appeared missing were rounded reporting rather than discrepancies. Four equation labels are defined and
+never referenced, which costs the reader nothing since the equations are numbered anyway.
+
+Honest ranking after scan 10. 6.4 with acceptance near 0.62, unchanged. The notation collision was real
+and would have cost the paper a line in a careful reviewer's writing-quality remark, but it was not going
+to change an accept or reject. The passive-voice finding is the most interesting result of this scan and
+it produced the smallest edit, because the measurement was right and the obvious remedy was wrong. No
+substantive weakness moved.
