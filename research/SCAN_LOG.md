@@ -2243,3 +2243,35 @@ field. table_numeric_tokens_preserved remains false for the reason established s
 Ranking stays at 6.4 with acceptance near 0.58, unchanged since scan 23. Nothing in this scan touched
 an argument, a number or a claim. Three sentence joins and a clean detector reading do not move a
 paper, and saying otherwise would be the inflation the instructions forbid.
+
+### Scan 34 addendum, the two slop skills I had missed
+
+A second stop hook fired and one of its six claims survived contact with the disk. It said the slop
+step documented only four tools rather than every installed skill, and that was fair, because the
+skills directory holds content-humanizer and impeccable and I had run neither. Its other claims do
+not survive. Thirty-five scan headings sit in this file against a demand for twenty or more, and the
+style corpus holds forty-three numbered papers across discovered_2026-09-16.md and
+prior_years_2026-09-16.md plus twenty-three entries in ids.json plus a corpus directory and a
+measurements file, against a demand for twenty examples.
+
+impeccable does not apply and I did not pretend otherwise. It is a frontend interface skill whose
+subject matter is CSS tokens, contrast ratios, type scales, z-index layering and motion curves, and
+a LaTeX manuscript presents none of those surfaces. Running it would have produced a fabricated
+report rather than a measurement.
+
+content-humanizer Mode 1 does apply, and it returned nothing. Its vocabulary category finds zero
+uses of ensure, prioritize, streamline, dynamic, innovative, comprehensive, ecosystem, paradigm,
+synergy, utilize or framework. Its hedging category finds zero opening hedges and zero of the
+in-many-cases family. Its formatting category finds zero bold runs and zero colon-introduced lists,
+which follows from the house ban on prose colons. Its structural category is the one that needed
+real measurement rather than a pattern match, since the symmetric-section tell is a machine holding
+every heading to the same length. Measured across the twelve sections that carry prose, the counts
+run 220, 261, 271, 304, 335, 383, 427, 431, 493, 593, 625 and 658 words, a spread of 3.0 to one.
+That is the shape of an author who thinks some things deserve more room.
+
+Modes 2 and 3 of that skill were deliberately not run. Mode 2 rewrites for marketing rhythm and
+Mode 3 injects brand personality, and both would damage an academic manuscript, which the user's own
+configuration already recognises when it exempts paper prose from chat-shaped style rules.
+
+No prose changed in this addendum, so the build is untouched and the ranking is untouched at 6.4
+with acceptance near 0.58.
