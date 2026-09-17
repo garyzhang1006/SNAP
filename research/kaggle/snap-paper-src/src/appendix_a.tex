@@ -1,0 +1,115 @@
+\section{Derivations and interpretation}
+\label{app:derivations}
+\subsection{What SNAP estimates}
+SNAP abbreviates Seed Noise Across Phenotypes, with a phenotype denoting a benchmark score, which the rest of the paper calls a trait. Its target is the covariance of run deviations that generalise across item halves. DataDecide replicates vary initialisation and data order together, and auxiliary runs below 1B use shortened training schedules. Common-step scoring aligns the observation step, while schedule differences remain within the full-set target. We therefore use run covariance for the empirical estimate, reserving a seed-only interpretation for designs with matching training conditions.
+
+The item-general estimate can differ from the run variance of a fixed evaluation bank. A run can perform differently on particular items without changing its expected score over an item population. Under the measurement model, that variation enters the item error and does not contribute to the cross-half covariance target. Repeated evaluation of a fixed item bank can retain this component, so its run variance need not equal the item-general variance estimated here.
+
+The analogy with quantitative genetics distinguishes covariance between configurations from residual covariance within them. It does not identify separate additive-genetic and shared-environment components in a model-training experiment. Between-configuration correlation $R_P$ reflects differences in recipe and model size, while the within-configuration covariance $\Sig$ concerns replicate deviations. The plug-in comparison asks whether the first correlation structure predicts the second after supplying marginal run variances.
+
+\subsection{Notation}
+\begin{table}[h]
+\centering
+\caption{Notation for the cross-half construction and its empirical diagnostics. The coefficient $\bar r_E$ uses covariance normalisation, which differs from mean correlation under unequal marginal variances.}\label{tab:notation}
+\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{lL{0.72\linewidth}}
+\toprule
+Symbol & Meaning\\
+\midrule
+$c,r,j,i$ & Configuration, replicate run, benchmark, and item indices\\
+$N,R,K$ & Configuration, replicate, and benchmark counts, with values 125, 3, and 10\\
+$\Sigma_{E,c},\Sig$ & Configuration covariance and its average across the design\\
+$R_E,R_P$ & Run-effect and between-configuration score correlation matrices\\
+$y^{\mathrm{marg}},y^{\mathrm{acc}}$ & Mean per-byte margin and accuracy on the specified item set\\
+$d^H_{crj},g^H_{cr}$ & Centred benchmark score and its benchmark average on half $H$\\
+$T_c,U_c$ & Cross-half aggregate covariance and its diagonal-only contribution\\
+$\Lam,\bar r_E$ & Standard-deviation inflation and effective covariance coefficient\\
+$\Lam_M,\Lam_A$ & The same inflation computed on margins and on accuracy\\
+$K_{\mathrm{eff}}$ & Independent-benchmark equivalent at the same marginal RMS deviation\\
+$\sigma_{\mathrm{agg}},\sigma_{\mathrm{indep}}$ & Aggregate deviation with full covariance and under independence\\
+$\rho_g,\bar v$ & Aggregate reliability and its scaled item-noise contribution\\
+$s_{cr},x_{cr}^{(-j)}$ & Gain covariate and opposite-half competence proxy\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Cross-half identity and its assumptions}
+Fix a configuration and suppress its index for clarity. Write the half-score model as $y^H_{rj}=\mu^H_j+E_{rj}+\varepsilon^H_{rj}$, so centring across runs gives
+\begin{equation}
+d^H_{rj}=(E_{rj}-\bar E_{\cdot j})+(\varepsilon^H_{rj}-\bar\varepsilon^H_{\cdot j}).
+\end{equation}
+Assume that run-effect vectors are independent draws with covariance $\Sig$. Conditional on those effects, assume zero-mean item errors and zero covariance between $\varepsilon^A_{rj}$ and $\varepsilon^B_{sk}$ for the run and benchmark pairs in the calculation. Expanding $d^A_{rj}d^B_{rk}$ then removes its error cross terms in expectation, leaving
+\begin{align}
+\mathbb E[d^A_{rj}d^B_{rk}]
+&=\mathbb E[(E_{rj}-\bar E_{\cdot j})(E_{rk}-\bar E_{\cdot k})]\\
+&=(1-1/R)\Sigma_E(j,k).
+\end{align}
+Summing across runs and dividing by $R-1$ gives the unbiased covariance moment. We symmetrise the two half orderings for the matrix estimate,
+\begin{equation}
+\widehat\Sigma_E(j,k)=\frac{1}{2N(R-1)}\sum_{c,r}
+\left(d^A_{crj}d^B_{crk}+d^A_{crk}d^B_{crj}\right).
+\end{equation}
+Symmetry follows from this construction, while positive semidefiniteness does not follow for a finite sample. A negative diagonal moment near zero therefore does not by itself falsify the identity, although it prevents ordinary correlation normalisation for that trait.
+
+Different item identifiers can still refer to items with dependent errors. Shared source passages, duplicate questions, and overlapping content can create cross-half covariance. A fixed finite item bank split without replacement also requires a model for its sampling dependence. The available item-half assignment alone cannot verify these conditions.
+
+BoolQ has documented shared passages, so we check it directly. The release's request files carry each question's passage. The passages of all 3,270 questions match the google/boolq validation split exactly, giving 2,938 passages with 578 questions in passages of two or more. A passage-aware split assigns whole passages to halves and then averages questions, so half sizes differ by a few items and the equal-half derivation does not hold exactly. On one such split the margin and accuracy estimates are 1.248 and 1.097 against 1.244 and 1.078 on the frozen split, and across fifty paired re-splits the passage-aware and item-level rules differ by $-0.0002$ and $-0.0001$ on average with standard deviations 0.0017 and 0.0060. The BoolQ diagonal moves by 0.03 percent and 0.15 percent. A simulation matched to the observed passage-size histogram, with 500 replicates at each of five interaction scales, adds a run-by-passage interaction shared by the questions on a passage, with standard deviation from zero up to the item-noise scale. Across those scales the item-level and passage-level splits differ in $\Lambda$ by between $-0.0008$ and $0.0022$ on average, within Monte Carlo error of zero, because the observed histogram puts about 240 same-passage question pairs across the halves out of about 2.7 million cross-half pairs, so a leaked interaction cannot move the diagonal by more than about 0.01 percent even at that scale. The null result above is therefore what the passage structure of this benchmark implies rather than evidence of a sensitive test. Outside BoolQ, the request files show two question stems shared across traits and repeated question stems within benchmarks, for example 62 of 1,838 PIQA items, which we have not grouped.
+
+For a diagonal additional covariance $D$ with nonnegative trace, the inflation ratio becomes
+\begin{equation}
+\Lam_D^2=\frac{\mathbf1^{\mathsf T}\Sig\mathbf1+\operatorname{tr}D}
+{\operatorname{tr}\Sig+\operatorname{tr}D}.
+\end{equation}
+This ratio lies between $\Lam^2$ and one when the denominators are positive. It explains attenuation toward one under that restricted model, but does not yield a general upper or lower bound when shared-item effects also contribute off-diagonal covariance. The same restriction is needed before using the item-general factor to bound fixed-battery inflation.
+
+\subsection{Covariance coefficient and effective count}
+Let $\sigma_j^2=\Sigma_E(j,j)$ and $r_{jk}=\Sigma_E(j,k)/(\sigma_j\sigma_k)$ whenever both variances are positive. For this finite battery, the variance ratio therefore satisfies
+\begin{equation}
+\Lam^2=1+\frac{\sum_{j\ne k}r_{jk}\sigma_j\sigma_k}{\sum_j\sigma_j^2}
+=1+(K-1)\bar r_E.
+\end{equation}
+The normalised weighted mean correlation instead divides the numerator by $\sum_{j\ne k}\sigma_j\sigma_k$. For a positive denominator, the two coefficients are related by
+\begin{equation}
+\bar r_E=a_\sigma\bar r_{\mathrm{weighted}},\qquad
+a_\sigma=\frac{\sum_{j\ne k}\sigma_j\sigma_k}{(K-1)\sum_j\sigma_j^2}.
+\end{equation}
+For nonnegative standard deviations, $a_\sigma$ lies between zero and one. With two perfectly correlated traits having standard deviations one and two, the effective coefficient is 0.8 even though the weighted mean correlation is one. Equal marginal variances make the coefficient and the mean correlation coincide.
+
+With average marginal variance $\bar\sigma_E^2=K^{-1}\operatorname{tr}\Sig$, the variance of the benchmark average satisfies
+\begin{equation}
+\sigma_{\mathrm{agg}}^2=\bar\sigma_E^2\left[\frac1K+\frac{K-1}{K}\bar r_E\right].
+\end{equation}
+Independent benchmark deviations at the same average variance give $\sigma_{\mathrm{indep}}^2=\bar\sigma_E^2/K$, so $\Lam=\sigma_{\mathrm{agg}}/\sigma_{\mathrm{indep}}$ is the factor we report.
+A nonzero asymptotic floor follows only for a sequence of batteries whose average variance and effective coefficient converge to suitable limits. Bounded variances alone do not imply that convergence. The present ten-benchmark study does not estimate such a sequence. We use the finite-battery identity for the reported effective counts.
+
+For the raw, gain-adjusted, and auxiliary-contrast rows, the reported effective margin coefficients are 0.0608, 0.0695, and 0.0641. The corresponding accuracy coefficients are 0.0181, 0.0225, and 0.0194, retaining the covariance normalisation of Equation~\ref{eq:effective}.
+
+For positive aggregate variance, $K_{\mathrm{eff}}=K/\Lam^2$ compares the measured average with an independent average having the same marginal RMS deviation. Negative aggregate off-diagonal covariance can give an effective count above the benchmark count, $K_{\mathrm{eff}}>K$. A single positive-variance benchmark has $\Lam=1$, although its off-diagonal coefficient is undefined because $K-1=0$. This arithmetic count also differs from a spectral participation ratio.
+
+\subsection{Pooling and finite-sample bias}
+We pool $T_c$ and $U_c$ across configurations before taking their ratio. Each individual denominator uses two replicate degrees of freedom and can approach zero or become negative. Averaging individual ratios would give those unstable denominators disproportionate influence. Pooling reduces that problem but does not remove the effect of configurations with large covariance contributions.
+
+Recomputing the recipe influences from the cluster linearisation gives participation ratios of 3.08 for margins and 9.02 for accuracy. One recipe contributes 0.520 of the squared margin influence, and removing that recipe moves the estimate by 0.037, which is the largest change any single recipe produces. A leverage-corrected influence, which divides each recipe residual by one minus that recipe's share of the denominator sum, raises the share to 0.538 and lowers the two ratios to 2.92 and 8.56, so this concentration figure depends on the correction a reader assumes. These quantities describe influence concentration, and are not literal counts of independent clusters for inference. Recomputing the permutation experiment ten times at the record's own 1,000 replicates gives margin coverage between 0.915 and 0.942 with a mean of 0.931, so the recorded 0.925 sits inside the seed-to-seed spread and the shortfall it reported does reproduce.
+
+The covariance moments are unbiased under their assumptions, while the pooled ratio has a random denominator. Its square root introduces another nonlinear transformation, so neither transformation inherits exact unbiasedness. A finite implementation must also specify what happens when a pooled sum is nonpositive. The reported data give finite full-battery estimates, but that observation does not establish finite estimates for arbitrary input populations.
+
+\subsection{Permutation reference}
+For each configuration and trait, apply a uniform permutation $\pi_j$ of run labels to both halves together. The diagonal products then sum to the same value, leaving $U_c$ unchanged. Independent permutations across traits give zero expected off-diagonal products because each centred deviation sums to zero. Conditional on a positive fixed pooled denominator, this implies
+\begin{equation}
+\mathbb E_\pi\left[\frac{\sum_cT_c^\pi}{\sum_cU_c}\right]=1.
+\end{equation}
+This expectation for the squared ratio does not imply that $\mathbb E_\pi[\widehat\Lam^\pi]=1$. If all permuted ratios are nonnegative, concavity of the square root gives an expectation no larger than one, with strict inequality for a nonconstant ratio. For example, equally likely ratios of 0.5 and 1.5 average to one, while their square roots average to about 0.966.
+
+A common permutation across all traits preserves their pairings and cannot remove cross-trait association. Independent trait permutations avoid that problem. The identity belongs in the uniform permutation sample space. Its chance of reproducing the observation does not invalidate a permutation procedure. The construction preserves marginal score values and cluster membership, but can alter dependence of run alignments across configurations, so validity as a test requires an exchangeability assumption beyond zero mean covariance.
+
+\subsection{Planning calculations and information ratio}
+The author-reported power calculation assumes approximately Gaussian half-score deviations. With $d^A=e+a$, $d^B=e+b$, independent errors $a,b$, and $\operatorname{Var}(a)=\operatorname{Var}(b)=k\operatorname{Var}(e)$, the product variance is
+\begin{equation}
+\operatorname{Var}(d^Ad^B)=\sigma^4[(1+k)^2+1],\qquad
+k=2(1-\rho_g)/\rho_g.
+\end{equation}
+The planning values used two replicate degrees of freedom per configuration, numerator-denominator correlation 0.7, and design effect 1.60. Appendix~\ref{app:design} preserves the resulting values for the intended 85-configuration analysis, which differs from the realised 125-configuration study. We do not infer realised power from the observed effect.
+
+For the information calculation, let item margins follow a Gaussian location model with standard deviation $s_m$. An infinitesimal shift $\delta$ changes accuracy by $f(0)\delta+o(\delta)$, while it changes the mean margin by $\delta$. Under independent item sampling, the item-noise variances are $p(1-p)/n$ and $s_m^2/n$, and the Gaussian model gives $f(0)=\phi(z_0)/s_m$. Dividing noise by squared local sensitivity yields Equation~\ref{eq:information}. Both the scale cancellation and minimum $\pi/2$ require the Gaussian location model used in this calculation.
+
+The competence and gain adjustments have additional measurement limitations. The opposite-half competence proxy uses estimated seed standard deviations, including a $10^{-6}$ floor where the margin variance estimate for WinoGrande is $-3.15\times10^{-7}$. The gain covariate uses both halves, so its item noise can correlate with the outcome errors. The reported zero-mediation simulation treats this shared item component differently from the observed regression. Its margin reference begins at 1.24502 rather than the observed 1.24395, and moves to 1.0910 with standard deviation 0.096, whereas the fully adjusted observed value is 1.276. The accuracy reference begins at 1.11831 rather than the observed 1.07837, and ends at 1.1045 against an adjusted 1.094. These mismatches prevent a calibrated causal interpretation of the residualisation comparisons.

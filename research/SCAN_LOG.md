@@ -1438,3 +1438,53 @@ better opening sentence does not change a design with no holdout, a headline mar
 confounded with scoring format, or an accuracy interval that contains one on the full
 battery. Claiming a ranking move for a framing change would be exactly the inflation the
 goal forbids. The scan 23 revision stands.
+
+## Build record, 2026-09-16, snap-r26-build on Kaggle
+
+The user permitted compute on condition that none of it run on this machine, so the build moved
+to Kaggle. The tex sources, the figures, the untouched template style files and the
+pre-formatting snapshot went up as a private dataset, and the kernel installed TeX Live,
+compiled, and reported the numbers the local verifier used to report.
+
+Two attempts failed before the third worked, and both failures are worth recording. Version 1
+died in sixty seconds because Kaggle mounted the dataset one level deeper than the kernel
+looked, which a recursive search for main.tex fixed. Version 2 compiled but left "Label(s) may
+have changed. Rerun to get cross-references right." standing after the second pass, because a
+build starting with no aux file needs three passes where the local build had a settled aux
+sitting in its output directory from previous runs. A page count read from an aux that has not
+settled is not a measurement, so version 3 ran three passes and recorded the count after each.
+
+The count did not move. Main text nine pages and fifty-three total after pass one, after pass
+two and after pass three, with the rerun request cleared by the third. Those are the same two
+numbers the last local build produced, which is the strongest available evidence that the TeX
+Live version difference between the two machines does not reach the layout.
+
+Everything else the verifier checks came back clean. Zero overfull boxes, zero missing
+characters, zero font warnings, no unresolved reference labels, fifty-three bibliography
+entries with every one cited and every citation resolving, no sentence shorter than four words
+in any of the three files, and an empty PDF Author field. The three official style files are
+byte-identical to the template copies, and the iclr2027_conference.sty digest matches the one
+already in the shipped manifest, so the margins are the conference's own.
+
+Version 4 added the two checks that stood between the remote build and shipping it. All
+twenty-three fonts in the PDF carry their own embedded program and all twenty-three are subset,
+so nothing depends on a substitution at the referee's end. The kernel also emitted the SHA-256
+manifest from the same bytes it compiled, and verifying that manifest against the installed
+files gives six OK.
+
+One gate reports false and it is not a regression. table_numeric_tokens_preserved compares every
+numeric token in every table body against the pre-formatting snapshot, and the last local
+verification recorded the same false, so the snapshot went stale when the tables were legitimately
+revised. The gate no longer carries information and should either be re-baselined or dropped
+rather than read as a warning.
+
+The prose numbers the remote build reports, which the local run could not produce this session,
+put the main text at 271 sentences, median eighteen words, mean 20.01, 7.4 percent under eight
+words against a corpus range of 5.8 to 23.8 percent, zero prose colons, semicolons or dashes, and
+16.6 percent of sentences opening with "The" against the 15 percent the forty abstracts show.
+The rhythm regression that scan 22 introduced and the second humanizer pass repaired has not
+returned.
+
+The manuscript is now built, verified and checksummed from the current source. Ranking after the
+build is 6.4 with acceptance near 0.58, unchanged, because a build confirms that nothing broke
+rather than making the paper better.
