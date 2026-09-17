@@ -820,3 +820,79 @@ Honest ranking after scan 19. 6.6 with acceptance near 0.64, unchanged. Neither 
 assessment. The useful result is methodological, which is that rendering and reading pages found two
 things that nineteen scans of source grepping did not, so the remaining scans should include a reading
 pass rather than only mechanical sweeps.
+
+## Scan 20. Reading the appendix pages the way a determined reviewer reads them
+
+Review of scan 19. The forward table reference now reads Table 3 in Appendix A, and the limitations
+sentence carries its causal link. Both render correctly. Scan 19's methodological finding was that
+rendering and reading beats source grepping, so this scan applied that to the forty appendix pages, which
+no earlier scan had read as continuous prose. It read pages 14, 17, 20, 23, 27, 30, 33, 36, 41, 44, 48 and
+52 and checked every number on them against the stored artefacts.
+
+Defect 1, a wrong digit in a permutation standard deviation. Appendix C reports that re-drawing the item
+half split moves the estimate further than permutation does, and gave the permuted accuracy spread as
+0.0055 in the comparison sentence two lines after giving it as 0.0053 in the sentence that introduced it.
+The artefact at research/outputs/snap-r6-itemshare-b/r6_itemshare_b.json records 0.005336, so 0.0053 was
+right and 0.0055 was a transcription error. Every other number in that passage reproduces exactly,
+including the 200-split spreads of 0.0018 and 0.0083, the permutation means of 1.2428 and 1.0763, the
+tail shares of 0.087 and 0.352, and the medians and ranges of the re-split distributions. This is the
+first wrong digit found in twenty scans, and it was found by reading two adjacent sentences together
+rather than by matching either one against storage on its own.
+
+Defect 2, a bias claim that outran its own table. The band-share power sweep reported that the plug-in
+estimate misses the truth by 0.0009 or less at every share up to a quarter. The stored cells give biases
+of 0.00037, 0.00029, 0.0009, 0.00142 and 0.00738 at shares of zero, 0.02, 0.044, 0.10 and 0.25, so the
+claim held only as far as the bound and failed at the two larger shares. The accuracy version of the same
+sentence, which claims 0.0034 or less, is exact and inclusive of the quarter, which is how the margin
+sentence read as though it had been checked. It now states 0.0009 up to the bound and 0.0074 through a
+quarter, which is what the run measured.
+
+Defect 3, a rounding slip in the same paragraph. The reported accuracy standard error under no sharing is
+0.039548, quoted as 0.0396. Corrected to 0.0395.
+
+Defect 4, an overstated equality. The step comparison said the 750M margin ratio equals the PolyPythias
+value of 0.890 when our own number on the same line is 0.889. It now says it sits within 0.001 of that
+value.
+
+Defect 5, two undefined symbols in a table that the main text promises is complete. Section 2.1 says the
+notation table collects every symbol used below, and the appendices use $\Lambda_M$ and $\Lambda_A$
+thirteen times without ever defining them. The notation table gains a row. A third symbol,
+$\Lambda_{\rm alt}$, appeared exactly once inside a scorecard cell and is now stated in words, since one
+occurrence does not earn a symbol.
+
+Defect 6, model labels that disagreed with their own figure. The prediction comparison writes P1 G and
+P2 R in prose while Figure 3 and its axis labels write P1G and P2R. Twelve occurrences in the source now
+match the figure, which is the artefact that cannot be edited cheaply.
+
+Defect 7, a broken relative clause on the last page. Raw cross-half products contain squared configuration
+means, which the analysis record reports can inflate the ratio, has no grammatical reading. Rewritten as
+two coordinated clauses.
+
+Defects 8 through 10, three sentences that read as unfinished. The estimator behaves, with no complement;
+the joint corner the data allows it covers, which garden-paths on allows; and a separate run at 1B now
+covers five recipes rather than one, where now is a revision artefact and rather than one refers to a
+count the reader was never given. All three rewritten.
+
+Defect 11, a table label the prose never bound to its own term. Table 19 labels its rows bits per byte
+while the surrounding prose calls those estimates likelihood, which is the paper's term elsewhere and is
+correct, but the bridge between the two was left implicit. One sentence now carries it.
+
+Non-defects verified by arithmetic while reading. The repository census closes three ways, at 80 plus 5
+plus 40 equal to 125, at 16 plus 1 plus 8 equal to 25 per band, and at 8 resolving recipes plus 17 absent
+ones equal to 25. The seed-matching census closes at 20 plus 4 equal to 24 branch cells and 15 cells
+covering 5 recipes at 1B. The planning scorecard's eleven predictions match their eleven table rows, and
+its four failures match the caption. Table 9 supports its own summary, since five margin estimates and
+four accuracy estimates exceed one and the BoolQ-removed bands exclude one in five cells on margins and
+three on accuracy. Equation 19 derives correctly from its stated assumptions, including the factor of two
+in $k=2(1-\rho_g)/\rho_g$ that comes from a half carrying twice the item noise of the full set. The
+item-level channel accounting of 0.001 and 0.002 against excesses of 0.244 and 0.078 reproduces from the
+stored means. The GPU arm's 18 of 4,755 is 0.38 percent and its accuracy shift of 4.2e-4 is the stated
+difference of the two quoted battery scores.
+
+Honest ranking after scan 20. 6.7 with acceptance near 0.65, up from 6.6 and 0.64. The move is small and
+it is earned by one thing only, which is that a reviewer who checks the appendix arithmetic now finds it
+checks out, where before this scan they would have found a number that contradicts the sentence two lines
+above it and a bias claim that its own table refutes. Reviewers who dig into appendices are the ones who
+write the decisive reviews, and a wrong digit found by a reviewer costs far more than the 0.1 this fix
+returns. The seven presentational fixes do not move the rating on their own. Nothing about the design,
+the evidence, or the contribution changed in this scan, and the ceiling those impose is unchanged.
