@@ -549,3 +549,37 @@ serious as a submission-hygiene failure and would have embarrassed the authors i
 text, but no reviewer reads a text layer and no score moves because a PDF got smaller. The caption fix is
 worth a fraction of a point at most. Recording this as a zero-improvement scan on the score while noting
 it is the most important thing found so far is the accurate reading.
+
+## Scan 12. Provenance of every number, and the bibliography
+
+Review of scan 11. The rebuilt figures render identically to their originals, the figure page now reports
+one running header like every other page, and the restored panel guide reads correctly in the caption.
+
+The provenance sweep. Every decimal number in the paper was extracted and matched against the 311 MB of
+stored artifacts under `research`, allowing a reported value to match a longer stored value truncated to
+the reported digits. All 218 distinct decimals in the main text matched. Of 982 distinct decimals in the
+appendices, 981 matched. The single exception is the planned effective coefficient of 0.0911, which is
+not a stored output at all but a derivation from the planned threshold, since $(1.349^2-1)/9=0.09109$ for
+ten benchmarks. The observed value quoted beside it checks the same way, since $(1.244^2-1)/9=0.06084$
+rounds to the 0.061 the sentence gives. Twelve hundred numbers with no unsupported value is the strongest
+evidence any scan has produced that the manuscript reports what was actually computed.
+
+The bibliography. All 53 entries are unique, all 53 are cited, every citation resolves, and no entry is
+orphaned.
+
+Defect 1, two published works cited as preprints. `kipnis2024` and `hofmann2025` carried no venue. Both
+were checked against OpenReview rather than from memory. metabench returns venue `ICLR 2025 Poster` with
+an author list matching the entry exactly, and Fluid Language Model Benchmarking returns venue `COLM 2025`
+with an inproceedings record and an exact author match. Both entries now carry their venue, and the
+metabench in-text year moves from 2024 to 2025 to match the published version while its key is unchanged.
+
+Non-defects recorded rather than edited. The two primary data sources were already cited to their venues,
+DataDecide to ICML and PolyPythias to ICLR 2025, and Signal and Noise to NeurIPS 2025. The remaining
+sixteen preprint citations are genuine preprints, mostly 2026 work with no venue yet, and the two
+classical-methods entries flagged by the venue pattern are books. An automated lookup service returned
+HTTP 429 and a second sat behind a bot check, which was left alone rather than worked around.
+
+Honest ranking after scan 12. 6.4 with acceptance near 0.62, unchanged. Two venue corrections do not move
+a score. The provenance result does not move it either, because a reviewer assumes numbers are real and
+gives no credit for proving it, but it is the check that would have been catastrophic to fail, and it
+passed on twelve hundred values.
