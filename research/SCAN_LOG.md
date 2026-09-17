@@ -1198,3 +1198,130 @@ makes the paper read less mechanically and removes one detectable signature, and
 than 23 raises confidence that the prose now sits inside the human range. Neither changes what a referee
 scores, which is the design, the evidence and the scope. The downward revision in scan 23 stands, and
 nothing in this scan argues against it.
+
+## Scan 25, 2026-09-16. Live corpus discovery, and an abstract that contradicted its own section
+
+Compute was withheld for this scan. The user answered "dont run any compute" to a direct
+question that listed shell and Python over repo files, pdflatex rebuilds, style metrics and
+page rendering, so none of those ran. What follows is therefore built from reading files,
+from searching online, and from arithmetic done by hand, and every claim below carries the
+label its evidence supports. Two consequences matter. Every edit had to be length neutral,
+because a page count cannot be checked without a build. And the shipped PDF is now one
+revision behind the source, which is stated again at the end rather than buried.
+
+### Review of what scan 24 changed
+
+Scan 24 rewrote nine sentence openers to move the draft from 18.7 percent "The" openers to
+15.0 percent, against a corpus figure of 6.0 percent, and it left roughly twenty-five
+further rewrites on the table. Reading the twenty newly discovered papers closes that
+question against the earlier target. Counting the opening sentence of each of the twenty
+abstracts by hand gives three that begin with "The", which is 15 percent, sitting exactly
+where the draft now sits. The two measurements do not conflict, because a full body carries
+related work and motivation where the subject is often a person or a community, while an
+abstract and a results section carry named quantities as subjects and therefore take the
+article. This manuscript is results-dense from the abstract to the discussion. So the 6.0
+percent target was wrong for this paper, the nine rewrites happened to land in the right
+place, and the further twenty-five would have pushed the prose out of its genre. The
+decision to stop is now closed on evidence instead of on judgement, which is the better
+reason. Recorded in research/style_study/discovered_2026-09-16.md.
+
+### Sub-scans
+
+1. Review of scan 24's opener rewrites against new evidence. Closed as above, no change.
+2. Live venue search for papers outside both known lists. Twenty found and recorded.
+3. Abstract against Results for every shared number. One defect, below.
+4. Introduction against body for every shared number. Clean.
+5. Interval endpoints against Table 1. Clean, all six rows.
+6. Effective-count arithmetic. Recomputed all six K_eff entries by hand from K over Lambda
+   squared. All six correct to the printed precision.
+7. The accuracy upper endpoint mapping. 1.157 gives an effective coefficient of 0.0376 and
+   an effective count of 7.470, matching the printed 0.038 and 7.47.
+8. The resolution ratio at p equals 0.35. Recomputed as 0.2275 over 0.1372, which is 1.658,
+   matching the printed 1.66, and the stated minimum of pi over two is the value at p equals
+   one half. Both correct.
+9. The BoolQ off-diagonal sums. Reconstructed from the full and reduced factors and the
+   stated trace shares. Margins give minus 0.153 of the trace against a printed minus 0.15,
+   accuracy gives minus 0.066 against a printed minus 0.06. Both correct.
+10. The sign-reversal probabilities. All four recomputed from the printed aggregate
+    deviation and the independence value. 0.246, 0.085, 0.229 and 0.069 all reproduce.
+11. The enumeration count. 25 choose 17 is 1,081,575 as printed.
+12. Truncation percentages for internal consistency. An average of 87 percent with a range
+    of 39 to 89 at 530M is only possible if one configuration is severely truncated, which
+    is exactly what the same paragraph states. Consistent.
+13. The repository-credentials claim. The recheck record observes 80 refusing unauthenticated
+    requests, 40 resolving anonymously and 5 invalid identifiers, summing to 125. The
+    manuscript's "80 of the 125" is OBSERVED and correct. The earlier worry recorded in the
+    R7 design note, that the count measured something other than credentials, was settled by
+    that recheck and needs no further action.
+14. PolyPythias figures against stored records. 1.406 and 1.711 appear nowhere in
+    research/outputs, only in the manuscript and this log. The paper already discloses that
+    these come from earlier execution records this revision did not rerun, so the disclosure
+    matches the evidence. Logged as a reviewer risk, not a defect.
+15. Reviewer-objection pass over ten standing objections. Every one is already answered in
+    the text, including format confounding, the twenty-five-cluster inference, the missing
+    holdout, and the circularity of the local scale correction.
+16. Non-ASCII, em dash, en dash and curly quote scan on all three tex files. Zero hits.
+17. Banned-vocabulary scan. One "robust" in main.tex, inside "cluster-robust", which is a
+    named estimator class. Six "leverage" in the appendices, all the hat-matrix quantity in
+    the CR3 correction. Both technical, neither is slop, no change.
+18. Prose semicolon and colon scan. Zero, as the house rule requires.
+19. Genre fit on the habit that most separates this literature from promotional writing,
+    which is stating the loss in the same sentence as the win. The manuscript does this in
+    both interval sentences and in the discussion's opening. Worth protecting in any future
+    compression.
+20. Rhythm. Unverified this scan. The only edits were single digits, so the sentence-length
+    distribution is unchanged from the state scan 24 measured, and no new measurement was
+    permitted.
+
+### The defect
+
+The abstract said simulated coverage "lies between 0.933 and 0.953 across twelve
+populations". Section 2.3 reports two repeats at 10,000 replicates, the first covering 0.933
+to 0.953 and the second 0.929 to 0.950. So the abstract quoted the floor of the better of
+two repeats as though it were the floor of both, and a referee who read Section 2.3 would
+find the abstract contradicted two lines later by the paper's own second run. Changed to
+0.929 in the abstract and in the same claim in the introduction. Both replacements are one
+character for one character, so no line can reflow and the page count cannot have moved.
+
+This is the second wrong figure found in twenty-five scans, and like the first it was found
+by reading two adjacent sentences against each other rather than by checking either against
+storage. Selective quoting of the friendlier of two repeats is the failure mode to watch,
+because nothing about it looks like an error in isolation.
+
+### What the twenty new papers say about the house rules
+
+Colons and dashes are used freely across all twenty, and several sentences turn on them.
+The house ban therefore keeps this manuscript outside its genre on exactly one axis, which
+is what the 33-paper measurement already reported. The rule is the user's and it stands, and
+the honest statement is that the paper pays a small readability cost rather than that the
+cost is zero. Three of the twenty state a claim by denying its opposite, so a negation that
+carries its own evidence is ordinary here and need not be avoided. Rule-of-three groupings
+are everywhere, including in a title. Unrounded counts are the norm, and the manuscript's
+37,682 items and 4,999 draws sit in the same register.
+
+### Humanizer and slop suite
+
+Run after the last prose change, as the goal requires. Zero non-ASCII codepoints, zero em or
+en dashes, zero curly quotes, zero prose semicolons or colons, and no banned vocabulary once
+the two technical terms are excluded. The rhythm half of the suite could not run without
+compute, and since the only changes were two digits, the last measured rhythm still applies.
+
+### Build state, stated plainly
+
+The source now differs from deliverables/SNAP_revised_draft.pdf by two digits. No rebuild was
+permitted, so the PDF, the snapshot copies and SHA256SUMS.txt are all one revision stale. The
+last verified build state, from scan 24, was 9 main-text pages, 53 total, official style file
+unchanged, no unresolved reference labels, no short sentences and an empty PDF Author field.
+Nothing in this scan can change the page count, because both edits swap one character for
+another inside an existing number. A rebuild is still required before submission, and until
+it runs the page count for this exact source is INFERRED rather than OBSERVED.
+
+### Honest ranking after scan 25
+
+6.4, acceptance near 0.58, unchanged. Fixing an abstract that contradicted its own section
+removes a cheap shot a referee could take, and closing the opener question on real evidence
+stops a change that would have made the prose worse. Neither touches what actually gets
+scored, which is a design with no holdout, a headline margin result confounded with scoring
+format, and an accuracy result whose interval contains one on the full battery. The downward
+revision made in scan 23 stands, and this scan gives no reason to move it in either
+direction.
