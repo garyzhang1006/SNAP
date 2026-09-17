@@ -1,7 +1,7 @@
 \section{Derivations and interpretation}
 \label{app:derivations}
 \subsection{What SNAP estimates}
-SNAP abbreviates Seed Noise Across Phenotypes, with a phenotype denoting a benchmark score. Its target is the covariance of run deviations that generalise across item halves. DataDecide replicates vary initialisation and data order together, and auxiliary runs below 1B use shortened training schedules. Common-step scoring aligns the observation step, while schedule differences remain within the full-set target. We therefore use run covariance for the empirical estimate, reserving a seed-only interpretation for designs with matching training conditions.
+SNAP abbreviates Seed Noise Across Phenotypes, with a phenotype denoting a benchmark score, which the rest of the paper calls a trait. Its target is the covariance of run deviations that generalise across item halves. DataDecide replicates vary initialisation and data order together, and auxiliary runs below 1B use shortened training schedules. Common-step scoring aligns the observation step, while schedule differences remain within the full-set target. We therefore use run covariance for the empirical estimate, reserving a seed-only interpretation for designs with matching training conditions.
 
 The item-general estimate can differ from the run variance of a fixed evaluation bank. A run can perform differently on particular items without changing its expected score over an item population. Under the measurement model, that variation enters the item error and does not contribute to the cross-half covariance target. Repeated evaluation of a fixed item bank can retain this component, so its run variance need not equal the item-general variance estimated here.
 

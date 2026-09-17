@@ -759,3 +759,31 @@ in this one. An unanswered `how is this different from Signal and Noise` is the 
 turns a weak accept into a weak reject, because the reviewer cannot tell whether the authors knew about
 the work or avoided it. Answering it in the section itself removes that reading, and the BenchScope
 clarification closes the same hole on the novelty claim.
+
+## Scan 18. Terminology discipline
+
+Review of scan 17. The Heineman comparison and the BenchScope clarification both read correctly in the
+built document, and related work sits at 223 words with the page still at nine.
+
+Defect 1, two defined terms meaning the same thing, and one of them also meaning a third thing. The paper
+defined trait as a benchmark-level score and phenotype as the measured score, which are the same object,
+and then used trait 90 times and phenotype 11 times. Worse, seven of the phenotype uses meant neither
+object but the score scale, as in `either phenotype` for margins and accuracy, and two of those were table
+column headers whose entries read Margin and Accuracy. A reader who accepted the stated definition would
+have parsed those sentences wrongly. Phenotype now survives only where it earns its place, in the SNAP
+acronym and in the quantitative-genetics method names `phenotypic plug-in` and `phenotypic correlation`,
+and the seven scale uses say score scale. Both definitions now name trait as the word the paper actually
+uses, so the genetics borrowing is explained rather than left as a silent synonym.
+
+Non-defects recorded rather than edited. The word cell appears 66 times in the appendices without a
+definition and in three senses, a grid position in a simulation sweep, a configuration, and a size band's
+estimate. Every use is clear from its sentence, cell for a grid position is ordinary statistical English,
+and `scattered cells` set against `whole recipes` says something `configurations` would say less well, so
+none of them was changed. Configuration, recipe, replicate run and seed are each defined at their first
+technical use in Section 2, and their earlier appearances are in the abstract, where a term standing
+undefined is normal.
+
+Honest ranking after scan 18. 6.6 with acceptance near 0.64, unchanged. A reviewer would not reject over
+a synonym, but the phenotype collision was the kind of thing that makes a careful reader slow down and
+reread, and three of the seven bad uses sat in table headers where a reader checks a definition rather
+than infers one. Worth fixing, not worth a point.

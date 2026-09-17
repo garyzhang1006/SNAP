@@ -27,7 +27,7 @@ Different final steps & 92 & 25 & 1.330 \ci{1.024}{1.583} & 1.070 \ci{0.956}{1.1
 \end{tabular}
 \end{table}
 
-\subsection{Reliability phenotypes}
+\subsection{Reliability by trait}
 The item halves contain 18,840 and 18,842 items across the battery. The fetch stage creates a balanced split within each trait and records the split for reuse across runs. The planning document proposed estimating reliability on eight screening recipes before inspecting seventeen estimation recipes. We did not implement that separation, and Table~\ref{tab:original3} instead uses all 25 recipes. The reliability checks and the decisions based on them therefore remain exploratory.
 
 \begin{table}[!htb]
@@ -64,7 +64,7 @@ The realised standard errors are smaller by factors of 2.1 and 3.3. Increasing t
 \label{tab:original4}
 \small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
 \begin{tabular}{llrrr}\toprule
-Phenotype & Aggregation & Planned SE$(\Lambda)$ & MDE$(\Lambda)$ & Power\\\midrule
+Score scale & Aggregation & Planned SE$(\Lambda)$ & MDE$(\Lambda)$ & Power\\\midrule
 Margin & Cross-half & 0.0935 & 1.300 & 0.89\\
 Margin & Battery mean & 0.0845 & n/a & 0.94\\
 Accuracy & Cross-half & 0.1232 & 1.412 & 0.68\\
@@ -177,7 +177,7 @@ No. & Criterion & Measured result & Assessment\\\midrule
 The original scorecard counted five failures, four passes, and two predictions that could not be tested as written. Predictions 9 and 11 came from a separate analysis of the per-run reductions, rather than the original pipeline. Prediction 7 lacks its required lower confidence limit, and prediction 6 depends on a post hoc choice to compare excess inflation. Table~\ref{tab:original6} retains the numerical outcomes and states where the assessment differs from the proposed criterion.
 
 \paragraph{Variation across model sizes}
-Each size band contains 25 configurations, one per recipe. Its clusters are therefore singletons, without within-band replication of sizes inside recipes. Only the 530M interval excludes one in either phenotype, the margin exclusion disappears under the test-inversion interval of Appendix~\ref{app:supplementary}, and the intervals do not support a ranking of model sizes. All five margin point estimates and four accuracy point estimates exceed one, so prediction 5 passes a point-estimate interpretation and fails the stricter interval interpretation used in the original scorecard.
+Each size band contains 25 configurations, one per recipe. Its clusters are therefore singletons, without within-band replication of sizes inside recipes. Only the 530M interval excludes one on either score scale, the margin exclusion disappears under the test-inversion interval of Appendix~\ref{app:supplementary}, and the intervals do not support a ranking of model sizes. All five margin point estimates and four accuracy point estimates exceed one, so prediction 5 passes a point-estimate interpretation and fails the stricter interval interpretation used in the original scorecard.
 
 \begin{table}[!htb]
 \centering
@@ -312,7 +312,7 @@ Trait removal changes the estimates more than recipe or size removal. Excluding 
 
 \begin{table}[!htb]
 \centering
-\caption{Trait-removal estimates across all 125 configurations in both phenotypes, with wild recipe-cluster intervals over 4,999 draws. Each removal row uses the nine remaining traits with equal weights of one ninth, and the final row uses all ten traits. The columns $\sigma_{\rm agg}$ and $\sigma_{\rm ind}$ give the aggregate and independence standard deviations in units of $10^{-3}$, so the weighted trace equals $\sigma_{\rm ind}^2$ and the weighted off-diagonal sum equals $\sigma_{\rm agg}^2-\sigma_{\rm ind}^2$.}
+\caption{Trait-removal estimates across all 125 configurations on both score scales, with wild recipe-cluster intervals over 4,999 draws. Each removal row uses the nine remaining traits with equal weights of one ninth, and the final row uses all ten traits. The columns $\sigma_{\rm agg}$ and $\sigma_{\rm ind}$ give the aggregate and independence standard deviations in units of $10^{-3}$, so the weighted trace equals $\sigma_{\rm ind}^2$ and the weighted off-diagonal sum equals $\sigma_{\rm agg}^2-\sigma_{\rm ind}^2$.}
 \label{tab:original10}
 \small\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.12}
 \begin{tabular}{lrcrrrcrr}\toprule
@@ -501,7 +501,7 @@ We then checked whether those checkpoints are reachable. An index built from the
 \begin{table}[h]
 \centering
 \small
-\caption{Inflation after each competence adjustment, observed and in simulated populations with 300 replicates each. Simulated columns give replicate means under independent seed deviations, a single common correlation whose population inflation equals each phenotype's observed value, and the nearest positive semidefinite matrix to the observed seed covariance.}
+\caption{Inflation after each competence adjustment, observed and in simulated populations with 300 replicates each. Simulated columns give replicate means under independent seed deviations, a single common correlation whose population inflation equals each scale's observed value, and the nearest positive semidefinite matrix to the observed seed covariance.}
 \label{tab:proxy}
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{lrrrrrrrr}
@@ -557,7 +557,7 @@ The signal-and-noise runs do not share models with the DataDecide analysis, alth
 \label{tab:original12}
 \small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
 \begin{tabular}{llrrrr}\toprule
-Seed variation & Phenotype & $K$ & $\Lambda$ & Adjusted $\Lambda$ & $\bar r_E$\\\midrule
+Seed variation & Score scale & $K$ & $\Lambda$ & Adjusted $\Lambda$ & $\bar r_E$\\\midrule
 Initialisation & bits per byte & 18 & 1.705 & 1.464 & 0.112\\
 Initialisation & accuracy per character & 8 & 0.989 & 1.105 & $-0.003$\\
 Data order & bits per byte & 18 & 1.625 & 1.763 & 0.096\\
@@ -596,7 +596,7 @@ For a recipe subset $S$, the estimator is $\widehat\Lambda_S=\sqrt{\sum_{c\in S}
 
 \begin{table}[!htb]
 \centering
-\caption{Exhaustive sensitivity to the choice of seventeen estimation recipes. Every admissible subset gives a finite point estimate under both phenotypes.}
+\caption{Exhaustive sensitivity to the choice of seventeen estimation recipes. Every admissible subset gives a finite point estimate on both score scales.}
 \label{tab:original14}
 \small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
 \begin{tabular}{lrr}\toprule
