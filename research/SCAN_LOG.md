@@ -29,6 +29,7 @@ Baseline before scan 1, carried from the independent reviewer pass earlier in th
 | 2 | hostile claim audit, adversarial-reviewer | 4 | 4 | 6.1 |
 | 3 | framing, positioning and first-page impression | 3 | 3 | 6.1 |
 | 4 | numerical consistency and result coverage | 3 | 3 | 6.2 |
+| 5 | figures, tables and float hygiene | 3 | 3 | 6.2 |
 
 
 ## Scan 1, mechanical correctness, 20 sub-scans
@@ -210,3 +211,47 @@ in the same sentence. The honest counterweight is that a reviewer can read a no-
 chosen after the fact, which is why both the appendix passage and the main-text clause present it as the
 composition sensitivity at size resolution rather than as independent support. That caveat is what keeps
 this a two-tenths move rather than more.
+
+## Scan 5, figures, tables and float hygiene, 20 sub-scans
+
+Scan 5 re-read every scan 4 change in the built PDF first, and all four held.
+
+Sub-scans run. Float inventory, labels present, every float referenced, caption presence, caption length,
+caption self-containedness, undefined symbols in legends, undefined symbols in captions, units stated,
+sample sizes stated, embedded font types, font family against the body text, colour map choice, legend
+completeness, panel titles, axis labels, tick legibility at print size, float placement specifiers, float
+order against first reference, and duplication between a figure and a table.
+
+The paper carries three figures and 22 tables. Every float except one is labelled, referenced at least
+once, and carries a caption of at least twenty words.
+
+Defects found and fixed.
+
+1. The notation table in Appendix A had a caption and no label, so nothing anywhere pointed at it. A
+   reader meeting the symbols in Section 2.1 had no way to learn the table exists. It is now
+   `tab:notation` and the sentence that introduces the indices points at it.
+2. `figures/prediction.pdf` embedded Type 3 DejaVu Serif outlines while the other two figures carry Type 1
+   Nimbus, so the newest figure rendered in the wrong family and in the font class that several venues
+   reject. The generating script set `font.family` and never set `pdf.fonttype`, which is the matplotlib
+   default that produces Type 3. The script now sets `pdf.fonttype` and `ps.fonttype` to 42 and prefers
+   Times, and the figure re-renders as a single embedded subset of Times New Roman. Nothing was
+   recomputed, since the script reads the frozen `snap-r8-paired-log` result and only draws it.
+3. The main-text covariance figure's right panel labels its curves `PR 3.57` and `PR 3.62`, and
+   participation ratio is defined only in the appendices. The caption now defines it.
+
+Not a defect but worth the trade. Paying for the caption line, the sensitivity paragraph's list of four of
+the twelve coverage populations became a pointer to `tab:coverage`, which lists all twelve with their
+constructions. The paper gained coverage of its own simulation design and lost an illustrative list.
+
+Non-defects recorded rather than edited.
+
+- Five floats have their `\label` before their first `\ref`. LaTeX resolves these either way, and each
+  sits within a page of the text that discusses it under an `[!htb]` or `[t]` specifier.
+- The identity line in the calibration figure is invisible because the recovered mean sits exactly on it,
+  which is the figure's finding rather than a drawing fault.
+- The diverging red and blue map in the covariance figure is the colour-vision-safe choice already.
+
+Honest ranking after scan 5. Unchanged at 6.2 with acceptance near 0.58. The `PR` definition unblocks a
+reader of the main-text figure and the font fix removes a production flaw, but no reviewer scores a paper
+on embedded font types, and none of these changes what the paper argues or what it can support. The
+coverage-table pointer is the only change here that a reviewer might actually notice.

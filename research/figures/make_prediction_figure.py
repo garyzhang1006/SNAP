@@ -28,8 +28,12 @@ report = json.loads(SRC.read_text())
 meaningful = report["meaningful_difference"]
 order = list(report["bootstrap"]["margin"]["contrasts"])
 
+# Type 42 keeps the glyphs as embedded TrueType rather than the Type 3 outlines matplotlib
+# emits by default, which is what the other two figures in this paper already carry.
 plt.rcParams.update({"font.family": "serif", "font.size": 8, "axes.linewidth": 0.6,
-                     "xtick.major.width": 0.6, "ytick.major.width": 0.6})
+                     "xtick.major.width": 0.6, "ytick.major.width": 0.6,
+                     "pdf.fonttype": 42, "ps.fonttype": 42,
+                     "font.serif": ["Times New Roman", "Times", "DejaVu Serif"]})
 fig, axes = plt.subplots(1, 2, figsize=(7.0, 3.5), sharey=True)
 for ax, scale, title in zip(axes, ("margin", "accuracy"), ("Margins", "Accuracy")):
     boot = report["bootstrap"][scale]["contrasts"]

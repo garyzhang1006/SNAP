@@ -36,7 +36,7 @@
     "overfull_boxes": 0,
     "missing_characters": 0,
     "font_substitution_warnings": 0,
-    "undefined_references_or_citations": false,
+    "undefined_references_or_citations": true,
     "underfull_boxes": 17,
     "remaining_warnings": "17 underfull spacing diagnostics, visually inspected"
   },
