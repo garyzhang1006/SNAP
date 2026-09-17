@@ -1,0 +1,14 @@
+{
+ "requests_sha256": "53a06cf0fb252da0a636a26376067a5e5706a6837294e40fb66b6d17c3be4267",
+ "olmes_commit": "5a51f502d463b8cdc4a2dcad7d7096c41ff1197e",
+ "items_per_task": {
+  "arc_easy": 300,
+  "coqa_mc": 1000,
+  "drop_mc": 1000,
+  "logiqa_en": 651,
+  "lsat_lr": 510,
+  "medmcqa": 1000,
+  "sciq": 1000
+ },
+ "frozen_utc": "2026-09-17T22:28:43Z"
+}

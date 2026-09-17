@@ -42,6 +42,11 @@ req_path = snapnew.find_one("requests.jsonl.gz")
 req_sha = snapnew.sha256(req_path)
 assert req_sha == frozen["requests_sha256"], f"request file hash {req_sha} is not the frozen {frozen['requests_sha256']}"
 
+pin = tasks_cfg["scoring"]["transformers_pin"]
+assert pin, "config/tasks.json has no transformers_pin; run k00 and copy the version it reports"
+# The Kaggle image ships transformers 5, which ai2-olmo 0.6.0's hf_olmo wrapper
+# cannot load a checkpoint against; k00 measures which 4.x line works.
+subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", f"transformers=={pin}"])
 subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", "--no-deps", "ai2-olmo==0.6.0", "cached_path"])
 subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", "omegaconf"])
 print(subprocess.run(["nvidia-smi", "--query-gpu=name,memory.total,driver_version", "--format=csv"],
