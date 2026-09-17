@@ -39,6 +39,22 @@ shutil.copytree(sn[0].parent, sn_copy, ignore=shutil.ignore_patterns("._*"))
 subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", str(sn_copy)])
 from seednoise.data.datadecide import LN2, download_recipe, parse_member  # noqa: E402
 
+def per_byte(o, where):
+    """Nats per byte from one released choice, as seednoise.read_predictions does it.
+
+    Most releases carry logits_per_byte, a positive bits-per-byte loss, but some
+    prediction files omit it and only give sum_logits with num_chars, so the
+    fallback divides directly rather than dropping the choice.
+    """
+    lpb = o.get("logits_per_byte")
+    if lpb is not None:
+        return -float(lpb) * LN2
+    nb = o.get("num_chars")
+    if not nb:
+        raise ValueError(f"{where} has neither logits_per_byte nor num_chars")
+    return float(o["sum_logits"]) / float(nb)
+
+
 tasks_cfg = snapnew.read_json(ROOT / "config" / "tasks.json")
 task = tasks_cfg["verification"]["release_task"]
 runs = [r for r in snapnew.read_json(ROOT / "config" / "runs.json")["runs"] if r["recipe"] == "c4"]
@@ -88,7 +104,7 @@ with tarfile.open(tar, mode="r|gz") as tf:
                         cols["doc_id"].append(int(r["doc_id"]))
                         cols["choice"].append(c)
                         cols["is_gold"].append(c == r["label"])
-                        cols["per_byte"].append(-float(o["logits_per_byte"]) * LN2)
+                        cols["per_byte"].append(per_byte(o, f"{k.size} seed {k.seed} doc {r['doc_id']} choice {c}"))
                     n += 1
                 found.append({"size": k.size, "seed": k.seed, "step": k.step, "items": n})
                 print(f"[release] {k.size} seed {k.seed} step {k.step}: {n} items", flush=True)
