@@ -44,7 +44,12 @@ import snapnew  # noqa: E402
 
 sn = [p for p in Path("/kaggle/input").rglob("pyproject.toml") if "seed-noise" in str(p) and not p.name.startswith("._")]
 assert sn, "seednoise source (garyzhang11111/seed-noise-src) is not attached"
-subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", str(sn[0].parent)])
+# The build writes next to the sources, and /kaggle/input is read-only, so the
+# tree is copied out first, exactly as the earlier kernels in research/kaggle do.
+sn_copy = Path("/kaggle/tmp") / "seed-noise"
+shutil.rmtree(sn_copy, ignore_errors=True)
+shutil.copytree(sn[0].parent, sn_copy, ignore=shutil.ignore_patterns("._*"))
+subprocess.check_call([sys.executable, "-m", "pip", "install", str(sn_copy)])
 from seednoise.build import build_population  # noqa: E402
 from seednoise.data.datadecide import TRAITS  # noqa: E402
 from seednoise.estimator import estimate  # noqa: E402
@@ -166,10 +171,16 @@ m = res_new[f"{MARGIN}/all"]
 verdict = "PASS" if m["lo"] > 1.0 else "FAIL"
 
 # 6. Reproduce the paper's number from the shipped runs.
-old_src = sorted({p.parent for p in Path("/kaggle/input").rglob("*.npz")
-                  if "seed-noise-reduced-runs" in str(p) and not p.name.startswith("._")})
-assert len(old_src) == 1, f"shipped reduced runs not found in exactly one directory: {old_src}"
-old_dir = old_src[0]
+# The shipped dataset carries a macOS metadata twin for every run, and those
+# 163-byte files are not loadable npz, so only the real ones are copied out.
+shipped = [p for p in Path("/kaggle/input").rglob("*.npz")
+           if "seed-noise-reduced-runs" in str(p) and not p.name.startswith("._")]
+assert len(shipped) == 375, f"expected 375 shipped reduced runs, found {len(shipped)}"
+old_dir = Path("/kaggle/tmp") / "runs_shipped"
+shutil.rmtree(old_dir, ignore_errors=True)
+old_dir.mkdir(parents=True)
+for p in shipped:
+    shutil.copy(p, old_dir / p.name)
 pop_old, _ = build_population(old_dir, TRAITS, n_runs=3)
 old_lambda = estimate(pop_old, MARGIN).lambda_hat
 reproduced = abs(old_lambda - PAPER_MARGIN_LAMBDA) < 5e-4

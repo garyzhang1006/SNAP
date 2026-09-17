@@ -31,6 +31,7 @@ import csv
 import itertools
 import json
 import math
+import shutil
 import subprocess
 import sys
 import time
@@ -40,19 +41,32 @@ import numpy as np
 
 t0 = time.time()
 W = Path("/kaggle/working")
+Path("/kaggle/tmp").mkdir(parents=True, exist_ok=True)
 sn = [p for p in Path("/kaggle/input").rglob("pyproject.toml") if "seed-noise" in str(p) and not p.name.startswith("._")]
 assert sn, "seednoise source (garyzhang11111/seed-noise-src) is not attached"
-subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", str(sn[0].parent)])
+# The build writes next to the sources, and /kaggle/input is read-only, so the
+# tree is copied out first, exactly as the earlier kernels in research/kaggle do.
+sn_copy = Path("/kaggle/tmp") / "seed-noise"
+shutil.rmtree(sn_copy, ignore_errors=True)
+shutil.copytree(sn[0].parent, sn_copy, ignore=shutil.ignore_patterns("._*"))
+subprocess.check_call([sys.executable, "-m", "pip", "install", str(sn_copy)])
 from seednoise.build import build_population  # noqa: E402
 from seednoise.data.datadecide import TRAITS  # noqa: E402
 from seednoise.estimator import estimate  # noqa: E402
 from seednoise.population import ACCURACY, MARGIN  # noqa: E402
 
 N_BOOT = 2000
-old_src = sorted({p.parent for p in Path("/kaggle/input").rglob("*.npz")
-                  if "seed-noise-reduced-runs" in str(p) and not p.name.startswith("._")})
-assert len(old_src) == 1, f"shipped reduced runs not found in exactly one directory: {old_src}"
-pop, info = build_population(old_src[0], TRAITS, n_runs=3)
+# The shipped dataset carries a macOS metadata twin for every run, and those
+# 163-byte files are not loadable npz, so only the real ones are copied out.
+shipped = [p for p in Path("/kaggle/input").rglob("*.npz")
+           if "seed-noise-reduced-runs" in str(p) and not p.name.startswith("._")]
+assert len(shipped) == 375, f"expected 375 shipped reduced runs, found {len(shipped)}"
+old_dir = Path("/kaggle/tmp") / "runs_shipped"
+shutil.rmtree(old_dir, ignore_errors=True)
+old_dir.mkdir(parents=True)
+for p in shipped:
+    shutil.copy(p, old_dir / p.name)
+pop, info = build_population(old_dir, TRAITS, n_runs=3)
 lam = estimate(pop, MARGIN).lambda_hat
 assert abs(lam - 1.24395) < 5e-4, f"shipped runs give Lambda {lam}, not the paper's 1.24395"
 sizes = info["sizes"]
