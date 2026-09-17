@@ -25,10 +25,10 @@
  ],
  "main_text_pages": 9,
  "total_pages": 53,
- "pdf_bytes": 634021,
+ "pdf_bytes": 634146,
  "build": {
   "overfull_boxes": 0,
-  "underfull_boxes": 16,
+  "underfull_boxes": 15,
   "missing_characters": 0,
   "font_warnings": 0,
   "undefined_or_rerun": false
@@ -199,10 +199,10 @@
  "sha256": {
   "main.tex": "960c67b3b80ada08f51623c0c867737a2731279859cc0f726ee5e85357004615",
   "appendix_a.tex": "16cd190d3c3eaacd0789be7fd0ea7e68e480fbd168ca97b818e81a789f252524",
-  "appendices_bcd.tex": "dfabdb0226e3ed8207f24460bed4fefb227fd822d710aeaa512baa20c8b09bcd",
+  "appendices_bcd.tex": "ccc69071615c97c45771f883689c79ba5a73949be23a443fb79ed11e0390fcf2",
   "references.tex": "da724ef67b6197974d84aef7e6186d37e2a200ac513aef80357840785a4a1318",
   "iclr2027_conference.sty": "797deef41724e93761426ac0cbcca46279a91cc650dd1f0ce76a4f08d2098ea6",
-  "SNAP_revised_draft.pdf": "54eb885c60e882240af65a9722e1fe0496f952aba4cc583f2e7ebd2c6248fd8d"
+  "SNAP_revised_draft.pdf": "258236b88c484ab8d7325bb77496b44554520fe994e9e86dbbf5c377f116ca06"
  },
- "wall_seconds": 54.180654764175415
+ "wall_seconds": 35.64463806152344
 }

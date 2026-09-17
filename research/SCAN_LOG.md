@@ -1488,3 +1488,86 @@ returned.
 The manuscript is now built, verified and checksummed from the current source. Ranking after the
 build is 6.4 with acceptance near 0.58, unchanged, because a build confirms that nothing broke
 rather than making the paper better.
+
+## Scan 27, 2026-09-16. Reading the rendered pages against the appendix that backs them
+
+The build from the previous entry made this scan possible in a way the last two were not. With a
+current PDF in hand the whole main text could be read as a referee sees it, nine pages rendered
+rather than nine files of markup, and with Kaggle available any edit could be verified instead of
+argued for.
+
+### Review of what scan 26 changed
+
+Scan 26 replaced the abstract's opening sentence and added twenty-one prior-year papers to the
+style record. Read on the rendered page, the new opening sits correctly above the SNAP sentence
+that follows it, and the phrase "this covariance" now has its antecedent in the clause immediately
+before rather than four words upstream. The build confirms the change cost nothing, because the
+main text still ends on page nine.
+
+### Sub-scans
+
+1. Review of scan 26's abstract rewrite in rendered form. Reads correctly, antecedent improved.
+2. Rendered reading of pages one to three, covering the abstract, the introduction and the
+   estimator definition.
+3. Rendered reading of pages four to six, covering data scope, batch and scale sensitivity, and
+   the composition results.
+4. Rendered reading of pages seven to nine, covering the figure, prediction, related work and the
+   discussion.
+5. Figure 1 against its caption. Nine margin traits and eight accuracy traits in the legend, the
+   greyed cells matching the text's WinoGrande and PIQA exclusions, participation ratios present.
+6. Table 1 against the text. All six rows, both intervals, all six effective counts consistent.
+7. Table 2 against the text. Six models, both columns, the ordering the prose describes.
+8. Table 16 row count against the claim of twelve populations. Twelve rows, confirmed by reading.
+9. The wild column against the main text's 0.928 to 0.954. Minimum 0.928, maximum 0.954, exact.
+10. The configuration column against the claimed 0.872 under recipe-shared effects. Exact.
+11. The recipe column against the claimed 0.857 to 0.940. Minimum 0.857, maximum 0.940, exact.
+12. The bias column against the two claims about downward bias. The two cross-half rows give
+    minus 0.014 and minus 0.016 against a claimed 0.015, the null row gives minus 0.011 against a
+    claimed mean estimate of 0.989, and the 1.078 row gives minus 0.007. All three hold.
+13. The inversion column against the main text's 0.935 to 0.956. The column runs 0.932 to 0.957.
+    Investigated rather than corrected, see below.
+14. The inversion figures against storage. The four-cell precision record gives centred coverage
+    of 0.9353, 0.9561, 0.9419 and 0.9466, and Appendix C states that the remaining eight cells
+    were then brought to the same precision, so 0.935 to 0.956 is the twelve-cell rerun.
+15. Seed-matched pair counts against storage. Both stored pair files hold exactly 1,500 records,
+    matching the main text.
+16. The paired positive-variance subcounts. Not re-verified, see the honesty note below.
+17. Paragraph length across the rendered main text. Three paragraphs run twelve to seventeen
+    lines against a typical four to eight, which is variation the corpus also shows rather than a
+    defect, so no change.
+18. Duplicate-value collision check. The value 1.66 carries two unrelated meanings, the accuracy
+    to margin noise ratio at p equals 0.35 and the ratio of excesses above one for PolyPythias.
+    Both are correct, so changing either would falsify one, and the collision stays.
+19. Slop suite across all three files after the last prose change. Zero on every marker.
+20. Rebuild and install. Nine main-text pages and fifty-three total after each of three passes,
+    zero overfull boxes, no unresolved labels or citations, twenty-three fonts embedded and
+    subset, empty author field, six checksums verifying.
+
+### The change
+
+The sentence "A cluster test-inversion interval that we added later covers between 0.935 and 0.956
+in the same populations" points a reader at Table 16, whose inversion column runs 0.932 to 0.957.
+Nothing is wrong with either number. The table reports the 2,000-replicate pass and the main text
+quotes the later 10,000-replicate rerun of every cell, which Appendix C describes but the caption
+did not. Every column carries the same gap, so a referee checking any of them would conclude the
+paper misquotes its own table, and only a careful reading of the appendix prose would rescue it.
+The caption now says which pass it tabulates and that the main text quotes the other. That fix
+sits after the main-text label, so it cost no space against the nine-page limit, which is why it
+was made there rather than in the sentence itself.
+
+### What was not verified
+
+The main text reports that the paired difference carries a positive variance estimate for 1,445
+margin and 1,222 accuracy pairs, with a stricter subset of 1,379 and 919. Recomputing those
+subcounts needs a per-pair pass over the stored files, which is computation that did not run. The
+pair total of 1,500 is OBSERVED. The four subcounts stay REPORTED from the earlier run, and this
+entry exists so that nobody later mistakes them for checked figures.
+
+### Honest ranking after scan 27
+
+6.4, acceptance near 0.58, unchanged. Three consecutive scans have now produced one wrong digit, one
+weak opening sentence and one ambiguous caption, which is a yield curve flattening toward zero. The
+manuscript's remaining weaknesses are the design's missing holdout, the confounding of the margin
+result with scoring format, and an accuracy interval that contains one on the full battery. None of
+those is a writing problem, so no further scan of the prose will move the score. Saying otherwise
+after finding a caption ambiguity would be exactly the inflation the goal forbids.
