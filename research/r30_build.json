@@ -25,7 +25,7 @@
  ],
  "main_text_pages": 9,
  "total_pages": 53,
- "pdf_bytes": 615039,
+ "pdf_bytes": 615037,
  "build": {
   "overfull_boxes": 0,
   "underfull_boxes": 15,
@@ -228,9 +228,9 @@
   "main.tex": "960c67b3b80ada08f51623c0c867737a2731279859cc0f726ee5e85357004615",
   "appendix_a.tex": "16cd190d3c3eaacd0789be7fd0ea7e68e480fbd168ca97b818e81a789f252524",
   "appendices_bcd.tex": "ef4579bd9790adfd2bfca5a8a5f605458ce744fb73485b0fea5304e214abfed1",
-  "references.tex": "da724ef67b6197974d84aef7e6186d37e2a200ac513aef80357840785a4a1318",
+  "references.tex": "2aef5af998176980200ee7e53b96c8552850429057b84c1b4c4d264eb04dd933",
   "iclr2027_conference.sty": "797deef41724e93761426ac0cbcca46279a91cc650dd1f0ce76a4f08d2098ea6",
-  "SNAP_revised_draft.pdf": "f2db741e1d71252407222914c0135ec2f7dfc7208535b681c6e56bbc2230f450"
+  "SNAP_revised_draft.pdf": "59d3f6f24a6f5afa906b52b38165d7bf3bbafa2603dfc3f809cc26f37e150ed6"
  },
- "wall_seconds": 51.512717723846436
+ "wall_seconds": 52.446494340896606
 }

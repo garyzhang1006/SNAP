@@ -11,8 +11,11 @@ unchanged, so the figure keeps the same footprint on the page and cannot move th
 here recomputes an estimate, it replots a frozen result file, so this is a drawing job rather than
 compute in the usual sense. It runs here because the user has withheld local compute entirely.
 
-The font is Nimbus Roman rather than Times New Roman. Nimbus is the URW Times clone that the
-manuscript body is already set in, so this also removes a mismatch the earlier figure carried.
+The typeface changes from Times New Roman to Nimbus Roman, the URW Times clone the manuscript body
+is already set in. A DejaVu Sans variant was tried first, to match the other two figures, and backed
+out. Sans is wide enough at this size that the two panels' x labels collided, and folding them into
+one shared label freed enough vertical space that the eight two-line row labels stopped reading as
+pairs. The figure-to-figure typeface mismatch is the smaller of those problems and it stays.
 """
 import json
 import re
@@ -22,19 +25,14 @@ from pathlib import Path
 
 OUT = Path("/kaggle/working")
 
-
-def run(cmd, **kw):
-    p = subprocess.run(cmd, capture_output=True, text=True, **kw)
-    return p.returncode, (p.stdout or "") + (p.stderr or "")
-
-
 report: dict = {"steps": []}
 
-# Nimbus Roman ships in the URW base35 set. Without it matplotlib silently falls back to DejaVu
-# Serif, which would change the figure's typeface rather than only its size, so the install is
-# checked rather than assumed.
-rc, out = run(["apt-get", "install", "-y", "-qq", "fonts-urw-base35"])
-report["steps"].append({"step": "apt fonts-urw-base35", "returncode": rc, "tail": out[-400:]})
+# Nimbus Roman ships in the URW base35 set, which is not on the image by default. Without it
+# matplotlib falls back to DejaVu Serif, which would change the typeface rather than only the size,
+# so the install is verified rather than assumed.
+rc = subprocess.run(["apt-get", "install", "-y", "-qq", "fonts-urw-base35"],
+                    capture_output=True, text=True)
+report["steps"].append({"step": "apt fonts-urw-base35", "returncode": rc.returncode})
 
 import matplotlib
 matplotlib.use("Agg")
@@ -46,16 +44,14 @@ import matplotlib.pyplot as plt
 added = []
 for pattern in ("*.otf", "*.ttf"):
     for path in Path("/usr/share/fonts").rglob(pattern):
-        if "nimbus" in path.name.lower() or "NimbusRom" in path.name:
+        if "nimbus" in path.name.lower():
             try:
                 fm.fontManager.addfont(str(path))
                 added.append(path.name)
             except Exception as exc:  # a single unreadable face must not end the run
                 report["steps"].append({"step": f"addfont {path.name}", "error": repr(exc)})
 report["fonts_added"] = sorted(added)
-available = sorted({f.name for f in fm.fontManager.ttflist})
-report["nimbus_roman_available"] = "Nimbus Roman" in available
-report["serif_candidates"] = [n for n in available if "Nimbus" in n or "Times" in n]
+report["nimbus_roman_available"] = "Nimbus Roman" in {f.name for f in fm.fontManager.ttflist}
 
 src = None
 for cand in sorted(Path("/kaggle/input").rglob("r8_paired_log.json")):

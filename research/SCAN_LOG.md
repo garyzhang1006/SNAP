@@ -1881,3 +1881,109 @@ argument, which is the same conclusion the last three scans reached by different
 pinned by the missing holdout, by the margin result's confounding with scoring format, and by an
 accuracy interval that contains one on the full battery. None of those moves without new runs, and new
 runs need compute the user has not authorised.
+
+## Scan 31, 2026-09-16, the bibliography, the artwork, and a fix I had to take back
+
+### Review of what scan 30 did
+
+Scan 30 redrew Figure 3 at the text-block width and corrected the build's font walk. Rereading its
+own conclusions, one of them was thinner than it sounded. The entry said the other two figures are
+"not affected, since covariance.pdf is enlarged by 1.42 and calibration.pdf sits at unit scale." That
+is a statement about scale factors and not about legibility, and a figure authored with 5pt text at
+unit scale is still a figure with 5pt text. This scan opened all three and looked.
+
+### The twenty-two sub-scans
+
+1.  Review of scan 30's legibility claim, which was about scaling rather than about size.
+2.  covariance.pdf opened and read at display size. Three panels, greyed labels for the undefined
+    variances, legible throughout at its 1.42 enlargement.
+3.  calibration.pdf opened and read at display size. Two panels, legible, no crowding.
+4.  The covariance caption against the figure's own legend. The legend prints PR 3.57 on nine margin
+    traits and PR 3.62 on eight accuracy traits, the caption says "nine margin and eight clipped
+    accuracy traits", and the appendix says 3.12 before clipping and 3.62 after. The figure quotes the
+    clipped value and the caption says so, so the three agree.
+5.  The greyed traits against the trait counts. WinoGrande greyed on margins gives nine, PIQA and
+    WinoGrande greyed on accuracy gives eight, and both match Table 2's negative reliabilities.
+6.  Typeface across the three figures. Two are DejaVu Sans, one was serif. This is the attempted fix
+    described below.
+7.  The sans variant, drawn on Kaggle and inspected. Rejected.
+8.  The shared-x-label variant, drawn on Kaggle and inspected. Rejected.
+9.  Revert, and a byte comparison proving the reverted script reproduces the shipped figure exactly.
+10. references.tex read end to end, 53 entries.
+11. Alphabetical order across all 53, checked letter by letter through the runs that are easy to get
+    wrong. MacKinnon before Madaan, Kipnis before Kish, Brennan before Brown, Zhao before Zhou.
+12. Journal, volume, issue and page ranges checked against what I know of the classical sources.
+    Spearman 1904 at 15(1):72-101 and Spearman 1910 at 3(3):271-295 with Brown 1910 immediately after
+    it at 3(3):296-322 are right, including the fact that the two 1910 papers are adjacent.
+13. The modern venue attributions, checked one by one for the entries the argument leans on.
+14. The arXiv identifiers for the 2026 entries against the ones this project searched for itself in
+    the style study. Messing at 2604.11581 matches.
+15. The arXiv placement convention. Eleven preprint-only entries put the identifier before the year,
+    and one did not. This is the change.
+16. The bibliography counts from the build. 53 entries, 53 unique keys, nothing uncited, nothing
+    unresolved.
+17. Table 3, the planning calculations. The design effect of 1.60 recomputes from $1+4\rho$ at
+    $\rho=0.15$, and $t(16)$ is right for seventeen clusters.
+18. Table 3, the two aggregations. The battery mean carries a smaller standard error than the
+    cross-half construction on both scales, which is the right direction.
+19. Table 3, the minimum detectable effects. These do not recompute from any single power and alpha
+    convention I could reconstruct, and the caption already says the planning document does not record
+    what the power entries were computed against. The values are reproduced from a third-party plan
+    and labelled as reproduced, so they stay.
+20. Table 4, the nine decision checks. G8's threshold recomputes exactly, since $1+0.5(1.244-1)$ is
+    1.122 and the table prints 1.122. G2's ratio of 1.61 is Table 2's median of 1.608, and its
+    threshold of 1.4 does sit below the information floor of $\pi/2$. G3's counts of one negative
+    margin diagonal and two accuracy diagonals match Table 2 exactly. The caption's "four checks as
+    failures" counts correctly.
+21. Rebuild and install.
+22. Slop suite, extended to cover references.tex for the first time. Zero on every marker in all four
+    files.
+
+### The change
+
+One preprint-only reference was formatted as though it had a venue. Eleven of the twelve arXiv-only
+entries read "arXiv:NNNN.NNNNN, YEAR" and put the identifier where the venue would go, which is right,
+because for those works arXiv is the venue. The Dodge entry instead read "early stopping, 2020.
+arXiv:2002.06305", which puts a bare year where a venue belongs and then appends the identifier as an
+afterthought, so it reads like an entry whose venue was dropped. It now matches the other eleven. The
+replacement is the same length to the character, so nothing can reflow, and the rebuild confirms it.
+
+### The fix I took back
+
+Figure 3 is set in a serif face and the other two figures are set in DejaVu Sans. The other two have
+no surviving plotting script anywhere in the repository, so the only way to make all three agree is to
+move the one I can redraw onto the face the other two already carry. I tried it.
+
+DejaVu Sans is wider than Nimbus Roman at the same size, and the two panels' x labels grew until the
+left panel's ran into the right panel's. Folding them into one shared label under both panels fixed
+that and looked like an improvement in its own right, since the two panels show the same quantity and
+repeating the words bought nothing. It freed vertical space, the axes grew to take it, and the eight
+two-line row labels ended up spaced so evenly that you could no longer tell which two lines belonged
+to the same label. That is worse than the mismatch I set out to fix.
+
+Three attempts, three new problems, so I stopped and backed out to the version scan 30 had already
+inspected and shipped. The repository's plotting script is now the script that produced the shipped
+figure, which I verified by rerunning it on Kaggle and comparing content streams byte for byte. The
+figure-to-figure typeface mismatch stays, and it is recorded here rather than quietly dropped.
+
+Two of the three figures have no plotting script in the repository at all. That is worth saying plainly
+because the availability statement points a reader at this repository. It is a gap in what the artifact
+reproduces, not an error in the paper, and it cannot be closed without the code that drew them.
+
+### The build
+
+Nine main-text pages, fifty-three total, three passes with no rerun requested after the third, zero
+overfull boxes, twenty-four fonts all embedded and subset with the figure face now reported by the
+corrected walk, 53 bibliography entries all cited and all resolved, style files byte-identical, empty
+author field.
+
+### Honest ranking after scan 31
+
+6.4, acceptance near 0.58, unchanged. A bibliography entry that looked like it had lost its venue is
+now consistent with the other eleven of its kind, which is the sort of thing that costs a reviewer's
+confidence in small amounts and nothing measurable. The attempted figure improvement failed and was
+reverted, so it changed nothing at all. Four scans in a row have now found only apparatus defects,
+which is the honest signal that the prose and the arithmetic have been checked as far as reading can
+check them. The three things holding the score down are the missing holdout, the margin result's
+confounding with scoring format, and an accuracy interval that contains one on the full battery, and
+all three need runs rather than reading.
