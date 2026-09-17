@@ -5,7 +5,7 @@
     "maximum_observed_not_a_limit": 63,
     "fragments_under_four_words": 0,
     "share_under_eight_words": 0.071,
-    "share_under_twelve_words": 0.234,
+    "share_under_twelve_words": 0.23,
     "corpus_target_under_eight": "0.058 to 0.238",
     "prose_colons_semicolons_dashes": 0,
     "uncontracted_negatives": 30
@@ -46,8 +46,8 @@
     "missing_characters": 0,
     "font_substitution_warnings": 0,
     "undefined_references_or_citations": false,
-    "underfull_boxes": 16,
-    "remaining_warnings": "16 underfull spacing diagnostics, visually inspected"
+    "underfull_boxes": 15,
+    "remaining_warnings": "15 underfull spacing diagnostics, visually inspected"
   },
   "official_style_unchanged": true,
   "official_style_files_checked": [

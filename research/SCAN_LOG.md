@@ -726,3 +726,36 @@ Honest ranking after scan 16. 6.5 with acceptance near 0.63, unchanged. The misa
 genuine precision defect in the introduction and a reviewer who chased the number would have found it, but
 correcting it does not add evidence. What this scan mostly establishes is that the inferential claims
 survive an adversarial reading, which was already the paper's strongest property.
+
+## Scan 17. Related work, the weakness carried since scan 3
+
+Review of scan 16. The corrected null-sweep sentence now attributes 0.018 to the recipe count it
+calibrates and lists eight exceptions to match the appendix.
+
+Defect 1, the closest contemporary work got six words. The section said only that `\citet{heineman2025}
+study evaluation signal and noise`. That work appeared at NeurIPS 2025, uses DataDecide among its data,
+and asks a neighbouring question about evaluation noise, so a reviewer who knows it would have asked how
+this paper differs and found no answer anywhere, since the appendix mentioned it once only as a co-author
+link for another citation. The sentence now says what they measure, per-benchmark signal and noise on
+DataDecide and OLMo checkpoints related to decision accuracy, and names the difference, which is that they
+do not estimate covariance between benchmarks. Stating what the neighbour does before naming the gap is
+also what makes the gap claim credible rather than dismissive. The page was paid for by dropping two
+permutation means whose ranges are given in the same sentence and whose values are in the appendix.
+
+Defect 2, the citation whose title most threatens the novelty claim was left undistinguished. BenchScope
+asks how many independent signals a benchmark provides, which sounds like the effective count this paper
+reports, and the appendix stated what it does without saying why it differs. It now says that BenchScope
+counts variation between different models while our effective count describes run-to-run covariance at a
+fixed configuration. The main-text gap sentence already carried the qualifiers `of run noise` and `for a
+fixed battery` that make it survive this comparison, so it was left alone.
+
+Non-defects recorded rather than edited. The gap claim is hedged as `among the studies we located`, which
+is the honest form. The section is now 223 words, still short for an ICLR related-work section, and it
+stays short on purpose, since expanding it means deleting a result to pay for the page and the section now
+engages the one neighbour that mattered.
+
+Honest ranking after scan 17. 6.6 with acceptance near 0.64, up from 6.5 and 0.63. I am fairly confident
+in this one. An unanswered `how is this different from Signal and Noise` is the kind of objection that
+turns a weak accept into a weak reject, because the reviewer cannot tell whether the authors knew about
+the work or avoided it. Answering it in the section itself removes that reading, and the BenchScope
+clarification closes the same hole on the novelty claim.
