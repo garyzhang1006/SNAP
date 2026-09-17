@@ -1652,3 +1652,121 @@ caption and one nothing, which is a search that has run out of prose defects to 
 set by the design, specifically the missing holdout, the confounding of the margin result with
 scoring format, and an accuracy interval that contains one on the full battery. No amount of further
 reading moves that, and reporting a higher number because more scans have run would be inflation.
+
+## Scan 29, 2026-09-16, the rest of the appendix tables, and a number that reads as its own refutation
+
+### Review of what scan 28 did
+
+Scan 28 changed nothing in the manuscript and added `body_prose_2026-09-16.md` to the style study.
+Rereading its conclusions against the source, the two tables it audited still reconcile and the
+decision not to touch the 0.305 accuracy share still holds for the same reason, which is that the
+only honest fix needs a count this project has not computed. The one thing scan 28 did not do was
+finish the table sweep it started, since it stopped after two of twenty. This scan finished it.
+
+### The twenty-six sub-scans
+
+1.  Review of scan 28's non-edit and of the body-prose file it added.
+2.  Orphan sweep over all twenty-two table labels. Every label is referenced at least once, and six
+    references point at the coverage table, so no table is stranded.
+3.  Table 5, the subset partitions. 92 plus 33 is 125, 26 plus 99 is 125, and one at 530M plus 25 at
+    750M is 26. Every count in the prose matches its row.
+4.  Table 5, the interval-exclusion claims on all five rows, checked endpoint by endpoint.
+5.  Table 5, the influence definition. The numerator sums to zero by construction, since summing
+    $T_c-\widehat\Lambda^2U_c$ over configurations gives $\sum T_c-(\sum T_c/\sum U_c)\sum U_c$.
+6.  Table 5, the 530M step shares. Twenty-four values at 88.7 percent and one at 38.9 gives a mean
+    of exactly 86.7, which is what the prose reports and what one severely truncated configuration
+    at that size implies.
+7.  Table 5, a weighted-partition check in the squared domain. The pooled 1.244 sits between the
+    truncated 1.107 and the untruncated 1.276 at a weight of 0.800, against a configuration share of
+    0.792, so the subsets recombine into the full sample.
+8.  Table 5, the permutation p-values of 0.314 and 0.990 against a Spearman correlation of $-0.036$
+    and 0.001. The naive asymptotic comparison would call 0.314 too small, but the permutation is
+    stratified within size, so its null keeps the between-size component and the asymptotic check
+    does not apply. No defect asserted.
+9.  Table 12, the counts. 125 minus 2 is 123 configurations and 369 runs, and both changes equal the
+    difference of the two columns they sit between.
+10. Table 12, the shift ratios. Solving the pooled root-mean-square for the other four sizes from the
+    750M value gives 0.278 on margins and 0.472 on accuracy, and the prose states a range of 0.220 to
+    0.551, so both land inside it.
+11. Table 12, the claim that the 750M margin ratio sits within 0.001 of the PolyPythias 0.890.
+12. The calibration paragraph. The 21 percent gap, the 2.2 standard errors on both scales, and the
+    $t(24)$ critical value of 2.06 all recompute from the printed figures.
+13. The descriptive accuracy interval of 0.979 to 1.178, which recovers exactly from an unrounded
+    centre of 1.0784 and the simulated dispersion.
+14. The sixteen-cell coverage range against two Monte Carlo standard errors. At 200 datasets the band
+    is 0.9192 to 0.9808 and the observed range is 0.920 to 0.975, so the claim holds, and it holds by
+    less than a thousandth at the bottom.
+15. Table 19, the claim that every adjustment returns between 0.999 and 1.002 under independence. The
+    None row shows 0.998, which would break the claim if None were an adjustment. It is not, and the
+    sentence is correct as written.
+16. Table 19, the matched simulations against the observed values, each of the three pairs recomputed.
+    The differences are 0.001, 0.015 and 0.014 against a stated bound of 0.015.
+17. Table 19, whether a common correlation of 0.178 can reproduce an inflation of 1.242 across ten
+    benchmarks. It can, because the effective count is set by the trace concentration rather than by
+    the benchmark count, and BoolQ holds two thirds of the trace. No defect asserted.
+18. Table 19, the clipped-drop departure claim. This is the defect, described below.
+19. Table 2, the test-length substitution. The battery means of 0.652 and 0.324 give 6.87 and 3.92 by
+    my arithmetic against a printed 3.91, which is inside the rounding band of the displayed means, so
+    the printed value stands and no correction was made.
+20. Table 2, the negative and sub-0.10 reliability counts, cross-checked against which traits the
+    variance floor binds for in the proxy appendix. WinoGrande on margins and PIQA with WinoGrande on
+    accuracy are exactly the traits with negative reliability. The two appendices agree.
+21. Table 9, the eleven-row scorecard. 455 of 1,500 is 30.3 percent and 1.078 over 1.244 is 0.867, and
+    every other row's assessment follows from its own numbers.
+22. Table 10, the by-size estimates. Only 530M excludes one on either scale, five margin and four
+    accuracy point estimates exceed one, and the BoolQ-removed sweep excludes one in five margin bands
+    and in exactly the middle three accuracy bands.
+23. Three independent back-solves of the benchmark count from $\Lambda^2=1+(K-1)\bar r_E$, at the
+    planned 0.0911, the observed margin 0.061 and the observed accuracy 0.0181. They return 9.99, 9.98
+    and 9.96 against a battery of ten. The estimator's headline numbers are internally consistent to
+    three significant figures.
+24. The realised-to-planned standard error factors of 2.1 and 3.3, tested against the rounding bands
+    of the displayed standard errors. A true accuracy standard error near 0.0375 satisfies the factor,
+    the 2.2 half-width claim, and the printed 0.038 at once, so the figure stands.
+25. Kaggle rebuild and install after the edit.
+26. Slop suite across all three files after the last prose change, including manual inspection of all
+    twenty-four occurrences of "robust".
+
+### The change
+
+The proxy appendix names one anomaly among its cross-fitted weightings. "The clipped-drop weighting
+is the one departure, since its observed 0.889 on margins falls below a simulated fifth percentile of
+0.908." Two paragraphs later, Table 19 reports a matched simulated mean of 0.889 for the floored-traits-dropped
+adjustment, which is the same number the text calls anomalously low. A referee checking the claim
+against the table concludes that the simulation reproduces the observed value exactly and that the
+departure claim is false.
+
+Both numbers are right. The percentile comes from simulations that refit the whole cross-fitted
+pipeline in each replicate, and the table's matched column reports the in-sample adjustment, which is
+a different estimator with a different simulated distribution. The paper never says so at the point of
+collision. One sentence now says it, placed immediately after the departure claim where the wrong
+belief forms, and the appendix location means it costs no main-text space.
+
+This is the third defect of this exact shape, after the abstract coverage digit and the coverage table
+caption. All three were numbers that were individually correct and jointly misleading, and none would
+have been caught by any check that reads one file or one table at a time.
+
+### The build
+
+Three passes, no rerun requested after the third. Nine main-text pages and fifty-three total after
+every pass, unchanged by the added sentence. Zero overfull boxes, zero missing characters, no
+unresolved labels or citation keys, no uncited bibliography entries, twenty-three fonts all embedded
+and subset, empty author field, and the three official style files byte-identical to the template.
+Fifteen underfull boxes, unchanged, which affect no page. The prose metrics put main.tex at 7.4
+percent of sentences under eight words against a corpus band of 5.8 to 23.8 percent, and 16.6 percent
+of sentences opening on "The" against a corpus figure of 15 percent, so both style targets set in
+earlier scans still hold after the edit.
+
+`table_numeric_tokens_preserved` remains false. This was established in an earlier scan as an artifact
+of a stale pre-formatting snapshot rather than a drift in the tables, it is identical in the archived
+local verification, and this edit did not touch a table body.
+
+### Honest ranking after scan 29
+
+6.4, acceptance near 0.58, unchanged. This scan found a real defect, which means the sweep was worth
+running, and the defect was a cross-reference hazard in Appendix C rather than anything a reviewer
+scores. The manuscript's ceiling is still set by three design facts, the missing holdout, the
+confounding of the margin result with scoring format, and an accuracy interval that contains one on
+the full battery. Fixing a number that reads as its own refutation removes a way to lose points. It
+does not add any. The score moves when the design changes, and the design cannot change without
+compute the user has not authorised.
