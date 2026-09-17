@@ -25,7 +25,7 @@
  ],
  "main_text_pages": 9,
  "total_pages": 53,
- "pdf_bytes": 615435,
+ "pdf_bytes": 615493,
  "build": {
   "overfull_boxes": 0,
   "underfull_boxes": 22,
@@ -54,42 +54,42 @@
  "table_numeric_tokens_preserved": false,
  "prose": {
   "main.tex": {
-   "sentence_count": 269,
-   "minimum_words": 4,
-   "median_words": 19,
-   "mean_words": 20.17,
+   "sentence_count": 244,
+   "minimum_words": 8,
+   "median_words": 21,
+   "mean_words": 22.18,
    "fragments_under_four_words": 0,
-   "share_under_eight_words": 0.059,
+   "share_under_eight_words": 0.0,
    "corpus_target_under_eight": "p25 0.022, median 0.038, p75 0.055 (body prose, 40 papers)",
    "corpus_target_mean_words": "p25 22.1, median 24.0, p75 26.4 (body prose, 40 papers)",
    "prose_colons_semicolons_dashes": 0,
-   "the_openers_share": 0.167,
+   "the_openers_share": 0.152,
    "corpus_target_the_openers": "0.15 observed across twenty prior-year and twenty recent abstracts"
   },
   "appendix_a.tex": {
-   "sentence_count": 101,
-   "minimum_words": 6,
-   "median_words": 14,
-   "mean_words": 16.73,
+   "sentence_count": 97,
+   "minimum_words": 9,
+   "median_words": 16,
+   "mean_words": 17.3,
    "fragments_under_four_words": 0,
-   "share_under_eight_words": 0.01,
+   "share_under_eight_words": 0.0,
    "corpus_target_under_eight": "p25 0.022, median 0.038, p75 0.055 (body prose, 40 papers)",
    "corpus_target_mean_words": "p25 22.1, median 24.0, p75 26.4 (body prose, 40 papers)",
    "prose_colons_semicolons_dashes": 0,
-   "the_openers_share": 0.238,
+   "the_openers_share": 0.206,
    "corpus_target_the_openers": "0.15 observed across twenty prior-year and twenty recent abstracts"
   },
   "appendices_bcd.tex": {
-   "sentence_count": 1003,
+   "sentence_count": 937,
    "minimum_words": 4,
-   "median_words": 21,
-   "mean_words": 23.44,
+   "median_words": 23,
+   "mean_words": 25.05,
    "fragments_under_four_words": 0,
-   "share_under_eight_words": 0.037,
+   "share_under_eight_words": 0.011,
    "corpus_target_under_eight": "p25 0.022, median 0.038, p75 0.055 (body prose, 40 papers)",
    "corpus_target_mean_words": "p25 22.1, median 24.0, p75 26.4 (body prose, 40 papers)",
    "prose_colons_semicolons_dashes": 0,
-   "the_openers_share": 0.299,
+   "the_openers_share": 0.295,
    "corpus_target_the_openers": "0.15 observed across twenty prior-year and twenty recent abstracts"
   }
  },
@@ -228,12 +228,12 @@
   }
  },
  "sha256": {
-  "main.tex": "1442363ebd1838ba69e649dd43c1c9593300216cef72ca06bf75bfdb328a1944",
-  "appendix_a.tex": "16cd190d3c3eaacd0789be7fd0ea7e68e480fbd168ca97b818e81a789f252524",
-  "appendices_bcd.tex": "c120838204b8483dc04dde0331e84b989a89acf6cd75b1e668e2201ad8392114",
+  "main.tex": "4b844dd0a65b61f65a081d0644e833236b54b7180d973f783de976251aed2508",
+  "appendix_a.tex": "5cef86dedae57868f39e78381d9a018406957498d3a92b492e9c57e906213d0e",
+  "appendices_bcd.tex": "a201d35be5f23515da5384957ae4ab1fefdf040b141df2ebf9959c754f0553e0",
   "references.tex": "2aef5af998176980200ee7e53b96c8552850429057b84c1b4c4d264eb04dd933",
   "iclr2027_conference.sty": "797deef41724e93761426ac0cbcca46279a91cc650dd1f0ce76a4f08d2098ea6",
-  "SNAP_revised_draft.pdf": "15b6981bd1322a347d7e89afbb7f4a87b340a628a23a6fa40e56928ecffd911f"
+  "SNAP_revised_draft.pdf": "d734a3f1beb5ac60e169a8dfa4a4378370690833d61f81bb469cb5e54718c5b3"
  },
- "wall_seconds": 54.516295433044434
+ "wall_seconds": 53.3938570022583
 }
