@@ -2862,3 +2862,59 @@ No edit follows. The build from scan 47, kernel version 21, stands.
 
 Ranking holds at 6.5. The gate confirms the manuscript sits where accepted papers sit, and sitting there
 is a floor the paper had already cleared rather than a gain.
+
+## Scan 49, the accuracy audit and the Simplified-English rewrite
+
+A new instruction replaced the old one. It asks for complete factual accuracy, for a reviewer standard
+that would make a score below nine hard to justify, for Simplified Technical English with a sentence
+minimum rather than a maximum, for contracted negatives, for more commas, and for no colons or
+semicolons in the running text.
+
+The audit came first because it is the only part that can contain real defects rather than stylistic
+ones. Checking the manuscript against the stored result files confirmed a large number of claims
+exactly. All twelve cells of the prediction table match the reproduction record to four decimals. The
+transport estimates match at 1.2620, 1.4137, 2.2859 and 1.7108. The item-count weighting matches at
+1.11913 with endpoints 1.06782 and 1.17016, and its weight statement of 64 percent matches the sum of
+0.3726 and 0.2665. The derived quantities are internally exact as well, since the effective counts of
+6.46 and 8.60 follow from ten over the squared factors, the coefficient bound of 0.038 and the count
+bound of 7.47 follow from the accuracy upper endpoint, the information ratio of 1.66 follows from the
+stated formula at an accuracy of 0.35, and the reversal probabilities of 0.246, 0.085, 0.229 and 0.069
+follow from the reported deviations. The binomial coefficient of 1,081,575 is correct.
+
+Two defects survived that check. The abstract reported simulated coverage between 0.929 and 0.953,
+which is not any run the paper performed. The two thousand replicate run covers 0.928 to 0.954, and the
+two ten thousand replicate repeats cover 0.933 to 0.953 and 0.929 to 0.950, so the abstract had spliced
+the low endpoint of one repeat to the high endpoint of another and excluded the observed extremes in
+both directions. It now reads 0.928 to 0.954, which is the primary run and also the envelope of all
+three. The second defect is notational. The sentence reporting recipe and size removal used the
+interval macro for two ranges of point estimates, directly after a genuine confidence interval set in
+the same brackets, so a reader met three bracketed pairs and had no way to see that the last two were
+not intervals. Those are now written as ranges in words, which also matches how the appendix states
+them.
+
+The rewrite follows. Negations are contracted throughout, 34 in the main text, 19 in Appendix A and 121
+in the later appendices, with no LaTeX command touched. Short sentences are merged into their
+neighbours with commas and conjunctions, which serves the sentence floor and the instruction to use
+more commas at the same time. The main text had 29 sentences under ten words and now has none, and its
+mean sentence length moves from 20.17 to 22.18 words. The appendices fall from 93 and 8 such sentences
+to 12 and 0. Thirteen short sentences remain, every one of them sitting between two long neighbours
+where a merge would have produced the run-on the instruction forbids.
+
+The merges cost a page. Removing sentence breaks changes justification, and the first rebuild came back
+at ten main-text pages against a hard limit of nine. Rather than undo the style, I cut duplicated
+material, since 0.113 and 0.051 each appeared three times and the contribution paragraph restated a
+measurement sentence that the data paragraph already carried. The rebuild returns nine pages with
+overfull boxes at zero, missing characters at zero, no undefined reference, the official style file
+unchanged, and an empty author field.
+
+One honest cost belongs in this record. A sentence floor removes short sentences, and short sentences
+are what make sentence length vary, so burstiness falls from 0.540 to 0.482 on the whole document. The
+share of sentences under eight words is now zero in the main text against a corpus band of 0.022 to
+0.055 across forty accepted papers, which puts the manuscript outside that band on the low side where
+it previously sat at the top of it. The instruction asks for the floor explicitly, so the floor stays,
+but the corpus says accepted papers vary sentence length more than this manuscript now does. The
+detector outcome did not move, since the document still scores CLEAN with an AI n-gram density of 0.015
+and no suspicious codepoint, and the checker reports no new trace class from any merge.
+
+Ranking is 6.5 and the accuracy fix does not move it, because a spliced coverage range in an abstract
+is a defect a reviewer would note rather than a reason to accept.
