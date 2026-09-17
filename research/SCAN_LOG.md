@@ -2443,3 +2443,41 @@ Ranking stays 6.5. The prose work is finished, and I am saying that as a measure
 fatigue. The page budget is spent to within a hundred characters, seven independent slop detectors
 return clean, the filler sweep finds one compressible phrase in the whole body, and the two axes that
 hold the score down are properties of the data rather than of the writing.
+
+## Scan 38, an online search for the work that would scoop this paper
+
+The hook's one testable complaint was that the corpus is thin on this venue, holding a single ICLR
+paper among forty-three, and that no searching happened in this session. Both halves were worth
+acting on, so this scan went back online, and it changed nothing in the manuscript while confirming
+the thing that matters most.
+
+The first target was citation coverage rather than style, because a missed close prior work costs far
+more than a tenth and is the one defect that cannot be repaired after submission. Searching the ICLR
+and arXiv record for evaluation variance and reproducibility returned two venue-stamped candidates.
+\citet{hagmann2023}, Towards Inferential Reproducibility of Machine Learning Research, ICLR 2023, is
+the nearest venue-matched prior work, and it is already in the bibliography and already distinguished
+in the appendix related work as modelling nondeterminism with scalar variance components where this
+paper adds covariance between benchmark-specific run deviations. Keller Jordan's variance paper is
+already \citet{jordan2024} in the main-text related work. Neither is a gap.
+
+The second search looked for anything recent that estimates an effective number of benchmarks, since
+that phrase is this paper's own contribution claim. It found one, a single-author preprint titled The
+Evaluation Blind Spot, which reports an effective dimensionality between 2.86 and 4.80 for three
+leaderboards. That number sits close enough to this paper's 2.75 effective benchmarks that a reviewer
+skimming both could believe the contribution was anticipated. Reading it resolves the question in this
+paper's favour. It measures correlation of model scores across different models, which is leaderboard
+structure, while this paper measures covariance of run noise across benchmarks within a replicate
+run. The estimands are different objects and the main-text sentence about applying covariance
+accounting across benchmarks within a replicate run already draws exactly that line.
+
+No citation was added and the reason is metadata rather than relevance. Two independent fetches of the
+abstract page returned an identifier of 2606.05169, which places it in June 2026, alongside a stated
+first-version date of 15 April 2026. Those cannot both be right, and a reference whose year cannot be
+pinned down is worse in a submitted paper than a reference that is absent, particularly for a preprint
+that carries no peer review. The two-attempt rule applies, so the search stopped there and the finding
+is recorded here instead. If this work is later confirmed, the appendix related work is the place for
+it, at no cost to the page budget.
+
+Ranking stays 6.5. Nothing changed in the manuscript, and the value of this scan is negative evidence,
+namely that the closest published work is cited and distinguished, and that the one preprint which
+looked like a collision measures a different quantity.
