@@ -64,6 +64,25 @@ def pilot(runs, tasks, build):
     print(f"wrote {d} with {len(chosen)} runs and tasks {names}")
 
 
+def verify(runs, tasks, build):
+    """c4 at the three middle sizes on the verification task only.
+
+    The pilot covers 150M and 1B, so this shard takes 300M, 530M and 750M and
+    extends the seed-branch check to all five size bands while the pilot is
+    still running on the other GPU session. It also measures download, load and
+    scoring at three middle sizes, which replaces the interpolation the
+    production estimate would otherwise make between the pilot's two anchors.
+    """
+    sizes = [s for s in PARAMS if s not in dict(tasks["pilot"]["configs"]).values() and s not in ("150M", "1B")]
+    chosen = [r for r in runs if r["recipe"] == "c4" and r["size"] in sizes]
+    assert len(chosen) == 9, f"verify expects 9 runs, found {len(chosen)}"
+    names = [tasks["verification"]["name"]]
+    shard = {"name": "verify", "runs": chosen, "tasks": names, "est_seconds": {},
+             "deadline_hours": DEADLINE_HOURS}
+    d = write_kernel("snap-new-k02-verify", shard, build)
+    print(f"wrote {d} with {len(chosen)} runs at {sorted(sizes)} on {names}")
+
+
 def seconds_model(report, runs_by_key, token_ratio):
     """Seconds per production run as a function of size. Download and load time
     carry over from the pilot as measured; scoring time scales with tokens."""
@@ -134,7 +153,7 @@ def production(runs, tasks, build, pilot_report, decision, token_ratio):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("stage", choices=["pilot", "production"])
+    ap.add_argument("stage", choices=["pilot", "verify", "production"])
     ap.add_argument("--pilot-report", help="shard_report.json downloaded from the pilot kernel")
     ap.add_argument("--decision", help="decision.json downloaded from k03")
     ap.add_argument("--token-ratio", type=float, default=None,
@@ -145,6 +164,8 @@ def main():
     build = HERE / "kaggle" / "k02-score" / "build"
     if args.stage == "pilot":
         pilot(runs, tasks, build)
+    elif args.stage == "verify":
+        verify(runs, tasks, build)
     else:
         if not (args.pilot_report and args.decision):
             ap.error("production needs --pilot-report and --decision")
