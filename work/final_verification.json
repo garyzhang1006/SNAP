@@ -16,7 +16,7 @@
     "uncontracted_negatives": 0
   },
   "appendices_bcd.tex": {
-    "sentence_count": 942,
+    "sentence_count": 943,
     "minimum_words": 8,
     "maximum_observed_not_a_limit": 61,
     "below_minimum": 0,
@@ -36,7 +36,7 @@
     "overfull_boxes": 0,
     "missing_characters": 0,
     "font_substitution_warnings": 0,
-    "undefined_references_or_citations": true,
+    "undefined_references_or_citations": false,
     "underfull_boxes": 17,
     "remaining_warnings": "17 underfull spacing diagnostics, visually inspected"
   },
@@ -46,6 +46,7 @@
     "unique_keys": 53,
     "unresolved_citation_keys": []
   },
+  "unresolved_reference_labels": [],
   "table_numeric_tokens_preserved": false,
   "rendered_review": {
     "all_pages_contact_sheets_inspected": true,

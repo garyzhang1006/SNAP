@@ -652,7 +652,7 @@ For draw $b$, independent recipe signs satisfy $v_{bg}\in\{-1,+1\}$ with equal p
 \[
 T_c^*=\widehat\theta U_c+v_{bg(c)}(T_c-\widehat\theta U_c).
 \]
-The denominator remains fixed at the observed $\sum_cU_c$. We recompute $\widehat\theta_b^*=\sum_cT_c^*/\sum_cU_c$ and the bootstrap standard error from the residuals $T_c^*-\widehat\theta_b^*U_c$. The bootstrap statistic is $t_b^*=(\widehat\theta_b^*-\widehat\theta)/\widehat{\mathrm{SE}}_b^*$, and the source calculation uses 4,999 draws with bootstrap seed zero.
+The denominator remains fixed at the observed $\sum_cU_c$. We recompute $\widehat\theta_b^*=\sum_cT_c^*/\sum_cU_c$ and the bootstrap standard error from the residuals $T_c^*-\widehat\theta_b^*U_c$. The bootstrap statistic is $t_b^*=(\widehat\theta_b^*-\widehat\theta)/\widehat{\mathrm{SE}}_b^*$, and the source calculation uses 4,999 draws with bootstrap seed zero. Every estimate and simulation in this paper ran on Python 3.12.13 with NumPy 2.0.2 under Linux, and the draws come from NumPy's default generator, whose stream is tied to that version.
 
 Writing $q_\alpha$ for the empirical quantile of these statistics, the interval on $\theta$ is
 \[

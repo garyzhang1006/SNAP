@@ -35,6 +35,11 @@ bib=(src/'references.tex').read_text();bkeys=re.findall(r'\\bibitem\[.*?\]\{([^}
 alltex='\n'.join((src/n).read_text() for n in ('main.tex','appendix_a.tex','appendices_bcd.tex'))
 cites=[k for group in re.findall(r'\\cite[tp](?:\[[^]]*\])?\{([^}]+)\}',alltex) for k in group.split(',')]
 report['bibliography']={'entries':len(bkeys),'unique_keys':len(set(bkeys)),'unresolved_citation_keys':sorted(set(cites)-set(bkeys))}
+# A \label placed before its \caption renders as ?? without failing the build, so list the misses by name.
+aux=(work/'main.aux').read_text()
+defined=set(re.findall(r'\\newlabel\{([^}]+)\}',aux))
+refs=set(re.findall(r'\\(?:ref|eqref)\{([^}]+)\}',alltex))
+report['unresolved_reference_labels']=sorted(refs-defined)
 # Compare every numeric token in the table bodies with the pre-formatting snapshot.
 def nums(s):
  tables=re.findall(r'\\begin\{tabular\}.*?\n(.*?)\\end\{tabular\}',s,re.S)

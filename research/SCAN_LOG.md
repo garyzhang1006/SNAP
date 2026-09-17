@@ -30,6 +30,7 @@ Baseline before scan 1, carried from the independent reviewer pass earlier in th
 | 3 | framing, positioning and first-page impression | 3 | 3 | 6.1 |
 | 4 | numerical consistency and result coverage | 3 | 3 | 6.2 |
 | 5 | figures, tables and float hygiene | 3 | 3 | 6.2 |
+| 6 | method completeness and reproducibility | 4 | 4 | 6.3 |
 
 
 ## Scan 1, mechanical correctness, 20 sub-scans
@@ -255,3 +256,51 @@ Honest ranking after scan 5. Unchanged at 6.2 with acceptance near 0.58. The `PR
 reader of the main-text figure and the font fix removes a production flaw, but no reviewer scores a paper
 on embedded font types, and none of these changes what the paper argues or what it can support. The
 coverage-table pointer is the only change here that a reviewer might actually notice.
+
+## Scan 6, method completeness and reproducibility, 20 sub-scans
+
+Scan 6 re-read every scan 5 change in the built PDF first, and caught one of them failing.
+
+Sub-scans run. Estimator definition completeness, stated assumptions, half-assignment procedure,
+weighting scheme, aggregation across benchmarks, linearisation, bootstrap construction, studentisation,
+quantile rule, draw count, seed handling, cluster definition, negative-variance handling, checkpoint
+selection, data filtering, item counts, software versions, artifact availability, symbol definition at
+first use, and the verification script's own coverage.
+
+The method itself reimplements from the paper alone. Appendix D gives the squared-ratio estimator, the
+recipe linearisation with its standard error, the Rademacher sign construction, the pseudo-numerator, the
+studentised statistic, the quantile interval, 4,999 draws and bootstrap seed zero. The cross-half identity
+in Section 2.2 states its conditional-mean-zero and zero-cross-half-covariance assumption explicitly and
+then names the specific way item structure can break it. Every symbol used in main-text mathematics is
+either in the notation table or defined at first use, including the less common ones.
+
+Defects found and fixed.
+
+1. My own scan 5 fix was broken. I put `\label{tab:notation}` before its `\caption`, which LaTeX resolves
+   against the wrong counter, so the main text shipped `Table ??` in the built PDF. The label now sits
+   after the caption and the reference reads Table 3.
+2. The verification script tested `undefined_references_or_citations` as a single boolean buried in the
+   build block, which I was not reading. It now also reports `unresolved_reference_labels` by name, built
+   by differencing every `\ref` against every `\newlabel` in the aux file, so a broken reference cannot
+   pass unnoticed again.
+3. No software version appeared anywhere, which matters here because every interval is a quantile of a
+   seeded generator whose stream is version-dependent. Appendix D now records Python 3.12.13 with
+   NumPy 2.0.2 under Linux beside the bootstrap seed.
+4. The paper had no artifact availability statement at all, at a venue that scores reproducibility. The
+   reproducibility statement listed exactly what a reader needs and never said it would be provided. After
+   confirming with the author that the artifacts exist, it now commits to releasing all four alongside the
+   paper.
+
+Non-defects recorded rather than edited.
+
+- The structured weighting results, where the estimand itself moves from 1.2446 under flat weights to
+  1.0975 under item-count weights, sit in the appendix with a main-text pointer. They deserve main-text
+  space that the results section needs more.
+- The package version of the analysis code is deliberately left out, because the package name would
+  weaken anonymity for no reproducibility gain.
+
+Honest ranking after scan 6. 6.3 with acceptance near 0.60, moved by defect 4. Reproducibility is an
+explicitly scored axis at this venue, and a reviewer working the checklist now finds an availability
+commitment and a version record where before they found neither. The honest counterweight is that this is
+one sentence, and a reviewer who already read Appendix D as thorough will not move their score far on it.
+Defect 1 is a restoration rather than an improvement, since I introduced it myself in scan 5.
