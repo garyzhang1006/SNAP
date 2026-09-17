@@ -1071,3 +1071,71 @@ because the only genuinely unhedged inference was an overclaim that was removed 
 Honest ranking after the second humanizer pass. 6.7 with acceptance near 0.65, unchanged. The pass found
 one defect and it was one I had introduced an hour earlier, which is the argument for running the pass
 after the last change rather than merely last in the plan. Nothing here moves a rating.
+
+## Scan 23. Twenty reviewer objections, tested one at a time against what the paper actually says
+
+Skills initiated for this scan. The full installed inventory was enumerated, at 524 skills across the
+user directory and every plugin cache. Most are irrelevant to a manuscript, covering trading, Kubernetes,
+Slack, IoT and Airflow. Four that had not yet run and do bear on this work were applied. From
+superpowers, verification-before-completion supplied the rule that no completion claim is made without a
+verification command run in the same message, and it earned its place below. From engineering-advanced,
+grill-me supplied the structure of this scan, which is its interview discipline turned on the paper
+rather than on a person, one objection at a time, each resolved by reading the artefacts rather than by
+asserting. Also from engineering-advanced, self-eval supplied the two-axis scoring and the mandatory
+devil's advocate that produced the ranking revision at the end. The pii-detect skill's MCP backend is
+unauthenticated in this session, so its check was run directly instead, and it returns nothing.
+
+Review of scan 22 and the second humanizer pass. The three sentence splits, the four compressions, the
+named interval construction and the explicit permutation disagreement all render. The main text holds nine
+pages.
+
+The twenty sub-scans. Each is one objection a referee raises, tested by searching all three sources for
+the paper's answer and reading what came back rather than counting matches. In order, they are that the
+estimator is a renamed reliability coefficient, that cross-half independence is assumed rather than
+tested, that one release cannot generalise, that three runs cannot support a covariance estimate, that
+BoolQ drives every number, that the accuracy interval includes one so there is no accuracy result, that
+recipe clustering is the choice that flatters the authors, that nothing was preregistered, that checkpoint
+selection is a confound, that the gain mechanism is unidentified, that a square root of a ratio of sums is
+biased, that 25 clusters are too few, that item-level leakage inflates the estimate, that provenance from
+gated weights is unverifiable, that the PolyPythias transfer contradicts the DataDecide numbers, that the
+practical rule is not validated out of sample, that the effective count is a rescaling of the inflation
+factor, that the main text cannot stand without 44 pages of appendix, that a negative eigenvalue
+invalidates the spectrum, and that the contribution is one number.
+
+Eighteen are answered, most of them in the main text and all of them somewhere. Two returned no main-text
+match on the first probe and were examined directly.
+
+The first, estimator bias, is not a gap. The first probe searched for the wrong phrases. The main text
+already says that unbiased estimates of the two sums do not make their ratio or square root unbiased,
+that the transformations can introduce bias, and that measured bias runs downward, so it understates
+rather than manufactures an accuracy excess. Adding a sentence would have duplicated an answer the paper
+already gives, and the verification rule is what stopped it, because the claim that the main text was
+silent did not survive being checked.
+
+The second, run-count adequacy, is a real gap and is now fixed. The main text described three runs as a
+fact of the design and never said whether three suffice. A referee looking at two degrees of freedom per
+configuration asks that immediately. Section 2.3 now reports that coverage holds between 0.942 and 0.952
+as the runs per configuration move from two to ten, so the three the release ships are not the binding
+constraint. Both endpoints were verified against snap-r6-run-count-cov, whose five cells give 0.9423,
+0.9513, 0.9467, 0.9493 and 0.9515. The addition fits inside nine pages with no compression.
+
+Verification, run fresh in the same pass. Main text nine pages, 53 total, official style byte-identical,
+zero unresolved references, zero unresolved citations, zero overfull boxes, zero short-sentence
+violations, zero slop-detector hits, zero non-ASCII codepoints, empty PDF Author field, six checksums
+matching.
+
+Honest ranking after scan 23, revised downward. 6.4 with acceptance near 0.58, down from 6.7 and 0.65.
+This is not a response to a new defect. It is the devil's advocate that self-eval requires, and the prompt
+for it is that the last five entries in this log all read 6.6 or 6.7, which is the score clustering the
+skill exists to catch. Arguing the high side, the paper measures a quantity nobody has measured, discloses
+its exploratory status in its own abstract, reports its failed diagnostics as failures, and ships an
+operational correction that moves a false declaration rate from 0.113 to 0.051. Arguing the low side, it
+is one release of models from 150M to 1B, its accuracy conclusion is null, one benchmark carries 68
+percent of the margin trace so composition sensitivity is the story a hostile referee tells, nothing was
+preregistered by the authors' own statement, and the thing that transfers is a procedure rather than the
+number, which is a weaker claim than the abstract's framing suggests. Resolving the two, the rigour is
+genuinely top-decile and the scope is genuinely narrow, and ICLR scoring weights novelty and generality
+more heavily than care. A paper with this profile draws scores around six with real variance, not a
+comfortable accept. The earlier 6.7 was defensible on craft and optimistic on how referees actually
+weight a careful null on small models. Twenty-three scans have not changed that, because no scan can, and
+saying so is the point.
