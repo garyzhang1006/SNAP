@@ -2918,3 +2918,48 @@ and no suspicious codepoint, and the checker reports no new trace class from any
 
 Ranking is 6.5 and the accuracy fix does not move it, because a spliced coverage range in an abstract
 is a defect a reviewer would note rather than a reason to accept.
+
+## Scan 50, reading every sentence scan 49 produced
+
+Scan 49 merged about a hundred short sentences by script, and a script that joins sentences with a comma
+and a conjunction knows nothing about whether the second clause follows from the first. The standing
+rule is that each scan reviews what the one before it changed, so this scan pulled every sentence that
+exists now and did not exist before scan 49, 103 in all, after normalising the contractions so that
+those alone would not count as change, and read each one.
+
+About eighty of them are fine. Twenty-two were not, and they fell into three kinds. The first is the
+stacked chain, where a clause joined with and was followed by another and then a third, which is the
+run-on the instruction rules out and a recognisable machine rhythm besides. The inversion paragraph had
+become one sentence carrying four independent clauses, and the proxy calibration sentence read as a
+list of three complaints strung on and. The second is the non-sequitur join, where two sentences that
+had stood apart for a reason were welded together with a connective that asserted a relation neither
+had. The seed-label sentence claimed the labels were right and the other seventeen recipes never loaded
+as though one explained the other, and the Mammen sentence ended a recommendation with an unrelated
+remark about the bootstrap's own weights. The third is a repeated pattern, because eleven conclusions
+ended with and that run used seed so-and-so at 4,000 replicates, which is bookkeeping dressed as a
+clause and conspicuous at that frequency.
+
+Each fix chose the connective the logic actually supports. Where the second clause explains the first
+it now says because or since, where it concedes it says although or but, and where it merely
+accompanies it says while. Where no single connective was honest the sentence was split again, but only
+into pieces that clear the ten-word floor, so the fix does not undo scan 49. Two runs leaving one
+contrast direction now introduces the widened margin interval it explains rather than trailing the
+sentence before it. The eleven seed clauses are parentheticals. Every replacement was asserted to match
+exactly once before it was applied.
+
+Afterwards the main text still has no sentence under ten words, Appendix A has one, and the later
+appendices have twelve, each between two long neighbours. The three sentences that still contain three
+comma-and joins are genuine lists written before scan 49. Kernel version 24 builds nine main-text pages
+of fifty-three with no overfull box, no missing character, no undefined reference, the official style
+unchanged and the author field empty, and prose colons, semicolons and dashes stay at zero. The PDF
+text contains the repaired sentences, which confirms the build used the edited source.
+
+The gate ran last. No suspicious codepoint, a CLEAN stylometry score, AI n-gram density of 0.0121, and
+none of the banned vocabulary anywhere in the three sources. The de-AI checker returns only the trace
+classes adjudicated in scans 44 and 45. A poppler warning about a font type mismatch also appears, and
+it appears identically on the scan 47 PDF, because it comes from the OpenType Nimbus Roman that Figure 3
+embeds as CID Type 0C. That font is embedded and subset and renders correctly on the page, so the
+warning is pre-existing and not a defect.
+
+Ranking holds at 6.5. Repairing joins the previous scan created removes a risk this work introduced and
+adds nothing a reviewer would score.
