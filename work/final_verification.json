@@ -8,7 +8,7 @@
     "share_under_twelve_words": 0.23,
     "corpus_target_under_eight": "0.058 to 0.238",
     "prose_colons_semicolons_dashes": 0,
-    "uncontracted_negatives": 31
+    "uncontracted_negatives": 32
   },
   "appendix_a.tex": {
     "sentence_count": 101,
