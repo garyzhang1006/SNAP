@@ -33,7 +33,24 @@ EOF
     else
       "$KAGGLE" datasets create -p "$stage" --dir-mode zip
     fi
-    echo "Kaggle needs a few minutes to process a new dataset version before kernels can mount it."
+    echo "waiting for Kaggle to publish the new dataset version"
+    check="$HERE/kaggle/_stage/check"
+    rm -rf "$check"; mkdir -p "$check"
+    for _ in $(seq 1 30); do
+      sleep 20
+      rm -f "$check/config.zip"
+      "$KAGGLE" datasets download "$USER_SLUG/snap-new-code" -f config.zip -p "$check" --force >/dev/null 2>&1 || continue
+      if python3 - "$check/config.zip" "$stage/config" <<'PY'
+import sys, zipfile, hashlib, pathlib
+z = zipfile.ZipFile(sys.argv[1]); src = pathlib.Path(sys.argv[2])
+want = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in src.glob("*.json")}
+got = {n.split("/")[-1]: hashlib.sha256(z.read(n)).hexdigest() for n in z.namelist()}
+sys.exit(0 if all(got.get(k) == v for k, v in want.items()) else 1)
+PY
+      then echo "published"; rm -rf "$check"; exit 0; fi
+    done
+    echo "the new version has not appeared after 10 minutes; check the dataset page before pushing kernels" >&2
+    exit 1
     ;;
   kernel)
     dir="${2:?kernel directory}"
