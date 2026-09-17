@@ -617,3 +617,37 @@ increment since scan 9 that I think is defensible. The introduction is the secti
 carefully before forming a prior, and it previously argued against the paper by omission. Stating the
 surviving result there costs nothing in honesty, since the fragility follows immediately and in the same
 paragraph, and it removes a reason to score the work as a null finding.
+
+## Scan 14. The appendices as a reader-facing artifact
+
+Review of scan 13. The introduction's empirical paragraph now opens on the 1.244 factor, and the abstract
+again names the 123-configuration subset and both checkpoint endpoints.
+
+Defect 1, a stray numbered heading. Appendix C organises its 420 lines with eighteen run-in paragraph
+headings, and one late heading had been written as a subsection instead. It rendered as a single `C.1` at
+the very end of an otherwise unnumbered section, which reads as a formatting accident rather than as
+structure. It is now a run-in heading like the other eighteen, and no `C.1` appears in the built document.
+
+Defect 2, two headings with the same name. `Adjacent-checkpoint variation` appeared twice in a row, once
+for the nine PolyPythias 160M runs and once for DataDecide. The first now names its population.
+
+Defect 3, a claim that reads wider than its evidence. The main text said that all five bands exclude one
+once BoolQ is removed, in a sentence about the 1B margin estimate. The appendix supports that for margins,
+where the five intervals run from \ci{1.325}{1.742} to \ci{1.215}{2.001}, but on accuracy only the middle
+three bands exclude one while the smallest and the largest do not. A reviewer skimming the sentence could
+have read it as covering both scales, which would be false. The sentence now says `on margins`.
+
+Non-defects recorded rather than edited. No sentence longer than seven words is duplicated between the
+main text and the appendices, and no pair reaches a Jaccard overlap of 0.8, so the appendices restate
+nothing. There are no TODO, FIXME or placeholder markers anywhere in the sources. The compute table is
+explicitly labelled as the planning budget rather than as measured cost, which is the honest framing given
+that not every listed operation was measured. The practical-considerations subsection carries four real
+entries, each naming a specific trap, which is the minimum a reader should expect and more than most
+submissions include. All six headline values appear in both the main text and the appendices, and each of
+the eight distinct main-text pointers into an appendix was opened and found to contain what the pointer
+claims.
+
+Honest ranking after scan 14. 6.5 with acceptance near 0.63, unchanged. The stray `C.1` would have been
+noticed and would have cost a sentence in a writing-quality remark, and the scale ambiguity was the kind
+of thing a hostile reviewer quotes back, so removing it matters more than its size suggests. Neither moves
+a score on its own.
