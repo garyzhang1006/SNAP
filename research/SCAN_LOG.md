@@ -2558,3 +2558,44 @@ built to teach, so the gap stays and is recorded rather than closed.
 Ranking holds at 6.5. Across scans 39 and 40 the paper lost four words per sentence and gained 27
 sentences without gaining a word, which is a readability change a reviewer feels rather than scores.
 I will not convert a distribution match into a number, because the evidence does not support one.
+
+## Scan 41, the slop gate re-run because prose changed after it
+
+The hook was right on a point of sequence and the point was worth conceding. The user's instruction
+puts the humanizer and slop step last, after everything has been changed, and the suite ran at scan
+34 while scans 36, 39 and 40 went on to make thirty prose edits afterwards. A gate that runs before
+the last change is not a gate. So the whole suite ran again against the current text, and it caught
+something.
+
+Six detectors returned unchanged or clean. deai_check.py at the heavy tier reports exactly the same
+profile as scan 34, nine over-confident spans, six contrast shells, five vague referents, four tense
+flags and two term thresholds, so thirty edits introduced no new trace. The stylometry scorer returns
+0.0325 and CLEAN with an AI n-gram density of zero, no matched markers, and a burstiness coefficient
+of 0.6255 against 0.6256 before, over 5,390 words now split across 315 sentences rather than 287. The
+Layer A unicode scan finds nothing. The humanizer categories are all zero, covering significance
+puffery, participial pseudo-depth, promotional language, vague attribution, AI vocabulary, copula
+avoidance, negative parallelism, filler, hedge stacks and smart punctuation. content-humanizer Mode 1
+is zero across vocabulary, opening hedges and bold. The paper-humanizer checklist holds, with zero
+dashes, zero bullet lists, zero uses of crucial or leverage or delve, one robust which is the
+technical cluster-robust, six first-person admissions against a floor of two, and paragraphs running
+from two to thirteen sentences.
+
+The catch was rhythm, and I had caused it. The share of three-sentence windows falling within two
+words of each other rose from 2.1 percent at scan 34 to 5.4 percent, and inspection found eleven
+triples of which ten are artefacts of a measurement script that counts tabular rows and display-math
+fragments as sentences. The eleventh was real. A paragraph on the proxy adjustments ended on three
+consecutive sentences of ten, nine and eight words, and two of those three were created by my own
+splits in scans 39 and 40. That is the exact staccato pattern both stop-slop and the house rules
+forbid, produced while fixing the opposite problem. One split was reverted, which restores a long
+sentence followed by a short verdict, and the real-prose staccato count is now zero. A second revert
+undid a split inside a table caption, which bought nothing, because the build kernel strips float
+environments before measuring prose so that edit never touched the metric it was made for.
+
+The rebuild holds nine main-text pages and 53 total, with zero overfull boxes, no rerun request,
+unchanged style files, 295 main-text sentences at a mean of 18.31 words and a median of 17, a
+short-sentence share of 0.075, no fragments under four words, zero prose colons or semicolons or
+dashes, 53 bibliography entries all cited and resolved, 24 embedded subset fonts and an empty author
+field.
+
+Ranking holds at 6.5. The gate ran last, it found one real defect that I had introduced, and the
+defect is fixed.

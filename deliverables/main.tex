@@ -109,7 +109,7 @@ A positive multiplicative gain changes margin magnitudes while preserving their 
 \begin{equation}
 y_{crj}=\alpha_{cj}+\beta_jx_{cr}^{(-j)}+\gamma_js_{cr}+u_{crj}.
 \end{equation}
-The pooled fit uses one slope per benchmark over 250 run contrasts. These adjustments are descriptive, because the gain covariate shares item noise with the outcomes and the competence proxy uses unstable estimated variance normalisation. A standard-deviation floor of $10^{-6}$ is applied when variance estimates are negative, making WinoGrande dominate the margin proxy by factors of about 800 to 38,000. Dropping WinoGrande from the proxy moves margin inflation to 0.890, and a recipe cross-fitted proxy with shrunken variances gives 0.731, but simulations with the observed seed covariance and no separate competence variable return 0.889 and 0.745 under the same adjustments, as Appendix~\ref{app:proxy} reports. The proxy averages the same seed deviations that it adjusts. Each of these adjustments removes shared covariance by construction. We give none of them a mechanistic reading.
+The pooled fit uses one slope per benchmark over 250 run contrasts. These adjustments are descriptive, because the gain covariate shares item noise with the outcomes and the competence proxy uses unstable estimated variance normalisation. A standard-deviation floor of $10^{-6}$ is applied when variance estimates are negative, making WinoGrande dominate the margin proxy by factors of about 800 to 38,000. Dropping WinoGrande from the proxy moves margin inflation to 0.890, and a recipe cross-fitted proxy with shrunken variances gives 0.731, but simulations with the observed seed covariance and no separate competence variable return 0.889 and 0.745 under the same adjustments, as Appendix~\ref{app:proxy} reports. The proxy averages the same seed deviations that it adjusts, so each of these adjustments removes shared covariance by construction. We give none of them a mechanistic reading.
 
 \section{Results}
 \subsection{Full-battery estimates and composition}
@@ -118,7 +118,7 @@ Full-battery inflation is 1.244 on margins and 1.078 on accuracy, as Table~\ref{
 
 \begin{table}[!htb]
 \centering
-\caption{Inflation estimates across 125 configurations with nominal 95\% recipe-cluster intervals. The auxiliary contrast compares the two auxiliary runs. The adjustment includes the gain covariate alone. Aggregate standard deviations use margin units for margins and fractions for accuracy.}
+\caption{Inflation estimates across 125 configurations with nominal 95\% recipe-cluster intervals. The auxiliary contrast compares the two auxiliary runs, and the adjustment includes the gain covariate alone. Aggregate standard deviations use margin units for margins and fractions for accuracy.}
 \label{tab:primary}
 \small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
 \begin{tabular}{llrrrr}
