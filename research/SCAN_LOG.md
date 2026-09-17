@@ -993,3 +993,49 @@ referee would have attacked, which protects the rating rather than raising it, a
 The corpus work produced one repair and one documented refusal, and the refusal is the more useful result,
 because it establishes that the remaining distance from the corpus is a house style choice and a
 consequence of writing dense quantitative prose rather than an artefact worth editing away.
+
+## Scan 22. Reading the results and discussion pages, and paying for the additions
+
+Review of scan 21. The BoolQ sentence now states what was measured, and the band and mirror tests are
+named at the paragraph boundary that separated them from their antecedents. Both render.
+
+This scan read main-text pages 5, 7 and 9, which carry the results, the external panels and the whole
+discussion, and checked every figure, table and interval on them against storage.
+
+Defect 1, an interval quoted without naming its construction. The discussion said the 1B margin estimate
+has a log-scale interval of 0.811 to 1.628 that includes one. Appendix C gives three constructions for
+that cell, and 0.811 to 1.628 is the narrowest of them, from the cluster-robust statistic rather than the
+wild bootstrap the paper uses everywhere else. Quoting the narrowest without saying so understates a
+limitation the paper is otherwise candid about, and a referee checking Table 9, which shows an undefined
+lower endpoint for the same cell, would not be able to reconcile the two. The sentence now names the
+construction and says a wild-bootstrap interval is wider.
+
+Defect 2, two incomparable objects joined by a vague verb. The permutation results read that the accuracy
+tail fractions of 0.028 and 0.021 both differ from the primary cluster interval, which contains one. A
+tail fraction and an interval cannot differ from one another. The sentence now says both reach one in
+twenty while the cluster interval contains one, so the two procedures disagree on accuracy, which is the
+disagreement the paper is being honest about and was burying in a weak verb.
+
+Paying for it. The two repairs and the scan-21 repair pushed the main text to ten pages. Four
+compressions brought it back to nine, none of which dropped a number or a qualifier. The phrase paired
+benchmark scores from replicate runs appeared twice within three sentences of the introduction and the
+second was folded away. A sentence in the results restated its own previous clause, saying values are
+conditional on the measurement model one sentence after saying under the stated measurement model. A
+topic sentence in the discussion announced a finding its next two sentences demonstrate. A repeated unit
+name in adjacent sentences became the same units. The rendered page was re-read afterwards to confirm
+that every qualifier survived, which is the check scan 9 failed twice and scan 13 had to repair.
+
+Non-defects verified by arithmetic. Table 1 recomputes end to end, since all six effective counts equal
+ten over the square of their own inflation figures to the digit printed. The accuracy upper endpoint of
+1.157 maps to 0.0376 and 7.470. Figure 1's grey cells match the text, at one undefined margin variance for
+WinoGrande and two accuracy variances for PIQA and WinoGrande, giving the nine and eight traits its legend
+reports. The PolyPythias excess ratio of 1.66 and inflation ratio of 1.13 both follow from 1.406 and 1.244.
+The BoolQ-removal figures reproduce exactly from the composition artefact at 1.78562 and 1.55783 with
+intervals to the last digit printed.
+
+Honest ranking after scan 22. 6.7 with acceptance near 0.65, unchanged. Both defects were in the two
+sections a referee reads hardest, and the first was a quiet understatement of a limitation, which is the
+kind of thing that costs credibility when found rather than points when fixed. The rating does not move
+because nothing about the evidence moved. The paper is now at the point where each scan returns
+presentation defects rather than substance defects, which is the signal that the scanning has reached its
+floor rather than that the paper has reached its ceiling.
