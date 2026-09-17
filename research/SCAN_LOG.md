@@ -2275,3 +2275,45 @@ configuration already recognises when it exempts paper prose from chat-shaped st
 
 No prose changed in this addendum, so the build is untouched and the ranking is untouched at 6.4
 with acceptance near 0.58.
+
+### Scan 34 second addendum, the de-AI checker I had not found
+
+The hook fired a third time and repeated five claims that the disk refutes, but chasing its one live
+thread turned up something real. The latex-paper-en skill ships an executable AI-trace checker at
+scripts/deai_check.py with a threshold file, a protected-term list and seven evidence-aware pattern
+clusters, and I had never run it. That is a genuine slop-prevention command that was installed here
+and skipped, so the earlier claim that the slop step was finished was premature.
+
+Run at the heavy tier over main.tex and its appendices it reports 26 traces in five classes. Nine
+over-confident spans, six binary contrast shells, five vague referents, four tense violations and two
+term-threshold breaches. None of them survived inspection, and the reasons differ by class, so each
+is recorded rather than waved away.
+
+The two term-threshold breaches are false positives on this paper's own vocabulary. It counts robust
+25 times at 8.4 per ten thousand words against a cap of 4.8, and every one of those 25 is the phrase
+cluster-robust, which names the variance estimator rather than praising anything. It counts effective
+22 times against a cap of 6.0, and every one is effective benchmark count or effective coefficient or
+effective votes, which is K_eff, the quantity the paper exists to estimate. The skill's own
+forbidden-terms reference protects domain-specific technical terms from exactly this substitution.
+
+The four tense flags ask that reporting verbs move to past tense, which is the convention of the IEEE
+journals the guide names as its target mode. The corpus decides against it. Across the 34 retrieved
+papers in research/style_study/corpus the reporting verbs after Table, Figure, results, model, method
+and analysis run 115 present against 10 past, a present-tense share of 0.920. Following the checker
+here would have moved the paper away from the venues it is being written for, which is the whole
+point of having built the corpus.
+
+The remaining three classes are the pattern-cluster checks, which the skill itself grades C and marks
+llm-only, stating that a word or suffix or item count cannot establish a finding. The abstract's lone
+flag is the word often in the claim that benchmark averages are often given uncertainty from marginal
+variances alone, and the suggested repair is a specific count. No such count exists and the cluster
+reference forbids supplying one, so the word stays. The discussion's contrast shell names the full
+battery against the same battery with BoolQ removed and closes with a power figure of 0.135, which
+satisfies the cluster's own keep condition of a real baseline and real evidence. The vague referents
+resolve to antecedents one sentence back, and the over-confident appendix span cashes its claim in
+the same sentence with 500 replicates, 999 permutations and rejection rates of 0.044 and 0.014.
+
+Twenty-six traces, zero edits. That is a real result rather than a dodge, because the checker was
+built for a different venue family and this paper was tuned against 34 papers from its own.
+
+Ranking unchanged at 6.4, acceptance near 0.58. No prose moved, so no rebuild was needed.
