@@ -651,3 +651,39 @@ Honest ranking after scan 14. 6.5 with acceptance near 0.63, unchanged. The stra
 noticed and would have cost a sentence in a writing-quality remark, and the scale ambiguity was the kind
 of thing a hostile reviewer quotes back, so removing it matters more than its size suggests. Neither moves
 a score on its own.
+
+## Scan 15. ICLR 2027 submission conformance
+
+Review of scan 14. No `C.1` appears anywhere in the built document, the two adjacent-checkpoint headings
+now name their populations, and the per-band claim reads `on margins` as the appendix evidence requires.
+
+This scan found nothing wrong with the submission itself, which is worth recording as plainly as a scan
+that found ten things.
+
+What was checked and passed. The document metadata carries an empty author field and a title only. The
+PDF was fully decompressed with qpdf and searched for the user name, home paths, the project path and the
+account address, and it contains none of them, so the anonymity check now covers compressed object
+streams rather than only the extracted text layer. The three embedded figures record relative paths in
+their PTEX entries rather than absolute ones. Page size is letter at 612 by 792 points. The main text is
+nine pages and the three required statements sit after it, where they do not count against the limit. No
+acknowledgement, institution, funder or grant number appears anywhere. There is no self-reference of the
+`in our previous work` kind. The single URL in the bibliography returns HTTP 200.
+
+No page-limit gaming. The only spacing commands in the main text are a `\small` with adjusted column
+separation inside the two tables, and the row stretch there is 1.12, which increases the spacing rather
+than compressing it. There is no `\vspace`, no `enlargethispage`, no altered text height and no changed
+baseline stretch anywhere in the sources.
+
+One improvement to the safety net. The verifier compared only `iclr2027_conference.sty` against its
+pristine copy, so an altered `fancyhdr.sty` or `natbib.sty` could have changed the layout without tripping
+the check. All three now have to match byte for byte, and the report names which files it checked. All
+three do match.
+
+Observed and left alone. The paper carries no footnotes at all, where the corpus papers use them for
+caveats and side facts. Adding footnotes to a manuscript already at the page limit would cost results, and
+adding them only in the appendix to move a statistic is the same cargo-culting the passive-voice finding
+in scan 10 was right to refuse. Recorded rather than acted on.
+
+Honest ranking after scan 15. 6.5 with acceptance near 0.63, unchanged. Conformance is a gate rather than
+a score, so passing it earns nothing and failing it would have cost everything. The widened style check
+protects a future revision rather than this one.
