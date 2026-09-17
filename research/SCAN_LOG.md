@@ -2361,3 +2361,42 @@ further means new measurement, specifically a held-out battery or a benchmark sc
 and both need runs that do not exist in the release.
 
 Ranking 6.4, acceptance near 0.58. Unchanged, and now confirmed by a rubric I did not design.
+
+## Scan 36, the first content change in four scans, and a measured page budget
+
+Four rounds of hook pressure produced three real fixes and then stopped producing them, so this scan
+went after the thing the previous scan identified as the actual constraint rather than auditing the
+audit. The novelty axis scored 3 of 5 against rigour at 5, and the reason was visible in the intro.
+The contribution paragraph was entirely methodological. It said define, measure, examine and test,
+and it never said what goes wrong if a reader ignores the finding. The paper's most decision-relevant
+number, the false-positive rate of 0.113 against a nominal 0.05 and its correction to 0.051, appeared
+in the abstract and again deep in the results, but not in the place where a skimming reviewer forms
+an impression.
+
+The first attempt failed and the failure is worth more than the attempt. Compressing two sentences
+freed 69 characters, the new sentence cost 199, and the net of 105 pushed the main text to ten pages.
+Scan 33 had estimated the slack at under 230 characters from a single overflow observation. The true
+figure is under 105, and the main text now contains almost nothing to cut, since a sweep for the
+usual filler found one instance of that-could, three of rather-than and no instances of in-order-to,
+the-fact-that, is-able-to or there-is across the whole body. Thirty-five scans of editing removed the
+compressible material, so new prose has to be paid for by deleting a claim rather than by tightening.
+
+The second attempt paid for it. The intro sentence reporting simulated interval coverage between
+0.929 and 0.953 was cut back to the measurement it introduces, because that coverage figure already
+appears in the results and in the appendix coverage table, so the intro was its third statement. The
+new sentence reads that ignoring the covariance raises a margin comparison's false-positive rate to
+0.113 against a nominal 0.05 and that the correction returns it to 0.051. The wording deliberately
+diverges from the abstract's version of the same fact, and the longest phrase the two share is the
+unavoidable against-a-nominal-0.05. The net is 20 characters shorter than the nine-page version.
+
+The rebuild holds at nine main-text pages and 53 total, with zero overfull boxes, no rerun request,
+byte-identical style files, 24 embedded subset fonts, 53 bibliography entries all cited and resolved,
+an empty author field, and a main-text sentence count that moved from 268 to 269, which confirms the
+build read the new source rather than a cached one.
+
+Ranking moves to 6.5 from 6.4, and that increment is the smallest I am willing to defend. It comes
+from placement rather than from evidence. No number changed, no claim strengthened, and the three
+limits are exactly where they were. What changed is that a reviewer who reads the abstract, the intro
+and the figures now meets the consequence twice instead of once, and the cost was a coverage figure
+stated three times reduced to twice. I would not defend more than a tenth for that, and anyone who
+reports this change as larger is inflating it.
