@@ -787,3 +787,36 @@ Honest ranking after scan 18. 6.6 with acceptance near 0.64, unchanged. A review
 a synonym, but the phenotype collision was the kind of thing that makes a careful reader slow down and
 reread, and three of the seven bad uses sat in table headers where a reader checks a definition rather
 than infers one. Worth fixing, not worth a point.
+
+## Scan 19. Reading the built pages as a reviewer reads them
+
+Review of scan 18. Phenotype now appears only in the acronym and the two genetics method names, and both
+definitions name trait. The seven converted sentences and two table headers were read in the built PDF.
+
+This scan rendered pages and read them rather than grepping the source, which is how the two findings
+below surfaced after eighteen scans of source-level checking missed them.
+
+Defect 1, the reader meets Table 3 before Table 1. The first table reference in the document sits on page
+two and points at the notation table, which is numbered 3 because it lives in Appendix A. A reader has
+seen no table at that point and is sent to a number two ahead of the one they are about to meet. The
+sentence now says Table 3 in Appendix A, so the number reads as a destination rather than as a gap.
+
+Defect 2, an implicit causal link at a paragraph end. The limitations paragraph closed by saying that no
+claim is made about the competence mechanism, which needs held-out loss on the same checkpoints, and then
+that 80 of the 125 repositories refuse an unauthenticated request. The connection between the two, which
+is that the loss cannot be scored because the weights are gated, was left for the reader to supply. The
+sentence now reads that the mechanism needs held-out loss scored on the same checkpoints that 80 of the
+125 repositories will not serve without credentials, which is also one word shorter.
+
+Non-defects verified by arithmetic while reading. The accuracy upper endpoint of 1.157 maps to the quoted
+$\bar r_E<0.038$ and $K_{\mathrm{eff}}>7.47$, which recompute to 0.0376 and 7.470. The BoolQ passage
+counts close, since 2,938 passages carrying 3,270 questions with 578 questions in shared passages implies
+246 shared passages and 2,692 singletons, which sum back to both totals. The resolution model's minimum of
+$\pi/2$ does exceed the planned 1.4 threshold, so the paper's statement that the threshold could not have
+falsified the model is correct rather than rhetorical. Equation 5 is referenced in the results, so the
+unreferenced-equation note from scan 10 covers four labels and not the central one.
+
+Honest ranking after scan 19. 6.6 with acceptance near 0.64, unchanged. Neither finding changes an
+assessment. The useful result is methodological, which is that rendering and reading pages found two
+things that nineteen scans of source grepping did not, so the remaining scans should include a reading
+pass rather than only mechanical sweeps.
