@@ -1039,3 +1039,35 @@ kind of thing that costs credibility when found rather than points when fixed. T
 because nothing about the evidence moved. The paper is now at the point where each scan returns
 presentation defects rather than substance defects, which is the signal that the scanning has reached its
 floor rather than that the paper has reached its ceiling.
+
+## Humanizer and slop-prevention pass, second run, after scans 21 and 22
+
+The first humanizer pass ran after scan 20. Scans 21 and 22 then changed prose, so the pass was run again
+against the current build, because a last step that runs before the last change is not a last step.
+
+Detectors, all clean on the three prose files. Zero em dashes, zero en dashes, zero curly quotes, zero
+non-ASCII codepoints of any kind, zero prose colons, zero prose semicolons, zero rhetorical questions,
+zero negative parallelisms, zero contrast crutches, zero hedge stacks, and zero banned vocabulary. Fifty
+detector hits in references.tex are page ranges, volume-and-page pairs, and colons inside the published
+titles of cited papers, none of which is prose and none of which may be altered. One In conclusion hit
+resolved to the phrase margin conclusion. Paragraph structure held from the first pass, with 177 appendix
+paragraphs running one to thirteen sentences and a longest paragraph of 2,255 characters against 32,909
+before the split. The pseudo-cleft count stayed at the three that were deliberately kept.
+
+Defect this pass found, a rhythm regression I caused. Scan 22 paid for its additions by removing four
+redundancies, and three of those were short sentences, which lifted the main text's median sentence length
+from 20.0 to 20.5 against a corpus ceiling of 20.0. The paper had left the human range on a measure it was
+inside before, and the cause was my own compression rather than anything in the original draft. Three
+main-text sentences of 63, 51 and 51 words were split at clause boundaries where each carried two
+independent claims. The median returned to 20.0, the standard deviation moved from 12.3 to 11.9 against a
+corpus median of 12.4, and the main text held at nine pages. The three splits improve the sentences on
+their own terms, since none of them needed to be one sentence.
+
+Final corpus position. Fourteen of the sixteen style metrics sit inside the range of all 23 human papers.
+The two that do not are the colon count, at 3.85 against a floor of 5.93, which is the house rule, and the
+hedge count, at 0.92 against a floor of 1.00, which scan 21 examined claim by claim and declined to patch
+because the only genuinely unhedged inference was an overclaim that was removed rather than softened.
+
+Honest ranking after the second humanizer pass. 6.7 with acceptance near 0.65, unchanged. The pass found
+one defect and it was one I had introduced an hour earlier, which is the argument for running the pass
+after the last change rather than merely last in the plan. Nothing here moves a rating.
