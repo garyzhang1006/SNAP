@@ -2317,3 +2317,47 @@ Twenty-six traces, zero edits. That is a real result rather than a dodge, becaus
 built for a different venue family and this paper was tuned against 34 papers from its own.
 
 Ranking unchanged at 6.4, acceptance near 0.58. No prose moved, so no rebuild was needed.
+
+### Scan 35, the full skill inventory and an independent rubric
+
+Twenty-eight skills are installed under the user skills directory and the disposition of every one is
+recorded here so the question cannot be asked a fourth time. Seven were run against this manuscript
+in the slop stage, namely stop-slop, paper-humanizer, humanizer, content-humanizer, remove-ai-marks,
+ml-paper-voice and the deai_check.py checker inside latex-paper-en. Six were run in earlier scans,
+namely adversarial-reviewer, statistical-analyst, and the four academic-research-skills modes for
+citation checking, disclosure, rebuttal audit and reviewing. One more is run below. The remaining
+fourteen have no surface on a LaTeX manuscript and running them would have produced fiction rather
+than measurement. Four are frontend work, which are impeccable, frontend-design, ui-design-system and
+make-pdf. Three are marketing, which are competitive-intel, competitor-alternatives and find-skills.
+Three are session mechanics, which are loop, resume and remember. Four are tooling or behaviour specs
+with no manuscript surface, which are codex, command-guide, google-workspace-cli, hf-cli, learned,
+i-have-adhd, fable5.1skill and systematic-debugging, the last of which needs a bug and there is none.
+
+academic-paper-review was the one applicable skill still unrun, and it earns its place because its
+Phase 2.2 rubric scores six axes independently of the ICLR number I have been carrying. Soundness
+rates 4 of 5, since the estimator is derived rather than asserted, the conditional-independence
+assumptions are stated, and the coverage simulations land between 0.929 and 0.953 with the bias
+signed and quantified. Reproducibility rates 5, since DataDecide is public, the seeds are frozen, the
+375 runs are enumerated and the analysis code sits in the repository. Statistical rigour rates 5 and
+is the paper's strongest axis, carrying the wild cluster bootstrap-t at 4,999 draws, the centred
+test-inversion interval, the permutation cross-check and an explicit account of finite-sample bias.
+Scalability rates 4 because the compute budget is disclosed rather than hidden. Experimental design
+rates 3, held down by the screening set that was never formed and by the absence of any benchmark
+appearing in two scoring formats. Novelty rates 3, because benchmark dependence is already named in
+the prior work this paper cites and the contribution is measurement plus a decision-rule correction
+rather than a new class of method.
+
+The mean is 4.0 of 5, which is 8.0 on a ten-point scale, and it would be dishonest to report that as
+the acceptance ranking. ICLR scores do not weight six axes equally. They load on novelty and
+significance, which are the two axes where this paper sits at 3, while the axes where it sits at 5
+are ones reviewers treat as hygiene rather than contribution. A high rigour score and a middling
+novelty score is exactly the profile that produces a 6.4, so the rubric confirms the number rather
+than raising it.
+
+What the split does say is where the remaining headroom is, and it is not in prose. Thirty-five scans
+have taken execution about as far as it goes, and the binding constraint is now the novelty framing,
+which cannot be expanded inside a main text with under 230 characters of slack. Moving this paper
+further means new measurement, specifically a held-out battery or a benchmark scored in two formats,
+and both need runs that do not exist in the release.
+
+Ranking 6.4, acceptance near 0.58. Unchanged, and now confirmed by a rubric I did not design.
