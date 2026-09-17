@@ -2777,3 +2777,43 @@ No defect found, so no edit and no rebuild. The build from scan 44 stands.
 
 Ranking holds at 6.5. A clean visual inspection removes a risk that was never measured, and it adds
 nothing a reviewer scores.
+
+## Scan 47, the floats nobody had ever located
+
+Scan 46 looked at thirteen of the fifty-three pages. That left forty unexamined, and the honest reading
+of a spot check is that it covers the spots it checked. This scan closed the rest, first by screening
+every page mechanically and then by looking only where the screen pointed.
+
+The mechanical screen came back clean on two counts that matter. No page in the document runs short of
+the seventy-three-line median by more than thirty percent, so no float has pushed a gap into the text
+block, and no page ends on a section heading, so nothing is orphaned above a break. Both checks cover
+all fifty-three pages rather than a sample.
+
+The third check found something. For every float I measured the distance from its caption to the
+nearest page that names it, which is a property no counter in the build kernel emits and no reading of
+a single page can reveal. Three floats had no citation within a page. One was a false alarm worth
+recording, because Table 3 is the notation glossary and its only reference is the forward pointer in
+the main text at main.tex line 37, which is how a glossary is supposed to work.
+
+The other two were real. Table 9 gives inflation estimates by model size and sits directly after the
+paragraph that discusses exactly those estimates, and that paragraph never named it, so the table was
+introduced by proximity alone. Table 12 was worse. It holds the null and sensitivity results, it lands
+on page twenty-six, and its only citation sat on page forty-two, sixteen pages later. A reader meeting
+it had been told nothing about it. Both tables carry labels, so neither defect could surface as an
+undefined reference, which is why forty-six scans of build output missed them.
+
+The fix names each table in the prose that already discusses it. The size paragraph now reports that
+only the 530M interval excludes one on either score scale as Table 9 reports, which the table's own
+rows confirm on both scales. The calibration sentence now adds that Table 12 gives the recovered
+estimates alongside the other null and sensitivity runs. Both edits are in appendices_bcd.tex, after
+the main-text label, so the nine-page limit cannot be touched by them.
+
+The rebuild is kernel version 21. Main text nine pages, total fifty-three, overfull boxes zero, missing
+characters zero, undefined or rerun false, official style unchanged, author empty. Appendix mean
+sentence length moves from 23.42 to 23.44 words against a corpus body-prose band of 22.1 to 26.4, and
+prose colons, semicolons and dashes stay at zero in all three files. Re-measuring the floats afterwards,
+Table 9 is now cited on its own page and Table 12's nearest citation moves from sixteen pages to two,
+with Figure 2 the only thing standing between the pointer and the table.
+
+Ranking holds at 6.5. Two appendix cross-references repair a navigation defect a reader would have
+felt on page twenty-six, and navigation is not what the three open limits turn on.
