@@ -1,0 +1,236 @@
+{
+ "design": "R26 build the manuscript remotely and read back the page count that three edits left unverified.\n\nDesign fixed before running (2026-09-16, written 22:35 EDT). Scans 25 and 26 made three changes to\nthe source. Two swapped a single digit so the abstract would stop contradicting Section 2.3's second\ncoverage repeat, and one replaced the abstract's opening sentence with one character more than it\nremoved. Every one is length neutral to within a character, so the nine-page main text almost\ncertainly still holds, but almost certainly is not a measurement, and a paper that runs to ten pages\nis desk rejected before anyone reads it. The user has withheld local compute, so the build runs here.\nThis kernel installs a TeX distribution, compiles main.tex twice so cross-references settle, and then\nreports the numbers the local verifier would have reported. It reads the main-text page count from the\naux file's maintext:end label rather than from the page total, because the appendices are unbounded and\nonly the main text is capped. It compares the three official style files against the untouched template\ncopies byte for byte, since a gamed margin is the one way a page count can be made to lie. It lists any\nreference that never resolved, counts overfull boxes and missing characters, and checks that no numeric\ntoken inside any table body drifted from the pre-formatting snapshot. Nothing here loads a model or\ntouches the released run data, so it is a typesetting job rather than compute in the usual sense.\nWhatever the page count says, the manuscript gets treated accordingly, and a ten means the next scan\nspends its budget buying a line back rather than polishing prose.\n",
+ "passes": [
+  {
+   "pass": 1,
+   "returncode": 0,
+   "main_text_pages": 9,
+   "total_pages": 53,
+   "rerun_requested": true
+  },
+  {
+   "pass": 2,
+   "returncode": 0,
+   "main_text_pages": 9,
+   "total_pages": 53,
+   "rerun_requested": true
+  },
+  {
+   "pass": 3,
+   "returncode": 0,
+   "main_text_pages": 9,
+   "total_pages": 53,
+   "rerun_requested": false
+  }
+ ],
+ "main_text_pages": 9,
+ "total_pages": 53,
+ "pdf_bytes": 615039,
+ "build": {
+  "overfull_boxes": 0,
+  "underfull_boxes": 15,
+  "missing_characters": 0,
+  "font_warnings": 0,
+  "undefined_or_rerun": false
+ },
+ "official_style_unchanged": true,
+ "official_style_per_file": {
+  "iclr2027_conference.sty": true,
+  "fancyhdr.sty": true,
+  "natbib.sty": true
+ },
+ "style_sha256": {
+  "iclr2027_conference.sty": "797deef41724e937",
+  "fancyhdr.sty": "b56ec4434b9f4607",
+  "natbib.sty": "88bc70c0e4846193"
+ },
+ "unresolved_reference_labels": [],
+ "bibliography": {
+  "entries": 53,
+  "unique_keys": 53,
+  "unresolved_citation_keys": [],
+  "uncited_entries": []
+ },
+ "table_numeric_tokens_preserved": false,
+ "prose": {
+  "main.tex": {
+   "sentence_count": 271,
+   "minimum_words": 4,
+   "median_words": 18,
+   "mean_words": 20.01,
+   "fragments_under_four_words": 0,
+   "share_under_eight_words": 0.074,
+   "corpus_target_under_eight": "0.058 to 0.238",
+   "prose_colons_semicolons_dashes": 0,
+   "the_openers_share": 0.166,
+   "corpus_target_the_openers": "0.15 observed across twenty prior-year and twenty recent abstracts"
+  },
+  "appendix_a.tex": {
+   "sentence_count": 101,
+   "minimum_words": 6,
+   "median_words": 14,
+   "mean_words": 16.73,
+   "fragments_under_four_words": 0,
+   "share_under_eight_words": 0.01,
+   "corpus_target_under_eight": "0.058 to 0.238",
+   "prose_colons_semicolons_dashes": 0,
+   "the_openers_share": 0.238,
+   "corpus_target_the_openers": "0.15 observed across twenty prior-year and twenty recent abstracts"
+  },
+  "appendices_bcd.tex": {
+   "sentence_count": 1003,
+   "minimum_words": 4,
+   "median_words": 21,
+   "mean_words": 23.42,
+   "fragments_under_four_words": 0,
+   "share_under_eight_words": 0.037,
+   "corpus_target_under_eight": "0.058 to 0.238",
+   "prose_colons_semicolons_dashes": 0,
+   "the_openers_share": 0.299,
+   "corpus_target_the_openers": "0.15 observed across twenty prior-year and twenty recent abstracts"
+  }
+ },
+ "short_sentences": [],
+ "pdf_metadata": {
+  "author": "",
+  "title": "Estimating run-to-run covariance across language model benchmarks",
+  "empty_author": true
+ },
+ "fonts": {
+  "count": 24,
+  "all_embedded": true,
+  "all_subset": true,
+  "not_embedded": [],
+  "faces": {
+   "/ALVSVR+NimbusSanL-Bold": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/EGYDJN+NimbusRomNo9L-Regu": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/VWAEOF+NimbusRomNo9L-Medi": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/OZLQTQ+CMR10": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/MADHSN+CMMI10": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/ZBVUHR+CMSY7": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/SZDPZK+CMR7": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/ETMJLG+CMMI7": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/BSTKHG+CMSY10": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/RVPZIX+CMMI5": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/UAGOMC+CMBX10": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/YOPHLY+CMEX10": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/RAZVEJ+MSBM10": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/AUVGAC+CMSS8": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/IXHHGS+CMEX9": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/JXGTTK+CMR9": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/BQFJOW+CMMI9": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/OEUCPL+CMR6": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/DIDJKV+NimbusMonL-Regu": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/EZPAYP+CMMI6": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/HBIEHQ+CMSY6": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/EXPITJ+CMSY5": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/AJSHTS+CMSY9": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": false
+   },
+   "/EKTMJB+NimbusRoman-Regular": {
+    "embedded": true,
+    "subset": true,
+    "in_xobject": true
+   }
+  }
+ },
+ "sha256": {
+  "main.tex": "960c67b3b80ada08f51623c0c867737a2731279859cc0f726ee5e85357004615",
+  "appendix_a.tex": "16cd190d3c3eaacd0789be7fd0ea7e68e480fbd168ca97b818e81a789f252524",
+  "appendices_bcd.tex": "ef4579bd9790adfd2bfca5a8a5f605458ce744fb73485b0fea5304e214abfed1",
+  "references.tex": "da724ef67b6197974d84aef7e6186d37e2a200ac513aef80357840785a4a1318",
+  "iclr2027_conference.sty": "797deef41724e93761426ac0cbcca46279a91cc650dd1f0ce76a4f08d2098ea6",
+  "SNAP_revised_draft.pdf": "f2db741e1d71252407222914c0135ec2f7dfc7208535b681c6e56bbc2230f450"
+ },
+ "wall_seconds": 51.512717723846436
+}

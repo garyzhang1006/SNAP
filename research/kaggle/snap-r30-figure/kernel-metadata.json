@@ -1,0 +1,13 @@
+{
+  "id": "garyzhang11111/snap-r30-figure",
+  "title": "snap-r30-figure",
+  "code_file": "snap-r30-figure.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": true,
+  "dataset_sources": ["garyzhang11111/snap-fig-src"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

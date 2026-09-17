@@ -210,18 +210,34 @@ try:
                               "empty_author": not (meta.get("/Author") or "").strip()}
     # A font the reader has to substitute renders differently on the referee's machine, so every
     # font must carry its own program. Subsetting shows up as the six-letter ABCDEF+ name prefix.
+    # The walk has to descend into Form XObjects. Every included figure is one, and it carries its
+    # own /Resources, so a page-level scan reports the body fonts and silently skips whatever the
+    # artwork embeds. Scan 30 caught this by enumerating the shipped PDF by hand and finding a
+    # twenty-fourth face inside the paired-prediction figure that this check had never seen.
     fonts = {}
-    for page in reader.pages:
-        res = page.get("/Resources", {})
-        for ref in (res.get("/Font", {}) or {}).values():
+
+    def collect(res, depth=0):
+        if res is None:
+            return
+        res = res.get_object()
+        for ref in (res.get("/Font") or {}).values():
             f = ref.get_object()
             for face in ([f] if "/FontDescriptor" in f else
-                         [d.get_object() for d in (f.get("/DescendantFonts", []) or [])]):
+                         [d.get_object() for d in (f.get("/DescendantFonts") or [])]):
                 name = str(face.get("/BaseFont", "?"))
                 desc = face.get("/FontDescriptor")
                 embedded = bool(desc) and any(k in desc.get_object()
                                               for k in ("/FontFile", "/FontFile2", "/FontFile3"))
-                fonts[name] = {"embedded": embedded, "subset": len(name) > 7 and name[7:8] == "+"}
+                fonts[name] = {"embedded": embedded, "subset": len(name) > 7 and name[7:8] == "+",
+                               "in_xobject": depth > 0}
+        if depth < 6:
+            for ref in (res.get("/XObject") or {}).values():
+                xo = ref.get_object()
+                if xo.get("/Subtype") == "/Form":
+                    collect(xo.get("/Resources"), depth + 1)
+
+    for page in reader.pages:
+        collect(page.get("/Resources"))
     report["fonts"] = {"count": len(fonts), "all_embedded": all(v["embedded"] for v in fonts.values()),
                        "all_subset": all(v["subset"] for v in fonts.values()),
                        "not_embedded": sorted(n for n, v in fonts.items() if not v["embedded"]),

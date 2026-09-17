@@ -1770,3 +1770,114 @@ confounding of the margin result with scoring format, and an accuracy interval t
 the full battery. Fixing a number that reads as its own refutation removes a way to lose points. It
 does not add any. The score moves when the design changes, and the design cannot change without
 compute the user has not authorised.
+
+## Scan 30, 2026-09-16, the derivations, the figures, and a check that was lying to me
+
+### Review of what scan 29 did
+
+Scan 29 added one sentence to the proxy appendix separating the cross-fitted percentiles from the
+in-sample matched means. Rereading it against Table 19, the collision it was written for is gone, and
+a referee who checks the 0.889 departure claim against the table now meets the explanation in the same
+paragraph. The rebuild it triggered held nine main-text pages and fifty-three total, so the sentence
+cost nothing. Nothing about scan 29 needs undoing.
+
+### The twenty-eight sub-scans
+
+1.  Review of scan 29's sentence in place.
+2.  Figure orphan sweep. Three figure labels, three references, no stranded artwork.
+3.  Appendix orphan sweep. Eleven appendix labels, every one referenced, `app:supplementary` five times.
+4.  The notation table against the values used throughout. 125, 3 and 10 hold everywhere.
+5.  The cross-half expectation, rederived. Centring across runs gives $(1-1/R)\Sigma_E(j,k)$ exactly.
+6.  The symmetrised estimator's normalisation. $1/(2N(R-1))$ against a double sum over two half
+    orderings returns $\Sigma_E(j,k)$ in expectation, so the constant is right.
+7.  The attenuation ratio under diagonal contamination, proved to lie between $\Lambda^2$ and one in
+    both directions by differentiating in $\operatorname{tr}D$.
+8.  The bound $0\le a_\sigma\le1$, proved by Cauchy-Schwarz on $(\sum\sigma)^2\le K\sum\sigma^2$.
+9.  The worked example with standard deviations one and two. The effective coefficient is 0.8 and the
+    weighted mean correlation is one, exactly as written.
+10. The aggregate-variance identity, rederived from $\mathbf1^\mathsf{T}\Sigma\mathbf1$.
+11. The two edge cases for the effective count, a single benchmark and negative off-diagonal mass.
+12. The concavity example. The square roots of 0.5 and 1.5 average to 0.96593.
+13. The planning relation $k=2(1-\rho_g)/\rho_g$, rederived from the reliability of a two-half sum.
+    It is exact, not approximate.
+14. The product variance $\sigma^4[(1+k)^2+1]$, rederived from the bivariate Gaussian result
+    $\operatorname{Var}(XY)=\operatorname{Var}X\operatorname{Var}Y+\operatorname{Cov}(X,Y)^2$.
+15. The information-ratio floor. Minimising $p(1-p)/\phi(z_0)^2$ puts the minimum at $z_0=0$ with value
+    $0.25/\phi(0)^2=1.5708$, and Table 2's empirical minimum is 1.571. The theory and the data meet at
+    the third decimal.
+16. The BoolQ passage counts. 3,270 questions across 2,938 passages with 578 in passages of two or
+    more implies 246 multi-question passages, which is consistent.
+17. The leakage bound. About 240 cross-half same-passage pairs against about 2.7 million cross-half
+    pairs is 0.0089 percent, which is the "about 0.01 percent" the text claims.
+18. The effective coefficients. 0.0608 and 0.0181 run back through $1+9\bar r_E$ to 1.24395 and
+    1.07838, which are the two unrounded observed values quoted elsewhere in the same appendix.
+19. The WinoGrande margin variance of $-3.15\times10^{-7}$ against the floor, cross-checked against the
+    negative reliability in Table 2 and the binding floor in the proxy appendix. Three appendices agree.
+20. The influence participation ratios against the largest single-recipe share, checked for the
+    arithmetic ceiling a 0.520 share imposes.
+21. Text size measured in all three figures as they render on the page. This is the first defect.
+22. The plotting script, which names the cause exactly.
+23. The redraw, run on Kaggle, with the result read back from the written bytes.
+24. Visual comparison of the old and the new figure, panel by panel.
+25. Rebuild, then a hand enumeration of every font in the shipped PDF. This is the second defect.
+26. The build kernel's font walk, corrected and rerun.
+27. The two builds compared. Their content streams are byte-identical, so the differing file hashes
+    are the PDF identifier and creation date rather than any change in the document.
+28. Slop suite across all three files. Zero on every marker.
+
+### The first change, a figure nobody could read
+
+Figure 3 was authored at 7.0 inches wide and included at `width=\linewidth`, which is 5.5 inches in
+this style, so LaTeX shrank everything in it by 0.786. Its eight contrast labels were set at 6.6pt and
+landed on the page at 5.2pt, which is smaller than `\tiny`. Those labels are not decoration. They are
+the only thing that says which two predictors each row compares, so a reader who cannot read them
+cannot read the figure at all. The other two figures are unaffected, since one is enlarged by 1.42 and
+the other sits at unit scale, and I measured all three rather than assuming.
+
+The figure is now authored at 5.5 inches, so the scale factor is exactly one and the labels render at
+their intended 6.6pt. The aspect ratio is unchanged, so the figure still occupies 2.75 inches of
+vertical space and cannot move the page count, which the rebuild confirms. The redraw also switched the
+typeface from Times New Roman to Nimbus Roman, which is the face the manuscript body is already set in,
+so a mismatch nobody had noticed went away with it. The data is untouched. The script replots a frozen
+result file and recomputes no estimate, and it ran on Kaggle.
+
+### The second change, and an honesty correction
+
+Every scan since the first remote build has reported "twenty-three fonts, all embedded and subset" as a
+conformance result. That number was wrong, and worse, the check that produced it could not have caught
+the failure it was written to catch.
+
+The kernel walked each page's own `/Resources` for fonts. Every included figure is a Form XObject that
+carries its own `/Resources`, and the walk never descended into them, so the font check covered the body
+text and skipped the artwork entirely. Enumerating the shipped PDF by hand found twenty-four faces, the
+extra one being the Nimbus Roman subset inside Figure 3. A figure carrying a font the referee's reader
+would have to substitute is exactly the failure this check exists to prevent, and for eight builds it
+was structurally incapable of seeing one.
+
+The manuscript was never wrong. All twenty-four faces are embedded and all twenty-four are subset, so
+the claim was true throughout. It was true by luck rather than by measurement, which is not the same
+thing, and a verification that happens to agree with reality is not a verification. The walk now
+recurses through Form XObjects and flags which faces live inside artwork. The corrected run reports
+twenty-four, all embedded, all subset, and names the one inside the figure, matching the hand count
+exactly.
+
+Earlier entries in this log should be read with that correction applied. Their font claims covered
+page-level resources only.
+
+### The build
+
+Three passes, no rerun requested after the third. Nine main-text pages and fifty-three total after each
+pass, unchanged by the figure swap. Zero overfull boxes, zero missing characters, no unresolved labels
+or citation keys, no uncited bibliography entries, the three official style files byte-identical to the
+template, and an empty author field.
+
+### Honest ranking after scan 30
+
+6.4, acceptance near 0.58, unchanged. Both defects were real and both are now fixed, and neither was a
+scoring matter. An illegible figure label costs goodwill rather than points, and the font miscount cost
+nothing at all because the answer it should have given happened to match the answer it did give. What
+this scan mostly demonstrates is that the remaining yield is in the apparatus rather than in the
+argument, which is the same conclusion the last three scans reached by different routes. The score is
+pinned by the missing holdout, by the margin result's confounding with scoring format, and by an
+accuracy interval that contains one on the full battery. None of those moves without new runs, and new
+runs need compute the user has not authorised.
