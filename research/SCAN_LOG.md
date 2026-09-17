@@ -1571,3 +1571,84 @@ manuscript's remaining weaknesses are the design's missing holdout, the confound
 result with scoring format, and an accuracy interval that contains one on the full battery. None of
 those is a writing problem, so no further scan of the prose will move the score. Saying otherwise
 after finding a caption ambiguity would be exactly the inflation the goal forbids.
+
+## Scan 28, 2026-09-16, the appendix tables against the prose that cites them
+
+### Review of what scan 27 changed
+
+Scan 27 appended one sentence to the caption of Table 16 naming the replicate count that column
+tabulates and saying the main text quotes a later rerun. I reread the caption in place and the
+sentence does what it was meant to do, since a referee comparing 0.935 to 0.956 against 0.932 to
+0.957 now finds the explanation in the same visual block as the numbers rather than four
+paragraphs away in the appendix prose. The change sits after the main-text label, the rebuilt
+document still reports nine main-text pages and fifty-three total, and no wording elsewhere in the
+paper had to move to accommodate it. Nothing about scan 27 needs undoing.
+
+### The twenty sub-scans
+
+1.  Verification that the scan 27 caption sentence renders in the built PDF and did not push the
+    appendix table onto a new page.
+2.  Fetch of the full body of Bowman and Dahl 2021 through ar5iv, opening paragraph and conclusion.
+3.  Fetch of the full body of Choi and five others 2019, opening paragraph and limitations.
+4.  Fetch of the full body of Schmidt, Schneider and Hennig 2021, opening paragraph and limitations.
+5.  The limitations-opener convention across those three, compared against the manuscript's own
+    admissions about the undrawn screening split and the shipped proxy.
+6.  The rate and form of marked speculation, compared against the manuscript's hedge markers.
+7.  Paragraph openers in prior-year body prose, checked against the subject-first finding of scan 24.
+8.  The uncorrected apostrophe slip in the Schmidt camera copy, recorded as an observation about
+    accepted prose and explicitly not acted on, since injecting an error would be dishonest.
+9.  Inventory of every table in the appendices, twenty in all, to define the audit surface.
+10. Table 8, the fixed-K comparison, subset counts against the claim of two thirds. Reconciles at
+    0.659.
+11. Table 8, the accuracy share stated as 0.305 against a computed 0.296. The two reconcile only
+    under a defined-only denominator, which the appendix does not state.
+12. Table 8, the minimum and maximum margin estimates against the prose that quotes them.
+13. Table 8, the BoolQ differential claims against the corresponding main-text sentences.
+14. The interval-construction paragraph, both squared standard-error ratios recomputed from the
+    printed figures. 0.045 over 0.094 squared is 0.229, and 0.038 over 0.052 squared is 0.534.
+15. The design-effect back-calculation from one plus four times rho, checked against the stated
+    effective sample size.
+16. Table 7, the claim that dividing by the pooled standard deviation lowers margin inflation from
+    1.244 to 1.182.
+17. Table 7, the claim that the three bounded scores fall to between 1.120 and 1.141. The table
+    gives 1.134, 1.141 and 1.120, so the stated range is exactly the observed range.
+18. Table 7, the off-diagonal sum falling from 0.547 to 0.164 times the trace and BoolQ's share of
+    that trace growing from 0.679 to 0.844, both checked as monotone across the rows.
+19. Table 7, the claim that bounding reproduces between 62 and 75 percent of the gap between margin
+    and accuracy inflation, recomputed from first principles. The gap is 0.166, the three bounded
+    reductions are 0.110, 0.103 and 0.124, and their shares are 0.663, 0.620 and 0.747.
+20. The slop suite across all three source files after the reading was complete. Zero non-ASCII
+    characters, zero dashes of any kind, zero curly quotes, zero prose semicolons, and zero hits on
+    the banned-construction list.
+
+### The change
+
+None. Every claim audited in this scan reconciles against the table it cites, and the one arithmetic
+that does not reconcile cleanly was already examined and deliberately left alone.
+
+That exception is sub-scan 11. Table 8 states an accuracy share of 0.305 where the printed cells
+give 0.296. The difference is explained if the denominator counts only the configurations where the
+estimate is defined rather than all of them, which is a plausible reading and is not what the
+appendix says. Fixing it properly means parsing a 570 KB result file to count the defined cells,
+which is computation, and the alternative is to assert the denominator from inference and label it
+as fact. Writing an unverified denominator into the paper to close a cosmetic gap of nine
+thousandths would be a worse defect than the gap, so the number stays as it is and this entry
+records why.
+
+### Style evidence added
+
+`research/style_study/body_prose_2026-09-16.md` records the prior-year body prose, which is the
+first time this project read full introductions and limitations sections rather than abstracts. The
+finding is that the manuscript already matches the genre on every dimension examined, including the
+plain limitation opener, the marked speculation, and the very short sentence at the head of a
+conclusion. That produced no edit, which is the honest outcome and is recorded as such.
+
+### Honest ranking after scan 28
+
+6.4, acceptance near 0.58, unchanged. This scan audited the numeric spine of two appendix tables and
+the three prior-year papers whose prose is closest to this one, and it found nothing to change. Four
+consecutive scans have now returned one wrong digit, one weak opening sentence, one ambiguous
+caption and one nothing, which is a search that has run out of prose defects to find. The ceiling is
+set by the design, specifically the missing holdout, the confounding of the margin result with
+scoring format, and an accuracy interval that contains one on the full battery. No amount of further
+reading moves that, and reporting a higher number because more scans have run would be inflation.
