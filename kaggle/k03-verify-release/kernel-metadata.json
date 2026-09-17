@@ -1,0 +1,21 @@
+{
+ "id": "garyzhang11111/snap-new-k03-verify-release",
+ "title": "snap-new-k03-verify-release",
+ "code_file": "k03-verify-release.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_tpu": false,
+ "enable_internet": true,
+ "dataset_sources": [
+  "garyzhang11111/snap-new-code",
+  "garyzhang11111/seed-noise-src"
+ ],
+ "competition_sources": [],
+ "kernel_sources": [
+  "garyzhang11111/snap-new-k01-requests",
+  "garyzhang11111/snap-new-k02-pilot"
+ ],
+ "model_sources": []
+}
