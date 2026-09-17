@@ -50,6 +50,11 @@
     "remaining_warnings": "16 underfull spacing diagnostics, visually inspected"
   },
   "official_style_unchanged": true,
+  "official_style_files_checked": [
+    "iclr2027_conference.sty",
+    "fancyhdr.sty",
+    "natbib.sty"
+  ],
   "bibliography": {
     "entries": 53,
     "unique_keys": 53,

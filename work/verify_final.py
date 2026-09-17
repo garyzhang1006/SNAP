@@ -33,7 +33,10 @@ text='\n'.join(p.get_text() for p in pdf)
 mainpages=int(re.search(r'\\newlabel\{maintext:end\}\{\{[^}]*\}\{(\d+)\}',(work/'main.aux').read_text())[1])
 report['pdf']={'pages':len(pdf),'main_text_pages':mainpages,'statements_begin':next(i+1 for i,p in enumerate(pdf) if 'AI USE STATEMENT' in p.get_text()),'empty_author_metadata':not pdf.metadata.get('author'),'personal_identifiers_found':bool(re.search(r'garyzhang|/Users/|gary@',text,re.I))}
 report['build']={'engine':'pdfLaTeX (TeX Live 2026)','exit_code':0,'overfull_boxes':log.count('Overfull'),'missing_characters':log.count('Missing character'),'font_substitution_warnings':log.count('LaTeX Font Warning'),'undefined_references_or_citations':bool(re.search(r'undefined|Rerun to get',log)),'underfull_boxes':log.count('Underfull'),'remaining_warnings':f'{log.count("Underfull")} underfull spacing diagnostics, visually inspected'}
-report['official_style_unchanged']=(src/'iclr2027_conference.sty').read_bytes()==(work/'template/iclr2027/iclr2027_conference.sty').read_bytes()
+# fancyhdr and natbib shape the layout too, so a single-file check could miss a gamed margin
+_tpl=[f for f in ('iclr2027_conference.sty','fancyhdr.sty','natbib.sty') if (src/f).exists()]
+report['official_style_unchanged']=all((src/f).read_bytes()==(work/'template/iclr2027'/f).read_bytes() for f in _tpl)
+report['official_style_files_checked']=_tpl
 bib=(src/'references.tex').read_text();bkeys=re.findall(r'\\bibitem\[.*?\]\{([^}]+)\}',bib)
 alltex='\n'.join((src/n).read_text() for n in ('main.tex','appendix_a.tex','appendices_bcd.tex'))
 cites=[k for group in re.findall(r'\\cite[tp](?:\[[^]]*\])?\{([^}]+)\}',alltex) for k in group.split(',')]
