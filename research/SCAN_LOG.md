@@ -1987,3 +1987,113 @@ which is the honest signal that the prose and the arithmetic have been checked a
 check them. The three things holding the score down are the missing holdout, the margin result's
 confounding with scoring format, and an accuracy interval that contains one on the full battery, and
 all three need runs rather than reading.
+
+## Scan 32, 2026-09-16, the last eight tables, and a scan that found nothing
+
+### Review of what scan 31 did
+
+Scan 31 reordered one bibliography entry so that its arXiv identifier sits where the other eleven
+preprint-only entries put theirs, and it backed out a figure change after three attempts. Rereading
+the entry in place, it now reads like its neighbours, and the rebuild confirmed the page count held.
+The reverted figure script reproduces the shipped artifact byte for byte, which I checked rather than
+assumed. Nothing about scan 31 needs undoing.
+
+### The thirty-six sub-scans
+
+Tables 7 and 8, the accuracy-point and null tables.
+
+1.  Review of scan 31, including the byte comparison of the reverted figure.
+2.  Effective count at $K=4$. $4/(1+3\times0.0181)$ is 3.794 against a printed 3.79.
+3.  Effective count at $K=7$. 6.314 against 6.31.
+4.  Effective count at $K=10$. 8.599 against 8.60.
+5.  The adjusted-to-independent ratio on all three rows, which must equal $\Lambda$ and does.
+6.  The independence column's scaling. Multiplying each row by $\sqrt K$ gives 1.508 three times, so
+    the three rows are the same battery evaluated at three counts, exactly as the caption says.
+7.  Flip probability at $K=4$. $\Phi(-1/(\sqrt2\times0.774))$ is 0.1804 against 0.181.
+8.  Flip probability at $K=7$. 0.1193 against 0.119.
+9.  Flip probability at $K=10$. 0.0846 against 0.085.
+10. The five calibration truths, each from $\sqrt{1+9\bar r_E}$. All five match to four decimals.
+11. The recovery biases against check G4. The largest is 0.0019, and G4 reports an offset of at most
+    0.002.
+12. The N1 dispersions of 0.046 and 0.048 against the two figures the calibration paragraph quotes.
+13. N3 against the 0.002 re-split standard deviation quoted in the related-work appendix.
+14. N4 against Appendix A's 1.0910 and 1.1045. Identical.
+15. The N5 excess share. $(1.1477-1)/0.244$ is 0.605, and the prose says about 61 percent.
+16. The N6 excess share. 0.0156 against the scorecard's 0.015.
+17. The undefined off-diagonal counts. One undefined margin trait gives $2\times9=18$ ordered pairs,
+    and two undefined accuracy traits give $90-56=34$. Both printed figures are exact.
+18. The diagonal fill. One undefined diagonal against a unit diagonal contributes exactly 1.0 to a
+    squared distance and two contribute 2.0, and removing them gives $\sqrt{5.59^2-1}=5.4998$ against
+    a printed 5.499.
+19. The scale factors between the two correlation matrices, 2.669 and 2.762 against 2.7 and 2.8.
+20. The P2R rescaling factors. 0.281/0.750 is 0.3747 and 0.273/0.754 is 0.3621, against printed
+    whole-population ratios of 0.375 and 0.362.
+
+Table 9, trait removal.
+
+21. The eleven rows' $\Lambda$ against $\sigma_{\rm agg}/\sigma_{\rm ind}$, every one consistent to the
+    printed precision.
+22. BoolQ's trace shares, recomputed from the two standard-deviation columns and the weight change
+    from a tenth to a ninth. They come to 0.679 and 0.8445 against printed 68 and 84 percent, and the
+    0.679 is the same number Table 7 reports independently.
+23. BoolQ's off-diagonal sums. The same reconstruction gives $-0.1496$ and $-0.0617$ of the respective
+    traces, against the stated about $-0.15$ and about $-0.06$.
+24. Which accuracy intervals exclude one. Exactly BoolQ and WinoGrande, which is what the prose claims.
+25. The recipe and size removal ranges against the by-size table. The band range of 1.101 to 1.514 on
+    margins and 0.987 to 1.219 on accuracy matches Table 10 exactly, and the largest single-recipe
+    change of 0.037 matches Appendix A.
+26. Table 11's orderings on both scales, and P2R at 0.0131 being 2.298 times P1's 0.0057.
+
+Table 12, the external panel.
+
+27. All four estimates from $1+(K-1)\bar r_E$ at $K=18$ and $K=8$, including the two negative
+    coefficients that put their estimates below one.
+28. The claim that adjustment raises three estimates and lowers one, checked row by row.
+
+Tables 13, 14 and 15.
+
+29. All twelve excess shares against the observed margin excess of 0.244.
+30. The gain scale. $\sqrt{3.67\times10^{-3}-1.91\times10^{-3}}$ is 0.04195, against a stated 0.042.
+31. The cross-table discrepancy claim. The 0.05 default cell sits 0.0009 from the N5 result, and half
+    the Monte Carlo standard error at 500 replicates with a dispersion of 0.050 is 0.00112, so "less
+    than half" is right and is right by a margin of two ten-thousandths.
+32. The subset count. $\binom{25}{17}$ is 1,081,575, which is the printed figure.
+33. The compute budget, which sums to the 10.0 GPU hours it claims.
+34. The memory arithmetic. 30,000 tokens times a 50,304-token vocabulary times four bytes is 6.04 GB,
+    against a stated approximately 6 GB.
+35. The identity-permutation probability. Three runs give six permutations per trait, so independent
+    identities across $K$ traits have probability $6^{-K}$, as written.
+36. Slop suite across all four source files. Zero on every marker.
+
+### The change
+
+None, and this time that is the whole finding rather than an apology for one.
+
+Thirty-four of these sub-scans recomputed a printed number from other printed numbers, and thirty-four
+of them agreed. Several agreed to more precision than the paper claims. The 0.0009 discrepancy between
+two simulation runs is correctly described as less than half a Monte Carlo standard error, and the
+margin there is two ten-thousandths, which means whoever wrote that sentence computed it rather than
+estimated it. BoolQ's share of the trace appears in three separate tables derived three separate ways
+and comes to 0.679 every time.
+
+The appendix has now been audited table by table across scans 28, 29, 30 and 32, and the only defect
+those four scans produced in twenty tables was a cross-reference hazard in the proxy section. That is
+the number worth recording. It is not evidence that the audit was shallow, because the same method
+found the abstract's wrong digit, the coverage caption, the proxy collision and a figure nobody could
+read. It is evidence that the arithmetic in this manuscript was done carefully the first time.
+
+### Honest ranking after scan 32
+
+6.4, acceptance near 0.58, unchanged, and this scan is the clearest evidence yet that the number is
+not going to move by reading. Five consecutive scans have produced three apparatus fixes and one
+nothing, against zero changes to any claim, any number, or any argument. The manuscript's arithmetic
+is sound, its prose has been through the slop suite on every pass, its page count and font embedding
+are verified remotely, and its bibliography is correct and consistently formatted.
+
+What holds it at 6.4 is unchanged and unchangeable from here. There is no held-out measurement, so the
+competence question stays open and the paper says so. The margin result cannot be separated from
+scoring format, because no benchmark in the battery appears in two formats, and the paper says that
+too. The accuracy interval contains one on the full battery, and the paper reports it rather than
+burying it. Those three are properties of the design and the data. Reading the paper again will not
+change them, and saying the score rose because I read it again would be exactly the inflation the
+instruction forbids.
