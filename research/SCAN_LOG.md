@@ -896,3 +896,47 @@ above it and a bias claim that its own table refutes. Reviewers who dig into app
 write the decisive reviews, and a wrong digit found by a reviewer costs far more than the 0.1 this fix
 returns. The seven presentational fixes do not move the rating on their own. Nothing about the design,
 the evidence, or the contribution changed in this scan, and the ceiling those impose is unchanged.
+
+## Humanizer and slop-prevention pass, run last as instructed
+
+All seven installed skills were applied to the finished manuscript after every scan was complete.
+These are paper-humanizer, ml-paper-voice, stop-slop, humanizer, content-humanizer, remove-ai-marks and
+impeccable. House overrides applied throughout, which are no prose colons, semicolons or dashes, no
+eight-word sentence floor, and the truthful AI disclosure retained.
+
+What the detectors found clean. Zero em dashes and zero en dashes across all four source files. Zero
+curly quotation marks. Zero non-ASCII codepoints of any kind, so no zero-width joiners, no soft hyphens,
+no homoglyphs and no narrow spaces, which is the whole of what a Unicode watermark scan looks for. Zero
+prose colons and zero prose semicolons. Zero rhetorical questions. Zero negative parallelisms, zero
+contrast crutches of the is-not-X-but-Y family, and zero hedge stacks. Zero instances of In conclusion,
+Overall or To sum up. No bulleted list anywhere in the main text and no summary section. The PDF carries
+an empty Author field, so anonymity holds at the metadata level as well as in the body.
+
+Banned vocabulary. Thirty-one hits resolve to three fixed technical terms on inspection, which are
+cluster-robust in the Cameron and Miller sense, statistical leverage in the cr3 correction, and the
+evaluation harness the releases share. None is the banned sense of the word. Adverb census over 1,312
+sentences returns only, approximately and exactly as the only items above twelve occurrences, and none of
+the intensifier family that marks generated prose.
+
+Rhythm. Sentence length averages 19.2 words in the main text and 23.0 in the appendices, with standard
+deviations of 9.9 and 12.0 and a range of 4 to 63 words. Runs of three consecutive sentences within three
+words of each other occur in 2.7 percent of positions, so the metronome tell is absent.
+
+Defect the pass found and fixed, one. Appendix D contained a single paragraph of 32,909 characters, which
+is roughly 5,300 words and eleven printed pages of text with no break in it, and two more of 4,491 and
+2,959 characters, and six others above 2,400. Eleven unbroken pages is worse for a reviewer than any
+stylistic tell, and no source-level scan catches it because the source is one line. It was split at 43
+topic seams across the nine paragraphs, with no word changed, taking the appendix paragraph count from
+132 to 177 and its longest paragraph from 195 sentences to 13. The document grew by one page, from 52 to
+53, and the main text stayed at nine.
+
+Second defect, a repeated syntactic template. The pseudo-cleft opener What X is Y appeared nine times,
+five of them as the near-identical What the X costs or buys is Y inside one appendix. A pseudo-cleft is
+ordinary English and human writers use it, but five copies of one frame in one section is a generated
+rhythm. Six were converted to plain subject-verb order and three kept.
+
+Honest ranking after the humanizer pass. 6.7 with acceptance near 0.65, unchanged by the prose work
+itself. The paragraph split is the one change here a reviewer would actually feel, and it improves how
+the appendix reads rather than what it says, so it does not move a rating that is set by the design and
+the evidence. The detectors finding nothing else is the expected result after twenty scans, not a
+surprise, and it is recorded here as a negative result rather than as a win.

@@ -33,7 +33,7 @@
     "uncontracted_negatives": 114
   },
   "pdf": {
-    "pages": 52,
+    "pages": 53,
     "main_text_pages": 9,
     "statements_begin": 10,
     "empty_author_metadata": true,
@@ -46,8 +46,8 @@
     "missing_characters": 0,
     "font_substitution_warnings": 0,
     "undefined_references_or_citations": false,
-    "underfull_boxes": 21,
-    "remaining_warnings": "21 underfull spacing diagnostics, visually inspected"
+    "underfull_boxes": 16,
+    "remaining_warnings": "16 underfull spacing diagnostics, visually inspected"
   },
   "official_style_unchanged": true,
   "official_style_files_checked": [
