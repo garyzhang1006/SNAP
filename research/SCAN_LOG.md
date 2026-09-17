@@ -2734,3 +2734,46 @@ profile. The pattern classes stay at zero. Nothing in the manuscript changed in 
 build from scan 44 stands.
 
 Ranking holds at 6.5.
+
+## Scan 46, the first look at the rendered pages
+
+Forty-five scans had verified this manuscript entirely through the build kernel's JSON. Page counts,
+overfull boxes, font embedding, sentence rhythm, citation resolution, every one of them arrived as a
+number rather than as a page. That is a real gap, because the classes of defect a reviewer notices
+first are the ones no counter emits. A table can sit inside the text block and still be unreadable, a
+float can land three pages from its reference, a heading can be orphaned above a page break, and an
+interval in a figure can run off its axis while the box it lives in stays perfectly justified. This
+scan opened the PDF and looked.
+
+The nine main-text pages carry the title, the anonymous byline, the ICLR line numbers, and equations
+one through nine, with Table 1 on page five, Figure 1 across the top of page seven, and Table 2 at the
+top of page eight. Every float sits on or adjacent to the page that references it. No heading is
+stranded. The main text closes flush at the foot of page nine and the AI use, ethics, and
+reproducibility statements open page ten ahead of the references, which confirms from the rendered
+object what the kernel reported as main_text_pages nine, and confirms as well how little slack is
+left, since the body ends within a line of the boundary.
+
+The appendix tables are set at small with column separation of four points, three points in the widest
+of them. Nothing anywhere uses resizebox, scalebox, scriptsize, or tiny, so no table has been squeezed
+to fit. Table 13 on page twenty-nine, the nine-column trait-removal table that is the tightest in the
+manuscript, renders with visible margin on both sides and every entry legible.
+
+Figure 3 on page twenty-eight is the one worth recording, because scan 30 rebuilt it to fix label
+sizes that had been shrunk to 5.2 points by the 0.786 scale factor, and that fix had only ever been
+verified as a measured font size in the figure kernel's report. On the page the eight two-line contrast
+labels read as pairs, the typeface matches the body serif, and the two panels span the text width
+without collision. The fix holds where it matters, which is the page rather than the JSON.
+
+One thing in that figure looked wrong and was not. Several intervals appear to touch the panel spines,
+which would contradict the caption's claim that no endpoint is missing or clipped. Checking the source
+rather than the image settles it. The margin panel's data spans -0.0599 to 0.02266 and the accuracy
+panel's spans -0.02076 to 0.0932, and matplotlib's default five percent autoscale margin places those
+extremes about 0.004 and 0.006 inside the limits, which is roughly two millimetres at page scale and
+reads as contact in a downscaled render. The caption is accurate. Recording the check because the
+alternative, a caption asserting completeness over a clipped interval, is exactly the kind of claim a
+reviewer quotes back.
+
+No defect found, so no edit and no rebuild. The build from scan 44 stands.
+
+Ranking holds at 6.5. A clean visual inspection removes a risk that was never measured, and it adds
+nothing a reviewer scores.
