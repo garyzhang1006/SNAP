@@ -500,3 +500,52 @@ and would have cost the paper a line in a careful reviewer's writing-quality rem
 to change an accept or reject. The passive-voice finding is the most interesting result of this scan and
 it produced the smallest edit, because the measurement was right and the obvious remedy was wrong. No
 substantive weakness moved.
+
+## Scan 11. Floats as standalone artifacts
+
+Review of scan 10. The renamed trait superscripts render correctly and the half index is now unambiguous
+throughout. The new $\sigma_{\mathrm{indep}}$ identity sits where the aggregate variance is derived. The
+five passive conversions were read back in full context and all five hold their meaning.
+
+Defect 1, and the largest thing any scan has found. Two of the three figures carried a complete hidden
+copy of a page from an earlier build of this paper. The submission PDF's text layer held the ICLR running
+header twice on the figure page, together with a stale caption reading `Figure 1: R-hat on all 125
+configurations, margin (left) and accuracy (centre), traits ordered by scoring`, which contradicts the
+caption the page actually displays. None of it was visible in the rendered page, and none of it appeared
+when the figure files were read on their own, because the content sits outside their media boxes and the
+text is encoded as subset glyph indices rather than as readable strings. It surfaced only from extracting
+the built PDF page by page and noticing that page seven reported two running headers where every other
+page of fifty-two reported one.
+
+How it got there. Both files carry a Ghostscript and then a MuPDF producer chain on top of a Matplotlib
+creator, and both were roughly six times the size of the one figure that still carries the plain
+Matplotlib producer. A crop step had reduced the media box without discarding the page behind it.
+
+The repair. Both figures were redistilled, which reproduces them pixel for pixel at 200 dpi and drops the
+hidden content. covariance fell from 218,893 to 80,152 bytes and calibration from 209,065 to 32,836. The
+built PDF fell from 928,328 to 628,537 bytes, so just under a third of the submission was hidden material
+from an older draft. The figure page now reports one header, the stale caption no longer appears anywhere
+in the text layer, and all 24 fonts remain embedded and subset with no Type 3.
+
+Why it mattered beyond tidiness. Any text extraction of the submission, which is what indexing and
+screening pipelines run, would have read a figure caption that the paper does not contain and that
+disagrees with the one it does. The anonymity check was rerun over the extracted text and still finds no
+personal identifier, so nothing was leaked, but the exposure was real until it was removed.
+
+Defect 2, a caption regression. The hidden old caption named which panel was which, and the current
+caption had dropped that, leaving a reader to infer panel identity from small in-plot titles. The caption
+now names margins on the left, accuracy in the centre, and the spectra on the right, and the main text
+still holds nine pages.
+
+Non-defects recorded rather than edited. Every table and figure is referenced somewhere in the document,
+and the four unreferenced equation labels from scan 10 are the only labels without a pointer. The build
+reports zero overfull boxes; the nineteen box warnings are all underfull hboxes inside ragged-right table
+cells. Both diverging heatmaps and the two-series spectrum panel survive colour-blind reading, since the
+series differ in marker shape as well as hue. Both cleaned figures were rendered and compared against
+their originals before the swap.
+
+Honest ranking after scan 11. 6.4 with acceptance near 0.62, unchanged. The hidden-content defect was
+serious as a submission-hygiene failure and would have embarrassed the authors if anyone extracted the
+text, but no reviewer reads a text layer and no score moves because a PDF got smaller. The caption fix is
+worth a fraction of a point at most. Recording this as a zero-improvement scan on the score while noting
+it is the most important thing found so far is the accurate reading.
