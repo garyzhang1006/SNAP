@@ -1,27 +1,36 @@
 {
   "main.tex": {
-    "sentence_count": 250,
-    "minimum_words": 8,
+    "sentence_count": 271,
+    "minimum_words": 5,
     "maximum_observed_not_a_limit": 65,
-    "below_minimum": 0,
+    "fragments_under_four_words": 0,
+    "share_under_eight_words": 0.085,
+    "share_under_twelve_words": 0.258,
+    "corpus_target_under_eight": "0.058 to 0.238",
     "prose_colons_semicolons_dashes": 0,
-    "uncontracted_negatives": 0
+    "uncontracted_negatives": 30
   },
   "appendix_a.tex": {
-    "sentence_count": 97,
-    "minimum_words": 9,
+    "sentence_count": 100,
+    "minimum_words": 6,
     "maximum_observed_not_a_limit": 62,
-    "below_minimum": 0,
+    "fragments_under_four_words": 0,
+    "share_under_eight_words": 0.01,
+    "share_under_twelve_words": 0.31,
+    "corpus_target_under_eight": "0.058 to 0.238",
     "prose_colons_semicolons_dashes": 0,
-    "uncontracted_negatives": 0
+    "uncontracted_negatives": 18
   },
   "appendices_bcd.tex": {
-    "sentence_count": 943,
-    "minimum_words": 8,
-    "maximum_observed_not_a_limit": 61,
-    "below_minimum": 0,
+    "sentence_count": 1008,
+    "minimum_words": 4,
+    "maximum_observed_not_a_limit": 62,
+    "fragments_under_four_words": 0,
+    "share_under_eight_words": 0.04,
+    "share_under_twelve_words": 0.165,
+    "corpus_target_under_eight": "0.058 to 0.238",
     "prose_colons_semicolons_dashes": 0,
-    "uncontracted_negatives": 7
+    "uncontracted_negatives": 114
   },
   "pdf": {
     "pages": 52,
@@ -37,8 +46,8 @@
     "missing_characters": 0,
     "font_substitution_warnings": 0,
     "undefined_references_or_citations": false,
-    "underfull_boxes": 17,
-    "remaining_warnings": "17 underfull spacing diagnostics, visually inspected"
+    "underfull_boxes": 19,
+    "remaining_warnings": "19 underfull spacing diagnostics, visually inspected"
   },
   "official_style_unchanged": true,
   "bibliography": {
