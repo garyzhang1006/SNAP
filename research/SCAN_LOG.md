@@ -2097,3 +2097,94 @@ too. The accuracy interval contains one on the full battery, and the paper repor
 burying it. Those three are properties of the design and the data. Reading the paper again will not
 change them, and saying the score rose because I read it again would be exactly the inflation the
 instruction forbids.
+
+## Scan 33, 2026-09-16, where the best result sits, and how much room is left
+
+### Review of what scan 32 did
+
+Scan 32 changed nothing and recomputed thirty-four printed numbers from other printed numbers. Its
+conclusion was that the arithmetic is sound, and rereading its own checks I still agree with them,
+including the two that matter most for trusting the rest, which are BoolQ's trace share landing on
+0.679 from three independent derivations and the subset count being exactly $\binom{25}{17}$.
+
+Scan 32 also closed the table audit. That left one thing this project had never examined directly,
+which is not whether the claims are true but where they sit.
+
+### The twenty sub-scans
+
+1.  Review of scan 32.
+2.  The abstract read one sentence at a time, each classified as setup, method, number, caveat, or
+    recommendation.
+3.  The caveat share. Seven of fourteen sentences are limitations or sensitivities.
+4.  The position of the strongest practical claim. The decision-rule result sat thirteenth of fourteen.
+5.  Its neighbour. It followed "The planned recipe holdout was never implemented, so all empirical
+    analyses are exploratory" immediately, which is the worst possible sentence to read it through.
+6.  Whether an earlier insertion breaks a referent. Placing it between the intervals and the coverage
+    sentence would have stranded "those intervals", so that placement was rejected before trying it.
+7.  The reorder, placed after the coverage pair, and a reread confirming the referent survives.
+8.  The introduction's six paragraphs, each classified by function.
+9.  The contributions paragraph, which lists four contributions and omits the decision-rule result.
+10. Where that result does appear. The abstract, one sentence deep in the recommendations section, and
+    the appendix. Nothing in the first page after the abstract.
+11. The results paragraph's opening, which does lead on the strong margin claim rather than hedging.
+12. The 0.113 and 0.111 collision between abstract and introduction. One is a false-positive rate on
+    margins and the other is power at the fitted accuracy cell. Both correct, distinguished by their
+    sentences, and left alone on the precedent set for the 1.66 collision in scan 23.
+13. A sentence drafted for the contributions paragraph and inserted.
+14. Build. Ten main-text pages.
+15. A search for a length-neutral cut. The SNAP etymology is duplicated between the introduction and
+    Appendix A, and trimming the introduction's copy frees 33 characters against a need of more than
+    250.
+16. Revert of the introduction sentence.
+17. Rebuild. Nine pages, three passes, no rerun requested after the third.
+18. The abstract's sentence order verified in the rebuilt source.
+19. Prose metrics against the corpus targets. 7.4 percent of sentences under eight words against a
+    corpus band of 5.8 to 23.8, and 16.5 percent opening on "The" against a corpus figure of 15.
+20. Slop suite across all four files after the last prose change. Zero on every marker.
+
+### The change
+
+The abstract's best sentence moved from thirteenth to eighth. Nothing was added, nothing was removed,
+and no caveat was softened or dropped. The sentence is the one that says an independence-assuming
+comparison rule declares a margin difference in 0.113 of simulated replicates when the true gap is
+zero, against a nominal 0.05, and that a measured scale correction returns that to 0.051.
+
+That sentence is the paper's answer to "so what". It converts an abstract inflation factor into a
+false-positive rate that anyone who has ever compared two models understands immediately, and it
+supplies the fix in the same breath. It was the second-to-last thing the abstract said, directly after
+the sentence conceding that every analysis is exploratory, which is the most damaging possible frame to
+read a result through. It now sits with the estimates and the coverage, and the exploratory concession
+still appears, in the same words, three sentences later.
+
+This is ordering rather than emphasis. The claim is unchanged, the caveats are all still there, and the
+abstract is the same length to the character.
+
+### What did not fit, and why that matters
+
+The introduction's contributions paragraph names four contributions and does not name this one. Adding
+it took the main text to ten pages, which is a desk rejection, so it came back out.
+
+The useful finding is the size of the gap. A 230-character addition was enough to break the page limit,
+which means the nine-page main text has less than one short sentence of slack. Any future change that
+adds a word has to remove one, and anyone working on this paper later should know that before they try.
+I looked for a redundancy to trade against and found only 33 characters of one. The main text is
+saturated.
+
+### The build
+
+Nine main-text pages, fifty-three total, three passes with no rerun after the third, zero overfull
+boxes, zero missing characters, twenty-four fonts all embedded and subset, no unresolved labels or
+citation keys, no uncited entries, style files byte-identical, empty author field.
+
+### Honest ranking after scan 33
+
+6.4, acceptance near 0.58. The reorder is the first change in six scans that touches how a reviewer
+experiences the paper rather than whether it is correct, and I still do not think it moves the number.
+Abstract ordering affects a reviewer's impression at the margin, and a marginal impression effect is
+not worth a tenth of a point when the three substantive weaknesses are all still there in the same
+words. If it helps at all it helps by not actively damaging the best result, which is a smaller claim
+than improving it.
+
+The three limits are unchanged. No held-out measurement, no way to separate the margin result from
+scoring format, and an accuracy interval that contains one on the full battery. All three are design
+facts, all three are disclosed in the paper, and none of them moves without new runs.
