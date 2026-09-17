@@ -1,0 +1,1474 @@
+ 
+ 
+ 
+ LipNeXt: Scaling up Lipschitz-based Certified Robustness to Billion-parameter Models 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report GitHub Issue 
+ × 
+ 
+
+ 
+ Title: 
+ 
+
+ Content selection saved. Describe the issue below: 
+
+ Description: 
+ 
+ 
+
+ 
+ Submit without GitHub 
+ Submit in GitHub 
+ 
+ 
+ 
+ 
+ arXiv is now an independent nonprofit! 
+ Learn more 
+ × 
+ 
+
+ 
+ 
+ 
+ Back to arXiv 
+ 
+ 
+ 
+ 
+ Why HTML? 
+ 
+ 
+ Report Issue 
+ 
+ 
+ 
+ Back to Abstract 
+ 
+ 
+ 
+ 
+ Download PDF 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Abstract 
+ 1 Introduction 
+ 
+ Contributions. 
+ 
+ 2 Preliminary and Related Work 
+ 
+ 2.1 Preliminaries 
+ 
+ Lipschitz-based Method for Certified Robustness 
+ Orthogonal Manifold Optimization 
+ 
+ 2.2 Related Work 
+ 
+ Re-parameterization for Lipschitz-based Certified Robustness 
+ Efficient Manifold Optimization for Orthogonality 
+ 
+ 
+ 3 Method 
+ 
+ 3.1 Constraint-Free Learning of Orthogonal Matrices on the Manifold 
+ 
+ Relation to skew re-parameterization 
+ 
+ 3.2 Spatial Shift Module: A Convolution-Free Design 
+ 
+ 1D formulation. 
+ Theoretical justification. 
+ Circular padding and positional encoding. 
+ 
+ 3.3 The LipNeXt Architecture 
+ 
+ 4 Experiments 
+ 
+ Main Results 
+ Performance with extra data 
+ Performance on ImageNet 
+ Training stability and efficiency. 
+ Scaling experiments 
+ Ablation Studies 
+ 
+ 5 Conclusion 
+ References 
+ A Additional Related Work 
+ B Additional Method Explanation 
+ 
+ B.1 Further discussion about -Abs activation 
+ B.2 PyTorch-like Code for the LipNeXt block 
+ B.3 Proof of Theorem  
+ 
+ C Additional Results 
+ 
+ 
+ 
+ 
+ 
+ License: CC BY 4.0
+ 
+ 
+arXiv:2601.18513v1 [cs.LG] 26 Jan 2026 
+ 
+ 
+ LipNeXt: Scaling up Lipschitz-based Certified Robustness to Billion-parameter Models 
+ 
+ 
+ Kai Hu
+ 
+    
+ Haoqi Hu
+ 
+    
+ Matt Fredrikson
+ 
+ Affiliation:  Carnegie Mellon University
+ 
+ Email:  kaihu@cs.cmu.edu 
+ 
+
+ Abstract 
+ 
+ Lipschitz-based certification offers efficient, deterministic robustness guarantees but has struggled to scale in model size, training efficiency, and ImageNet performance. We introduce LipNeXt , the first constraint-free and convolution-free 1-Lipschitz architecture for certified robustness. LipNeXt is built using two techniques: (1) a manifold optimization procedure that updates parameters directly on the orthogonal manifold and (2) a Spatial Shift Module to model spatial pattern without convolutions. The full network uses orthogonal projections, spatial shifts, a simple 1-Lipschitz -Abs nonlinearity, and spatial pooling to maintain tight Lipschitz control while enabling expressive feature mixing. Across CIFAR-10/100 and Tiny-ImageNet, LipNeXt achieves state-of-the-art clean and certified robust accuracy (CRA), and on ImageNet it scales to 1–2B large models, improving CRA over prior Lipschitz models (e.g., up to at ) while retaining efficient, stable low-precision training. These results demonstrate that Lipschitz-based certification can benefit from modern scaling trends without sacrificing determinism or efficiency. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 1 Introduction  
+
+ 
+ Adversarial robustness represents a fundamental challenge in machine learning  ( Szegedy et al., 2014 ) . Numerous defense mechanisms have been developed to enhance model robustness against adversarial attacks  ( Gong et al., 2021 ; Kundu et al., 2021 ; Poursaeed et al., 2021 ; Liu et al., 2021 ; Pang et al., 2021 ) . However, these approaches are predominantly empirical defenses that cannot provide formal guarantees of robust predictions. Consequently, models deemed robust under current evaluation protocols may remain vulnerable to more sophisticated attack strategies as they emerge. 
+ 
+ 
+ This limitation is particularly concerning for safety-critical applications such as autonomous driving  ( Huang et al., 2025 ) , medical image processing  ( Laousy et al., 2023 ) , and malware classification  ( Saha et al., 2024 ) , where failures can have severe consequences. To address this challenge, certified robustness has emerged as a promising research direction. Certifying the robustness of a test case requires a mathematical guarantee that the model’s outputs remain unchanged within a predefined -norm ball of radius around the input. The performance of these certification methods is typically measured by the certified robust accuracy (CRA), which quantifies the proportion of correctly predicted inputs that are also provably robust within a specified radius. 
+ 
+ 
+ Research on robustness certification largely follows two methodological strands.
+The first, randomized smoothing (RS)  ( Cohen et al., 2019b ; Yang et al., 2021 ; Jeong et al., 2021 ; Carlini et al., 2022 ) , provides probabilistic guarantees by averaging a classifier’s predictions under additive noise.
+The second exploits the Lipschitz properties of neural networks to yield deterministic (worst-case) certificates  ( Huang et al., 2021 ; Araujo et al., 2023 ; Hu et al., 2024 ) .
+In this work, we focus on advancing the latter direction; a detailed comparison between the two appears in Appendix  A . 
+ 
+ 
+ Despite their theoretical appeal, Lipschitz-based certification methods have struggled to scale in practice. A central critique is the weak performance on large-scale benchmarks: models often underfit even small-sized datasets such as CIFAR-100 and degrade markedly on ImageNet  ( Hu et al., 2023 ) . Most systems still rely on small , VGG-style  ( Simonyan and Zisserman, 2014 ) architectures with 32M parameters. Although recent work has explored deeper/larger architectures for certified robustness  ( Hu et al., 2023 ; Araujo et al., 2023 ) , the gains plateau quickly as model size increases. 
+ 
+ 
+ Examining existing work, we find that orthogonal matrices are fundamental to building 1-Lipschitz networks because they enable tight Lipschitz bounds. However, they are also a major bottleneck that prevents Lipschitz-based certification from scaling. Existing methods either explicitly re-parameterize orthogonal matrices or implicitly re-parameterize Lipschitz-bounded operations to learn near-orthogonal matrices; both introduce substantial computational overhead (see Section  2.1 ). To address this issue, we propose directly optimizing orthogonal matrices on the orthogonal manifold. Although orthogonal manifold optimization is a mature technique, to our knowledge it has not been exploited for certification. We further observe that in the large-model regime, where learning rates are small, the matrix exponential can be accurately and efficiently approximated. Combining these ideas, we reduce the additional per-update overhead to at most five matrix multiplications. 
+ 
+ 
+ A natural path to scalability is transformers  ( Vaswani et al., 2017 ) , which scale to billion-parameter models and exhibit emergent abilities across a wide range of tasks  ( Wei et al., 2022 ) . However, attention lacks straightforward Lipschitz control. Fortunately, ConvNeXt  ( Liu et al., 2022 ) and MetaFormer  ( Yu et al., 2022b ) suggest that Lipschitz-bounded architectures can benefit from transformer-era design choices. Motivated by the simple token-mixing mechanisms in these modern architectures  ( Yu et al., 2022b ) , we design a convolution-free shifting module paired with positional encoding that uses simple shift operations to model spatial relations as the building block of our model. Compared to prior work using heavy FFT-based convolution designs  ( Trockman and Kolter, 2021 ; Lai et al., 2025 ) or power-iteration-based Lipschitz regularization  ( Leino et al., 2021 ; Hu et al., 2023 ) , the shifting module adds minimal computational cost while preserving the capacity to model spatial patterns. 
+ 
+ 
+ Combining the aforementioned techniques, we propose LipNeXt , the first convolution-free and constraint-free architecture for certified robustness. Benefiting from this design, we scale to billion-parameter models and observe non-saturating gains with increasing model size. Our experiments show that LipNeXt outperforms state-of-the-art methods in both clean accuracy and certified robustness across CIFAR-10, CIFAR-100, Tiny-ImageNet, and ImageNet, highlighting the effectiveness of our approach for scalable, provably robust deep learning. 
+ 
+ 
+ Contributions. 
+
+ 
+ (i) A constraint-free manifold optimization scheme for learning orthogonal parameters at scale with efficient exponential approximations and stabilization; (ii) a theoretically motivated, convolution-free Spatial Shift Module that preserves Lipschitz control while enabling spatial mixing; and (iii) state-of-the-art CRA and clean accuracy on standard benchmarks, with successful scaling to billion-parameter models. 
+ 
+ 
+ 
+ 
+ 2 Preliminary and Related Work 
+
+ 
+ 2.1 Preliminaries 
+
+ 
+ Lipschitz-based Method for Certified Robustness 
+
+ 
+ Consider a neural network and its corresponding binary classifier . We say that classifier is -locally robust at point if for all perturbations satisfying , we have . Certified robustness represents a stronger condition where the robustness property cannot only be empirically verified but also mathematically guaranteed. In this work, we only focus on , i.e., certified robustness under norm. 
+ 
+ 
+ Given an upper bound on the Lipschitz constant of , we can certify that is locally robust at with a guaranteed robustness radius of . This certification follows from the Lipschitz property, which bounds the maximum change in within the -ball around . 
+ 
+ 
+ For multi-class classification with classes, we decompose the problem into binary classification tasks using a one-vs-rest approach. The certified robustness radius of the -class classifier is then defined as the minimum certified radius across all constituent binary classifiers, thereby ensuring robustness for the prediction. 
+ 
+ 
+ To compute Lipschitz bounds for deep networks, we leverage the compositional property that the Lipschitz constant of a composite function satisfies , where . Consequently, for a feed-forward neural network, an upper bound on the overall Lipschitz constant can be efficiently computed as the product of the Lipschitz constants of all constituent layers. However, this bound can be very loose, leading to an extremely small certified radius. Therefore, designing a network architecture for which a tight Lipschitz bound can be computed is crucial to achieving satisfactory certified performance. 
+ 
+ 
+ 
+ Orthogonal Manifold Optimization 
+
+ 
+ The orthogonal manifold is defined as the set of all orthogonal matrices: ,
+where denotes the identity matrix. Optimization problems on the orthogonal manifold can be formulated as: 
+ 
+ A standard Euclidean gradient descent update of the form with step size will generally cause to leave the manifold, since this update does not preserve orthogonality constraints. Manifold optimization first projects the Euclidean gradient onto the tangent space of the manifold, thereby removing the component of the gradient that is orthogonal to the manifold. The Riemannian gradient (projected gradient) is given by: 
+ 
+ where denotes the symmetric part of matrix . Once the Riemannian gradient is computed, Exponential Map is employed to update while preserving orthogonality: 
+ 
+ where , and denotes the matrix exponential. Orthogonality is preserved since is orthogonal for any matrix . Bécigneul and Ganea (2018) extended this optimization to adaptive optimizers like Adam, and algorithm  2 provides an example for Manifold Adam Optimizer. 
+ 
+ 
+ 
+ 
+ 2.2 Related Work 
+
+ 
+ Re-parameterization for Lipschitz-based Certified Robustness 
+
+ 
+ The Lipschitz upper bound discussed in Section  2.1 can be tight when all weights in the feed-forward network are orthogonal or near-orthogonal. Many methods have been proposed to parameterize weights as orthogonal matrices to enhance Lipschitz-based certification performance. Singla and Feizi (2021) employed the matrix exponential of a skew-symmetric matrix to construct orthogonal (1-Lipschitz) linear layers and extended this approach to convolutions via Taylor expansion. Trockman and Kolter (2021) introduced the Cayley transform, , which yields an orthogonal matrix when is skew-symmetric. To apply this method to convolutions, the weights are transformed into the frequency domain via FFT before applying the Cayley transform. Xu et al. (2022) proposed LOT-Orth, defined as . To mitigate the computational overhead introduced by the matrix square root in LOT-Orth, Hu et al. (2024) proposed Cholesky decomposition with . 
+ 
+ 
+ Alternative approaches focus on near-orthogonal architectures. Prach and Lampert (2022) introduced the AOL layer: . Meunier et al. (2022) proposed the 1-Lipschitz CPL layer defined as . Araujo et al. (2023) introduced the SLL layer given by . While the AOL, CPL, and SLL layers may not be orthogonal at initialization, experimental evidence shows that these layers converge to nearly orthogonality at the end of Lipschitz-based training. 
+ 
+ 
+ 
+ Efficient Manifold Optimization for Orthogonality 
+
+ 
+ While the matrix exponential operation ensures orthogonality in manifold optimization (Section  2.1 ), its computation is computationally prohibitive. Several methods have proposed efficient pseudo-geodesic retractions as alternatives to exponential mapping. Projection-based approaches by Absil and Malick (2012) ; Gawlik and Leok (2018) map gradients back to the orthogonal manifold but rely on computationally expensive SVD operations. Other methods utilize the closed-form Cayley transform ( Jiang and Dai, 2015 ; Zhu, 2017 ) , yet require costly matrix inversions. Wen and Yin (2013) reduced the computational cost of the Cayley transform by imposing the restrictive assumption that for matrix dimensions if . However, this algorithm becomes inefficient when , which represents the majority of cases in deep neural networks. Shustin and Avron (2024) employ randomized sketching methods to handle large update matrices efficiently. Ablin and Peyré (2022) proposed a landing algorithm that avoids costly matrix exponential retractions by using an efficient potential energy-based update scheme that progressively pulls iterations onto the manifold. 
+ 
+ 
+ 
+ 
+ 
+ 3 Method 
+
+ 
+ Our proposed method, LipNeXt, is built upon two core technical innovations designed for scalable certified robustness: a constraint-free optimization technique for learning orthogonal matrices and a novel convolution-free spatial mixing operator. In this section, we first detail our manifold optimization approach, which enables efficient and stable training of orthogonal parameters directly on the Stiefel manifold. We then introduce the Spatial Shift Module , providing theoretical justification for its design as the unique norm-preserving operator within the family of depth-wise convolutions. Finally, we describe the overall LipNeXt architecture, which integrates these components into a scalable and effective model. 
+ 
+ 
+ 3.1 Constraint-Free Learning of Orthogonal Matrices on the Manifold 
+
+ 
+ As discussed in Section  2.2 , prior works use re-parameterization to learn orthogonal matrices explicitly or implicitly. We name these as constrained approaches, as the optimization variables do not reside directly on the orthogonal manifold . In contrast, we adopt a constraint-free manifold optimization perspective, where parameters are updated directly on the manifold, inherently preserving orthogonality. Section  2.1 introduces the details of orthogonal manifold optimization. 
+ 
+ 
+ A significant bottleneck in manifold optimization is the computational cost of the matrix exponential, in Equation  3 . Section  2.2 discussed solutions from prior work to address this issue. 
+ 
+ 
+ However, we observe that there exists a very simple solution in the context of training neural networks. As the model size increases, the optimal learning rate for optimizers like Adam needs to decrease, (e.g., ). Thus the exponential component in Equation  3 often has a smaller Frobenius norm (because multiplied by the learning rate ). We propose approximating the exponential with a norm-adaptive Taylor series truncation. For a given skew-symmetric update matrix , we define: 
+ 
+ Here the hyper-parameters 0.05, 0.25 and 1 are chosen empirically to balance accuracy and stability.
+One issue of is the truncation introduces small errors that violate exact orthogonality, which can accumulate and destabilize training over time. To address this issue, we introduce two stabilization techniques and mark them in Algorithm  1 . 
+ 
+ 
+ First, to control the accumulation of numerical errors from the truncated series, we perform a periodic polar retraction . At the end of each epoch, we project the matrix back to the manifold. This is achieved by computing the Singular Value Decomposition and resetting , which finds the closest orthogonal matrix to in the Frobenius norm. Although SVD is also expensive, we only need to perform it once per epoch. This step is detailed in lines 20–22 (red text) of Algorithm  1 . 
+ 
+ 
+ Second, we adapt the Lookahead optimizer wrapper  ( Zhang et al., 2019 ) to the manifold setting. In a nutshell, Lookahead optimizer wrapper updates the optimized parameters with an interpolation between the correct weight and the weight steps earlier every steps: 
+ 
+ 
+ 
+ However direct interpolation of orthogonal matrices breaks orthogonality. Applying the polar retraction after interpolation is also expensive if applied every steps. 
+ 
+ 
+ We instead interpolate the skew-symmetric updates in the tangent space.
+Suppose the learning rate is small, and the exponential component of update ( ) at every step is small: 
+ 
+ Thus we can approximate as . To understand this, starting at , we update the parameters steps and collect the update trajectories , then we go back to , and update using the half of all trajectories. Lines 12 28 (blue text) of Algorithm  1 reflect this method. 
+ 
+ 
+ 
+ Relation to skew re-parameterization 
+
+ 
+ Skew re-parameterization constructs orthogonal matrices via the matrix exponential of a skew-symmetric argument, i.e., with . Building on this idea, Singla and Feizi (2021) applies a truncated Taylor expansion of the matrix exponential to implement orthogonal convolutions. In contrast, our manifold optimization exploits the regime of small per-step updates, allowing the exponential map to be accurately approximated with lightweight computations. As a result, we retain orthogonality with significantly lower cost. By comparison, skew re-parameterization cannot leverage small-update structure in the same way, and SOC typically requires a larger truncation order to reliably preserve orthogonality, increasing computational overhead and potential numerical error. 
+ 
+ 
+ 
+ 
+ 3.2 Spatial Shift Module: A Convolution-Free Design 
+
+ 
+ Depthwise separable convolutions have demonstrated that effective spatial pattern learning requires neither extensive parameterization nor computational overhead  ( Howard et al., 2017 ; Tan and Le, 2019 ; Liu et al., 2022 ) . MetaFormer  ( Yu et al., 2022b ) further showed that parameter-free operations can replace depthwise convolutions while maintaining performance. Building on this trajectory toward parameter efficiency, we introduce a convolution-free Spatial Shift Module tailored for certified robustness. 
+ 
+ 
+ 1D formulation. 
+
+ 
+ For input sequence of length with feature dimension , we partition each token’s features into three parts: , , and . The spatial shift operation applies circular shifts to the first two partitions: 
+ 
+ 
+ 
+ 
+ 
+ This shifts the first partition right by one position and the second partition left by one position, mixing adjacent token information without parameters. For 2D data, we extend to five partitions enabling shifts along horizontal and vertical axes. Empirically, shift ratios yield optimal results. 
+ 
+ 
+ 
+ Theoretical justification. 
+
+ 
+ Our design is motivated by norm-preservation requirements in certified robustness. The following theorem establishes fundamental constraints on Lipschitz-preserving convolutions: 
+ 
+ 
+ Theorem 1 
+ 
+ Let be a single-channel tensor and be spatial convolution with kernel , unit stride, and circular padding (crucially relies on circular padding and does not hold under zero-padding). The operator is norm-preserving (tight 1-Lipschitz isometric): 
+ 
+ if and only if kernel contains exactly one non-zero element with value . 
+ 
+ 
+ 
+ Theorem  1 reveals that norm-preserving depthwise convolutions reduce to spatial shifts. Our module directly implements this principle. Proof of Theorem  1 is in Appendix  B.3 . 
+ 
+ 
+ 
+ Circular padding and positional encoding. 
+
+ 
+ The strict norm preservation guaranteed by Theorem  1 necessitates the use of circular padding. Nevertheless, in related applications such as FFT-based convolution, zero-padding is a common alternative  ( Xu et al., 2022 ; Lai et al., 2025 ) . The rationale for this deviation is to avoid the artificial mixing of boundary features (e.g., with ) that can occur with circular padding. 
+ 
+ 
+ 
+ 
+ 
+ We also observe outperforms in our convolutional-free architecture. However, we would explain this with another hypothesis that zero-padding introduces position information to the model  ( Islam et al., 2024 ) . Under this hypothesis, we can address the issue by add explicit positional encoding to the input and keep the circular padding. Our experiments in Section  4 verifies that this hypothesis is correct: by using circular padding and explicit positional embedding, the model achieving superior performance because of norm preservation guarantees. 
+ 
+ 
+ 
+ 
+ 3.3 The LipNeXt Architecture 
+
+ 
+ We now define the LipNeXt architecture, which integrates our manifold optimizer and Spatial Shift Module. The core of the architecture is the LipNeXt block. 
+ 
+ 
+ Let be the input tensor. First, we add a learnable positional embedding , which is broadcast across the channel dimension: . Next, we apply the core mixing operation. We use an orthogonal matrix to project the channel-wise features, apply the 2D Spatial Shift Module , and then project back using : 
+ 
+ The projections and ensure that the shift operation is not always applied to the same fixed subset of channels, enabling comprehensive feature mixing across all channels over successive blocks. Without , this operation reduces to an identity mapping . To learn more complex transformations, we apply another orthogonal matrix and an activation : 
+ 
+ For the activation, we propose -Abs , a flexible and GPU-friendly 1-Lipschitz function. For an input vector , it is defined channel-wise as: 
+ 
+ -Abs is a simple yet powerful non-linearity. We can show that the commonly used MinMax activation can be expressed by -Abs if : 
+ 
+ The hyperparameter controls the degree of non-linearity. We defer further discussion to the Appendix  B.1 . A PyTorch-like code of the LipNeXt block is given at Appendix  B.2 . 
+ 
+ 
+ The overall LipNeXt architecture adapts the macro-structure of LiResNet  ( Hu et al., 2023 ) . We replace the original LiResNet blocks with our LipNeXt blocks and substitute the Neck module with a simple pooling layer, as our manifold optimizer is designed for square matrices. Following the philosophy of Vision Transformers  ( Dosovitskiy et al., 2020 ) , we rely on the scalability of the backbone to learn effective features. To ensure the entire network is 1-Lipschitz, we use an L2 Spatial Pool , which computes the L2 norm over the spatial dimensions for each channel. For an input , the output is a vector in where the -th component is: 
+ 
+ This operation is 1-Lipschitz and serves as the final global pooling before classification. 
+ 
+ 
+ 
+ 
+ 4 Experiments  
+
+ 
+ 
+ In this section, we present the empirical evaluation of our
+approach. We first compare our method with the SOTA certified robustness methods on the widely used CIFAR10, CIFAFR100 and Tiny-ImageNet benchmark. Next we conduct scaling experiments to show the scalability of our model in terms of network depth, network with and dataset size. We use the EMMA loss  ( Hu et al., 2023 ) for our training and follow the same training receipts in LiResNet++  ( Hu et al., 2024 ) . See Code for implementation details. By default, we do not use diffusion-generated synthetic data. 
+ 
+ 
+ Main Results 
+
+ 
+ We compare LipNeXt against SOTA baselines. Table  1 reports clean accuracy, certified robust accuracy (CRA), and parameter counts. For LiResNet  ( Hu et al., 2023 ) , we follow the setting without diffusion-generated synthetic data, using the numbers reported by Lai et al. (2025) . Results that leverage diffusion-generated data are presented separately in the next table. LipNeXt achieves the strongest performance on nearly all metrics; the only exception is CRA at on CIFAR-10, where AOL  ( Prach and Lampert, 2022 ) is higher. However, AOL attains this point by incurring a substantial drop in clean accuracy and in CRA at the other radii. Even under the similar parameter budgets, our smaller configuration L32W1024 outperforms prior work by clear margins. 
+ 
+ 
+ 
+ Performance with extra data 
+
+ 
+ As we further scale up LipNeXt, we continue to observe improvement in clean accuracy, but a decrease in CRA. This is a known issue called robust overfitting  ( Rice et al., 2020 ; Yu et al., 2022a ) due to the small dataset size. Following prior work  ( Hu et al., 2024 ; Lai et al., 2025 ) , we add diffusion-generated synthetic data to the training set to solve this issue, and use the generated data provided by   Hu et al. (2024) . Table  2 shows LipNeXt can effectively leverages these
+synthetic datasets to enhance performance. 
+ 
+ 
+ 
+ 
+ Performance on ImageNet 
+
+ 
+ The main criticism of Lipschitz-based certification is the poor performance on large-scale datasets like ImageNet. We show that LipNeXt is feasible to scale up and achieve non-vanishing performance as model size increases. We consider two certification radius , widely used for Lipschitz based method and , widely used for randomized smoothing based method. Since the difference between the two radii is large, we train two models with different hyper-parameters. Specifically, the maximum training radius is set as 1.5 times of the test radius. Table  3 shows the comparison with prior work. By scaling to billon-level large models, LipNeXt outperforms prior work by 8% for and 3% for . 
+ 
+ 
+ 
+ 
+ Training stability and efficiency. 
+
+ 
+ The wall-clock training time in Table  3 is measured using a single 8 H100 machine. The L32W5792 configuration is trained with two such machines, and we normalize the reported speed to an equivalent single-node throughput. LipNeXt adopts a constraint-free optimization whose forward and backward passes involve only orthogonal matrix multiplications and spatial shift operations, and we train it using bfloat16 .
+By contrast, LiResNet employs power iteration to estimate per-block Lipschitz constants and regularizes the backbone Lipschitz (the product across blocks) in the loss.
+On ImageNet we observe numerical instability when training LiResNet with bfloat16 (numeric overflow occurs occasionally), so we can only use float32 for LiResNet instead.
+BRONet builds 1-Lipschitz convolutional networks via FFT-based frequency convolutions, which require complex arithmetic in both forward and backward passes.
+Because mainstream training frameworks currently support only complex32 , this effectively incurs float64 -like memory and compute overheads and prevents BRONet from fully leveraging low-precision accelerators.
+As a result, LipNeXt can continuously benefit from hardware advances due to its more stable architecture and optimization.
+Despite scaling to substantially larger models than LiResNet and BRONet, LipNeXt achieves training throughput on par with prior work, enabling further scaling. We leave training LipNeXt on large-scale image-text pair datasets as a future work. 
+ 
+ 
+ 
+ Scaling experiments 
+
+ 
+ We demonstrate clear scaling trends for LipNeXt across both backbone depth and width dimensions. Due to computational constraints, we conduct experiments on a randomly sampled subset of 400 ImageNet classes, reporting clean accuracy and CRA at in Table  4 . We systematically evaluate three scaling scenarios: (a) fixing backbone depth at 32 layers while varying width, (b) fixing backbone width at while varying depth, and (c) constraining the total parameter count to 1B while exploring different depth-width configurations. Our results reveal that LipNeXt exhibits favorable scaling properties with respect to both architectural dimensions, with performance improvements observed when increasing either depth or width. Notably, under fixed parameter budgets, a depth of 32 layers yields optimal performance. 
+ 
+ 
+ 
+ Ablation Studies 
+
+ 
+ Due to space constraints, extended ablations are provided in Appendix  C .
+Table  5 evaluates the two stabilization techniques for FastExp ;
+Table  6 isolates the contribution of the spatial shift module;
+Table  7 compares padding and positional embedding choices;
+and Table  8 ablates activation functions. 
+ 
+ 
+ 
+ 
+ 
+ 5 Conclusion 
+
+ 
+ We presented LipNeXt , a scalable 1-Lipschitz architecture that is both constraint-free and convolution-free. On the optimization side, we update orthogonal parameters directly on the manifold using a stabilized scheme, eliminating power-iteration penalties and avoiding the numerical fragility that inhibits low-precision training in prior work. On the architectural side, we replace depthwise convolutions with a theoretically grounded Spatial Shift Module. Together, these choices enable LipNeXt to scale cleanly in depth and width and to realize consistent gains in both clean accuracy and CRA. Empirically, LipNeXt establishes new state of the art across CIFAR-10/100, Tiny-ImageNet, and ImageNet with billion-parameter models, while maintaining competitive throughput and stable bfloat16 training. These results indicate that deterministic, Lipschitz-based certification can track modern scaling trends and further scale up. 
+ 
+ 
+ 
+ References 
+
+ 
+ Ablin and Peyré (2022) 
+ P. Ablin and G. Peyré 
+ 
+ Fast and accurate optimization on the orthogonal manifold without retraction .
+ 
+ In International Conference on Artificial Intelligence and Statistics ,
+ 
+ pp. 5636–5657 .
+ 
+ Cited by: §2.2 .
+ 
+ Absil and Malick (2012) 
+ P. Absil and J. Malick 
+ 
+ Projection-like retractions on matrix manifolds .
+ 
+ SIAM Journal on Optimization 22 ( 1 ), pp. 135–158 .
+ 
+ Cited by: §2.2 .
+ 
+ Araujo et al. (2023) 
+ A. Araujo, A. J. Havens, B. Delattre, A. Allauzen, and B. Hu 
+ 
+ A unified algebraic perspective on lipschitz neural networks .
+ 
+ In The Eleventh International Conference on Learning Representations ,
+ 
+ External Links: Link 
+ 
+ Cited by: §1 ,
+ §1 ,
+ §2.2 ,
+ Table 1 ,
+ Table 1 ,
+ Table 1 .
+ 
+ Bécigneul and Ganea (2018) 
+ G. Bécigneul and O. Ganea 
+ 
+ Riemannian adaptive optimization methods .
+ 
+ arXiv preprint arXiv:1810.00760 .
+ 
+ Cited by: §2.1 .
+ 
+ Carlini et al. (2022) 
+ N. Carlini, F. Tramer, J. Z. Kolter, et al. 
+ 
+ (Certified!!) adversarial robustness for free! .
+ 
+ arXiv preprint arXiv:2206.10550 .
+ 
+ Cited by: Appendix A ,
+ §1 .
+ 
+ Cohen et al. (2019a) 
+ J. Cohen, E. Rosenfeld, and Z. Kolter 
+ 
+ Certified adversarial robustness via randomized smoothing .
+ 
+ In International Conference on Machine Learning (ICML) ,
+ 
+ Cited by: Appendix A .
+ 
+ Cohen et al. (2019b) 
+ J. Cohen, E. Rosenfeld, and Z. Kolter 
+ 
+ Certified adversarial robustness via randomized smoothing .
+ 
+ In international conference on machine learning ,
+ 
+ pp. 1310–1320 .
+ 
+ Cited by: §1 .
+ 
+ Dosovitskiy et al. (2020) 
+ A. Dosovitskiy, L. Beyer, A. Kolesnikov, D. Weissenborn, X. Zhai, T. Unterthiner, M. Dehghani, M. Minderer, G. Heigold, S. Gelly, et al. 
+ 
+ An image is worth 16x16 words: transformers for image recognition at scale .
+ 
+ ICLR 2021 .
+ 
+ Cited by: §3.3 .
+ 
+ Gawlik and Leok (2018) 
+ E. S. Gawlik and M. Leok 
+ 
+ High-order retractions on matrix manifolds using projected polynomials .
+ 
+ SIAM Journal on Matrix Analysis and Applications 39 ( 2 ), pp. 801–828 .
+ 
+ Cited by: §2.2 .
+ 
+ Gong et al. (2021) 
+ C. Gong, T. Ren, M. Ye, and Q. Liu 
+ 
+ Maxup: lightweight adversarial training with data augmentation improves neural network training .
+ 
+ In Proceedings of the IEEE/CVF Conference on computer vision and pattern recognition ,
+ 
+ pp. 2474–2483 .
+ 
+ Cited by: §1 .
+ 
+ Howard et al. (2017) 
+ A. G. Howard, M. Zhu, B. Chen, D. Kalenichenko, W. Wang, T. Weyand, M. Andreetto, and H. Adam 
+ 
+ Mobilenets: efficient convolutional neural networks for mobile vision applications .
+ 
+ arXiv preprint arXiv:1704.04861 .
+ 
+ Cited by: §3.2 .
+ 
+ Hu et al. (2024) 
+ K. Hu, K. Leino, Z. Wang, and M. Fredrikson 
+ 
+ A recipe for improved certifiable robustness .
+ 
+ In The Twelfth International Conference on Learning Representations ,
+ 
+ Cited by: §1 ,
+ §2.2 ,
+ §4 ,
+ Table 1 ,
+ Table 1 ,
+ Table 1 ,
+ §4 .
+ 
+ Hu et al. (2023) 
+ K. Hu, A. Zou, Z. Wang, K. Leino, and M. Fredrikson 
+ 
+ Scaling in depth: unlocking robustness certification on imagenet .
+ 
+ arXiv preprint arXiv:2301.12549 .
+ 
+ Cited by: §1 ,
+ §1 ,
+ §3.3 ,
+ §4 ,
+ §4 .
+ 
+ Huang et al. (2021) 
+ Y. Huang, H. Zhang, Y. Shi, J. Z. Kolter, and A. Anandkumar 
+ 
+ Training certifiably robust neural networks with efficient local lipschitz bounds .
+ 
+ In NIPS ,
+ 
+ Cited by: §1 .
+ 
+ Huang et al. (2025) 
+ Z. Huang, W. Chu, L. Li, C. Xu, and B. Li 
+ 
+ COMMIT: certifying robustness of multi-sensor fusion systems against semantic attacks .
+ 
+ In Proceedings of the AAAI Conference on Artificial Intelligence ,
+ 
+ Vol. 39 , pp. 17528–17536 .
+ 
+ Cited by: §1 .
+ 
+ Islam et al. (2024) 
+ M. A. Islam, M. Kowal, S. Jia, K. G. Derpanis, and N. D. Bruce 
+ 
+ Position, padding and predictions: a deeper look at position information in cnns .
+ 
+ International Journal of Computer Vision 132 ( 9 ), pp. 3889–3910 .
+ 
+ Cited by: §3.2 .
+ 
+ Jeong et al. (2021) 
+ J. Jeong, S. Park, M. Kim, H. Lee, D. Kim, and J. Shin 
+ 
+ Smoothmix: training confidence-calibrated smoothed classifiers for certified robustness .
+ 
+ Advances in Neural Information Processing Systems 34 , pp. 30153–30168 .
+ 
+ Cited by: Appendix A ,
+ §1 .
+ 
+ Jiang and Dai (2015) 
+ B. Jiang and Y. Dai 
+ 
+ A framework of constraint preserving update schemes for optimization on stiefel manifold .
+ 
+ Mathematical Programming 153 ( 2 ), pp. 535–575 .
+ 
+ Cited by: §2.2 .
+ 
+ Kundu et al. (2021) 
+ S. Kundu, M. Pedram, and P. A. Beerel 
+ 
+ Hire-snn: harnessing the inherent robustness of energy-efficient deep spiking neural networks by training with crafted input noise .
+ 
+ In Proceedings of the IEEE/CVF international conference on computer vision ,
+ 
+ pp. 5209–5218 .
+ 
+ Cited by: §1 .
+ 
+ Lai et al. (2025) 
+ B. Lai, P. Huang, B. Kung, and S. Chen 
+ 
+ Enhancing certified robustness via block reflector orthogonal layers and logit annealing loss .
+ 
+ In International Conference on Machine Learning (ICML) ,
+ 
+ Note: Spotlight 
+ 
+ Cited by: §1 ,
+ §3.2 ,
+ §4 ,
+ §4 ,
+ Table 1 ,
+ Table 1 ,
+ Table 1 ,
+ Table 2 .
+ 
+ Laousy et al. (2023) 
+ O. Laousy, A. Araujo, G. Chassagnon, N. Paragios, M. Revel, and M. Vakalopoulou 
+ 
+ Certification of deep learning models for medical image segmentation .
+ 
+ In International Conference on Medical Image Computing and Computer-Assisted Intervention ,
+ 
+ pp. 611–621 .
+ 
+ Cited by: §1 .
+ 
+ Leino et al. (2021) 
+ K. Leino, Z. Wang, and M. Fredrikson 
+ 
+ Globally-robust neural networks .
+ 
+ In International Conference on Machine Learning ,
+ 
+ pp. 6212–6222 .
+ 
+ Cited by: §1 .
+ 
+ Liu et al. (2021) 
+ A. Liu, X. Liu, H. Yu, C. Zhang, Q. Liu, and D. Tao 
+ 
+ Training robust deep neural networks via adversarial noise propagation .
+ 
+ IEEE Transactions on Image Processing 30 , pp. 5769–5781 .
+ 
+ Cited by: §1 .
+ 
+ Liu et al. (2022) 
+ Z. Liu, H. Mao, C. Wu, C. Feichtenhofer, T. Darrell, and S. Xie 
+ 
+ A convnet for the 2020s .
+ 
+ In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition ,
+ 
+ pp. 11976–11986 .
+ 
+ Cited by: §1 ,
+ §3.2 .
+ 
+ Meunier et al. (2022) 
+ L. Meunier, B. J. Delattre, A. Araujo, and A. Allauzen 
+ 
+ A dynamical system perspective for lipschitz neural networks .
+ 
+ In International Conference on Machine Learning ,
+ 
+ pp. 15484–15500 .
+ 
+ Cited by: §2.2 ,
+ Table 1 ,
+ Table 1 .
+ 
+ Pang et al. (2021) 
+ T. Pang, X. Yang, Y. Dong, H. Su, and J. Zhu 
+ 
+ Bag of tricks for adversarial training .
+ 
+ In International Conference on Learning Representations ,
+ 
+ Cited by: §1 .
+ 
+ Poursaeed et al. (2021) 
+ O. Poursaeed, T. Jiang, H. Yang, S. Belongie, and S. Lim 
+ 
+ Robustness and generalization via generative adversarial training .
+ 
+ In Proceedings of the IEEE/CVF International Conference on Computer Vision ,
+ 
+ pp. 15711–15720 .
+ 
+ Cited by: §1 .
+ 
+ Prach and Lampert (2022) 
+ B. Prach and C. H. Lampert 
+ 
+ Almost-orthogonal layers for efficient general-purpose lipschitz networks .
+ 
+ In European Conference on Computer Vision ,
+ 
+ pp. 350–365 .
+ 
+ Cited by: §2.2 ,
+ §4 ,
+ Table 1 ,
+ Table 1 .
+ 
+ Rice et al. (2020) 
+ L. Rice, E. Wong, and Z. Kolter 
+ 
+ Overfitting in adversarially robust deep learning .
+ 
+ In International conference on machine learning ,
+ 
+ pp. 8093–8104 .
+ 
+ Cited by: §4 .
+ 
+ Saha et al. (2024) 
+ S. Saha, W. Wang, Y. Kaya, S. Feizi, and T. Dumitras 
+ 
+ DRSM: de-randomized smoothing on malware classifier providing certified robustness .
+ 
+ In The Twelfth International Conference on Learning Representations ,
+ 
+ External Links: Link 
+ 
+ Cited by: §1 .
+ 
+ Salman et al. (2019) 
+ H. Salman, J. Li, I. Razenshteyn, P. Zhang, H. Zhang, S. Bubeck, and G. Yang 
+ 
+ Provably robust deep learning via adversarially trained smoothed classifiers .
+ 
+ Advances in Neural Information Processing Systems 32 .
+ 
+ Cited by: Appendix A .
+ 
+ Salman et al. (2020) 
+ H. Salman, M. Sun, G. Yang, A. Kapoor, and J. Z. Kolter 
+ 
+ Denoised smoothing: a provable defense for pretrained classifiers .
+ 
+ Advances in Neural Information Processing Systems 33 , pp. 21945–21957 .
+ 
+ Cited by: Appendix A .
+ 
+ Shustin and Avron (2024) 
+ B. Shustin and H. Avron 
+ 
+ Faster randomized methods for orthogonality constrained problems .
+ 
+ Journal of Machine Learning Research 25 ( 257 ), pp. 1–59 .
+ 
+ Cited by: §2.2 .
+ 
+ Simonyan and Zisserman (2014) 
+ K. Simonyan and A. Zisserman 
+ 
+ Very deep convolutional networks for large-scale image recognition .
+ 
+ arXiv preprint arXiv:1409.1556 .
+ 
+ Cited by: §1 .
+ 
+ Singla and Feizi (2021) 
+ S. Singla and S. Feizi 
+ 
+ Skew orthogonal convolutions .
+ 
+ In Proceedings of the 38th International Conference on Machine Learning , M. Meila and T. Zhang (Eds.) ,
+ 
+ Proceedings of Machine Learning Research , Vol. 139 , pp. 9756–9766 .
+ 
+ Cited by: §2.2 ,
+ §3.1 ,
+ Table 1 ,
+ Table 1 .
+ 
+ Szegedy et al. (2014) 
+ C. Szegedy, W. Zaremba, I. Sutskever, J. Bruna, D. Erhan, I. J. Goodfellow, and R. Fergus 
+ 
+ Intriguing properties of neural networks .
+ 
+ In International Conference on Learning Representations (ICLR) ,
+ 
+ Cited by: §1 .
+ 
+ Tan and Le (2019) 
+ M. Tan and Q. Le 
+ 
+ Efficientnet: rethinking model scaling for convolutional neural networks .
+ 
+ In International conference on machine learning ,
+ 
+ pp. 6105–6114 .
+ 
+ Cited by: §3.2 .
+ 
+ Trockman and Kolter (2021) 
+ A. Trockman and J. Z. Kolter 
+ 
+ Orthogonalizing convolutional layers with the cayley transform .
+ 
+ In International Conference on Learning Representations (ICLR) ,
+ 
+ Cited by: §1 ,
+ §2.2 ,
+ Table 1 ,
+ Table 1 .
+ 
+ Vaswani et al. (2017) 
+ A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A. N. Gomez, Ł. Kaiser, and I. Polosukhin 
+ 
+ Attention is all you need .
+ 
+ Advances in neural information processing systems 30 .
+ 
+ Cited by: §1 .
+ 
+ Wang and Manchester (2023) 
+ R. Wang and I. Manchester 
+ 
+ Direct parameterization of lipschitz-bounded deep networks .
+ 
+ In International Conference on Machine Learning ,
+ 
+ pp. 36093–36110 .
+ 
+ Cited by: Table 1 ,
+ Table 1 .
+ 
+ Wei et al. (2022) 
+ J. Wei, Y. Tay, R. Bommasani, C. Raffel, B. Zoph, S. Borgeaud, D. Yogatama, M. Bosma, D. Zhou, D. Metzler, et al. 
+ 
+ Emergent abilities of large language models .
+ 
+ arXiv preprint arXiv:2206.07682 .
+ 
+ Cited by: §1 .
+ 
+ Wen and Yin (2013) 
+ Z. Wen and W. Yin 
+ 
+ A feasible method for optimization with orthogonality constraints .
+ 
+ Mathematical Programming 142 ( 1 ), pp. 397–434 .
+ 
+ Cited by: §2.2 .
+ 
+ Xiao et al. (2022) 
+ C. Xiao, Z. Chen, K. Jin, J. Wang, W. Nie, M. Liu, A. Anandkumar, B. Li, and D. Song 
+ 
+ Densepure: understanding diffusion models towards adversarial robustness .
+ 
+ arXiv preprint arXiv:2211.00322 .
+ 
+ Cited by: Appendix A .
+ 
+ Xu et al. (2022) 
+ X. Xu, L. Li, and B. Li 
+ 
+ LOT: layer-wise orthogonal training on improving l2 certified robustness .
+ 
+ arXiv preprint arXiv:2210.11620 .
+ 
+ Cited by: §2.2 ,
+ §3.2 ,
+ Table 1 ,
+ Table 1 .
+ 
+ Yang et al. (2021) 
+ Z. Yang, L. Li, X. Xu, B. Kailkhura, T. Xie, and B. Li 
+ 
+ On the certified robustness for ensemble models and beyond .
+ 
+ arXiv preprint arXiv:2107.10873 .
+ 
+ Cited by: §1 .
+ 
+ Yu et al. (2022a) 
+ C. Yu, B. Han, L. Shen, J. Yu, C. Gong, M. Gong, and T. Liu 
+ 
+ Understanding robust overfitting of adversarial training and beyond .
+ 
+ In International Conference on Machine Learning ,
+ 
+ pp. 25595–25610 .
+ 
+ Cited by: §4 .
+ 
+ Yu et al. (2022b) 
+ W. Yu, M. Luo, P. Zhou, C. Si, Y. Zhou, X. Wang, J. Feng, and S. Yan 
+ 
+ Metaformer is actually what you need for vision .
+ 
+ In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition ,
+ 
+ pp. 10819–10829 .
+ 
+ Cited by: §1 ,
+ §3.2 .
+ 
+ Zhang et al. (2019) 
+ M. Zhang, J. Lucas, J. Ba, and G. E. Hinton 
+ 
+ Lookahead optimizer: k steps forward, 1 step back .
+ 
+ Advances in neural information processing systems 32 .
+ 
+ Cited by: §3.1 .
+ 
+ Zhu (2017) 
+ X. Zhu 
+ 
+ A riemannian conjugate gradient method for optimization on the stiefel manifold .
+ 
+ Computational optimization and Applications 67 ( 1 ), pp. 73–110 .
+ 
+ Cited by: §2.2 .
+ 
+ 
+ 
+ 
+ 
+ Appendix A Additional Related Work  
+
+ 
+ In contrast to the deterministic robustness guarantees emphasized in this work, Randomized Smoothing (RS)  ( Cohen et al., 2019a ) provides probabilistic guarantees and has been extensively studied at ImageNet scale  ( Salman et al., 2019 ; Jeong et al., 2021 ; Salman et al., 2020 ) . Diffusion methods  ( Carlini et al., 2022 ; Xiao et al., 2022 ) are introduced to denoise the addictive noise and further improve the performance. 
+ 
+ 
+ Despite these successes, RS methods face two fundamental limitations that constrain their practical applicability. First, their inherently probabilistic nature introduces the possibility of false positives, where adversarial examples may be incorrectly certified as robust. While existing RS approaches typically maintain false positive rates below 0.1%, even this level of uncertainty renders them unsuitable for security-critical applications where certification guarantees must be absolute. Although one can reduce the false positive rates by improve the confidence level , it will then require significant greater number of noised images, which leads to the second limitation: the computational overhead of RS-based certification is prohibitive, necessitating thousands to tens of thousands of forward passes per image due to reliance on concentration inequalities with tight tail bounds. This computational burden has confined most empirical evaluations to small test subsets of at most 1,000 images, limiting the scope of practical validation. 
+ 
+ 
+ 
+ Appendix B Additional Method Explanation 
+
+ 
+ Algorithm  2 shows the naive Adam Optimization. The major issue of this optimization is the high computational cost of matrix exponential. 
+ 
+ 
+ 
+ B.1 Further discussion about -Abs activation 
+
+ 
+ We show that the commonly used MinMax activation can be expressed by -Abs if . 
+ 
+ 
+ Theorem 2 
+ 
+ Consider 2d-dimensional input where . Define 
+ 
+ Let , we have 
+ 
+ 
+ 
+ 
+ Proof: 
+First 
+ 
+ Then 
+ 
+ Here and are element wise operations for vectors. Theorem  2 shows that MinMax and -Abs should have the same expressive ability. Increasing introduces more non-linearity and decreasing introduces more linearity. However, MinMax corresponds to a fixed non-linearity, whereas -Abs allows continuous interpolation between linear and piecewise-linear regimes. 
+ 
+ 
+ 
+ B.2 PyTorch-like Code for the LipNeXt block  
+
+ 
+ Below is a PyTorch-like Code for the LipNeXt block for a better understanding. 
+ ⬇ 
+ 
+ 1 
+ 
+ 
+ 
+ def shift_fn ( x , alpha =1/16): 
+ 
+ 
+ 2 
+ 
+ 
+ 
+ c = x . shape [3] 
+ 
+ 
+ 3 
+ 
+ 
+ 
+ d = int ( c * alpha ) 
+ 
+ 
+ 4 
+ 
+ 
+ 
+ a0 , a1 , a2 , a3 , a4 = torch . split ( 
+ 
+ 
+ 5 
+ 
+ 
+ 
+ x , [ c - d * 4, d , d , d , d ], dim =3) 
+ 
+ 
+ 6 
+ 
+ 
+ 
+ 
+ 
+ 
+ 7 
+ 
+ 
+ 
+ a1 = torch . roll ( a1 , dims =1, shifts =1) 
+ 
+ 
+ 8 
+ 
+ 
+ 
+ a2 = torch . roll ( a2 , dims =1, shifts =-1) 
+ 
+ 
+ 9 
+ 
+ 
+ 
+ a3 = torch . roll ( a3 , dims =2, shifts =1) 
+ 
+ 
+ 10 
+ 
+ 
+ 
+ a4 = torch . roll ( a4 , dims =2, shifts =-1) 
+ 
+ 
+ 11 
+ 
+ 
+ 
+ 
+ 
+ 
+ 12 
+ 
+ 
+ 
+ x = torch . cat ([ a0 , a1 , a2 , a3 , a4 ], dim =3) 
+ 
+ 
+ 13 
+ 
+ 
+ 
+ return x 
+ 
+ 
+ 14 
+ 
+ 
+ 
+ 
+ 
+ 
+ 15 
+ 
+ 
+ 
+ def beta_abs ( x , beta =0.75): 
+ 
+ 
+ 16 
+ 
+ 
+ 
+ d = int ( x . shape [1] * beta ) 
+ 
+ 
+ 17 
+ 
+ 
+ 
+ x = torch . cat ([ x [..., : d ]. abs (), x [..., d :]], dim =-1) 
+ 
+ 
+ 18 
+ 
+ 
+ 
+ return x 
+ 
+ 
+ 19 
+ 
+ 
+ 
+ 
+ 
+ 
+ 20 
+ 
+ 
+ 
+ def lipnext_block ( x , R , M , b , pos ) 
+ 
+ 
+ 21 
+ 
+ 
+ 
+ # shape of x: (B, H, W, C) 
+ 
+ 
+ 22 
+ 
+ 
+ 
+ # shape of R and M: (C, C) 
+ 
+ 
+ 23 
+ 
+ 
+ 
+ # shape of b: (C) 
+ 
+ 
+ 24 
+ 
+ 
+ 
+ # shape of pos: (H, W, 1) 
+ 
+ 
+ 25 
+ 
+ 
+ 
+ x = x + pos 
+ 
+ 
+ 26 
+ 
+ 
+ 
+ x = F . linear ( x , R ) 
+ 
+ 
+ 27 
+ 
+ 
+ 
+ x = shift_fn ( x ) 
+ 
+ 
+ 28 
+ 
+ 
+ 
+ x = F . linear ( x , W @ R . T , b ) 
+ 
+ 
+ 29 
+ 
+ 
+ 
+ x = beta_abs ( x ) 
+ 
+ 
+ 30 
+ 
+ 
+ 
+ return x 
+ 
+ 
+ 
+ 
+ 
+ B.3 Proof of Theorem  1   
+
+ 
+ Part 1: ( ) Sufficiency 
+ 
+ 
+ Assume the kernel contains exactly one non-zero element with value . Let this element be at position , so and all other elements of are zero. 
+ 
+ 
+ The convolution is a linear operator. Therefore, we can write: 
+ 
+ Let . We need to show that . 
+ 
+ 
+ The result of the convolution, let’s call it , is given by: 
+ 
+ where the indices for are taken modulo and due to circular padding. Since only is non-zero, this sum simplifies to a single term: 
+ 
+ This means the output tensor is a circularly shifted version of the input tensor , with each element multiplied by . 
+ 
+ 
+ Now, let’s compute the squared Frobenius norm of : 
+ 
+ Since , we have . 
+ 
+ The mapping is a bijection on the set of indices. Therefore, the sum on the right is simply a reordering of the sum of the squared elements of . 
+ 
+ Thus, we have shown that , which implies . This completes the first part of the proof. 
+ 
+ 
+ Part 2: ( ) Necessity 
+ 
+ 
+ Assume that is norm-preserving, i.e., for all . As before, let . The condition is equivalent to stating that is a linear isometry with respect to the Frobenius norm: 
+ 
+ We analyze this condition in the frequency domain. Let denote the 2D Discrete Fourier Transform (DFT), and let . The convolution theorem for circular convolution states: 
+ 
+ where is the kernel zero-padded to size , and denotes element-wise (Hadamard) product. 
+ 
+ 
+ Parseval’s theorem relates the Frobenius norm of a tensor to the Frobenius norm of its DFT: 
+ 
+ Applying Parseval’s theorem to our isometry condition : 
+ 
+ 
+ Expanding the norms in terms of their elements: 
+ 
+ 
+ This can be rewritten as: 
+ 
+ Since this equality must hold for any tensor , it must hold for any possible DFT . Let us choose a that has only one non-zero element, say and all other elements are zero. For this choice, the equation simplifies to: 
+ 
+ As we can make this choice for any frequency pair , it must be that for all . 
+ 
+ 
+ Now we use this property to derive constraints on the spatial domain kernel . 
+ 
+ 1. 
+ 
+ Sum of Squares of Elements : Apply Parseval’s theorem to the padded kernel itself: 
+ 
+ Since we found that for all , the sum becomes . 
+ 
+ 
+ 2. 
+ 
+ Sum of Elements : Consider the DC component of the DFT, i.e., : 
+ 
+ Since , we must have: 
+ 
+ 
+ 
+ Let be the set of non-zero elements in the kernel . From our derivations, we have two conditions on these elements: 
+ 
+ 1. 
+ 
+ 
+ 
+ 2. 
+ 
+ 
+ 
+ 
+ We can expand the second condition: 
+ 
+ Substituting the first condition into this expansion: 
+ 
+ We now have and . Let’s consider the Cauchy-Schwarz inequality on the vectors and : 
+ 
+ 
+ Plugging in our conditions: 
+ 
+ Equality holds if and only if one vector is a scalar multiple of the other, i.e., for some scalar . This means all non-zero elements must be equal: . 
+ 
+ 
+ Let’s impose this equality on our conditions: 
+ 
+ 1. 
+ 
+ 
+ 
+ 2. 
+ 
+ 
+ 
+ 
+ Substituting from the first equation into the second gives: 
+ 
+ This shows that there must be exactly one non-zero element ( ). 
+ 
+ 
+ Let this single non-zero element be . From condition 1, , which implies .
+Therefore, for to be norm-preserving, the kernel must contain exactly one non-zero element with a value of or . This completes the second part of the proof. 
+ 
+ 
+ 
+ 
+ Appendix C Additional Results 
+
+ 
+ 
+ Table  5 shows the effectiveness of the two stabilization techniques for FastExp . Removing either would lead to constant performance drop. 
+ 
+ 
+ 
+ Table  6 shows the effectiveness of the spatial shift module. Setting shifts one quarter of the channels (distributed across four directions). We examine two extremes: , which applies no spatial shift, and , which shifts all channels. As expected, performs poorly because the model cannot capture spatial interactions. Interestingly, also degrades performance; we hypothesize that shifting every channel removes absolute positional cues, preventing the model from retaining information about the original locations. 
+ 
+ 
+ 
+ Table  7 presents an ablation of padding and positional encoding choices. As discussed in Section  3 , without positional encoding, zero padding outperforms circular padding because it implicitly introduces positional information. With positional encoding enabled, the trend reverses: circular padding is preferable since it guarantees a Lipschitz-tight transformation. 
+ 
+ 
+ 
+ Table  8 ablates the activations. As we shown in Appendix  B.1 , -Abs and MinMax should have the same expressive ability when . Experiments show that MinMax is slighter worse than . We can adjust to control the non-linearity, and degrades to the absolution function is not optimal because it breaks identical mapping. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Experimental support, please
+ view the build logs 
+ for errors. Generated by
+ 
+ 
+ L
+ A 
+ T
+ E 
+ 
+ xml 
+ 
+ .
+ 
+ 
+ Instructions for reporting errors 
+ We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+ support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+ methods listed below: 
+ 
+ Click the "Report Issue" ( ) button, located in the page header. 
+ 
+ Tip: You can select the relevant text first, to include it in your report. 
+ Our team has already identified the following issues . We appreciate your time reviewing and reporting rendering errors we
+ may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+ should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+ all. 
+ Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion , and welcome developer contributions . 
+ 
+ 
+ 
+ 
+ 
+ We gratefully acknowledge support from
+ our major funders ,
+ member institutions , ,
+ and all contributors.
+ 
+ 
+ About 
+ · 
+ Help 
+ · 
+ Contact 
+ · 
+ Subscribe 
+ · 
+ Copyright 
+ · 
+ Privacy 
+ · 
+ Accessibility 
+ · 
+ Operational Status (opens in new tab) 
+ 
+ 
+
+ 
+ Major funding support from 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

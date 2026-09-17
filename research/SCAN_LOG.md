@@ -2599,3 +2599,44 @@ field.
 
 Ranking holds at 6.5. The gate ran last, it found one real defect that I had introduced, and the
 defect is fixed.
+
+## Scan 42, the scan where I found my own measurement was contaminated and reverted two scans of work
+
+Scans 39 and 40 were wrong, the error was mine, and this scan undoes them. The finding matters more
+than the edits, because the same flaw sits inside the build kernel's reported prose gate.
+
+Expanding the venue sample from three ICLR papers to eight was meant to confirm scan 40's stopping
+point. It did the opposite. All eight showed short-sentence shares between 0.118 and 0.183 against
+the manuscript's 0.074, which looked like proof that the paper was outside the venue distribution
+entirely. Before acting on that, I sampled the short sentences themselves to see what work they do in
+those papers. They do none. They read arXiv preprint arXiv:2101.08809, 2021, and Le, and Alexey
+Kurakin, and Deep residual learning for image recognition, and In NeurIPS, Cited by. They are
+bibliography entries, author-name fragments, reference titles and section headings, because every
+corpus file is a whole arXiv HTML dump and a typical paper carries fifty to eighty references.
+
+So the comparison was never like for like. The manuscript is measured from the abstract to the
+main-text label with no bibliography and no headings, while the corpus was measured with all of it
+included. Cutting each corpus file at its reference list and re-measuring twice, once with a strict
+prose filter and once with a permissive one, gives the same answer both times. ICLR body prose runs a
+mean between 20.4 and 26.5 words with a median of 23.4, and a short-sentence share between 0.021 and
+0.059 with a median of 0.044, and a long-sentence share between 0.071 and 0.211.
+
+Against that, the manuscript before scan 39 was already a match. Its mean of 20.24 sat at the short
+end of the ICLR range, its short share of 0.059 sat exactly at the ICLR maximum, and its long share
+of 0.143 sat mid-range. The twenty-nine splits then took it to a mean of 18.31, below all eight
+papers, and a short share of 0.075, above all eight. I moved the paper out of the distribution while
+believing I was moving it in, and scan 41's staccato defect was the first symptom.
+
+Every split from scans 39 and 40 is reverted, which restores the file to its state after scan 38 and
+keeps scan 36's introduction change. The rebuild returns nine main-text pages and 53 total with zero
+overfull boxes, no rerun request, unchanged style files, 269 sentences at a mean of 20.17 words and a
+median of 19, a short share of 0.059, zero prose colons or semicolons or dashes, 53 bibliography
+entries all cited and resolved, 24 embedded subset fonts and an empty author field.
+
+One consequence reaches past this scan. The corpus_target_under_eight figure of 0.058 to 0.238 that
+the build kernel prints on every run comes from the same contaminated measurement, so it is not a
+body-prose target and should not be read as one. The paper sitting at the bottom of that printed band
+was never evidence of a problem. It was the band being wrong.
+
+Ranking holds at 6.5. Two scans of work were undone, nothing was gained, and the honest summary is
+that a measurement error cost thirty edits and produced one real lesson about the instrument.
