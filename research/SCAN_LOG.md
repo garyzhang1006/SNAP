@@ -687,3 +687,42 @@ in scan 10 was right to refuse. Recorded rather than acted on.
 Honest ranking after scan 15. 6.5 with acceptance near 0.63, unchanged. Conformance is a gate rather than
 a score, so passing it earns nothing and failing it would have cost everything. The widened style check
 protects a future revision rather than this one.
+
+## Scan 16. Statistical rigor, multiplicity, and selective reporting
+
+Review of scan 15. The widened style check passes on all three template files and names them in the
+report, and the conformance findings all still hold on the rebuilt document.
+
+Defect 1, a calibration attached to more than it measured. The introduction said that the accuracy
+interval stops including one under five of the 25 recipe removals, the 750M band, and WinoGrande, and
+called that `a count a null sweep reaches in 0.018 of replicates`. Tracing 0.018 to its source shows it is
+the rate at which five or more recipe deletions flip under a true-one null, conditioned on the replicates
+whose full interval includes one, pooled over two runs at 10,000 populations. It is not the rate for the
+compound event the sentence lists, which also includes a size band and a trait and would be rarer still.
+The sentence now attributes the rate to the recipe count that was actually calibrated.
+
+Defect 2, a count that disagreed with its own appendix. The same sentence listed seven exceptions while
+the appendix counts eight, because the main text omitted the BoolQ removal from the list. Both now say
+eight.
+
+A false pass in my own scan-12 sweep. The provenance check matched the main text's 0.018 against a stored
+0.0181, which is the accuracy effective coefficient and a different quantity entirely. Prefix matching
+across a corpus that large will do this, so the sweep should be read as evidence that no number is
+invented rather than as evidence that every number is attached to the right analysis. Scan 16 caught this
+one by reading rather than by matching.
+
+Non-defects recorded rather than edited. Every sentence in the main text that says an accuracy interval
+excludes one states in the same sentence that the paired difference includes zero. The paper refuses to
+read its own small full-battery estimate as evidence of independence and reports that its design excludes
+one in only 0.111 of replicates at the fitted accuracy cell against 0.970 on margins, which is a candid
+power admission. Intervals are called nominal throughout and their simulated coverage is reported
+separately rather than assumed. The primary interval construction is justified on simulated coverage
+rather than on how it looked against the data, and the one construction chosen after seeing results says
+so. The bootstrap uses 4,999 draws, which keeps the quantile index integral at 95 percent, and the
+coverage shortfall is separated from Monte Carlo noise by two repeats at 10,000 replicates where the
+reported spread is several times the Monte Carlo standard error.
+
+Honest ranking after scan 16. 6.5 with acceptance near 0.63, unchanged. The misattached calibration was a
+genuine precision defect in the introduction and a reviewer who chased the number would have found it, but
+correcting it does not add evidence. What this scan mostly establishes is that the inferential claims
+survive an adversarial reading, which was already the paper's strongest property.
