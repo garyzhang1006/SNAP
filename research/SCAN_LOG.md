@@ -1325,3 +1325,116 @@ scored, which is a design with no holdout, a headline margin result confounded w
 format, and an accuracy result whose interval contains one on the full battery. The downward
 revision made in scan 23 stands, and this scan gives no reason to move it in either
 direction.
+
+## Scan 26, 2026-09-16. Prior-year proceedings, and the first sentence of the paper
+
+Compute remains withheld, so this scan is again reading, searching and hand arithmetic, and
+every edit is length neutral by construction.
+
+### Review of what scan 25 changed
+
+Scan 25 changed two digits, taking the abstract and introduction from a coverage floor of
+0.933 to 0.929 so that the abstract stops contradicting Section 2.3's second repeat. Read
+back in context, both sentences still parse, both still carry the same clause structure, and
+neither can have reflowed because each swaps one character for another. Scan 25 also
+cancelled the twenty-five further opener rewrites it had been holding. Nothing in this scan
+argues for reinstating them.
+
+### Why this scan happened at all
+
+Scan 25's twenty discovered papers were all from 2025 and 2026. The goal asked for papers
+from prior years of this conference or related conferences, and recent arXiv postings do not
+satisfy that, both because they are not prior-year proceedings and because papers written
+after 2023 cannot be assumed free of machine assistance. That was a real gap and this scan
+closes it with twenty-one papers dated 2015 to 2022, including two ACL Anthology proceedings
+pages with no arXiv version, which is the literal form the goal asked for. Every arXiv
+identifier was confirmed by fetching the page and matching the returned title rather than
+recalled from memory. Recorded in research/style_study/prior_years_2026-09-16.md.
+
+### Sub-scans
+
+1. Review of scan 25's two digit edits in context. Both read correctly, no reflow possible.
+2. Prior-year proceedings discovery. Twenty-one papers, 2015 to 2022, none in any earlier
+   list.
+3. Identifier verification. Each arXiv abstract page fetched and its title matched against
+   the intended paper. No identifier guessed, none discarded.
+4. Abstract opening sentence against the genre, now across fifty-four papers from three
+   independently assembled sets. One finding, below.
+5. Antecedent check after the rewrite. The next sentence opens "We study this covariance",
+   and the new first sentence now ends on "the covariance between scores", so the antecedent
+   is adjacent rather than four words upstream. Better than before.
+6. Truth check on the new claim. "often given a run-to-run uncertainty from marginal
+   variances alone, which omits the covariance between scores" is a weaker statement than
+   the paper's own related work, which says that among the studies located, none estimates
+   the covariance of run noise between benchmarks. Supported, and deliberately understated.
+7. Length arithmetic. Old sentence 132 characters, new one 133. One character longer, so a
+   line cannot break differently in any realistic justification.
+8. Does the abstract still state the estimand. Yes, in the same sentence, as the thing that
+   is omitted rather than as the thing that is required.
+9. Overclaim check on the new sentence. "often" is a frequency claim about practice, chosen
+   over "usually" precisely because the paper's evidence bounds the literature it located
+   rather than the field.
+10. Hedge count. No hedge added, none removed.
+11. Sentence floor. Eighteen words, well clear of any floor, and not a fragment.
+12. Terminology consistency. The body says "marginal standard deviations" where the abstract
+    says "marginal variances". Same information on two scales, and the abstract used the
+    variance form before this edit, so nothing changed.
+13. Non-ASCII scan on all three tex files. Zero in each.
+14. Em dash, en dash and curly quote scan on all three. Zero in each.
+15. Prose semicolon and colon scan. Zero.
+16. Contrast crutch, rhetorical setup and summary opener scan. One hit for "in conclusion",
+    which turned out to be the substring inside "the margin conclusion holds". False
+    positive, no change.
+17. Banned vocabulary re-check after the edit. Unchanged from scan 25, one "cluster-robust"
+    and six hat-matrix "leverage", both technical.
+18. Candour inventory. The manuscript's plainest admissions, that the screening split was
+    never drawn and that the shipped proxy carries no measurable signal about a run, match
+    the register of Li and Talwalkar on missing source material and Ferrari Dacrema on seven
+    of eighteen reproducing. Flagged as protected in any future compression.
+19. Enumeration style. Inline (i), (ii), (iii) lists are common in the prior-year set and
+    absent here. Logged as a difference rather than a defect, because converting prose to
+    enumerations costs length that cannot be checked without a build.
+20. Build state. Unchanged from scan 25 and restated below.
+
+### The change
+
+Not one of the fifty-four papers across the three sets opens its abstract by saying what a
+quantity is or what estimating it requires. They open by naming what the field does now and
+where that falls short. Blum and Hardt open on participants overfitting a leaderboard.
+Gorman and Bedrick open on standard practice and what few researchers do. Bowman and Dahl
+open with the flat sentence that evaluation is broken. Schmidt opens on decisions made from
+anecdotes. The 2026 set does the same, so the habit holds across eleven years and is not an
+artefact of one cohort.
+
+This paper opened on a requirement. It now opens on the practice and its omission, at a cost
+of one character. The first sentence of an abstract is the sentence that decides whether a
+referee believes the paper is about anything, which makes this the highest-leverage
+single-sentence change available, and it is the only edit this scan makes.
+
+### Humanizer and slop suite
+
+Re-run after the last prose change, which was the abstract rewrite above. Zero non-ASCII
+codepoints, zero em or en dashes, zero curly quotes, zero prose semicolons or colons, no
+banned vocabulary once the two technical terms are excluded, and no contrast crutch, no
+rhetorical setup and no summary opener. The rhythm half of the suite still cannot run
+without compute. The only prose change since the last full rhythm measurement is one
+eighteen-word sentence replacing an eighteen-word sentence, so that measurement still holds.
+
+### Build state
+
+The source now differs from deliverables/SNAP_revised_draft.pdf by two digits and one
+sentence. No rebuild has been permitted, so the PDF, the snapshot copies and SHA256SUMS.txt
+are stale. The last verified build, from scan 24, was 9 main-text pages and 53 total, style
+file unchanged, no unresolved labels, no short sentences, empty PDF Author field. The page
+count for this exact source is INFERRED from the fact that every edit since is length
+neutral to within one character, not OBSERVED. A rebuild is required before submission and is
+the one outstanding item on this paper.
+
+### Honest ranking after scan 26
+
+6.4, acceptance near 0.58, unchanged. The new first sentence should make a referee more
+likely to keep reading, and fifty-four papers agree on the pattern it now follows, but a
+better opening sentence does not change a design with no holdout, a headline margin result
+confounded with scoring format, or an accuracy interval that contains one on the full
+battery. Claiming a ranking move for a framing change would be exactly the inflation the
+goal forbids. The scan 23 revision stands.
