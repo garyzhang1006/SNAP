@@ -4,8 +4,8 @@
     "minimum_words": 5,
     "maximum_observed_not_a_limit": 63,
     "fragments_under_four_words": 0,
-    "share_under_eight_words": 0.074,
-    "share_under_twelve_words": 0.242,
+    "share_under_eight_words": 0.071,
+    "share_under_twelve_words": 0.234,
     "corpus_target_under_eight": "0.058 to 0.238",
     "prose_colons_semicolons_dashes": 0,
     "uncontracted_negatives": 30
@@ -46,8 +46,8 @@
     "missing_characters": 0,
     "font_substitution_warnings": 0,
     "undefined_references_or_citations": false,
-    "underfull_boxes": 18,
-    "remaining_warnings": "18 underfull spacing diagnostics, visually inspected"
+    "underfull_boxes": 17,
+    "remaining_warnings": "17 underfull spacing diagnostics, visually inspected"
   },
   "official_style_unchanged": true,
   "bibliography": {

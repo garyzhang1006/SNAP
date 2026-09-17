@@ -583,3 +583,37 @@ Honest ranking after scan 12. 6.4 with acceptance near 0.62, unchanged. Two venu
 a score. The provenance result does not move it either, because a reviewer assumes numbers are real and
 gives no credit for proving it, but it is the check that would have been catastrophic to fail, and it
 passed on twelve hundred values.
+
+## Scan 13. The argument as a reviewer follows it
+
+Review of scan 12. Both corrected citations render with their venues, and the metabench in-text year now
+reads 2025 against the published ICLR version while its key is unchanged, so no other citation moved.
+
+Defect 1, the introduction never stated the paper's positive result. Its empirical paragraph opened on
+`The accuracy estimate is close to independence for the full battery` and then spent 170 words on how
+fragile that null is. A reviewer who reads the abstract, the introduction, and the discussion, which is
+how a paper is usually triaged, finished the introduction believing the paper had found nothing. The
+margin result, which is the finding that survives every sensitivity in the paper, appeared nowhere in the
+section. The paragraph now opens with the 1.244 factor and its interval excluding one, and the accuracy
+null follows as the contrast it actually is. The page budget was paid from the same paragraph, where a
+clause asserting that the intervals all land above one restated the preceding clause.
+
+Defect 2, a baseline lost to my own earlier compression. Scan 9 trimmed the abstract's checkpoint sentence
+to `moves accuracy to 1.130`, which invites a reader to subtract from the 1.078 headline when the actual
+baseline is the 1.082 of the 123-configuration subset. The abstract again names the subset and both
+endpoints. This is the second time a scan-9 compression lost a qualifier, which is worth recording as a
+pattern rather than as two accidents.
+
+Non-defects recorded rather than edited. A sweep for causal and evaluative overclaiming returned three
+sentences, and all three are either a direct observation from a computed index or an explicit denial of a
+stronger reading. There are no vague forward references of the `as we show below` kind anywhere in the
+main text, and all eleven appendix pointers name a label. The contributions paragraph promises four things
+and the section order delivers them, with the mechanism work split between its setup in Section 4 and its
+results in Section 5.2. The paper states what would have falsified its resolution model and reports that
+the planned threshold could not have done so, which is a candid inclusion most submissions omit.
+
+Honest ranking after scan 13. 6.5 with acceptance near 0.63, up from 6.4 and 0.62. This is the first
+increment since scan 9 that I think is defensible. The introduction is the section a reviewer reads most
+carefully before forming a prior, and it previously argued against the paper by omission. Stating the
+surviving result there costs nothing in honesty, since the fragility follows immediately and in the same
+paragraph, and it removes a reason to score the work as a null finding.
