@@ -32,6 +32,7 @@ Baseline before scan 1, carried from the independent reviewer pass earlier in th
 | 5 | figures, tables and float hygiene | 3 | 3 | 6.2 |
 | 6 | method completeness and reproducibility | 4 | 4 | 6.3 |
 | 7 | corpus style study and rhythm calibration | 3 | 3 | 6.3 |
+| 8 | split verification and grammar after automation | 6 | 6 | 6.3 |
 
 
 ## Scan 1, mechanical correctness, 20 sub-scans
@@ -358,3 +359,45 @@ a sentence-length distribution, and the content here is identical to what it was
 changes is tail risk. A 2027 reviewer primed to spot generated prose would have found a paper with no short
 sentences at all and contractions at five times the rate of the most informal paper in its field, and that
 combination is now gone. I am not claiming a score move from prose, because there is no evidence for one.
+
+## Scan 8, split verification and grammar, 20 sub-scans
+
+Scan 7 made 89 automated prose edits, which is the largest unreviewed change of the day, so scan 8 exists
+mostly to audit it. That discipline paid for itself, because the automation broke six sentences.
+
+Sub-scans run. Double periods, comma before period, lowercase sentence starts, double spaces, stranded
+conjunctions, sentence-initial `And`, space before punctuation, doubled words, article agreement before
+vowels and consonants, subject-verb agreement on singular and plural subjects, double negatives, noun-phrase
+sentences without a finite verb, list boundaries mistaken for clause boundaries, every short sentence read
+in context, a random sample of split sites read against the sentence before, overfull boxes, unresolved
+labels, page count, the corpus short-sentence share after repair, and the count of surviving `and` joints.
+
+Defects found and fixed, all six created by scan 7.
+
+1. A five-item list of score transformations lost its last item to a period, leaving `The sign of each
+   margin.` standing alone as a noun phrase.
+2. A three-rule enumeration in the design-effect simulation left `An oracle rule that uses the true value.`
+   as a fragment.
+3. An eight-construction interval list left `The restricted inversion at 1.074 to 1.329.` with no verb.
+4. The fitted-scenario sentence split across the middle of its own list, producing both a truncated first
+   half and `Their recipe weights from the same data...` as a second fragment.
+5. The original scorecard's tally lost `and two predictions that could not be tested as written.`
+6. A four-way parallel list of interval constructions was split for no gain, and reads better joined.
+
+How they were found. The mechanical artifact scan came back at zero, and a subject-and-verb heuristic
+produced 62 hits that were all my own verb lexicon being incomplete. What actually found the six was
+reading every sentence in the paper under ten words, 150 of them, against its neighbour. The lesson is
+that an automated prose edit needs a human-style read of its output, not another automated check.
+
+After repair the main text holds 8.5 percent of sentences under eight words, still inside the corpus range
+of 5.8 to 23.8. The build carries no overfull box, no unresolved label and nine main-text pages.
+
+Non-defects recorded rather than edited. The grammar sweep returned five hits and all five were false,
+being `the plug-in in 0.81`, `a usable`, `half-A and half-B`, and two plural subjects correctly taking
+`do not`. Three noun-phrase candidates were also false, since `differ`, `agree` and `ran` are verbs my
+pattern did not list.
+
+Honest ranking after scan 8. Unchanged at 6.3 with acceptance near 0.61. This scan restored correctness
+that scan 7 broke and added nothing the paper did not already have. Recording it as a zero-improvement
+scan is the accurate reading, and the useful result is that the review-the-previous-scan rule caught six
+defects that would otherwise have shipped.

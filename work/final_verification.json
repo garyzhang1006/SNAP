@@ -22,12 +22,12 @@
     "uncontracted_negatives": 18
   },
   "appendices_bcd.tex": {
-    "sentence_count": 1008,
+    "sentence_count": 1002,
     "minimum_words": 4,
     "maximum_observed_not_a_limit": 62,
     "fragments_under_four_words": 0,
-    "share_under_eight_words": 0.04,
-    "share_under_twelve_words": 0.165,
+    "share_under_eight_words": 0.037,
+    "share_under_twelve_words": 0.159,
     "corpus_target_under_eight": "0.058 to 0.238",
     "prose_colons_semicolons_dashes": 0,
     "uncontracted_negatives": 114
