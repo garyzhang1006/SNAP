@@ -2707,3 +2707,30 @@ dashes.
 
 Ranking holds at 6.5. One appendix verb is not worth a tenth, and saying otherwise after the
 measurement error of scans 39 to 42 would be exactly the wrong lesson to take from it.
+
+## Scan 45, the gate run over the whole document for the first time
+
+Every stylometry run before this one scored the main body alone, 5,390 words from the abstract to the
+main-text label. That was a coverage gap hiding in plain sight, because the appendices carry 44 of the
+53 pages and roughly 27,000 of the manuscript's 32,201 prose words, and no detector had ever been
+pointed at them. This scan fixed the gap and re-ran the gate, which scan 44's appendix edit had in any
+case made necessary.
+
+The whole document scores 0.1225 and CLEAN, with an AI n-gram density of 0.0149 and zero suspicious
+Layer A codepoints across all 32,201 words. For scale, the three accepted ICLR papers fetched in scan
+39 scored 0.1225 as well, so the complete manuscript sits in the same bucket as papers the venue
+accepted, and the main body alone remains far below it at 0.0325.
+
+One marker surfaced that the main text never produced, six uses of leverage, all of them in the
+appendices. Every one is statistical. Appendix A describes a leverage-corrected influence that divides
+each recipe residual by one minus its leverage, and the appendices discuss that cr3 leverage
+correction as the better of two repairs and report what it does to recipe-clustered coverage at 12,000
+replicates. The scorer matches the string without separating the regression noun from the marketing
+verb, which puts it in the same false-positive class as robust inside cluster-robust and effective
+inside effective benchmark count. No edit follows.
+
+The rest of the gate is unchanged. deai_check.py returns the same nine, six, five, four and two
+profile. The pattern classes stay at zero. Nothing in the manuscript changed in this scan, so the
+build from scan 44 stands.
+
+Ranking holds at 6.5.
