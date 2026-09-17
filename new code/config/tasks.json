@@ -19,7 +19,7 @@
                   "pass_p99_abs_diff_nats_per_byte": 0.02},
  "subsample_seed": 20260917,
  "half_split_seed": 20260917,
- "scoring": {"dtype": "float32", "max_length": 2048, "add_bos_token": false, "contexts_per_batch": 8, "max_batch_tokens": 6000,
+ "scoring": {"dtype": "float32", "max_length": 2048, "add_bos_token": false, "contexts_per_batch": 8, "max_batch_tokens": 6000, "transformers_pin": "4.57.1",
              "kv_check_items": 16, "kv_check_tolerance_nats": 0.001},
  "pilot": {"configs": [["c4", "150M"], ["c4", "1B"]]},
  "scope": {"full": ["150M", "300M", "530M", "750M", "1B"], "fallback": ["530M", "750M", "1B"],
