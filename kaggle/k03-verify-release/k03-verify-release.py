@@ -23,6 +23,7 @@ Also writes token_ratio_production_over_pilot for tools/make_shards.py.
 """
 import io
 import json
+import shutil
 import subprocess
 import sys
 import tarfile
@@ -43,7 +44,12 @@ import snapnew  # noqa: E402
 
 sn = [p for p in Path("/kaggle/input").rglob("pyproject.toml") if "seed-noise" in str(p) and not p.name.startswith("._")]
 assert sn, "seednoise source (garyzhang11111/seed-noise-src) is not attached"
-subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", str(sn[0].parent)])
+# The build writes next to the sources, and /kaggle/input is read-only, so the
+# tree is copied out first, exactly as the earlier kernels in research/kaggle do.
+sn_copy = Path("/kaggle/tmp") / "seed-noise"
+shutil.rmtree(sn_copy, ignore_errors=True)
+shutil.copytree(sn[0].parent, sn_copy, ignore=shutil.ignore_patterns("._*"))
+subprocess.check_call([sys.executable, "-m", "pip", "install", str(sn_copy)])
 from seednoise.data.datadecide import LN2, download_recipe, parse_member  # noqa: E402
 
 tasks_cfg = snapnew.read_json(ROOT / "config" / "tasks.json")
@@ -77,38 +83,62 @@ for key, (s, meta, reqs) in scores.items():
         pos += k
     ours[key] = per_doc
 
-tar = TMP / "c4.tar.gz"
-for attempt in range(1, 4):
-    try:
-        download_recipe("c4", tar, progress=False)
-        break
-    except Exception as error:  # noqa: BLE001
-        print(f"[release] attempt {attempt} failed: {type(error).__name__}: {error}", flush=True)
-        tar.unlink(missing_ok=True)
-        if attempt == 3:
-            raise
-        time.sleep(30)
 pilot_runs = [v[1] for v in scores.values()]
 wanted = {(m["size"], m["step"]) for m in pilot_runs}
 release = {}
-with tarfile.open(tar, mode="r|gz") as tf:
-    for m in tf:
-        k = parse_member(m.name)
-        if k is None or (k.size, k.step) not in wanted:
+
+# k03a already pulled ARC-Easy out of the 4.9 GB tarball on a CPU slot while the
+# pilot held the GPU, so the download here only runs when that output is absent.
+pre = [q for q in Path("/kaggle/input").rglob("release_arc.npz") if not q.name.startswith("._")]
+if pre:
+    with np.load(pre[0], allow_pickle=False) as z:
+        cols = {k: z[k] for k in ("size", "seed", "native_id", "doc_id", "choice", "is_gold", "per_byte")}
+    order = np.lexsort((cols["choice"], cols["doc_id"], cols["seed"], cols["size"]))
+    for i in order:
+        size, seed = str(cols["size"][i]), int(cols["seed"][i])
+        if not any(size == s for s, _ in wanted):
             continue
-        inner = tf.extractfile(m).read()
-        with tarfile.open(fileobj=io.BytesIO(inner), mode="r:gz") as it:
-            for im in it:
-                if im.name.rsplit("/", 1)[-1] == f"{ver['release_task']}-predictions.jsonl":
-                    rows = {}
-                    for line in it.extractfile(im).read().splitlines():
-                        if line.strip():
-                            r = json.loads(line)
-                            pb = np.asarray([-float(o["logits_per_byte"]) * LN2 for o in r["model_output"]])
-                            rows[str(r["native_id"])] = (r["doc_id"], r["label"], pb)
-                    release[(k.size, k.seed)] = rows
-tar.unlink(missing_ok=True)
+        rows = release.setdefault((size, seed), {})
+        nid = str(cols["native_id"][i])
+        doc, label, pb = rows.get(nid, (int(cols["doc_id"][i]), -1, []))
+        if cols["is_gold"][i]:
+            label = int(cols["choice"][i])
+        rows[nid] = (doc, label, pb + [float(cols["per_byte"][i])])
+    release = {k: {n: (d, lab, np.asarray(pb)) for n, (d, lab, pb) in rows.items()}
+               for k, rows in release.items()}
+    print(f"[release] reusing k03a output {pre[0]} for {sorted(release)}", flush=True)
+
+if not release:
+    tar = TMP / "c4.tar.gz"
+    for attempt in range(1, 4):
+        try:
+            download_recipe("c4", tar, progress=False)
+            break
+        except Exception as error:  # noqa: BLE001
+            print(f"[release] attempt {attempt} failed: {type(error).__name__}: {error}", flush=True)
+            tar.unlink(missing_ok=True)
+            if attempt == 3:
+                raise
+            time.sleep(30)
+    with tarfile.open(tar, mode="r|gz") as tf:
+        for m in tf:
+            k = parse_member(m.name)
+            if k is None or (k.size, k.step) not in wanted:
+                continue
+            inner = tf.extractfile(m).read()
+            with tarfile.open(fileobj=io.BytesIO(inner), mode="r:gz") as it:
+                for im in it:
+                    if im.name.rsplit("/", 1)[-1] == f"{ver['release_task']}-predictions.jsonl":
+                        rows = {}
+                        for line in it.extractfile(im).read().splitlines():
+                            if line.strip():
+                                r = json.loads(line)
+                                pb = np.asarray([-float(o["logits_per_byte"]) * LN2 for o in r["model_output"]])
+                                rows[str(r["native_id"])] = (r["doc_id"], r["label"], pb)
+                        release[(k.size, k.seed)] = rows
+    tar.unlink(missing_ok=True)
 print(f"[release] ARC-Easy predictions for {sorted(release)}", flush=True)
+assert release, "no release predictions were loaded from k03a or the tarball"
 
 comparisons, mapping_ok = [], True
 for m in pilot_runs:

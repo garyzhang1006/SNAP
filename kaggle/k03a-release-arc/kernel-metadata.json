@@ -1,7 +1,7 @@
 {
- "id": "garyzhang11111/snap-new-k03-verify-release",
- "title": "snap-new-k03-verify-release",
- "code_file": "k03-verify-release.py",
+ "id": "garyzhang11111/snap-new-k03a-release-arc",
+ "title": "snap-new-k03a-release-arc",
+ "code_file": "k03a-release-arc.py",
  "language": "python",
  "kernel_type": "script",
  "is_private": true,
@@ -13,10 +13,6 @@
   "garyzhang11111/seed-noise-src"
  ],
  "competition_sources": [],
- "kernel_sources": [
-  "garyzhang11111/snap-new-k03a-release-arc",
-  "garyzhang11111/snap-new-k01-requests",
-  "garyzhang11111/snap-new-k02-pilot"
- ],
+ "kernel_sources": [],
  "model_sources": []
 }
