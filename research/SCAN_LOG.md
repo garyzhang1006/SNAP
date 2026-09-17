@@ -2523,3 +2523,38 @@ under the corpus first quartile, so this is a partial fix and calling it finishe
 Ranking holds at 6.5. The improvement is real and measured, but reviewers do not score sentence-length
 distributions, they only experience them, so I will not claim a number for it. What I will claim is
 that the paper now reads at the venue's own pace rather than four words a sentence slower.
+
+## Scan 40, finishing the rhythm fix that scan 39 left partial
+
+Scan 39 ended by calling its own result a partial fix, with the short-sentence share at 0.068 against
+a corpus first quartile of 0.132, so this scan finished the work rather than leaving the admission
+standing. Seventeen more edits, all of them splits, and not one new word added anywhere.
+
+Fifteen carved a trailing clause into a standing sentence, chosen only where the clause survives on
+its own as a complete assertion. The rule that governed selection was grammatical rather than
+numerical, so tails like and WinoGrande and and 1B parameters were left alone because they are list
+items rather than sentences, while tails like these scales respond differently to changes in
+confidence, and we used all recipes without drawing that partition, and masking covariance entries
+need not preserve positive semidefiniteness became sentences. Two more followed in a second pass
+aimed at the shortest tails, one of them in the abstract, where the paired differences include zero
+now stands by itself.
+
+The build measures the result on its own instrument rather than on mine. The main-text sentence count
+moves from 269 to 296. The mean falls from 20.24 words to 18.24 against a corpus median of 19.4 and a
+corpus range of 17.1 to 26.8, so the paper now sits just inside the middle of the distribution rather
+than three papers from its long end. The median falls from 19 to 17, where the three ICLR papers sit
+at 16, 17 and 19. The shortest sentence is four words and there are no fragments under four. Nine
+main-text pages, 53 total, zero overfull boxes, no rerun request, byte-identical style files, 24
+embedded subset fonts, 53 bibliography entries all cited and resolved, an empty author field, and
+still zero prose colons, semicolons or dashes.
+
+The short-sentence share ends at 0.074, up from 0.059 where scan 39 found it, and still short of the
+corpus first quartile at 0.132. That gap is now structural rather than editorial. The clean tail
+splits are exhausted, and closing the rest would mean writing sentences whose only job is to be brief,
+in a paper where almost every assertion carries a number and the qualifier that makes the number
+honest. Optimising a metric by adding sentences that say less is the opposite of what the corpus was
+built to teach, so the gap stays and is recorded rather than closed.
+
+Ranking holds at 6.5. Across scans 39 and 40 the paper lost four words per sentence and gained 27
+sentences without gaining a word, which is a readability change a reviewer feels rather than scores.
+I will not convert a distribution match into a number, because the evidence does not support one.

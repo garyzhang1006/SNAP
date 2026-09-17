@@ -25,7 +25,7 @@
  ],
  "main_text_pages": 9,
  "total_pages": 53,
- "pdf_bytes": 614995,
+ "pdf_bytes": 614959,
  "build": {
   "overfull_boxes": 0,
   "underfull_boxes": 15,
@@ -54,15 +54,15 @@
  "table_numeric_tokens_preserved": false,
  "prose": {
   "main.tex": {
-   "sentence_count": 280,
+   "sentence_count": 296,
    "minimum_words": 4,
-   "median_words": 18,
-   "mean_words": 19.34,
+   "median_words": 17,
+   "mean_words": 18.24,
    "fragments_under_four_words": 0,
-   "share_under_eight_words": 0.068,
+   "share_under_eight_words": 0.074,
    "corpus_target_under_eight": "0.058 to 0.238",
    "prose_colons_semicolons_dashes": 0,
-   "the_openers_share": 0.171,
+   "the_openers_share": 0.193,
    "corpus_target_the_openers": "0.15 observed across twenty prior-year and twenty recent abstracts"
   },
   "appendix_a.tex": {
@@ -225,12 +225,12 @@
   }
  },
  "sha256": {
-  "main.tex": "31d045aa9797aa7644da378f175bddc62e54794ec8f5143c7be53f88fe84d787",
+  "main.tex": "cf26e40b458ef1d3700c7dc88e0d58e7dc63c8e1370d6c9b71ee9fe7930cef5e",
   "appendix_a.tex": "16cd190d3c3eaacd0789be7fd0ea7e68e480fbd168ca97b818e81a789f252524",
   "appendices_bcd.tex": "ef4579bd9790adfd2bfca5a8a5f605458ce744fb73485b0fea5304e214abfed1",
   "references.tex": "2aef5af998176980200ee7e53b96c8552850429057b84c1b4c4d264eb04dd933",
   "iclr2027_conference.sty": "797deef41724e93761426ac0cbcca46279a91cc650dd1f0ce76a4f08d2098ea6",
-  "SNAP_revised_draft.pdf": "c1dcc6afaadd7953f54e96cc588e54879468c55b37cfbbc295541bc00eeff49e"
+  "SNAP_revised_draft.pdf": "05e7158581667e275c4e2d344f1374c1f4f79263d12b80b8c2a1cebef07ee6df"
  },
- "wall_seconds": 55.57527828216553
+ "wall_seconds": 55.20114731788635
 }
