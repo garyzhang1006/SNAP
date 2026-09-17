@@ -28,6 +28,7 @@ Baseline before scan 1, carried from the independent reviewer pass earlier in th
 | 1 | mechanical correctness, all three tex files | 7 | 7 | 6.0 |
 | 2 | hostile claim audit, adversarial-reviewer | 4 | 4 | 6.1 |
 | 3 | framing, positioning and first-page impression | 3 | 3 | 6.1 |
+| 4 | numerical consistency and result coverage | 3 | 3 | 6.2 |
 
 
 ## Scan 1, mechanical correctness, 20 sub-scans
@@ -156,3 +157,56 @@ Honest ranking after scan 3. Unchanged at 6.1 with acceptance near 0.57. The cen
 internal contradiction, but it sits in a limitation sentence that most reviewers will not check against
 the appendix, so it protects against a downside rather than adding upside. The clarity changes make the
 discussion easier to skim without changing what the paper argues or what it can support.
+
+## Scan 4, numerical consistency and result coverage, 20 sub-scans
+
+Scan 4 re-read every scan 3 change in the built PDF first. All five held, counting the two deletions as
+absences, and the census now reads the same way in both files.
+
+Sub-scans run. Main-text decimals against appendix backing, interval endpoint ordering, point estimates
+inside their own intervals, table column integrity, rounding precision across files, thousands separators,
+percent style, design counts, replicate counts, seed attribution, Monte Carlo standard errors against
+replicate counts, coverage ranges against their replicate counts, the effective-benchmark arithmetic, the
+external-panel figures, table values against their source runs, every stored simulation cell against the
+text that reports it, cells run and never reported, the per-size rows against their run, my own additions
+against their run, and overclaiming vocabulary.
+
+The arithmetic came back clean. Every one of the 288 main-text decimals is either backed in an appendix or
+sits in a main-text table that is itself the primary source. Every interval has its endpoints in order,
+every point estimate lies inside its own interval, and no quantity appears at two precisions except the
+simulation input 1.2446, which is deliberately distinct from the reported estimate 1.244. The three
+coverage ranges 0.928 to 0.954, 0.933 to 0.953 and 0.929 to 0.950 all describe the same twelve populations
+at different replicate counts and seeds, and each is labelled with which.
+
+Defects found and fixed. All three are the same defect class, a result that was computed and never
+reported, which the selective-reporting sub-scan is built to catch.
+
+1. The band-noise sweep ran a sixteen-fold ramp whose coverage collapses to 0.111 with 0.885 of replicates
+   undefined. The appendix reported the two-fold and four-fold ramps and stopped, which left out the cell
+   that most clearly supports its own reading that the loudest band rather than the unevenness is what
+   breaks the estimator. It is now reported.
+2. The accuracy permutation power sweep ran a share of 0.02 and rejected in 0.110 of replicates. The
+   appendix jumped from zero to the 0.044 bound. The 0.02 cell is now in the same sentence.
+3. The per-size run also estimated every size band with BoolQ removed, and none of those ten cells reached
+   the paper. On margins all five bands exclude one, including the 1B cell whose full-battery lower
+   endpoint is unavailable, and on accuracy the middle three exclude one. The appendix now reports all ten
+   with their intervals, and the main text qualifies its within-size weakness sentence.
+
+Coverage of stored results after the fixes. I checked every cell of every stored simulation JSON against
+the three tex files, 58 R6 kernels and 34 further cells elsewhere. Every cell that carries a coverage,
+exclusion, width, undefined or rejection number now appears in the paper.
+
+Non-defects recorded rather than edited.
+
+- The 43 table column mismatches my first checker reported were all my own regex failing on the custom
+  `L{}` column type. The build runs under `-halt-on-error`, which would fail on a real mismatch.
+- The appendix figure 1.707 for standardised accuracy inflation on eight traits and the main-text 1.705 for
+  the external likelihood panel are different quantities that share three digits.
+
+Honest ranking after scan 4. 6.2 with acceptance near 0.58, moved by defect 3 alone. The sentence saying
+the within-size evidence is weaker because the 1B margin interval includes one is one of the two sentences
+an earlier rebuttal audit named as the ones a reviewer would quote back, and it now carries its own answer
+in the same sentence. The honest counterweight is that a reviewer can read a no-BoolQ subset result as
+chosen after the fact, which is why both the appendix passage and the main-text clause present it as the
+composition sensitivity at size resolution rather than as independent support. That caveat is what keeps
+this a two-tenths move rather than more.
