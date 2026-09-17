@@ -401,3 +401,50 @@ Honest ranking after scan 8. Unchanged at 6.3 with acceptance near 0.61. This sc
 that scan 7 broke and added nothing the paper did not already have. Recording it as a zero-improvement
 scan is the accurate reading, and the useful result is that the review-the-previous-scan rule caught six
 defects that would otherwise have shipped.
+
+## Scan 9. Reviewer simulation
+
+Review of scan 8. The six repaired sentences all read correctly in the built PDF, and the short-sentence
+share stayed at 8.5 percent. Nothing from scan 8 needed reverting.
+
+Twenty-one sub-scans ran under one question, which is what an ICLR reviewer would write in the box after
+reading the paper once. The rhythm sub-scans came back mostly negative and are recorded below as
+non-defects. The substantive finding is the one that moved the paper.
+
+Defect 1, the paper's most actionable number was buried. The simulation showing that a comparison rule
+assuming benchmark independence declares a margin difference in 0.113 of replicates with no true gap,
+against a nominal 0.05, sat in the last paragraph of the discussion. That number is the answer to the
+question a reviewer asks about any measurement paper, which is what a practitioner does differently
+after reading it. The abstract closed instead on a generic recommendation to report replicate
+uncertainty. The sentence now appears in the abstract with the corrected 0.051 beside it.
+
+Paying for it. The addition cost two lines and the main text went to ten pages three times during the
+repair. The final accounting removed the secondary prediction-model result from the abstract, which
+reported that a full correlation model beats independence on margins and that no model separates on
+accuracy. That result is a null on the scale most readers care about and the body and Table 2 still
+carry it in full. The abstract fell from 279 words to 260 and now ends on a consequence rather than on
+advice. Four smaller redundancies paid the rest, all of them restatements of a number given one clause
+earlier, and the lineage sentence in related work lost a clause about genetic components that the model
+never claimed to separate.
+
+Defect 2, self-inflicted. Compressing the discussion sentence dropped the condition that makes 0.113 a
+false positive rate, leaving it reading as an unconditional error rate. Caught by re-reading the
+compressed sentence in isolation rather than in the diff. Restored.
+
+Defect 3, self-inflicted. Trimming the abstract's checkpoint sentence left `paired intervals for both
+changes` with only one change named. Rewritten to `the paired differences`.
+
+Non-defects recorded rather than edited. Short-sentence clustering is not a defect, since corpus papers
+routinely run ten to forty four consecutive sentences under twelve words. The abstract did carry four
+consecutive sentences of 46, 43, 43 and 41 words against a corpus p90 of 34, and three were split before
+the substantive work began; it now runs a maximum of 33 with a spread from 7 to 33. One sentence-initial
+`So` was replaced with `We therefore`, since 20 of the 23 corpus papers never open a sentence with it.
+Related work stays at roughly 210 words. Expanding it means cutting a result to pay for the page, and on
+the reviewer trade that is a net loss, so the thinness is accepted rather than fixed.
+
+Honest ranking after scan 9. 6.4 with acceptance near 0.62, up from 6.3 and 0.61. The increment is small
+and I am reluctant to claim more. Nothing new was measured and no weakness was closed. What changed is
+that the strongest existing result now sits where a reviewer reads it in the first thirty seconds, and a
+null moved out of that position. The single-population scope, the exploratory status, the accuracy
+interval that includes one, and the novelty framing as an established construction applied to a new unit
+are all untouched and all still cap this paper below a 7.
