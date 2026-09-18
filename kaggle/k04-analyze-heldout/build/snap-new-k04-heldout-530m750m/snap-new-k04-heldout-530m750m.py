@@ -91,6 +91,12 @@ assert not unknown, f"score files for runs not in config/runs.json: {unknown[:5]
 # when more than one configuration at it was scored, and then it must be complete.
 per_size = {s: sum(runs_cfg[k]["size"] == s for k in files) for s in tasks_cfg["scope"]["full"]}
 sizes_scored = [s for s, n in per_size.items() if n > 3]
+# Modified build under the scope-fallback clause: 1B can't finish inside one
+# week of GPU quota before the deadline, so the test reads 530M and 750M and the
+# paper names 1B as missing (PROTOCOL_heldout.md, 2026-09-18 amendment).
+sizes_scored = [s for s in sizes_scored if s in ("530M", "750M")]
+assert set(sizes_scored) == {"530M", "750M"}, f"expected 530M and 750M fully scored, got {sizes_scored}"
+log["notes"].append("registered test modified to 530M and 750M; 1B missing")
 dropped = sorted(k for k in files if runs_cfg[k]["size"] not in sizes_scored)
 if dropped:
     log["notes"].append(f"{len(dropped)} scored runs at sizes outside the scope are not used: {dropped}")

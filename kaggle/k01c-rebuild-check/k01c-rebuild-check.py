@@ -51,6 +51,7 @@ print(f"[env] OLMES {commit} installed in {time.time() - t0:.0f}s", flush=True)
 
 specs = tasks["heldout"] + tasks["backups_in_order"] + [tasks["verification"]]
 BUILDER = r'''
+import hashlib
 import copy, json, sys
 from oe_eval.configs.tasks import TASK_CONFIGS
 from oe_eval.run_eval import load_task
@@ -100,7 +101,13 @@ for index, spec in enumerate(specs):
         if field and not key and "\nQuestion:" in d["context"]:
             # The processed doc drops the passage field on some tasks, so items
             # sharing a passage are recognised by the prompt they share instead.
-            key = str(abs(hash(d["context"].rsplit("\nQuestion:", 1)[0])) % 10**12)
+            prefix = d["context"].rsplit("\nQuestion:", 1)[0]
+            # CoQA prompts carry the earlier turns of the dialogue after the
+            # story, so only the text before them identifies the story.
+            prefix = prefix.split("\n\nPreceding questions:", 1)[0]
+            # sha256 rather than hash(), which Python salts per process, so the
+            # group labels were different in every build of this file.
+            key = hashlib.sha256(prefix.encode("utf-8")).hexdigest()[:12]
         group = f"{spec['name']}:{key}" if key else f"{spec['name']}:doc{doc_id}"
         row = {k: d[k] for k in ("task", "task_index", "doc_id", "native_id", "label", "context")}
         row["continuations"] = conts

@@ -1,7 +1,7 @@
 {
- "id": "garyzhang11111/snap-new-k04-analyze-heldout",
- "title": "snap-new-k04-analyze-heldout",
- "code_file": "k04-analyze-heldout.py",
+ "id": "garyzhang11111/snap-new-k04-interim-530m",
+ "title": "snap-new-k04-interim-530m",
+ "code_file": "snap-new-k04-interim-530m.py",
  "language": "python",
  "kernel_type": "script",
  "is_private": true,
@@ -18,12 +18,6 @@
   "garyzhang11111/snap-new-k01-requests",
   "garyzhang11111/snap-new-k02-pilot",
   "garyzhang11111/snap-new-k03-verify-release",
-  "garyzhang11111/snap-new-k02-s01",
-  "garyzhang11111/snap-new-k02-s02",
-  "garyzhang11111/snap-new-k02-s03",
-  "garyzhang11111/snap-new-k02-s04",
-  "garyzhang11111/snap-new-k02-s05",
-  "garyzhang11111/snap-new-k02-s06",
   "garyzhang11111/snap-new-k02-s07",
   "garyzhang11111/snap-new-k02-s08",
   "garyzhang11111/snap-new-k02-s09"
