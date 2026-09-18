@@ -158,21 +158,46 @@ snapnew.write_json(W / "requests_summary.json", summary)
 print(json.dumps(summary, indent=1), flush=True)
 
 # k01c: the freeze is only as good as its reproducibility, so the rebuilt file is
-# compared with the frozen hash here rather than trusted because k01 wrote it.
+# compared with the frozen one here rather than trusted because k01 wrote it.
+#
+# The comparison is on the decompressed bytes, not the file. gzip writes the
+# current time into its header, so two identical payloads written a day apart
+# never share a file hash, and the frozen SHA-256 in config/frozen.json is the
+# hash of one particular gzip stream. Rewriting the file to be byte-stable would
+# change that frozen hash after registration, which is a worse trade than
+# comparing what the file actually says.
+import gzip  # noqa: E402
+import hashlib  # noqa: E402
+
 frozen = snapnew.read_json(ROOT / "config" / "frozen.json")
-rebuilt = summary["sha256"]
-match = rebuilt == frozen["requests_sha256"]
+old_path = snapnew.find_one("requests.jsonl.gz")
+old_bytes = gzip.open(old_path, "rb").read()
+new_bytes = gzip.open(out, "rb").read()
+old_lines = old_bytes.decode("utf-8").splitlines()
+new_lines = new_bytes.decode("utf-8").splitlines()
+differing = [i for i, (a, b) in enumerate(zip(old_lines, new_lines)) if a != b]
+same = old_bytes == new_bytes
 per_task = {n: {"items_kept": v["items_kept"], "frozen_items": frozen["items_per_task"].get(n),
                 "same": v["items_kept"] == frozen["items_per_task"].get(n)}
             for n, v in summary["tasks"].items()}
 snapnew.write_json(W / "rebuild_check.json",
-                   {"rebuilt_sha256": rebuilt, "frozen_sha256": frozen["requests_sha256"],
-                    "sha256_matches": match, "olmes_commit": commit,
-                    "frozen_olmes_commit": frozen["olmes_commit"],
+                   {"content_identical": same,
+                    "content_sha256_rebuilt": hashlib.sha256(new_bytes).hexdigest(),
+                    "content_sha256_frozen_file": hashlib.sha256(old_bytes).hexdigest(),
+                    "frozen_file_sha256": frozen["requests_sha256"],
+                    "attached_file_sha256": snapnew.sha256(old_path),
+                    "rebuilt_file_sha256": summary["sha256"],
+                    "lines_frozen": len(old_lines), "lines_rebuilt": len(new_lines),
+                    "lines_differing": len(differing), "first_differing_lines": differing[:5],
+                    "olmes_commit": commit, "frozen_olmes_commit": frozen["olmes_commit"],
                     "commit_matches": commit == frozen["olmes_commit"],
-                    "items_rebuilt": summary["items"], "per_task": per_task,
-                    "wall_seconds": time.time() - t0})
-print(f"[rebuild] sha256 {rebuilt}\n[frozen ] sha256 {frozen['requests_sha256']}\n"
-      f"[verdict] {'identical' if match else 'DIFFERENT'}", flush=True)
-if not match:
-    sys.exit("the rebuilt request file does not match config/frozen.json; read rebuild_check.json")
+                    "gzip_header_note": "file hashes differ by the gzip modification time even when the "
+                                        "payloads are identical, so the verdict reads the payload",
+                    "per_task": per_task, "wall_seconds": time.time() - t0})
+print(f"[rebuild] {len(new_lines)} lines, payload sha256 {hashlib.sha256(new_bytes).hexdigest()}", flush=True)
+print(f"[frozen ] {len(old_lines)} lines, payload sha256 {hashlib.sha256(old_bytes).hexdigest()}", flush=True)
+print(f"[verdict] {'identical payloads' if same else str(len(differing)) + ' differing lines'}", flush=True)
+assert snapnew.sha256(old_path) == frozen["requests_sha256"], \
+    "the attached request file is not the frozen one, so this check compared the wrong file"
+if not same:
+    sys.exit("the rebuilt request file differs from the frozen one; read rebuild_check.json")
