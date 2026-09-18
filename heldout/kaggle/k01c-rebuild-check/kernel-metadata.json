@@ -1,0 +1,19 @@
+{
+ "id": "garyzhang11111/snap-new-k01c-rebuild-check",
+ "title": "snap-new-k01c-rebuild-check",
+ "code_file": "k01c-rebuild-check.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_tpu": false,
+ "enable_internet": true,
+ "dataset_sources": [
+  "garyzhang11111/snap-new-code"
+ ],
+ "competition_sources": [],
+ "kernel_sources": [
+  "garyzhang11111/snap-new-k01-requests"
+ ],
+ "model_sources": []
+}
