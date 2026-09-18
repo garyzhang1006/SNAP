@@ -1,0 +1,383 @@
+{
+ "caps": [
+  {
+   "cap": 200,
+   "items_used": 2000,
+   "full_battery": {
+    "margin": {
+     "lambda_hat": 1.178872190346316,
+     "ci95": [
+      1.0022468337604276,
+      1.337190527790698
+     ],
+     "width": 0.33494369403027036,
+     "excludes_one": true
+    },
+    "accuracy": {
+     "lambda_hat": 1.3032384480846368,
+     "ci95": [
+      1.1265752261332727,
+      1.4637011778373903
+     ],
+     "width": 0.33712595170411763,
+     "excludes_one": true
+    }
+   },
+   "four_trait": {
+    "margin": {
+     "lambda_median": 1.2632150838194591,
+     "width_median": 0.22188789044648882,
+     "excludes_one_share": 0.5,
+     "defined": 20,
+     "subsets": 20
+    },
+    "accuracy": {
+     "lambda_median": 1.0955796243883817,
+     "width_median": 0.25219116615741766,
+     "excludes_one_share": 0.21428571428571427,
+     "defined": 14,
+     "subsets": 20
+    }
+   }
+  },
+  {
+   "cap": 400,
+   "items_used": 4000,
+   "full_battery": {
+    "margin": {
+     "lambda_hat": 1.264263378687683,
+     "ci95": [
+      1.152040093308959,
+      1.365516843939185
+     ],
+     "width": 0.21347675063022598,
+     "excludes_one": true
+    },
+    "accuracy": {
+     "lambda_hat": 1.101725252414018,
+     "ci95": [
+      0.9112050766124052,
+      1.262031800703664
+     ],
+     "width": 0.3508267240912587,
+     "excludes_one": false
+    }
+   },
+   "four_trait": {
+    "margin": {
+     "lambda_median": 1.053330640039904,
+     "width_median": 0.17160958961324457,
+     "excludes_one_share": 0.45,
+     "defined": 20,
+     "subsets": 20
+    },
+    "accuracy": {
+     "lambda_median": 1.0271697783639575,
+     "width_median": 0.2684745444874495,
+     "excludes_one_share": 0.14285714285714285,
+     "defined": 14,
+     "subsets": 20
+    }
+   }
+  },
+  {
+   "cap": 600,
+   "items_used": 5900,
+   "full_battery": {
+    "margin": {
+     "lambda_hat": 1.2205383200362494,
+     "ci95": [
+      1.1389471467732049,
+      1.298005374359995
+     ],
+     "width": 0.15905822758679022,
+     "excludes_one": true
+    },
+    "accuracy": {
+     "lambda_hat": 1.1393696899572991,
+     "ci95": [
+      1.0279705603740361,
+      1.2467618449386646
+     ],
+     "width": 0.21879128456462849,
+     "excludes_one": true
+    }
+   },
+   "four_trait": {
+    "margin": {
+     "lambda_median": 1.217900012877637,
+     "width_median": 0.15826783269940603,
+     "excludes_one_share": 0.5,
+     "defined": 20,
+     "subsets": 20
+    },
+    "accuracy": {
+     "lambda_median": 1.1422145454934842,
+     "width_median": 0.25803124589554854,
+     "excludes_one_share": 0.25,
+     "defined": 16,
+     "subsets": 20
+    }
+   }
+  },
+  {
+   "cap": 1000,
+   "items_used": 9500,
+   "full_battery": {
+    "margin": {
+     "lambda_hat": 1.2177235392536359,
+     "ci95": [
+      1.1211239616995452,
+      1.309114008023593
+     ],
+     "width": 0.1879900463240478,
+     "excludes_one": true
+    },
+    "accuracy": {
+     "lambda_hat": 1.048491245175752,
+     "ci95": [
+      0.9216178126263871,
+      1.1536054059476464
+     ],
+     "width": 0.2319875933212593,
+     "excludes_one": false
+    }
+   },
+   "four_trait": {
+    "margin": {
+     "lambda_median": 1.1686755995224936,
+     "width_median": 0.1336517806482454,
+     "excludes_one_share": 0.55,
+     "defined": 20,
+     "subsets": 20
+    },
+    "accuracy": {
+     "lambda_median": 1.0098903063031777,
+     "width_median": 0.2108657712054422,
+     "excludes_one_share": 0.3125,
+     "defined": 16,
+     "subsets": 20
+    }
+   }
+  },
+  {
+   "cap": 2000,
+   "items_used": 15952,
+   "full_battery": {
+    "margin": {
+     "lambda_hat": 1.2505798187310901,
+     "ci95": [
+      1.149172953678268,
+      1.3461527297971105
+     ],
+     "width": 0.19697977611884254,
+     "excludes_one": true
+    },
+    "accuracy": {
+     "lambda_hat": 1.087476165649922,
+     "ci95": [
+      0.9902621317812429,
+      1.1777213845124699
+     ],
+     "width": 0.187459252731227,
+     "excludes_one": false
+    }
+   },
+   "four_trait": {
+    "margin": {
+     "lambda_median": 1.1702055700249954,
+     "width_median": 0.128117480639368,
+     "excludes_one_share": 0.5,
+     "defined": 20,
+     "subsets": 20
+    },
+    "accuracy": {
+     "lambda_median": 1.0592089497550639,
+     "width_median": 0.18814363949105606,
+     "excludes_one_share": 0.3157894736842105,
+     "defined": 19,
+     "subsets": 20
+    }
+   }
+  },
+  {
+   "cap": null,
+   "items_used": 37682,
+   "full_battery": {
+    "margin": {
+     "lambda_hat": 1.246504474099599,
+     "ci95": [
+      1.1457472155179111,
+      1.3418865710840218
+     ],
+     "width": 0.19613935556611062,
+     "excludes_one": true
+    },
+    "accuracy": {
+     "lambda_hat": 1.0885887305152093,
+     "ci95": [
+      0.9941452976954042,
+      1.1741230942072576
+     ],
+     "width": 0.17997779651185342,
+     "excludes_one": false
+    }
+   },
+   "four_trait": {
+    "margin": {
+     "lambda_median": 1.1955445406393959,
+     "width_median": 0.1210725004950357,
+     "excludes_one_share": 0.5,
+     "defined": 20,
+     "subsets": 20
+    },
+    "accuracy": {
+     "lambda_median": 1.0489230618118452,
+     "width_median": 0.21019408174513932,
+     "excludes_one_share": 0.35,
+     "defined": 20,
+     "subsets": 20
+    }
+   }
+  }
+ ],
+ "items_per_trait_full": {
+  "arc_challenge": 1172,
+  "arc_easy": 2376,
+  "boolq": 3270,
+  "csqa": 1221,
+  "hellaswag": 10042,
+  "mmlu": 14042,
+  "openbookqa": 500,
+  "piqa": 1838,
+  "socialiqa": 1954,
+  "winogrande": 1267
+ },
+ "n_boot": 1999,
+ "seed": 20260917,
+ "four_trait_subsets": [
+  [
+   "arc_challenge",
+   "arc_easy",
+   "csqa",
+   "winogrande"
+  ],
+  [
+   "arc_challenge",
+   "arc_easy",
+   "hellaswag",
+   "socialiqa"
+  ],
+  [
+   "arc_challenge",
+   "boolq",
+   "csqa",
+   "mmlu"
+  ],
+  [
+   "arc_challenge",
+   "boolq",
+   "csqa",
+   "openbookqa"
+  ],
+  [
+   "arc_challenge",
+   "boolq",
+   "csqa",
+   "piqa"
+  ],
+  [
+   "arc_challenge",
+   "boolq",
+   "hellaswag",
+   "piqa"
+  ],
+  [
+   "arc_challenge",
+   "boolq",
+   "mmlu",
+   "winogrande"
+  ],
+  [
+   "arc_challenge",
+   "boolq",
+   "socialiqa",
+   "winogrande"
+  ],
+  [
+   "arc_challenge",
+   "hellaswag",
+   "piqa",
+   "winogrande"
+  ],
+  [
+   "arc_challenge",
+   "mmlu",
+   "piqa",
+   "winogrande"
+  ],
+  [
+   "arc_easy",
+   "boolq",
+   "hellaswag",
+   "winogrande"
+  ],
+  [
+   "arc_easy",
+   "csqa",
+   "hellaswag",
+   "mmlu"
+  ],
+  [
+   "arc_easy",
+   "hellaswag",
+   "mmlu",
+   "socialiqa"
+  ],
+  [
+   "arc_easy",
+   "hellaswag",
+   "mmlu",
+   "winogrande"
+  ],
+  [
+   "arc_easy",
+   "hellaswag",
+   "openbookqa",
+   "socialiqa"
+  ],
+  [
+   "arc_easy",
+   "hellaswag",
+   "openbookqa",
+   "winogrande"
+  ],
+  [
+   "arc_easy",
+   "openbookqa",
+   "socialiqa",
+   "winogrande"
+  ],
+  [
+   "boolq",
+   "mmlu",
+   "openbookqa",
+   "winogrande"
+  ],
+  [
+   "csqa",
+   "mmlu",
+   "socialiqa",
+   "winogrande"
+  ],
+  [
+   "hellaswag",
+   "mmlu",
+   "piqa",
+   "socialiqa"
+  ]
+ ],
+ "note": "caps are items per benchmark before the half split, so half that many reach each half",
+ "status": "exploratory unless listed as pre-registered in PROTOCOL_heldout.md",
+ "wall_seconds": 30.17891550064087
+}
