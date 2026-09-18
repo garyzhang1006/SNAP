@@ -9,7 +9,8 @@
  "enable_tpu": false,
  "enable_internet": true,
  "dataset_sources": [
-  "garyzhang11111/snap-new-code"
+  "garyzhang11111/snap-new-code",
+  "garyzhang11111/snap-new-verify-1b-scores"
  ],
  "competition_sources": [],
  "kernel_sources": [
