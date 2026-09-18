@@ -1,0 +1,114 @@
+{
+ "runs_swept": [
+  2,
+  3,
+  4,
+  5,
+  6,
+  8
+ ],
+ "n_rep": 300,
+ "n_boot": 999,
+ "seed": 20260917,
+ "by_phenotype": {
+  "margin": {
+   "observed_lambda": 1.2439499117191137,
+   "observed_rbar_e": 0.06082348698511009,
+   "by_runs": {
+    "2": {
+     "replicates": 300,
+     "defined": 300,
+     "lambda_median": 1.2390744974695045,
+     "width_median": 0.2946182033693219,
+     "excludes_one_share": 0.86
+    },
+    "3": {
+     "replicates": 300,
+     "defined": 300,
+     "lambda_median": 1.2445302542515817,
+     "width_median": 0.208487594850563,
+     "excludes_one_share": 0.9966666666666667
+    },
+    "4": {
+     "replicates": 300,
+     "defined": 300,
+     "lambda_median": 1.2406761915482467,
+     "width_median": 0.1680931225347917,
+     "excludes_one_share": 1.0
+    },
+    "5": {
+     "replicates": 300,
+     "defined": 300,
+     "lambda_median": 1.2416322516852434,
+     "width_median": 0.14691073276470246,
+     "excludes_one_share": 1.0
+    },
+    "6": {
+     "replicates": 300,
+     "defined": 300,
+     "lambda_median": 1.245022377472114,
+     "width_median": 0.13116038278266628,
+     "excludes_one_share": 1.0
+    },
+    "8": {
+     "replicates": 300,
+     "defined": 300,
+     "lambda_median": 1.2445076919317006,
+     "width_median": 0.11011285618401334,
+     "excludes_one_share": 1.0
+    }
+   }
+  },
+  "accuracy": {
+   "observed_lambda": 1.0783733870898096,
+   "observed_rbar_e": 0.0180987957759498,
+   "by_runs": {
+    "2": {
+     "replicates": 300,
+     "defined": 300,
+     "lambda_median": 1.0780736092830543,
+     "width_median": 0.2895339011242122,
+     "excludes_one_share": 0.14666666666666667
+    },
+    "3": {
+     "replicates": 300,
+     "defined": 300,
+     "lambda_median": 1.077992887912007,
+     "width_median": 0.20189047202939303,
+     "excludes_one_share": 0.26666666666666666
+    },
+    "4": {
+     "replicates": 300,
+     "defined": 300,
+     "lambda_median": 1.0745198508823974,
+     "width_median": 0.16250528553603805,
+     "excludes_one_share": 0.4
+    },
+    "5": {
+     "replicates": 300,
+     "defined": 300,
+     "lambda_median": 1.0754108391867687,
+     "width_median": 0.14008352055086504,
+     "excludes_one_share": 0.5266666666666666
+    },
+    "6": {
+     "replicates": 300,
+     "defined": 300,
+     "lambda_median": 1.078898125658887,
+     "width_median": 0.12824886044621314,
+     "excludes_one_share": 0.64
+    },
+    "8": {
+     "replicates": 300,
+     "defined": 300,
+     "lambda_median": 1.078845110483,
+     "width_median": 0.1060037892783427,
+     "excludes_one_share": 0.8033333333333333
+    }
+   }
+  }
+ },
+ "note": "equicorrelated seed covariance matched to the observed mean correlation, 125 configurations, released item counts",
+ "status": "exploratory unless listed as pre-registered in PROTOCOL_heldout.md",
+ "wall_seconds": 7119.697938680649
+}

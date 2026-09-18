@@ -1,0 +1,18 @@
+{
+ "id": "garyzhang11111/snap-new-k11-leave-recipe-out",
+ "title": "snap-new-k11-leave-recipe-out",
+ "code_file": "k11-leave-recipe-out.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_tpu": false,
+ "enable_internet": true,
+ "dataset_sources": [
+  "garyzhang11111/seed-noise-src",
+  "garyzhang11111/seed-noise-reduced-runs"
+ ],
+ "competition_sources": [],
+ "kernel_sources": [],
+ "model_sources": []
+}

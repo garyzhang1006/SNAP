@@ -1,0 +1,26 @@
+{
+ "id": "garyzhang11111/snap-new-k04-interim-530m",
+ "title": "snap-new-k04-interim-530m",
+ "code_file": "snap-new-k04-interim-530m.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_tpu": false,
+ "enable_internet": true,
+ "dataset_sources": [
+  "garyzhang11111/snap-new-code",
+  "garyzhang11111/seed-noise-src",
+  "garyzhang11111/seed-noise-reduced-runs"
+ ],
+ "competition_sources": [],
+ "kernel_sources": [
+  "garyzhang11111/snap-new-k01-requests",
+  "garyzhang11111/snap-new-k02-pilot",
+  "garyzhang11111/snap-new-k03-verify-release",
+  "garyzhang11111/snap-new-k02-s07",
+  "garyzhang11111/snap-new-k02-s08",
+  "garyzhang11111/snap-new-k02-s09"
+ ],
+ "model_sources": []
+}
