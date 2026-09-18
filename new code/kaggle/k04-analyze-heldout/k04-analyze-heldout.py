@@ -70,7 +70,9 @@ K_NEW = len(FINAL)
 req_path = snapnew.find_one("requests.jsonl.gz")
 assert snapnew.sha256(req_path) == frozen["requests_sha256"], "request file is not the frozen one"
 requests = snapnew.read_requests(req_path)
-log = {"final_tasks": FINAL, "notes": []}
+sup = frozen.get("supersedes") or []
+scored_ok = {frozen["requests_sha256"]} | {s["requests_sha256"] for s in ([sup] if isinstance(sup, dict) else sup)}
+log ={"final_tasks": FINAL, "notes": []}
 
 # 1. Gather scores.
 files = {}
@@ -110,7 +112,9 @@ hub_shas = {}
 for key, p in sorted(files.items()):
     with np.load(p) as z:
         meta = json.loads(str(z["meta"]))
-    assert meta["requests_sha256"] == frozen["requests_sha256"], f"{key} was scored on a different request file"
+    # Superseded files differ from the frozen one only in group labels, which
+    # scoring never reads, so runs scored on them stay valid (PROTOCOL_heldout.md).
+    assert meta["requests_sha256"] in scored_ok, f"{key} was scored on a different request file"
     reqs = snapnew.select_tasks(requests, meta["tasks"])
     s, meta = snapnew.load_scores(p, reqs)
     pb = s["sum_logits"] / s["num_bytes"]
