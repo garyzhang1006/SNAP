@@ -300,7 +300,34 @@ The off-diagonal association between the matrices is 0.756 for margins and 0.345
 An additional exploratory baseline, P2R, rescales $R_P$ off-diagonals by the training-fold ratio of mean noise correlation to mean performance correlation. Its mean factors are 0.366 for margins and 0.370 for accuracy, compared with whole-population ratios of 0.375 and 0.362. On the same five recipe folds, its squared prediction errors are 0.0131 and 0.0342. It improves on P2 but remains 2.3 times worse than P1 on margins and worse than independence on accuracy. Its direction relative to independence holds on margins in all 1,000 random fold partitions and on accuracy in 987 of them, but the recipe-bootstrap intervals below include zero on both scales. This rescaling also requires replicated runs to estimate its factor.
 
 \paragraph{Paired uncertainty for the prediction comparison}\label{app:paired}
+Table~\ref{tab:prediction} gives the fold-mean prediction errors that Section~\ref{sec:prediction} summarises for each of the six models. Before fitting any model we clip negative variance estimates, while the target retains the original covariance contributions.
+
+\begin{table}[!htb]
+\centering
+\caption{Mean squared prediction error of log aggregate standard deviation across five recipe folds, with paired recipe-bootstrap intervals for their differences given below. The rescaled plug-in is an exploratory addition to the original five-model comparison.}
+\label{tab:prediction}
+\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{lrr}
+\toprule
+Model & Margin & Accuracy\\
+\midrule
+Independence & 0.0358 & 0.0143\\
+Rank-one competence & 0.0057 & 0.0140\\
+Rank-one plus gain & 0.0063 & 0.0260\\
+Phenotypic correlation plug-in & 0.1073 & 0.1682\\
+Full covariance & 0.0068 & 0.0105\\
+Rescaled phenotypic plug-in & 0.0131 & 0.0342\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The rank-one model has the lowest margin point error, and full covariance has the lowest accuracy point error, but paired recipe-bootstrap intervals with 2,000 refitted draws separate neither model from its runner-up. On margins, the rank-one, rank-one plus gain, and full models each lower the error relative to independence by about 0.03, and their intervals exclude zero, although the rank-one interval reaches zero when nonpositive held-out variances are filled from training folds, whereas on accuracy every computed interval for a difference from independence includes zero, as the paired intervals below show. The unrescaled phenotypic plug-in has the largest error on both scales, and rescaling its off-diagonals on training folds reduces that error, but needs replicate information and still trails the best model on either scale.
+
 We reran the five-fold comparison with every prediction, target, and squared log error saved, and the rerun reproduces all twelve fold means in Table~\ref{tab:prediction} exactly, with P2R factors of 0.366 and 0.370. Before computing any contrast, we fixed eight paired differences and a practically meaningful difference of 0.005 in mean squared log error, which corresponds to a 7 percent error in the aggregate standard deviation. For intervals, we resampled the 25 recipes 2,000 times, assigned folds over the distinct original recipes so that copies of one recipe never sit on both sides of a split, and refitted the whole comparison in each draw. These intervals treat the designed recipes as exchangeable clusters. They also absorb variation from the choice of fold partition.
+
+An operational comparison instead predicts each held-out configuration's raw aggregate variance moment from matrices refitted without held-out marginals. There, independence has mean squared error $5.01\times10^{-9}$ on margins and $1.72\times10^{-9}$ on accuracy, and the full, rank-one, and shrinkage models differ from it by amounts whose 2,000-draw recipe-resampling intervals all include zero. That target is the noisy three-run moment, so the comparison bounds detectable gains without calibrating the ranking above.
+
+The 1,500 same-size pairs of the flip census also have seed-matched runs, and the paired difference carries a positive variance estimate for 1,445 margin and 1,222 accuracy pairs. For those pairs, the ratio of the paired-difference standard deviation to the independence value has median 1.024 on margins and 1.081 on accuracy, with 5th to 95th percentiles of 0.39 to 1.40 and 0.36 to 1.62, and the stricter subset whose two configurations both carry positive variance holds 1,379 and 919 pairs at medians of 1.027 and 1.079. In 0.49 of pairs the seed-matched covariance is positive.
 
 On margins, P1, P1G, and P3 each lower the error relative to independence by about 0.03, with intervals of $-0.058$ to $-0.001$, $-0.059$ to $-0.002$, and $-0.060$ to $-0.004$, and between 95 and 97 percent of draws put the reduction beyond 0.005. P2R lowers the error by 0.023, but its interval of $-0.059$ to 0.010 includes zero. The P1 minus P3 interval runs from $-0.003$ to 0.012, so these data don't separate the rank-one model from the full matrix. On accuracy, each of the four intervals for a difference from independence includes zero, and the full matrix minus independence runs from $-0.017$ to 0.023.
 
@@ -497,7 +524,7 @@ $\bar r_E=0.2$ & 1.673 & $-0.002$ & 0.947 & 0.943 & 0.943 & 0.928 & 0.948\\
 \end{tabular}
 \end{table}
 
-The analysis also reports 1,000 trait-specific run-label permutations, each using 4,999 bootstrap draws, whose intervals contain the reference value one in 0.925 of margin permutations and 0.954 of accuracy permutations, falling below one in 0.049 and above one in 0.026 against nominal tail probabilities of 0.025. We repeated that experiment for this revision with 2,000 permutations, which gives coverage of 0.944 on margins and 0.949 on accuracy with a Monte Carlo standard error near 0.005, and tail shares of 0.039 below and 0.018 above. That looked like a two standard error gap from the record, so we ran the experiment ten further times at the record's own 1,000 permutations, each on a separate stream. Margin coverage across those ten runs falls between 0.915 and 0.942 with a mean of 0.931, and accuracy falls between 0.925 and 0.959 with a mean of 0.944. All four recorded coverages, including the cluster-robust ones of 0.881 and 0.941, land inside the matching range, so the record reads as one draw at a replicate count too coarse to separate these values. The ten runs together put margin coverage 0.019 below nominal, which agrees with the 0.933 to 0.953 that the simulation gives. The lower-tail imbalance matters for interpreting an upper bound below the proposed threshold of 1.349, where the reported upper endpoint leaves only 0.011 of separation, approximately one quarter of a margin standard error.
+The analysis also reports 1,000 trait-specific run-label permutations, each using 4,999 bootstrap draws, whose intervals contain the reference value one in 0.925 of margin permutations and 0.954 of accuracy permutations, falling below one in 0.049 and above one in 0.026 against nominal tail probabilities of 0.025. We repeated that experiment for this revision with 2,000 permutations, which gives coverage of 0.944 on margins and 0.949 on accuracy with a Monte Carlo standard error near 0.005, and tail shares of 0.039 below and 0.018 above. That looked like a two standard error gap from the record, so we ran the experiment ten further times at the record's own 1,000 permutations, each on a separate stream. Margin coverage across those ten runs falls between 0.915 and 0.942 with a mean of 0.931, and accuracy falls between 0.925 and 0.959 with a mean of 0.944. All four recorded coverages, including the cluster-robust ones of 0.881 and 0.941, land inside the matching range, so the record reads as one draw at a replicate count too coarse to separate these values. The ten runs together put margin coverage 0.019 below nominal, which agrees with the 0.933 to 0.953 that the simulation gives. Across those ten runs the margin interval falls below the null in 0.032 to 0.052 of permutations, against a nominal 0.025 on that side. The lower-tail imbalance matters for interpreting an upper bound below the proposed threshold of 1.349, where the reported upper endpoint leaves only 0.011 of separation, approximately one quarter of a margin standard error.
 
 These are conditional randomisation calibration results, contingent on the exchangeability assumed by the permutations. They aren't coverage measurements for the unknown nonzero covariance of the original population. The cluster-$t$ comparator has recorded coverage of 0.881 and 0.941 with above-one rates of 0.044 and 0.023, and our 2,000-permutation repeat gives 0.901 and 0.938 with above-one rates of 0.034 and 0.023. In the record and in the repeat alike, no margin estimate reaches the observation, while the accuracy upper-tail fraction is 0.021 in the record and 0.020 in the repeat, close to 0.028 in the earlier 500 draws. With a plus-one correction, zero exceedances among 1,000 draws give a Monte Carlo value of $1/1001$, rather than zero.
 
@@ -545,8 +572,7 @@ Shrunken, cross-fitted & 0.731 & 1.002 & 0.875 & 0.745 & 1.004 & 0.999 & 1.060 &
 \end{tabular}
 \end{table}
 
-
-\paragraph{Transport to PolyPythias}
+\paragraph{Transport to PolyPythias}\label{app:transport}
 The planned transport analysis scores nine runs per configuration on a nested 4,755-item battery. For three sizes, the source pipeline gives margin inflation of 1.40574 compared with 1.24395 for DataDecide, an excess ratio of 1.66323 computed from unrounded values. A scoring-kernel rewrite reproduces both inflation estimates to five decimals and reports the ratio as 1.66321, a difference that arises beyond the fifth decimal of the inputs. The configuration table requires the second-arm output rather than inspection of the DataDecide reduction alone.
 
 On excess inflation, the DataDecide prediction falls approximately 40 percent below PolyPythias, while the raw inflation difference is approximately twelve percent. The planning document names aggregate standard deviation without resolving this scale choice, and the excess-based failure assessment is therefore post hoc. The raw inflation comparison falls inside the proposed twenty-percent band.
@@ -712,6 +738,74 @@ Because the smallest share in that first sweep was 0.25, we repeated the sweep a
 Neither the band test nor the mirror test speaks to the corner where both channels sit at their bounds together, so we simulated that corner as well, at 4,000 replicates per cell. Recipe sharing alone at 0.114 leaves the recipe-clustered interval at 0.949, and twice both bounds takes it to 0.927. The two cells that carry the limitation are band sharing alone at its 0.044 bound and the joint corner where both channels sit at their bounds together, and the first pass separated those by 0.012, at 0.937 against 0.949, which is a gap 4,000 replicates can't resolve. We repeated both at 12,000 replicates with a fresh seed, and the separation doesn't survive. The larger run puts band sharing alone at 0.9444 and the joint corner at 0.9428, half a Monte Carlo standard error apart, with median widths of 0.242 and 0.246. Pooling the two passes over 16,000 replicates gives 0.9425 and 0.9444. Both corners therefore cost the interval between half a point and a point of coverage, and the earlier reading that the two sharing channels partly cancel rested on a difference the first pass was too small to measure. A remedy recovers even that small loss, and it costs almost nothing. Scaling each recipe's residual by one over one minus its leverage, which is the cr3 correction, lifts the recipe-clustered interval from 0.942 to 0.950 at the band corner and from 0.946 to 0.954 at the joint corner over 12,000 replicates, and it widens the median interval only from 0.241 to 0.252. We report the uncorrected interval in the main text because that is what the shipped estimator computes, and a reader who wants the corner protected can buy it for four percent of width.
 
 That corner argument was measured on margins, and the paper reports an accuracy conclusion as well, so we repeated the same five cells at the accuracy battery's correlation and item noise. The recipe-clustered interval covers 0.950 with no sharing, 0.942 with band sharing alone at its bound, 0.951 with recipe sharing alone at its bound, 0.946 at the joint corner and 0.940 at twice both bounds, with no undefined replicate anywhere until the doubled cell. The corner therefore costs the accuracy interval the same half point to a point it costs the margin one, so the limitation transfers between the two scales rather than belonging to one of them. The size-clustered fallback behaves here exactly as the sharing sweeps found, covering between 0.822 and 0.844 with a ninth to an eighth of replicates undefined, while its cluster-robust counterpart holds between 0.930 and 0.943 at every cell including the corner (seed 20260988, 4,000 replicates). The remedy transfers to that scale as well, and it overshoots a little. At 12,000 replicates the leverage correction lifts the recipe-clustered interval from 0.944 to 0.954 at the joint corner and from 0.950 to 0.959 at the band bound, while with no sharing present it moves 0.949 to 0.956, so it buys back a point where a point is missing and adds one where none is. Its cost is five percent of width, from 0.395 to 0.414, which sits close to the four percent it costs on margins. A reader shouldn't carry the same correction to the size-clustered fallback, because there it takes coverage from 0.841 down to 0.751 and raises the undefined share from 0.119 to 0.229, since five clusters leave the leverage term almost nothing to work with (seed 20260992, 12,000 replicates). The sharing our clustering assumes is therefore a precaution that these data can neither confirm nor rule out, while the sharing that would break that clustering is bounded where it costs under a point of coverage.
+
+\paragraph{Registered held-out test}\label{app:heldout}
+The protocol fixed the task list, the replacement rule, the statistic, the interval, the pass rule, and a scope rule before any production score existed, and it records every later change as a dated amendment. The OLMES harness at a pinned commit builds every prompt and continuation, MedMCQA contributes 1,000 items drawn under a fixed seed, and DROP and CoQA are each capped at 1,000 items. Halves come from the clustered split of the passage-aware check with a seed fixed in the protocol, so items that share a passage or a story never straddle halves. The CoQA story grouping gives 479 groups for its 1,000 items. Before production, the six pilot checkpoints of one recipe at 150M and 1B each matched their own release seed on 300 ARC-Easy items. Before each run was scored, a spread of its items was checked against a one-sequence reference path to within 0.001 nats, with a slower agreeing path as the fallback. Pilot timing projected 66.0 session hours for all 375 runs and 54.9 for the 225 runs in scope, which triggered the scope rule. That budget also led us to withdraw a six-task secondary analysis that we had registered earlier.
+
+The request file changed twice after the freeze, and neither change touched a prompt, continuation, label, or item order. The first replaced a salted hash in the passage-group labels with a deterministic one, and the second regrouped CoQA by story after it became a primary task, changing the group field on 932 rows. Two production shards were scored on the file before the CoQA regrouping, and the analysis reads group labels only from the final file, since scores are keyed by task, document, and choice. At submission, all 75 runs at 530M, 13 of the 75 at 750M, and no production run at 1B had been scored, so the test in Section~\ref{sec:heldout} reads 530M alone.
+
+Table~\ref{tab:heldoutloto} removes one held-out task at a time. Pooling the four held-out tasks with the original ten gives margin inflation of 1.715 with interval \ci{0.705}{2.349} and accuracy inflation of 1.427 with interval \ci{1.153}{1.655}. Table~\ref{tab:battery} gives the battery-size curve at 530M alongside the all-size curve that the protocol committed to reporting. Every entry reads subsets of the original ten benchmarks on the released runs, so none of them uses a held-out score.
+
+\begin{table}[!htb]
+\centering
+\caption{Held-out estimates at 530M with one task removed, with nominal 95\% recipe-cluster intervals over 25 configurations.}
+\label{tab:heldoutloto}
+\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{lrrrr}
+\toprule
+Task removed & Margin & Interval & Accuracy & Interval\\
+\midrule
+SciQ & 1.013 & \ci{0.756}{1.212} & 1.090 & \ci{0.731}{1.339}\\
+MedMCQA & 1.103 & \ci{0.865}{1.304} & 1.437 & \ci{1.241}{1.605}\\
+DROP & 1.302 & \ci{0.947}{1.583} & 1.200 & \ci{1.079}{1.314}\\
+CoQA & 1.169 & \ci{0.968}{1.340} & 1.267 & \ci{0.743}{1.631}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!htb]
+\centering
+\caption{Median margin inflation over subsets of the original ten benchmarks, with the share of subsets whose nominal 95\% interval excludes one, at 530M alone and across all five sizes. Sizes with more than 60 subsets use 60 sampled without replacement, and three 530M subsets whose bootstrap degenerates are left out of that share. These intervals use 1,999 wild draws, against 4,999 for the registered test.}
+\label{tab:battery}
+\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+Benchmarks & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+\midrule
+530M median & 1.019 & 1.133 & 1.244 & 1.317 & 1.296 & 1.368 & 1.377 & 1.439 & 1.514\\
+530M share & 0.33 & 0.58 & 0.67 & 0.80 & 0.78 & 0.87 & 0.91 & 0.90 & 1.00\\
+All sizes median & 1.012 & 1.116 & 1.176 & 1.228 & 1.100 & 1.160 & 1.160 & 1.200 & 1.244\\
+All sizes share & 0.38 & 0.53 & 0.57 & 0.62 & 0.73 & 0.82 & 0.98 & 1.00 & 1.00\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Recipe decisions}\label{app:decision}
+For each size below 1B, we formed every pair of the 25 recipes and averaged each recipe's aggregate score over its three runs and both halves. We called a pair when its gap exceeded two standard errors, $\sqrt{2/R}$ times the aggregate seed standard deviation. We estimated that deviation either under independence or with the covariance, in both cases with the pair's two recipes left out. The same pair at 1B supplies the reference, and it counts as resolved when its gap exceeds two corrected standard errors, again leaving the pair out. Table~\ref{tab:decision} reports wrong-sign calls among calls on resolved pairs. A recipe bootstrap of 2,000 draws resamples the pair outcomes without re-estimating the standard deviations, so its intervals understate the uncertainty in those estimates. The share of resolved pairs that each rule calls correctly lies between 0.75 and 0.87 under both rules.
+
+\begin{table}[!htb]
+\centering
+\caption{Wrong-sign calls against the 1B ordering, as a share of calls on resolved pairs, under the independence and corrected rules. The call columns count calls on resolved pairs only, and the difference is the independence rate minus the corrected rate, with its recipe-bootstrap interval.}
+\label{tab:decision}
+\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{llrrrrr}
+\toprule
+Score & Size & Calls, independence & Calls, corrected & Wrong, independence & Wrong, corrected & Difference\\
+\midrule
+Margin & 150M & 180 & 179 & 0.056 & 0.050 & \ci{0.000}{0.022}\\
+Margin & 300M & 184 & 178 & 0.060 & 0.051 & \ci{-0.002}{0.049}\\
+Margin & 530M & 181 & 169 & 0.061 & 0.059 & \ci{-0.016}{0.022}\\
+Margin & 750M & 173 & 169 & 0.029 & 0.030 & \ci{-0.004}{0.000}\\
+Accuracy & 150M & 217 & 215 & 0.069 & 0.070 & \ci{-0.003}{0.000}\\
+Accuracy & 300M & 214 & 212 & 0.051 & 0.052 & \ci{-0.003}{0.000}\\
+Accuracy & 530M & 223 & 218 & 0.067 & 0.064 & \ci{-0.004}{0.024}\\
+Accuracy & 750M & 201 & 200 & 0.045 & 0.045 & \ci{-0.002}{0.001}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Runs per configuration}
+The seed-count simulation draws populations with 125 configurations, the released item counts, and an equicorrelated seed covariance at the observed mean seed correlation, 0.061 on margins and 0.018 on accuracy. It sweeps two, three, four, five, six, and eight runs per configuration with 300 replicates at each count and applies the primary wild interval with 999 draws. On margins the interval excludes one in 0.86 of replicates at two runs and in 0.997 at three, with median widths of 0.295 and 0.208. On accuracy the share rises from 0.147 at two runs through 0.267 at three and 0.527 at five to 0.803 at eight. Equicorrelation spreads the excess evenly across benchmarks, whereas the observed covariance concentrates in BoolQ, so these shares describe a battery with the same average correlation and not this battery's structure.
 
 \section{Implementation details}
 \label{app:implementation}
