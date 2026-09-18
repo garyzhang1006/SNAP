@@ -15,6 +15,7 @@
  "kernel_sources": [
   "garyzhang11111/snap-new-k01-requests",
   "garyzhang11111/snap-new-k02-verify",
+  "garyzhang11111/snap-new-k02-verify-recipes",
   "garyzhang11111/snap-new-k03a-release-arc",
   "garyzhang11111/snap-new-k03a-r01",
   "garyzhang11111/snap-new-k03a-r02",
