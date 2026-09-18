@@ -57,7 +57,7 @@ def per_byte(o, where):
 
 tasks_cfg = snapnew.read_json(ROOT / "config" / "tasks.json")
 task = tasks_cfg["verification"]["release_task"]
-RECIPES = ["c4"]  # replaced by tools/make_release_kernels.py
+RECIPES = ["dclm-baseline", "dclm-baseline-25p-dolma1.7-75p", "dclm-baseline-50p-dolma1.7-50p", "dclm-baseline-75p-dolma1.7-25p", "dclm-baseline-top-10p", "dclm-baseline-top-20p"]
 runs = [r for r in snapnew.read_json(ROOT / "config" / "runs.json")["runs"] if r["recipe"] in RECIPES]
 wanted = {(r["recipe"], r["size"], r["seed"], r["step"]) for r in runs}
 print(f"[plan] {len(wanted)} runs over {RECIPES}, task {task}", flush=True)

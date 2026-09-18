@@ -1,0 +1,18 @@
+{
+ "id": "garyzhang11111/snap-new-k03a-r01",
+ "title": "snap-new-k03a-r01",
+ "code_file": "snap-new-k03a-r01.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_tpu": false,
+ "enable_internet": true,
+ "dataset_sources": [
+  "garyzhang11111/snap-new-code",
+  "garyzhang11111/seed-noise-src"
+ ],
+ "competition_sources": [],
+ "kernel_sources": [],
+ "model_sources": []
+}
