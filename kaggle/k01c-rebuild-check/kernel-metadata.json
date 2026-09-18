@@ -12,6 +12,8 @@
   "garyzhang11111/snap-new-code"
  ],
  "competition_sources": [],
- "kernel_sources": [],
+ "kernel_sources": [
+  "garyzhang11111/snap-new-k01-requests"
+ ],
  "model_sources": []
 }
