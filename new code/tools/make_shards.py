@@ -83,6 +83,23 @@ def verify(runs, tasks, build):
     print(f"wrote {d} with {len(chosen)} runs at {sorted(sizes)} on {names}")
 
 
+def verify_recipes(runs, tasks, build):
+    """Every recipe except c4 at 150M on the verification task.
+
+    The paper could only check the seed-to-branch mapping on the eight recipes
+    its first index resolved. All 25 resolve under the released naming, and
+    150M costs about eight seconds of download and ten of scoring per run, so
+    this shard closes the check over the whole recipe set for the price of one
+    short session.
+    """
+    chosen = [r for r in runs if r["size"] == "150M" and r["recipe"] != "c4"]
+    assert len(chosen) == 72, f"expected 72 runs, found {len(chosen)}"
+    shard = {"name": "verify-recipes", "runs": chosen, "tasks": [tasks["verification"]["name"]],
+             "est_seconds": {}, "deadline_hours": DEADLINE_HOURS}
+    d = write_kernel("snap-new-k02-verify-recipes", shard, build)
+    print(f"wrote {d} with {len(chosen)} runs over {len({r['recipe'] for r in chosen})} recipes")
+
+
 def seconds_model(report, runs_by_key, token_ratio):
     """Seconds per production run as a function of size. Download and load time
     carry over from the pilot as measured; scoring time scales with tokens."""
@@ -153,7 +170,7 @@ def production(runs, tasks, build, pilot_report, decision, token_ratio):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("stage", choices=["pilot", "verify", "production"])
+    ap.add_argument("stage", choices=["pilot", "verify", "verify-recipes", "production"])
     ap.add_argument("--pilot-report", help="shard_report.json downloaded from the pilot kernel")
     ap.add_argument("--decision", help="decision.json downloaded from k03")
     ap.add_argument("--token-ratio", type=float, default=None,
@@ -166,6 +183,8 @@ def main():
         pilot(runs, tasks, build)
     elif args.stage == "verify":
         verify(runs, tasks, build)
+    elif args.stage == "verify-recipes":
+        verify_recipes(runs, tasks, build)
     else:
         if not (args.pilot_report and args.decision):
             ap.error("production needs --pilot-report and --decision")
