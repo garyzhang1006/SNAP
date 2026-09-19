@@ -616,38 +616,64 @@ We also simulated the corner where both channels sit at their bounds. Recipe sha
 \paragraph{Registered held-out test}\label{app:heldout}
 The protocol fixed the task list, the replacement rule, the statistic, the interval, the pass rule, and a scope rule before any production score existed, and it records every later change as a dated amendment. The OLMES harness at a pinned commit builds every prompt and continuation, MedMCQA contributes 1,000 items drawn under a fixed seed, and DROP and CoQA are each capped at 1,000 items. Halves come from the clustered split of the passage-aware check with a seed fixed in the protocol, so items that share a passage or a story never straddle halves. The CoQA story grouping gives 479 groups for its 1,000 items. Before production, the six pilot checkpoints of one recipe at 150M and 1B each matched their own release seed on 300 ARC-Easy items. The backup rule then read the pilot's three 1B runs, where LogiQA-en gave mean accuracy 0.269 against a bar of 0.270 and LSAT-LR gave 0.219 against 0.220, with chance at 0.25 and 0.20. Both fell short, so the rule replaced them in its listed order with DROP and CoQA as multiple choice, and the rule reads accuracy only. Both misses are smaller than the pilot's binomial standard error of about 0.010 over three runs and 651 or 510 items. The rule rather than the evidence therefore decided the swap, and we applied it as written. Before each run was scored, a spread of its items was checked against a one-sequence reference path to within 0.001 nats, with a slower agreeing path as the fallback. Pilot timing projected 66.0 session hours for all 375 runs and 54.9 for the 225 runs in scope, which triggered the scope rule. That budget also led us to withdraw a six-task secondary analysis that we had registered earlier.
 
-The request file changed twice after the freeze, and neither change touched a prompt, continuation, label, or item order. The first replaced a salted hash in the passage-group labels with a deterministic one, and the second regrouped CoQA by story after it became a primary task, changing the group field on 932 rows. Two production shards were scored on the file before the CoQA regrouping, and the analysis reads group labels only from the final file, since scores are keyed by task, document, and choice. At submission, all 75 runs at 530M, 13 of the 75 at 750M, and no production run at 1B had been scored, so the test in Section~\ref{sec:heldout} reads 530M alone. The analysis kernel first recomputes the shipped margin estimate from the 375 released runs and stops unless it returns 1.24395 to within 0.0005, which it did. The 60 four-benchmark subsets at 530M in Table~\ref{tab:heldout} come from the battery-size kernel rerun at that scope after the held-out result. Of those subsets 28 fall below 1.198, which places the held-out estimate at their 47th percentile.
+The request file changed twice after the freeze, and neither change touched a prompt, continuation, label, or item order. The first replaced a salted hash in the passage-group labels with a deterministic one, and the second regrouped CoQA by story after it became a primary task, changing the group field on 932 rows. Two production shards were scored on the file before the CoQA regrouping, and the analysis reads group labels only from the final file, since scores are keyed by task, document, and choice. At submission, all 75 runs at 530M and at 750M had been scored, along with 12 of the 75 at 1B. The test in Section~\ref{sec:heldout} therefore reads 530M and 750M, and the 1B scores stay unused. An earlier interim on the 530M runs alone gave held-out margin inflation of 1.198 with interval \ci{0.864}{1.454} and accuracy inflation of 1.373 with interval \ci{1.138}{1.567}, and it failed the rule as well. The analysis kernel first recomputes the shipped margin estimate from the 375 released runs and stops unless it returns 1.24395 to within 0.0005, which it did. The 60 four-benchmark subsets at 530M and 750M in Table~\ref{tab:heldout} come from the battery-size kernel run at that scope before any 750M held-out score existed. Of those subsets 30 fall below 1.201, which places the held-out estimate at their 50th percentile.
 
-Table~\ref{tab:heldoutloto} removes one held-out task at a time. When the four held-out tasks are pooled with the original ten, margin inflation is 1.715 with interval \ci{0.705}{2.349} and accuracy inflation is 1.427 with interval \ci{1.153}{1.655}. Table~\ref{tab:battery} gives the battery-size curve at 530M alongside the all-size curve that the protocol committed to reporting. Every entry reads subsets of the original ten benchmarks on the released runs, so none of them uses a held-out score.
+Table~\ref{tab:heldoutloto} removes one held-out task at a time. When the four held-out tasks are pooled with the original ten, margin inflation is 1.553 with interval \ci{0.535}{2.155} and accuracy inflation is 1.220 with interval \ci{0.868}{1.496}. Table~\ref{tab:battery} gives the battery-size curve at 530M and 750M and at 530M alone alongside the all-size curve that the protocol committed to reporting. Every entry reads subsets of the original ten benchmarks on the released runs, so none of them uses a held-out score.
 
 The held-out tasks carry 1,000 items each, while the original benchmarks range from 500 to 14,042, so a separate kernel asked what item count costs the interval. For each cap it drew that many items per benchmark under a fixed seed, split them into halves by passage group, and recomputed every run's trait scores on the two halves. The uncapped entry therefore uses the kernel's own split rather than the primary one. A cap of 1,000 items per benchmark leaves 9,500 of the 37,682 items and gives full-battery margin inflation of 1.218 with interval \ci{1.121}{1.309}, against 1.247 with interval \ci{1.146}{1.342} uncapped. A cap of 200 gives 1.179 with interval \ci{1.002}{1.337}. Over 20 sampled four-benchmark subsets, the share whose interval excludes one stays between 0.45 and 0.55 at every cap from 200 items to the full counts. The four-task failure rate therefore follows battery width rather than item count. At the registered scope of 530M, 750M, and 1B, the original ten benchmarks give margin inflation of 1.240 with interval \ci{1.054}{1.397} and accuracy inflation of 1.097 with interval \ci{0.922}{1.246}. We computed both on the released runs before any held-out score existed.
 
+Table~\ref{tab:rulepower} gives the rule's simulated pass rate at each scope it could take, at item noise of 0.73 for the margin-like level, 1.45 for the accuracy-like level, and 1.00 between them. We fixed that design before the two-size analysis ran. At a true ratio of one the pass rate stays between 0.011 and 0.022 in every cell, so the rule holds its nominal size. At two sizes and a true ratio of 1.244, the median simulated interval width is 0.318 at margin-like noise and 0.530 at accuracy-like noise, against the observed 1.070. An exploratory run on the 750M runs alone gives held-out margin inflation of 1.203 with an undefined lower limit and an upper limit of 1.828, and accuracy inflation of 1.299 with interval \ci{0.959}{1.584}. The original ten benchmarks give 1.110 with interval \ci{0.686}{1.407} and 0.987 with interval \ci{0.310}{1.320} at that size.
+
 \begin{table}[!htb]
 \centering
-\caption{Held-out estimates at 530M with one task removed, with nominal 95\% recipe-cluster intervals over 25 configurations.}
-\label{tab:heldoutloto}
+\caption{Simulated pass rate of the registered rule, a lower 95\% wild bootstrap limit above one, by scope, item-noise level, and true held-out inflation, from a compound-symmetric generator with four traits, 25 recipe clusters, and three runs. Each cell uses 4,000 replicates, so its Monte Carlo error is at most 0.008. We fixed this design before the 530M and 750M analysis ran.}
+\label{tab:rulepower}
 \small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
-\begin{tabular}{lrrrr}
+\begin{tabular}{llrrrrrrr}
 \toprule
-Task removed & Margin & Interval & Accuracy & Interval\\
+Scope, configurations & Noise & 1.00 & 1.10 & 1.20 & 1.244 & 1.316 & 1.40 & 1.50\\
 \midrule
-SciQ & 1.013 & \ci{0.756}{1.212} & 1.090 & \ci{0.731}{1.339}\\
-MedMCQA & 1.103 & \ci{0.865}{1.304} & 1.437 & \ci{1.241}{1.605}\\
-DROP & 1.302 & \ci{0.947}{1.583} & 1.200 & \ci{1.079}{1.314}\\
-CoQA & 1.169 & \ci{0.968}{1.340} & 1.267 & \ci{0.743}{1.631}\\
+One size, 25 & 0.73 & 0.011 & 0.088 & 0.318 & 0.454 & 0.681 & 0.884 & 0.974\\
+Two sizes, 50 & 0.73 & 0.016 & 0.180 & 0.600 & 0.785 & 0.945 & 0.995 & 1.000\\
+Three sizes, 75 & 0.73 & 0.019 & 0.258 & 0.792 & 0.926 & 0.992 & 1.000 & 1.000\\
+One size, 25 & 1.00 & 0.015 & 0.074 & 0.238 & 0.329 & 0.535 & 0.752 & 0.905\\
+Two sizes, 50 & 1.00 & 0.015 & 0.138 & 0.454 & 0.631 & 0.847 & 0.961 & 0.998\\
+Three sizes, 75 & 1.00 & 0.019 & 0.189 & 0.640 & 0.820 & 0.963 & 0.997 & 1.000\\
+One size, 25 & 1.45 & 0.020 & 0.057 & 0.142 & 0.192 & 0.324 & 0.488 & 0.683\\
+Two sizes, 50 & 1.45 & 0.017 & 0.083 & 0.259 & 0.371 & 0.581 & 0.794 & 0.943\\
+Three sizes, 75 & 1.45 & 0.022 & 0.110 & 0.368 & 0.524 & 0.754 & 0.923 & 0.991\\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{table}[!htb]
 \centering
-\caption{Median margin inflation over subsets of the original ten benchmarks, with the share of subsets whose nominal 95\% interval excludes one, at 530M alone and across all five sizes. Sizes with more than 60 subsets use 60 sampled without replacement, and three 530M subsets whose bootstrap degenerates are left out of that share. These intervals use 1,999 wild draws, against 4,999 for the registered test.}
+\caption{Held-out estimates at 530M and 750M with one task removed, with nominal 95\% recipe-cluster intervals over 50 configurations. A lower limit is undefined when the bootstrap limit on the variance ratio falls below zero.}
+\label{tab:heldoutloto}
+\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{lrrrr}
+\toprule
+Task removed & Margin & Interval & Accuracy & Interval\\
+\midrule
+SciQ & 1.023 & \ci{\text{undef.}}{1.527} & 1.036 & \ci{0.821}{1.218}\\
+MedMCQA & 1.106 & \ci{0.594}{1.470} & 1.368 & \ci{1.151}{1.559}\\
+DROP & 1.322 & \ci{1.158}{1.469} & 1.221 & \ci{1.140}{1.304}\\
+CoQA & 1.112 & \ci{0.911}{1.290} & 1.224 & \ci{0.865}{1.507}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!htb]
+\centering
+\caption{Median margin inflation over subsets of the original ten benchmarks, with the share of subsets whose nominal 95\% interval excludes one, at 530M and 750M, at 530M alone, and across all five sizes. Sizes with more than 60 subsets use 60 sampled without replacement, and subsets whose bootstrap degenerates are left out of that share. The two-size rows were fixed before any 750M held-out score existed, and the 530M rows came after the 530M interim result. These intervals use 1,999 wild draws, against 4,999 for the registered test.}
 \label{tab:battery}
 \small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
 \begin{tabular}{lrrrrrrrrr}
 \toprule
 Benchmarks & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
 \midrule
+530M and 750M median & 1.010 & 1.143 & 1.213 & 1.288 & 1.142 & 1.206 & 1.210 & 1.259 & 1.316\\
+530M and 750M share & 0.37 & 0.53 & 0.55 & 0.53 & 0.37 & 0.33 & 0.20 & 0.10 & 0.00\\
 530M median & 1.019 & 1.133 & 1.244 & 1.317 & 1.296 & 1.368 & 1.377 & 1.439 & 1.514\\
 530M share & 0.33 & 0.58 & 0.67 & 0.80 & 0.78 & 0.87 & 0.91 & 0.90 & 1.00\\
 All sizes median & 1.012 & 1.116 & 1.176 & 1.228 & 1.100 & 1.160 & 1.160 & 1.200 & 1.244\\
