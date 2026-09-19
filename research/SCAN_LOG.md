@@ -3253,3 +3253,38 @@ states that wrong calls include genuine rank changes, which is the caveat a revi
 first. No defect and no change.
 
 Ranking holds at 6.2.
+
+## Scan 62, related work
+
+Re-read of scans 59 to 61. The one split reads correctly.
+
+Sub-scans 1 to 10 clean. Judgment sub-scans on Section 6. Each of the fourteen citations resolves to
+an entry, and the zhou2020 entry restored in scan 51 now sits with the two other seed-variability
+studies. The positioning sentence, that none of the located studies estimates run-noise covariance
+between benchmarks or an effective count for a fixed battery, is scoped to what we located, which
+is the defensible form. The effective-test literature is distinguished from this work in one clause.
+The section holds a ten-word sentence and a 34-word sentence, so its rhythm varies. No defect and
+no change.
+
+Ranking holds at 6.2.
+
+## Scan 63, discussion and limitations
+
+Re-read of scan 62. No change to review.
+
+Sub-scans 1 to 10 clean. Judgment sub-scans on Section 7.
+
+12 and 18. One misstatement that scan 52's trimming introduced. "Both estimates also rest on gain
+    simulation assumptions" attached the simulator dependence to the two primary estimates, which do
+    not depend on any simulation. The dependence belongs to the share attributed to gain, and the
+    sentence now says so and keeps the original conclusion that we offer no general approximation.
+11. The 0.821 and 0.580 coverage figures, the 0.044 permutation bound, the 0.943 coverage, the 1B
+    interval of 0.811 to 1.628, the 0.113 to 0.051 and 0.101 rates, and the 0.997 and 0.803 power
+    figures all appear in the appendices at the same values.
+13 to 17. The discussion states that the registered test failed, which the earlier reviewer pass had
+    flagged as missing. No repetition with the abstract beyond the two headline bounds.
+19. The section holds sentences of 10, 11 and 12 words among its longer ones.
+20. Nothing survives deletion without loss.
+
+Ranking holds at 6.2. The fix removes a sentence a reviewer could have quoted as confusing the
+estimate with its interpretation.
