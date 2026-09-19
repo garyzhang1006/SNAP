@@ -1,0 +1,505 @@
+{
+ "combined_14_traits": {
+  "accuracy/all": {
+   "K": 14,
+   "Lambda": 1.2202637910671044,
+   "N": 50,
+   "clusters": 25,
+   "hi": 1.4959123903824572,
+   "lo": 0.8683173452898776,
+   "se": 0.1387049859950106
+  },
+  "accuracy/batch_free": {
+   "K": 14,
+   "Lambda": 1.2674850976875083,
+   "N": 50,
+   "clusters": 25,
+   "hi": 1.6226740834262485,
+   "lo": 0.7917232644991987,
+   "se": 0.17732978998904636
+  },
+  "margin/all": {
+   "K": 14,
+   "Lambda": 1.5525478561265122,
+   "N": 50,
+   "clusters": 25,
+   "hi": 2.15484866506512,
+   "lo": 0.534698956011149,
+   "se": 0.21273812108874995
+  },
+  "margin/batch_free": {
+   "K": 14,
+   "Lambda": 1.512639761138438,
+   "N": 50,
+   "clusters": 25,
+   "hi": 2.062283202860707,
+   "lo": 0.5930374401555913,
+   "se": 0.22402975816116885
+  }
+ },
+ "heldout": {
+  "accuracy/all": {
+   "K": 4,
+   "Lambda": 1.3267680478304797,
+   "N": 50,
+   "clusters": 25,
+   "hi": 1.4839732265691536,
+   "lo": 1.1528726020899704,
+   "se": 0.06863863543328856
+  },
+  "accuracy/batch_free": {
+   "K": 4,
+   "Lambda": 1.3376998233853132,
+   "N": 50,
+   "clusters": 25,
+   "hi": 1.5379081600363367,
+   "lo": 1.1088050228331376,
+   "se": 0.09038281903607862
+  },
+  "margin/all": {
+   "K": 4,
+   "Lambda": 1.200808329730281,
+   "N": 50,
+   "clusters": 25,
+   "hi": 1.6156971549139187,
+   "lo": 0.5455654708959362,
+   "se": 0.12281118054939089
+  },
+  "margin/batch_free": {
+   "K": 4,
+   "Lambda": 1.1544780361232823,
+   "N": 50,
+   "clusters": 25,
+   "hi": 1.8437694518667154,
+   "lo": NaN,
+   "se": 0.16042038215226678
+  }
+ },
+ "heldout_info": {
+  "dropped_cells": [],
+  "half_A_items": 2000,
+  "half_B_items": 2000,
+  "n_config": 50,
+  "n_runs_read": 150,
+  "recipes": [
+   "c4",
+   "dclm-baseline",
+   "dclm-baseline-25p-dolma1.7-75p",
+   "dclm-baseline-50p-dolma1.7-50p",
+   "dclm-baseline-75p-dolma1.7-25p",
+   "dclm-baseline-top-10p",
+   "dclm-baseline-top-20p",
+   "dclm-baseline-top-fw-10p",
+   "dclm-baseline-top-fw-3p",
+   "dclm-baseline-top-fw2-7p",
+   "dclm-baseline-top-fw3-7p",
+   "dolma1.6++",
+   "dolma1.7",
+   "dolma1.7-no-code",
+   "dolma1.7-no-flan",
+   "dolma1.7-no-math-no-code",
+   "dolma1.7-no-reddit",
+   "falcon",
+   "falcon-with-cc",
+   "falcon-with-cc-top-10p",
+   "falcon-with-cc-top-20p",
+   "falcon-with-cc-top-orig-10p",
+   "falcon-with-cc-top-tulu-10p",
+   "fineweb-edu",
+   "fineweb-pro"
+  ],
+  "sizes": [
+   "530M",
+   "750M"
+  ],
+  "split_seed": 20260917
+ },
+ "hub_shas": {
+  "c4__530M__seed-14__step-51250": "90b8238baa1647841f26395c49a81d3845f5f8ac",
+  "c4__530M__seed-15__step-51250": "b881a9ddb305282b46ff13c68d8c2972ac0e0b96",
+  "c4__530M__seed-2__step-51250": "05a8ffb328ca7f75f07beaffcc3688d610f3b4e3",
+  "c4__750M__seed-14__step-27500": "6c2d062fb7f7b95fd816a60785c9582d4cf18191",
+  "c4__750M__seed-15__step-27500": "a2e0bcb667dbbd068d86735bbe47d657bde895ce",
+  "c4__750M__seed-2__step-27500": "989f853ec883fa0e61d47d1188f35685f9cf17bd",
+  "dclm-baseline-25p-dolma1.7-75p__530M__seed-14__step-51250": "e170ed4dcc38367fffe10b568a7443dda33925fa",
+  "dclm-baseline-25p-dolma1.7-75p__530M__seed-15__step-51250": "015810b1ca7427cb97b47d38c37f1a3621fbc58a",
+  "dclm-baseline-25p-dolma1.7-75p__530M__seed-2__step-51250": "c48bd7dc88f2bc2c6f0d44db5d0c77a4ca389d8f",
+  "dclm-baseline-25p-dolma1.7-75p__750M__seed-14__step-27500": "fe1950c92c53e2e74f752f52d0d687c35bb70573",
+  "dclm-baseline-25p-dolma1.7-75p__750M__seed-15__step-27500": "dc74b4dc8581371d887d6c06385d7162b3e67ae2",
+  "dclm-baseline-25p-dolma1.7-75p__750M__seed-2__step-27500": "254ea6209b4fff95ec1e63350a3229ff57797462",
+  "dclm-baseline-50p-dolma1.7-50p__530M__seed-14__step-51250": "0b5735469830cd47b2674b9eefa7666ea940180b",
+  "dclm-baseline-50p-dolma1.7-50p__530M__seed-15__step-51250": "482f933eaf9591b4faf391098e479a842deee22c",
+  "dclm-baseline-50p-dolma1.7-50p__530M__seed-2__step-51250": "589559f25b0afee8f0989d94a68c1a87e0f86dbb",
+  "dclm-baseline-50p-dolma1.7-50p__750M__seed-14__step-27500": "582603e01532adbdf663ef71482d27a2f55cde1f",
+  "dclm-baseline-50p-dolma1.7-50p__750M__seed-15__step-27500": "80584a6d070cc0a2888b857f154496c52439f1a2",
+  "dclm-baseline-50p-dolma1.7-50p__750M__seed-2__step-27500": "f0287d448e5b85d8ca1dff1a1251cf05f99daf3b",
+  "dclm-baseline-75p-dolma1.7-25p__530M__seed-14__step-51250": "9f1a7114fbd7059610c8358becbe5a6c1640f38a",
+  "dclm-baseline-75p-dolma1.7-25p__530M__seed-15__step-51250": "f3d311321a5f2c6a93a33c8298caad8dfacae6c1",
+  "dclm-baseline-75p-dolma1.7-25p__530M__seed-2__step-51250": "c5a553f78000b3a61086422697acfee9b99b4cf2",
+  "dclm-baseline-75p-dolma1.7-25p__750M__seed-14__step-11250": "ec675f96d1fef12de0c18489c96ee04f5dc78445",
+  "dclm-baseline-75p-dolma1.7-25p__750M__seed-15__step-11250": "208514d7cbd09f7d54a7310f6b89a25cebac2f75",
+  "dclm-baseline-75p-dolma1.7-25p__750M__seed-2__step-11250": "f0542e25858f27c077f5044071a9b9ea68c09b39",
+  "dclm-baseline-top-10p__530M__seed-14__step-51250": "3e7dc5cc56e16d6b0196ca066ebbe0bbbd66e731",
+  "dclm-baseline-top-10p__530M__seed-15__step-51250": "517a3f6179d2f54614589ffa73412c8b6fb95ba9",
+  "dclm-baseline-top-10p__530M__seed-2__step-51250": "01d3176c54d3fb70b76e0ba48ca49f6eab32e07b",
+  "dclm-baseline-top-10p__750M__seed-14__step-27500": "981db0e9724c6206121e006ae34d3fcf86379056",
+  "dclm-baseline-top-10p__750M__seed-15__step-27500": "481b88410958d5297b77f2935c9b1f9ea9a3680a",
+  "dclm-baseline-top-10p__750M__seed-2__step-27500": "32811153cfd2fb6ca79c79bad08f9373e5b627d1",
+  "dclm-baseline-top-20p__530M__seed-14__step-22500": "af5ce3a91619dfa808225577bf6bed7a046ecc1c",
+  "dclm-baseline-top-20p__530M__seed-15__step-22500": "d2630a6119e9f025d2dbffdbcea659f3061b041c",
+  "dclm-baseline-top-20p__530M__seed-2__step-22500": "2680f8548994558acb9159e05a6e9e8dcb8b11ca",
+  "dclm-baseline-top-20p__750M__seed-14__step-16250": "73e45c7b71fc8a6af1d066010c32b7f77b396c48",
+  "dclm-baseline-top-20p__750M__seed-15__step-16250": "236f4661a2704dfeb6be0191cbd2503797392e75",
+  "dclm-baseline-top-20p__750M__seed-2__step-16250": "f32f4eb9fe59457f22823bfa2f6219b0904dceb9",
+  "dclm-baseline-top-fw-10p__530M__seed-14__step-51250": "c1ebb11ed29fd6643634ae98a39e942baf8fda8b",
+  "dclm-baseline-top-fw-10p__530M__seed-15__step-51250": "32404e81e30d7e1695c4cc6721c9b45ba8cbe3d5",
+  "dclm-baseline-top-fw-10p__530M__seed-2__step-51250": "a9ff9c7f21204d76811c59b99081a3f14b00f78b",
+  "dclm-baseline-top-fw-10p__750M__seed-14__step-27500": "c8dc2fdc3d73803cde283ac3fab9585f55d65a87",
+  "dclm-baseline-top-fw-10p__750M__seed-15__step-27500": "274cf98c1149f42f82d32d8d989f9e447da621e5",
+  "dclm-baseline-top-fw-10p__750M__seed-2__step-27500": "6f88bee1b83dceeb060232a05171651e95ca1523",
+  "dclm-baseline-top-fw-3p__530M__seed-14__step-51250": "c6093ca9b7ab8ae926a7e7741e940eaccb878b29",
+  "dclm-baseline-top-fw-3p__530M__seed-15__step-51250": "15264310824755f7e439aaa66669ea2f6670b443",
+  "dclm-baseline-top-fw-3p__530M__seed-2__step-51250": "4208f11946899d4fe2d2975bb3685906110ee1be",
+  "dclm-baseline-top-fw-3p__750M__seed-14__step-27500": "326a362a7dd89966f3149f40568c394394667ebe",
+  "dclm-baseline-top-fw-3p__750M__seed-15__step-27500": "28ee0043d537e30155c77c0d7883402ca143c69a",
+  "dclm-baseline-top-fw-3p__750M__seed-2__step-27500": "02c2425420b8de9847f31d53e366af557d8fbe84",
+  "dclm-baseline-top-fw2-7p__530M__seed-14__step-51250": "b518f9da8c807413f584dca8e7d4d9c212f15e72",
+  "dclm-baseline-top-fw2-7p__530M__seed-15__step-51250": "d3821c1b9d6d25f907454e9b1819501059d20497",
+  "dclm-baseline-top-fw2-7p__530M__seed-2__step-51250": "2e91a3b28058c1532d8c8d1e89ed523c78b99cfc",
+  "dclm-baseline-top-fw2-7p__750M__seed-14__step-27500": "df2687383801c8b23e84cd5dc050298ae1bac0a2",
+  "dclm-baseline-top-fw2-7p__750M__seed-15__step-27500": "ae7d4e999cfc58724a933ff4236006d1bec8b199",
+  "dclm-baseline-top-fw2-7p__750M__seed-2__step-27500": "11a15de48fa7881839aa3fa7281634429a97c7f2",
+  "dclm-baseline-top-fw3-7p__530M__seed-14__step-51250": "664b79a2a1d054915ba8c2479fb635f97a5c91fb",
+  "dclm-baseline-top-fw3-7p__530M__seed-15__step-51250": "762b2d69ce4186af053dc46bcdf1561c46419210",
+  "dclm-baseline-top-fw3-7p__530M__seed-2__step-51250": "9bc7471ee37241ebf3fb344aad108821df37a358",
+  "dclm-baseline-top-fw3-7p__750M__seed-14__step-27500": "e62784d3effe97c8dcc4176838d2ca9367737a56",
+  "dclm-baseline-top-fw3-7p__750M__seed-15__step-27500": "ffcf4665b3fdf77b24da253df6c60304393d99b2",
+  "dclm-baseline-top-fw3-7p__750M__seed-2__step-27500": "7d6509459881b02c1f6167f8d2c98f4de1f35acb",
+  "dclm-baseline__530M__seed-14__step-51250": "d63a9da2e0cacac3e770bff82ac8159e2ad5c82e",
+  "dclm-baseline__530M__seed-15__step-51250": "3de909d8e9e78d4e00789d34d6f4e6a4b67d26eb",
+  "dclm-baseline__530M__seed-2__step-51250": "18785f5e7364eaf7f51231823eb6aab02d9ae4e2",
+  "dclm-baseline__750M__seed-14__step-27500": "5d289e7b5edf28dee67b6618991f9bfc5f77b33d",
+  "dclm-baseline__750M__seed-15__step-27500": "ee80267b4ffb8eecd285513d810ca71a903e7a34",
+  "dclm-baseline__750M__seed-2__step-27500": "23faa0cafa3df602447436b943ea7ec2b5998a67",
+  "dolma1.6++__530M__seed-14__step-51250": "ed558525f64cb01c98df054a1c3b6783eabc7cad",
+  "dolma1.6++__530M__seed-15__step-51250": "138bd491c9af1aaab6c2dc418a62cd64d084a1c7",
+  "dolma1.6++__530M__seed-2__step-51250": "f299116e5a78ae313d0053e9707cd2b01471bdd3",
+  "dolma1.6++__750M__seed-14__step-27500": "c0fce545982b1ed47a3cd1997f0b64a12616d4f0",
+  "dolma1.6++__750M__seed-15__step-27500": "5ea61ba480f43fab46e218544d213eb05c2615b3",
+  "dolma1.6++__750M__seed-2__step-27500": "4e3ed5310b05cb9fdb116d9cf44c6f9a51ea4766",
+  "dolma1.7-no-code__530M__seed-14__step-51250": "b1fb65c58b55487cf3cfa8c4711ac6a4683067e9",
+  "dolma1.7-no-code__530M__seed-15__step-51250": "c7bd5b4375f292372f1f8d46dd01263f35248c5a",
+  "dolma1.7-no-code__530M__seed-2__step-51250": "57708cf58502e04798765c94aa24f81a6b48f9b7",
+  "dolma1.7-no-code__750M__seed-14__step-27500": "e010b24edbc393eb609611b8dc99b69d1f74c298",
+  "dolma1.7-no-code__750M__seed-15__step-27500": "76842876901a7cdcd496ee1cb565bdc733f911b0",
+  "dolma1.7-no-code__750M__seed-2__step-27500": "9f8c48fd7aed522258279098fa5c6c1877a4d3ba",
+  "dolma1.7-no-flan__530M__seed-14__step-51250": "dd69e177844a27ce4fe0c48b7e1f3d9313582bd7",
+  "dolma1.7-no-flan__530M__seed-15__step-51250": "6365d6b4198ffe942326d08bb8b3a48f2459a751",
+  "dolma1.7-no-flan__530M__seed-2__step-51250": "72c461f26b5a06a73b26190e5896948ac622f25d",
+  "dolma1.7-no-flan__750M__seed-14__step-27500": "c30363ead76dabca23c70009b16ebf933a63fd94",
+  "dolma1.7-no-flan__750M__seed-15__step-27500": "7e10070c66fb9a701472e7884a3bf44d309df038",
+  "dolma1.7-no-flan__750M__seed-2__step-27500": "7a0c0a88715c59eabfdda42a3a52c8897f2ab63f",
+  "dolma1.7-no-math-no-code__530M__seed-14__step-51250": "5ecd127309e7bfc63205c4f50c7f7a56888f57e7",
+  "dolma1.7-no-math-no-code__530M__seed-15__step-51250": "c4703a008f9fe8540cb2af915c8137e5bbb021f3",
+  "dolma1.7-no-math-no-code__530M__seed-2__step-51250": "03754de22cf3ff6d93115c2dae4301dd174e48b9",
+  "dolma1.7-no-math-no-code__750M__seed-14__step-27500": "ecba5b742df9712e966327a5b53fe170ce714329",
+  "dolma1.7-no-math-no-code__750M__seed-15__step-27500": "dcc6ea6eb8d07e02c958c6d577fe536398e21ce4",
+  "dolma1.7-no-math-no-code__750M__seed-2__step-27500": "e3cb55e554e39e90fd0674ebb0225b0de15a9f17",
+  "dolma1.7-no-reddit__530M__seed-14__step-51250": "a6f24576348d1ecf723cf54d4e6b140758acc234",
+  "dolma1.7-no-reddit__530M__seed-15__step-51250": "d63f2f225a8a205e046dbb93695cb405a6ff7afb",
+  "dolma1.7-no-reddit__530M__seed-2__step-51250": "cb1db300311ac4f7d57dccf1f56c06c499d1b026",
+  "dolma1.7-no-reddit__750M__seed-14__step-27500": "03e5934806f7c8b1c0f5da171ff423f5ccc43bc2",
+  "dolma1.7-no-reddit__750M__seed-15__step-27500": "c24a6d526e0f57f3d03a2ab5816fae571076bf5d",
+  "dolma1.7-no-reddit__750M__seed-2__step-27500": "839ecbdbad23556bad9a48b977d01d3e2ff9aa9d",
+  "dolma1.7__530M__seed-14__step-51250": "6b04fe65542f89fbfb9a8cb5304cc0ff2d82359c",
+  "dolma1.7__530M__seed-15__step-51250": "5ab1c31aa3acbc1292fdf2579d79fc4c7895f433",
+  "dolma1.7__530M__seed-2__step-51250": "25a26e17f55a8456b75d065124483c3d4efd6728",
+  "dolma1.7__750M__seed-14__step-27500": "128fc23ea53ae912187a32d9c33642c23a28178d",
+  "dolma1.7__750M__seed-15__step-27500": "7cf4c5709aff584a6ab8f6532a8fcb9b8cee2cb2",
+  "dolma1.7__750M__seed-2__step-27500": "2b4f0413a71930b5dd2c29ed5d4cc5215d973aba",
+  "falcon-with-cc-top-10p__530M__seed-14__step-51250": "4012541f361a8b243164c5dcfeef90c0993b3fe9",
+  "falcon-with-cc-top-10p__530M__seed-15__step-51250": "a542b24a9f19da578f26352b164a629c2bb71198",
+  "falcon-with-cc-top-10p__530M__seed-2__step-51250": "0bfb88d76d8e2d7c7ada17d81e6d3716cd632cb4",
+  "falcon-with-cc-top-10p__750M__seed-14__step-27500": "7f3450c63dd40b5bb964978c8b66f4a85727bb64",
+  "falcon-with-cc-top-10p__750M__seed-15__step-27500": "4ba8fbf7fda86798daa3d649d5fe49a98f258c7f",
+  "falcon-with-cc-top-10p__750M__seed-2__step-27500": "3efc89ec3d5ed9ec49f59407381a94393c6d2cea",
+  "falcon-with-cc-top-20p__530M__seed-14__step-51250": "4eb28a52198d31b806b0d7d953ff94a90954bfce",
+  "falcon-with-cc-top-20p__530M__seed-15__step-51250": "a0c3806adf01f288c0b449a9501e183c7f070d36",
+  "falcon-with-cc-top-20p__530M__seed-2__step-51250": "e59f83806919885159e58d7a88164a129c8e3f7d",
+  "falcon-with-cc-top-20p__750M__seed-14__step-27500": "9049bf3dd6f35b1088d5a2ef9f906d9755c06336",
+  "falcon-with-cc-top-20p__750M__seed-15__step-27500": "9345248d14b34ee3801b18915ed769c70d0cf65a",
+  "falcon-with-cc-top-20p__750M__seed-2__step-27500": "119e5213a6f774a8dedca8b380bc24a8b615aada",
+  "falcon-with-cc-top-orig-10p__530M__seed-14__step-51250": "dbc538da11f9626cf57ffd049fba73323d0b9765",
+  "falcon-with-cc-top-orig-10p__530M__seed-15__step-51250": "093385885ddd14ea60a8d1e5227504c769c26a19",
+  "falcon-with-cc-top-orig-10p__530M__seed-2__step-51250": "0c09a643ad9f424d6a3642aabc6bebd044410f6d",
+  "falcon-with-cc-top-orig-10p__750M__seed-14__step-27500": "de2368730733da403c328f510b8ecb839a59141c",
+  "falcon-with-cc-top-orig-10p__750M__seed-15__step-27500": "032b3b58d255f1470598d2335c47096abf764b78",
+  "falcon-with-cc-top-orig-10p__750M__seed-2__step-27500": "3da794a347ec489ebccc196715c217756f189eb8",
+  "falcon-with-cc-top-tulu-10p__530M__seed-14__step-51250": "a3be1f3b3b7b89c3a2488a85c299d951ee437358",
+  "falcon-with-cc-top-tulu-10p__530M__seed-15__step-51250": "9992c6be779f28fa269211ce0d4bf0057f3a9dff",
+  "falcon-with-cc-top-tulu-10p__530M__seed-2__step-51250": "86d55a69dcae4e62b2c5f8e3345b130f8469d4be",
+  "falcon-with-cc-top-tulu-10p__750M__seed-14__step-27500": "65c7c41aeba1e2bb548955d7cb12c9c3a751ecaf",
+  "falcon-with-cc-top-tulu-10p__750M__seed-15__step-27500": "798b93bc59ae28fdb5b12a53dd9f571c921e1350",
+  "falcon-with-cc-top-tulu-10p__750M__seed-2__step-27500": "08c73e1c448b8e5d8a747bba5d99e3f3f5becc17",
+  "falcon-with-cc__530M__seed-14__step-51250": "33d826128fe2c37f16981de770b94579ce2cdd0b",
+  "falcon-with-cc__530M__seed-15__step-51250": "affd8e17a0dabcc97c2498160e248c87118efc3e",
+  "falcon-with-cc__530M__seed-2__step-51250": "bbffe4a90e14f08d77005746255680f030cc5b6f",
+  "falcon-with-cc__750M__seed-14__step-27500": "6ea069d9d7aba9b1ee5596fd852ef80c0b1051f4",
+  "falcon-with-cc__750M__seed-15__step-27500": "993241b8ba8d19b9b414517590477424a98fb557",
+  "falcon-with-cc__750M__seed-2__step-27500": "b67050be5661bed189dd353750d829c764c4d3b3",
+  "falcon__530M__seed-14__step-51250": "e12866e2e873dfff940f3f71182da531f65f1239",
+  "falcon__530M__seed-15__step-51250": "86342562894949b99d5a2781827e54b7e2869b03",
+  "falcon__530M__seed-2__step-51250": "05de4f6abfe13a3342c09a3eca56575a720ac4f6",
+  "falcon__750M__seed-14__step-26250": "6e11f2251c6d3dd838ccdf1c83143b42165b1f1a",
+  "falcon__750M__seed-15__step-26250": "fe88b9a7922ffa6ed5fde099d1ec9ddb8c80c0e6",
+  "falcon__750M__seed-2__step-26250": "5e4c068fbb557df32e372779a84e4defc5a7f5b6",
+  "fineweb-edu__530M__seed-14__step-51250": "6d6876ff8ac48d88bc84dab356b8ee3f52009db4",
+  "fineweb-edu__530M__seed-15__step-51250": "c298327952989f2dc9ae8e63f8e9aa9a773f6a06",
+  "fineweb-edu__530M__seed-2__step-51250": "4639bee6d670082168ec679c0e986f31d3d16336",
+  "fineweb-edu__750M__seed-14__step-27500": "078e7063670ef0cb5a683fc5d589fadd1b577814",
+  "fineweb-edu__750M__seed-15__step-27500": "85b5db0100541f0991cf7d867103036e21015c69",
+  "fineweb-edu__750M__seed-2__step-27500": "1aba1ffca61a9665d0dbf5ff257325b9187ed099",
+  "fineweb-pro__530M__seed-14__step-51250": "14b1f15efc387d1376dc711aa8042bd51bc40ce8",
+  "fineweb-pro__530M__seed-15__step-51250": "5d0e97b7022e4cbc827a0f15af8586b8b6b762a2",
+  "fineweb-pro__530M__seed-2__step-51250": "268a6727491503adabe96fb477d4a0bf6f884f91",
+  "fineweb-pro__750M__seed-14__step-27500": "eda1040d085b10d534499dbd85c9e4bb4172276a",
+  "fineweb-pro__750M__seed-15__step-27500": "2a12699087abb071a8b52ca003dce789ea1a194d",
+  "fineweb-pro__750M__seed-2__step-27500": "9cbb39700d7d5652843f553fd956f56fe8bf21c8"
+ },
+ "labels": {
+  "everything else": "reported, not pre-registered",
+  "heldout.margin/all": "pre-registered test"
+ },
+ "leave_one_task_out": {
+  "coqa_mc": {
+   "accuracy/all": {
+    "K": 3,
+    "Lambda": 1.2241877259646499,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.5068738714510292,
+    "lo": 0.8652428696523863,
+    "se": 0.1357588182251999
+   },
+   "accuracy/batch_free": {
+    "K": 3,
+    "Lambda": 1.185337624666518,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.3906731785635336,
+    "lo": 0.9413745849551066,
+    "se": 0.12475004396913406
+   },
+   "margin/all": {
+    "K": 3,
+    "Lambda": 1.1122122419648273,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.2900508846239915,
+    "lo": 0.9114459521177947,
+    "se": 0.08227562436596521
+   },
+   "margin/batch_free": {
+    "K": 3,
+    "Lambda": 1.122895183910315,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.3554359101912183,
+    "lo": 0.8420371200351467,
+    "se": 0.09597153319356663
+   }
+  },
+  "drop_mc": {
+   "accuracy/all": {
+    "K": 3,
+    "Lambda": 1.220950593722796,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.3037570852935834,
+    "lo": 1.140196272670416,
+    "se": 0.03897624104265595
+   },
+   "accuracy/batch_free": {
+    "K": 3,
+    "Lambda": 1.195336126275039,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.3268752481370827,
+    "lo": 1.0548997910137425,
+    "se": 0.06058016830997271
+   },
+   "margin/all": {
+    "K": 3,
+    "Lambda": 1.3214928584872938,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.468817538452071,
+    "lo": 1.1575429480747654,
+    "se": 0.052172774893627434
+   },
+   "margin/batch_free": {
+    "K": 3,
+    "Lambda": 1.2862570912068725,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.440855551743801,
+    "lo": 1.1158749075688048,
+    "se": 0.0567916930870693
+   }
+  },
+  "medmcqa": {
+   "accuracy/all": {
+    "K": 3,
+    "Lambda": 1.3681920824479668,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.5591662502203532,
+    "lo": 1.1506980836719047,
+    "se": 0.07414431848448035
+   },
+   "accuracy/batch_free": {
+    "K": 3,
+    "Lambda": 1.4141309395492945,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.637857337861109,
+    "lo": 1.1504680864730306,
+    "se": 0.097062516457355
+   },
+   "margin/all": {
+    "K": 3,
+    "Lambda": 1.105641733498636,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.469462640684039,
+    "lo": 0.5936374277977127,
+    "se": 0.10214152160700846
+   },
+   "margin/batch_free": {
+    "K": 3,
+    "Lambda": 1.0809703766415426,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.6971270716115703,
+    "lo": NaN,
+    "se": 0.1391265955435436
+   }
+  },
+  "sciq": {
+   "accuracy/all": {
+    "K": 3,
+    "Lambda": 1.0355276899081567,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.2175570660230022,
+    "lo": 0.8205759383063228,
+    "se": 0.08722180727603522
+   },
+   "accuracy/batch_free": {
+    "K": 3,
+    "Lambda": 1.0628770732093293,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.2336957506171764,
+    "lo": 0.8669862980599301,
+    "se": 0.07946472891077663
+   },
+   "margin/all": {
+    "K": 3,
+    "Lambda": 1.0229266488937985,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.5269422739105505,
+    "lo": NaN,
+    "se": 0.11422698669977914
+   },
+   "margin/batch_free": {
+    "K": 3,
+    "Lambda": 0.9787079147752394,
+    "N": 50,
+    "clusters": 25,
+    "hi": 1.7053913133546863,
+    "lo": NaN,
+    "se": 0.1507133489730289
+   }
+  }
+ },
+ "log": {
+  "final_tasks": [
+   "sciq",
+   "medmcqa",
+   "drop_mc",
+   "coqa_mc"
+  ],
+  "half_items_per_task": {
+   "coqa_mc": [
+    500,
+    500
+   ],
+   "drop_mc": [
+    500,
+    500
+   ],
+   "medmcqa": [
+    500,
+    500
+   ],
+   "sciq": [
+    500,
+    500
+   ]
+  },
+  "notes": [
+   "registered test modified to 530M and 750M; 1B missing",
+   "18 scored runs at sizes outside the scope are not used: ['c4__150M__seed-14__step-37500', 'c4__150M__seed-15__step-37500', 'c4__150M__seed-2__step-37500', 'c4__1B__seed-2__step-69369', 'c4__1B__seed-4__step-69369', 'c4__1B__seed-5__step-69369', 'falcon-with-cc-top-orig-10p__1B__seed-2__step-69369', 'falcon-with-cc-top-orig-10p__1B__seed-4__step-69369', 'falcon-with-cc-top-orig-10p__1B__seed-5__step-69369', 'falcon-with-cc-top-tulu-10p__1B__seed-2__step-69369', 'falcon-with-cc-top-tulu-10p__1B__seed-4__step-69369', 'falcon-with-cc-top-tulu-10p__1B__seed-5__step-69369', 'fineweb-edu__1B__seed-2__step-69369', 'fineweb-edu__1B__seed-4__step-69369', 'fineweb-edu__1B__seed-5__step-69369', 'fineweb-pro__1B__seed-2__step-69369', 'fineweb-pro__1B__seed-4__step-69369', 'fineweb-pro__1B__seed-5__step-69369']"
+  ],
+  "runs_scored": 150,
+  "sizes_scored": [
+   "530M",
+   "750M"
+  ]
+ },
+ "original_margin_lambda_all_sizes": 1.2439499117191137,
+ "original_traits_same_sizes": {
+  "accuracy/all": {
+   "K": 10,
+   "Lambda": 1.0775725959638591,
+   "N": 50,
+   "clusters": 25,
+   "hi": 1.2865720756569285,
+   "lo": 0.8098281145654899,
+   "se": 0.09537308220010023
+  },
+  "accuracy/batch_free": {
+   "K": 10,
+   "Lambda": 1.1129784434972088,
+   "N": 50,
+   "clusters": 25,
+   "hi": 1.429877104060798,
+   "lo": 0.6014360857907857,
+   "se": 0.13485578491868527
+  },
+  "margin/all": {
+   "K": 10,
+   "Lambda": 1.3164584103706622,
+   "N": 50,
+   "clusters": 25,
+   "hi": 1.6372961240238344,
+   "lo": 0.8803573811948451,
+   "se": 0.13745998683841051
+  },
+  "margin/batch_free": {
+   "K": 10,
+   "Lambda": 1.2926699510067858,
+   "N": 50,
+   "clusters": 25,
+   "hi": 1.6062954169458974,
+   "lo": 0.8674183593015885,
+   "se": 0.13768289608004758
+  }
+ },
+ "requests_sha256": "77118327b441931a17a2d2e90ee8e162c0192c99b472f2eedf0bad99a0025c43",
+ "rule": "PASS if the lower 95% wild-bootstrap limit of held-out margin Lambda is above 1",
+ "verdict": "FAIL",
+ "wall_seconds": 58.09589099884033
+}
