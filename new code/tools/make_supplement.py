@@ -81,9 +81,16 @@ def main():
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as zf:
         n_new = add_tree(zf, HERE, "heldout")
         n_old = add_tree(zf, ROOT / "deliverables" / "snap_compute", "snap_compute")
+        # Full-length appendix sections that the paper compresses, built from
+        # deliverables/supplement_extended.tex. The zip fails without it so a
+        # stale packer can't ship a paper that promises a document it lacks.
+        ext = ROOT / "deliverables" / "supplement_extended.pdf"
+        if not ext.exists():
+            sys.exit(f"missing {ext}; build it with latexmk before packing")
+        zf.write(ext, "supplement_extended.pdf")
     hits = scan(out)
     size_mb = out.stat().st_size / 1e6
-    print(f"{out} : heldout {n_new} files, snap_compute {n_old} files, {size_mb:.1f} MB")
+    print(f"{out} : heldout {n_new} files, snap_compute {n_old} files, extended supplement pdf, {size_mb:.1f} MB")
     if hits:
         print("identity strings survived in:", *hits, sep="\n  ")
         out.unlink()
