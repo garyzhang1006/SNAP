@@ -3337,3 +3337,57 @@ Sub-scans 1 to 10 clean. Judgment sub-scans on the 77 lines of Appendix B, read 
     without loss.
 
 Ranking holds at 6.2.
+
+## Scan 66, Appendix C, supplementary results
+
+Re-read of scan 65. The prior-work paragraph reads cleanly without the aside.
+
+Sub-scans 1 to 10 clean. Judgment sub-scans on the 362 lines of Appendix C, read in full in two
+passes.
+
+11. Numbers checked against the main text and against each other. The design-effect ratios 0.23 and
+    0.53 recompute from the four standard errors, the false-positive triples 0.113, 0.051, 0.050 and
+    0.067, 0.052, 0.047 match Section 7, the transfer figure 0.101 at 1.50 matches, the seed-count
+    figures 0.997 and 0.803 match, and the cross-half bias of 0.014 and 0.016 is what the main text
+    rounds to 0.015.
+12. One caveat that had dropped out of the main text. The adjacent-checkpoint paragraph reports that
+    the accuracy interval at the earlier shared step, 1.044 to 1.210, excludes one, so the reading of
+    the accuracy bound depends on the scored checkpoint. The main text carried no trace of that after
+    an earlier trim. Section 3 now states it in one sentence beside the truncation check, paid for by
+    removing a Section 3 sentence on the external panel that Section 5.4 repeats in full.
+13. The permutation-comparison paragraph said in two consecutive sentences that the procedures differ
+    in randomisation and sampling assumptions. Merged into one.
+14. The repository-misnaming episode was told twice, once in the competence audit and once in the
+    seed-label check. The second telling now points to the first.
+15. The BoolQ-removal sentence said the removal "raises the ratio through both terms of the excess
+    ratio", which does not match the main text's account that both numerator and denominator fall
+    and the denominator falls by more. Aligned to the main text.
+16. Tables 5, 6 and 7 are referenced before they appear. The proxy table is referenced twice before
+    it appears.
+17. Three notation slips. "1e-19" in prose is now a power of ten, "cr3" is now CR3, and the two-way
+    variance was attributed to three named authors without a citation, which now reads as the
+    two-way clustered variance with no attribution, since the cited Cameron entry is the 2008
+    wild-bootstrap paper and not the two-way clustering paper.
+18. No overstatement. The paragraph that reports the knife edge in BoolQ weighting says so plainly.
+19. Appendix C mixes six-word verdicts with forty-word reports and reads as written by hand.
+20. The two merged and the one removed passage were the only sentences that survived deletion.
+
+Build. Main text on page 9, 39 pages, both builds without undefined references.
+
+Ranking moves to 6.3. Restoring the earlier-checkpoint caveat to the main text removes the one
+place where a reviewer who read the appendix could accuse the main text of hiding a fragility, and
+that accusation costs more than the sentence does.
+
+## Scan 67, Appendix D, implementation details
+
+Re-read of scan 66. The seven appendix edits and the two main-text edits read correctly.
+
+Sub-scans 1 to 10 clean. Judgment sub-scans on the 87 lines of Appendix D, read in full. The bootstrap
+equation is now referenced from its own introducing sentence. The practical-considerations section
+names the centring trap, the joint-permutation trap, the one-pass streaming constraint and the cached
+listing limit, each with its cause, which is the scar tissue a reviewer trusts. The compute section
+reports the planned budget against measured use and names the hardware and token budget changes
+with their measured effect of 0.6 percent. The GPU-architecture comparison reports its own limit. No
+defect and no change.
+
+Ranking holds at 6.3.
