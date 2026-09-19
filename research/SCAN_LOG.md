@@ -3146,3 +3146,38 @@ Sub-scans 1 to 10 clean. Judgment sub-scans on Section 2.
 20. Nothing survives deletion without loss.
 
 Ranking holds at 6.2. No substantive change.
+
+## Scan 55, the data and analysis scope section
+
+Re-read of scan 54. The one split reads cleanly.
+
+Sub-scans 1 to 10 clean. Judgment sub-scans on Section 3.
+
+11. Numbers. The truncation shares in the main text round the appendix values 86.7, 38.9, 88.7,
+    17.7 and 44.0 correctly, but the 750M mean of 41.5 percent had been written as 41 percent, which
+    rounds the other way from the convention used beside it. The main text now gives 41.5 percent.
+    The 1,081,575 estimation sets, the 1.037 to 1.317 and 0.963 to 1.191 ranges, and the 1.276 with
+    interval 1.114 to 1.420 all match Appendix C.
+13. One false connective. "As a result, analysis choices used all 125 configurations, and the plan
+    has neither a supplied original file nor an independently corroborated date" presented the
+    missing file as a result of the missing partition. The two facts are now separate sentences, and
+    the first split produced a seven-word sentence that was lengthened to nine.
+12, 14 to 18. Labels hold, no repetition, terminology stable, no overstatement. The sentence that the
+    retrospective enumeration cannot restore a holdout is the honest reading.
+19. The connective fix gave the section a nine-word sentence.
+20. Nothing survives deletion without loss.
+
+Ranking holds at 6.2.
+
+## Scan 56, the batch and score-scale sensitivity section
+
+Re-read of scan 55. The 41.5 percent figure and the split connective read correctly.
+
+Sub-scans 1 to 10 clean. Judgment sub-scans on Section 4. The 250 run contrasts equal two contrasts
+in each of 125 configurations, and the 0.015 reproduction bound appears in Appendix C at the same
+value. The section already opens on an eight-word sentence and holds two more under fourteen words,
+so its rhythm matches the corpus. The descriptive framing of the gain and competence adjustments is
+stated with its reason in the same sentence, which is the pattern a reviewer expects. No defect
+found, and no change made.
+
+Ranking holds at 6.2.
