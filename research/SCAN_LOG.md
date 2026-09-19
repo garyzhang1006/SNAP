@@ -3202,3 +3202,18 @@ Sub-scans 1 to 10 clean. Judgment sub-scans on Section 5.1.
 20. Nothing survives deletion without loss.
 
 Ranking holds at 6.2.
+
+## Scan 58, the registered test section
+
+Re-read of scan 57. The permuted-spread clause reads correctly beside the tail fraction.
+
+Sub-scans 1 to 10 clean after one fix, since a split first produced a five-word sentence that was
+lengthened to eight. Judgment sub-scans on Section 5.2. This section received the independent
+reviewer pass and the humanizer pass earlier today, and every number in Table 2 and the two
+paragraphs was rechecked against the k04 and k12 JSON files during that pass, including the 1.321
+and 1.469 corrections. Evidence labels hold, with the fixed comparisons, the post hoc noise rows and
+the exploratory accuracy result each named. The one change is rhythm. The section had no sentence
+under twelve words, and two splits now give it an eight-word sentence on the item count and a
+nine-word verdict sentence stating that the registered rule fails on that interval.
+
+Ranking holds at 6.2.
