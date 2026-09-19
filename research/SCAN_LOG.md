@@ -3181,3 +3181,24 @@ stated with its reason in the same sentence, which is the pattern a reviewer exp
 found, and no change made.
 
 Ranking holds at 6.2.
+
+## Scan 57, full-battery estimates and composition
+
+Re-read of scans 55 and 56. Both edits read correctly in the PDF.
+
+Sub-scans 1 to 10 clean. Judgment sub-scans on Section 5.1.
+
+11. Numbers. Every effective count in Table 1 equals ten over the squared factor to two decimals,
+    the accuracy bound of 0.038 and 7.47 follow from 1.157, and the BoolQ removal figures are
+    consistent with the stated trace shares once the off-diagonal sums count both orderings, which
+    gives 1.78 on margins and 1.55 on accuracy from the shares alone.
+13. One inferential gap. "0.087 reach or exceed the observed margin estimate, so item-level sharing
+    accounts for about 0.001 of it" asked the reader to get from a tail fraction to an attribution.
+    The permuted estimates spread by 0.0009, which is the fact that carries the attribution, and the
+    sentence now states it. The appendix paragraph already holds that number.
+12, 14 to 18. The fixed-battery framing is stated where the removal spread is reported, and the
+    passage-aware split is reported with its limit. No overstatement.
+19. The section already runs 0.14 of its sentences under twelve words, close to the corpus.
+20. Nothing survives deletion without loss.
+
+Ranking holds at 6.2.
