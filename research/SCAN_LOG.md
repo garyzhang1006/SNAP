@@ -3446,3 +3446,28 @@ Sub-scans 1 to 10 clean after the build. Judgment sub-scans on the 46 sentences 
 
 Ranking holds at 6.3. Rhythm edits do not move acceptance odds on their own, and claiming otherwise
 would be the inflation the log is meant to prevent.
+
+## Scan 70, numbers against the kernel outputs
+
+Re-read of scan 69. The nine splits and the reworded Section 5.3 opener read correctly.
+
+Sub-scans 1 to 10, a script that takes every three-decimal number in Section 5.3 and searches the
+held-out, rule-power and subset kernel outputs for a value that rounds to it.
+
+11. Every held-out estimate and interval endpoint in Table 3 matches heldout_results.json at
+    530M and 750M, including the auxiliary contrasts and the original-ten figures at that scope.
+12. The rule-power figures match the six noise-level kernels cell by cell. Pass rates 0.785, 0.631,
+    0.371, 0.188, 0.115 and 0.080, coverage 0.699 and 0.562, the undefined shares 0.280 and 0.425,
+    the widths 0.765, 0.972 and 1.146, and the true-ratio-one widths 0.969 and 1.115 all reproduce.
+13. The two widths quoted in prose, 1.070 and 0.331, are differences of tabulated endpoints and
+    reproduce by subtraction.
+14. The four-subset row reproduces from power_subsets.json at the two-size scope. The median of the
+    60 margin estimates is 1.213, the fail share is 0.45, 30 subsets sit below 1.201, and the
+    interpolated 5th and 95th percentiles are 0.983 and 1.535. A first pass flagged that row because
+    those brackets are not a bootstrap interval, but the caption already says they are percentiles
+    of subset estimates, so no change.
+15. The leave-one-task-out figures 1.023, 1.106 and 1.321 match the JSON, as does the corrected
+    MedMCQA upper limit fixed in scan 55.
+16 to 20. Nothing further. No edit in this scan.
+
+Ranking holds at 6.3. Round 2 closes at twenty parent scans, 51 to 70, each with its twenty lenses.
