@@ -3415,3 +3415,34 @@ section was searched in the appendix.
 14 to 20. Nothing to report. The supplement builds at 38 pages with no undefined reference.
 
 Ranking holds at 6.3.
+
+## Scan 69, style pass 2 against the corpus
+
+Re-read of scan 68. The three mirrored supplement sentences read correctly in place.
+
+Measurement first. Against the 23-paper corpus median the main text before this scan ran at a
+median sentence of 22 words against 16, a share of sentences under twelve words of 0.068 against
+0.314, no sentence under eight against 0.178, and zero uses of however against 0.84 per thousand
+words. The house floor of eight words rules out the corpus's shortest sentences, so the reachable
+target is the 8 to 11 word verdict sentence, and however only where a real contrast exists.
+
+Sub-scans 1 to 10 clean after the build. Judgment sub-scans on the 46 sentences of 27 words or more.
+
+11. Nine sentences split where the second half is a verdict. Both factors depend on the averaged
+    benchmarks. On the 530M and 750M runs the estimate is 1.201. The three shipped runs are not
+    the binding constraint. Item-level sharing accounts for 0.001. We treat the adjustments as
+    descriptive, for two reasons. Each new short sentence has eight to eleven words.
+12. Three genuine contrasts now carry however, the rank-change rates that are not false-positive
+    rates yet seldom change a decision, the 1B interval that includes one while every band excludes
+    it without BoolQ, and the prediction models that lower error yet fail to beat independence on
+    raw variance moments. No however was added where the sentence merely continues.
+13. The intro split produced a sentence identical to one in Section 5.3, which the duplicate check
+    caught. The Section 5.3 opener now reads that the 1B scoring had not finished at submission.
+14. After the scan the under-twelve share is 0.093 and however runs at 0.56 per thousand, both
+    moved toward the corpus and neither faked. The median sentence is 21 words, still above the
+    corpus, because the eight-word floor and the density of numbers hold it there.
+15 to 20. Nothing further. No number changed. Main text ends on page 9 with the scanner at its four
+    noise items.
+
+Ranking holds at 6.3. Rhythm edits do not move acceptance odds on their own, and claiming otherwise
+would be the inflation the log is meant to prevent.
