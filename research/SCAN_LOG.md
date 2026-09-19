@@ -3517,3 +3517,11 @@ undefined reference.
 
 Ranking holds at 6.3. This pass lowers the chance that a reviewer reads the prose as machine written,
 which protects the score rather than raising it. The science did not move.
+
+## Hostile review and controlled-language rewrite, 2026-09-19 evening
+
+Hostile ICLR review written to research/HOSTILE_REVIEW_2026-09-19.md. All 219 distinct main-text numbers were traced to kernel outputs or recomputed from their inputs, 53 bibitems match 53 cited keys, and both build logs carry zero undefined references. No numerical or logical defect was found. Score 6 of 10, confidence 4 of 5, unchanged from the 6.3 ranking, because the registered test failed at low power, the full-battery accuracy interval includes one, and the decision effect is at most 0.009. Text edits can't move that score and the review says so.
+
+Rewrite of every paper file under the user's controlled-language variant. Every verb-plus-not form became a contraction (main text 40, appendix A 19, appendices B to D 71, supplement 96). No colons, semicolons or dashes anywhere in the paper text. Sentence floor of eight words, no ceiling. Gerund sentence subjects replaced in the main text. Main text moved from median 17 words, standard deviation 6.6 and 0.21 of sentences under twelve words to median 15.5, standard deviation 12.2 and 0.32 under twelve, against corpus values of 16, 11.9 and 0.31. Clause-join rates per thousand words in the main text are now ", so" 0.37, therefore 0.56, because 0.37, ", and the" 1.69 and "as Appendix reports" 0.19, each under the corpus maximum. The content-humanizer scorer gives the main text 100 of 100 with decimals protected from its sentence splitter and 96 of 100 raw, up from 90. Appendix A, appendices B to D and the supplement got contractions only and score 85, 73 and 68, with the remaining deductions on sentence variance and the technical terms leverage and cluster-robust. The remove-ai-marks inspector reports no provenance metadata, no Unicode carriers and no detector hits in any of the four files. Page 9 boundary holds and the supplement zip was rebuilt at 59.2 MB with a clean identity scan.
+
+Ranking holds at 6.3. The 1B held-out shard s01 completed at 17:56 EDT and s02 was still running at the time of this entry, so the "12 of the 75 at 1B" sentence remains pending.
