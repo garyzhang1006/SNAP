@@ -14,6 +14,8 @@ if [ "${1:-}" = "--extras" ]; then
 elif [ ${#shards[@]} -eq 0 ]; then
     shards=(s03)
 fi
+# Slurm refuses a job whose --output directory is missing, so make it first.
+mkdir -p "/athena/accardilab/scratch/$USER/snap-extra/logs"
 for s in "${shards[@]}"; do
     [ -f "$HERE/shards/$s.json" ] || { echo "no shards/$s.json" >&2; exit 2; }
     # shellcheck disable=SC2086

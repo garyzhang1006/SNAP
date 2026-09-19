@@ -67,9 +67,19 @@ def worker(job_path):
         local = Path(job["tmp"]) / key
         try:
             t = time.time()
-            sha = HfApi().model_info(run["repo"], revision=run["revision"]).sha
-            snapshot_download(run["repo"], revision=run["revision"], local_dir=str(local),
-                              allow_patterns=["*.json", "*.safetensors"])
+            # A hub hiccup should cost a retry, not the run: three attempts a minute apart.
+            for attempt in range(3):
+                try:
+                    sha = HfApi().model_info(run["repo"], revision=run["revision"]).sha
+                    snapshot_download(run["repo"], revision=run["revision"], local_dir=str(local),
+                                      allow_patterns=["*.json", "*.safetensors"])
+                    break
+                except Exception as exc:  # noqa: BLE001
+                    if attempt == 2:
+                        raise
+                    print(f"[retry] {key} download attempt {attempt + 1} failed: {exc}", flush=True)
+                    shutil.rmtree(local, ignore_errors=True)
+                    time.sleep(60)
             t_download = time.time() - t
             t = time.time()
             model, tok = scorer.load_model(str(local), job["scoring"]["dtype"], device)

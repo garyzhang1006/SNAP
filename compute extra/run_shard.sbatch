@@ -34,7 +34,10 @@ HERE="${SNAPX_DIR:-$SLURM_SUBMIT_DIR/compute extra}"
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader || true
 python -c 'import torch; assert torch.cuda.is_available(), "no CUDA device visible"'
 # Leave an hour of the requested time for the last run to save and for cleanup.
-LIMIT_MIN=$(squeue -h -j "$SLURM_JOB_ID" -o %l | awk -F'[-:]' '{ if (NF==4) print $1*1440+$2*60+$3; else if (NF==3) print $1*60+$2; else print $1 }')
-DEADLINE_H=$(python -c "print(max(1.0, ${LIMIT_MIN:-1440}/60 - 1))")
+# squeue can fail or answer UNLIMITED; either way fall back to the 24 hours
+# requested above rather than let set -e kill the job before it scores anything.
+LIMIT_MIN=$(squeue -h -j "$SLURM_JOB_ID" -o %l 2>/dev/null | awk -F'[-:]' '{ if (NF==4) print $1*1440+$2*60+$3; else if (NF==3) print $1*60+$2; else if (NF==2) print $1; else print "" }' || true)
+case "$LIMIT_MIN" in ''|*[!0-9]*) LIMIT_MIN=1440;; esac
+DEADLINE_H=$(python -c "print(max(1.0, $LIMIT_MIN/60 - 1))")
 python "$HERE/score_shard.py" --shard "$HERE/shards/$SHARD.json" --out "$SNAPX_SCORES" \
     --tmp "${TMPDIR:-$SNAPX_ROOT/tmp}" --deadline-hours "$DEADLINE_H"

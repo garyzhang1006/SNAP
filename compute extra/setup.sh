@@ -44,9 +44,14 @@ py_ok python || { echo "the venv at $SNAPX_VENV was built with $(python --versio
 
 PIN="$(python -c 'import json; print(json.load(open("'"$HERE"'/config/tasks.json"))["scoring"]["transformers_pin"])')"
 pip install -q --upgrade pip
-pip install -q "torch>=2.4" numpy "huggingface_hub>=0.23" "transformers==$PIN" omegaconf rich requests filelock \
-    "cached_path" boto3 google-cloud-storage safetensors sentencepiece
-pip install -q --no-deps "ai2-olmo==0.6.0"
+# ai2-olmo 0.6.0 declares numpy<2, ai2-olmo-core==0.1.0, tokenizers, packaging,
+# importlib_resources and cached_path>=1.6.2 besides torch and transformers, and
+# it pins versions of the last two that clash with the scoring pin, so it and
+# cached_path go in without dependency resolution exactly as on Kaggle, with
+# their runtime imports installed by name here.
+pip install -q "torch>=2.4" "numpy<2" "huggingface_hub>=0.23" "transformers==$PIN" omegaconf rich requests filelock \
+    boto3 google-cloud-storage safetensors sentencepiece tokenizers packaging importlib_resources
+pip install -q --no-deps "ai2-olmo==0.6.0" "ai2-olmo-core==0.1.0" "cached_path>=1.6.2"
 python - <<'PY'
 import torch, transformers
 from hf_olmo import OLMoForCausalLM  # noqa: F401
