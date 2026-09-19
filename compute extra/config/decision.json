@@ -1,0 +1,320 @@
+{
+ "accuracy_1b_mean": {
+  "arc_easy": 0.6466666666666666,
+  "coqa_mc": 0.652,
+  "drop_mc": 0.32666666666666666,
+  "logiqa_en": 0.2688172043010753,
+  "lsat_lr": 0.21895424836601307,
+  "medmcqa": 0.2843333333333333,
+  "sciq": 0.7203333333333334
+ },
+ "backup_rule": "A held-out task is replaced, in the listed backup order, only if the pilot's three 1B runs give mean accuracy below chance plus 0.02, where chance is the mean of 1/choice_count over its items. The rule reads accuracy only, never margins or covariance.",
+ "bar": {
+  "arc_easy": 0.27011111111111114,
+  "coqa_mc": 0.27,
+  "drop_mc": 0.27,
+  "logiqa_en": 0.27,
+  "lsat_lr": 0.22,
+  "medmcqa": 0.27,
+  "sciq": 0.27
+ },
+ "cache_check_max_abs_diff_nats": {
+  "c4__150M__seed-14__step-37500": {
+   "packed": 6.365776062011719e-05
+  },
+  "c4__150M__seed-15__step-37500": {
+   "packed": 5.8650970458984375e-05
+  },
+  "c4__150M__seed-2__step-37500": {
+   "packed": 4.38690185546875e-05
+  },
+  "c4__1B__seed-2__step-69369": {
+   "packed": 8.535385131835938e-05
+  },
+  "c4__1B__seed-4__step-69369": {
+   "packed": 5.924701690673828e-05
+  },
+  "c4__1B__seed-5__step-69369": {
+   "packed": 5.53131103515625e-05
+  }
+ },
+ "chance": {
+  "arc_easy": 0.2501111111111111,
+  "coqa_mc": 0.25,
+  "drop_mc": 0.25,
+  "logiqa_en": 0.25,
+  "lsat_lr": 0.2,
+  "medmcqa": 0.25,
+  "sciq": 0.25
+ },
+ "comparisons": [
+  {
+   "assumed_seed": 14,
+   "branch": "step37500-seed-small-aux-2",
+   "by_release_seed": {
+    "14": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 2.6623423914351463e-06,
+     "median_abs_diff": 2.1309793357682238e-07,
+     "p99_abs_diff": 1.7031272689860265e-06,
+     "passes": true
+    },
+    "15": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 0.8018107414265065,
+     "median_abs_diff": 0.062011982717200376,
+     "p99_abs_diff": 0.44267581685463747,
+     "passes": false
+    },
+    "2": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 1.2199592590332031,
+     "median_abs_diff": 0.05786391601227878,
+     "p99_abs_diff": 0.3971887952631169,
+     "passes": false
+    }
+   },
+   "matching_release_seeds": [
+    "14"
+   ],
+   "run_key": "c4__150M__seed-14__step-37500",
+   "verified": true
+  },
+  {
+   "assumed_seed": 15,
+   "branch": "step37500-seed-small-aux-3",
+   "by_release_seed": {
+    "14": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 0.8018147945390353,
+     "median_abs_diff": 0.062012153948497906,
+     "p99_abs_diff": 0.44267674350690694,
+     "passes": false
+    },
+    "15": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 3.2945121519745157e-06,
+     "median_abs_diff": 2.3426051148911498e-07,
+     "p99_abs_diff": 1.3574525707205074e-06,
+     "passes": true
+    },
+    "2": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 0.6331155083396218,
+     "median_abs_diff": 0.05994360639441826,
+     "p99_abs_diff": 0.4029916426539421,
+     "passes": false
+    }
+   },
+   "matching_release_seeds": [
+    "15"
+   ],
+   "run_key": "c4__150M__seed-15__step-37500",
+   "verified": true
+  },
+  {
+   "assumed_seed": 2,
+   "branch": "step37500-seed-default",
+   "by_release_seed": {
+    "14": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 1.219963788984836,
+     "median_abs_diff": 0.05786391203905222,
+     "p99_abs_diff": 0.39718912146221524,
+     "passes": false
+    },
+    "15": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 0.633115421643216,
+     "median_abs_diff": 0.059944130743165125,
+     "p99_abs_diff": 0.40299285471345514,
+     "passes": false
+    },
+    "2": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 3.417332967048381e-06,
+     "median_abs_diff": 2.384185791015625e-07,
+     "p99_abs_diff": 1.5101432799558e-06,
+     "passes": true
+    }
+   },
+   "matching_release_seeds": [
+    "2"
+   ],
+   "run_key": "c4__150M__seed-2__step-37500",
+   "verified": true
+  },
+  {
+   "assumed_seed": 2,
+   "branch": "step69369-seed-default",
+   "by_release_seed": {
+    "2": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 7.748603820800781e-06,
+     "median_abs_diff": 3.8876635755080713e-07,
+     "p99_abs_diff": 2.9294150215597444e-06,
+     "passes": true
+    },
+    "4": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 1.3118782520289731,
+     "median_abs_diff": 0.05720303058624207,
+     "p99_abs_diff": 0.4325958759128075,
+     "passes": false
+    },
+    "5": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 0.8854128122317286,
+     "median_abs_diff": 0.054637532681548445,
+     "p99_abs_diff": 0.3865697176108285,
+     "passes": false
+    }
+   },
+   "matching_release_seeds": [
+    "2"
+   ],
+   "run_key": "c4__1B__seed-2__step-69369",
+   "verified": true
+  },
+  {
+   "assumed_seed": 4,
+   "branch": "step69369-seed-large-aux-2",
+   "by_release_seed": {
+    "2": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 1.311876368522644,
+     "median_abs_diff": 0.057202891243828685,
+     "p99_abs_diff": 0.43259780862114633,
+     "passes": false
+    },
+    "4": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 4.4822705635994e-06,
+     "median_abs_diff": 3.5762871275490937e-07,
+     "p99_abs_diff": 2.4243206256469028e-06,
+     "passes": true
+    },
+    "5": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 1.2693123579038845,
+     "median_abs_diff": 0.058599915358508475,
+     "p99_abs_diff": 0.49140418936798685,
+     "passes": false
+    }
+   },
+   "matching_release_seeds": [
+    "4"
+   ],
+   "run_key": "c4__1B__seed-4__step-69369",
+   "verified": true
+  },
+  {
+   "assumed_seed": 5,
+   "branch": "step69369-seed-large-aux-3",
+   "by_release_seed": {
+    "2": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 0.8854089975357056,
+     "median_abs_diff": 0.05463828146457672,
+     "p99_abs_diff": 0.38657148974282385,
+     "passes": false
+    },
+    "4": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 1.2693135738368344,
+     "median_abs_diff": 0.05859953357333253,
+     "p99_abs_diff": 0.4914039476546354,
+     "passes": false
+    },
+    "5": {
+     "choice_count_mismatches": 0,
+     "items_ours": 300,
+     "items_shared": 300,
+     "label_mismatches": 0,
+     "max_abs_diff": 8.702277008554304e-06,
+     "median_abs_diff": 3.8631788235043985e-07,
+     "p99_abs_diff": 3.1297400580732045e-06,
+     "passes": true
+    }
+   },
+   "matching_release_seeds": [
+    "5"
+   ],
+   "run_key": "c4__1B__seed-5__step-69369",
+   "verified": true
+  }
+ ],
+ "heldout_replacements": {
+  "logiqa_en": "drop_mc",
+  "lsat_lr": "coqa_mc"
+ },
+ "heldout_tasks_final": [
+  "sciq",
+  "medmcqa",
+  "drop_mc",
+  "coqa_mc"
+ ],
+ "scoring_modes": {
+  "c4__150M__seed-14__step-37500": "packed",
+  "c4__150M__seed-15__step-37500": "packed",
+  "c4__150M__seed-2__step-37500": "packed",
+  "c4__1B__seed-2__step-69369": "packed",
+  "c4__1B__seed-4__step-69369": "packed",
+  "c4__1B__seed-5__step-69369": "packed"
+ },
+ "seed_branch_mapping_verified": true,
+ "token_ratio_note": "character ratio of context plus continuations, used as a stand-in for the token ratio",
+ "token_ratio_production_over_pilot": 0.7431950115044703,
+ "wall_seconds": 17.59437131881714
+}

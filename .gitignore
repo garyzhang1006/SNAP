@@ -20,3 +20,8 @@ data/interim/
 .ipynb_checkpoints/
 # Hugging Face read token for the Slurm jobs; never committed
 slurm/hf_token
+
+# compute extra: local token file and job outputs
+compute extra/hf_token
+compute extra/scores/
+compute extra/tmp/
