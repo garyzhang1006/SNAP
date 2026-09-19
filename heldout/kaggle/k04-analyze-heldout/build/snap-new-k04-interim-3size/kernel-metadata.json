@@ -1,0 +1,31 @@
+{
+ "id": "garyzhang11111/snap-new-k04-interim-3size",
+ "title": "snap-new-k04-interim-3size",
+ "code_file": "snap-new-k04-interim-3size.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_tpu": false,
+ "enable_internet": true,
+ "dataset_sources": [
+  "garyzhang11111/snap-new-code",
+  "garyzhang11111/seed-noise-src",
+  "garyzhang11111/seed-noise-reduced-runs"
+ ],
+ "competition_sources": [],
+ "kernel_sources": [
+  "garyzhang11111/snap-new-k01-requests",
+  "garyzhang11111/snap-new-k02-pilot",
+  "garyzhang11111/snap-new-k03-verify-release",
+  "garyzhang11111/snap-new-k02-s07",
+  "garyzhang11111/snap-new-k02-s08",
+  "garyzhang11111/snap-new-k02-s09",
+  "garyzhang11111/snap-new-k02-s04",
+  "garyzhang11111/snap-new-k02-s05",
+  "garyzhang11111/snap-new-k02-s06",
+  "garyzhang11111/snap-new-k02-s01",
+  "garyzhang11111/snap-new-k02-s02"
+ ],
+ "model_sources": []
+}

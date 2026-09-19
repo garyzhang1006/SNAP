@@ -1,0 +1,845 @@
+{
+ "combined_14_traits": {
+  "accuracy/all": {
+   "K": 14,
+   "Lambda": 1.2224846093553892,
+   "N": 68,
+   "clusters": 25,
+   "hi": 1.4762739849556015,
+   "lo": 0.9102716698908702,
+   "se": 0.12894026829988134
+  },
+  "accuracy/batch_free": {
+   "K": 14,
+   "Lambda": 1.2401004827909827,
+   "N": 68,
+   "clusters": 25,
+   "hi": 1.5499312518491501,
+   "lo": 0.849326613534878,
+   "se": 0.1561983034303156
+  },
+  "margin/all": {
+   "K": 14,
+   "Lambda": 1.3200860173910949,
+   "N": 68,
+   "clusters": 25,
+   "hi": 1.6137654169025055,
+   "lo": 0.9460477051002437,
+   "se": 0.14327639208098783
+  },
+  "margin/batch_free": {
+   "K": 14,
+   "Lambda": 1.432053722723993,
+   "N": 68,
+   "clusters": 25,
+   "hi": 1.97703644223619,
+   "lo": 0.4490203339840801,
+   "se": 0.21379926570507346
+  }
+ },
+ "heldout": {
+  "accuracy/all": {
+   "K": 4,
+   "Lambda": 1.262092969388506,
+   "N": 68,
+   "clusters": 25,
+   "hi": 1.4216740886119235,
+   "lo": 1.0836831210590643,
+   "se": 0.06696263936750896
+  },
+  "accuracy/batch_free": {
+   "K": 4,
+   "Lambda": 1.2641005208432914,
+   "N": 68,
+   "clusters": 25,
+   "hi": 1.4671160942374704,
+   "lo": 1.038654546947611,
+   "se": 0.09075572774429931
+  },
+  "margin/all": {
+   "K": 4,
+   "Lambda": 1.1807469808545523,
+   "N": 68,
+   "clusters": 25,
+   "hi": 1.5522137831675382,
+   "lo": 0.6845508105296232,
+   "se": 0.105067493938586
+  },
+  "margin/batch_free": {
+   "K": 4,
+   "Lambda": 1.1379397773237085,
+   "N": 68,
+   "clusters": 25,
+   "hi": 1.6484764612313805,
+   "lo": 0.05580329198266207,
+   "se": 0.14210125051946357
+  }
+ },
+ "heldout_info": {
+  "dropped_cells": [
+   {
+    "cell": [
+     "dolma1.7-no-flan",
+     "1B"
+    ],
+    "n_runs": 1
+   }
+  ],
+  "half_A_items": 2000,
+  "half_B_items": 2000,
+  "n_config": 68,
+  "n_runs_read": 205,
+  "recipes": [
+   "c4",
+   "dclm-baseline",
+   "dclm-baseline-25p-dolma1.7-75p",
+   "dclm-baseline-50p-dolma1.7-50p",
+   "dclm-baseline-75p-dolma1.7-25p",
+   "dclm-baseline-top-10p",
+   "dclm-baseline-top-20p",
+   "dclm-baseline-top-fw-10p",
+   "dclm-baseline-top-fw-3p",
+   "dclm-baseline-top-fw2-7p",
+   "dclm-baseline-top-fw3-7p",
+   "dolma1.6++",
+   "dolma1.7",
+   "dolma1.7-no-code",
+   "dolma1.7-no-flan",
+   "dolma1.7-no-math-no-code",
+   "dolma1.7-no-reddit",
+   "falcon",
+   "falcon-with-cc",
+   "falcon-with-cc-top-10p",
+   "falcon-with-cc-top-20p",
+   "falcon-with-cc-top-orig-10p",
+   "falcon-with-cc-top-tulu-10p",
+   "fineweb-edu",
+   "fineweb-pro"
+  ],
+  "sizes": [
+   "530M",
+   "750M",
+   "1B"
+  ],
+  "split_seed": 20260917
+ },
+ "hub_shas": {
+  "c4__1B__seed-2__step-69369": "b93cc9b391d41ff1007490d184b3402b7c2d2103",
+  "c4__1B__seed-4__step-69369": "af5b5d388d4322ec7df76490c3613facfa9ee8c6",
+  "c4__1B__seed-5__step-69369": "bbb7bbfd799e80d03acbb6353e0c154805033217",
+  "c4__530M__seed-14__step-51250": "90b8238baa1647841f26395c49a81d3845f5f8ac",
+  "c4__530M__seed-15__step-51250": "b881a9ddb305282b46ff13c68d8c2972ac0e0b96",
+  "c4__530M__seed-2__step-51250": "05a8ffb328ca7f75f07beaffcc3688d610f3b4e3",
+  "c4__750M__seed-14__step-27500": "6c2d062fb7f7b95fd816a60785c9582d4cf18191",
+  "c4__750M__seed-15__step-27500": "a2e0bcb667dbbd068d86735bbe47d657bde895ce",
+  "c4__750M__seed-2__step-27500": "989f853ec883fa0e61d47d1188f35685f9cf17bd",
+  "dclm-baseline-25p-dolma1.7-75p__1B__seed-2__step-69369": "1e9702bcec1e6edf8dc6f0d86329a3029231140b",
+  "dclm-baseline-25p-dolma1.7-75p__1B__seed-4__step-69369": "0e240ddc476b5c41cd3ce35862a6b9873e8a4b4f",
+  "dclm-baseline-25p-dolma1.7-75p__1B__seed-5__step-69369": "beb27a8071656ba7683776f14d8bff687e82d6c1",
+  "dclm-baseline-25p-dolma1.7-75p__530M__seed-14__step-51250": "e170ed4dcc38367fffe10b568a7443dda33925fa",
+  "dclm-baseline-25p-dolma1.7-75p__530M__seed-15__step-51250": "015810b1ca7427cb97b47d38c37f1a3621fbc58a",
+  "dclm-baseline-25p-dolma1.7-75p__530M__seed-2__step-51250": "c48bd7dc88f2bc2c6f0d44db5d0c77a4ca389d8f",
+  "dclm-baseline-25p-dolma1.7-75p__750M__seed-14__step-27500": "fe1950c92c53e2e74f752f52d0d687c35bb70573",
+  "dclm-baseline-25p-dolma1.7-75p__750M__seed-15__step-27500": "dc74b4dc8581371d887d6c06385d7162b3e67ae2",
+  "dclm-baseline-25p-dolma1.7-75p__750M__seed-2__step-27500": "254ea6209b4fff95ec1e63350a3229ff57797462",
+  "dclm-baseline-50p-dolma1.7-50p__1B__seed-2__step-69369": "dfebb5433e518c513f1104d80a736b574add050a",
+  "dclm-baseline-50p-dolma1.7-50p__1B__seed-4__step-69369": "4a8c1bf0aafea6efc2296a12f6919e466ce5055d",
+  "dclm-baseline-50p-dolma1.7-50p__1B__seed-5__step-69369": "d78085462338248740830798d859dc5f85744c8e",
+  "dclm-baseline-50p-dolma1.7-50p__530M__seed-14__step-51250": "0b5735469830cd47b2674b9eefa7666ea940180b",
+  "dclm-baseline-50p-dolma1.7-50p__530M__seed-15__step-51250": "482f933eaf9591b4faf391098e479a842deee22c",
+  "dclm-baseline-50p-dolma1.7-50p__530M__seed-2__step-51250": "589559f25b0afee8f0989d94a68c1a87e0f86dbb",
+  "dclm-baseline-50p-dolma1.7-50p__750M__seed-14__step-27500": "582603e01532adbdf663ef71482d27a2f55cde1f",
+  "dclm-baseline-50p-dolma1.7-50p__750M__seed-15__step-27500": "80584a6d070cc0a2888b857f154496c52439f1a2",
+  "dclm-baseline-50p-dolma1.7-50p__750M__seed-2__step-27500": "f0287d448e5b85d8ca1dff1a1251cf05f99daf3b",
+  "dclm-baseline-75p-dolma1.7-25p__1B__seed-2__step-69369": "163567fa6f4abafc77d3b9dc545d3704305752d8",
+  "dclm-baseline-75p-dolma1.7-25p__1B__seed-4__step-69369": "e99411fbf285ff3afde3812b93ba245fdc0ce0c7",
+  "dclm-baseline-75p-dolma1.7-25p__1B__seed-5__step-69369": "be1f8fb1ea9a441defc19a5204fea64629d4dcd5",
+  "dclm-baseline-75p-dolma1.7-25p__530M__seed-14__step-51250": "9f1a7114fbd7059610c8358becbe5a6c1640f38a",
+  "dclm-baseline-75p-dolma1.7-25p__530M__seed-15__step-51250": "f3d311321a5f2c6a93a33c8298caad8dfacae6c1",
+  "dclm-baseline-75p-dolma1.7-25p__530M__seed-2__step-51250": "c5a553f78000b3a61086422697acfee9b99b4cf2",
+  "dclm-baseline-75p-dolma1.7-25p__750M__seed-14__step-11250": "ec675f96d1fef12de0c18489c96ee04f5dc78445",
+  "dclm-baseline-75p-dolma1.7-25p__750M__seed-15__step-11250": "208514d7cbd09f7d54a7310f6b89a25cebac2f75",
+  "dclm-baseline-75p-dolma1.7-25p__750M__seed-2__step-11250": "f0542e25858f27c077f5044071a9b9ea68c09b39",
+  "dclm-baseline-top-10p__1B__seed-2__step-69369": "639485521dfb559f9925c37395ec7eccd1221181",
+  "dclm-baseline-top-10p__1B__seed-4__step-69369": "25d5ff274e36099d61b3c6219e9e10666b631c64",
+  "dclm-baseline-top-10p__1B__seed-5__step-69369": "e096d9ab1cc2affecd629a6d3f92701cd370d179",
+  "dclm-baseline-top-10p__530M__seed-14__step-51250": "3e7dc5cc56e16d6b0196ca066ebbe0bbbd66e731",
+  "dclm-baseline-top-10p__530M__seed-15__step-51250": "517a3f6179d2f54614589ffa73412c8b6fb95ba9",
+  "dclm-baseline-top-10p__530M__seed-2__step-51250": "01d3176c54d3fb70b76e0ba48ca49f6eab32e07b",
+  "dclm-baseline-top-10p__750M__seed-14__step-27500": "981db0e9724c6206121e006ae34d3fcf86379056",
+  "dclm-baseline-top-10p__750M__seed-15__step-27500": "481b88410958d5297b77f2935c9b1f9ea9a3680a",
+  "dclm-baseline-top-10p__750M__seed-2__step-27500": "32811153cfd2fb6ca79c79bad08f9373e5b627d1",
+  "dclm-baseline-top-20p__1B__seed-2__step-69369": "99f3efb716a9bf649c257afff9be9bf27c3248d6",
+  "dclm-baseline-top-20p__1B__seed-4__step-69369": "80842f72b5404f9584adb7c46aa0a3784e798ea5",
+  "dclm-baseline-top-20p__1B__seed-5__step-69369": "8da0084a30efd90256beb785528a2c8ab09634d8",
+  "dclm-baseline-top-20p__530M__seed-14__step-22500": "af5ce3a91619dfa808225577bf6bed7a046ecc1c",
+  "dclm-baseline-top-20p__530M__seed-15__step-22500": "d2630a6119e9f025d2dbffdbcea659f3061b041c",
+  "dclm-baseline-top-20p__530M__seed-2__step-22500": "2680f8548994558acb9159e05a6e9e8dcb8b11ca",
+  "dclm-baseline-top-20p__750M__seed-14__step-16250": "73e45c7b71fc8a6af1d066010c32b7f77b396c48",
+  "dclm-baseline-top-20p__750M__seed-15__step-16250": "236f4661a2704dfeb6be0191cbd2503797392e75",
+  "dclm-baseline-top-20p__750M__seed-2__step-16250": "f32f4eb9fe59457f22823bfa2f6219b0904dceb9",
+  "dclm-baseline-top-fw-10p__1B__seed-2__step-69369": "3d932cd64233a039f891cbbbb9dc40f8e465c15b",
+  "dclm-baseline-top-fw-10p__1B__seed-4__step-69369": "e0fbe4eef8e02bd6aad2984e424f544c9a7b4ef3",
+  "dclm-baseline-top-fw-10p__1B__seed-5__step-69369": "63b2d151619e20602bd36ccf3fcaa724bf9e63e8",
+  "dclm-baseline-top-fw-10p__530M__seed-14__step-51250": "c1ebb11ed29fd6643634ae98a39e942baf8fda8b",
+  "dclm-baseline-top-fw-10p__530M__seed-15__step-51250": "32404e81e30d7e1695c4cc6721c9b45ba8cbe3d5",
+  "dclm-baseline-top-fw-10p__530M__seed-2__step-51250": "a9ff9c7f21204d76811c59b99081a3f14b00f78b",
+  "dclm-baseline-top-fw-10p__750M__seed-14__step-27500": "c8dc2fdc3d73803cde283ac3fab9585f55d65a87",
+  "dclm-baseline-top-fw-10p__750M__seed-15__step-27500": "274cf98c1149f42f82d32d8d989f9e447da621e5",
+  "dclm-baseline-top-fw-10p__750M__seed-2__step-27500": "6f88bee1b83dceeb060232a05171651e95ca1523",
+  "dclm-baseline-top-fw-3p__1B__seed-2__step-69369": "e3775c522e354af3267bf4b6dd73bd6640ce9b6b",
+  "dclm-baseline-top-fw-3p__1B__seed-4__step-69369": "fff8517f74e89fd9cbeecd6f8410e680ef604591",
+  "dclm-baseline-top-fw-3p__1B__seed-5__step-69369": "254fb580525347c3203680eba4029d8ad46e7f2a",
+  "dclm-baseline-top-fw-3p__530M__seed-14__step-51250": "c6093ca9b7ab8ae926a7e7741e940eaccb878b29",
+  "dclm-baseline-top-fw-3p__530M__seed-15__step-51250": "15264310824755f7e439aaa66669ea2f6670b443",
+  "dclm-baseline-top-fw-3p__530M__seed-2__step-51250": "4208f11946899d4fe2d2975bb3685906110ee1be",
+  "dclm-baseline-top-fw-3p__750M__seed-14__step-27500": "326a362a7dd89966f3149f40568c394394667ebe",
+  "dclm-baseline-top-fw-3p__750M__seed-15__step-27500": "28ee0043d537e30155c77c0d7883402ca143c69a",
+  "dclm-baseline-top-fw-3p__750M__seed-2__step-27500": "02c2425420b8de9847f31d53e366af557d8fbe84",
+  "dclm-baseline-top-fw2-7p__1B__seed-2__step-69369": "ab28e0ab0276e3d8cce546c01af7bca203138af0",
+  "dclm-baseline-top-fw2-7p__1B__seed-4__step-69369": "8ddf93e4678ef5f2a8129bb5f1e5f0c26f783cb6",
+  "dclm-baseline-top-fw2-7p__1B__seed-5__step-69369": "bc01eee8ea9568c6d8677bb02cee135a8fa898f5",
+  "dclm-baseline-top-fw2-7p__530M__seed-14__step-51250": "b518f9da8c807413f584dca8e7d4d9c212f15e72",
+  "dclm-baseline-top-fw2-7p__530M__seed-15__step-51250": "d3821c1b9d6d25f907454e9b1819501059d20497",
+  "dclm-baseline-top-fw2-7p__530M__seed-2__step-51250": "2e91a3b28058c1532d8c8d1e89ed523c78b99cfc",
+  "dclm-baseline-top-fw2-7p__750M__seed-14__step-27500": "df2687383801c8b23e84cd5dc050298ae1bac0a2",
+  "dclm-baseline-top-fw2-7p__750M__seed-15__step-27500": "ae7d4e999cfc58724a933ff4236006d1bec8b199",
+  "dclm-baseline-top-fw2-7p__750M__seed-2__step-27500": "11a15de48fa7881839aa3fa7281634429a97c7f2",
+  "dclm-baseline-top-fw3-7p__1B__seed-2__step-69369": "b595324ee6e9b817ba2e68c9c24fdf7d8d87bae0",
+  "dclm-baseline-top-fw3-7p__1B__seed-4__step-69369": "0b06ae8e57fbbc8b4d6cc6ff794fba659a243072",
+  "dclm-baseline-top-fw3-7p__1B__seed-5__step-69369": "7f4964fc8e951151eac2a0337080d8368f466f9a",
+  "dclm-baseline-top-fw3-7p__530M__seed-14__step-51250": "664b79a2a1d054915ba8c2479fb635f97a5c91fb",
+  "dclm-baseline-top-fw3-7p__530M__seed-15__step-51250": "762b2d69ce4186af053dc46bcdf1561c46419210",
+  "dclm-baseline-top-fw3-7p__530M__seed-2__step-51250": "9bc7471ee37241ebf3fb344aad108821df37a358",
+  "dclm-baseline-top-fw3-7p__750M__seed-14__step-27500": "e62784d3effe97c8dcc4176838d2ca9367737a56",
+  "dclm-baseline-top-fw3-7p__750M__seed-15__step-27500": "ffcf4665b3fdf77b24da253df6c60304393d99b2",
+  "dclm-baseline-top-fw3-7p__750M__seed-2__step-27500": "7d6509459881b02c1f6167f8d2c98f4de1f35acb",
+  "dclm-baseline__1B__seed-2__step-69369": "d897fc22d7bcb3db6fdfb0d9d9dd4ec048ea62b5",
+  "dclm-baseline__1B__seed-4__step-69369": "148d946026c0f50aaa77d519d7d541c4abb70f5b",
+  "dclm-baseline__1B__seed-5__step-69369": "754a621f801b4b2838895f14147a589c9668bed0",
+  "dclm-baseline__530M__seed-14__step-51250": "d63a9da2e0cacac3e770bff82ac8159e2ad5c82e",
+  "dclm-baseline__530M__seed-15__step-51250": "3de909d8e9e78d4e00789d34d6f4e6a4b67d26eb",
+  "dclm-baseline__530M__seed-2__step-51250": "18785f5e7364eaf7f51231823eb6aab02d9ae4e2",
+  "dclm-baseline__750M__seed-14__step-27500": "5d289e7b5edf28dee67b6618991f9bfc5f77b33d",
+  "dclm-baseline__750M__seed-15__step-27500": "ee80267b4ffb8eecd285513d810ca71a903e7a34",
+  "dclm-baseline__750M__seed-2__step-27500": "23faa0cafa3df602447436b943ea7ec2b5998a67",
+  "dolma1.6++__1B__seed-2__step-69369": "aba66f90b3d3930f041326092ba5fd1224f28d39",
+  "dolma1.6++__1B__seed-4__step-69369": "c4d15b4d36bb8d388dd830aa6473638abd4d2baa",
+  "dolma1.6++__1B__seed-5__step-69369": "0402d078318683910051d4a14bd43ed946b29a09",
+  "dolma1.6++__530M__seed-14__step-51250": "ed558525f64cb01c98df054a1c3b6783eabc7cad",
+  "dolma1.6++__530M__seed-15__step-51250": "138bd491c9af1aaab6c2dc418a62cd64d084a1c7",
+  "dolma1.6++__530M__seed-2__step-51250": "f299116e5a78ae313d0053e9707cd2b01471bdd3",
+  "dolma1.6++__750M__seed-14__step-27500": "c0fce545982b1ed47a3cd1997f0b64a12616d4f0",
+  "dolma1.6++__750M__seed-15__step-27500": "5ea61ba480f43fab46e218544d213eb05c2615b3",
+  "dolma1.6++__750M__seed-2__step-27500": "4e3ed5310b05cb9fdb116d9cf44c6f9a51ea4766",
+  "dolma1.7-no-code__1B__seed-2__step-69369": "8c379d282bcac3de22c785522fe8ff38dece5f1b",
+  "dolma1.7-no-code__1B__seed-4__step-69369": "a95c07a977aa7113448af0d71bd3fb192304c7c1",
+  "dolma1.7-no-code__1B__seed-5__step-69369": "863321c7df1896748c8cc2926854a8d99992e8c0",
+  "dolma1.7-no-code__530M__seed-14__step-51250": "b1fb65c58b55487cf3cfa8c4711ac6a4683067e9",
+  "dolma1.7-no-code__530M__seed-15__step-51250": "c7bd5b4375f292372f1f8d46dd01263f35248c5a",
+  "dolma1.7-no-code__530M__seed-2__step-51250": "57708cf58502e04798765c94aa24f81a6b48f9b7",
+  "dolma1.7-no-code__750M__seed-14__step-27500": "e010b24edbc393eb609611b8dc99b69d1f74c298",
+  "dolma1.7-no-code__750M__seed-15__step-27500": "76842876901a7cdcd496ee1cb565bdc733f911b0",
+  "dolma1.7-no-code__750M__seed-2__step-27500": "9f8c48fd7aed522258279098fa5c6c1877a4d3ba",
+  "dolma1.7-no-flan__1B__seed-2__step-69369": "c938c26acb757a4f9c65a8fdcbec85df38318324",
+  "dolma1.7-no-flan__530M__seed-14__step-51250": "dd69e177844a27ce4fe0c48b7e1f3d9313582bd7",
+  "dolma1.7-no-flan__530M__seed-15__step-51250": "6365d6b4198ffe942326d08bb8b3a48f2459a751",
+  "dolma1.7-no-flan__530M__seed-2__step-51250": "72c461f26b5a06a73b26190e5896948ac622f25d",
+  "dolma1.7-no-flan__750M__seed-14__step-27500": "c30363ead76dabca23c70009b16ebf933a63fd94",
+  "dolma1.7-no-flan__750M__seed-15__step-27500": "7e10070c66fb9a701472e7884a3bf44d309df038",
+  "dolma1.7-no-flan__750M__seed-2__step-27500": "7a0c0a88715c59eabfdda42a3a52c8897f2ab63f",
+  "dolma1.7-no-math-no-code__530M__seed-14__step-51250": "5ecd127309e7bfc63205c4f50c7f7a56888f57e7",
+  "dolma1.7-no-math-no-code__530M__seed-15__step-51250": "c4703a008f9fe8540cb2af915c8137e5bbb021f3",
+  "dolma1.7-no-math-no-code__530M__seed-2__step-51250": "03754de22cf3ff6d93115c2dae4301dd174e48b9",
+  "dolma1.7-no-math-no-code__750M__seed-14__step-27500": "ecba5b742df9712e966327a5b53fe170ce714329",
+  "dolma1.7-no-math-no-code__750M__seed-15__step-27500": "dcc6ea6eb8d07e02c958c6d577fe536398e21ce4",
+  "dolma1.7-no-math-no-code__750M__seed-2__step-27500": "e3cb55e554e39e90fd0674ebb0225b0de15a9f17",
+  "dolma1.7-no-reddit__530M__seed-14__step-51250": "a6f24576348d1ecf723cf54d4e6b140758acc234",
+  "dolma1.7-no-reddit__530M__seed-15__step-51250": "d63f2f225a8a205e046dbb93695cb405a6ff7afb",
+  "dolma1.7-no-reddit__530M__seed-2__step-51250": "cb1db300311ac4f7d57dccf1f56c06c499d1b026",
+  "dolma1.7-no-reddit__750M__seed-14__step-27500": "03e5934806f7c8b1c0f5da171ff423f5ccc43bc2",
+  "dolma1.7-no-reddit__750M__seed-15__step-27500": "c24a6d526e0f57f3d03a2ab5816fae571076bf5d",
+  "dolma1.7-no-reddit__750M__seed-2__step-27500": "839ecbdbad23556bad9a48b977d01d3e2ff9aa9d",
+  "dolma1.7__1B__seed-2__step-69369": "c880c1565f57c13eab7e41d53fe3351be2ef38a9",
+  "dolma1.7__1B__seed-4__step-69369": "404b8ab1e836f782e087cbf663c8db94e64b7fe6",
+  "dolma1.7__1B__seed-5__step-69369": "1cf8f2d99f9f244c90bc941326adf84150d3c15d",
+  "dolma1.7__530M__seed-14__step-51250": "6b04fe65542f89fbfb9a8cb5304cc0ff2d82359c",
+  "dolma1.7__530M__seed-15__step-51250": "5ab1c31aa3acbc1292fdf2579d79fc4c7895f433",
+  "dolma1.7__530M__seed-2__step-51250": "25a26e17f55a8456b75d065124483c3d4efd6728",
+  "dolma1.7__750M__seed-14__step-27500": "128fc23ea53ae912187a32d9c33642c23a28178d",
+  "dolma1.7__750M__seed-15__step-27500": "7cf4c5709aff584a6ab8f6532a8fcb9b8cee2cb2",
+  "dolma1.7__750M__seed-2__step-27500": "2b4f0413a71930b5dd2c29ed5d4cc5215d973aba",
+  "falcon-with-cc-top-10p__530M__seed-14__step-51250": "4012541f361a8b243164c5dcfeef90c0993b3fe9",
+  "falcon-with-cc-top-10p__530M__seed-15__step-51250": "a542b24a9f19da578f26352b164a629c2bb71198",
+  "falcon-with-cc-top-10p__530M__seed-2__step-51250": "0bfb88d76d8e2d7c7ada17d81e6d3716cd632cb4",
+  "falcon-with-cc-top-10p__750M__seed-14__step-27500": "7f3450c63dd40b5bb964978c8b66f4a85727bb64",
+  "falcon-with-cc-top-10p__750M__seed-15__step-27500": "4ba8fbf7fda86798daa3d649d5fe49a98f258c7f",
+  "falcon-with-cc-top-10p__750M__seed-2__step-27500": "3efc89ec3d5ed9ec49f59407381a94393c6d2cea",
+  "falcon-with-cc-top-20p__530M__seed-14__step-51250": "4eb28a52198d31b806b0d7d953ff94a90954bfce",
+  "falcon-with-cc-top-20p__530M__seed-15__step-51250": "a0c3806adf01f288c0b449a9501e183c7f070d36",
+  "falcon-with-cc-top-20p__530M__seed-2__step-51250": "e59f83806919885159e58d7a88164a129c8e3f7d",
+  "falcon-with-cc-top-20p__750M__seed-14__step-27500": "9049bf3dd6f35b1088d5a2ef9f906d9755c06336",
+  "falcon-with-cc-top-20p__750M__seed-15__step-27500": "9345248d14b34ee3801b18915ed769c70d0cf65a",
+  "falcon-with-cc-top-20p__750M__seed-2__step-27500": "119e5213a6f774a8dedca8b380bc24a8b615aada",
+  "falcon-with-cc-top-orig-10p__1B__seed-2__step-69369": "d7baea15cb31c91521172e148a4e0e9220a115f2",
+  "falcon-with-cc-top-orig-10p__1B__seed-4__step-69369": "4693fb3477546dad164547a8aaf476475b4d92ff",
+  "falcon-with-cc-top-orig-10p__1B__seed-5__step-69369": "a12ef10f5bc5d13e1e5538b049b95b0fb973be78",
+  "falcon-with-cc-top-orig-10p__530M__seed-14__step-51250": "dbc538da11f9626cf57ffd049fba73323d0b9765",
+  "falcon-with-cc-top-orig-10p__530M__seed-15__step-51250": "093385885ddd14ea60a8d1e5227504c769c26a19",
+  "falcon-with-cc-top-orig-10p__530M__seed-2__step-51250": "0c09a643ad9f424d6a3642aabc6bebd044410f6d",
+  "falcon-with-cc-top-orig-10p__750M__seed-14__step-27500": "de2368730733da403c328f510b8ecb839a59141c",
+  "falcon-with-cc-top-orig-10p__750M__seed-15__step-27500": "032b3b58d255f1470598d2335c47096abf764b78",
+  "falcon-with-cc-top-orig-10p__750M__seed-2__step-27500": "3da794a347ec489ebccc196715c217756f189eb8",
+  "falcon-with-cc-top-tulu-10p__1B__seed-2__step-69369": "564466c64dd45801375043fba75be0786abaa9eb",
+  "falcon-with-cc-top-tulu-10p__1B__seed-4__step-69369": "e1991418f1f815e099a79a5b85abd57d03e99c66",
+  "falcon-with-cc-top-tulu-10p__1B__seed-5__step-69369": "c6b2f5f37f9a274541921e2706f86b1423704560",
+  "falcon-with-cc-top-tulu-10p__530M__seed-14__step-51250": "a3be1f3b3b7b89c3a2488a85c299d951ee437358",
+  "falcon-with-cc-top-tulu-10p__530M__seed-15__step-51250": "9992c6be779f28fa269211ce0d4bf0057f3a9dff",
+  "falcon-with-cc-top-tulu-10p__530M__seed-2__step-51250": "86d55a69dcae4e62b2c5f8e3345b130f8469d4be",
+  "falcon-with-cc-top-tulu-10p__750M__seed-14__step-27500": "65c7c41aeba1e2bb548955d7cb12c9c3a751ecaf",
+  "falcon-with-cc-top-tulu-10p__750M__seed-15__step-27500": "798b93bc59ae28fdb5b12a53dd9f571c921e1350",
+  "falcon-with-cc-top-tulu-10p__750M__seed-2__step-27500": "08c73e1c448b8e5d8a747bba5d99e3f3f5becc17",
+  "falcon-with-cc__530M__seed-14__step-51250": "33d826128fe2c37f16981de770b94579ce2cdd0b",
+  "falcon-with-cc__530M__seed-15__step-51250": "affd8e17a0dabcc97c2498160e248c87118efc3e",
+  "falcon-with-cc__530M__seed-2__step-51250": "bbffe4a90e14f08d77005746255680f030cc5b6f",
+  "falcon-with-cc__750M__seed-14__step-27500": "6ea069d9d7aba9b1ee5596fd852ef80c0b1051f4",
+  "falcon-with-cc__750M__seed-15__step-27500": "993241b8ba8d19b9b414517590477424a98fb557",
+  "falcon-with-cc__750M__seed-2__step-27500": "b67050be5661bed189dd353750d829c764c4d3b3",
+  "falcon__530M__seed-14__step-51250": "e12866e2e873dfff940f3f71182da531f65f1239",
+  "falcon__530M__seed-15__step-51250": "86342562894949b99d5a2781827e54b7e2869b03",
+  "falcon__530M__seed-2__step-51250": "05de4f6abfe13a3342c09a3eca56575a720ac4f6",
+  "falcon__750M__seed-14__step-26250": "6e11f2251c6d3dd838ccdf1c83143b42165b1f1a",
+  "falcon__750M__seed-15__step-26250": "fe88b9a7922ffa6ed5fde099d1ec9ddb8c80c0e6",
+  "falcon__750M__seed-2__step-26250": "5e4c068fbb557df32e372779a84e4defc5a7f5b6",
+  "fineweb-edu__1B__seed-2__step-69369": "0b17785d26e3281b2b435aa244fd385490555e46",
+  "fineweb-edu__1B__seed-4__step-69369": "0dab8e3bb0a8c6e791f30fb4754f2c0c2e3477c8",
+  "fineweb-edu__1B__seed-5__step-69369": "c7709f4005b3b1c54a5f5c7348c450cced372e45",
+  "fineweb-edu__530M__seed-14__step-51250": "6d6876ff8ac48d88bc84dab356b8ee3f52009db4",
+  "fineweb-edu__530M__seed-15__step-51250": "c298327952989f2dc9ae8e63f8e9aa9a773f6a06",
+  "fineweb-edu__530M__seed-2__step-51250": "4639bee6d670082168ec679c0e986f31d3d16336",
+  "fineweb-edu__750M__seed-14__step-27500": "078e7063670ef0cb5a683fc5d589fadd1b577814",
+  "fineweb-edu__750M__seed-15__step-27500": "85b5db0100541f0991cf7d867103036e21015c69",
+  "fineweb-edu__750M__seed-2__step-27500": "1aba1ffca61a9665d0dbf5ff257325b9187ed099",
+  "fineweb-pro__1B__seed-2__step-69369": "a9fa437a3fa9de72e057ecddf4fad05b979aa7f8",
+  "fineweb-pro__1B__seed-4__step-69369": "d503e8b9fc23baa1b3cb9a679b8c97170e313a96",
+  "fineweb-pro__1B__seed-5__step-69369": "2fe4e170839ab9ecba728b5a03f8ddddc3d18dc9",
+  "fineweb-pro__530M__seed-14__step-51250": "14b1f15efc387d1376dc711aa8042bd51bc40ce8",
+  "fineweb-pro__530M__seed-15__step-51250": "5d0e97b7022e4cbc827a0f15af8586b8b6b762a2",
+  "fineweb-pro__530M__seed-2__step-51250": "268a6727491503adabe96fb477d4a0bf6f884f91",
+  "fineweb-pro__750M__seed-14__step-27500": "eda1040d085b10d534499dbd85c9e4bb4172276a",
+  "fineweb-pro__750M__seed-15__step-27500": "2a12699087abb071a8b52ca003dce789ea1a194d",
+  "fineweb-pro__750M__seed-2__step-27500": "9cbb39700d7d5652843f553fd956f56fe8bf21c8"
+ },
+ "labels": {
+  "everything else": "reported, not pre-registered",
+  "heldout.margin/all": "pre-registered test"
+ },
+ "leave_one_task_out": {
+  "coqa_mc": {
+   "accuracy/all": {
+    "K": 3,
+    "Lambda": 1.1597984003961181,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.390383725810106,
+    "lo": 0.8784377334119648,
+    "se": 0.1141062529757294
+   },
+   "accuracy/batch_free": {
+    "K": 3,
+    "Lambda": 1.1281872663012449,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.3414562923973528,
+    "lo": 0.8689264179773568,
+    "se": 0.13424107190313478
+   },
+   "margin/all": {
+    "K": 3,
+    "Lambda": 1.07389267874122,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.1600591787043635,
+    "lo": 0.9803583253612078,
+    "se": 0.048818263382234425
+   },
+   "margin/batch_free": {
+    "K": 3,
+    "Lambda": 1.1358194562934578,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.3021156851731068,
+    "lo": 0.9472992161655702,
+    "se": 0.06968870039937669
+   }
+  },
+  "drop_mc": {
+   "accuracy/all": {
+    "K": 3,
+    "Lambda": 1.169332075247176,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.2740743889133768,
+    "lo": 1.063335463129098,
+    "se": 0.0428091284158138
+   },
+   "accuracy/batch_free": {
+    "K": 3,
+    "Lambda": 1.1121056263436002,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.2944840010253587,
+    "lo": 0.9053359612562025,
+    "se": 0.07678406806506766
+   },
+   "margin/all": {
+    "K": 3,
+    "Lambda": 1.1976747407216384,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.3693244061664582,
+    "lo": 1.00899658436873,
+    "se": 0.06138349762610192
+   },
+   "margin/batch_free": {
+    "K": 3,
+    "Lambda": 1.2544404011733121,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.3882124441065962,
+    "lo": 1.1086470390166792,
+    "se": 0.059151500081657885
+   }
+  },
+  "medmcqa": {
+   "accuracy/all": {
+    "K": 3,
+    "Lambda": 1.2945576066691373,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.4810076980076423,
+    "lo": 1.085726757862938,
+    "se": 0.07223103588144462
+   },
+   "accuracy/batch_free": {
+    "K": 3,
+    "Lambda": 1.3660660216584903,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.5774168451561918,
+    "lo": 1.12788213537896,
+    "se": 0.09308091248924662
+   },
+   "margin/all": {
+    "K": 3,
+    "Lambda": 1.1291977197561023,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.4814343781402113,
+    "lo": 0.6625566334035667,
+    "se": 0.10185988542640016
+   },
+   "margin/batch_free": {
+    "K": 3,
+    "Lambda": 1.072040866302594,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.5260477042249752,
+    "lo": 0.33997605449571155,
+    "se": 0.1238088635757633
+   }
+  },
+  "sciq": {
+   "accuracy/all": {
+    "K": 3,
+    "Lambda": 1.0507972018900862,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.2300359905788656,
+    "lo": 0.8321118909458313,
+    "se": 0.07558676636753735
+   },
+   "accuracy/batch_free": {
+    "K": 3,
+    "Lambda": 1.0179788230927398,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.173945454635118,
+    "lo": 0.8373782429611796,
+    "se": 0.07542740140939284
+   },
+   "margin/all": {
+    "K": 3,
+    "Lambda": 1.0894484960641975,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.3893753620239995,
+    "lo": 0.6920660412760649,
+    "se": 0.09905367819611233
+   },
+   "margin/batch_free": {
+    "K": 3,
+    "Lambda": 0.9713473315523473,
+    "N": 68,
+    "clusters": 25,
+    "hi": 1.5817045244977375,
+    "lo": NaN,
+    "se": 0.13856553223503335
+   }
+  }
+ },
+ "log": {
+  "comparison_cells": [
+   [
+    "c4",
+    "1B"
+   ],
+   [
+    "c4",
+    "530M"
+   ],
+   [
+    "c4",
+    "750M"
+   ],
+   [
+    "dclm-baseline",
+    "1B"
+   ],
+   [
+    "dclm-baseline",
+    "530M"
+   ],
+   [
+    "dclm-baseline",
+    "750M"
+   ],
+   [
+    "dclm-baseline-25p-dolma1.7-75p",
+    "1B"
+   ],
+   [
+    "dclm-baseline-25p-dolma1.7-75p",
+    "530M"
+   ],
+   [
+    "dclm-baseline-25p-dolma1.7-75p",
+    "750M"
+   ],
+   [
+    "dclm-baseline-50p-dolma1.7-50p",
+    "1B"
+   ],
+   [
+    "dclm-baseline-50p-dolma1.7-50p",
+    "530M"
+   ],
+   [
+    "dclm-baseline-50p-dolma1.7-50p",
+    "750M"
+   ],
+   [
+    "dclm-baseline-75p-dolma1.7-25p",
+    "1B"
+   ],
+   [
+    "dclm-baseline-75p-dolma1.7-25p",
+    "530M"
+   ],
+   [
+    "dclm-baseline-75p-dolma1.7-25p",
+    "750M"
+   ],
+   [
+    "dclm-baseline-top-10p",
+    "1B"
+   ],
+   [
+    "dclm-baseline-top-10p",
+    "530M"
+   ],
+   [
+    "dclm-baseline-top-10p",
+    "750M"
+   ],
+   [
+    "dclm-baseline-top-20p",
+    "1B"
+   ],
+   [
+    "dclm-baseline-top-20p",
+    "530M"
+   ],
+   [
+    "dclm-baseline-top-20p",
+    "750M"
+   ],
+   [
+    "dclm-baseline-top-fw-10p",
+    "1B"
+   ],
+   [
+    "dclm-baseline-top-fw-10p",
+    "530M"
+   ],
+   [
+    "dclm-baseline-top-fw-10p",
+    "750M"
+   ],
+   [
+    "dclm-baseline-top-fw-3p",
+    "1B"
+   ],
+   [
+    "dclm-baseline-top-fw-3p",
+    "530M"
+   ],
+   [
+    "dclm-baseline-top-fw-3p",
+    "750M"
+   ],
+   [
+    "dclm-baseline-top-fw2-7p",
+    "1B"
+   ],
+   [
+    "dclm-baseline-top-fw2-7p",
+    "530M"
+   ],
+   [
+    "dclm-baseline-top-fw2-7p",
+    "750M"
+   ],
+   [
+    "dclm-baseline-top-fw3-7p",
+    "1B"
+   ],
+   [
+    "dclm-baseline-top-fw3-7p",
+    "530M"
+   ],
+   [
+    "dclm-baseline-top-fw3-7p",
+    "750M"
+   ],
+   [
+    "dolma1.6++",
+    "1B"
+   ],
+   [
+    "dolma1.6++",
+    "530M"
+   ],
+   [
+    "dolma1.6++",
+    "750M"
+   ],
+   [
+    "dolma1.7",
+    "1B"
+   ],
+   [
+    "dolma1.7",
+    "530M"
+   ],
+   [
+    "dolma1.7",
+    "750M"
+   ],
+   [
+    "dolma1.7-no-code",
+    "1B"
+   ],
+   [
+    "dolma1.7-no-code",
+    "530M"
+   ],
+   [
+    "dolma1.7-no-code",
+    "750M"
+   ],
+   [
+    "dolma1.7-no-flan",
+    "530M"
+   ],
+   [
+    "dolma1.7-no-flan",
+    "750M"
+   ],
+   [
+    "dolma1.7-no-math-no-code",
+    "530M"
+   ],
+   [
+    "dolma1.7-no-math-no-code",
+    "750M"
+   ],
+   [
+    "dolma1.7-no-reddit",
+    "530M"
+   ],
+   [
+    "dolma1.7-no-reddit",
+    "750M"
+   ],
+   [
+    "falcon",
+    "530M"
+   ],
+   [
+    "falcon",
+    "750M"
+   ],
+   [
+    "falcon-with-cc",
+    "530M"
+   ],
+   [
+    "falcon-with-cc",
+    "750M"
+   ],
+   [
+    "falcon-with-cc-top-10p",
+    "530M"
+   ],
+   [
+    "falcon-with-cc-top-10p",
+    "750M"
+   ],
+   [
+    "falcon-with-cc-top-20p",
+    "530M"
+   ],
+   [
+    "falcon-with-cc-top-20p",
+    "750M"
+   ],
+   [
+    "falcon-with-cc-top-orig-10p",
+    "1B"
+   ],
+   [
+    "falcon-with-cc-top-orig-10p",
+    "530M"
+   ],
+   [
+    "falcon-with-cc-top-orig-10p",
+    "750M"
+   ],
+   [
+    "falcon-with-cc-top-tulu-10p",
+    "1B"
+   ],
+   [
+    "falcon-with-cc-top-tulu-10p",
+    "530M"
+   ],
+   [
+    "falcon-with-cc-top-tulu-10p",
+    "750M"
+   ],
+   [
+    "fineweb-edu",
+    "1B"
+   ],
+   [
+    "fineweb-edu",
+    "530M"
+   ],
+   [
+    "fineweb-edu",
+    "750M"
+   ],
+   [
+    "fineweb-pro",
+    "1B"
+   ],
+   [
+    "fineweb-pro",
+    "530M"
+   ],
+   [
+    "fineweb-pro",
+    "750M"
+   ]
+  ],
+  "final_tasks": [
+   "sciq",
+   "medmcqa",
+   "drop_mc",
+   "coqa_mc"
+  ],
+  "half_items_per_task": {
+   "coqa_mc": [
+    500,
+    500
+   ],
+   "drop_mc": [
+    500,
+    500
+   ],
+   "medmcqa": [
+    500,
+    500
+   ],
+   "sciq": [
+    500,
+    500
+   ]
+  },
+  "notes": [
+   "3 scored runs at sizes outside the scope are not used: ['c4__150M__seed-14__step-37500', 'c4__150M__seed-15__step-37500', 'c4__150M__seed-2__step-37500']",
+   "interim build at 530M, 750M and the scored 1B configurations; not the pre-registered test",
+   "20 runs at the scored sizes have no scores yet and are absent: ['dolma1.7-no-flan__1B__seed-4__step-69369', 'dolma1.7-no-flan__1B__seed-5__step-69369', 'dolma1.7-no-math-no-code__1B__seed-2__step-57500', 'dolma1.7-no-math-no-code__1B__seed-4__step-57500', 'dolma1.7-no-math-no-code__1B__seed-5__step-57500', 'dolma1.7-no-reddit__1B__seed-2__step-69369', 'dolma1.7-no-reddit__1B__seed-4__step-69369', 'dolma1.7-no-reddit__1B__seed-5__step-69369', 'falcon-with-cc-top-10p__1B__seed-2__step-69369', 'falcon-with-cc-top-10p__1B__seed-4__step-69369', 'falcon-with-cc-top-10p__1B__seed-5__step-69369', 'falcon-with-cc-top-20p__1B__seed-2__step-69369', 'falcon-with-cc-top-20p__1B__seed-4__step-69369', 'falcon-with-cc-top-20p__1B__seed-5__step-69369', 'falcon-with-cc__1B__seed-2__step-69369', 'falcon-with-cc__1B__seed-4__step-69369', 'falcon-with-cc__1B__seed-5__step-69369', 'falcon__1B__seed-2__step-69369', 'falcon__1B__seed-4__step-69369', 'falcon__1B__seed-5__step-69369']"
+  ],
+  "runs_scored": 205,
+  "sizes_scored": [
+   "530M",
+   "750M",
+   "1B"
+  ]
+ },
+ "original_margin_lambda_all_sizes": 1.2439499117191137,
+ "original_traits_same_sizes": {
+  "accuracy/all": {
+   "K": 10,
+   "Lambda": 1.0837692757031805,
+   "N": 68,
+   "clusters": 25,
+   "hi": 1.2688132236490712,
+   "lo": 0.859472951529541,
+   "se": 0.08523827307458888
+  },
+  "accuracy/batch_free": {
+   "K": 10,
+   "Lambda": 1.1015741559686514,
+   "N": 68,
+   "clusters": 25,
+   "hi": 1.3599939166547634,
+   "lo": 0.7477831675901343,
+   "se": 0.11378123451217226
+  },
+  "margin/all": {
+   "K": 10,
+   "Lambda": 1.1744407578269,
+   "N": 68,
+   "clusters": 25,
+   "hi": 1.3604063360235894,
+   "lo": 0.9541058327634152,
+   "se": 0.07864578510993953
+  },
+  "margin/batch_free": {
+   "K": 10,
+   "Lambda": 1.185873876925235,
+   "N": 68,
+   "clusters": 25,
+   "hi": 1.5183015885983606,
+   "lo": 0.6968237854993825,
+   "se": 0.12656157808667498
+  }
+ },
+ "requests_sha256": "77118327b441931a17a2d2e90ee8e162c0192c99b472f2eedf0bad99a0025c43",
+ "rule": "PASS if the lower 95% wild-bootstrap limit of held-out margin Lambda is above 1",
+ "verdict": "FAIL",
+ "wall_seconds": 73.72787427902222
+}
