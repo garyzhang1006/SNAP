@@ -3217,3 +3217,39 @@ under twelve words, and two splits now give it an eight-word sentence on the ite
 nine-word verdict sentence stating that the registered rule fails on that interval.
 
 Ranking holds at 6.2.
+
+## Scan 59, format structure and mechanism checks
+
+Re-read of scan 58. Both splits read correctly.
+
+Sub-scans 1 to 10 clean. Judgment sub-scans on Section 5.3. The 61 percent share equals 0.148 over
+0.244, the 1.5 percent batch share equals 0.004 over 0.244 to the stated precision, and the 44 and 6
+percent simulator shares and the 2 to 91 percent bootstrap span appear in Appendix C. The sentence
+that the design cannot separate format from task content causally is the honest limit and sits
+beside the diagnostic it limits. One rhythm split gives the section a ten-word sentence on the
+accuracy diagnostic.
+
+Ranking holds at 6.2.
+
+## Scan 60, calibration and external checks
+
+Re-read of scan 59. Clean.
+
+Sub-scans 1 to 10 clean. Judgment sub-scans on Section 5.4. The PolyPythias ratios check, since
+0.406 over 0.244 is 1.66 and 1.406 over 1.244 is 1.13, and the sentence names which scale the
+reported gate used and why the plan left it ambiguous. The permutation and cluster disagreement on
+accuracy is stated with both results kept and the reason given. No defect and no change.
+
+Ranking holds at 6.2.
+
+## Scan 61, predicting aggregate uncertainty and the decision check
+
+Re-read of scan 60. No change to review.
+
+Sub-scans 1 to 10 clean. Judgment sub-scans on Section 5.5. The flip probabilities recompute from the
+stated deviation, 0.246 and 0.085 at 0.00514 and 0.229 and 0.069 at the independence value of
+0.00477. The three model errors in Table 7 each sit about 0.03 below 0.0358. The decision paragraph
+states that wrong calls include genuine rank changes, which is the caveat a reviewer would raise
+first. No defect and no change.
+
+Ranking holds at 6.2.
