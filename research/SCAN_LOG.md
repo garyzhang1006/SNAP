@@ -3315,3 +3315,25 @@ Sub-scans 1 to 10 clean. Judgment sub-scans on the 111 lines of Appendix A, read
 20. Nothing survives deletion without loss. No change made.
 
 Ranking holds at 6.2.
+
+## Scan 65, Appendix B, design details
+
+Re-read of scan 64. No change to review.
+
+Sub-scans 1 to 10 clean. Judgment sub-scans on the 77 lines of Appendix B, read in full.
+
+11. The truncation shares are the source of the Section 3 figures and match after scan 55. The
+    planning standard errors give realised factors of 2.1 and 3.2 to 3.3 depending on rounding,
+    and Appendix D states that derived quantities use unrounded values, so the printed 3.3 stands.
+    The six percent gain share at the estimated scale matches Section 5.3.
+12. The planning document is called a reported plan with an uncorroborated date in the sentence
+    that introduces its checks, and every check is called exploratory. Labels hold.
+18. One remark that reads as pointed rather than scientific. The relation-to-prior-work paragraph
+    noted that one cited group shares seven authors with another. That fact does not bear on the
+    distinction drawn, and a reviewer from either group would read it as an aside about them.
+    Removed.
+13 to 17, 19, 20. Connectives sound, terminology stable, Table 4 and the reliability table are
+    referenced before they appear, grammar clean, rhythm varied. Nothing else survives deletion
+    without loss.
+
+Ranking holds at 6.2.
