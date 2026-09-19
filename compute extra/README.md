@@ -4,6 +4,22 @@ The registered held-out test (`heldout/PROTOCOL_heldout.md`) scores 375 DataDeci
 
 Everything here is self-contained: `common/` and `config/` are copies of `heldout/common` and `heldout/config` at the commit that scored the Kaggle shards, `data/requests.jsonl.gz` is the frozen request file (its SHA-256 is checked against `config/frozen.json` before any model loads), and `shards/` lists the runs. No file here holds a token, and every Hugging Face repository read is public.
 
+## Quick start and status
+
+From the repository root on a login node, two commands do the whole job:
+
+```bash
+bash "compute extra/setup.sh"
+```
+
+```bash
+bash "compute extra/submit.sh"
+```
+
+What has been verified: `score_shard.py --dry-run` validates both shard types on CPU (frozen hash, run lists against `config/runs.json`, task names against the request file), every shell script passes `bash -n`, and the scorer, request file and output format are the ones that already scored the 530M and 750M shards on Kaggle. What has not: the GPU path on this cluster. Torch and `ai2-olmo 0.6.0` have only run inside Kaggle's image, so a fresh virtualenv may lack a transitive import; `setup.sh` installs the known set and its import check names anything still missing before any GPU job is submitted. The first `s01` job is the real test, and its log under `/athena/accardilab/scratch/$USER/snap-extra/logs/` shows the packed-versus-reference check for each run.
+
+The three 1B shards are 60 runs, about 37 T4 card-hours in total by the Kaggle estimate and far less on an L40S. Kaggle keeps `s04` (the last 12 runs at 1B plus 10 at 750M) in its own queue, so the 1B scope completes across both machines and the scores merge in the k04 kernel as described under "Bringing the scores back".
+
 ## What to run
 
 | shard | runs | tasks | T4 card-hours (estimate) | status |
