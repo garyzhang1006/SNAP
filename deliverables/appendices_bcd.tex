@@ -665,7 +665,9 @@ For each size below 1B, we formed every pair of the 25 recipes and averaged each
 \small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
 \begin{tabular}{llrrrrr}
 \toprule
-Score & Size & Calls, independence & Calls, corrected & Wrong, independence & Wrong, corrected & Difference\\
+& & \multicolumn{2}{c}{Calls} & \multicolumn{2}{c}{Wrong-call rate} & \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Score & Size & Indep. & Corrected & Indep. & Corrected & Difference\\
 \midrule
 Margin & 150M & 180 & 179 & 0.056 & 0.050 & \ci{0.000}{0.022}\\
 Margin & 300M & 184 & 178 & 0.060 & 0.051 & \ci{-0.002}{0.049}\\
