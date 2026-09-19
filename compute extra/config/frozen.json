@@ -1,0 +1,26 @@
+{
+ "requests_sha256": "77118327b441931a17a2d2e90ee8e162c0192c99b472f2eedf0bad99a0025c43",
+ "olmes_commit": "5a51f502d463b8cdc4a2dcad7d7096c41ff1197e",
+ "items_per_task": {
+  "arc_easy": 300,
+  "coqa_mc": 1000,
+  "drop_mc": 1000,
+  "logiqa_en": 651,
+  "lsat_lr": 510,
+  "medmcqa": 1000,
+  "sciq": 1000
+ },
+ "frozen_utc": "2026-09-18T03:09:21Z",
+ "supersedes": [
+  {
+   "requests_sha256": "53a06cf0fb252da0a636a26376067a5e5706a6837294e40fb66b6d17c3be4267",
+   "frozen_utc": "2026-09-17T22:28:43Z",
+   "reason": "passage-group labels came from Python's salted hash(); only the group field changed, and every task's partition of items into groups is identical"
+  },
+  {
+   "requests_sha256": "06a957963726683816ce3d590e5664aef1ef2b507c583e3c96d4098c1728fa20",
+   "frozen_utc": "2026-09-18T02:48:42Z",
+   "reason": "coqa_mc groups keyed on the story alone, not the story plus earlier dialogue turns; only coqa_mc group labels changed (932 rows), 479 story groups"
+  }
+ ]
+}
