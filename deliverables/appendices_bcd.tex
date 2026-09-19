@@ -622,11 +622,11 @@ Table~\ref{tab:heldoutloto} removes one held-out task at a time. When the four h
 
 The held-out tasks carry 1,000 items each, while the original benchmarks range from 500 to 14,042, so a separate kernel asked what item count costs the interval. For each cap it drew that many items per benchmark under a fixed seed, split them into halves by passage group, and recomputed every run's trait scores on the two halves. The uncapped entry therefore uses the kernel's own split rather than the primary one. A cap of 1,000 items per benchmark leaves 9,500 of the 37,682 items and gives full-battery margin inflation of 1.218 with interval \ci{1.121}{1.309}, against 1.247 with interval \ci{1.146}{1.342} uncapped. A cap of 200 gives 1.179 with interval \ci{1.002}{1.337}. Over 20 sampled four-benchmark subsets, the share whose interval excludes one stays between 0.45 and 0.55 at every cap from 200 items to the full counts. The four-task failure rate therefore follows battery width rather than item count. At the registered scope of 530M, 750M, and 1B, the original ten benchmarks give margin inflation of 1.240 with interval \ci{1.054}{1.397} and accuracy inflation of 1.097 with interval \ci{0.922}{1.246}. We computed both on the released runs before any held-out score existed.
 
-Table~\ref{tab:rulepower} gives the rule's simulated pass rate at each scope it could take, at item noise of 0.73 for the margin-like level, 1.45 for the accuracy-like level, and 1.00 between them. We fixed that design before the two-size analysis ran. At a true ratio of one the pass rate stays between 0.011 and 0.022 in every cell, so the rule holds its nominal size. At two sizes and a true ratio of 1.244, the median simulated interval width is 0.318 at margin-like noise and 0.530 at accuracy-like noise, against the observed 1.070. An exploratory run on the 750M runs alone gives held-out margin inflation of 1.203 with an undefined lower limit and an upper limit of 1.828, and accuracy inflation of 1.299 with interval \ci{0.959}{1.584}. The original ten benchmarks give 1.110 with interval \ci{0.686}{1.407} and 0.987 with interval \ci{0.310}{1.320} at that size.
+Table~\ref{tab:rulepower} gives the rule's simulated pass rate at each scope it could take, at item noise of 0.73 for the margin-like level, 1.45 for the accuracy-like level, and 1.00 between them. We fixed that design before the two-size analysis ran. At a true ratio of one the pass rate stays between 0.011 and 0.022 in every cell, so the rule holds its nominal size. At two sizes and a true ratio of 1.244, the median simulated interval width is 0.318 at margin-like noise and 0.530 at accuracy-like noise, against the observed 1.070. After seeing that width we added noise levels of 2.00, 2.50, and 3.00, whose two-size median widths at a true 1.244 are 0.765, 0.972, and 1.146. At 2.50 and 3.00 the pass rate at a true 1.244 is 0.115 and 0.080 against a size of 0.024 and 0.025. The wild interval's coverage there falls to 0.699 and 0.562, and 0.280 and 0.425 of the intervals have an undefined lower limit, the same failure that the tables above show on the data. An exploratory run on the 750M runs alone gives held-out margin inflation of 1.203 with an undefined lower limit and an upper limit of 1.828, and accuracy inflation of 1.299 with interval \ci{0.959}{1.584}. The original ten benchmarks give 1.110 with interval \ci{0.686}{1.407} and 0.987 with interval \ci{0.310}{1.320} at that size.
 
 \begin{table}[!htb]
 \centering
-\caption{Simulated pass rate of the registered rule, a lower 95\% wild bootstrap limit above one, by scope, item-noise level, and true held-out inflation, from a compound-symmetric generator with four traits, 25 recipe clusters, and three runs. Each cell uses 4,000 replicates, so its Monte Carlo error is at most 0.008. We fixed this design before the 530M and 750M analysis ran.}
+\caption{Simulated pass rate of the registered rule, a lower 95\% wild bootstrap limit above one, by scope, item-noise level, and true held-out inflation, from a compound-symmetric generator with four traits, 25 recipe clusters, and three runs. Each cell uses 4,000 replicates, so its Monte Carlo error is at most 0.008. We fixed the design at noise 0.73, 1.00, and 1.45 before the 530M and 750M analysis ran, and added the rows at 2.00, 2.50, and 3.00 after seeing the observed interval width.}
 \label{tab:rulepower}
 \small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
 \begin{tabular}{llrrrrrrr}
@@ -642,6 +642,16 @@ Three sizes, 75 & 1.00 & 0.019 & 0.189 & 0.640 & 0.820 & 0.963 & 0.997 & 1.000\\
 One size, 25 & 1.45 & 0.020 & 0.057 & 0.142 & 0.192 & 0.324 & 0.488 & 0.683\\
 Two sizes, 50 & 1.45 & 0.017 & 0.083 & 0.259 & 0.371 & 0.581 & 0.794 & 0.943\\
 Three sizes, 75 & 1.45 & 0.022 & 0.110 & 0.368 & 0.524 & 0.754 & 0.923 & 0.991\\
+\midrule
+One size, 25 & 2.00 & 0.028 & 0.048 & 0.099 & 0.118 & 0.185 & 0.281 & 0.411\\
+Two sizes, 50 & 2.00 & 0.023 & 0.060 & 0.141 & 0.188 & 0.322 & 0.477 & 0.686\\
+Three sizes, 75 & 2.00 & 0.025 & 0.070 & 0.195 & 0.262 & 0.436 & 0.634 & 0.824\\
+One size, 25 & 2.50 & 0.027 & 0.039 & 0.073 & 0.083 & 0.119 & 0.168 & 0.242\\
+Two sizes, 50 & 2.50 & 0.024 & 0.050 & 0.092 & 0.115 & 0.189 & 0.280 & 0.438\\
+Three sizes, 75 & 2.50 & 0.028 & 0.053 & 0.123 & 0.162 & 0.255 & 0.381 & 0.548\\
+One size, 25 & 3.00 & 0.028 & 0.034 & 0.053 & 0.065 & 0.081 & 0.110 & 0.147\\
+Two sizes, 50 & 3.00 & 0.025 & 0.041 & 0.067 & 0.080 & 0.119 & 0.161 & 0.259\\
+Three sizes, 75 & 3.00 & 0.026 & 0.046 & 0.085 & 0.106 & 0.154 & 0.223 & 0.335\\
 \bottomrule
 \end{tabular}
 \end{table}

@@ -1,0 +1,524 @@
+{
+ "design": "k12 (CPU): what the registered held-out rule could have detected at each scope.\n\nDesign fixed 2026-09-19, before any 750M held-out score was read and before the\n530M+750M analysis kernel ran. The registered rule (PROTOCOL_heldout.md) passes\nwhen the lower 95% limit of the held-out margin Lambda is above one. The\nprotocol allowed the scope to shrink to the sizes that finished scoring, and the\npaper needs to say what a pass or a fail at a reduced scope could mean. That\nneeds the rule's size and power at every scope it could take, with the four-task\nbattery and 25 recipe clusters it actually has.\n\nSimulator. The compound-symmetric generator of research/kaggle/snap-r6-detect-power,\nunchanged: r runs per configuration, each a latent draw over k traits with\ncorrelation rho plus independent item noise in each half; cross-half products\nover runs give T and U, and the recipe-clustered wild bootstrap-t and cluster\nrobust t intervals follow the shipped estimator code line for line. At four\ntraits with flat weights rho solves Lambda^2 = 1 + 3 rho.\n\nCells. Scope in {one size, two sizes, three sizes} (25, 50, 75 configurations,\nalways 25 recipe clusters), true Lambda in {1.00, 1.10, 1.20, 1.244, 1.316,\n1.40, 1.50}, and one item-noise level per kernel copy set by NOISE_SD: 0.73 is\nthe margin battery's calibrated level, 1.45 the accuracy battery's, and 1.00\nsits between them, because the held-out battery's own level is not known\nbefore its scores are read. The pass rate at Lambda 1.00 is the rule's size and\nthe pass rate at 1.244 is its power against the shipped estimate. 4,000\nreplicates per cell, so a rate near 0.5 has Monte Carlo error 0.008.\n\nWhat this is not. It says nothing about which value the held-out battery takes,\nonly how often the rule would pass if it took each one.\n",
+ "seed": 20260919,
+ "reps": 4000,
+ "noise_sd": 3.0,
+ "traits": 4,
+ "runs": 3,
+ "recipes": 25,
+ "cells": {
+  "one_size/lambda_1.000": {
+   "scope": "one_size",
+   "sizes": 1,
+   "configurations": 25,
+   "true_lambda": 1.0,
+   "rho": 0.0,
+   "wild_recipe": {
+    "coverage": 0.259,
+    "pass_rate": 0.0275,
+    "pass_mc_se": 0.0025857179853959323,
+    "undefined_or_unbounded": 0.7135,
+    "median_width": 1.298501688423705,
+    "median_lower_limit": 0.609619096929227
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.08625,
+    "pass_rate": 0.002,
+    "pass_mc_se": 0.0007063993204979744,
+    "undefined_or_unbounded": 0.91175,
+    "median_width": 1.2747005567669,
+    "median_lower_limit": 0.5331731571485294
+   }
+  },
+  "one_size/lambda_1.100": {
+   "scope": "one_size",
+   "sizes": 1,
+   "configurations": 25,
+   "true_lambda": 1.1,
+   "rho": 0.07000000000000006,
+   "wild_recipe": {
+    "coverage": 0.32425,
+    "pass_rate": 0.034,
+    "pass_mc_se": 0.0028654842522687156,
+    "undefined_or_unbounded": 0.661,
+    "median_width": 1.306364596374483,
+    "median_lower_limit": 0.632266312352129
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.10975,
+    "pass_rate": 0.003,
+    "pass_mc_se": 0.000864725389936019,
+    "undefined_or_unbounded": 0.8885,
+    "median_width": 1.2859075742980461,
+    "median_lower_limit": 0.5318386805384747
+   }
+  },
+  "one_size/lambda_1.200": {
+   "scope": "one_size",
+   "sizes": 1,
+   "configurations": 25,
+   "true_lambda": 1.2,
+   "rho": 0.14666666666666664,
+   "wild_recipe": {
+    "coverage": 0.36925,
+    "pass_rate": 0.05275,
+    "pass_mc_se": 0.0035343824602043286,
+    "undefined_or_unbounded": 0.61675,
+    "median_width": 1.2940878818531938,
+    "median_lower_limit": 0.692911084695454
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.133,
+    "pass_rate": 0.00925,
+    "pass_mc_se": 0.0015136410984774428,
+    "undefined_or_unbounded": 0.86525,
+    "median_width": 1.2608212938093515,
+    "median_lower_limit": 0.562719636331812
+   }
+  },
+  "one_size/lambda_1.244": {
+   "scope": "one_size",
+   "sizes": 1,
+   "configurations": 25,
+   "true_lambda": 1.244,
+   "rho": 0.182512,
+   "wild_recipe": {
+    "coverage": 0.395,
+    "pass_rate": 0.06475,
+    "pass_mc_se": 0.003890932969738749,
+    "undefined_or_unbounded": 0.59175,
+    "median_width": 1.3171856806239737,
+    "median_lower_limit": 0.6944834099875851
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.13425,
+    "pass_rate": 0.00725,
+    "pass_mc_se": 0.0013414020184120792,
+    "undefined_or_unbounded": 0.86475,
+    "median_width": 1.265219375228222,
+    "median_lower_limit": 0.5895222569374617
+   }
+  },
+  "one_size/lambda_1.316": {
+   "scope": "one_size",
+   "sizes": 1,
+   "configurations": 25,
+   "true_lambda": 1.316,
+   "rho": 0.24395200000000003,
+   "wild_recipe": {
+    "coverage": 0.45125,
+    "pass_rate": 0.0805,
+    "pass_mc_se": 0.004301736567945555,
+    "undefined_or_unbounded": 0.54,
+    "median_width": 1.3063965851073016,
+    "median_lower_limit": 0.7321574338061654
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.161,
+    "pass_rate": 0.0135,
+    "pass_mc_se": 0.0018246746285297004,
+    "undefined_or_unbounded": 0.83825,
+    "median_width": 1.2944011946373806,
+    "median_lower_limit": 0.6281045407393163
+   }
+  },
+  "one_size/lambda_1.400": {
+   "scope": "one_size",
+   "sizes": 1,
+   "configurations": 25,
+   "true_lambda": 1.4,
+   "rho": 0.3199999999999999,
+   "wild_recipe": {
+    "coverage": 0.50975,
+    "pass_rate": 0.1095,
+    "pass_mc_se": 0.0049373512635825295,
+    "undefined_or_unbounded": 0.4765,
+    "median_width": 1.3067795736984154,
+    "median_lower_limit": 0.7461183456148074
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.1975,
+    "pass_rate": 0.019,
+    "pass_mc_se": 0.002158645408583818,
+    "undefined_or_unbounded": 0.7975,
+    "median_width": 1.314314621999785,
+    "median_lower_limit": 0.627377190618471
+   }
+  },
+  "one_size/lambda_1.500": {
+   "scope": "one_size",
+   "sizes": 1,
+   "configurations": 25,
+   "true_lambda": 1.5,
+   "rho": 0.4166666666666667,
+   "wild_recipe": {
+    "coverage": 0.5425,
+    "pass_rate": 0.14675,
+    "pass_mc_se": 0.005594962857338733,
+    "undefined_or_unbounded": 0.4435,
+    "median_width": 1.3148760536119797,
+    "median_lower_limit": 0.8042315392746122
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.22025,
+    "pass_rate": 0.0245,
+    "pass_mc_se": 0.0024443685278615415,
+    "undefined_or_unbounded": 0.77425,
+    "median_width": 1.320091863806851,
+    "median_lower_limit": 0.6587218492440955
+   }
+  },
+  "two_sizes/lambda_1.000": {
+   "scope": "two_sizes",
+   "sizes": 2,
+   "configurations": 50,
+   "true_lambda": 1.0,
+   "rho": 0.0,
+   "wild_recipe": {
+    "coverage": 0.32725,
+    "pass_rate": 0.02475,
+    "pass_mc_se": 0.002456493308559989,
+    "undefined_or_unbounded": 0.648,
+    "median_width": 1.1148979484871964,
+    "median_lower_limit": 0.6135778101363556
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.1675,
+    "pass_rate": 0.00425,
+    "pass_mc_se": 0.0010285836742822629,
+    "undefined_or_unbounded": 0.82825,
+    "median_width": 1.1586441159233263,
+    "median_lower_limit": 0.52454786889872
+   }
+  },
+  "two_sizes/lambda_1.100": {
+   "scope": "two_sizes",
+   "sizes": 2,
+   "configurations": 50,
+   "true_lambda": 1.1,
+   "rho": 0.07000000000000006,
+   "wild_recipe": {
+    "coverage": 0.429,
+    "pass_rate": 0.04125,
+    "pass_mc_se": 0.003144377422479687,
+    "undefined_or_unbounded": 0.55225,
+    "median_width": 1.1540125700664192,
+    "median_lower_limit": 0.635618039255539
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.2165,
+    "pass_rate": 0.0095,
+    "pass_mc_se": 0.0015337657904647632,
+    "undefined_or_unbounded": 0.78075,
+    "median_width": 1.161601741535365,
+    "median_lower_limit": 0.5556128507394513
+   }
+  },
+  "two_sizes/lambda_1.200": {
+   "scope": "two_sizes",
+   "sizes": 2,
+   "configurations": 50,
+   "true_lambda": 1.2,
+   "rho": 0.14666666666666664,
+   "wild_recipe": {
+    "coverage": 0.5245,
+    "pass_rate": 0.06725,
+    "pass_mc_se": 0.003960032749233269,
+    "undefined_or_unbounded": 0.4645,
+    "median_width": 1.1540282294212767,
+    "median_lower_limit": 0.6833412516127797
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.2615,
+    "pass_rate": 0.0125,
+    "pass_mc_se": 0.0017566836653193996,
+    "undefined_or_unbounded": 0.737,
+    "median_width": 1.2139201820225076,
+    "median_lower_limit": 0.5729497192456838
+   }
+  },
+  "two_sizes/lambda_1.244": {
+   "scope": "two_sizes",
+   "sizes": 2,
+   "configurations": 50,
+   "true_lambda": 1.244,
+   "rho": 0.182512,
+   "wild_recipe": {
+    "coverage": 0.5625,
+    "pass_rate": 0.07975,
+    "pass_mc_se": 0.004283396359782737,
+    "undefined_or_unbounded": 0.42475,
+    "median_width": 1.14593154735747,
+    "median_lower_limit": 0.7044702137758823
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.29125,
+    "pass_rate": 0.014,
+    "pass_mc_se": 0.001857686733547936,
+    "undefined_or_unbounded": 0.706,
+    "median_width": 1.1798128760548345,
+    "median_lower_limit": 0.6134009782806377
+   }
+  },
+  "two_sizes/lambda_1.316": {
+   "scope": "two_sizes",
+   "sizes": 2,
+   "configurations": 50,
+   "true_lambda": 1.316,
+   "rho": 0.24395200000000003,
+   "wild_recipe": {
+    "coverage": 0.6175,
+    "pass_rate": 0.11925,
+    "pass_mc_se": 0.005124193534108563,
+    "undefined_or_unbounded": 0.36975,
+    "median_width": 1.1301433483744212,
+    "median_lower_limit": 0.7678666792278928
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.34525,
+    "pass_rate": 0.02925,
+    "pass_mc_se": 0.0026643215599848305,
+    "undefined_or_unbounded": 0.653,
+    "median_width": 1.188255802600744,
+    "median_lower_limit": 0.6534080063226158
+   }
+  },
+  "two_sizes/lambda_1.400": {
+   "scope": "two_sizes",
+   "sizes": 2,
+   "configurations": 50,
+   "true_lambda": 1.4,
+   "rho": 0.3199999999999999,
+   "wild_recipe": {
+    "coverage": 0.68775,
+    "pass_rate": 0.1605,
+    "pass_mc_se": 0.005803872629546587,
+    "undefined_or_unbounded": 0.296,
+    "median_width": 1.1426063917691085,
+    "median_lower_limit": 0.7997179914834376
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.3875,
+    "pass_rate": 0.04575,
+    "pass_mc_se": 0.0033036698344416924,
+    "undefined_or_unbounded": 0.60625,
+    "median_width": 1.2089232594514225,
+    "median_lower_limit": 0.6731045033263742
+   }
+  },
+  "two_sizes/lambda_1.500": {
+   "scope": "two_sizes",
+   "sizes": 2,
+   "configurations": 50,
+   "true_lambda": 1.5,
+   "rho": 0.4166666666666667,
+   "wild_recipe": {
+    "coverage": 0.73925,
+    "pass_rate": 0.25875,
+    "pass_mc_se": 0.006924565645222811,
+    "undefined_or_unbounded": 0.23275,
+    "median_width": 1.1417260526837392,
+    "median_lower_limit": 0.8853307442799225
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.4395,
+    "pass_rate": 0.08625,
+    "pass_mc_se": 0.004438776224929569,
+    "undefined_or_unbounded": 0.55125,
+    "median_width": 1.2128385773070949,
+    "median_lower_limit": 0.7596165778869367
+   }
+  },
+  "three_sizes/lambda_1.000": {
+   "scope": "three_sizes",
+   "sizes": 3,
+   "configurations": 75,
+   "true_lambda": 1.0,
+   "rho": 0.0,
+   "wild_recipe": {
+    "coverage": 0.40875,
+    "pass_rate": 0.0265,
+    "pass_mc_se": 0.0025395742753461653,
+    "undefined_or_unbounded": 0.56475,
+    "median_width": 1.0069045710798337,
+    "median_lower_limit": 0.6277912475193208
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.251,
+    "pass_rate": 0.0095,
+    "pass_mc_se": 0.0015337657904647632,
+    "undefined_or_unbounded": 0.7395,
+    "median_width": 1.055545098180548,
+    "median_lower_limit": 0.5562912052598438
+   }
+  },
+  "three_sizes/lambda_1.100": {
+   "scope": "three_sizes",
+   "sizes": 3,
+   "configurations": 75,
+   "true_lambda": 1.1,
+   "rho": 0.07000000000000006,
+   "wild_recipe": {
+    "coverage": 0.5015,
+    "pass_rate": 0.04575,
+    "pass_mc_se": 0.0033036698344416924,
+    "undefined_or_unbounded": 0.47975,
+    "median_width": 1.020747440685436,
+    "median_lower_limit": 0.6626687529322918
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.324,
+    "pass_rate": 0.01425,
+    "pass_mc_se": 0.0018739622127993936,
+    "undefined_or_unbounded": 0.67275,
+    "median_width": 1.0782534774660106,
+    "median_lower_limit": 0.6043573080211122
+   }
+  },
+  "three_sizes/lambda_1.200": {
+   "scope": "three_sizes",
+   "sizes": 3,
+   "configurations": 75,
+   "true_lambda": 1.2,
+   "rho": 0.14666666666666664,
+   "wild_recipe": {
+    "coverage": 0.6145,
+    "pass_rate": 0.0845,
+    "pass_mc_se": 0.004397719579509362,
+    "undefined_or_unbounded": 0.372,
+    "median_width": 1.030480803071742,
+    "median_lower_limit": 0.7029748822710917
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.4025,
+    "pass_rate": 0.02275,
+    "pass_mc_se": 0.0023575642886250205,
+    "undefined_or_unbounded": 0.59525,
+    "median_width": 1.1149986878548055,
+    "median_lower_limit": 0.6186069790750482
+   }
+  },
+  "three_sizes/lambda_1.244": {
+   "scope": "three_sizes",
+   "sizes": 3,
+   "configurations": 75,
+   "true_lambda": 1.244,
+   "rho": 0.182512,
+   "wild_recipe": {
+    "coverage": 0.6485,
+    "pass_rate": 0.106,
+    "pass_mc_se": 0.0048673401360496684,
+    "undefined_or_unbounded": 0.336,
+    "median_width": 1.0085748503672582,
+    "median_lower_limit": 0.7417479878832265
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.4425,
+    "pass_rate": 0.03475,
+    "pass_mc_se": 0.002895791666366902,
+    "undefined_or_unbounded": 0.5535,
+    "median_width": 1.0845006010630853,
+    "median_lower_limit": 0.6621073079587035
+   }
+  },
+  "three_sizes/lambda_1.316": {
+   "scope": "three_sizes",
+   "sizes": 3,
+   "configurations": 75,
+   "true_lambda": 1.316,
+   "rho": 0.24395200000000003,
+   "wild_recipe": {
+    "coverage": 0.72575,
+    "pass_rate": 0.15425,
+    "pass_mc_se": 0.005710887354431008,
+    "undefined_or_unbounded": 0.25975,
+    "median_width": 1.0179684879101916,
+    "median_lower_limit": 0.7933012021836047
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.501,
+    "pass_rate": 0.05725,
+    "pass_mc_se": 0.0036732967991982353,
+    "undefined_or_unbounded": 0.4955,
+    "median_width": 1.1036561527935649,
+    "median_lower_limit": 0.7024590081567239
+   }
+  },
+  "three_sizes/lambda_1.400": {
+   "scope": "three_sizes",
+   "sizes": 3,
+   "configurations": 75,
+   "true_lambda": 1.4,
+   "rho": 0.3199999999999999,
+   "wild_recipe": {
+    "coverage": 0.7795,
+    "pass_rate": 0.22325,
+    "pass_mc_se": 0.006584250859057544,
+    "undefined_or_unbounded": 0.19575,
+    "median_width": 1.0279628919320007,
+    "median_lower_limit": 0.8512677820555703
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.55225,
+    "pass_rate": 0.0865,
+    "pass_mc_se": 0.00444459643837323,
+    "undefined_or_unbounded": 0.43775,
+    "median_width": 1.1140332253426974,
+    "median_lower_limit": 0.7409902329567917
+   }
+  },
+  "three_sizes/lambda_1.500": {
+   "scope": "three_sizes",
+   "sizes": 3,
+   "configurations": 75,
+   "true_lambda": 1.5,
+   "rho": 0.4166666666666667,
+   "wild_recipe": {
+    "coverage": 0.826,
+    "pass_rate": 0.33475,
+    "pass_mc_se": 0.007461441507845518,
+    "undefined_or_unbounded": 0.13275,
+    "median_width": 1.0076087550730923,
+    "median_lower_limit": 0.9199235213225259
+   },
+   "cluster_t_recipe": {
+    "coverage": 0.613,
+    "pass_rate": 0.14725,
+    "pass_mc_se": 0.005602843864949299,
+    "undefined_or_unbounded": 0.367,
+    "median_width": 1.1070531148235703,
+    "median_lower_limit": 0.802869929313702
+   }
+  }
+ },
+ "pass_table": {
+  "one_size": {
+   "1.000": 0.0275,
+   "1.100": 0.034,
+   "1.200": 0.05275,
+   "1.244": 0.06475,
+   "1.316": 0.0805,
+   "1.400": 0.1095,
+   "1.500": 0.14675
+  },
+  "two_sizes": {
+   "1.000": 0.02475,
+   "1.100": 0.04125,
+   "1.200": 0.06725,
+   "1.244": 0.07975,
+   "1.316": 0.11925,
+   "1.400": 0.1605,
+   "1.500": 0.25875
+  },
+  "three_sizes": {
+   "1.000": 0.0265,
+   "1.100": 0.04575,
+   "1.200": 0.0845,
+   "1.244": 0.106,
+   "1.316": 0.15425,
+   "1.400": 0.22325,
+   "1.500": 0.33475
+  }
+ },
+ "wall_seconds": 1640.145637512207
+}
