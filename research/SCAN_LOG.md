@@ -3080,3 +3080,42 @@ Build. 39 pages, main text on page 9, no undefined reference or overfull box.
 
 Ranking holds at 6.2. Removing a stylometric tell lowers the chance a reviewer discounts the paper
 as machine-written, which protects the score without raising it.
+
+## Scan 53, the introduction
+
+Re-read of scan 52. Every expanded contraction in Sections 1 to 7 was read in the PDF, and the seven
+trims were checked against the sentences that now carry their content. The provider citations for
+DataDecide and PolyPythias remain in Section 3, and the coverage table pointer now sits in the
+sentence that reports the coverage range.
+
+Sub-scans 1 to 10 clean before and after the edits.
+
+Judgment sub-scans on Section 1.
+
+11. Every number in the introduction traces. The 0.018 and 0.032 flip rates come from the two null
+    calibrations in Appendix C, one at a true ratio of one and one at the observed 1.078, and the
+    0.111 and 0.970 power figures from the same appendix.
+12. Evidence labels hold. The registered test is named as registered, the accuracy result on the
+    held-out battery carries its exploratory label, and the final paragraph states that every other
+    analysis is exploratory and why.
+13. One logical gap. The sentence "Null sweeps reach five or more such flips in 0.018 to 0.032 of
+    replicates" named neither null and read as a range over one thing. It now names both nulls and
+    gives each its rate.
+14. Repetition against the abstract. The 1.244, 1.078, 1.201 and 0.009 figures recur with different
+    framing, and the introduction adds the flip counts, the power figures and the plan history that
+    the abstract lacks, so each paragraph earns its place.
+15. No terminology drift. Inflation, the ratio and the factor refer to the same estimand throughout.
+16. No figure or table is cited in the introduction, so nothing appears before its reference.
+17. Grammar clean after the contraction expansion.
+18. Overstatement. "Margin scores carry clear covariance" is supported by an interval that excludes
+    one at 1.143, and "that bound is fragile" is supported by the deletion sweep. Nothing to cut.
+19. Rhythm. The introduction had no sentence under twelve words. Two natural splits now give it an
+    eight-word and an eleven-word sentence, the nominal rate and the run count, each carrying its
+    own fact.
+20. Deletion test. The sentence on nominal-level comparisons mattering more than recipe calls was
+    removed in scan 52, and nothing in the introduction now survives deletion without loss.
+
+Build. Main text on page 9, 39 pages, scan.py clean.
+
+Ranking holds at 6.2. The null-sweep sentence was the one place a careful reader could have stalled,
+and clearing it prevents a question rather than answering one.
