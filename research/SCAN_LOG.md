@@ -3391,3 +3391,27 @@ with their measured effect of 0.6 percent. The GPU-architecture comparison repor
 defect and no change.
 
 Ranking holds at 6.3.
+
+## Scan 68, supplement consistency
+
+Re-read of scan 67. No edit to check.
+
+Sub-scans 1 to 10 mechanical, run as a script. Every \suptab and \supfig label in the main document
+resolves to a label in the supplement body. Every number of three or more decimals in the appendix's
+held-out paragraph was searched in the supplement, and every number in the main-text held-out
+section was searched in the appendix.
+
+11. Four appendix numbers were absent from the supplement, 0.269, 0.270, 0.219 and 1.201. They belong
+    to three passages that were added to the appendix after the supplement was mirrored, the backup
+    rule's pilot read on LogiQA-en and LSAT-LR, the analysis kernel's recompute check on the shipped
+    estimate, and the placement of the held-out estimate at the 50th percentile of the 60 subsets.
+    The supplement's held-out paragraph now carries all three, so a reader of either document sees
+    the same account of why DROP and CoQA replaced the two registered tasks.
+12. The main-text held-out numbers absent from the appendix are the headline intervals themselves,
+    which the appendix reaches through Section 5.3 by reference rather than restating, so no defect.
+13. No number disagrees between the three documents. The 750M-only figure is 1.203 in both the
+    appendix and the supplement, the interim 530M figures agree, and the pooled fourteen-task
+    figures agree.
+14 to 20. Nothing to report. The supplement builds at 38 pages with no undefined reference.
+
+Ranking holds at 6.3.
