@@ -3119,3 +3119,30 @@ Build. Main text on page 9, 39 pages, scan.py clean.
 
 Ranking holds at 6.2. The null-sweep sentence was the one place a careful reader could have stalled,
 and clearing it prevents a question rather than answering one.
+
+## Scan 54, the estimand and estimator section
+
+Re-read of scan 53. The rewritten null-sweep sentence reads correctly against Appendix C, and the two
+introduction splits sit naturally.
+
+Sub-scans 1 to 10 clean. Judgment sub-scans on Section 2.
+
+11. Numbers trace. The coverage range 0.928 to 0.954, the 0.872 configuration percentile figure, the
+    0.857 to 0.940 recipe percentile range, the 0.015 cross-half bias and the 0.048 endpoint shift
+    all appear in Appendix C with the same values, and the test-inversion interval reproduces the
+    shift from the shipped lower limit of 1.143.
+12. The aggregate reliability symbol defined at the end of Section 2.3 looked orphaned, but Appendix A
+    uses it in the item-count formula and Appendix C recomputes it, so it stays.
+13. The sentence on cross-half error correlation biasing the estimate downward sits two paragraphs
+    after the sentence on shared item noise reproducing 1.244 upward. They describe different
+    channels, within-benchmark noise repeated across halves against noise shared across benchmarks,
+    and each names its channel, so no contradiction.
+14. No repetition with the abstract beyond the coverage range.
+15. Terminology holds, and the four equations are now named where they are discussed.
+16. Table 1 and the coverage table are referenced before they appear.
+17. Grammar clean.
+18. No overstatement. Every finite-sample claim is tied to a simulated population.
+19. Rhythm. One split gives the section a ten-word sentence on nonpositive pooled sums.
+20. Nothing survives deletion without loss.
+
+Ranking holds at 6.2. No substantive change.
