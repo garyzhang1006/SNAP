@@ -3288,3 +3288,30 @@ Sub-scans 1 to 10 clean. Judgment sub-scans on Section 7.
 
 Ranking holds at 6.2. The fix removes a sentence a reviewer could have quoted as confusing the
 estimate with its interpretation.
+
+Scan 63 follow-up. The corrected sentence ran one line onto page 10, which the commit missed because
+the page check printed after the log entry was written. The sentence now reads "The gain share rests
+on simulator assumptions, so we offer no general approximation" and the main text ends on page 9.
+
+## Scan 64, Appendix A, derivations and interpretation
+
+Re-read of scan 63 and its follow-up. The discussion sentence reads correctly.
+
+Sub-scans 1 to 10 clean. Judgment sub-scans on the 111 lines of Appendix A, read in full.
+
+11. The six effective coefficients recompute from the six factors in Table 1 through the identity
+    in Equation 5, and the 0.966 example equals the mean of the square roots of 0.5 and 1.5. The
+    BoolQ passage counts, 3,270 questions and 2,938 passages with 578 questions in shared passages,
+    match Section 5.1.
+12 and 18. The passage-split paragraph closes by saying the null result is what the passage
+    structure implies rather than evidence of a sensitive test, and the finite-sample paragraph
+    declines to generalise finiteness to arbitrary populations. Both are the honest form.
+13. The scan 51 splits of the three long sentences in the passage paragraph and the two in the
+    influence paragraph read as one argument each.
+15. Trait and phenotype are defined against each other in the first sentence, and the appendix uses
+    trait thereafter.
+16. Table 3, the notation table, is referenced from Section 2.1 before it appears.
+17 and 19. Grammar clean, and the appendix mixes nine-word and thirty-word sentences.
+20. Nothing survives deletion without loss. No change made.
+
+Ranking holds at 6.2.
