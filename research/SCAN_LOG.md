@@ -2963,3 +2963,75 @@ warning is pre-existing and not a defect.
 
 Ranking holds at 6.5. Repairing joins the previous scan created removes a risk this work introduced and
 adds nothing a reviewer would score.
+
+# Round 2, started 2026-09-19 at 17:10 EDT
+
+The user reset the goal after the held-out result landed. The manuscript is now the two-size
+registered result with the k12 power table, the appendix cut to the extended supplement, and the
+diagnostic framing of the ratio. This round runs twenty or more parent scans of twenty sub-scans
+each on that build, with the same rules as round 1. No agents, no workflows, no compute beyond CPU
+work on Kaggle if any is needed. Each parent scan first re-reads the diff the previous scan committed.
+
+The twenty sub-scan lenses, fixed for the round. Mechanical lenses run through scan.py in the
+scratchpad on every parent scan. The judgment lenses are read by hand on the section that the parent
+scan focuses on.
+
+Mechanical. 1 compile log, overfull boxes, undefined references. 2 main text ends on page 9.
+3 prose colons, semicolons, dashes. 4 sentence floor and ceiling of 8 to 35 words. 5 banned
+vocabulary with the adjudicated technical terms allowed, namely cluster-robust, leverage-corrected
+and the OLMES harness. 6 duplicated sentences across files. 7 every label referenced and every
+reference resolved. 8 every bibliography entry cited and every citation present. 9 anonymity of the
+author field and URLs. 10 build page count.
+
+Judgment. 11 numbers against their stored JSON. 12 claims against their support and evidence labels.
+13 paragraph logic and connectives. 14 repetition between abstract, introduction and discussion.
+15 terminology drift. 16 tables and figures referenced before they appear and captions complete.
+17 grammar and agreement. 18 overstatement a hostile reviewer would quote. 19 sentence rhythm
+against the prior-year corpus. 20 what a reader loses if the sentence is deleted.
+
+## Honest baseline for round 2
+
+The round 1 estimate of 6.5 predates the held-out result. The registered test now fails at the two
+sizes that finished, with an interval 1.070 wide whose own simulated coverage at the noise levels
+that reproduce that width is 0.699 and 0.562. The power table explains the fail without rescuing it,
+and a reviewer who weighs confirmatory evidence will read the paper as a careful null on transfer
+attached to a strong exploratory result on the original battery. The appendix cut and the diagnostic
+framing improve clarity. On balance the honest estimate is 6.2 with acceptance probability near 0.50,
+down from 6.5, because a failed registered test costs more with typical reviewers than the added
+rigour earns.
+
+## Scan 51, mechanical baseline of the current build
+
+Re-read of the previous change. The last commits before this round moved sixteen appendix-only
+tables to the extended supplement, applied the reviewer's number corrections at 1.321 and 1.469, and
+ran a humanizer pass. The diff was reviewed line by line before the sub-scans ran.
+
+Sub-scans 1 to 10 ran through scan.py, whose first version counted table rows and equation lines as
+sentences and reported 80 items. After fixing the tool to strip multi-line environments while keeping
+line numbers, 46 items remained, and adjudication left these defects.
+
+1. Fourteen sentences over 35 words, six in the main text at lines 97, 187, 191, 215 and 236, five in
+   Appendix A at lines 56 and 89, and five in Appendices B to D at lines 108, 179, 237, 241, 243 and
+   391. Each was split at its natural clause boundary with every number kept. One split at line 102
+   produced a new 37-word sentence, which was split again.
+2. The bibliography entry zhou2020 was no longer cited anywhere after an earlier related-work trim.
+   It now sits with reimers2017 and madaan2024 in the seed-variability sentence, where it belongs.
+3. The appendix paragraph app:checkpoint had no pointer from anywhere. The truncation sentence in
+   Section 3 now points at both app:schedule and app:checkpoint.
+4. Four equation labels were never referenced, eq:scores, eq:identity, eq:tu and eq:bootstrap. Each
+   is now named in the sentence that discusses it.
+
+Adjudicated as non-defects. Seven occurrences of robust are all cluster-robust t, a named procedure.
+Two of leverage are leverage-corrected influence, the regression term. Three of harness name the
+OLMES evaluation harness. These are now allowed in the tool so later scans do not re-report them.
+
+Sub-scans 11 to 20 on this scan checked the abstract and Section 1 only, because the section scans
+that follow cover the rest. No number in the abstract disagrees with its table. The abstract and the
+introduction share the 1.244, 1.078 and 1.201 figures with different framing, which is acceptable
+repetition. Sub-scan 19 measured the paper against the twenty-three prior-year papers fetched this
+round into research/style_study/corpus2, and that measurement drives scan 52.
+
+Build after the scan. 39 pages, main text ending on page 9, no undefined reference, no overfull box.
+
+Ranking holds at 6.2. Splitting long sentences and repairing orphan labels removes friction a reviewer
+would feel without adding evidence.
