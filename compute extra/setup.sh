@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # One-off install for the extra scoring jobs. Creates the virtualenv on scratch,
 # installs the pinned scoring stack, checks that the OLMo loader imports, and
-# dry-runs the first shard against the frozen request file.
+# dry-runs the remaining shard against the frozen request file.
 #
 #   bash "compute extra/setup.sh"
 #
@@ -52,5 +52,5 @@ import torch, transformers
 from hf_olmo import OLMoForCausalLM  # noqa: F401
 print("imports ok: torch", torch.__version__, "transformers", transformers.__version__, "cuda build", torch.version.cuda)
 PY
-python "$HERE/score_shard.py" --shard "$HERE/shards/s01.json" --dry-run
+python "$HERE/score_shard.py" --shard "$HERE/shards/s03.json" --dry-run
 echo "installed into $SNAPX_VENV; jobs write under $SNAPX_ROOT"

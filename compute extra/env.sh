@@ -9,8 +9,8 @@ export SNAPX_VENV="${SNAPX_VENV:-$SNAPX_ROOT/venv}"
 export SNAPX_SCORES="${SNAPX_SCORES:-$SNAPX_ROOT/scores}"
 export HF_HOME="${HF_HOME:-/athena/accardilab/scratch/$USER/hf}"
 
-# These jobs download each checkpoint from the hub as they go (60 checkpoints
-# for the three 1B shards, deleted run by run), so the hub stays reachable.
+# These jobs download each checkpoint from the hub as they go (20 checkpoints
+# for the remaining 1B shard, deleted run by run), so the hub stays reachable.
 # At most one download runs per GPU worker, which stayed under the anonymous
 # rate limit on Kaggle. A read token raises that limit; put one in
 # compute extra/hf_token (gitignored, chmod 600) or in $HF_HOME/token and the
