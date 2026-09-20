@@ -3627,3 +3627,13 @@ Corpus. The main text now runs 261 sentences at median 16 words, standard deviat
 Long sentences. The supplement's sixteen sentences over fifty words and the one flagged in Appendix B were read in full. The appendix flag is a splitter artifact, since the checker ran two sentences together across a closing parenthesis and a figure reference. The supplement sentences are interval lists and simulation descriptions joined by commas and one conjunction each, with no run-on, and the user's rules set no maximum, so they stay as they are.
 
 Main PDF rebuilt with the marker on page 9, zero undefined references, punctuation and contraction checks clean. Score 6 of 10 and ranking 6.3, unchanged.
+
+## Scan 82, 2026-09-20 09:27 to 09:45 EDT (round 3, overnight loop, iteration 12)
+
+Re-check of scan 81: the Table 1 caption carries "while" once, and eighteen of twenty mechanical sub-scans pass. The judgment sub-scans took Appendix A against Section 2 and reran the citation check as a step 1 skill on the current text.
+
+Appendix A. The half-score model, the centring identity with its one minus one over R factor, the symmetrised matrix estimate, the covariance coefficient identity and the aggregate variance identity all match Equations 1 to 4 of the main text symbol for symbol, and the notation table lists every symbol the main text uses. The six effective coefficients (0.0608, 0.0695, 0.0641, 0.0181, 0.0225, 0.0194) match `tab_primary.csv` at four decimals, the two-trait example recomputes to 0.8, and the concavity example recomputes to 0.966. The information-ratio derivation states the Gaussian location model that Section 2.3 names as its only support.
+
+Citation check (ars-citation-check, solo). Fifty-three cited keys match fifty-three bibliography entries with none missing, none uncited and no duplicate keys. Two format notes and no defect: the key `kipnis2024` carries a 2025 label and a 2025 venue because the arXiv version is from 2024 and the ICLR version from 2025, which the entry states, and the OLMo 2 entry truncates its author list with "et al." while the other entries list every author, a choice the bibliography made for a forty-author report and which the ICLR style accepts. The Zhao entry's "et al." sits inside the cited title.
+
+No paper defect this scan, so the tex files are unchanged and the scan 81 builds stand. Score 6 of 10 and ranking 6.3, unchanged.

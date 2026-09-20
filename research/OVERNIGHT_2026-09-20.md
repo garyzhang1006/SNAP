@@ -4,9 +4,9 @@ Loop: one parent scan per 45-minute wakeup, twenty sub-scans each, logged in SCA
 
 ## Step status
 
-1. Skills: 23 ran on 2026-09-19 (10 of 16 ars plus 13 others, SCAN_LOG entry of that evening). Rerun on the current text: pending.
+1. Skills: 23 ran on 2026-09-19 (10 of 16 ars plus 13 others, SCAN_LOG entry of that evening). Rerun on the current text: ars-citation-check at scan 82 (no defect), the rest pending.
 2. Hostile review: research/HOSTILE_REVIEW_2026-09-19.md, score 6 of 10, confidence 4 of 5. Rescore after each scan: pending per scan.
-3. Parent scans 71 to 90: 11 of 20 done (71 to 81).
+3. Parent scans 71 to 90: 12 of 20 done (71 to 82).
 4. Corpus: research/style_study/corpus2 holds 23 accepted papers from 2015 to 2022 (22 before 2022) with measured targets in memory (median 16 words, sd 11.9, under-12 share 0.314, clause-join maxima). Re-measured at scan 81: main text median 16, sd 12.3, under-12 0.318, every join rate under the corpus maximum.
 5. Controlled-language rewrite: main text done 2026-09-19; appendices and supplement have contractions and punctuation, eight-word floor met on all four files at scan 77, long-sentence pass on the supplement pending.
 6. Final humanizer, stop-slop and remove-ai-marks pass over all four files: pending, runs last.
@@ -27,3 +27,4 @@ Loop: one parent scan per 45-minute wakeup, twenty sub-scans each, logged in SCA
 - Scan 79 (07:30 EDT): keyword-aware trace of every Section 5.3 number, pooled adjustment results added to Appendix C from tab_primary.csv, gain shares recomputed. Score 6 of 10, ranking 6.3.
 - Scan 80 (08:10 EDT): keyword-aware trace extended to all 124 main-text decimals, three flags all explained, AI use and ethics statements read, no edit. Score 6 of 10, ranking 6.3.
 - Scan 81 (09:00 EDT): main text re-measured against the corpus and inside it on every statistic, one caption join varied, supplement long sentences read and kept. Score 6 of 10, ranking 6.3.
+- Scan 82 (09:45 EDT): Appendix A checked against Section 2 symbol for symbol, citation check rerun with no defect, no edit. Score 6 of 10, ranking 6.3.
