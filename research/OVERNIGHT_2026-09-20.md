@@ -6,7 +6,7 @@ Loop: one parent scan per 45-minute wakeup, twenty sub-scans each, logged in SCA
 
 1. Skills: 23 ran on 2026-09-19 (10 of 16 ars plus 13 others, SCAN_LOG entry of that evening). Rerun on the current text: pending.
 2. Hostile review: research/HOSTILE_REVIEW_2026-09-19.md, score 6 of 10, confidence 4 of 5. Rescore after each scan: pending per scan.
-3. Parent scans 71 to 90: 4 of 20 done (71 to 74).
+3. Parent scans 71 to 90: 5 of 20 done (71 to 75).
 4. Corpus: research/style_study/corpus2 holds 23 accepted papers from 2015 to 2022 (22 before 2022) with measured targets in memory (median 16 words, sd 11.9, under-12 share 0.314, clause-join maxima). Re-measure against the current text: pending.
 5. Controlled-language rewrite: main text done 2026-09-19; appendices and supplement have contractions and punctuation only, rhythm pending.
 6. Final humanizer, stop-slop and remove-ai-marks pass over all four files: pending, runs last.
@@ -20,3 +20,4 @@ Loop: one parent scan per 45-minute wakeup, twenty sub-scans each, logged in SCA
 - Scan 72 (01:50 EDT): Table 1 caption now defines the aggregate standard deviation symbol, BoolQ removal logic and evidence-label placement checked, splitter made body-only and equation-aware, main text now has no sentence outside the 8 to 50 word band. Score 6 of 10, ranking 6.3.
 - Scan 73 (02:35 EDT): Table 2 and the leave-one-task-out sentence traced cell by cell to the k04 and k06 outputs, no defect, no edit. Score 6 of 10, ranking 6.3.
 - Scan 74 (03:30 EDT): discussion's seed-count power sentence now states its equicorrelation condition, practice recommendation folded to hold page 9, figure, limitations and reproducibility statement checked, 1B interval traced to the r19 kernel. Score 6 of 10, ranking 6.3.
+- Scan 75 (04:15 EDT): related work checked against the Bouthillier and Jordan abstracts online, abstract checked sentence by sentence against the body, no defect, no edit. Score 6 of 10, ranking 6.3.
