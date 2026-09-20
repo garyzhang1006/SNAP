@@ -6,10 +6,10 @@ Loop: one parent scan per 45-minute wakeup, twenty sub-scans each, logged in SCA
 
 1. Skills: 23 ran on 2026-09-19 (10 of 16 ars plus 13 others, SCAN_LOG entry of that evening). Rerun on the current text: ars-citation-check at scan 82 (no defect), the rest pending.
 2. Hostile review: research/HOSTILE_REVIEW_2026-09-19.md, score 6 of 10, confidence 4 of 5. Rescore after each scan: pending per scan.
-3. Parent scans 71 to 90: 13 of 20 done (71 to 83), loop stopped by the user at 10:19 EDT on 2026-09-20.
+3. Parent scans 71 to 90: 13 of 20 done (71 to 83), loop stopped by the user at 10:19 EDT on 2026-09-20. Scan 84 (10:22 EDT) is the reframe pass under the new goal.
 4. Corpus: research/style_study/corpus2 holds 23 accepted papers from 2015 to 2022 (22 before 2022) with measured targets in memory (median 16 words, sd 11.9, under-12 share 0.314, clause-join maxima). Re-measured at scan 81: main text median 16, sd 12.3, under-12 0.318, every join rate under the corpus maximum.
 5. Controlled-language rewrite: main text done 2026-09-19; appendices and supplement have contractions and punctuation, eight-word floor met on all four files at scan 77, long-sentence pass on the supplement pending.
-6. Final humanizer, stop-slop and remove-ai-marks pass over all four files: pending, runs last.
+6. Final humanizer, stop-slop and remove-ai-marks pass over all four files: done at scan 84 on freshly regenerated extracts, main text 100 of 100, appendix A 85, appendix C 73, supplement 71 (remaining hits are the technical terms cluster-robust and leverage); the banned-vocabulary and contrast-crutch sub-scans read zero on all four files.
 7. Rebuild, page 9, checks, commit, make_supplement after each step: standing.
 
 ## Scan ledger
@@ -29,3 +29,4 @@ Loop: one parent scan per 45-minute wakeup, twenty sub-scans each, logged in SCA
 - Scan 81 (09:00 EDT): main text re-measured against the corpus and inside it on every statistic, one caption join varied, supplement long sentences read and kept. Score 6 of 10, ranking 6.3.
 - Scan 82 (09:45 EDT): Appendix A checked against Section 2 symbol for symbol, citation check rerun with no defect, no edit. Score 6 of 10, ranking 6.3.
 - Scan 83 (10:14 EDT): Appendix B design section and held-out paragraph traced to r21, tab_reliability, tab_primary, the k03 decision, plan.json and the k04 interims, the 1B run count corrected from 52 to 55 (pilot c4 runs included). Score 6 of 10, ranking 6.3. Loop stopped by the user after this scan.
+- Scan 84 (10:22 EDT): reframe pass from two fresh-context reviews (scores 5 and 4 before the edits), abstract cut to 282 words, contribution paragraph added, failed test framed with the pre-fixed comparison and the post-hoc levels named, five appendix-only disclosures brought into the main text, rhythm restored after the page-9 merges, humanizer 100 on a fresh extract. Score 6 of 10, ranking 6.3.

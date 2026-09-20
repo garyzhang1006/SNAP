@@ -105,7 +105,7 @@ The author-reported power calculation assumes approximately Gaussian half-score 
 \operatorname{Var}(d^Ad^B)=\sigma^4[(1+k)^2+1],\qquad
 k=2(1-\rho_g)/\rho_g.
 \end{equation}
-The planning values used two replicate degrees of freedom per configuration, numerator-denominator correlation 0.7, and design effect 1.60. Appendix~\ref{app:design} preserves the resulting values for the intended 85-configuration analysis, which differs from the realised 125-configuration study. We don't infer realised power from the observed effect.
+Here $\rho_g=\Lam^2/(\Lam^2+\bar v)$ is the aggregate reliability, with $\bar v$ the item-noise contribution on that scale. The planning values used two replicate degrees of freedom per configuration, numerator-denominator correlation 0.7, and design effect 1.60. Appendix~\ref{app:design} preserves the resulting values for the intended 85-configuration analysis, which differs from the realised 125-configuration study. We don't infer realised power from the observed effect.
 
 For the information calculation, let item margins follow a Gaussian location model with standard deviation $s_m$. An infinitesimal shift $\delta$ changes accuracy by $f(0)\delta+o(\delta)$, while it changes the mean margin by $\delta$. Under independent item sampling, the item-noise variances are $p(1-p)/n$ and $s_m^2/n$, and the Gaussian model gives $f(0)=\phi(z_0)/s_m$. Dividing noise by squared local sensitivity yields Equation~\ref{eq:information}, and both the scale cancellation and minimum $\pi/2$ require the Gaussian location model used in this calculation.
 
