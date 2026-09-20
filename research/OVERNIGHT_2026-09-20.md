@@ -6,7 +6,7 @@ Loop: one parent scan per 45-minute wakeup, twenty sub-scans each, logged in SCA
 
 1. Skills: 23 ran on 2026-09-19 (10 of 16 ars plus 13 others, SCAN_LOG entry of that evening). Rerun on the current text: pending.
 2. Hostile review: research/HOSTILE_REVIEW_2026-09-19.md, score 6 of 10, confidence 4 of 5. Rescore after each scan: pending per scan.
-3. Parent scans 71 to 90: 8 of 20 done (71 to 78).
+3. Parent scans 71 to 90: 9 of 20 done (71 to 79).
 4. Corpus: research/style_study/corpus2 holds 23 accepted papers from 2015 to 2022 (22 before 2022) with measured targets in memory (median 16 words, sd 11.9, under-12 share 0.314, clause-join maxima). Re-measure against the current text: pending.
 5. Controlled-language rewrite: main text done 2026-09-19; appendices and supplement have contractions and punctuation, eight-word floor met on all four files at scan 77, long-sentence pass on the supplement pending.
 6. Final humanizer, stop-slop and remove-ai-marks pass over all four files: pending, runs last.
@@ -24,3 +24,4 @@ Loop: one parent scan per 45-minute wakeup, twenty sub-scans each, logged in SCA
 - Scan 76 (05:00 EDT): Table 1 derived quantities, Equation 1 and 2 normalisations, the information ratio and the test-inversion shift recomputed, all agree, no edit. Score 6 of 10, ranking 6.3.
 - Scan 77 (05:50 EDT): Sections 3 and 4 traced to the item-count, checkpoint and PolyPythias outputs, four short supplement sentences joined to their neighbours, eight-word floor now met everywhere. Score 6 of 10, ranking 6.3.
 - Scan 78 (06:45 EDT): batch-offset null N6 now reported in Appendix B, unsupported "calibrated" removed from Section 5.3, one redundant sentence cut to hold page 9, "as Appendix" join varied, 18 of 20 mechanical sub-scans pass. Score 6 of 10, ranking 6.3.
+- Scan 79 (07:30 EDT): keyword-aware trace of every Section 5.3 number, pooled adjustment results added to Appendix C from tab_primary.csv, gain shares recomputed. Score 6 of 10, ranking 6.3.
