@@ -3575,3 +3575,11 @@ Related work. The Bouthillier claim of five case studies matches the arXiv abstr
 Abstract against body. Each of the abstract's claims has a body sentence with the same number and the same label, including the 0.45 share of failing four-benchmark subsets (one minus the 0.55 exclusion share in `k06-power-530m750m`), the coverage range 0.928 to 0.954 (Section 2.3 and the appendix coverage table), the wrong-call change of at most 0.009 (Sections 1 and 5.5), and the exploratory label. The abstract still says "the 530M and 750M runs that finished before submission", which is the wording fixed in `HELDOUT_WORDING.md` and remains true.
 
 No paper defect and no checker defect this scan, so the tex files are unchanged and the scan 74 builds stand. Score 6 of 10 and ranking 6.3, unchanged.
+
+## Scan 76, 2026-09-20 04:41 to 05:00 EDT (round 3, overnight loop, iteration 6)
+
+Re-check of scan 75: no tex change had been made, the tree is clean apart from the queue runner log, and the twenty mechanical sub-scans report the same four rhythm warnings. The judgment sub-scans took the derived quantities in Section 2 and Table 1 and recomputed each from its inputs.
+
+Every effective count in Table 1 follows from its factor as K over the square (6.462, 6.151, 6.339, 8.605, 8.310 and 8.510 against the printed 6.46, 6.15, 6.34, 8.60, 8.31 and 8.51), the introduction's bounds at the accuracy upper endpoint 1.157 come out at 0.0376 for the effective coefficient and 7.470 for the count, and the two aggregate standard deviations in Table 1 divided by their independence counterparts in `k09-per-size/per_size_reference.json` return 1.2439 and 1.0784. The expectation factor in Equation 1 and the normalisations in Equation 2 agree, since centring across R runs scales the cross product by one minus one over R and the one over R minus one in the statistics undoes it. The information ratio at an accuracy of 0.35 recomputes to 1.658, which the text rounds to about 1.66, and its minimum to pi over two, and the test-inversion interval's lower endpoint sits 0.048 below the wild interval's, as the text says. The 375 runs, 125 configurations and 25 recipes agree wherever they appear.
+
+No paper defect and no checker defect this scan, so the tex files are unchanged and the scan 74 builds stand. Score 6 of 10 and ranking 6.3, unchanged.
