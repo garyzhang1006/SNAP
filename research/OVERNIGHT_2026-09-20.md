@@ -1,0 +1,19 @@
+# Overnight audit, started 2026-09-20 00:35 EDT
+
+Loop: one parent scan per 45-minute wakeup, twenty sub-scans each, logged in SCAN_LOG.md as scans 71 onward (round 3). Each scan opens by re-checking what the previous scan changed. Mechanical sub-scans run from scratchpad/subscans.py (build, page 9, undefined, citations, refs, labels, punctuation, contractions, floor, ceiling, vocabulary, anonymity, abstract numbers, number tracing, contrast crutches, rhythm, duplicates, graphics, key facts, PDF), then judgment sub-scans by reading (claims versus evidence, logic, related work, limitations, reproducibility, abstract against body, evidence labels, notation, figures and tables).
+
+## Step status
+
+1. Skills: 23 ran on 2026-09-19 (10 of 16 ars plus 13 others, SCAN_LOG entry of that evening). Rerun on the current text: pending.
+2. Hostile review: research/HOSTILE_REVIEW_2026-09-19.md, score 6 of 10, confidence 4 of 5. Rescore after each scan: pending per scan.
+3. Parent scans 71 to 90: 1 of 20 done (71).
+4. Corpus: research/style_study/corpus2 holds 23 accepted papers from 2015 to 2022 (22 before 2022) with measured targets in memory (median 16 words, sd 11.9, under-12 share 0.314, clause-join maxima). Re-measure against the current text: pending.
+5. Controlled-language rewrite: main text done 2026-09-19; appendices and supplement have contractions and punctuation only, rhythm pending.
+6. Final humanizer, stop-slop and remove-ai-marks pass over all four files: pending, runs last.
+7. Rebuild, page 9, checks, commit, make_supplement after each step: standing.
+
+## Scan ledger
+
+(appended per scan: number, findings, edits, score)
+
+- Scan 71 (00:45 EDT): 3 failures fixed (supplement label aliasing, abstract power number 0.135 added to the introduction, anonymity pattern narrowed to the full name), 3 checker false positives fixed, rhythm warnings carried forward. Score 6 of 10, ranking 6.3.

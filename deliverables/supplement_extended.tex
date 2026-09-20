@@ -4,7 +4,13 @@
 \usepackage{amsmath,amssymb,booktabs,array,graphicx,hyperref,url}
 \usepackage{caption,needspace,flafter}
 % Resolve the moved sections' references to the paper's own labels from main.aux.
-\usepackage{xr}\externaldocument{main}
+\usepackage{xr}\externaldocument[main-]{main}
+% Only these five labels live in the paper and not in this document, so alias them and leave
+% every other imported label unused, which keeps the body's own labels from being defined twice.
+\makeatletter
+\newcommand{\aliaslabel}[1]{\expandafter\let\csname r@#1\expandafter\endcsname\csname r@main-#1\endcsname}
+\aliaslabel{app:derivations}\aliaslabel{app:supplementary}\aliaslabel{sec:heldout}\aliaslabel{sec:prediction}\aliaslabel{tab:heldout}
+\makeatother
 \captionsetup{labelsep=period,font=normalsize}
 \brokenpenalty=10000
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
