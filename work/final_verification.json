@@ -1,11 +1,11 @@
 {
   "main.tex": {
-    "sentence_count": 246,
-    "minimum_words": 7,
+    "sentence_count": 240,
+    "minimum_words": 8,
     "maximum_observed_not_a_limit": 50,
     "fragments_under_four_words": 0,
-    "share_under_eight_words": 0.004,
-    "share_under_twelve_words": 0.264,
+    "share_under_eight_words": 0.0,
+    "share_under_twelve_words": 0.237,
     "corpus_target_under_eight": "0.058 to 0.238",
     "prose_colons_semicolons_dashes": 0,
     "uncontracted_negatives": 0
@@ -27,7 +27,7 @@
     "maximum_observed_not_a_limit": 68,
     "fragments_under_four_words": 0,
     "share_under_eight_words": 0.0,
-    "share_under_twelve_words": 0.134,
+    "share_under_twelve_words": 0.136,
     "corpus_target_under_eight": "0.058 to 0.238",
     "prose_colons_semicolons_dashes": 18,
     "uncontracted_negatives": 0
@@ -46,8 +46,8 @@
     "missing_characters": 0,
     "font_substitution_warnings": 0,
     "undefined_references_or_citations": false,
-    "underfull_boxes": 12,
-    "remaining_warnings": "12 underfull spacing diagnostics, visually inspected"
+    "underfull_boxes": 14,
+    "remaining_warnings": "14 underfull spacing diagnostics, visually inspected"
   },
   "official_style_unchanged": true,
   "official_style_files_checked": [
