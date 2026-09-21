@@ -1,0 +1,21 @@
+{
+ "id": "garyzhang11111/snap-r32-cluster-power",
+ "title": "snap-r32-cluster-power",
+ "code_file": "snap-r32-cluster-power.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_tpu": false,
+ "enable_internet": true,
+ "dataset_sources": [
+  "garyzhang11111/snap-compute-src",
+  "garyzhang11111/seed-noise-reduced-runs"
+ ],
+ "competition_sources": [],
+ "kernel_sources": [
+  "garyzhang11111/snap-r2-grouped",
+  "garyzhang11111/snap-r21-matched-step"
+ ],
+ "model_sources": []
+}
