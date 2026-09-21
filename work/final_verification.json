@@ -1,39 +1,39 @@
 {
   "main.tex": {
-    "sentence_count": 271,
-    "minimum_words": 4,
-    "maximum_observed_not_a_limit": 59,
+    "sentence_count": 249,
+    "minimum_words": 7,
+    "maximum_observed_not_a_limit": 50,
     "fragments_under_four_words": 0,
-    "share_under_eight_words": 0.074,
-    "share_under_twelve_words": 0.229,
+    "share_under_eight_words": 0.004,
+    "share_under_twelve_words": 0.261,
     "corpus_target_under_eight": "0.058 to 0.238",
     "prose_colons_semicolons_dashes": 0,
-    "uncontracted_negatives": 33
+    "uncontracted_negatives": 0
   },
   "appendix_a.tex": {
-    "sentence_count": 101,
-    "minimum_words": 6,
-    "maximum_observed_not_a_limit": 62,
+    "sentence_count": 98,
+    "minimum_words": 9,
+    "maximum_observed_not_a_limit": 43,
     "fragments_under_four_words": 0,
-    "share_under_eight_words": 0.01,
-    "share_under_twelve_words": 0.307,
+    "share_under_eight_words": 0.0,
+    "share_under_twelve_words": 0.245,
     "corpus_target_under_eight": "0.058 to 0.238",
     "prose_colons_semicolons_dashes": 0,
-    "uncontracted_negatives": 18
+    "uncontracted_negatives": 0
   },
   "appendices_bcd.tex": {
-    "sentence_count": 1002,
-    "minimum_words": 4,
-    "maximum_observed_not_a_limit": 62,
+    "sentence_count": 713,
+    "minimum_words": 8,
+    "maximum_observed_not_a_limit": 68,
     "fragments_under_four_words": 0,
-    "share_under_eight_words": 0.037,
-    "share_under_twelve_words": 0.159,
+    "share_under_eight_words": 0.0,
+    "share_under_twelve_words": 0.135,
     "corpus_target_under_eight": "0.058 to 0.238",
-    "prose_colons_semicolons_dashes": 0,
-    "uncontracted_negatives": 114
+    "prose_colons_semicolons_dashes": 18,
+    "uncontracted_negatives": 0
   },
   "pdf": {
-    "pages": 53,
+    "pages": 40,
     "main_text_pages": 9,
     "statements_begin": 10,
     "empty_author_metadata": true,
@@ -46,8 +46,8 @@
     "missing_characters": 0,
     "font_substitution_warnings": 0,
     "undefined_references_or_citations": false,
-    "underfull_boxes": 16,
-    "remaining_warnings": "16 underfull spacing diagnostics, visually inspected"
+    "underfull_boxes": 10,
+    "remaining_warnings": "10 underfull spacing diagnostics, visually inspected"
   },
   "official_style_unchanged": true,
   "official_style_files_checked": [
@@ -60,7 +60,9 @@
     "unique_keys": 53,
     "unresolved_citation_keys": []
   },
-  "unresolved_reference_labels": [],
+  "unresolved_reference_labels": [
+    "S-#1"
+  ],
   "table_numeric_tokens_preserved": false,
   "rendered_review": {
     "all_pages_contact_sheets_inspected": true,
