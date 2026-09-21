@@ -152,7 +152,7 @@ number to report. If R3 fails, the 1.244 does not survive fresh items and the
 paper cannot keep it as the headline.
 
 None of these outcomes is guaranteed by this code, and the code does not
-choose among them. The job order puts R1 and R2 first so a stop after three
+choose among them. The job order puts R1 and R2 first so a stop after five
 hours still returns a reading.
 
 ## Layout

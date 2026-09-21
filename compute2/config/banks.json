@@ -28,7 +28,7 @@
   "kv_check_items": 24, "kv_check_tolerance_nats": 0.001, "transformers_pin": "4.57.1"
  },
  "verification": {
-  "note": "Bank-1 scores of a DataDecide run must reproduce the release's per-item margins; same thresholds as compute extra/config/tasks.json.",
+  "note": "Bank-1 scores of a DataDecide run must reproduce the release's per-item margins; the two nats-per-byte thresholds match compute extra/config/tasks.json, and the correctness-agreement threshold is new here.",
   "pass_median_abs_diff_nats_per_byte": 0.002,
   "pass_p99_abs_diff_nats_per_byte": 0.02,
   "pass_correct_agreement": 0.99
