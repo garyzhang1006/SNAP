@@ -49,7 +49,7 @@ Battery mean & & 0.324 & 0.652\\\bottomrule
 \end{tabular}
 \end{table}
 
-Two accuracy traits have negative reliability estimates, and two others fall below 0.10. Recomputing the per-trait information ratios gives a median of 1.608, a minimum of 1.571. A maximum of 1.732, which reproduces the three figures the pipeline summary reported without releasing the ratios themselves. The battery-level $\rho_g$ recomputes to 0.961 on margins and 0.734 on accuracy, against planning values of 0.61 for margins and 0.49 for accuracy at $\Lambda^2=1.819$. The reported matrices contain the mean variance used to reconcile those quantities.
+Two accuracy traits have negative reliability estimates, and two others fall below 0.10. Recomputing the per-trait information ratios gives a median of 1.608, a minimum of 1.571, and a maximum of 1.732, which reproduces the three figures the pipeline summary reported without releasing the ratios themselves. The battery-level $\rho_g$ recomputes to 0.961 on margins and 0.734 on accuracy, against planning values of 0.61 for margins and 0.49 for accuracy at $\Lambda^2=1.819$. The reported matrices contain the mean variance used to reconcile those quantities.
 
 
 \subsection{Power calculations}
@@ -753,7 +753,7 @@ CoQA & 1.090 & \ci{0.990}{1.181} & 1.118 & \ci{0.848}{1.341}\\
 
 \begin{table}[!htb]
 \centering
-\caption{Median margin inflation over subsets of the original ten benchmarks, with the share of subsets whose nominal 95\% interval excludes one, at 530M and 750M, at 530M alone, at 530M, 750M, and 1B, and across all five sizes. Benchmark counts with more than 60 subsets use 60 sampled without replacement, and subsets whose bootstrap degenerates are left out of that share. The two-size rows were fixed before any 750M held-out score existed, the 530M rows came after the 530M interim result, and the three-size rows came after the full-scope result. These intervals use 1,999 wild draws, against 4,999 for the registered test.}
+\caption{Median margin inflation over subsets of the original ten benchmarks, with the share of subsets whose nominal 95\% interval excludes one, at 530M and 750M, at 530M, 750M, and 1B, at 530M alone, and across all five sizes. Benchmark counts with more than 60 subsets use 60 sampled without replacement, and subsets whose bootstrap degenerates are left out of that share. The two-size rows were fixed before any 750M held-out score existed, the 530M rows came after the 530M interim result, and the three-size rows came after the full-scope result. These intervals use 1,999 wild draws, against 4,999 for the registered test.}
 \label{tab:battery}
 \small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
 \begin{tabular}{lrrrrrrrrr}
