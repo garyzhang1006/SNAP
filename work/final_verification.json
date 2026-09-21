@@ -46,8 +46,8 @@
     "missing_characters": 0,
     "font_substitution_warnings": 0,
     "undefined_references_or_citations": false,
-    "underfull_boxes": 11,
-    "remaining_warnings": "11 underfull spacing diagnostics, visually inspected"
+    "underfull_boxes": 12,
+    "remaining_warnings": "12 underfull spacing diagnostics, visually inspected"
   },
   "official_style_unchanged": true,
   "official_style_files_checked": [
