@@ -89,12 +89,16 @@ def main():
             md += ["", "### Cross-format (A = five-shot bank 1, B = zero-shot bank 2)", "", block_table(py["cross_format"], "pythia"), ""]
             for name in ("margin", "accuracy"):
                 md.append(f"- within minus cross-format, {name}: {diff_line(py['within_minus_crossformat'][name])}")
+        else:
+            md.append(f"\nCross-format not run: {py.get('cross_format', {}).get('reason', 'no result')}")
         if py.get("curve", {}).get("per_step"):
             md += ["", "### Across training, every configuration at one matched step", "",
                    "| step | margin Lambda | jackknife | without BoolQ | accuracy Lambda | jackknife |", "|---|---|---|---|---|---|"]
             for step, r in sorted(py["curve"]["per_step"].items(), key=lambda kv: int(kv[0])):
                 md.append(f"| {step} | {f3(r['margin']['lambda'])} | {iv(r['margin'], 'jackknife')} | {f3(r['margin']['no_boolq_lambda'])} | {f3(r['accuracy']['lambda'])} | {iv(r['accuracy'], 'jackknife')} |")
             md += ["", "Pooled over steps (configuration = size at step, cluster = size):", "", block_table(py["curve"]["pooled_over_steps"], "pythia")]
+        else:
+            md.append(f"\nCurve not run: {py.get('curve', {}).get('reason', 'no result')}")
     else:
         md.append(f"Not run: {py.get('reason', py.get('traceback', 'no result'))}")
     md += ["", "## DataDecide, 375 runs, bank 1 from the release and bank 2 scored here", ""]
@@ -117,6 +121,8 @@ def main():
         if dd.get("cross_format_1B", {}).get("summary"):
             md += ["", "### Cross-format at 1B (five-shot bank 1 x zero-shot bank 2)", "", block_table(dd["cross_format_1B"], "datadecide", ("all", "batch_free")),
                    "", f"- within-bank-1 minus cross-format, margin: {diff_line(dd['cross_format_1B']['within1_minus_crossformat_margin'])}"]
+        else:
+            md.append(f"\nCross-format at 1B not run: {dd.get('cross_format_1B', {}).get('reason', 'no result')}")
     else:
         md.append(f"Not run: {dd.get('reason', dd.get('traceback', 'no result'))}")
     md += ["", "## Verdicts under the pre-specified reading rules", "", "```json", json.dumps(v, indent=1, default=float), "```", ""]

@@ -51,10 +51,10 @@ two thirds of that, and time scales with parameter count, so a 1B run takes
 about 38 minutes on bank 1 and 25 on bank 2, a 750M run three quarters of
 that, and the Pythias from 15 minutes at 410m down to under a minute at 14m.
 By band that puts datadecide_bank2 near 85 card-hours, the three PolyPythias
-final-step jobs near 12 together, the curve near 20, and datadecide_bank2zs_1B
+final-step jobs near 7 together, the curve near 20, and datadecide_bank2zs_1B
 near 10 because zero-shot prompts carry no exemplars. Verify is under one
-card-hour. The total is about 130 card-hours, about 65 hours of wall clock on
-two cards and about $57 at the listed price; measure the verify job's rate
+card-hour. The total is about 125 card-hours, about 62 hours of wall clock on
+two cards and about $55 at the listed price; measure the verify job's rate
 before trusting any of these. The verify job and the two PolyPythias
 final-step jobs come first so the reading rules R1 and R2 have their inputs
 within the first five hours.

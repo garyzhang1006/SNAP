@@ -487,18 +487,23 @@ def analysis_datadecide(reduced, release_dir, results):
 
     zs = load_dir(reduced / "datadecide_bank2zs_1B")
     if zs:
+        try:
             same_item_set(zs)
             m_zs, _, _ = datadecide_join(release, zs)
             cells, dropped = cells_from(list(m_zs.values()), "cross")
-            if cells:
-              pz, labels = assemble(cells, cluster_of=lambda k: k[0], size_of=lambda k: k[1])
-              out["cross_format_1B"] = full_block(pz, "datadecide", which_list=("all", "batch_free"), matrix=False)
-              out["cross_format_1B"]["dropped_cells"] = dropped
-              # The 1B slice of within-bank-1 on the same cells, for the difference.
-              keys1b = {tuple(c) for c in pz.config_ids}
-              w1 = pops["within1"].subset(np.asarray([i for i, c in enumerate(pops["within1"].config_ids) if tuple(c) in keys1b]))
-              e1, ez = estimate(w1, MARGIN, "all", check=False), estimate(pz, MARGIN, "all", check=False)
-              out["cross_format_1B"]["within1_minus_crossformat_margin"] = cluster_boot_logdiff(e1.T, e1.U, ez.T, ez.U, pz.recipe)
+            if not cells:
+                out["cross_format_1B"] = {"status": "not run", "reason": "no matched bank-1 x zero-shot cells with three runs"}
+            else:
+                pz, labels = assemble(cells, cluster_of=lambda k: k[0], size_of=lambda k: k[1])
+                out["cross_format_1B"] = full_block(pz, "datadecide", which_list=("all", "batch_free"), matrix=False)
+                out["cross_format_1B"]["dropped_cells"] = dropped
+                # The 1B slice of within-bank-1 on the same cells, for the difference.
+                keys1b = {tuple(c) for c in pz.config_ids}
+                w1 = pops["within1"].subset(np.asarray([i for i, c in enumerate(pops["within1"].config_ids) if tuple(c) in keys1b]))
+                e1, ez = estimate(w1, MARGIN, "all", check=False), estimate(pz, MARGIN, "all", check=False)
+                out["cross_format_1B"]["within1_minus_crossformat_margin"] = cluster_boot_logdiff(e1.T, e1.U, ez.T, ez.U, pz.recipe)
+        except Exception as e:  # a descriptive arm must not take R0, R2 and R3 down with it
+            out["cross_format_1B"] = {"status": "error", "reason": f"{type(e).__name__}: {e}"}
     else:
         out["cross_format_1B"] = {"status": "not run", "reason": "reduced/datadecide_bank2zs_1B has no runs"}
     return out

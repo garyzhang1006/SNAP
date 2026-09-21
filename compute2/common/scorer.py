@@ -196,7 +196,7 @@ def pack(order, encoded, max_batch_tokens, max_items):
 def _run_mode(model, mode, idx, encoded, cfg, device, pad_id, log):
     max_length = int(cfg["max_length"])
     out = {}
-    fits = [j for j in idx if len(encoded[j][0]) + max(len(c) for c in encoded[j][1]) <= max_length]
+    fits = [j for j in idx if len(encoded[j][0]) + max(len(c) for c in encoded[j][1]) <= max_length + 1]
     fit_set = set(fits)
     long = [j for j in idx if j not in fit_set]
     n_too_long = len(long)
@@ -242,8 +242,8 @@ def encode_requests(tokenizer, requests):
         if len(ctxs) != len(r["continuations"]):
             raise ValueError(f"{r['task']} doc {r['doc_id']}: {len(ctxs)} contexts for {len(r['continuations'])} choices")
         pairs = [encode_pair(tokenizer, c, cont) for c, cont in zip(ctxs, r["continuations"])]
-        if any(len(p[1]) == 0 for p in pairs):
-            raise ValueError(f"{r['task']} doc {r['doc_id']}: a continuation encodes to zero tokens")
+        if any(len(p[0]) == 0 or len(p[1]) == 0 for p in pairs):
+            raise ValueError(f"{r['task']} doc {r['doc_id']}: a context or continuation encodes to zero tokens")
         if all(p[0] == pairs[0][0] for p in pairs):
             units.append((pairs[0][0], [p[1] for p in pairs]))
             owner.append([len(units) - 1])

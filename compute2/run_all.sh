@@ -14,7 +14,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck disable=SC1091
 . "$HERE/env.sh"
 cd "$HERE"
-n_release="$(find "$HERE/data/release_runs" -maxdepth 1 -name '*.npz' 2>/dev/null | wc -l | tr -d '[:space:]')"
+n_release="$(find "$HERE/data/release_runs" -maxdepth 1 -name '*.npz' 2>/dev/null | wc -l | tr -d '[:space:]')" || n_release=0
 if [ "${n_release:-0}" -ne 375 ]; then
     bash "$HERE/fetch_release.sh" 2>&1 | tee -a "$SNAP2_ROOT/logs/fetch_release.log"
 fi

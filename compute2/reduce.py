@@ -39,7 +39,10 @@ def save_reduced(path, items, meta):
 
 
 def reduce_job(name, scores_root, out_root, force=False):
-    job = {j["name"]: j for j in bank.read_json(HERE / "config" / "jobs.json")["jobs"]}[name]
+    jobs = {j["name"]: j for j in bank.read_json(HERE / "config" / "jobs.json")["jobs"]}
+    if name not in jobs:
+        raise SystemExit(f"no job {name!r}; have {sorted(jobs)}")
+    job = jobs[name]
     req_path = HERE / "data" / f"{job['bank']}_requests.jsonl.gz"
     req_sha = bank.sha256(req_path)
     requests = bank.read_requests(req_path)

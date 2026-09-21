@@ -105,6 +105,15 @@ def worker(job_path):
         target = out_dir / f"{key}.npz"
         if job["deadline_unix"] and time.time() + 1.3 * job["est_seconds"].get(key, 0) > job["deadline_unix"]:
             report["not_started"].append(key)
+            ent = pending.pop(key, None)
+            if ent is not None:  # do not keep a checkpoint on disk for a run that will not be scored
+                fut_skip, local_skip, _ = ent
+                if not fut_skip.cancel():
+                    try:
+                        fut_skip.result()
+                    except Exception:
+                        pass
+                shutil.rmtree(local_skip, ignore_errors=True)
             continue
         prefetch(i)  # a no-op unless the previous run was skipped by the deadline
         prefetch(i + 1)
