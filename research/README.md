@@ -59,7 +59,7 @@ is a probability, and that no kernel finished in a state the ledger does not nam
 
 ## Reproducing a result
 
-Each kernel in `research/kaggle/` runs unmodified on Kaggle with the released reductions attached as a
+Each kernel in `compute extra/research_kernels/` runs unmodified on Kaggle with the released reductions attached as a
 dataset, and writes one JSON whose `design` key holds the question the run was written to answer, dated
 before the run. The intended path for a replicator is to rerun a kernel, compare its JSON against the
 copy in `research/outputs/`, and then rerun `research/tools/make_results_tables.py`, which rebuilds both

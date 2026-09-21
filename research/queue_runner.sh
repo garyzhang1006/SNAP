@@ -23,7 +23,7 @@ while true; do
     # Idle rather than exit, so a queue topped up later starts moving without a restart.
     [ "$BUSY" -eq 0 ] && say "queue empty, idling"
   elif [ "$BUSY" -lt "$MAX" ]; then
-    OUT=$($K kernels push -p "research/kaggle/$NEXT" 2>&1 | tail -1)
+    OUT=$($K kernels push -p "compute extra/research_kernels/$NEXT" 2>&1 | tail -1)
     case "$OUT" in
       *"successfully pushed"*)
         # Drop only the line we just pushed, leaving the rest of the queue intact.
