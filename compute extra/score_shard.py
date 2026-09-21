@@ -55,6 +55,22 @@ def worker(job_path):
     out_dir = Path(job["out"])
     out_dir.mkdir(parents=True, exist_ok=True)
     report = {"done": [], "failed": [], "not_started": [], "timing": {}}
+
+    def fetch(run, local):
+        # Sixty anonymous downloads in a row meet the odd 429 or reset connection;
+        # snapshot_download resumes the files it already has, so a retry is cheap.
+        for attempt in range(5):
+            try:
+                sha = HfApi().model_info(run["repo"], revision=run["revision"]).sha
+                snapshot_download(run["repo"], revision=run["revision"], local_dir=str(local),
+                                  allow_patterns=["*.json", "*.safetensors"])
+                return sha
+            except Exception as e:
+                if attempt == 4:
+                    raise
+                print(f"[retry] {run['run_key']} download try {attempt + 1} of 5: {type(e).__name__}: {e}", flush=True)
+                time.sleep(60 * (attempt + 1))
+
     for run in job["runs"]:
         key = run["run_key"]
         target = out_dir / f"{key}.npz"
@@ -65,21 +81,10 @@ def worker(job_path):
             report["not_started"].append(key)
             continue
         local = Path(job["tmp"]) / key
+        model = None
         try:
             t = time.time()
-            # A hub hiccup should cost a retry, not the run: three attempts a minute apart.
-            for attempt in range(3):
-                try:
-                    sha = HfApi().model_info(run["repo"], revision=run["revision"]).sha
-                    snapshot_download(run["repo"], revision=run["revision"], local_dir=str(local),
-                                      allow_patterns=["*.json", "*.safetensors"])
-                    break
-                except Exception as exc:  # noqa: BLE001
-                    if attempt == 2:
-                        raise
-                    print(f"[retry] {key} download attempt {attempt + 1} failed: {exc}", flush=True)
-                    shutil.rmtree(local, ignore_errors=True)
-                    time.sleep(60)
+            sha = fetch(run, local)
             t_download = time.time() - t
             t = time.time()
             model, tok = scorer.load_model(str(local), job["scoring"]["dtype"], device)
@@ -99,13 +104,13 @@ def worker(job_path):
                                      "mode": stats["mode"], "check": stats["check_max_abs_diff_nats"]}
             print(f"[run] {key} {stats['mode']} score {stats['seconds_scoring']:.0f}s download {t_download:.0f}s "
                   f"check {stats['check_max_abs_diff_nats']}", flush=True)
-            del model
-            torch.cuda.empty_cache()
         except Exception:
             report["failed"].append({"run_key": key, "error": traceback.format_exc()[-3000:]})
             print(f"[fail] {key}\n{traceback.format_exc()}", flush=True)
-            torch.cuda.empty_cache()
         finally:
+            # Drop the weights after a failure too, or the next run loads beside them.
+            model = None
+            torch.cuda.empty_cache()
             shutil.rmtree(local, ignore_errors=True)
     Path(job["report"]).write_text(json.dumps(report, indent=1))
 
@@ -215,8 +220,10 @@ def main():
     merged["done"] = sorted({r["run_key"] for r in shard["runs"] if (out / f"{r['run_key']}.npz").exists()})
     merged["wall_seconds"] = time.time() - t0
     snapnew.write_json(out / f"shard_report_{shard['name']}.json", merged)
-    for p in out.glob("*.partial.npz"):
-        p.unlink()
+    # The shards share this directory and run at the same time, so only this
+    # shard's leftovers go; another shard's partial file may be mid-write.
+    for r in shard["runs"]:
+        (out / f"{r['run_key']}.partial.npz").unlink(missing_ok=True)
     print(f"[done] {len(merged['done'])} of {len(shard['runs'])} scored, {len(merged['failed'])} failed, "
           f"{len(merged['not_started'])} not started, {merged['wall_seconds']:.0f}s", flush=True)
     if merged["failed"] or len(merged["done"]) != len(shard["runs"]):

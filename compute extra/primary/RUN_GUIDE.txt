@@ -1,0 +1,240 @@
+SNAP CODE PACKAGE, READ THIS BEFORE EXECUTION
+Prepared September 14, 2026
+
+AUDIT UPDATE
+
+Audited September 15, 2026.
+
+The code now rechecks upstream artifacts whenever C11 runs, requires a hashed result.json, checks saved simulation contents on resume, and rejects duplicate benchmark array keys, missing group IDs, fractional split labels, empty simulation grids, and empty pair lists. Group and stratum identifiers must be nonempty strings. Convert source identifiers explicitly before constructing a manifest.
+
+Proxy construction now verifies every document hash against the supplied corpus and requires full corpus coverage for every included run. Invalid losses and target counts are rejected. Scoring checks the token-record count and metadata before loading each model, and resumed shards include GPU identity and CUDA runtime in their compatibility check.
+
+Python and scientific-library versions are part of the run identity. This audited code is incompatible with previous output manifests because the code and identity rules changed. Use a new output directory for this version. Do not remove compatibility checks to merge old and new shards. A directory containing files without an owning manifest is rejected.
+
+See VALIDATION.txt and TEST_RESULTS.txt for the current test evidence. The launcher has local tests with mocked device/process behavior. Those tests do not establish physical two-T4 execution, memory use, or performance.
+
+WHAT THIS PACKAGE IS
+
+This package provides Python entry points C00 through C11 and G00 through G03, plus one generated Kaggle notebook per entry point. It is an independent reference implementation built from the paper and the compute handoff. It is not the recovered original research repository. No original scores or checkpoint identities were available while writing it. Synthetic tests establish properties of this implementation, not reproduction of the manuscript's results.
+
+The production configuration files intentionally stop until template_only is changed to false and real inputs are provided. This prevents an example from being mistaken for an executed experiment. There are no fake downloadable model IDs, fabricated empirical outputs, or automatic Kaggle submissions.
+
+All substantive job code is in snap/jobs.py and snap/gpu.py. The files in runs/ are individual executable entry points. Sharing implementations prevents copied scoring or estimator code from diverging between jobs.
+
+WHAT EACH RUN IMPLEMENTS
+
+C00 inventories supplied files, hashes them, records library versions, and optionally validates a dataset.
+C01 estimates symmetric cross-half covariance and pooled moment ratios, with optional recipe-cluster percentile diagnostics. Original split assignments are required by default. It saves per-configuration covariance and half scores.
+C02 executes the included reference and integration tests. GPU-library tests skip if their dependencies are unavailable, so inspect the test log for skips.
+C03 compares repeated item and passage-group splits on the same item universe and writes every assignment. Unequal group halves are explicitly a sensitivity analysis. A stronger superpopulation unbiasedness claim still needs a justified sampling model.
+C04 validates preselected matched pairs against declared training signatures and checkpoint steps, then estimates their covariance with one residual degree of freedom per configuration. It does not infer absent training provenance.
+C05 runs resumable Gaussian or heavy-tailed synthetic calibration cells, including recipe dependence and optional cross-half error correlation. It evaluates the implemented recipe-percentile diagnostic. It does not reproduce the missing original wild-bootstrap implementation or implement every candidate interval method proposed in the research plan.
+C06 fits competence slopes on other recipe folds and applies them to held-out recipes, using a separate keyed loss proxy. This is descriptive residualization. It does not establish a causal decomposition or correct proxy measurement error automatically.
+C07 compares operational diagonal, full, 50-percent shrinkage, and rank-one-off-diagonal variance predictions. Fits use training recipes at the held-out configuration's size. Paired bootstrap comparisons refit training estimators while retaining the same recipe-fold assignments. The loss is raw variance-moment squared error. This deliberately differs from the paper's conditional log-SD experiment and must be labeled as a new analysis.
+C08 computes paired comparison variance from supplied variances and covariance, and reports infeasible moment inputs. It does not infer unknown cross-configuration covariance or true ranking errors from observed gaps.
+C09 calculates leave-one-benchmark-out, format-subset, and multiplicative-gain sensitivities. These are descriptive checks, not causal bounds or a new crossed-format experiment.
+C10 estimates primary and external populations and compares explicitly named units. The user must verify comparable scoring protocols and item populations before making transport claims.
+C11 verifies specified job identities, configuration hashes, and artifact contents. This is an integrity audit, not automatic scientific approval or a guarantee that every research-plan task has been completed.
+G00 scores a frozen pilot sample and reloads an independent float32 reference for numerical comparison. It reports load time, scoring time, and device memory. Use representative checkpoints, record lengths, and both workload kinds. Review prediction ties separately.
+G01 scores prepared held-out document windows, with document reduction supplied separately.
+G02 scores prepared benchmark answer choices. Reduction produces explicit gold-minus-best-distractor margins and accuracy under the chosen normalization.
+G03 uses the same scorer for external checkpoints, preserving the external manifest and protocol.
+
+The distinction between these implemented methods and the broader research plan is intentional. Reproducing undocumented original choices, proving a new unequal-group estimator, validating every inference alternative, and identifying causal training factors cannot be accomplished by inventing code and labeling it equivalent. The next LLM can inspect and extend this tested implementation once the real assets and design decisions are available.
+
+ENVIRONMENT
+
+Use Python 3 with NumPy for CPU statistics. PyTorch and Transformers are needed for model scoring and token preparation. The local verification environment had NumPy 2.5.0, PyTorch 2.13.0, and Transformers 5.16.1. These are observed local versions, not a promise that Kaggle supplies them or a request to replace Kaggle's working CUDA stack.
+
+Inspect installed versions before changing anything. Run the tests in the intended environment. The runner uses Transformers from_pretrained with dtype, explicit revision, and trust_remote_code=False. If a recovered architecture requires custom code, inspect that source and design the exception explicitly. Do not switch remote-code execution on merely to suppress an error.
+
+No package installation or network download happens for CPU jobs. GPU model loading can download the explicitly named checkpoint. The local synthetic GPU-path test builds a 1,144-parameter randomly initialized model and performs CPU inference only. It does not download a model or reproduce any paper experiment.
+
+FIRST CHECK, FROM THE EXTRACTED snap_compute DIRECTORY
+
+python3 -m unittest discover -s tests -v
+
+To create a small, clearly synthetic example dataset and CPU configurations in a NEW directory
+
+python3 make_demo.py --out demo
+python3 runs/C01.py --config demo/C01.json --out demo_outputs/C01
+python3 runs/C03.py --config demo/C03.json --out demo_outputs/C03
+python3 runs/C05.py --config demo/C05.json --out demo_outputs/C05
+
+These outputs are synthetic. Never paste their numbers into the paper. The demo includes C00 through C10 configurations. C11 needs hashes from the specific completed runs it will verify, as described below.
+
+PRODUCTION INPUT FORMAT
+
+CPU jobs consume a JSON dataset manifest and an NPZ archive. One dataset represents one phenotype, margin or accuracy. Run both separately. Arrays are float-valued with shape configuration_count by run_count by item_count_for_this_benchmark. All configurations in one dataset have the same run count. Use a separate dataset for a different run count; C04 handles its preselected pairs directly.
+
+Minimal manifest structure, with actual values substituted
+
+{
+  "schema": "snap-scores-v1",
+  "phenotype": "margin",
+  "arrays": "scores.npz",
+  "arrays_sha256": "ACTUAL_SHA256_OF_ARCHIVE",
+  "weights": [0.5, 0.5],
+  "configs": [
+    {"id": "ACTUAL_CONFIGURATION", "recipe": "ACTUAL_RECIPE", "size": 150000000,
+     "runs": [
+       {"id": "ACTUAL_RUN_A", "run_key": "GLOBAL_UNIQUE_A", "training_signature": "RECOVERED_SIGNATURE", "checkpoint_step": 1000},
+       {"id": "ACTUAL_RUN_B", "run_key": "GLOBAL_UNIQUE_B", "training_signature": "RECOVERED_SIGNATURE", "checkpoint_step": 1000}
+     ],
+     "matched_run_ids": ["ACTUAL_RUN_A", "ACTUAL_RUN_B"]}
+  ],
+  "benchmarks": [
+    {"name": "ACTUAL_TASK_A", "key": "b0", "item_ids": ["item1", "item2", "item3", "item4"],
+     "group_ids": ["passage1", "passage1", "passage2", "passage2"], "original_half": [0,1,0,1]},
+    {"name": "ACTUAL_TASK_B", "key": "b1", "item_ids": ["item1", "item2", "item3", "item4"],
+     "group_ids": ["unique1", "unique2", "unique3", "unique4"], "original_half": [0,0,1,1]}
+  ]
+}
+
+This structural example is not an experiment manifest. It has insufficient recipe clusters for inferential jobs and contains placeholder identifiers. Use make_demo.py for a runnable example.
+
+Optional benchmark strata and stratum_weights preserve a declared macro-average, such as equal subject weights. Without them, item frequency determines weights within a benchmark. Each half is computed within each stratum before averaging with fixed stratum weights. Every stratum must contain items in both halves. Group IDs must not cross strata in this implementation; it rejects that case rather than silently splitting a group. Cross-benchmark shared passages require a joint grouping design beyond the current benchmark-local splitter. Record that limitation when applicable.
+
+Group assignment order is deterministic and keyed by seed, split, benchmark, and stratum. All runs use the same assignments. The original_half array must come from original artifacts to call C01 an original-split reproduction. If it is unavailable, explicitly set split_mode to item and describe the result as a new split analysis.
+
+Input archives can be constructed from recovered score reductions directly, provided row order and weights are verified. There is no automatic adapter for an unknown original archive schema. Inspect its actual fields before writing that adapter. The included pack_scores.py joins normalized choice reductions to the manifest and rejects missing, extra, or duplicate keys.
+
+GPU RECORD FORMAT AND MODEL MANIFEST
+
+Every JSONL token record has id, input_ids, target_mask, and metadata. target_mask contains literal JSON booleans aligned with input_ids. Its first value must be false, and at least one later value must be true. Each true value means score that token from preceding logits. No padding or automatic truncation is used. The reference scorer processes one sequence at a time and chunks the float32 loss calculation, while full model logits may still occupy substantial memory.
+
+A document record's metadata contains document_id and document_hash. An answer-choice record's metadata contains benchmark, item_id, choice_index, choice_count, gold_index, and a positive normalizer. Choices are zero-indexed. A normalizer of 1 means total continuation log likelihood. A verified byte count gives per-byte normalization. Do not choose normalization based on which produces a favorable result.
+
+Model manifest structure
+
+{
+  "models": [
+    {"run_key": "GLOBAL_UNIQUE_RUN_KEY",
+     "model_id": "ACTUAL_RELEASE_ID_OR_ABSOLUTE_LOCAL_SNAPSHOT",
+     "revision": "ACTUAL_40_CHARACTER_REMOTE_COMMIT",
+     "tokenizer_id": "ACTUAL_TOKENIZER_ID",
+     "tokenizer_revision": "ACTUAL_IMMUTABLE_TOKENIZER_REVISION",
+     "records": "prepared_tokens.jsonl",
+     "records_sha256": "ACTUAL_RECORDS_FILE_SHA256",
+     "records_kind": "documents",
+     "expected_records": 123,
+     "max_length": 2048}
+  ]
+}
+
+Use records_kind choices for G02/G03. G00 accepts either kind; run separate pilot configurations for both. The example count and context length above are illustrations, not verified settings for the released models. Match the real checkpoint context limit and frozen protocol.
+
+Remote model revisions must be immutable commit hashes. For an absolute local snapshot, supply local_snapshot_hash as object_hash of the mapping from each relative filename to its SHA256. The runner verifies the complete local snapshot and fingerprints those files before reusing completed output. A local revision field can be the string local. Inspect the integration test for a complete local example.
+
+PREPARE AND SCORE HELD-OUT TEXT
+
+Freeze a JSONL corpus with rows containing unique id and text. Confirm its intended separation from benchmarks and training data. Hashing records provenance; it cannot establish independence by itself.
+
+python3 prepare_text.py --documents /ACTUAL/corpus.jsonl --tokenizer ACTUAL_TOKENIZER_ID --revision ACTUAL_COMMIT --max-length 2048 --stride 512 --out /ACTUAL/text_tokens.jsonl
+
+The preparation script uses separate documents, adds no special tokens, and scores every token except the first exactly once. It rejects stride greater than or equal to context length. It produces a companion manifest with the record hash and count for the model manifest. Token loss is comparable only under a justified common tokenizer and scoring protocol. This script does not claim to calculate bits per byte.
+
+Set G01's models path, device, precision, and protocol fields, then run G01. Reduce complete scoring outputs
+
+python3 reduce_scores.py documents --runs /ACTUAL/G01_OUTPUT --out /ACTUAL/document_losses.json
+python3 make_proxy.py --losses /ACTUAL/document_losses.json --dataset /ACTUAL/scores.json --corpus /ACTUAL/corpus.jsonl --out /ACTUAL/proxy.json
+
+The proxy builder verifies common document hashes and token counts across the required runs. It computes total loss divided by total scored tokens. It does not average unequal batch means. Independent document-shard precision studies still require separate frozen corpus subsets and comparisons, as the research handoff explains.
+
+PREPARE AND SCORE ANSWER CHOICES
+
+Supply one JSONL row per choice with benchmark, item_id, choice_index, choice_count, gold_index, context, continuation, and normalizer. Separate contexts per choice are supported, which is necessary for some cloze tasks. Recover exact prompt strings and normalization from the original scorer.
+
+python3 prepare_choices.py --choices /ACTUAL/choices.jsonl --tokenizer ACTUAL_TOKENIZER_ID --revision ACTUAL_COMMIT --max-length 2048 --out /ACTUAL/choice_tokens.jsonl
+
+This reference preparation rule requires the encoded context to remain a prefix after continuation is appended. If tokenization merges across the boundary, it stops. That error requires recovery of the intended boundary protocol, not arbitrary whitespace edits. The script neither adds exemplars nor invents task prompts. Use the original tokenization adapter when its verified behavior differs.
+
+After G02 or G03
+
+python3 reduce_scores.py choices --runs /ACTUAL/G02_OUTPUT --out /ACTUAL/choice_scores.json
+python3 pack_scores.py --layout /ACTUAL/layout.json --rows /ACTUAL/choice_scores.json --phenotype margin --out /ACTUAL/margin_dataset
+python3 pack_scores.py --layout /ACTUAL/layout.json --rows /ACTUAL/choice_scores.json --phenotype accuracy --out /ACTUAL/accuracy_dataset
+
+The layout contains configs and benchmarks as above, including a global run_key on every run, but arrays and archive hash are generated by the packer. It checks completeness before writing the dataset. Choice accuracy breaks exact ties by the smallest choice index and records tie occurrences. Match the original tie convention or explicitly declare the change. Margin is gold score minus the maximum distractor score.
+
+COMMAND FOR EVERY RUN
+
+Copy each production config to a working config directory, fill real input paths, and set template_only=false. Paths in a config resolve relative to that config file, not relative to the current terminal directory. Absolute Kaggle input paths are easiest. Each output directory belongs to one immutable combination of job, code, inputs, and configuration.
+
+python3 runs/C00.py --config configs/C00.json --out results/C00
+python3 runs/C01.py --config configs/C01.json --out results/C01
+python3 runs/C02.py --config configs/C02.json --out results/C02
+python3 runs/C03.py --config configs/C03.json --out results/C03
+python3 runs/C04.py --config configs/C04.json --out results/C04
+python3 runs/C05.py --config configs/C05.json --out results/C05
+python3 runs/G00.py --config configs/G00.json --out results/G00
+python3 runs/G01.py --config configs/G01.json --out results/G01
+python3 runs/G02.py --config configs/G02.json --out results/G02
+python3 runs/G03.py --config configs/G03.json --out results/G03
+python3 runs/C06.py --config configs/C06.json --out results/C06
+python3 runs/C07.py --config configs/C07.json --out results/C07
+python3 runs/C08.py --config configs/C08.json --out results/C08
+python3 runs/C09.py --config configs/C09.json --out results/C09
+python3 runs/C10.py --config configs/C10.json --out results/C10
+python3 runs/C11.py --config configs/C11.json --out results/C11
+
+This is a command inventory, not a shell script to launch the whole campaign blindly. Follow the dependencies in the handoff. Run C01 and the applicable downstream jobs separately for margin and accuracy, giving each its own config and output directory. C09's gain_sd must be empty for an accuracy dataset.
+
+C05's example grid has five cells, 2,000 outer simulations per cell, and 4,999 bootstrap draws per simulation. Benchmark a small separate pilot before using it. Those defaults are proposed design values, not validated power or runtime guarantees. Shard by nonoverlapping replicate_start and replicate_stop, with unique output directories. Save all cell parameters and seeds. Changing a configuration requires a new output directory; resuming an interrupted unchanged configuration reuses validated simulation units.
+
+The percentile diagnostic reports invalid bootstrap draws instead of dropping them silently. If any are undefined, the unconditional interval field is null and the valid-only interval is labeled conditional. C05 counts invalid intervals as coverage failures. These diagnostics do not prove the method suitable for the paper; inspect calibration results before choosing an inference procedure.
+
+C07 holds recipe-fold membership fixed during its paired bootstrap, including every duplicate occurrence of a sampled recipe. It refits covariance models in each draw. Resamples without training examples for a held-out size are counted invalid. The resulting intervals are exploratory and not automatically calibrated. Negative covariance moments are retained. Negative predictions are flagged, not silently clipped into a different evaluation target.
+
+C08's pairs JSON has schema snap-pairs-v1 and a pairs list. Each row contains id, variance_a, variance_b, covariance_ab, and observed_gap. Variances must refer to the estimates being compared, such as means across runs, not an unadjusted single-run variance. The code checks arithmetic and feasibility, but the analyst must justify how the input moments were estimated.
+
+C11's required_outputs list names each required job, its output path, and the exact config_hash from that output's manifest.json. Copy these from the intended runs, then independently check the configurations and expected job inventory. C11 cannot tell whether an analyst intentionally omitted a required experiment. Its success message certifies artifact integrity only.
+
+KAGGLE NOTEBOOKS AND TWO T4S
+
+The notebooks/ directory contains a notebook for each run. Set PACKAGE to the actual extracted code mount. Fill the embedded CONFIG with real absolute paths, then change template_only to false. Review dependencies and installed packages before execution. These notebooks are ordinary executable job containers; no agent is created.
+
+To regenerate notebooks after modifying the templates
+
+python3 make_notebooks.py --out notebooks
+
+For two GPUs, create two G01 configs with workers=2, worker=0 or worker=1, and device=cuda:0. Each process is restricted to one physical GPU before importing PyTorch. Use distinct output directories. Example commands from an authorized Kaggle shell
+
+CUDA_VISIBLE_DEVICES=0 python3 runs/G01.py --config configs/G01_worker0.json --out results/G01_worker0
+CUDA_VISIBLE_DEVICES=1 python3 runs/G01.py --config configs/G01_worker1.json --out results/G01_worker1
+
+These commands run sequentially if entered sequentially in one shell. To run concurrently, use two notebook subprocess.Popen calls or two shell sessions, wait for both, and inspect both exit codes. Worker assignment uses model-list index modulo workers. Order the frozen manifest to balance measured work across cards. This code does not pool device memory or automatically select a faster batch size.
+
+The included launcher handles concurrent processes, separate logs, interruption cleanup, and model-coverage checking directly
+
+python3 run_two_gpus.py G01 --config configs/G01.json --out results/G01_two_cards
+
+Use G00, G02, or G03 in place of G01 as needed. It requires two visible CUDA devices and at least two model entries. The launcher has not been exercised on two physical T4s in this local environment, so verify it with two tiny authorized pilot entries before the full campaign.
+
+Reduction accepts both output directories after both workers finish. It rejects duplicate run/record keys. Verify the union of worker model keys equals the original manifest before calling the campaign complete. Avoid simultaneous downloads of the same uncached model when that would compete for bandwidth or cache writes.
+
+RESUME AND SESSION LIMITS
+
+GPU records are saved in validated JSON shards. Reduce records_per_shard before a campaign if each unit would take too long. max_seconds is checked before starting each shard; it is not a hard interrupt inside a long forward pass. Leave enough time to finish the largest shard and save outputs. Reusing the same config restarts its per-attempt time budget and resumes existing shards.
+
+Completed jobs are reused only after artifact hashes match. Changed code or inputs require a new output directory. The output lock prevents two processes from writing the same run directory. The lock file may remain after exit, but its operating-system lock is released. Do not manually delete an actively locked directory.
+
+Atomic writes protect local shard integrity, not persistence after Kaggle expires. Save the notebook version and retrieve output artifacts before relying on them. Outputs initially say FINISHED_UNCHECKED because successful execution does not establish scientific validity. Errors are recorded with traceback in manifest.json and return a failing process exit code.
+
+TIMING LIMITS
+
+No T4 production benchmark was run while building this package. G00 records measured hardware and numerical agreement when you execute it. Load time can include download and cache work; it is not a separate network-only measurement. Saved scoring time can span resumed attempts, while wall time and peak memory refer to the current attempt. Do not compare those fields as though they share a timing boundary.
+
+The one-sequence reference scorer favors inspectable correctness. It may be substantially slower than an optimized token-batched original scorer. Benchmark it before committing to the full 375-run manifest. Any optimized replacement must pass the mask, normalization, numerical, and item-order checks against this reference. Earlier 15–150-hour ranges were not benchmarks and should not be used as measured runtime predictions.
+
+SOURCE REFERENCES
+
+https://huggingface.co/docs/transformers/en/perplexity
+https://huggingface.co/docs/transformers/en/model_doc/auto
+https://docs.pytorch.org/docs/stable/generated/torch.nn.functional.cross_entropy.html
+
+The code uses explicit shifted target positions and sums their losses. It does not copy a batch-level mean-loss denominator blindly. The supplied tests check token accounting and compare selected losses with direct calculations.
+
+HANDOFF TO THE NEXT LLM
+
+Read this guide, SNAP_Kaggle_compute_handoff.txt, and SNAP_research_ceiling_plan.txt. Inspect the code and test results. Recover actual empirical assets and original scoring rules. Use these entry points where their stated estimands match the intended experiment, and extend them explicitly where the broader plan requires additional methods. Never rename a new reference analysis into an exact reproduction. Run on Kaggle within the authorized budget, keep complete manifests, verify outputs, and report unfavorable or inconclusive results without altering the analysis to improve acceptance claims. No agents.

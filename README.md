@@ -228,6 +228,19 @@ at once).
       data/            DataDecide, PolyPythias and signal-and-noise readers
       experiments/     E1 to E6, which produce the tables
 
+    compute extra/     every piece of compute, and the only folder a scoring run needs
+      score_shard.py         scores one shard of checkpoints, one worker per GPU
+      make_kaggle_shard.py   turns a shard into a private Kaggle kernel
+      shards/                the shard definitions; s03 is the one still unscored
+      common/ config/ data/  the scorer, its settings and the frozen request file
+      heldout/               the registered held-out test and its k01 to k12 kernels
+      research_kernels/      the kernels behind the appendices
+      primary/               the primary reduction the supplement ships
+      cluster/               the retired Slurm scripts, kept for the record
+
+The submission source and built PDFs stay out of this repository while the paper
+is under review.
+
 ## Data
 
 DataDecide's per-instance outputs are at

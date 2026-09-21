@@ -1,0 +1,5 @@
+{
+  "template_only": true,
+  "seed": 20260914,
+  "pairs": "../inputs/pairs.json"
+}

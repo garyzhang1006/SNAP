@@ -1,0 +1,15 @@
+{
+ "id": "garyzhang11111/snap-r20-step-index-c",
+ "title": "snap-r20-step-index-c",
+ "code_file": "snap-r20-step-index-c.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_tpu": false,
+ "enable_internet": true,
+ "dataset_sources": [],
+ "competition_sources": [],
+ "kernel_sources": [],
+ "model_sources": []
+}

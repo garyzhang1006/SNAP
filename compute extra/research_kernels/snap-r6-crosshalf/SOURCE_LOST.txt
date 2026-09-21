@@ -1,0 +1,13 @@
+The version 1 script that produced research/outputs/snap-r6-crosshalf/r6_crosshalf.json was overwritten
+locally on 2026-09-15 at 23:56 EDT, when a duplicate kernel of the same name was written into this
+directory and pushed as version 2. The overwrite was a mistake and it is recorded in research/LEDGER.md.
+
+What survives. The version 1 design is preserved verbatim in the "design" field of
+research/outputs/snap-r6-crosshalf/r6_crosshalf.json, its console output is in
+research/outputs/snap-r6-crosshalf/snap-r6-crosshalf.log, and all of its results are in that JSON.
+Kaggle keeps version 1 in the kernel's own version history at
+https://www.kaggle.com/code/garyzhang11111/snap-r6-crosshalf, which the CLI cannot pull by version.
+
+The paper's cross-half numbers come from version 1. Version 2 asks the same question over a narrower
+sweep and its local copy lives in research/kaggle/snap-r6-crosshalf-b, so nothing from version 2 is
+written into the paper.

@@ -1,0 +1,67 @@
+{
+  "steps": [
+    {
+      "step": "apt fonts-urw-base35",
+      "returncode": 0,
+      "tail": ""
+    }
+  ],
+  "fonts_added": [
+    "NimbusMonoPS-Bold.otf",
+    "NimbusMonoPS-BoldItalic.otf",
+    "NimbusMonoPS-Italic.otf",
+    "NimbusMonoPS-Regular.otf",
+    "NimbusRoman-Bold.otf",
+    "NimbusRoman-BoldItalic.otf",
+    "NimbusRoman-Italic.otf",
+    "NimbusRoman-Regular.otf",
+    "NimbusSans-Bold.otf",
+    "NimbusSans-BoldItalic.otf",
+    "NimbusSans-Italic.otf",
+    "NimbusSans-Regular.otf",
+    "NimbusSansNarrow-Bold.otf",
+    "NimbusSansNarrow-BoldOblique.otf",
+    "NimbusSansNarrow-Oblique.otf",
+    "NimbusSansNarrow-Regular.otf"
+  ],
+  "nimbus_roman_available": true,
+  "serif_candidates": [
+    "Nimbus Mono PS",
+    "Nimbus Roman",
+    "Nimbus Sans",
+    "Nimbus Sans Narrow"
+  ],
+  "source": "/kaggle/input/datasets/garyzhang11111/snap-fig-src/r8_paired_log.json",
+  "meaningful_difference": 0.005,
+  "order": [
+    "P1-P0",
+    "P3-P0",
+    "P1g-P0",
+    "P2R-P0",
+    "P1-P3",
+    "P1g-P1",
+    "P2R-P1",
+    "P2R-P3"
+  ],
+  "bytes": 13791,
+  "mediabox_bp": [
+    396.0,
+    198.0
+  ],
+  "latex_scale_at_linewidth": 1.0,
+  "natural_tf_sizes": [
+    6.6,
+    8.0,
+    8.5
+  ],
+  "effective_page_sizes": [
+    6.6,
+    8.0,
+    8.5
+  ],
+  "smallest_effective_pt": 6.6,
+  "embedded_faces": [
+    "/EKTMJB+NimbusRoman-Regular"
+  ],
+  "displayed_height_inches": 2.75
+}
