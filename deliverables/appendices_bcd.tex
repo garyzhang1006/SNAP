@@ -117,6 +117,12 @@ Simulation says these per-size rows should be read as estimates with wide uncert
 N2 was proposed as an estimator-bias check rather than the primary inferential procedure. In the reported 500 permutations, none reaches the observed margin estimate, and 0.028 reach the accuracy estimate. The observed configurations are held fixed under this reassignment, while trait-specific run labels are permuted independently. The primary bootstrap instead targets variation across recipe clusters. The two procedures use different randomisation and sampling assumptions, which is why we report both accuracy results.
 
 \paragraph{Associations with scoring format}
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/covariance.pdf}
+\caption{Cross-half correlation estimates across the 125 configurations, margins on the left and accuracy in the centre, with undefined variances shown in grey and eigenvalue spectra on the right. The accuracy estimate has a negative eigenvalue, and its spectrum is a diagnostic of the moment estimate rather than a valid population correlation spectrum. PR is the spectral participation ratio, 3.57 on the nine margin traits and 3.62 on the eight accuracy traits after clipping that eigenvalue.}
+\label{fig:covariance}
+\end{figure}
 The cross-format diagnostic retains the diagonal sum and only those off-diagonal terms whose traits have different formats. It has a null reference of one when those retained covariances vanish, but the masked sum needn't represent the variance of a realisable benchmark average. Because each benchmark has only one format, the comparison can't identify a causal effect of format.
 
 The separate calculation reproduces the full estimate to four decimal places before retaining 54 of the 90 ordered off-diagonal pairs. It gives 0.921 with interval 0.801 to 1.035 for margins, and 0.965 with interval 0.848 to 1.063 for accuracy, both below the proposed 1.2 threshold. The margin result falls below the 1.153 expected from uniformly distributed covariance contributions under the comparison used here.
@@ -289,7 +295,7 @@ The Mistral release of \citet{karamcheti2021} provides five GPT-2 Small and five
 
 \paragraph{Competence proxy audit and calibration}
 \label{app:proxy}
-We audited the shipped competence adjustment and two repairs on the 375 reduced runs, then applied each adjustment to simulated populations with known seed covariance, and the audit reproduces the shipped after-adjustment estimates of 1.244 and 1.076. The variance floor binds for WinoGrande on margins and for PIQA and WinoGrande on accuracy, and WinoGrande then supplies more than 99.99 percent of the squared standardised inputs to the margin proxy. The shipped margin adjustment in effect regresses every other benchmark on WinoGrande. Removal of WinoGrande from the proxy gives 0.890 with interval 0.805 to 0.968, while removal of any other benchmark leaves margin inflation between 1.244 and 1.245.
+The adjustments regress each benchmark's run contrast on a gain covariate $s_{cr}$, the mean per-byte answer log-likelihood, and on a leave-one-benchmark-out competence proxy $x_{cr}^{(-j)}$ fitted on the opposite item half, as $y_{crj}=\alpha_{cj}+\beta_jx_{cr}^{(-j)}+\gamma_js_{cr}+u_{crj}$ with one slope per benchmark over 250 run contrasts, and we treat them as descriptive. We audited the shipped competence adjustment and two repairs on the 375 reduced runs, then applied each adjustment to simulated populations with known seed covariance, and the audit reproduces the shipped after-adjustment estimates of 1.244 and 1.076. The variance floor binds for WinoGrande on margins and for PIQA and WinoGrande on accuracy, and WinoGrande then supplies more than 99.99 percent of the squared standardised inputs to the margin proxy. The shipped margin adjustment in effect regresses every other benchmark on WinoGrande. Removal of WinoGrande from the proxy gives 0.890 with interval 0.805 to 0.968, while removal of any other benchmark leaves margin inflation between 1.244 and 1.245.
 
 The pooled in-sample fit over the 250 run contrasts gives margin and accuracy inflation of 1.275 and 1.097 after gain adjustment, 1.276 and 1.094 after gain and competence together, and 1.244 and 1.076 after competence alone. The repair we fixed before seeing its output standardises by seed variances shrunk halfway toward their median positive value, cross-fitted over recipe folds. It gives margin inflation of 0.731 with interval 0.673 to 0.784, and accuracy inflation of 1.004 with interval 0.925 to 1.075.
 
@@ -412,29 +418,6 @@ All sizes share & 0.38 & 0.53 & 0.57 & 0.62 & 0.73 & 0.82 & 0.98 & 1.00 & 1.00\\
 \end{table}
 \paragraph{Recipe decisions}\label{app:decision}
 For each size below 1B, we formed every pair of the 25 recipes and averaged each recipe's aggregate score over its three runs and both halves. We called a pair when its gap exceeded two standard errors, $\sqrt{2/R}$ times the aggregate seed standard deviation, and we estimated that deviation either under independence or with the covariance, in both cases with the pair's two recipes left out. The same pair at 1B supplies the reference, and it counts as resolved when its gap exceeds two corrected standard errors, again leaving the pair out. Table~\ref{tab:decision} reports wrong-sign calls among calls on resolved pairs. A recipe bootstrap of 2,000 draws resamples the pair outcomes without re-estimating the standard deviations, so its intervals understate the uncertainty in those estimates. The share of resolved pairs that each rule calls correctly lies between 0.75 and 0.87 under both rules.
-
-\begin{table}[!htb]
-\centering
-\caption{Wrong-sign calls against the 1B ordering, as a share of calls on resolved pairs, under the independence and corrected rules. The call columns count calls on resolved pairs only, and the difference is the independence rate minus the corrected rate, with its recipe-bootstrap interval.}
-\label{tab:decision}
-\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
-\begin{tabular}{llrrrrr}
-\toprule
-& & \multicolumn{2}{c}{Calls} & \multicolumn{2}{c}{Wrong-call rate} & \\
-\cmidrule(lr){3-4}\cmidrule(lr){5-6}
-Score & Size & Indep. & Corrected & Indep. & Corrected & Difference\\
-\midrule
-Margin & 150M & 180 & 179 & 0.056 & 0.050 & \ci{0.000}{0.022}\\
-Margin & 300M & 184 & 178 & 0.060 & 0.051 & \ci{-0.002}{0.049}\\
-Margin & 530M & 181 & 169 & 0.061 & 0.059 & \ci{-0.016}{0.022}\\
-Margin & 750M & 173 & 169 & 0.029 & 0.030 & \ci{-0.004}{0.000}\\
-Accuracy & 150M & 217 & 215 & 0.069 & 0.070 & \ci{-0.003}{0.000}\\
-Accuracy & 300M & 214 & 212 & 0.051 & 0.052 & \ci{-0.003}{0.000}\\
-Accuracy & 530M & 223 & 218 & 0.067 & 0.064 & \ci{-0.004}{0.024}\\
-Accuracy & 750M & 201 & 200 & 0.045 & 0.045 & \ci{-0.002}{0.001}\\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \paragraph{Runs per configuration}
 The seed-count simulation draws populations with 125 configurations, the released item counts, and an equicorrelated seed covariance at the observed mean seed correlation, 0.061 on margins and 0.018 on accuracy. It sweeps two, three, four, five, six, and eight runs per configuration with 300 replicates at each count and applies the primary wild interval with 999 draws. On margins the interval excludes one in 0.86 of replicates at two runs and in 0.997 at three, with median widths of 0.295 and 0.208. On accuracy the share rises from 0.147 at two runs through 0.267 at three and 0.527 at five to 0.803 at eight. Equicorrelation spreads the excess evenly across benchmarks, whereas the observed covariance concentrates in BoolQ. These shares describe a battery with the same average correlation and not this battery's structure.
