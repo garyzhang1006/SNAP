@@ -175,6 +175,8 @@ def main():
     assert transformers.__version__ == pin, f"transformers {transformers.__version__} installed, pin is {pin}; rerun setup.sh"
     tmp = Path(args.tmp)
     tmp.mkdir(parents=True, exist_ok=True)
+    # The worker logs open here, before any worker has made the directory.
+    out.mkdir(parents=True, exist_ok=True)
     print(subprocess.run(["nvidia-smi", "--query-gpu=name,memory.total,driver_version", "--format=csv"],
                          capture_output=True, text=True).stdout, flush=True)
 
