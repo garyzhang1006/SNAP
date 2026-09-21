@@ -45,7 +45,7 @@ import snapnew  # noqa: E402
 sn = [p for p in Path("/kaggle/input").rglob("pyproject.toml") if "seed-noise" in str(p) and not p.name.startswith("._")]
 assert sn, "seednoise source (garyzhang11111/seed-noise-src) is not attached"
 # The build writes next to the sources, and /kaggle/input is read-only, so the
-# tree is copied out first, exactly as the earlier kernels in research/kaggle do.
+# tree is copied out first, exactly as the earlier kernels in compute extra/research_kernels do.
 sn_copy = Path("/kaggle/tmp") / "seed-noise"
 shutil.rmtree(sn_copy, ignore_errors=True)
 shutil.copytree(sn[0].parent, sn_copy, ignore=shutil.ignore_patterns("._*"))

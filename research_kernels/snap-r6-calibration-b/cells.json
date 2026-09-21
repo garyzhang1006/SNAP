@@ -1,0 +1,63 @@
+[
+ {
+  "name": "margin_like_recipe_shared",
+  "rho": 0.061,
+  "noise_sd": 0.73,
+  "recipe_shared": 0.5
+ },
+ {
+  "name": "margin_like_heavy_tails",
+  "rho": 0.061,
+  "noise_sd": 0.73,
+  "student_df": 4
+ },
+ {
+  "name": "margin_like_one_dominant_recipe",
+  "rho": 0.061,
+  "noise_sd": 0.73,
+  "recipe_variance_scales": [
+   6.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "margin_like_cross_half_error_corr_0.1",
+  "rho": 0.061,
+  "noise_sd": 0.73,
+  "cross_half_error_correlation": 0.1
+ },
+ {
+  "name": "accuracy_like_cross_half_error_corr_0.1",
+  "rho": 0.018,
+  "noise_sd": 1.45,
+  "cross_half_error_correlation": 0.1
+ },
+ {
+  "name": "rho_0.2_margin_noise",
+  "rho": 0.2,
+  "noise_sd": 0.73
+ }
+]

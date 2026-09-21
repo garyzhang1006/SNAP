@@ -228,6 +228,16 @@ at once).
       data/            DataDecide, PolyPythias and signal-and-noise readers
       experiments/     E1 to E6, which produce the tables
 
+    heldout/           the registered held-out test, its protocol and the k01 to k12 Kaggle kernels
+    scorer/            the standalone shard scorer, its frozen request file and shard lists
+      make_kaggle_shard.py   turns a shard into a private k02 kernel, replacing the Slurm submitter
+      cluster/               the retired Slurm scripts, kept for the record
+    research_kernels/  the kernels behind the appendices, one directory per kernel
+    primary/           the primary reduction that the supplement ships as snap_compute/
+
+The submission source and built PDFs stay out of this repository while the paper
+is under review, so `research_kernels/snap-paper-src` is ignored here.
+
 ## Data
 
 DataDecide's per-instance outputs are at

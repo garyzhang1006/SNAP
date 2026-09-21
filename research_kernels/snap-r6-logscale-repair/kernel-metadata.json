@@ -1,0 +1,18 @@
+{
+ "id": "garyzhang11111/snap-r6-logscale-repair",
+ "title": "snap-r6-logscale-repair",
+ "code_file": "snap-r6-logscale-repair.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_tpu": false,
+ "enable_internet": true,
+ "dataset_sources": [
+  "garyzhang11111/snap-compute-src",
+  "garyzhang11111/seed-noise-reduced-runs"
+ ],
+ "competition_sources": [],
+ "kernel_sources": [],
+ "model_sources": []
+}

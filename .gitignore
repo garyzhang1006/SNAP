@@ -20,3 +20,7 @@ data/interim/
 .ipynb_checkpoints/
 # Hugging Face read token for the Slurm jobs; never committed
 slurm/hf_token
+
+# The submission source and built PDFs stay out of this public repo while the paper is under review
+research_kernels/snap-paper-src/
+**/out/main.pdf

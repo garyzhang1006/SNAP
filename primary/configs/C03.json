@@ -1,0 +1,8 @@
+{
+  "template_only": true,
+  "seed": 20260914,
+  "dataset": "../inputs/scores.json",
+  "split_mode": "original",
+  "bootstrap_draws": 0,
+  "splits": 50
+}

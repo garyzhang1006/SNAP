@@ -1,0 +1,17 @@
+{
+ "id": "garyzhang11111/snap-r22-prev-step-e",
+ "title": "snap-r22-prev-step-e",
+ "code_file": "snap-r22-prev-step-e.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_tpu": false,
+ "enable_internet": true,
+ "dataset_sources": [
+  "garyzhang11111/snap-compute-src"
+ ],
+ "competition_sources": [],
+ "kernel_sources": [],
+ "model_sources": []
+}
