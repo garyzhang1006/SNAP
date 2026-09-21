@@ -18,21 +18,21 @@ request file, whose SHA-256 is checked against `config/frozen.json` before any
 model loads. No file here should hold a credential, so read the Kaggle and
 Hugging Face tokens from the environment.
 
-## What is left to run
+## Nothing is left to run
 
-One shard. The registered test scores 375 DataDecide checkpoints on sciq,
-medmcqa, drop_mc and coqa_mc across 530M, 750M and 1B, and `s03` is the only
-shard without scores.
+The registered test scores 225 DataDecide checkpoints on sciq, medmcqa, drop_mc
+and coqa_mc across 530M, 750M and 1B, and every shard now has scores.
 
 | shard | runs | scores on disk |
 | --- | --- | --- |
-| `s01`, `s02` | 20 each at 1B | 20 and 20 |
-| `s03` | 20 at 1B | none, this is the gap |
+| `s01`, `s02` | 20 each at 1B | 20 and 20, scored on Kaggle T4 cards |
+| `s03` | 20 at 1B | 20, scored on three RTX 3090 cards on 2026-09-21 after the Kaggle quota ran out |
 | `s04` to `s09` | mixed 750M and 1B | 22, 26, 26, 32, 37 and 19 |
 
-Until `s03` lands, the registered rule is evaluated at 530M and 750M only, which
-is the reduced scope the paper reports and the reason its held-out interval is
-too wide to separate transfer of the original covariance from its absence.
+The `s03` scores live in the private Kaggle dataset `snap-new-s03-scores`, and
+`heldout/kaggle/k04-analyze-heldout/build/snap-new-k04-heldout-full` is the
+analysis that read all 225 runs. Its result, held-out margin inflation 1.217
+with interval 0.872 to 1.498, is what the paper reports.
 
 ## Running a shard on Kaggle
 
@@ -57,8 +57,8 @@ kaggle kernels push -p "compute extra/build/snap-new-k02-s03"
 ```
 
 The shard is 20 runs at 1B, about 12.3 T4 card-hours spread over two cards inside
-a deadline of 8.4 hours, so it needs a week whose 30-hour GPU quota still has room.
-Kaggle refused this shard on 19 September 2026 with the weekly cap reached.
+a deadline of 8.4 hours. Kaggle refused it on 19 September 2026 with the weekly
+cap reached, so it ran on three RTX 3090 cards instead, in 6,068 seconds.
 
 The `x150M` to `x1B` shards score the two AGIEval tasks that the protocol listed
 first and replaced under its backup rule, after their 1B pilot accuracy fell below
