@@ -22,12 +22,12 @@
     "uncontracted_negatives": 0
   },
   "appendices_bcd.tex": {
-    "sentence_count": 713,
+    "sentence_count": 714,
     "minimum_words": 8,
     "maximum_observed_not_a_limit": 68,
     "fragments_under_four_words": 0,
     "share_under_eight_words": 0.0,
-    "share_under_twelve_words": 0.135,
+    "share_under_twelve_words": 0.134,
     "corpus_target_under_eight": "0.058 to 0.238",
     "prose_colons_semicolons_dashes": 18,
     "uncontracted_negatives": 0
@@ -46,8 +46,8 @@
     "missing_characters": 0,
     "font_substitution_warnings": 0,
     "undefined_references_or_citations": false,
-    "underfull_boxes": 10,
-    "remaining_warnings": "10 underfull spacing diagnostics, visually inspected"
+    "underfull_boxes": 11,
+    "remaining_warnings": "11 underfull spacing diagnostics, visually inspected"
   },
   "official_style_unchanged": true,
   "official_style_files_checked": [
