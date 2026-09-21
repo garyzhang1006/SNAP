@@ -34,6 +34,7 @@ asserts that it reproduces the appendix's counts and medians.
 
 Outputs: /kaggle/working/structured_splits.json and the SNAP job directories.
 """
+import hashlib
 import json
 import platform
 import shutil
@@ -67,7 +68,9 @@ PKG = W / "snap_compute"
 shutil.copytree(find("pyproject.toml").parent, W / "seed-noise", ignore=shutil.ignore_patterns("._*"))
 subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", str(W / "seed-noise")])
 for f in ("snap_adapter.py", "snap_intervals.py", "r9_pairs.py", "requests_audit.py"):
-    shutil.copy(find(f), W / f)
+    hits = [p for p in Path("/kaggle/input").rglob(f) if not p.name.startswith("._")]
+    assert len({hashlib.sha256(h.read_bytes()).hexdigest() for h in hits}) == 1, (f, [str(h) for h in hits])
+    shutil.copy(hits[0], W / f)
 sys.path.insert(0, str(W))
 from requests_audit import ITEM_STRIDE, TASK_INDEX, trait_of  # noqa: E402
 
@@ -153,8 +156,30 @@ def oriented_manifest(src_manifest, dst_manifest, assign):
         assert set(b["original_half"]) == {0, 1}, b["name"]
     meta["arrays"] = str(Path(src_manifest).parent / meta["arrays"]) if not Path(meta["arrays"]).is_absolute() else meta["arrays"]
     Path(dst_manifest).parent.mkdir(parents=True, exist_ok=True)
-    json.dump(meta, open(dst_manifest, "w"))
+    with open(dst_manifest, "w") as fh:
+        json.dump(meta, fh)
     return meta
+
+
+def clean(o):
+    """JSON-safe copy: numpy scalars to Python, non-finite floats to null."""
+    if isinstance(o, dict):
+        return {k: clean(v) for k, v in o.items()}
+    if isinstance(o, (list, tuple)):
+        return [clean(v) for v in o]
+    if isinstance(o, (np.floating, float)):
+        return float(o) if np.isfinite(o) else None
+    if isinstance(o, (np.integer, np.bool_)):
+        return o.item()
+    return o
+
+
+def dump(summary):
+    (W / "structured_splits.json").write_text(json.dumps(clean(summary), indent=1))
+
+
+def stat(x, f):
+    return float(f(x)) if x.size >= 2 else None
 
 
 def permuted(assign, meta, rng):
@@ -162,11 +187,11 @@ def permuted(assign, meta, rng):
     out = {}
     for b in meta["benchmarks"]:
         ids = b["item_ids"]
-        strata = b.get("strata", ["all"] * len(ids))
+        strata = np.asarray(b.get("strata", ["all"] * len(ids)))
         labels = np.array([assign[b["name"]][i] for i in ids])
         new = labels.copy()
-        for s in set(strata):
-            idx = np.flatnonzero(np.array(strata) == s)
+        for s in sorted(set(strata.tolist())):
+            idx = np.flatnonzero(strata == s)
             new[idx] = rng.permutation(labels[idx])
         out[b["name"]] = dict(zip(ids, new.tolist()))
     return out
@@ -201,7 +226,7 @@ for phen in ("margin", "accuracy"):
         meta = json.load(open(plain))
         base = run_job("C01", {"seed": SEED, "dataset": plain, "split_mode": "original", "bootstrap_draws": DRAWS}, f"C01_{phen}_{battery}_original")
         base_iv = intervals(f"C01_{phen}_{battery}_original", plain)
-        wild_se = base_iv["wild"]["se"]
+        wild_se = base_iv["wild"].get("se")          # snap_intervals swallows a failed wild bootstrap into an error dict
         bb = {"original": pick(base, base_iv), "structured": {}}
         rng = np.random.default_rng([SEED, phen == "accuracy", battery == "noboolq"])
         for a in AXES:
@@ -215,6 +240,8 @@ for phen in ("margin", "accuracy"):
                 pds = str(data / f"{a}_{battery}_perm" / phen / f"scores_{k}.json")
                 oriented_manifest(plain, pds, permuted(assign, meta, rng))
                 pr = run_job("C01", {"seed": SEED, "dataset": pds, "split_mode": "original", "bootstrap_draws": 0}, f"perm_{phen}_{battery}_{a}_{k}", quiet=True)
+                shutil.rmtree(W / "SNAP" / f"perm_{phen}_{battery}_{a}_{k}", ignore_errors=True)
+                Path(pds).unlink(missing_ok=True)
                 if pr.get("lambda") is None:
                     undefined += 1
                     continue
@@ -222,32 +249,36 @@ for phen in ("margin", "accuracy"):
                 off = np.asarray(pr["covariance"], float)
                 w = np.asarray(meta["weights"], float)
                 off_null.append(float(w @ off @ w - (w * w) @ np.diag(off)))
-                shutil.rmtree(W / "SNAP" / f"perm_{phen}_{battery}_{a}_{k}", ignore_errors=True)
-            lam_null, off_null = np.array(lam_null), np.array(off_null)
+            lam_null, off_null = np.array(lam_null, float), np.array(off_null, float)
             lam, offc = r["lambda"], iv["aggregate_offdiagonal_contribution"]
+            sd_l, sd_o = stat(lam_null, lambda x: x.std(ddof=1)), stat(off_null, lambda x: x.std(ddof=1))
             entry = pick(r, iv)
             entry.update({
                 "half_sizes": {b["name"]: [int(sum(1 for i in b["item_ids"] if assign[b["name"]][i] == s)) for s in (0, 1)] for b in meta["benchmarks"]},
                 "shift_lambda_from_original": None if lam is None else lam - base["lambda"],
-                "shift_lambda_in_wild_se": None if lam is None else (lam - base["lambda"]) / wild_se,
+                "shift_lambda_in_wild_se": None if lam is None or not wild_se else (lam - base["lambda"]) / wild_se,
                 "permutation_null": {"n": int(lam_null.size), "undefined": undefined,
-                                     "lambda_mean": float(lam_null.mean()), "lambda_sd": float(lam_null.std(ddof=1)),
-                                     "offdiag_mean": float(off_null.mean()), "offdiag_sd": float(off_null.std(ddof=1))},
-                "lambda_z_against_null": None if lam is None else (lam - lam_null.mean()) / lam_null.std(ddof=1),
-                "lambda_null_percentile": None if lam is None else float((lam_null <= lam).mean()),
-                "offdiag_z_against_null": (offc - off_null.mean()) / off_null.std(ddof=1),
-                "offdiag_null_percentile": float((off_null <= offc).mean()),
+                                     "lambda_mean": stat(lam_null, np.mean), "lambda_sd": sd_l,
+                                     "offdiag_mean": stat(off_null, np.mean), "offdiag_sd": sd_o},
+                "lambda_z_against_null": None if lam is None or not sd_l else (lam - lam_null.mean()) / sd_l,
+                "lambda_null_percentile": None if lam is None or not lam_null.size else float((lam_null <= lam).mean()),
+                "offdiag_z_against_null": None if not sd_o else (offc - off_null.mean()) / sd_o,
+                "offdiag_null_percentile": None if not off_null.size else float((off_null <= offc).mean()),
                 "granularity": f"percentiles move in steps of 1/{PERMS}; treat |z| above 3 as extrapolation"})
             bb["structured"][a] = entry
             print(phen, battery, a, "lambda", lam, "offdiag", offc, "z_lambda", entry["lambda_z_against_null"],
                   "z_off", entry["offdiag_z_against_null"], "in wild se", entry["shift_lambda_in_wild_se"], flush=True)
         if battery == "full":
             pds = str(data / "passage" / phen / "scores.json")
-            r = run_job("C01", {"seed": SEED, "dataset": pds, "split_mode": "group", "bootstrap_draws": DRAWS}, f"C01_{phen}_passage_group")
+            r = run_job("C01", {"seed": 20260914, "dataset": pds, "split_mode": "group", "bootstrap_draws": DRAWS}, f"C01_{phen}_passage_group")
             iv = intervals(f"C01_{phen}_passage_group", pds)
             bb["boolq_passage_group_control"] = pick(r, iv)
             bb["boolq_passage_group_control"]["shift_lambda_from_original"] = r["lambda"] - base["lambda"]
+            bb["boolq_passage_group_control"]["note"] = ("r2 seed 20260914; group mode re-randomises the nine non-BoolQ benchmarks' "
+                                                        "halves as well, so the shift mixes that re-split with the BoolQ passage grouping")
         block["battery"][battery] = bb
+    summary["phenotypes"][phen] = block
+    dump(summary)
 
     # Seed-matched paired-difference ratio, reproduced against the appendix, then a dyadic recipe bootstrap of the median.
     plain = str(data / "plain" / phen / "scores.json")
@@ -262,19 +293,24 @@ for phen in ("margin", "accuracy"):
     ia = np.array([recipes.index(x) for x in ra]); ib = np.array([recipes.index(x) for x in rb])
     paired_var = va + vb - 2 * cab
     indep = va + vb
-    keep = paired_var > 0
+    keep = (paired_var > 0) & (indep > 0)           # the appendix filter; pairs with a nonpositive independence sum are counted below
     strict = keep & (va > 0) & (vb > 0)
     with np.errstate(invalid="ignore", divide="ignore"):
-        ratio = np.sqrt(paired_var / indep)
+        ratio = np.where(keep, np.sqrt(np.abs(paired_var) / np.where(indep > 0, indep, 1.0)), np.nan)
     pub = PUBLISHED_PAIRS[phen]
     repro = {"pairs_total": int(len(pairs)), "positive_paired_variance": int(keep.sum()), "strict": int(strict.sum()),
              "median_positive": float(np.median(ratio[keep])), "median_strict": float(np.median(ratio[strict])),
              "percentiles_5_95_positive": [float(v) for v in np.percentile(ratio[keep], [5, 95])],
              "share_covariance_positive": float((cab > 0).mean()),
-             "positive_paired_variance_with_nonpositive_independence": int((keep & ~(indep > 0)).sum()),
+             "positive_paired_variance_with_nonpositive_independence": int(((paired_var > 0) & ~(indep > 0)).sum()),
              "recipes": len(recipes)}
-    assert repro["pairs_total"] == pub["total"] and repro["positive_paired_variance"] == pub["positive"] and repro["strict"] == pub["strict"], (repro, pub)
-    assert abs(repro["median_positive"] - pub["median"]) < 6e-4 and abs(repro["median_strict"] - pub["median_strict"]) < 6e-4, (repro, pub)
+    ok = (repro["pairs_total"] == pub["total"] and repro["positive_paired_variance"] == pub["positive"] and repro["strict"] == pub["strict"]
+          and abs(repro["median_positive"] - pub["median"]) < 6e-4 and abs(repro["median_strict"] - pub["median_strict"]) < 6e-4)
+    repro["reproduces_appendix"] = bool(ok)
+    if not ok:
+        block["seed_matched_paired"] = {"reproduction": repro, "reproduction_failed": True, "published": pub}
+        dump(summary)
+        raise AssertionError((repro, pub))
     rng = np.random.default_rng([SEED, 7, phen == "accuracy"])
     boot = {"positive_paired_variance": [], "strict": []}
     invalid = {"positive_paired_variance": 0, "strict": 0}
@@ -293,12 +329,13 @@ for phen in ("margin", "accuracy"):
                                "strict": lower_median(ratio[strict & np.isfinite(ratio)])},
         "recipe_bootstrap_median_interval": {k: [float(v) for v in np.percentile(np.array(b), [2.5, 97.5])] for k, b in boot.items()},
         "invalid_draws": invalid, "clusters": len(recipes), "draws": DRAWS,
-        "estimand": "lower weighted median over recipe-pair ratios of paired-difference sd to independence sd, three-run means, five sizes held fixed",
+        "estimand": "lower weighted median over recipe-pair ratios of paired-difference sd to independence sd, three-run means, five sizes held fixed; "
+                    "the appendix's plain median (reproduction.median_positive) can sit above the lower median by under 0.001 on even-sized sets",
         "method": "dyadic recipe-cluster percentile bootstrap, pairs weighted by the product of the two recipes' draw counts, "
                   "self-pairs omitted, within-pair estimation noise in the variances not resampled, 25 clusters so the interval is anti-conservative"}
     print(phen, "paired", json.dumps(block["seed_matched_paired"]), flush=True)
     summary["phenotypes"][phen] = block
-    (W / "structured_splits.json").write_text(json.dumps(summary, indent=1, default=float))
+    dump(summary)
 
 shutil.rmtree(runs, ignore_errors=True); shutil.rmtree(W / "seed-noise", ignore_errors=True)
 for d in data.glob("*"):

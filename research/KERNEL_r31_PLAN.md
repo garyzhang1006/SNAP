@@ -29,3 +29,7 @@ kaggle kernels push -p "compute extra/research_kernels/snap-r31-structured-split
 ```
 
 Pull the output into `research/outputs/snap-r31-structured-splits/` and read `structured_splits.json`. Every number is exploratory and post hoc, and no evidence label in the paper moves on it.
+
+## Follow-ups named by the fourth panel, not yet in the kernel
+
+The fourth meta-review (4/4/4 on the Scan 103 build) added three evidence items: MMLU's 57 subject groups as a within-benchmark control that a subject-stratified permutation can't see (a split that puts whole subjects on one side, which needs the strata removed for that arm), a power calculation for the 33-shared-final-step design against a true 1.244, and a band-aware or two-way recipe-by-band clustering with a small-G correction reported beside the 1.095 test-inversion endpoint. Each is a CPU job on the same inputs and can join this kernel or follow it once the first run is approved.
