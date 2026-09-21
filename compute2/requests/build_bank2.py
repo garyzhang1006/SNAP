@@ -11,10 +11,10 @@ FEWSHOT_SOURCES and MMLU's dev split, so they are the same in both banks.
 Bank 2 is then filtered and capped: an item whose question text appears in its
 own few-shot context (an exemplar drawn from the train split) is dropped, an
 item whose context equals a bank-1 context is dropped, and each benchmark is
-capped at its bank-1 count by a deterministic subsample. The cap is an upper
-bound: MMLU's validation split holds about 1,531 items against bank 1's 14,042
-and the ARC train splits fall a little short, so those benchmarks carry more
-item noise in bank 2 and the summary records the shortfall. The zero-shot bank is the same items rebuilt
+capped by a deterministic subsample at the count in config/banks.json (600 per
+benchmark, chosen for the compute budget; MMLU validation holds about 1,531).
+Item noise widens the bank-2 intervals without biasing the ratio, and the
+summary records the achieved count per benchmark. The zero-shot bank is the same items rebuilt
 with num_shots 0.
 
 OLMES pins its own torch, so it lives in its own uv environment (as in
@@ -161,8 +161,8 @@ def main():
     bank1_count = Counter(trait_of_task(r["task"]) for r in bank1)
     caps = {s["trait"]: s["max_items"] for s in cfg["bank2"]}
     for trait, cap in caps.items():
-        if cap is not None and cap != bank1_count[trait]:
-            raise SystemExit(f"{trait}: bank2 cap {cap} differs from bank 1's {bank1_count[trait]} items")
+        if cap is not None and cap > bank1_count[trait]:
+            raise SystemExit(f"{trait}: bank2 cap {cap} exceeds bank 1's {bank1_count[trait]} items")
 
     def build(num_shots, name):
         raw, cfg_path = tmp / f"{name}_raw.jsonl", tmp / f"{name}_configs.json"

@@ -62,6 +62,7 @@
     ]
    },
    "name": "pythia_bank1_curve",
+   "optional": true,
    "purpose": "the inflation factor across training at exactly matched steps",
    "runs": "runs_pythia.json"
   },
@@ -73,6 +74,7 @@
     ]
    },
    "name": "pythia_bank2zs_final",
+   "optional": true,
    "purpose": "same disjoint items without exemplars, for the cross-format estimate",
    "runs": "runs_pythia.json"
   },
@@ -84,6 +86,7 @@
     ]
    },
    "name": "datadecide_bank2zs_1B",
+   "optional": true,
    "purpose": "cross-format estimate on the 1B band of DataDecide",
    "runs": "runs_datadecide.json"
   }

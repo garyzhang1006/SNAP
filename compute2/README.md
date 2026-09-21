@@ -22,7 +22,7 @@ prompts except the zero-shot arm:
 | bank | items | what it is |
 |---|---|---|
 | bank1 | 37,682 | the release's own request text for the items the paper scores, byte-identical prompts |
-| bank2 | about 25,000 | disjoint items from the same benchmarks (train splits, MMLU validation), same OLMES commit and few-shot configs, capped per benchmark at bank 1's count; MMLU validation holds only about 1,531 items against bank 1's 14,042, so its bank-2 halves are noisier |
+| bank2 | about 6,900 | disjoint items from the same benchmarks (train splits, MMLU validation), same OLMES commit and few-shot configs, capped at 600 per benchmark for the compute budget (MMLU validation holds about 1,531 and is not capped) |
 | bank2zs | same as bank2 | bank 2's items at zero shots, same labels and continuations |
 
 Two model families:
@@ -40,31 +40,37 @@ Jobs, in the order run_all.sh runs them (config/jobs.json):
 | pythia_bank1_final | 45 | bank1 | R1: the paper's design on a second family with nine clean seeds |
 | pythia_bank2_final | 45 | bank2 | R2 for PolyPythias: cross-bank against within-bank |
 | datadecide_bank2 | 375 | bank2 | R3: the headline on fresh items; R2 for DataDecide with bank 1 from the release |
-| pythia_bank1_curve | 225 | bank1 | Lambda across training at matched steps |
-| pythia_bank2zs_final | 45 | bank2zs | cross-format check, five-shot against zero-shot |
-| datadecide_bank2zs_1B | 75 | bank2zs | the same at 1B for the paper's family |
+| pythia_bank1_curve (optional) | 225 | bank1 | Lambda across training at matched steps |
+| pythia_bank2zs_final (optional) | 45 | bank2zs | cross-format check, five-shot against zero-shot |
+| datadecide_bank2zs_1B (optional) | 75 | bank2zs | the same at 1B for the paper's family |
 
 Cost, inferred from the measured 3090 rate (655 s for a 1B four-task run,
-about 3,870 tokens per second) and a 5090 assumed at 1.6x, so about 6,200
-tokens per second at 1B. Bank 1 is about 14M tokens per run, bank 2 about
-two thirds of that, and time scales with parameter count, so a 1B run takes
-about 38 minutes on bank 1 and 25 on bank 2, a 750M run three quarters of
-that, and the Pythias from 15 minutes at 410m down to under a minute at 14m.
-By band that puts datadecide_bank2 near 85 card-hours, the three PolyPythias
-final-step jobs near 7 together, the curve near 20, and datadecide_bank2zs_1B
-near 10 because zero-shot prompts carry no exemplars. Verify is under one
-card-hour. The total is about 125 card-hours, about 62 hours of wall clock on
-two cards and about $55 at the listed price; measure the verify job's rate
-before trusting any of these. The verify job and the two PolyPythias
-final-step jobs come first so the reading rules R1 and R2 have their inputs
-within the first five hours.
+about 3,870 tokens per second). Bank 1 is about 14M tokens per run, so a 1B
+run takes about 60 minutes on a 3090 and time scales with parameter count;
+bank 2 at about 6,900 items is under a fifth of that. The core jobs come to
+about 45 card-hours on 3090s: verify under one, pythia_bank1_final about 6,
+pythia_bank2_final about 1, and datadecide_bank2 about 35 (the 1B band is
+15 of those). On three 3090s that is about 16 hours of wall clock, with the
+R1 and R2 readings in the first 4 hours and R3 at the end. The optional arms
+add about 30 card-hours for the curve and about 10 for the two zero-shot
+jobs. A 5090 should run about 1.6 times faster. Measure the verify job's
+rate before trusting any of these.
+
+The 600-item cap on bank 2 is a compute decision, made before scoring. Item
+noise does not bias the estimator, whose numerator and denominator are both
+cross-half covariances, but it widens the within-bank-2 interval that rule R3
+reads, so a true 1.24 can come out as a lower endpoint above one or as an
+interval that covers one. R1 and R2 are much less affected because bank 1
+enters them with all 37,682 items. Raising the caps in config/banks.json and
+rebuilding is the only change needed to buy the width back.
 
 ## Run it
 
 ```bash
 git clone https://github.com/garyzhang1006/SNAP && cd SNAP
 bash compute2/setup.sh          # venv, pinned stack, GPU check, banks built and frozen, dry run
-bash compute2/run_all.sh        # release fetch, then every job in order, reduce, analyse, report
+bash compute2/run_all.sh        # release fetch, the four core jobs in order, reduce, analyse, report
+bash compute2/run_all.sh all    # the same plus the three optional arms
 ```
 
 `run_all.sh` is resumable: rerun it after any interruption and it continues
@@ -128,7 +134,7 @@ bootstrap-t (25 clusters, t(24), 4,999 draws, seed 0) for margins has a lower
 endpoint above one. Reported alongside: batch-free contrasts, per size band,
 accuracy, without BoolQ.
 
-The curve and the cross-format arm are descriptive; no rule reads them.
+The curve and the cross-format arms are descriptive and optional; no rule reads them.
 
 ## What the outcomes mean for the paper
 

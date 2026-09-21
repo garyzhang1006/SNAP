@@ -46,9 +46,7 @@ TASK_INDEX = {t: i for i, t in enumerate(TASKS)}
 ITEM_STRIDE = 10_000_000
 
 # Item counts of the release battery per trait, in TRAITS order. The bank-1
-# builder asserts them, and the bank-2 caps are taken from them so both banks
-# carry the same item noise per benchmark where the bank-2 split has enough
-# items (MMLU validation and the ARC train splits do not; the build records it).
+# builder asserts them; the bank-2 caps in config/banks.json must not exceed them.
 RELEASE_ITEMS = {"arc_challenge": 1172, "arc_easy": 2376, "boolq": 3270, "csqa": 1221,
                  "hellaswag": 10042, "mmlu": 14042, "openbookqa": 500, "piqa": 1838,
                  "socialiqa": 1954, "winogrande": 1267}

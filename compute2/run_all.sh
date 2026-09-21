@@ -2,13 +2,14 @@
 # The whole pipeline in order, resumable: rerun the same command after any
 # interruption and it continues from the last finished run.
 #
-#   bash compute2/run_all.sh                # everything
+#   bash compute2/run_all.sh                # the four core jobs (verify, two PolyPythias, DataDecide bank 2)
+#   bash compute2/run_all.sh all            # those plus the curve and the two zero-shot jobs
 #   bash compute2/run_all.sh verify         # one job, then reduce and analyse
 #
 # Order and purpose (config/jobs.json): verify gates everything; the two
 # PolyPythias final-step jobs and the DataDecide bank-2 job carry the reading
-# rules; the curve and the zero-shot jobs are the supporting arms and can be
-# stopped early without touching the rules.
+# rules; the curve and the zero-shot jobs are marked optional and are
+# descriptive only.
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck disable=SC1091
@@ -18,10 +19,11 @@ n_release="$(find "$HERE/data/release_runs" -maxdepth 1 -name '*.npz' 2>/dev/nul
 if [ "${n_release:-0}" -ne 375 ]; then
     bash "$HERE/fetch_release.sh" 2>&1 | tee -a "$SNAP2_ROOT/logs/fetch_release.log"
 fi
-if [ $# -gt 0 ]; then
+if [ $# -gt 0 ] && [ "$1" != all ]; then
     JOBS=("$@")
 else
-    mapfile -t JOBS < <(python -c 'import json; print("\n".join(j["name"] for j in json.load(open("config/jobs.json"))["jobs"]))')
+    want_all="${1:-core}"
+    mapfile -t JOBS < <(python -c 'import json, sys; print("\n".join(j["name"] for j in json.load(open("config/jobs.json"))["jobs"] if sys.argv[1] == "all" or not j.get("optional")))' "$want_all")
     if [ "${#JOBS[@]}" -eq 0 ]; then
         echo "could not enumerate jobs from $HERE/config/jobs.json (see the traceback above); fix the file or pass job names" >&2
         exit 1

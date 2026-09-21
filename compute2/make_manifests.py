@@ -80,11 +80,11 @@ def main():
          "purpose": "disjoint items on the same runs, for the cross-bank estimate"},
         {"name": "datadecide_bank2", "runs": "runs_datadecide.json", "bank": "bank2",
          "purpose": "disjoint items on all 375 DataDecide runs; bank 1 comes from the release"},
-        {"name": "pythia_bank1_curve", "runs": "runs_pythia.json", "bank": "bank1", "filter": {"step": PYTHIA_CURVE},
+        {"name": "pythia_bank1_curve", "optional": True, "runs": "runs_pythia.json", "bank": "bank1", "filter": {"step": PYTHIA_CURVE},
          "purpose": "the inflation factor across training at exactly matched steps"},
-        {"name": "pythia_bank2zs_final", "runs": "runs_pythia.json", "bank": "bank2zs", "filter": {"step": [PYTHIA_FINAL]},
+        {"name": "pythia_bank2zs_final", "optional": True, "runs": "runs_pythia.json", "bank": "bank2zs", "filter": {"step": [PYTHIA_FINAL]},
          "purpose": "same disjoint items without exemplars, for the cross-format estimate"},
-        {"name": "datadecide_bank2zs_1B", "runs": "runs_datadecide.json", "bank": "bank2zs", "filter": {"size": ["1B"]},
+        {"name": "datadecide_bank2zs_1B", "optional": True, "runs": "runs_datadecide.json", "bank": "bank2zs", "filter": {"size": ["1B"]},
          "purpose": "cross-format estimate on the 1B band of DataDecide"},
     ]
     bank.write_json(HERE / "config" / "jobs.json", {"schema": "snap-compute2-jobs-v1", "jobs": jobs})
