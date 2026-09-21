@@ -1,11 +1,11 @@
 {
   "main.tex": {
-    "sentence_count": 231,
+    "sentence_count": 236,
     "minimum_words": 8,
     "maximum_observed_not_a_limit": 50,
     "fragments_under_four_words": 0,
     "share_under_eight_words": 0.0,
-    "share_under_twelve_words": 0.212,
+    "share_under_twelve_words": 0.22,
     "corpus_target_under_eight": "0.058 to 0.238",
     "prose_colons_semicolons_dashes": 0,
     "uncontracted_negatives": 0
