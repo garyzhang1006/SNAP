@@ -1,0 +1,4625 @@
+{
+ "family": "gptneox",
+ "final_step": 143000,
+ "include_original": false,
+ "n_runs": 270,
+ "runs": [
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed1",
+   "revision": "step143000",
+   "run_key": "polypythias__14m__seed-1__step-143000",
+   "seed": 1,
+   "size": "14m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed2",
+   "revision": "step143000",
+   "run_key": "polypythias__14m__seed-2__step-143000",
+   "seed": 2,
+   "size": "14m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed3",
+   "revision": "step143000",
+   "run_key": "polypythias__14m__seed-3__step-143000",
+   "seed": 3,
+   "size": "14m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed4",
+   "revision": "step143000",
+   "run_key": "polypythias__14m__seed-4__step-143000",
+   "seed": 4,
+   "size": "14m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed5",
+   "revision": "step143000",
+   "run_key": "polypythias__14m__seed-5__step-143000",
+   "seed": 5,
+   "size": "14m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed6",
+   "revision": "step143000",
+   "run_key": "polypythias__14m__seed-6__step-143000",
+   "seed": 6,
+   "size": "14m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed7",
+   "revision": "step143000",
+   "run_key": "polypythias__14m__seed-7__step-143000",
+   "seed": 7,
+   "size": "14m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed8",
+   "revision": "step143000",
+   "run_key": "polypythias__14m__seed-8__step-143000",
+   "seed": 8,
+   "size": "14m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed9",
+   "revision": "step143000",
+   "run_key": "polypythias__14m__seed-9__step-143000",
+   "seed": 9,
+   "size": "14m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed1",
+   "revision": "step4000",
+   "run_key": "polypythias__14m__seed-1__step-4000",
+   "seed": 1,
+   "size": "14m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed2",
+   "revision": "step4000",
+   "run_key": "polypythias__14m__seed-2__step-4000",
+   "seed": 2,
+   "size": "14m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed3",
+   "revision": "step4000",
+   "run_key": "polypythias__14m__seed-3__step-4000",
+   "seed": 3,
+   "size": "14m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed4",
+   "revision": "step4000",
+   "run_key": "polypythias__14m__seed-4__step-4000",
+   "seed": 4,
+   "size": "14m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed5",
+   "revision": "step4000",
+   "run_key": "polypythias__14m__seed-5__step-4000",
+   "seed": 5,
+   "size": "14m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed6",
+   "revision": "step4000",
+   "run_key": "polypythias__14m__seed-6__step-4000",
+   "seed": 6,
+   "size": "14m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed7",
+   "revision": "step4000",
+   "run_key": "polypythias__14m__seed-7__step-4000",
+   "seed": 7,
+   "size": "14m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed8",
+   "revision": "step4000",
+   "run_key": "polypythias__14m__seed-8__step-4000",
+   "seed": 8,
+   "size": "14m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed9",
+   "revision": "step4000",
+   "run_key": "polypythias__14m__seed-9__step-4000",
+   "seed": 9,
+   "size": "14m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed1",
+   "revision": "step16000",
+   "run_key": "polypythias__14m__seed-1__step-16000",
+   "seed": 1,
+   "size": "14m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed2",
+   "revision": "step16000",
+   "run_key": "polypythias__14m__seed-2__step-16000",
+   "seed": 2,
+   "size": "14m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed3",
+   "revision": "step16000",
+   "run_key": "polypythias__14m__seed-3__step-16000",
+   "seed": 3,
+   "size": "14m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed4",
+   "revision": "step16000",
+   "run_key": "polypythias__14m__seed-4__step-16000",
+   "seed": 4,
+   "size": "14m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed5",
+   "revision": "step16000",
+   "run_key": "polypythias__14m__seed-5__step-16000",
+   "seed": 5,
+   "size": "14m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed6",
+   "revision": "step16000",
+   "run_key": "polypythias__14m__seed-6__step-16000",
+   "seed": 6,
+   "size": "14m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed7",
+   "revision": "step16000",
+   "run_key": "polypythias__14m__seed-7__step-16000",
+   "seed": 7,
+   "size": "14m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed8",
+   "revision": "step16000",
+   "run_key": "polypythias__14m__seed-8__step-16000",
+   "seed": 8,
+   "size": "14m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed9",
+   "revision": "step16000",
+   "run_key": "polypythias__14m__seed-9__step-16000",
+   "seed": 9,
+   "size": "14m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed1",
+   "revision": "step36000",
+   "run_key": "polypythias__14m__seed-1__step-36000",
+   "seed": 1,
+   "size": "14m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed2",
+   "revision": "step36000",
+   "run_key": "polypythias__14m__seed-2__step-36000",
+   "seed": 2,
+   "size": "14m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed3",
+   "revision": "step36000",
+   "run_key": "polypythias__14m__seed-3__step-36000",
+   "seed": 3,
+   "size": "14m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed4",
+   "revision": "step36000",
+   "run_key": "polypythias__14m__seed-4__step-36000",
+   "seed": 4,
+   "size": "14m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed5",
+   "revision": "step36000",
+   "run_key": "polypythias__14m__seed-5__step-36000",
+   "seed": 5,
+   "size": "14m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed6",
+   "revision": "step36000",
+   "run_key": "polypythias__14m__seed-6__step-36000",
+   "seed": 6,
+   "size": "14m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed7",
+   "revision": "step36000",
+   "run_key": "polypythias__14m__seed-7__step-36000",
+   "seed": 7,
+   "size": "14m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed8",
+   "revision": "step36000",
+   "run_key": "polypythias__14m__seed-8__step-36000",
+   "seed": 8,
+   "size": "14m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed9",
+   "revision": "step36000",
+   "run_key": "polypythias__14m__seed-9__step-36000",
+   "seed": 9,
+   "size": "14m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed1",
+   "revision": "step72000",
+   "run_key": "polypythias__14m__seed-1__step-72000",
+   "seed": 1,
+   "size": "14m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed2",
+   "revision": "step72000",
+   "run_key": "polypythias__14m__seed-2__step-72000",
+   "seed": 2,
+   "size": "14m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed3",
+   "revision": "step72000",
+   "run_key": "polypythias__14m__seed-3__step-72000",
+   "seed": 3,
+   "size": "14m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed4",
+   "revision": "step72000",
+   "run_key": "polypythias__14m__seed-4__step-72000",
+   "seed": 4,
+   "size": "14m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed5",
+   "revision": "step72000",
+   "run_key": "polypythias__14m__seed-5__step-72000",
+   "seed": 5,
+   "size": "14m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed6",
+   "revision": "step72000",
+   "run_key": "polypythias__14m__seed-6__step-72000",
+   "seed": 6,
+   "size": "14m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed7",
+   "revision": "step72000",
+   "run_key": "polypythias__14m__seed-7__step-72000",
+   "seed": 7,
+   "size": "14m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed8",
+   "revision": "step72000",
+   "run_key": "polypythias__14m__seed-8__step-72000",
+   "seed": 8,
+   "size": "14m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed9",
+   "revision": "step72000",
+   "run_key": "polypythias__14m__seed-9__step-72000",
+   "seed": 9,
+   "size": "14m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed1",
+   "revision": "step108000",
+   "run_key": "polypythias__14m__seed-1__step-108000",
+   "seed": 1,
+   "size": "14m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed2",
+   "revision": "step108000",
+   "run_key": "polypythias__14m__seed-2__step-108000",
+   "seed": 2,
+   "size": "14m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed3",
+   "revision": "step108000",
+   "run_key": "polypythias__14m__seed-3__step-108000",
+   "seed": 3,
+   "size": "14m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed4",
+   "revision": "step108000",
+   "run_key": "polypythias__14m__seed-4__step-108000",
+   "seed": 4,
+   "size": "14m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed5",
+   "revision": "step108000",
+   "run_key": "polypythias__14m__seed-5__step-108000",
+   "seed": 5,
+   "size": "14m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed6",
+   "revision": "step108000",
+   "run_key": "polypythias__14m__seed-6__step-108000",
+   "seed": 6,
+   "size": "14m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed7",
+   "revision": "step108000",
+   "run_key": "polypythias__14m__seed-7__step-108000",
+   "seed": 7,
+   "size": "14m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed8",
+   "revision": "step108000",
+   "run_key": "polypythias__14m__seed-8__step-108000",
+   "seed": 8,
+   "size": "14m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-14m-seed9",
+   "revision": "step108000",
+   "run_key": "polypythias__14m__seed-9__step-108000",
+   "seed": 9,
+   "size": "14m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed1",
+   "revision": "step143000",
+   "run_key": "polypythias__31m__seed-1__step-143000",
+   "seed": 1,
+   "size": "31m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed2",
+   "revision": "step143000",
+   "run_key": "polypythias__31m__seed-2__step-143000",
+   "seed": 2,
+   "size": "31m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed3",
+   "revision": "step143000",
+   "run_key": "polypythias__31m__seed-3__step-143000",
+   "seed": 3,
+   "size": "31m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed4",
+   "revision": "step143000",
+   "run_key": "polypythias__31m__seed-4__step-143000",
+   "seed": 4,
+   "size": "31m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed5",
+   "revision": "step143000",
+   "run_key": "polypythias__31m__seed-5__step-143000",
+   "seed": 5,
+   "size": "31m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed6",
+   "revision": "step143000",
+   "run_key": "polypythias__31m__seed-6__step-143000",
+   "seed": 6,
+   "size": "31m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed7",
+   "revision": "step143000",
+   "run_key": "polypythias__31m__seed-7__step-143000",
+   "seed": 7,
+   "size": "31m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed8",
+   "revision": "step143000",
+   "run_key": "polypythias__31m__seed-8__step-143000",
+   "seed": 8,
+   "size": "31m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed9",
+   "revision": "step143000",
+   "run_key": "polypythias__31m__seed-9__step-143000",
+   "seed": 9,
+   "size": "31m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed1",
+   "revision": "step4000",
+   "run_key": "polypythias__31m__seed-1__step-4000",
+   "seed": 1,
+   "size": "31m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed2",
+   "revision": "step4000",
+   "run_key": "polypythias__31m__seed-2__step-4000",
+   "seed": 2,
+   "size": "31m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed3",
+   "revision": "step4000",
+   "run_key": "polypythias__31m__seed-3__step-4000",
+   "seed": 3,
+   "size": "31m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed4",
+   "revision": "step4000",
+   "run_key": "polypythias__31m__seed-4__step-4000",
+   "seed": 4,
+   "size": "31m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed5",
+   "revision": "step4000",
+   "run_key": "polypythias__31m__seed-5__step-4000",
+   "seed": 5,
+   "size": "31m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed6",
+   "revision": "step4000",
+   "run_key": "polypythias__31m__seed-6__step-4000",
+   "seed": 6,
+   "size": "31m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed7",
+   "revision": "step4000",
+   "run_key": "polypythias__31m__seed-7__step-4000",
+   "seed": 7,
+   "size": "31m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed8",
+   "revision": "step4000",
+   "run_key": "polypythias__31m__seed-8__step-4000",
+   "seed": 8,
+   "size": "31m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed9",
+   "revision": "step4000",
+   "run_key": "polypythias__31m__seed-9__step-4000",
+   "seed": 9,
+   "size": "31m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed1",
+   "revision": "step16000",
+   "run_key": "polypythias__31m__seed-1__step-16000",
+   "seed": 1,
+   "size": "31m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed2",
+   "revision": "step16000",
+   "run_key": "polypythias__31m__seed-2__step-16000",
+   "seed": 2,
+   "size": "31m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed3",
+   "revision": "step16000",
+   "run_key": "polypythias__31m__seed-3__step-16000",
+   "seed": 3,
+   "size": "31m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed4",
+   "revision": "step16000",
+   "run_key": "polypythias__31m__seed-4__step-16000",
+   "seed": 4,
+   "size": "31m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed5",
+   "revision": "step16000",
+   "run_key": "polypythias__31m__seed-5__step-16000",
+   "seed": 5,
+   "size": "31m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed6",
+   "revision": "step16000",
+   "run_key": "polypythias__31m__seed-6__step-16000",
+   "seed": 6,
+   "size": "31m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed7",
+   "revision": "step16000",
+   "run_key": "polypythias__31m__seed-7__step-16000",
+   "seed": 7,
+   "size": "31m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed8",
+   "revision": "step16000",
+   "run_key": "polypythias__31m__seed-8__step-16000",
+   "seed": 8,
+   "size": "31m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed9",
+   "revision": "step16000",
+   "run_key": "polypythias__31m__seed-9__step-16000",
+   "seed": 9,
+   "size": "31m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed1",
+   "revision": "step36000",
+   "run_key": "polypythias__31m__seed-1__step-36000",
+   "seed": 1,
+   "size": "31m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed2",
+   "revision": "step36000",
+   "run_key": "polypythias__31m__seed-2__step-36000",
+   "seed": 2,
+   "size": "31m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed3",
+   "revision": "step36000",
+   "run_key": "polypythias__31m__seed-3__step-36000",
+   "seed": 3,
+   "size": "31m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed4",
+   "revision": "step36000",
+   "run_key": "polypythias__31m__seed-4__step-36000",
+   "seed": 4,
+   "size": "31m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed5",
+   "revision": "step36000",
+   "run_key": "polypythias__31m__seed-5__step-36000",
+   "seed": 5,
+   "size": "31m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed6",
+   "revision": "step36000",
+   "run_key": "polypythias__31m__seed-6__step-36000",
+   "seed": 6,
+   "size": "31m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed7",
+   "revision": "step36000",
+   "run_key": "polypythias__31m__seed-7__step-36000",
+   "seed": 7,
+   "size": "31m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed8",
+   "revision": "step36000",
+   "run_key": "polypythias__31m__seed-8__step-36000",
+   "seed": 8,
+   "size": "31m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed9",
+   "revision": "step36000",
+   "run_key": "polypythias__31m__seed-9__step-36000",
+   "seed": 9,
+   "size": "31m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed1",
+   "revision": "step72000",
+   "run_key": "polypythias__31m__seed-1__step-72000",
+   "seed": 1,
+   "size": "31m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed2",
+   "revision": "step72000",
+   "run_key": "polypythias__31m__seed-2__step-72000",
+   "seed": 2,
+   "size": "31m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed3",
+   "revision": "step72000",
+   "run_key": "polypythias__31m__seed-3__step-72000",
+   "seed": 3,
+   "size": "31m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed4",
+   "revision": "step72000",
+   "run_key": "polypythias__31m__seed-4__step-72000",
+   "seed": 4,
+   "size": "31m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed5",
+   "revision": "step72000",
+   "run_key": "polypythias__31m__seed-5__step-72000",
+   "seed": 5,
+   "size": "31m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed6",
+   "revision": "step72000",
+   "run_key": "polypythias__31m__seed-6__step-72000",
+   "seed": 6,
+   "size": "31m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed7",
+   "revision": "step72000",
+   "run_key": "polypythias__31m__seed-7__step-72000",
+   "seed": 7,
+   "size": "31m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed8",
+   "revision": "step72000",
+   "run_key": "polypythias__31m__seed-8__step-72000",
+   "seed": 8,
+   "size": "31m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed9",
+   "revision": "step72000",
+   "run_key": "polypythias__31m__seed-9__step-72000",
+   "seed": 9,
+   "size": "31m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed1",
+   "revision": "step108000",
+   "run_key": "polypythias__31m__seed-1__step-108000",
+   "seed": 1,
+   "size": "31m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed2",
+   "revision": "step108000",
+   "run_key": "polypythias__31m__seed-2__step-108000",
+   "seed": 2,
+   "size": "31m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed3",
+   "revision": "step108000",
+   "run_key": "polypythias__31m__seed-3__step-108000",
+   "seed": 3,
+   "size": "31m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed4",
+   "revision": "step108000",
+   "run_key": "polypythias__31m__seed-4__step-108000",
+   "seed": 4,
+   "size": "31m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed5",
+   "revision": "step108000",
+   "run_key": "polypythias__31m__seed-5__step-108000",
+   "seed": 5,
+   "size": "31m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed6",
+   "revision": "step108000",
+   "run_key": "polypythias__31m__seed-6__step-108000",
+   "seed": 6,
+   "size": "31m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed7",
+   "revision": "step108000",
+   "run_key": "polypythias__31m__seed-7__step-108000",
+   "seed": 7,
+   "size": "31m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed8",
+   "revision": "step108000",
+   "run_key": "polypythias__31m__seed-8__step-108000",
+   "seed": 8,
+   "size": "31m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-31m-seed9",
+   "revision": "step108000",
+   "run_key": "polypythias__31m__seed-9__step-108000",
+   "seed": 9,
+   "size": "31m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed1",
+   "revision": "step143000",
+   "run_key": "polypythias__70m__seed-1__step-143000",
+   "seed": 1,
+   "size": "70m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed2",
+   "revision": "step143000",
+   "run_key": "polypythias__70m__seed-2__step-143000",
+   "seed": 2,
+   "size": "70m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed3",
+   "revision": "step143000",
+   "run_key": "polypythias__70m__seed-3__step-143000",
+   "seed": 3,
+   "size": "70m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed4",
+   "revision": "step143000",
+   "run_key": "polypythias__70m__seed-4__step-143000",
+   "seed": 4,
+   "size": "70m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed5",
+   "revision": "step143000",
+   "run_key": "polypythias__70m__seed-5__step-143000",
+   "seed": 5,
+   "size": "70m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed6",
+   "revision": "step143000",
+   "run_key": "polypythias__70m__seed-6__step-143000",
+   "seed": 6,
+   "size": "70m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed7",
+   "revision": "step143000",
+   "run_key": "polypythias__70m__seed-7__step-143000",
+   "seed": 7,
+   "size": "70m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed8",
+   "revision": "step143000",
+   "run_key": "polypythias__70m__seed-8__step-143000",
+   "seed": 8,
+   "size": "70m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed9",
+   "revision": "step143000",
+   "run_key": "polypythias__70m__seed-9__step-143000",
+   "seed": 9,
+   "size": "70m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed1",
+   "revision": "step4000",
+   "run_key": "polypythias__70m__seed-1__step-4000",
+   "seed": 1,
+   "size": "70m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed2",
+   "revision": "step4000",
+   "run_key": "polypythias__70m__seed-2__step-4000",
+   "seed": 2,
+   "size": "70m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed3",
+   "revision": "step4000",
+   "run_key": "polypythias__70m__seed-3__step-4000",
+   "seed": 3,
+   "size": "70m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed4",
+   "revision": "step4000",
+   "run_key": "polypythias__70m__seed-4__step-4000",
+   "seed": 4,
+   "size": "70m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed5",
+   "revision": "step4000",
+   "run_key": "polypythias__70m__seed-5__step-4000",
+   "seed": 5,
+   "size": "70m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed6",
+   "revision": "step4000",
+   "run_key": "polypythias__70m__seed-6__step-4000",
+   "seed": 6,
+   "size": "70m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed7",
+   "revision": "step4000",
+   "run_key": "polypythias__70m__seed-7__step-4000",
+   "seed": 7,
+   "size": "70m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed8",
+   "revision": "step4000",
+   "run_key": "polypythias__70m__seed-8__step-4000",
+   "seed": 8,
+   "size": "70m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed9",
+   "revision": "step4000",
+   "run_key": "polypythias__70m__seed-9__step-4000",
+   "seed": 9,
+   "size": "70m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed1",
+   "revision": "step16000",
+   "run_key": "polypythias__70m__seed-1__step-16000",
+   "seed": 1,
+   "size": "70m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed2",
+   "revision": "step16000",
+   "run_key": "polypythias__70m__seed-2__step-16000",
+   "seed": 2,
+   "size": "70m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed3",
+   "revision": "step16000",
+   "run_key": "polypythias__70m__seed-3__step-16000",
+   "seed": 3,
+   "size": "70m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed4",
+   "revision": "step16000",
+   "run_key": "polypythias__70m__seed-4__step-16000",
+   "seed": 4,
+   "size": "70m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed5",
+   "revision": "step16000",
+   "run_key": "polypythias__70m__seed-5__step-16000",
+   "seed": 5,
+   "size": "70m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed6",
+   "revision": "step16000",
+   "run_key": "polypythias__70m__seed-6__step-16000",
+   "seed": 6,
+   "size": "70m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed7",
+   "revision": "step16000",
+   "run_key": "polypythias__70m__seed-7__step-16000",
+   "seed": 7,
+   "size": "70m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed8",
+   "revision": "step16000",
+   "run_key": "polypythias__70m__seed-8__step-16000",
+   "seed": 8,
+   "size": "70m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed9",
+   "revision": "step16000",
+   "run_key": "polypythias__70m__seed-9__step-16000",
+   "seed": 9,
+   "size": "70m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed1",
+   "revision": "step36000",
+   "run_key": "polypythias__70m__seed-1__step-36000",
+   "seed": 1,
+   "size": "70m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed2",
+   "revision": "step36000",
+   "run_key": "polypythias__70m__seed-2__step-36000",
+   "seed": 2,
+   "size": "70m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed3",
+   "revision": "step36000",
+   "run_key": "polypythias__70m__seed-3__step-36000",
+   "seed": 3,
+   "size": "70m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed4",
+   "revision": "step36000",
+   "run_key": "polypythias__70m__seed-4__step-36000",
+   "seed": 4,
+   "size": "70m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed5",
+   "revision": "step36000",
+   "run_key": "polypythias__70m__seed-5__step-36000",
+   "seed": 5,
+   "size": "70m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed6",
+   "revision": "step36000",
+   "run_key": "polypythias__70m__seed-6__step-36000",
+   "seed": 6,
+   "size": "70m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed7",
+   "revision": "step36000",
+   "run_key": "polypythias__70m__seed-7__step-36000",
+   "seed": 7,
+   "size": "70m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed8",
+   "revision": "step36000",
+   "run_key": "polypythias__70m__seed-8__step-36000",
+   "seed": 8,
+   "size": "70m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed9",
+   "revision": "step36000",
+   "run_key": "polypythias__70m__seed-9__step-36000",
+   "seed": 9,
+   "size": "70m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed1",
+   "revision": "step72000",
+   "run_key": "polypythias__70m__seed-1__step-72000",
+   "seed": 1,
+   "size": "70m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed2",
+   "revision": "step72000",
+   "run_key": "polypythias__70m__seed-2__step-72000",
+   "seed": 2,
+   "size": "70m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed3",
+   "revision": "step72000",
+   "run_key": "polypythias__70m__seed-3__step-72000",
+   "seed": 3,
+   "size": "70m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed4",
+   "revision": "step72000",
+   "run_key": "polypythias__70m__seed-4__step-72000",
+   "seed": 4,
+   "size": "70m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed5",
+   "revision": "step72000",
+   "run_key": "polypythias__70m__seed-5__step-72000",
+   "seed": 5,
+   "size": "70m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed6",
+   "revision": "step72000",
+   "run_key": "polypythias__70m__seed-6__step-72000",
+   "seed": 6,
+   "size": "70m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed7",
+   "revision": "step72000",
+   "run_key": "polypythias__70m__seed-7__step-72000",
+   "seed": 7,
+   "size": "70m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed8",
+   "revision": "step72000",
+   "run_key": "polypythias__70m__seed-8__step-72000",
+   "seed": 8,
+   "size": "70m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed9",
+   "revision": "step72000",
+   "run_key": "polypythias__70m__seed-9__step-72000",
+   "seed": 9,
+   "size": "70m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed1",
+   "revision": "step108000",
+   "run_key": "polypythias__70m__seed-1__step-108000",
+   "seed": 1,
+   "size": "70m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed2",
+   "revision": "step108000",
+   "run_key": "polypythias__70m__seed-2__step-108000",
+   "seed": 2,
+   "size": "70m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed3",
+   "revision": "step108000",
+   "run_key": "polypythias__70m__seed-3__step-108000",
+   "seed": 3,
+   "size": "70m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed4",
+   "revision": "step108000",
+   "run_key": "polypythias__70m__seed-4__step-108000",
+   "seed": 4,
+   "size": "70m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed5",
+   "revision": "step108000",
+   "run_key": "polypythias__70m__seed-5__step-108000",
+   "seed": 5,
+   "size": "70m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed6",
+   "revision": "step108000",
+   "run_key": "polypythias__70m__seed-6__step-108000",
+   "seed": 6,
+   "size": "70m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed7",
+   "revision": "step108000",
+   "run_key": "polypythias__70m__seed-7__step-108000",
+   "seed": 7,
+   "size": "70m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed8",
+   "revision": "step108000",
+   "run_key": "polypythias__70m__seed-8__step-108000",
+   "seed": 8,
+   "size": "70m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-70m-seed9",
+   "revision": "step108000",
+   "run_key": "polypythias__70m__seed-9__step-108000",
+   "seed": 9,
+   "size": "70m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed1",
+   "revision": "step143000",
+   "run_key": "polypythias__160m__seed-1__step-143000",
+   "seed": 1,
+   "size": "160m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed2",
+   "revision": "step143000",
+   "run_key": "polypythias__160m__seed-2__step-143000",
+   "seed": 2,
+   "size": "160m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed3",
+   "revision": "step143000",
+   "run_key": "polypythias__160m__seed-3__step-143000",
+   "seed": 3,
+   "size": "160m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed4",
+   "revision": "step143000",
+   "run_key": "polypythias__160m__seed-4__step-143000",
+   "seed": 4,
+   "size": "160m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed5",
+   "revision": "step143000",
+   "run_key": "polypythias__160m__seed-5__step-143000",
+   "seed": 5,
+   "size": "160m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed6",
+   "revision": "step143000",
+   "run_key": "polypythias__160m__seed-6__step-143000",
+   "seed": 6,
+   "size": "160m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed7",
+   "revision": "step143000",
+   "run_key": "polypythias__160m__seed-7__step-143000",
+   "seed": 7,
+   "size": "160m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed8",
+   "revision": "step143000",
+   "run_key": "polypythias__160m__seed-8__step-143000",
+   "seed": 8,
+   "size": "160m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed9",
+   "revision": "step143000",
+   "run_key": "polypythias__160m__seed-9__step-143000",
+   "seed": 9,
+   "size": "160m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed1",
+   "revision": "step4000",
+   "run_key": "polypythias__160m__seed-1__step-4000",
+   "seed": 1,
+   "size": "160m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed2",
+   "revision": "step4000",
+   "run_key": "polypythias__160m__seed-2__step-4000",
+   "seed": 2,
+   "size": "160m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed3",
+   "revision": "step4000",
+   "run_key": "polypythias__160m__seed-3__step-4000",
+   "seed": 3,
+   "size": "160m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed4",
+   "revision": "step4000",
+   "run_key": "polypythias__160m__seed-4__step-4000",
+   "seed": 4,
+   "size": "160m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed5",
+   "revision": "step4000",
+   "run_key": "polypythias__160m__seed-5__step-4000",
+   "seed": 5,
+   "size": "160m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed6",
+   "revision": "step4000",
+   "run_key": "polypythias__160m__seed-6__step-4000",
+   "seed": 6,
+   "size": "160m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed7",
+   "revision": "step4000",
+   "run_key": "polypythias__160m__seed-7__step-4000",
+   "seed": 7,
+   "size": "160m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed8",
+   "revision": "step4000",
+   "run_key": "polypythias__160m__seed-8__step-4000",
+   "seed": 8,
+   "size": "160m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed9",
+   "revision": "step4000",
+   "run_key": "polypythias__160m__seed-9__step-4000",
+   "seed": 9,
+   "size": "160m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed1",
+   "revision": "step16000",
+   "run_key": "polypythias__160m__seed-1__step-16000",
+   "seed": 1,
+   "size": "160m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed2",
+   "revision": "step16000",
+   "run_key": "polypythias__160m__seed-2__step-16000",
+   "seed": 2,
+   "size": "160m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed3",
+   "revision": "step16000",
+   "run_key": "polypythias__160m__seed-3__step-16000",
+   "seed": 3,
+   "size": "160m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed4",
+   "revision": "step16000",
+   "run_key": "polypythias__160m__seed-4__step-16000",
+   "seed": 4,
+   "size": "160m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed5",
+   "revision": "step16000",
+   "run_key": "polypythias__160m__seed-5__step-16000",
+   "seed": 5,
+   "size": "160m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed6",
+   "revision": "step16000",
+   "run_key": "polypythias__160m__seed-6__step-16000",
+   "seed": 6,
+   "size": "160m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed7",
+   "revision": "step16000",
+   "run_key": "polypythias__160m__seed-7__step-16000",
+   "seed": 7,
+   "size": "160m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed8",
+   "revision": "step16000",
+   "run_key": "polypythias__160m__seed-8__step-16000",
+   "seed": 8,
+   "size": "160m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed9",
+   "revision": "step16000",
+   "run_key": "polypythias__160m__seed-9__step-16000",
+   "seed": 9,
+   "size": "160m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed1",
+   "revision": "step36000",
+   "run_key": "polypythias__160m__seed-1__step-36000",
+   "seed": 1,
+   "size": "160m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed2",
+   "revision": "step36000",
+   "run_key": "polypythias__160m__seed-2__step-36000",
+   "seed": 2,
+   "size": "160m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed3",
+   "revision": "step36000",
+   "run_key": "polypythias__160m__seed-3__step-36000",
+   "seed": 3,
+   "size": "160m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed4",
+   "revision": "step36000",
+   "run_key": "polypythias__160m__seed-4__step-36000",
+   "seed": 4,
+   "size": "160m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed5",
+   "revision": "step36000",
+   "run_key": "polypythias__160m__seed-5__step-36000",
+   "seed": 5,
+   "size": "160m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed6",
+   "revision": "step36000",
+   "run_key": "polypythias__160m__seed-6__step-36000",
+   "seed": 6,
+   "size": "160m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed7",
+   "revision": "step36000",
+   "run_key": "polypythias__160m__seed-7__step-36000",
+   "seed": 7,
+   "size": "160m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed8",
+   "revision": "step36000",
+   "run_key": "polypythias__160m__seed-8__step-36000",
+   "seed": 8,
+   "size": "160m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed9",
+   "revision": "step36000",
+   "run_key": "polypythias__160m__seed-9__step-36000",
+   "seed": 9,
+   "size": "160m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed1",
+   "revision": "step72000",
+   "run_key": "polypythias__160m__seed-1__step-72000",
+   "seed": 1,
+   "size": "160m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed2",
+   "revision": "step72000",
+   "run_key": "polypythias__160m__seed-2__step-72000",
+   "seed": 2,
+   "size": "160m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed3",
+   "revision": "step72000",
+   "run_key": "polypythias__160m__seed-3__step-72000",
+   "seed": 3,
+   "size": "160m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed4",
+   "revision": "step72000",
+   "run_key": "polypythias__160m__seed-4__step-72000",
+   "seed": 4,
+   "size": "160m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed5",
+   "revision": "step72000",
+   "run_key": "polypythias__160m__seed-5__step-72000",
+   "seed": 5,
+   "size": "160m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed6",
+   "revision": "step72000",
+   "run_key": "polypythias__160m__seed-6__step-72000",
+   "seed": 6,
+   "size": "160m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed7",
+   "revision": "step72000",
+   "run_key": "polypythias__160m__seed-7__step-72000",
+   "seed": 7,
+   "size": "160m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed8",
+   "revision": "step72000",
+   "run_key": "polypythias__160m__seed-8__step-72000",
+   "seed": 8,
+   "size": "160m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed9",
+   "revision": "step72000",
+   "run_key": "polypythias__160m__seed-9__step-72000",
+   "seed": 9,
+   "size": "160m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed1",
+   "revision": "step108000",
+   "run_key": "polypythias__160m__seed-1__step-108000",
+   "seed": 1,
+   "size": "160m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed2",
+   "revision": "step108000",
+   "run_key": "polypythias__160m__seed-2__step-108000",
+   "seed": 2,
+   "size": "160m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed3",
+   "revision": "step108000",
+   "run_key": "polypythias__160m__seed-3__step-108000",
+   "seed": 3,
+   "size": "160m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed4",
+   "revision": "step108000",
+   "run_key": "polypythias__160m__seed-4__step-108000",
+   "seed": 4,
+   "size": "160m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed5",
+   "revision": "step108000",
+   "run_key": "polypythias__160m__seed-5__step-108000",
+   "seed": 5,
+   "size": "160m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed6",
+   "revision": "step108000",
+   "run_key": "polypythias__160m__seed-6__step-108000",
+   "seed": 6,
+   "size": "160m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed7",
+   "revision": "step108000",
+   "run_key": "polypythias__160m__seed-7__step-108000",
+   "seed": 7,
+   "size": "160m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed8",
+   "revision": "step108000",
+   "run_key": "polypythias__160m__seed-8__step-108000",
+   "seed": 8,
+   "size": "160m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-160m-seed9",
+   "revision": "step108000",
+   "run_key": "polypythias__160m__seed-9__step-108000",
+   "seed": 9,
+   "size": "160m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed1",
+   "revision": "step143000",
+   "run_key": "polypythias__410m__seed-1__step-143000",
+   "seed": 1,
+   "size": "410m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed2",
+   "revision": "step143000",
+   "run_key": "polypythias__410m__seed-2__step-143000",
+   "seed": 2,
+   "size": "410m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed3",
+   "revision": "step143000",
+   "run_key": "polypythias__410m__seed-3__step-143000",
+   "seed": 3,
+   "size": "410m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed4",
+   "revision": "step143000",
+   "run_key": "polypythias__410m__seed-4__step-143000",
+   "seed": 4,
+   "size": "410m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed5",
+   "revision": "step143000",
+   "run_key": "polypythias__410m__seed-5__step-143000",
+   "seed": 5,
+   "size": "410m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed6",
+   "revision": "step143000",
+   "run_key": "polypythias__410m__seed-6__step-143000",
+   "seed": 6,
+   "size": "410m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed7",
+   "revision": "step143000",
+   "run_key": "polypythias__410m__seed-7__step-143000",
+   "seed": 7,
+   "size": "410m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed8",
+   "revision": "step143000",
+   "run_key": "polypythias__410m__seed-8__step-143000",
+   "seed": 8,
+   "size": "410m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed9",
+   "revision": "step143000",
+   "run_key": "polypythias__410m__seed-9__step-143000",
+   "seed": 9,
+   "size": "410m",
+   "step": 143000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed1",
+   "revision": "step4000",
+   "run_key": "polypythias__410m__seed-1__step-4000",
+   "seed": 1,
+   "size": "410m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed2",
+   "revision": "step4000",
+   "run_key": "polypythias__410m__seed-2__step-4000",
+   "seed": 2,
+   "size": "410m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed3",
+   "revision": "step4000",
+   "run_key": "polypythias__410m__seed-3__step-4000",
+   "seed": 3,
+   "size": "410m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed4",
+   "revision": "step4000",
+   "run_key": "polypythias__410m__seed-4__step-4000",
+   "seed": 4,
+   "size": "410m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed5",
+   "revision": "step4000",
+   "run_key": "polypythias__410m__seed-5__step-4000",
+   "seed": 5,
+   "size": "410m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed6",
+   "revision": "step4000",
+   "run_key": "polypythias__410m__seed-6__step-4000",
+   "seed": 6,
+   "size": "410m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed7",
+   "revision": "step4000",
+   "run_key": "polypythias__410m__seed-7__step-4000",
+   "seed": 7,
+   "size": "410m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed8",
+   "revision": "step4000",
+   "run_key": "polypythias__410m__seed-8__step-4000",
+   "seed": 8,
+   "size": "410m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed9",
+   "revision": "step4000",
+   "run_key": "polypythias__410m__seed-9__step-4000",
+   "seed": 9,
+   "size": "410m",
+   "step": 4000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed1",
+   "revision": "step16000",
+   "run_key": "polypythias__410m__seed-1__step-16000",
+   "seed": 1,
+   "size": "410m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed2",
+   "revision": "step16000",
+   "run_key": "polypythias__410m__seed-2__step-16000",
+   "seed": 2,
+   "size": "410m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed3",
+   "revision": "step16000",
+   "run_key": "polypythias__410m__seed-3__step-16000",
+   "seed": 3,
+   "size": "410m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed4",
+   "revision": "step16000",
+   "run_key": "polypythias__410m__seed-4__step-16000",
+   "seed": 4,
+   "size": "410m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed5",
+   "revision": "step16000",
+   "run_key": "polypythias__410m__seed-5__step-16000",
+   "seed": 5,
+   "size": "410m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed6",
+   "revision": "step16000",
+   "run_key": "polypythias__410m__seed-6__step-16000",
+   "seed": 6,
+   "size": "410m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed7",
+   "revision": "step16000",
+   "run_key": "polypythias__410m__seed-7__step-16000",
+   "seed": 7,
+   "size": "410m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed8",
+   "revision": "step16000",
+   "run_key": "polypythias__410m__seed-8__step-16000",
+   "seed": 8,
+   "size": "410m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed9",
+   "revision": "step16000",
+   "run_key": "polypythias__410m__seed-9__step-16000",
+   "seed": 9,
+   "size": "410m",
+   "step": 16000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed1",
+   "revision": "step36000",
+   "run_key": "polypythias__410m__seed-1__step-36000",
+   "seed": 1,
+   "size": "410m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed2",
+   "revision": "step36000",
+   "run_key": "polypythias__410m__seed-2__step-36000",
+   "seed": 2,
+   "size": "410m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed3",
+   "revision": "step36000",
+   "run_key": "polypythias__410m__seed-3__step-36000",
+   "seed": 3,
+   "size": "410m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed4",
+   "revision": "step36000",
+   "run_key": "polypythias__410m__seed-4__step-36000",
+   "seed": 4,
+   "size": "410m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed5",
+   "revision": "step36000",
+   "run_key": "polypythias__410m__seed-5__step-36000",
+   "seed": 5,
+   "size": "410m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed6",
+   "revision": "step36000",
+   "run_key": "polypythias__410m__seed-6__step-36000",
+   "seed": 6,
+   "size": "410m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed7",
+   "revision": "step36000",
+   "run_key": "polypythias__410m__seed-7__step-36000",
+   "seed": 7,
+   "size": "410m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed8",
+   "revision": "step36000",
+   "run_key": "polypythias__410m__seed-8__step-36000",
+   "seed": 8,
+   "size": "410m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed9",
+   "revision": "step36000",
+   "run_key": "polypythias__410m__seed-9__step-36000",
+   "seed": 9,
+   "size": "410m",
+   "step": 36000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed1",
+   "revision": "step72000",
+   "run_key": "polypythias__410m__seed-1__step-72000",
+   "seed": 1,
+   "size": "410m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed2",
+   "revision": "step72000",
+   "run_key": "polypythias__410m__seed-2__step-72000",
+   "seed": 2,
+   "size": "410m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed3",
+   "revision": "step72000",
+   "run_key": "polypythias__410m__seed-3__step-72000",
+   "seed": 3,
+   "size": "410m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed4",
+   "revision": "step72000",
+   "run_key": "polypythias__410m__seed-4__step-72000",
+   "seed": 4,
+   "size": "410m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed5",
+   "revision": "step72000",
+   "run_key": "polypythias__410m__seed-5__step-72000",
+   "seed": 5,
+   "size": "410m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed6",
+   "revision": "step72000",
+   "run_key": "polypythias__410m__seed-6__step-72000",
+   "seed": 6,
+   "size": "410m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed7",
+   "revision": "step72000",
+   "run_key": "polypythias__410m__seed-7__step-72000",
+   "seed": 7,
+   "size": "410m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed8",
+   "revision": "step72000",
+   "run_key": "polypythias__410m__seed-8__step-72000",
+   "seed": 8,
+   "size": "410m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed9",
+   "revision": "step72000",
+   "run_key": "polypythias__410m__seed-9__step-72000",
+   "seed": 9,
+   "size": "410m",
+   "step": 72000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 0,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed1",
+   "revision": "step108000",
+   "run_key": "polypythias__410m__seed-1__step-108000",
+   "seed": 1,
+   "size": "410m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 1,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed2",
+   "revision": "step108000",
+   "run_key": "polypythias__410m__seed-2__step-108000",
+   "seed": 2,
+   "size": "410m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 2,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed3",
+   "revision": "step108000",
+   "run_key": "polypythias__410m__seed-3__step-108000",
+   "seed": 3,
+   "size": "410m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 3,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed4",
+   "revision": "step108000",
+   "run_key": "polypythias__410m__seed-4__step-108000",
+   "seed": 4,
+   "size": "410m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 4,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed5",
+   "revision": "step108000",
+   "run_key": "polypythias__410m__seed-5__step-108000",
+   "seed": 5,
+   "size": "410m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 5,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed6",
+   "revision": "step108000",
+   "run_key": "polypythias__410m__seed-6__step-108000",
+   "seed": 6,
+   "size": "410m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 6,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed7",
+   "revision": "step108000",
+   "run_key": "polypythias__410m__seed-7__step-108000",
+   "seed": 7,
+   "size": "410m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 7,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed8",
+   "revision": "step108000",
+   "run_key": "polypythias__410m__seed-8__step-108000",
+   "seed": 8,
+   "size": "410m",
+   "step": 108000
+  },
+  {
+   "allow_patterns": [
+    "*.json",
+    "*.bin",
+    "*.safetensors",
+    "*.txt"
+   ],
+   "batch": 8,
+   "family": "gptneox",
+   "recipe": "polypythias",
+   "repo": "EleutherAI/pythia-410m-seed9",
+   "revision": "step108000",
+   "run_key": "polypythias__410m__seed-9__step-108000",
+   "seed": 9,
+   "size": "410m",
+   "step": 108000
+  }
+ ],
+ "schema": "snap-compute2-runs-v1",
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9
+ ],
+ "sizes": [
+  "14m",
+  "31m",
+  "70m",
+  "160m",
+  "410m"
+ ],
+ "steps": [
+  143000,
+  4000,
+  16000,
+  36000,
+  72000,
+  108000
+ ]
+}

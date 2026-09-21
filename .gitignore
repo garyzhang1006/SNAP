@@ -30,3 +30,10 @@ compute extra/tmp/
 # runs/ rule above must not swallow them.
 !compute extra/primary/runs/
 !compute extra/primary/runs/*.py
+
+# compute2: banks, checkpoints, scores and reduced runs stay on the box; the
+# frozen hashes and the results directory are committed.
+compute2/data/
+compute2/tmp/
+compute2/scores/
+compute2/reduced/

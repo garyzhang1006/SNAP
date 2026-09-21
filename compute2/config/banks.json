@@ -1,0 +1,36 @@
+{
+ "schema": "snap-compute2-banks-v1",
+ "olmes_commit": "5a51f502d463b8cdc4a2dcad7d7096c41ff1197e",
+ "release_repo": "allenai/DataDecide-eval-instances",
+ "release_requests_path": "requests/{task}-requests.jsonl.gz",
+ "uncond_docid_offset": 1000000,
+ "subsample_seed": 20260921,
+ "note": "Bank 1 is the release's own request text for the 37,682 items the paper scores, read from the release so the prompts are byte-identical to what DataDecide was evaluated on. Bank 2 is a disjoint item set from the same ten benchmarks, built with OLMES at the same pinned commit and the same five-shot task configs, with only the split changed and the item count capped at bank 1's count for that benchmark (an upper bound; MMLU validation holds about 1,531 items and the build summary records every shortfall). The zero-shot bank is bank 2's items with num_shots 0. Freeze the three request hashes in frozen.json before scoring any run.",
+ "bank2": [
+  {"trait": "arc_challenge", "olmes_alias": "arc_challenge:rc::olmes", "split": "train", "max_items": 1172},
+  {"trait": "arc_easy", "olmes_alias": "arc_easy:rc::olmes", "split": "train", "max_items": 2376},
+  {"trait": "boolq", "olmes_alias": "boolq:rc::olmes", "split": "train", "max_items": 3270},
+  {"trait": "csqa", "olmes_alias": "csqa:rc::olmes", "split": "train", "max_items": 1221},
+  {"trait": "hellaswag", "olmes_alias": "hellaswag:rc::olmes", "split": "train", "max_items": 10042},
+  {"trait": "mmlu", "olmes_alias": "mmlu_{subject}:rc::olmes", "split": "validation", "max_items": null},
+  {"trait": "openbookqa", "olmes_alias": "openbookqa:rc::olmes", "split": "validation", "max_items": 500},
+  {"trait": "piqa", "olmes_alias": "piqa:rc::olmes", "split": "train", "max_items": 1838},
+  {"trait": "socialiqa", "olmes_alias": "socialiqa:rc::olmes", "split": "train", "max_items": 1954},
+  {"trait": "winogrande", "olmes_alias": "winogrande:rc::olmes", "split": "train", "max_items": 1267}
+ ],
+ "bank1_splits_for_reference": {
+  "arc_challenge": "test", "arc_easy": "test", "boolq": "validation", "csqa": "validation",
+  "hellaswag": "validation", "mmlu": "test", "openbookqa": "test", "piqa": "validation",
+  "socialiqa": "validation", "winogrande": "validation"
+ },
+ "scoring": {
+  "dtype": "float32", "max_length": 2048, "contexts_per_batch": 32, "max_batch_tokens": 24000,
+  "kv_check_items": 24, "kv_check_tolerance_nats": 0.001, "transformers_pin": "4.57.1"
+ },
+ "verification": {
+  "note": "Bank-1 scores of a DataDecide run must reproduce the release's per-item margins; same thresholds as compute extra/config/tasks.json.",
+  "pass_median_abs_diff_nats_per_byte": 0.002,
+  "pass_p99_abs_diff_nats_per_byte": 0.02,
+  "pass_correct_agreement": 0.99
+ }
+}
