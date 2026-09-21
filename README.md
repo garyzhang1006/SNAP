@@ -1,4 +1,4 @@
-# seed-noise
+# SNAP 
 
 Code for *The seed is the nonshared environment*, which treats the training seed
 of a language model the way behaviour genetics treats the part of the environment
