@@ -1,11 +1,11 @@
 {
   "main.tex": {
-    "sentence_count": 213,
+    "sentence_count": 228,
     "minimum_words": 8,
-    "maximum_observed_not_a_limit": 52,
+    "maximum_observed_not_a_limit": 55,
     "fragments_under_four_words": 0,
     "share_under_eight_words": 0.0,
-    "share_under_twelve_words": 0.178,
+    "share_under_twelve_words": 0.167,
     "corpus_target_under_eight": "0.058 to 0.238",
     "prose_colons_semicolons_dashes": 0,
     "uncontracted_negatives": 0
@@ -35,7 +35,7 @@
   "pdf": {
     "pages": 40,
     "main_text_pages": 9,
-    "statements_begin": 9,
+    "statements_begin": 10,
     "empty_author_metadata": true,
     "personal_identifiers_found": false
   },
