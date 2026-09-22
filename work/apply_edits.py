@@ -1,6 +1,6 @@
 """Apply exact old-to-new prose edits to deliverables/main.tex under the style gate.
 
-usage: python3 work/apply_edits.py EDITS.py [--dry]
+usage: python3 work/apply_edits.py EDITS.py [--dry] [--tex PATH] [--backup PATH]
 
 EDITS.py defines EDITS, a list of (old, new) string pairs. Each old string must
 occur exactly once in main.tex. Every pair runs through work/style_check.py and
@@ -17,7 +17,9 @@ spec = importlib.util.spec_from_file_location('edits', sys.argv[1])
 assert spec is not None and spec.loader is not None, sys.argv[1]
 mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
 dry = '--dry' in sys.argv
-tex_path = root / 'deliverables/main.tex'
+def opt(flag, default):
+    return Path(sys.argv[sys.argv.index(flag) + 1]) if flag in sys.argv else default
+tex_path = opt('--tex', root / 'deliverables/main.tex')
 tex = tex_path.read_text()
 failures, delta, n = [], 0, 0
 for old, new in mod.EDITS:
@@ -29,7 +31,7 @@ for old, new in mod.EDITS:
         failures.append(f'{old[:60]!r}: {rep["hard_failures"]}'); continue
     delta += rep['delta_words']; n += 1
     tex = tex.replace(old, new)
-main = tex.split('\\begin{abstract}')[1].split('\\label{maintext:end}')[0]
+main = tex.split('\\begin{abstract}')[1].split('\\label{maintext:end}')[0] if '\\begin{abstract}' in tex else tex
 main = re.sub(r'\\begin\{(table|figure|algorithm)\*?\}.*?\\end\{\1\*?\}', '', main, flags=re.S)
 L = [words(s) for s in sentences(main)]
 print(f'{"would apply" if dry else "applied"} {n} edits, net words {delta:+d}')
@@ -40,7 +42,7 @@ if failures:
     print('FAILURES'); [print('  ', f) for f in failures]
     sys.exit(1)
 if not dry and n:
-    bk = root / 'work/main.before_edits.tex'
+    bk = opt('--backup', root / 'work/main.before_edits.tex')
     if not bk.exists():
         shutil.copy(tex_path, bk)
     tex_path.write_text(tex)

@@ -1,6 +1,6 @@
 """Apply judged unit rewrites to deliverables/main.tex.
 
-usage: python3 work/apply_units.py CHOSEN.json [--dry]
+usage: python3 work/apply_units.py CHOSEN.json [--dry] [--units PATH] [--tex PATH] [--backup PATH]
 
 CHOSEN.json is a list of {"id": "P08", "new_text": "..."}. Each id maps to the
 current unit text in research/style_study/units_2026-09-21.json, which must occur
@@ -11,10 +11,12 @@ kept at work/main.before_apply.tex on the first real run.
 import json, shutil, subprocess, sys
 from pathlib import Path
 root = Path(__file__).resolve().parent.parent
-units = {u['id']: u for u in json.load(open(root / 'research/style_study/units_2026-09-21.json'))}
+def opt(flag, default):
+    return Path(sys.argv[sys.argv.index(flag) + 1]) if flag in sys.argv else default
+units = {u['id']: u for u in json.load(open(opt('--units', root / 'research/style_study/units_2026-09-21.json')))}
 chosen = json.load(open(sys.argv[1]))
 dry = '--dry' in sys.argv
-tex_path = root / 'deliverables/main.tex'
+tex_path = opt('--tex', root / 'deliverables/main.tex')
 tex = tex_path.read_text()
 failures, total_delta, applied = [], 0, []
 for c in chosen:
@@ -38,7 +40,7 @@ if failures:
     print('FAILURES'); [print('  ', f) for f in failures]
     sys.exit(1)
 if not dry and applied:
-    bk = root / 'work/main.before_apply.tex'
+    bk = opt('--backup', root / 'work/main.before_apply.tex')
     if not bk.exists():
         shutil.copy(tex_path, bk)
     tex_path.write_text(tex)

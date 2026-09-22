@@ -20,13 +20,13 @@ NEG = r'\b(?:do not|does not|did not|can not|cannot|will not|is not|are not|was 
 
 def numbers(t):
     t = re.sub(r'\\ci\{([^{}]*)\}\{([^{}]*)\}', r' \1 \2 ', t)
-    t = re.sub(r'\\(?:ref|eqref|label|cite[tp]?)\{[^{}]*\}', ' ', t)
+    t = re.sub(r'\\(?:eqref|ref|supfig|suptab|label|cite[tp]?)\{[^{}]*\}', ' ', t)
     t = t.replace('{,}', ',')
     return sorted(re.findall(r'(?<![A-Za-z\\])[-+]?\d[\d,]*(?:\.\d+)?%?', t))
 
 
 def commands(t):
-    return sorted(re.findall(r'\\(?:ref|eqref|label|cite[tp]?|ci)\{[^{}]*\}(?:\{[^{}]*\})?', t))
+    return sorted(re.findall(r'\\(?:eqref|ref|supfig|suptab|label|cite[tp]?|ci)\{[^{}]*\}(?:\{[^{}]*\})?', t))
 
 
 def prose(t):
@@ -35,7 +35,7 @@ def prose(t):
     t = re.sub(r'\\ci\{[^{}]*\}\{[^{}]*\}', ' INTERVAL ', t)
     t = re.sub(r'\$[^$]*\$', ' MATH ', t)
     t = re.sub(r'\\cite[tp]\{[^{}]*\}', ' Author (2020) ', t)
-    t = re.sub(r'\\(?:ref|eqref)\{[^{}]*\}', ' 1 ', t)
+    t = re.sub(r'\\(?:eqref|ref|supfig|suptab)\{[^{}]*\}', ' 1 ', t)
     t = re.sub(r'\\label\{[^{}]*\}', '', t)
     t = re.sub(r'\\[a-zA-Z]+\*?', '', t).replace('{', '').replace('}', '').replace('~', ' ').replace('\\%', '%')
     t = t.replace('et al.', 'et al').replace('e.g.', 'eg').replace('i.e.', 'ie')
@@ -43,8 +43,25 @@ def prose(t):
     return t
 
 
+def sentence_units(t):
+    """(sentence, exempt) pairs; a piece cut by a display-equation boundary rather than by
+    terminal punctuation is a lead-in or lead-out and is exempt from the eight-word floor."""
+    out = []
+    for seg in re.split(r'\n\s*\n', prose(t)):
+        pieces = [s.strip() for s in re.split(r'(?<=[.!?])\s+', seg) if re.search(r'[A-Za-z]', s)]
+        for s in pieces:
+            out.append((s, not re.search(r'[.!?]\s*$', s)))
+    return out
+
+
 def sentences(t):
-    return [s.strip() for s in re.split(r'(?<=[.!?])\s+|\n\s*\n', prose(t)) if re.search(r'[A-Za-z]', s)]
+    return [s for s, _ in sentence_units(t)]
+
+
+def maths(t):
+    disp = [m.group(0) for m in re.finditer(r'\\begin\{(equation|align)\*?\}.*?\\end\{\1\*?\}|\\\[.*?\\\]', t, flags=re.S)]
+    inline = re.findall(r'\$[^$]+\$', re.sub(r'\\begin\{(equation|align)\*?\}.*?\\end\{\1\*?\}', ' ', t, flags=re.S))
+    return sorted(disp), sorted(inline)
 
 
 def words(s):
@@ -68,8 +85,10 @@ def check(old, new):
     negs = re.findall(NEG, p, re.I)
     if negs:
         hard.append(f'uncontracted negatives: {negs}')
+    if maths(old) != maths(new):
+        hard.append('math differs: display or inline mathematics changed, moved or dropped')
     ss = sentences(new)
-    short = [(words(s), s) for s in ss if words(s) < 8]
+    short = [(words(s), s) for s, exempt in sentence_units(new) if words(s) < 8 and not exempt]
     if short:
         hard.append(f'sentences under eight words: {short}')
     L = [words(s) for s in ss]

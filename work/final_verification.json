@@ -1,8 +1,8 @@
 {
   "main.tex": {
-    "sentence_count": 228,
+    "sentence_count": 233,
     "minimum_words": 8,
-    "maximum_observed_not_a_limit": 55,
+    "maximum_observed_not_a_limit": 53,
     "fragments_under_four_words": 0,
     "share_under_eight_words": 0.0,
     "share_under_twelve_words": 0.167,

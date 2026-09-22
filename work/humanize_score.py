@@ -4,8 +4,9 @@ import json, re, subprocess, sys
 from pathlib import Path
 root = Path(__file__).resolve().parent.parent
 keys = {k: f'{a.replace("~", " ")} ({y})' for a, y, k in json.loads((root / 'work' / 'citation_keys.json').read_text())}
-name = sys.argv[1] if len(sys.argv) > 1 else 'main.tex'
-t = (root / 'deliverables' / name).read_text()
+arg = Path(sys.argv[1] if len(sys.argv) > 1 else 'main.tex')
+name = arg.name
+t = (arg if arg.is_absolute() else root / 'deliverables' / name).read_text()
 if name == 'main.tex':
     t = t[t.index('\\begin{abstract}'):t.index('\\label{maintext:end}')]
 t = re.sub(r'\\begin\{(table|figure|algorithm)\}\*?.*?\\end\{\1\}', ' ', t, flags=re.S)
