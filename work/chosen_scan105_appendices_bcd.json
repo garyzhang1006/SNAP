@@ -1,0 +1,26 @@
+[
+ {
+  "id": "B31",
+  "new_text": "Repairing only those diagonals gives distances of 5.499 and 6.339. Restricting the comparison to jointly defined entries gives 4.374 and 4.593, still above the planned threshold of 0.5. The threshold alone discriminates little between ten-trait matrices, and the entrywise comparisons provide a more useful description.",
+  "group": "Design details 4",
+  "verdict": 1
+ },
+ {
+  "id": "B32",
+  "new_text": "The off-diagonal association between the two matrices is 0.756 for margins and 0.345 for accuracy. Mean defined $R_E$ entries are 0.281 and 0.273, compared with all-pair $R_P$ means of 0.750 and 0.754, and on matching pairs the $R_P$ means are 0.743 and 0.769. The all-pair comparison therefore differs in scale by factors of approximately 2.7 and 2.8. The unadjusted proxy predicts a mean margin aggregate standard deviation of 0.0072, compared with the reported value of 0.0057.",
+  "group": "Design details 4",
+  "verdict": 0
+ },
+ {
+  "id": "B35",
+  "new_text": "The rank-one model has the lowest margin point error and full covariance the lowest accuracy point error. Paired recipe-bootstrap intervals with 2,000 refitted draws separate neither from its runner-up. The unrescaled phenotypic plug-in has the largest error on both scales, and rescaling its off-diagonals on training folds reduces that error but needs replicate information and still trails the best model.",
+  "group": "Design details 4",
+  "verdict": 1
+ },
+ {
+  "id": "B37",
+  "new_text": "On margins, P1, P1G, and P3 each lower the error relative to independence by about 0.03, with intervals of $-0.058$ to $-0.001$, $-0.059$ to $-0.002$, and $-0.060$ to $-0.004$. Between 95 and 97 percent of draws put the reduction beyond 0.005. However, the P1 interval reaches zero when nonpositive held-out variances are filled from training folds. The P1 minus P3 interval runs from $-0.003$ to 0.012. These data don't separate the rank-one model from the full matrix. On accuracy, each of the four intervals for a difference from independence includes zero, with the full matrix minus independence running from $-0.017$ to 0.023.",
+  "group": "Design details 4",
+  "verdict": 1
+ }
+]
