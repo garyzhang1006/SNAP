@@ -1,0 +1,171 @@
+{
+ "results": {
+  "margin": {
+   "observed": {
+    "lambda_full": 1.2439499117191137,
+    "excess_lambda_scale": 0.24394991171911373,
+    "cross_format_point": 0.9211891046274687,
+    "cross_format_wild": {
+     "point": 0.9211891046274687,
+     "lo": 0.8006569396931508,
+     "hi": 1.034729865199787,
+     "se": 0.04389812746262408,
+     "method": "wild cluster bootstrap-t (G=25)",
+     "n_clusters": 25
+    },
+    "matches_snap_r2_r1_50": true
+   },
+   "explain_share_q_star": 1.4224827977168986,
+   "explain_induced_cross_format": 1.1133002034300643,
+   "bound_at_observed_upper_limit": {
+    "limit": 1.034729865199787,
+    "largest_share": 0.4198218091972702,
+    "binding": true,
+    "induced_cross_format_diagnostic": 1.034729865199787,
+    "within_battery_lambda_from_share": 1.077756576498004,
+    "fraction_of_excess_lambda_scale": 0.31873992472493123,
+    "fraction_of_excess_covariance_scale": 0.29513313614132203,
+    "share_exceeds_one": false
+   },
+   "bound_at_paper_upper_limit_rounded": {
+    "limit": 1.035,
+    "largest_share": 0.42314342456348747,
+    "binding": true,
+    "induced_cross_format_diagnostic": 1.035,
+    "within_battery_lambda_from_share": 1.0783494281476291,
+    "fraction_of_excess_lambda_scale": 0.3211701434753599,
+    "fraction_of_excess_covariance_scale": 0.2974682191184579,
+    "share_exceeds_one": false
+   },
+   "bound_at_observed_point": {
+    "limit": 0.9211891046274687,
+    "largest_share": 0.0,
+    "binding": true,
+    "note": "D(q) >= 1 for every q >= 0, so no positive uniform share keeps the diagnostic at or below a limit under 1; under zero seed covariance the observed value below 1 already requires negative cross-format seed covariance",
+    "within_battery_lambda_from_share": 1.0,
+    "fraction_of_excess_lambda_scale": 0.0,
+    "fraction_of_excess_covariance_scale": 0.0
+   },
+   "bound_at_paper_point_rounded": {
+    "limit": 0.921,
+    "largest_share": 0.0,
+    "binding": true,
+    "note": "D(q) >= 1 for every q >= 0, so no positive uniform share keeps the diagnostic at or below a limit under 1; under zero seed covariance the observed value below 1 already requires negative cross-format seed covariance",
+    "within_battery_lambda_from_share": 1.0,
+    "fraction_of_excess_lambda_scale": 0.0,
+    "fraction_of_excess_covariance_scale": 0.0
+   },
+   "implied_cross_format_seed_cov_sum_zero_share": -0.0003995979766877743,
+   "implied_cross_format_seed_cov_sum_at_upper_bound_share": -0.0005860970856482341,
+   "negative_v_clipped_to_zero": 0,
+   "sums": {
+    "sum_T": 0.004083877356163356,
+    "sum_U": 0.0026391671932770246,
+    "sum_T_cross_mask": 0.0022395692165892503,
+    "N": 125,
+    "per_config_offdiag_all_sqrtvv_over_K2": 8.125006025830938e-06,
+    "per_config_offdiag_cross_sqrtvv_over_K2": 3.5538717593935325e-06
+   }
+  },
+  "accuracy": {
+   "observed": {
+    "lambda_full": 1.0783733870898096,
+    "excess_lambda_scale": 0.07837338708980957,
+    "cross_format_point": 0.9651889498004318,
+    "cross_format_wild": {
+     "point": 0.9651889498004318,
+     "lo": 0.8483992935798913,
+     "hi": 1.0634380978745253,
+     "se": 0.046667765189171116,
+     "method": "wild cluster bootstrap-t (G=25)",
+     "n_clusters": 25
+    },
+    "matches_snap_r2_r1_50": true
+   },
+   "explain_share_q_star": 0.052558551570596315,
+   "explain_induced_cross_format": 1.0468755758040358,
+   "bound_at_observed_upper_limit": {
+    "limit": 1.0634380978745253,
+    "largest_share": 0.07170458495558704,
+    "binding": false,
+    "induced_cross_format_diagnostic": 1.0634380978745253,
+    "within_battery_lambda_from_share": 1.1055435038866464,
+    "fraction_of_excess_lambda_scale": 1.3466752912656694,
+    "fraction_of_excess_covariance_scale": 1.3642800802695998,
+    "share_exceeds_one": false
+   },
+   "bound_at_paper_upper_limit_rounded": {
+    "limit": 1.063,
+    "largest_share": 0.07119428066518974,
+    "binding": false,
+    "induced_cross_format_diagnostic": 1.063,
+    "within_battery_lambda_from_share": 1.1048279987636431,
+    "fraction_of_excess_lambda_scale": 1.337545851419165,
+    "fraction_of_excess_covariance_scale": 1.3545708269673686,
+    "share_exceeds_one": false
+   },
+   "bound_at_observed_point": {
+    "limit": 0.9651889498004318,
+    "largest_share": 0.0,
+    "binding": true,
+    "note": "D(q) >= 1 for every q >= 0, so no positive uniform share keeps the diagnostic at or below a limit under 1; under zero seed covariance the observed value below 1 already requires negative cross-format seed covariance",
+    "within_battery_lambda_from_share": 1.0,
+    "fraction_of_excess_lambda_scale": 0.0,
+    "fraction_of_excess_covariance_scale": 0.0
+   },
+   "bound_at_paper_point_rounded": {
+    "limit": 0.965,
+    "largest_share": 0.0,
+    "binding": true,
+    "note": "D(q) >= 1 for every q >= 0, so no positive uniform share keeps the diagnostic at or below a limit under 1; under zero seed covariance the observed value below 1 already requires negative cross-format seed covariance",
+    "within_battery_lambda_from_share": 1.0,
+    "fraction_of_excess_lambda_scale": 0.0,
+    "fraction_of_excess_covariance_scale": 0.0
+   },
+   "implied_cross_format_seed_cov_sum_zero_share": -0.00019442583348349383,
+   "implied_cross_format_seed_cov_sum_at_upper_bound_share": -0.0005664525488702633,
+   "negative_v_clipped_to_zero": 0,
+   "sums": {
+    "sum_T": 0.00330499535460678,
+    "sum_U": 0.002842055341688305,
+    "sum_T_cross_mask": 0.002647629508204811,
+    "N": 125,
+    "per_config_offdiag_all_sqrtvv_over_K2": 7.046465309024463e-05,
+    "per_config_offdiag_cross_sqrtvv_over_K2": 4.150660274984629e-05
+   }
+  }
+ },
+ "formats": {
+  "arc_challenge": "mc",
+  "arc_easy": "mc",
+  "boolq": "yesno",
+  "csqa": "mc",
+  "hellaswag": "cloze",
+  "mmlu": "mc",
+  "openbookqa": "mc",
+  "piqa": "cloze",
+  "socialiqa": "mc",
+  "winogrande": "cloze"
+ },
+ "assumption_zero_seed_covariance": "Zero off-diagonal cross-benchmark seed covariance: every off-diagonal cross-half covariance is attributed to the uniform shared item component, and the observed sum U is the denominator. Negative cross-format seed covariance would offset the component, so under that alternative a larger share is compatible with the observed diagnostic and these bounds do not hold.",
+ "injection_model": "per-half item noise on trait k is sigma_k (sqrt(q) f + sqrt(1-q) z_k); f is one scalar per run shared by all ten benchmarks and identical in both halves (rho_f = 1); z_k independent. Adds q sigma_j sigma_k to every cross-half covariance entry. sigma_k^2 = seednoise.reliability.variance_components(pop, name).noise2. Same as snap-r3-r2-02.",
+ "formulas": {
+  "lambda": "sqrt(1 + N q A / sum U)",
+  "cross_format": "sqrt(1 + N q C / sum U)",
+  "largest_share": "(L^2 - 1) sum U / (N C) for L >= 1, else 0"
+ },
+ "observed_source": "results/snap-r2-r1-50/r1_50_crossformat_boot.json (recomputed and asserted equal)",
+ "paper_values": {
+  "cross_format_margin": [
+   0.921,
+   0.801,
+   1.035
+  ],
+  "cross_format_accuracy": [
+   0.965,
+   0.848,
+   1.063
+  ]
+ },
+ "wall_seconds": 23.853885173797607
+}

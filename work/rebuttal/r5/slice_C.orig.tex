@@ -1,0 +1,68 @@
+\section{Results}
+\subsection{Full-battery estimates and composition}
+\label{sec:composition}
+Full-battery margins exclude independence, while accuracy gives only a bound. Inflation reaches 1.244 on margins, where the raw interval excludes one, and 1.078 on accuracy, where it includes one (Table~\ref{tab:primary}). At the accuracy upper limit of 1.157 this fixed battery has $\bar r_E$ of 0.038 and $K_{\mathrm{eff}}$ of 7.47 under the stated measurement model.
+
+\begin{table}[!htb]
+\centering
+\caption{Inflation estimates across 125 configurations with nominal 95\% recipe-cluster intervals, or cluster-robust $t(4)$ intervals over the five size bands where marked. The auxiliary contrast compares the two auxiliary runs and removes the default-versus-auxiliary batch component. The aggregate standard deviation $\sigma_{\mathrm{agg}}$ of the battery mean under the fitted covariance (Appendix~\ref{app:derivations}) uses margin units for margins and fractions for accuracy.}
+\label{tab:primary}
+\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{llrrrr}
+\toprule
+Score & Estimate & $\widehat\Lam$ & Interval & $K_{\mathrm{eff}}$ & $\sigma_{\mathrm{agg}}$\\
+\midrule
+Margin & Raw & 1.244 & \ci{1.143}{1.338} & 6.46 & 0.00572\\
+Margin & Auxiliary contrast & 1.256 & \ci{1.090}{1.400} & 6.34 & 0.00562\\
+Margin & Size-band clusters & 1.244 & \ci{1.030}{1.426} & 6.46 & 0.00572\\
+Accuracy & Raw & 1.078 & \ci{0.993}{1.157} & 8.60 & 0.00514\\
+Accuracy & Auxiliary contrast & 1.084 & \ci{0.939}{1.207} & 8.51 & 0.00516\\
+Accuracy & Size-band clusters & 1.078 & \ci{0.961}{1.184} & 8.60 & 0.00514\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Accuracy carries little seed signal at the benchmark level, where reliability averages 0.324 against 0.652 on margins, and Table~\ref{tab:original3} and Appendix~\ref{app:supplementary} give the per-benchmark diagnostics, none of which enter the headline ratio because it uses covariance products directly.
+
+The factor belongs to this battery, since margin correlations track scoring format, averaging 0.624 within formats and 0.007 across them (Figure~\ref{fig:covariance} in Appendix~\ref{app:supplementary}), and BoolQ, the only benchmark in its format, carries 68\% of the margin covariance trace and 84\% of the accuracy trace. Removing it raises margin inflation to 1.786 \ci{1.689}{1.877}, and accuracy inflation to 1.558 \ci{1.412}{1.687}, while removing CommonsenseQA instead gives inflation estimates of 1.096 and 1.014. The removal estimates imply off-diagonal terms involving BoolQ summing to about $-0.15$ of the margin trace and $-0.06$ of the accuracy trace. Its removal lowers the denominator of Equation~\ref{eq:lambda} more than the numerator, which raises the factor while the margin aggregate standard deviation falls from 0.00572 to 0.00516, because the factor compares each battery with independence at its own marginal variances. Lowering BoolQ's weight from a tenth to 0.0867 already stops the accuracy interval including one (Appendix~\ref{app:supplementary}).
+
+Shared passages don't account for BoolQ's trace share, although that check can't reach other shared item effects. We recovered the 2,938 passages behind BoolQ's 3,270 questions from the release's request files, and assigning each passage whole to one half changes the two estimates by $-0.0002$ and $-0.0001$ on average across fifty re-splits. The BoolQ diagonal moves by 0.03\% and 0.15\% (Appendix~\ref{app:derivations}). A permutation that reshuffles each run's item deviations inside every group leaves all trait scores fixed and breaks the tie between particular items and runs. Across 2,000 such permutations the permuted estimates sit about 0.001 below the observed margin value and 0.002 below accuracy, so item-level sharing accounts for little of either, although an effect carried by every item of a benchmark survives this permutation untouched.
+
+Benchmark removal moves our estimates more than recipe or size removal. Recipe removal moves margin inflation between 1.207 and 1.256, and all 300 recipe-pair deletions keep the interval above one, with estimates from 1.177 to 1.263 and no lower limit below 1.037 (Appendix~\ref{app:supplementary}). Size removal moves it between 1.178 and 1.289, where the deletion of 530M gives \ci{0.993}{1.338} and stops excluding one. The corresponding accuracy ranges run from 1.065 to 1.099 and from 1.047 to 1.115. Among equal-weight subsets of the same size, those containing BoolQ average 0.115 lower margin inflation at two benchmarks and 0.596 lower at nine than those without it. Figure~\ref{fig:composition} shows every single-benchmark removal with its interval on both scales, and Appendix~\ref{app:composition} separates benchmark count, identity, and weights. Our design treats this battery as fixed, and that spread isn't a distribution over benchmark collections.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/composition.pdf}
+\caption{Inflation after removing each benchmark in turn, with nominal 95\% recipe-cluster intervals. The solid line marks one and the dashed line the full ten-benchmark estimate. On margins every removal leaves an interval that excludes one, and the estimate runs from 1.096 without CommonsenseQA to 1.786 without BoolQ.}
+\label{fig:composition}
+\end{figure}
+
+
+\subsection{A pre-specified test on held-out tasks}
+\label{sec:heldout}
+The pre-specified rule fails on held-out tasks. Held-out margin inflation on the 225 runs at 530M, 750M, and 1B is 1.217 \ci{0.872}{1.498}, while the original ten on the same runs give 1.240 \ci{1.054}{1.397} and pass it, a comparison we specified before any held-out score existed. The two point estimates differ by about 0.02, the held-out interval is 0.626 wide against 0.343 for the original, and our rule reads the lower limit.
+
+The protocol named SciQ, MedMCQA, and two AGIEval \citep{zhong2024agieval} reasoning tasks, with a pre-specified rule replacing any task whose 1B pilot accuracy fell below chance plus 0.02, a bar both AGIEval tasks narrowly missed (Appendix~\ref{app:heldout}). The battery became SciQ, MedMCQA, and multiple-choice versions of DROP and CoQA, with 1,000 items in each of the four tasks and items sharing a passage or story kept in the same half. Our GPU budget couldn't cover all 375 released checkpoints, and our protocol's scope rule limited the test to those runs at the steps of the primary analysis. The test passes only if the lower 95\% limit exceeds one, and Table~\ref{tab:heldout} reports the test at its pre-specified scope. Every partial scope we read before the full one also failed the rule, with held-out margin estimates between 1.152 and 1.203, and Appendix~\ref{app:heldout} lists all five with a power simulation of the rule at each scope.
+
+\begin{table}[!htb]
+\centering
+\caption{The pre-specified test at 530M, 750M, and 1B, with nominal 95\% recipe-cluster intervals over 75 configurations. The auxiliary contrast compares the two auxiliary runs, the original rows read the released runs at the same sizes as a comparison specified before any held-out score existed, and the last row gives the median over 60 four-benchmark subsets of the original battery across all five sizes with subset 5th to 95th percentiles, not an interval, from the committed battery-size curve.}
+\label{tab:heldout}
+\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{llrr}
+\toprule
+Battery & Score & $\widehat\Lam$ & Interval\\
+\midrule
+Held-out, four tasks & Margin & 1.217 & \ci{0.872}{1.498}\\
+Held-out, four tasks & Accuracy & 1.220 & \ci{1.066}{1.359}\\
+Held-out, auxiliary contrast & Margin & 1.181 & \ci{0.906}{1.410}\\
+Original, ten benchmarks & Margin & 1.240 & \ci{1.054}{1.397}\\
+Original, ten benchmarks & Accuracy & 1.097 & \ci{0.922}{1.246}\\
+Original, auxiliary contrast & Margin & 1.273 & \ci{0.738}{1.629}\\
+Original, four-benchmark subsets, all sizes (percentiles) & Margin & 1.176 & 0.982--1.476\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+As an exploratory result, the held-out accuracy interval excludes one while the margin interval doesn't, so which scale's interval excludes one depends on the battery. Accuracy inflation is 1.220 \ci{1.066}{1.359}, above the original ten's 1.097 at the same scope. Removing CoQA lowers held-out margin inflation to 1.090, while removing any other task leaves it between 1.120 and 1.213, and only the removal of DROP, at 1.213 \ci{1.035}{1.377}, excludes one, so the held-out estimate depends on battery composition as the original does (Appendix~\ref{app:heldout}).
+

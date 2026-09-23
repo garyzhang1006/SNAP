@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1790152195.53919 "main.tex" "main.pdf" "main" 1790152196.07078 0
+["pdflatex"] 1790153890.76851 "main.tex" "main.pdf" "main" 1790153891.29707 0
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1772380719 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/fontname/texfonts.map" 1772380719 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1772380719 5541360 f183aac233c4cd1e5ef882fcbe8e7096 ""
@@ -129,15 +129,15 @@
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/xcolor/xcolor.sty" 1772380719 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/web2c/texmf.cnf" 1772380719 43633 14bbc273cebd985e64ab1a698333eaf9 ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1772380719 3636956 5168b884cb430e6a6336cfea08fa659a ""
-  "appendices_bcd.tex" 1790152123.32395 118901 070a311cabd0e826d8e4710bed950993 ""
+  "appendices_bcd.tex" 1790153775.78458 119748 6a17855c12b5b91b833d35dea0306c70 ""
   "appendix_a.tex" 1790146414.61497 16257 46a0fb29e7bfe930e6e4450b44b14f8e ""
   "fancyhdr.sty" 1789356740.9372 20521 e5d13d98d57bd53d4fed3aa61bd29c86 ""
   "figures/composition.pdf" 1790014699.2886 22100 10ca1607b3dfb8c7026874094246bf12 ""
   "figures/covariance.pdf" 1789606883.48734 80152 2990523da84a92ffd4ded57ac9c5a0e9 ""
   "iclr2027_conference.sty" 1789356740.9369 9025 1b4bb9c2e12c712c56f4eb1232b88dd6 ""
-  "main.aux" 1790152196.00448 29745 c3709c81b947e2ae0ae77d9feff1d1ce "pdflatex"
-  "main.out" 1790152196.00579 7086 a2456f71bca9a17eeaddfe0139492ec8 "pdflatex"
-  "main.tex" 1790152194.34482 47610 c8024c17271b74fb02bfff7e1bdff975 ""
+  "main.aux" 1790153891.23081 29833 1b805c46b3cbd1e139368ff060ff27d3 "pdflatex"
+  "main.out" 1790153891.23209 7086 a2456f71bca9a17eeaddfe0139492ec8 "pdflatex"
+  "main.tex" 1790153890.13407 48572 6d531feb73e55b3574c32dcda71fa155 ""
   "natbib.sty" 1789356740.9375 45154 40088ce024445d7ee2bca59e704cdd01 ""
   "references.tex" 1790152050.69811 19457 40e4d7495f836e8e51d658b0ff895252 ""
   "supplement_extended.aux" 1790043435.50818 25129 9c8fb707d556e5451ecdd8ecbfb79c3a ""
