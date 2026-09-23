@@ -4,6 +4,11 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
 \citation{magnusson2025}
+\citation{welbl2017sciq}
+\citation{pal2022medmcqa}
+\citation{dua2019drop}
+\citation{reddy2019coqa}
+\citation{gu2025olmes}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Estimand and estimator}{2}{section.2}\protected@file@percent }
 \newlabel{sec:estimator}{{2}{2}{Estimand and estimator}{section.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Runs and score scales}{2}{subsection.2.1}\protected@file@percent }
@@ -14,9 +19,10 @@
 \newlabel{eq:tu}{{4}{3}{Cross-half covariance}{equation.4}{}}
 \newlabel{eq:lambda}{{5}{3}{Cross-half covariance}{equation.5}{}}
 \newlabel{eq:effective}{{6}{3}{Cross-half covariance}{equation.6}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces SNAP measurement recipe for a fixed battery of $K$ benchmarks scored on $R$ replicate runs per configuration. The primary analysis used a random frozen split, checked against a passage-aware one, and the pre-specified test kept passage-linked items in one half.}}{4}{algorithm.1}\protected@file@percent }
+\citation{clark2018arc,clark2019boolq,talmor2019commonsenseqa,zellers2019hellaswag,hendrycks2021mmlu,mihaylov2018openbookqa,bisk2020piqa,sap2019socialiqa,sakaguchi2020winogrande}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces SNAP measurement recipe for a fixed battery of $K$ benchmarks scored on $R$ replicate runs per configuration.}}{4}{algorithm.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{alg:snap}{{1}{4}{SNAP measurement recipe for a fixed battery of $K$ benchmarks scored on $R$ replicate runs per configuration. The primary analysis used a random frozen split, checked against a passage-aware one, and the pre-specified test kept passage-linked items in one half}{algorithm.1}{}}
+\newlabel{alg:snap}{{1}{4}{SNAP measurement recipe for a fixed battery of $K$ benchmarks scored on $R$ replicate runs per configuration}{algorithm.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Interval inference}{4}{subsection.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Data and analysis scope}{4}{section.3}\protected@file@percent }
 \newlabel{sec:data}{{3}{4}{Data and analysis scope}{section.3}{}}
@@ -26,8 +32,9 @@
 \newlabel{sec:composition}{{4.1}{5}{Full-battery estimates and composition}{subsection.4.1}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Inflation estimates across 125 configurations with nominal 95\% recipe-cluster intervals, or cluster-robust $t(4)$ intervals over the five size bands where marked. The auxiliary contrast compares the two auxiliary runs and removes the default-versus-auxiliary batch component. The aggregate standard deviation $\sigma _{\mathrm  {agg}}$ of the battery mean under the fitted covariance (Appendix~\ref {app:derivations}) uses margin units for margins and fractions for accuracy.}}{5}{table.caption.1}\protected@file@percent }
 \newlabel{tab:primary}{{1}{5}{Inflation estimates across 125 configurations with nominal 95\% recipe-cluster intervals, or cluster-robust $t(4)$ intervals over the five size bands where marked. The auxiliary contrast compares the two auxiliary runs and removes the default-versus-auxiliary batch component. The aggregate standard deviation $\sigma _{\mathrm {agg}}$ of the battery mean under the fitted covariance (Appendix~\ref {app:derivations}) uses margin units for margins and fractions for accuracy}{table.caption.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}A pre-specified test on unseen tasks}{6}{subsection.4.2}\protected@file@percent }
-\newlabel{sec:heldout}{{4.2}{6}{A pre-specified test on unseen tasks}{subsection.4.2}{}}
+\citation{zhong2024agieval}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}A pre-specified test on held-out tasks}{6}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:heldout}{{4.2}{6}{A pre-specified test on held-out tasks}{subsection.4.2}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces The pre-specified test at 530M, 750M, and 1B, with nominal 95\% recipe-cluster intervals over 75 configurations. The auxiliary contrast compares the two auxiliary runs, the original rows read the released runs at the same sizes as a comparison specified before any held-out score existed, and the last row gives the median over 60 four-benchmark subsets of the original battery across all five sizes with subset 5th to 95th percentiles, not an interval, from the committed battery-size curve.}}{6}{table.caption.3}\protected@file@percent }
 \newlabel{tab:heldout}{{2}{6}{The pre-specified test at 530M, 750M, and 1B, with nominal 95\% recipe-cluster intervals over 75 configurations. The auxiliary contrast compares the two auxiliary runs, the original rows read the released runs at the same sizes as a comparison specified before any held-out score existed, and the last row gives the median over 60 four-benchmark subsets of the original battery across all five sizes with subset 5th to 95th percentiles, not an interval, from the committed battery-size curve}{table.caption.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Inflation after removing each benchmark in turn, with nominal 95\% recipe-cluster intervals. The solid line marks one and the dashed line the full ten-benchmark estimate. On margins every removal leaves an interval that excludes one, and the estimate runs from 1.096 without CommonsenseQA to 1.786 without BoolQ.}}{7}{figure.caption.2}\protected@file@percent }
@@ -65,84 +72,101 @@
 \newlabel{maintext:end}{{6}{10}{Discussion and limitations}{section.6}{}}
 \bibcite{bell2002}{{2}{2002}{{Bell and McCaffrey}}{{}}}
 \bibcite{biderman2023}{{3}{2023}{{Biderman et~al.}}{{}}}
-\bibcite{bouthillier2021}{{4}{2021}{{Bouthillier et~al.}}{{}}}
-\bibcite{brennan2001}{{5}{2001}{{Brennan}}{{}}}
-\bibcite{brown1910}{{6}{1910}{{Brown}}{{}}}
-\bibcite{bui2025}{{7}{2025}{{Bui et~al.}}{{}}}
-\bibcite{burnell2023}{{8}{2023a}{{Burnell et~al.}}{{}}}
-\bibcite{burnell2023revealing}{{9}{2023b}{{Burnell et~al.}}{{}}}
-\bibcite{cameron2008}{{10}{2008}{{Cameron et~al.}}{{}}}
-\bibcite{campbell1959}{{11}{1959}{{Campbell and Fiske}}{{}}}
-\bibcite{card2020}{{12}{2020}{{Card et~al.}}{{}}}
-\bibcite{cheverud1988}{{13}{1988}{{Cheverud}}{{}}}
-\bibcite{cheverud2001}{{14}{2001}{{Cheverud}}{{}}}
-\bibcite{cronbach1951}{{15}{1951}{{Cronbach}}{{}}}
-\bibcite{dehghani2021}{{16}{2021}{{Dehghani et~al.}}{{}}}
-\bibcite{demsar2006}{{17}{2006}{{Dem\v {s}ar}}{{}}}
-\bibcite{dodge2020}{{18}{2020}{{Dodge et~al.}}{{}}}
-\bibcite{dror2017}{{19}{2017}{{Dror et~al.}}{{}}}
-\bibcite{dufour2026}{{20}{2026}{{Dufour et~al.}}{{}}}
-\bibcite{fehlauer2025}{{21}{2025}{{Fehlauer et~al.}}{{}}}
-\bibcite{gorman2019}{{22}{2019}{{Gorman and Bedrick}}{{}}}
-\bibcite{hagmann2023}{{23}{2023}{{Hagmann et~al.}}{{}}}
-\bibcite{hardy2026}{{24}{2026}{{Hardy et~al.}}{{}}}
-\bibcite{haupt2026}{{25}{2026}{{Haupt et~al.}}{{}}}
-\bibcite{hedges2010}{{26}{2010}{{Hedges et~al.}}{{}}}
-\bibcite{heineman2025}{{27}{2025}{{Heineman et~al.}}{{}}}
-\bibcite{henderson2018}{{28}{2018}{{Henderson et~al.}}{{}}}
-\bibcite{hochlehnert2025}{{29}{2025}{{Hochlehnert et~al.}}{{}}}
-\bibcite{hofmann2025}{{30}{2025}{{Hofmann et~al.}}{{}}}
-\bibcite{jordan2024}{{31}{2024}{{Jordan}}{{}}}
-\bibcite{karamcheti2021}{{32}{2021}{{Karamcheti et~al.}}{{}}}
-\bibcite{kipnis2024}{{33}{2025}{{Kipnis et~al.}}{{}}}
-\bibcite{kish1965}{{34}{1965}{{Kish}}{{}}}
-\bibcite{kohli2026}{{35}{2026}{{Kohli}}{{}}}
-\bibcite{li2005}{{36}{2005}{{Li and Ji}}{{}}}
-\bibcite{mackinnon2017}{{37}{2017}{{MacKinnon and Webb}}{{}}}
-\bibcite{madaan2024}{{38}{2024}{{Madaan et~al.}}{{}}}
-\bibcite{magnusson2025}{{39}{2025}{{Magnusson et~al.}}{{}}}
-\bibcite{martin1977}{{40}{1977}{{Martin and Eaves}}{{}}}
-\bibcite{mccoy2020}{{41}{2020}{{McCoy et~al.}}{{}}}
-\bibcite{messing2026}{{42}{2026}{{Messing}}{{}}}
-\bibcite{miller2024}{{43}{2024}{{Miller}}{{}}}
-\bibcite{nyholt2004}{{44}{2004}{{Nyholt}}{{}}}
-\bibcite{reimers2017}{{45}{2017}{{Reimers and Gurevych}}{{}}}
-\bibcite{ruan2024}{{46}{2024}{{Ruan et~al.}}{{}}}
-\bibcite{schaeffer2023}{{47}{2023}{{Schaeffer et~al.}}{{}}}
-\bibcite{searle1992}{{48}{1992}{{Searle et~al.}}{{}}}
-\bibcite{sellam2022}{{49}{2022}{{Sellam et~al.}}{{}}}
-\bibcite{sha2026}{{50}{2026}{{Sha and Zhao}}{{}}}
-\bibcite{spearman1904}{{51}{1904}{{Spearman}}{{}}}
-\bibcite{spearman1910}{{52}{1910}{{Spearman}}{{}}}
-\bibcite{teamolmo2025}{{53}{2025}{{Team OLMo et~al.}}{{}}}
-\bibcite{vanderwal2025}{{54}{2025}{{van der Wal et~al.}}{{}}}
-\bibcite{zhao2026}{{55}{2026}{{Zhao et~al.}}{{}}}
-\bibcite{zhou2020}{{56}{2020}{{Zhou et~al.}}{{}}}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Derivations and interpretation}{15}{appendix.A}\protected@file@percent }
-\newlabel{app:derivations}{{A}{15}{Derivations and interpretation}{appendix.A}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}What SNAP estimates}{15}{subsection.A.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Notation}{15}{subsection.A.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Notation for the cross-half construction and its empirical diagnostics. The coefficient $\bar  r_E$ uses covariance normalisation, which differs from mean correlation under unequal marginal variances.}}{15}{table.caption.8}\protected@file@percent }
-\newlabel{tab:notation}{{3}{15}{Notation for the cross-half construction and its empirical diagnostics. The coefficient $\bar r_E$ uses covariance normalisation, which differs from mean correlation under unequal marginal variances}{table.caption.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Cross-half identity and its assumptions}{15}{subsection.A.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.4}Covariance coefficient and effective count}{16}{subsection.A.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.5}Pooling and finite-sample bias}{17}{subsection.A.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.6}Permutation reference}{17}{subsection.A.6}\protected@file@percent }
+\bibcite{bisk2020piqa}{{4}{2020}{{Bisk et~al.}}{{}}}
+\bibcite{bouthillier2021}{{5}{2021}{{Bouthillier et~al.}}{{}}}
+\bibcite{brennan2001}{{6}{2001}{{Brennan}}{{}}}
+\bibcite{brown1910}{{7}{1910}{{Brown}}{{}}}
+\bibcite{bui2025}{{8}{2025}{{Bui et~al.}}{{}}}
+\bibcite{burnell2023}{{9}{2023a}{{Burnell et~al.}}{{}}}
+\bibcite{burnell2023revealing}{{10}{2023b}{{Burnell et~al.}}{{}}}
+\bibcite{cameron2008}{{11}{2008}{{Cameron et~al.}}{{}}}
+\bibcite{campbell1959}{{12}{1959}{{Campbell and Fiske}}{{}}}
+\bibcite{card2020}{{13}{2020}{{Card et~al.}}{{}}}
+\bibcite{cheverud1988}{{14}{1988}{{Cheverud}}{{}}}
+\bibcite{cheverud2001}{{15}{2001}{{Cheverud}}{{}}}
+\bibcite{clark2018arc}{{16}{2018}{{Clark et~al.}}{{}}}
+\bibcite{clark2019boolq}{{17}{2019}{{Clark et~al.}}{{}}}
+\bibcite{cronbach1951}{{18}{1951}{{Cronbach}}{{}}}
+\bibcite{dehghani2021}{{19}{2021}{{Dehghani et~al.}}{{}}}
+\bibcite{demsar2006}{{20}{2006}{{Dem\v {s}ar}}{{}}}
+\bibcite{dodge2020}{{21}{2020}{{Dodge et~al.}}{{}}}
+\bibcite{dror2017}{{22}{2017}{{Dror et~al.}}{{}}}
+\bibcite{dua2019drop}{{23}{2019}{{Dua et~al.}}{{}}}
+\bibcite{dufour2026}{{24}{2026}{{Dufour et~al.}}{{}}}
+\bibcite{fehlauer2025}{{25}{2025}{{Fehlauer et~al.}}{{}}}
+\bibcite{gorman2019}{{26}{2019}{{Gorman and Bedrick}}{{}}}
+\bibcite{gu2025olmes}{{27}{2025}{{Gu et~al.}}{{}}}
+\bibcite{hagmann2023}{{28}{2023}{{Hagmann et~al.}}{{}}}
+\bibcite{hardy2026}{{29}{2026}{{Hardy et~al.}}{{}}}
+\bibcite{haupt2026}{{30}{2026}{{Haupt et~al.}}{{}}}
+\bibcite{hedges2010}{{31}{2010}{{Hedges et~al.}}{{}}}
+\bibcite{heineman2025}{{32}{2025}{{Heineman et~al.}}{{}}}
+\bibcite{henderson2018}{{33}{2018}{{Henderson et~al.}}{{}}}
+\bibcite{hendrycks2021mmlu}{{34}{2021}{{Hendrycks et~al.}}{{}}}
+\bibcite{hochlehnert2025}{{35}{2025}{{Hochlehnert et~al.}}{{}}}
+\bibcite{hofmann2025}{{36}{2025}{{Hofmann et~al.}}{{}}}
+\bibcite{jordan2024}{{37}{2024}{{Jordan}}{{}}}
+\bibcite{karamcheti2021}{{38}{2021}{{Karamcheti et~al.}}{{}}}
+\bibcite{kipnis2024}{{39}{2025}{{Kipnis et~al.}}{{}}}
+\bibcite{kish1965}{{40}{1965}{{Kish}}{{}}}
+\bibcite{kohli2026}{{41}{2026}{{Kohli}}{{}}}
+\bibcite{li2005}{{42}{2005}{{Li and Ji}}{{}}}
+\bibcite{liu2020logiqa}{{43}{2020}{{Liu et~al.}}{{}}}
+\bibcite{mackinnon2017}{{44}{2017}{{MacKinnon and Webb}}{{}}}
+\bibcite{madaan2024}{{45}{2024}{{Madaan et~al.}}{{}}}
+\bibcite{magnusson2025}{{46}{2025}{{Magnusson et~al.}}{{}}}
+\bibcite{martin1977}{{47}{1977}{{Martin and Eaves}}{{}}}
+\bibcite{mccoy2020}{{48}{2020}{{McCoy et~al.}}{{}}}
+\bibcite{messing2026}{{49}{2026}{{Messing}}{{}}}
+\bibcite{mihaylov2018openbookqa}{{50}{2018}{{Mihaylov et~al.}}{{}}}
+\bibcite{miller2024}{{51}{2024}{{Miller}}{{}}}
+\bibcite{nyholt2004}{{52}{2004}{{Nyholt}}{{}}}
+\bibcite{pal2022medmcqa}{{53}{2022}{{Pal et~al.}}{{}}}
+\bibcite{reddy2019coqa}{{54}{2019}{{Reddy et~al.}}{{}}}
+\bibcite{reimers2017}{{55}{2017}{{Reimers and Gurevych}}{{}}}
+\bibcite{ruan2024}{{56}{2024}{{Ruan et~al.}}{{}}}
+\bibcite{sakaguchi2020winogrande}{{57}{2020}{{Sakaguchi et~al.}}{{}}}
+\bibcite{sap2019socialiqa}{{58}{2019}{{Sap et~al.}}{{}}}
+\bibcite{schaeffer2023}{{59}{2023}{{Schaeffer et~al.}}{{}}}
+\bibcite{searle1992}{{60}{1992}{{Searle et~al.}}{{}}}
+\bibcite{sellam2022}{{61}{2022}{{Sellam et~al.}}{{}}}
+\bibcite{sha2026}{{62}{2026}{{Sha and Zhao}}{{}}}
+\bibcite{spearman1904}{{63}{1904}{{Spearman}}{{}}}
+\bibcite{spearman1910}{{64}{1910}{{Spearman}}{{}}}
+\bibcite{talmor2019commonsenseqa}{{65}{2019}{{Talmor et~al.}}{{}}}
+\bibcite{teamolmo2025}{{66}{2025}{{Team OLMo et~al.}}{{}}}
+\bibcite{vanderwal2025}{{67}{2025}{{van der Wal et~al.}}{{}}}
+\bibcite{wang2022lsat}{{68}{2022}{{Wang et~al.}}{{}}}
+\bibcite{welbl2017sciq}{{69}{2017}{{Welbl et~al.}}{{}}}
+\bibcite{zellers2019hellaswag}{{70}{2019}{{Zellers et~al.}}{{}}}
+\bibcite{zhao2026}{{71}{2026}{{Zhao et~al.}}{{}}}
+\bibcite{zhong2024agieval}{{72}{2024}{{Zhong et~al.}}{{}}}
+\bibcite{zhou2020}{{73}{2020}{{Zhou et~al.}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Derivations and interpretation}{16}{appendix.A}\protected@file@percent }
+\newlabel{app:derivations}{{A}{16}{Derivations and interpretation}{appendix.A}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}What SNAP estimates}{16}{subsection.A.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Notation}{16}{subsection.A.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Notation for the cross-half construction and its empirical diagnostics. The coefficient $\bar  r_E$ uses covariance normalisation, which differs from mean correlation under unequal marginal variances.}}{16}{table.caption.8}\protected@file@percent }
+\newlabel{tab:notation}{{3}{16}{Notation for the cross-half construction and its empirical diagnostics. The coefficient $\bar r_E$ uses covariance normalisation, which differs from mean correlation under unequal marginal variances}{table.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Cross-half identity and its assumptions}{16}{subsection.A.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.4}Covariance coefficient and effective count}{17}{subsection.A.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.5}Pooling and finite-sample bias}{18}{subsection.A.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.6}Permutation reference}{18}{subsection.A.6}\protected@file@percent }
 \citation{magnusson2025}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.7}Planning calculations and information ratio}{18}{subsection.A.7}\protected@file@percent }
-\newlabel{eq:information}{{17}{18}{Planning calculations and information ratio}{equation.17}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {B}Design details}{18}{appendix.B}\protected@file@percent }
-\newlabel{app:design}{{B}{18}{Design details}{appendix.B}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Common step rule}{18}{subsection.B.1}\protected@file@percent }
-\newlabel{app:schedule}{{B.1}{18}{Common step rule}{subsection.B.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Inflation estimates on subsets defined by each configuration's checkpoint schedule, with wild cluster bootstrap-t intervals over 4,999 draws. Severe truncation means that the largest final step among the three runs exceeds the smallest by more than a factor of 1.5.}}{19}{table.caption.9}\protected@file@percent }
-\newlabel{tab:truncation}{{4}{19}{Inflation estimates on subsets defined by each configuration's checkpoint schedule, with wild cluster bootstrap-t intervals over 4,999 draws. Severe truncation means that the largest final step among the three runs exceeds the smallest by more than a factor of 1.5}{table.caption.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Reliability by trait}{19}{subsection.B.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Cross-half reliability of run deviations across all 25 recipes. Reliability equals $\setbox \z@ \hbox {\mathsurround \z@ $\textstyle \sigma $}\mathaccent "0362{\sigma }_E^2/(\setbox \z@ \hbox {\mathsurround \z@ $\textstyle \sigma $}\mathaccent "0362{\sigma }_E^2+\setbox \z@ \hbox {\mathsurround \z@ $\textstyle \sigma $}\mathaccent "0362{\sigma }_{\mathrm  {noise}}^2)$ and can be negative when the estimated run component is negative. MC denotes a multiple-choice scoring format in this table.}}{19}{table.caption.10}\protected@file@percent }
-\newlabel{tab:original3}{{5}{19}{Cross-half reliability of run deviations across all 25 recipes. Reliability equals $\widehat \sigma _E^2/(\widehat \sigma _E^2+\widehat \sigma _{\mathrm {noise}}^2)$ and can be negative when the estimated run component is negative. MC denotes a multiple-choice scoring format in this table}{table.caption.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}Power calculations}{20}{subsection.B.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.4}Decision checks and deviations}{20}{subsection.B.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.5}Reported planning predictions}{20}{subsection.B.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.7}Planning calculations and information ratio}{19}{subsection.A.7}\protected@file@percent }
+\newlabel{eq:information}{{17}{19}{Planning calculations and information ratio}{equation.17}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Design details}{19}{appendix.B}\protected@file@percent }
+\newlabel{app:design}{{B}{19}{Design details}{appendix.B}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Common step rule}{19}{subsection.B.1}\protected@file@percent }
+\newlabel{app:schedule}{{B.1}{19}{Common step rule}{subsection.B.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Inflation estimates on subsets defined by each configuration's checkpoint schedule, with wild cluster bootstrap-t intervals over 4,999 draws. Severe truncation means that the largest final step among the three runs exceeds the smallest by more than a factor of 1.5.}}{20}{table.caption.9}\protected@file@percent }
+\newlabel{tab:truncation}{{4}{20}{Inflation estimates on subsets defined by each configuration's checkpoint schedule, with wild cluster bootstrap-t intervals over 4,999 draws. Severe truncation means that the largest final step among the three runs exceeds the smallest by more than a factor of 1.5}{table.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Reliability by trait}{20}{subsection.B.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Cross-half reliability of run deviations across all 25 recipes. Reliability equals $\setbox \z@ \hbox {\mathsurround \z@ $\textstyle \sigma $}\mathaccent "0362{\sigma }_E^2/(\setbox \z@ \hbox {\mathsurround \z@ $\textstyle \sigma $}\mathaccent "0362{\sigma }_E^2+\setbox \z@ \hbox {\mathsurround \z@ $\textstyle \sigma $}\mathaccent "0362{\sigma }_{\mathrm  {noise}}^2)$ and can be negative when the estimated run component is negative. MC denotes a multiple-choice scoring format in this table.}}{20}{table.caption.10}\protected@file@percent }
+\newlabel{tab:original3}{{5}{20}{Cross-half reliability of run deviations across all 25 recipes. Reliability equals $\widehat \sigma _E^2/(\widehat \sigma _E^2+\widehat \sigma _{\mathrm {noise}}^2)$ and can be negative when the estimated run component is negative. MC denotes a multiple-choice scoring format in this table}{table.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}Power calculations}{21}{subsection.B.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.4}Decision checks and deviations}{21}{subsection.B.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.5}Reported planning predictions}{21}{subsection.B.5}\protected@file@percent }
 \citation{sellam2022}
 \citation{mccoy2020}
 \citation{biderman2023}
@@ -185,74 +209,76 @@
 \citation{hofmann2025}
 \citation{kipnis2024}
 \citation{hedges2010}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.6}Excluded populations}{21}{subsection.B.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.7}Relation to prior measurement work}{21}{subsection.B.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {C}Supplementary results}{22}{appendix.C}\protected@file@percent }
-\newlabel{app:supplementary}{{C}{22}{Supplementary results}{appendix.C}{}}
-\@writefile{toc}{\contentsline {paragraph}{Covariance diagnostics}{22}{section*.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Variation across model sizes}{22}{section*.12}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Inflation estimates by model size across the 25 recipes. The intervals use the wild cluster bootstrap-t calculation described in Appendix~\ref {app:implementation}.}}{22}{table.caption.13}\protected@file@percent }
-\newlabel{tab:original7}{{6}{22}{Inflation estimates by model size across the 25 recipes. The intervals use the wild cluster bootstrap-t calculation described in Appendix~\ref {app:implementation}}{table.caption.13}{}}
-\@writefile{toc}{\contentsline {paragraph}{Permutation comparison}{23}{section*.14}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Cross-half correlation estimates across the 125 configurations, margins on the left and accuracy in the centre, with undefined variances shown in grey and eigenvalue spectra on the right. The accuracy estimate has a negative eigenvalue, and its spectrum is a diagnostic of the moment estimate rather than a valid population correlation spectrum. PR is the spectral participation ratio, 3.57 on the nine margin traits and 3.62 on the eight accuracy traits after clipping that eigenvalue.}}{23}{figure.caption.16}\protected@file@percent }
-\newlabel{fig:covariance}{{2}{23}{Cross-half correlation estimates across the 125 configurations, margins on the left and accuracy in the centre, with undefined variances shown in grey and eigenvalue spectra on the right. The accuracy estimate has a negative eigenvalue, and its spectrum is a diagnostic of the moment estimate rather than a valid population correlation spectrum. PR is the spectral participation ratio, 3.57 on the nine margin traits and 3.62 on the eight accuracy traits after clipping that eigenvalue}{figure.caption.16}{}}
-\@writefile{toc}{\contentsline {paragraph}{Associations with scoring format}{23}{figure.caption.16}\protected@file@percent }
-\newlabel{app:formatfit}{{C}{24}{A two-correlation fit}{section*.17}{}}
-\@writefile{toc}{\contentsline {paragraph}{A two-correlation fit}{24}{section*.17}\protected@file@percent }
-\newlabel{app:scale}{{C}{24}{Scoring-scale interventions}{section*.18}{}}
-\@writefile{toc}{\contentsline {paragraph}{Scoring-scale interventions}{24}{section*.18}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Performance correlation as a noise proxy}{25}{section*.19}\protected@file@percent }
-\newlabel{app:paired}{{C}{25}{Paired uncertainty for the prediction comparison}{section*.20}{}}
-\@writefile{toc}{\contentsline {paragraph}{Paired uncertainty for the prediction comparison}{25}{section*.20}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Mean squared prediction error of log aggregate standard deviation across five recipe folds, with paired recipe-bootstrap intervals for their differences given below. The rescaled plug-in is an exploratory addition to the original five-model comparison.}}{25}{table.caption.21}\protected@file@percent }
-\newlabel{tab:prediction}{{7}{25}{Mean squared prediction error of log aggregate standard deviation across five recipe folds, with paired recipe-bootstrap intervals for their differences given below. The rescaled plug-in is an exploratory addition to the original five-model comparison}{table.caption.21}{}}
-\@writefile{toc}{\contentsline {paragraph}{Recipe, size, and trait sensitivity}{26}{section*.22}\protected@file@percent }
-\newlabel{app:composition}{{C}{27}{Benchmark count, identity, and weights}{section*.23}{}}
-\@writefile{toc}{\contentsline {paragraph}{Benchmark count, identity, and weights}{27}{section*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.6}Excluded populations}{22}{subsection.B.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.7}Relation to prior measurement work}{22}{subsection.B.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {C}Supplementary results}{23}{appendix.C}\protected@file@percent }
+\newlabel{app:supplementary}{{C}{23}{Supplementary results}{appendix.C}{}}
+\@writefile{toc}{\contentsline {paragraph}{Covariance diagnostics}{23}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Variation across model sizes}{23}{section*.12}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Inflation estimates by model size across the 25 recipes. The intervals use the wild cluster bootstrap-t calculation described in Appendix~\ref {app:implementation}.}}{23}{table.caption.13}\protected@file@percent }
+\newlabel{tab:original7}{{6}{23}{Inflation estimates by model size across the 25 recipes. The intervals use the wild cluster bootstrap-t calculation described in Appendix~\ref {app:implementation}}{table.caption.13}{}}
+\@writefile{toc}{\contentsline {paragraph}{Permutation comparison}{24}{section*.14}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Cross-half correlation estimates across the 125 configurations, margins on the left and accuracy in the centre, with undefined variances shown in grey and eigenvalue spectra on the right. The accuracy estimate has a negative eigenvalue, and its spectrum is a diagnostic of the moment estimate rather than a valid population correlation spectrum. PR is the spectral participation ratio, 3.57 on the nine margin traits and 3.62 on the eight accuracy traits after clipping that eigenvalue.}}{24}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:covariance}{{2}{24}{Cross-half correlation estimates across the 125 configurations, margins on the left and accuracy in the centre, with undefined variances shown in grey and eigenvalue spectra on the right. The accuracy estimate has a negative eigenvalue, and its spectrum is a diagnostic of the moment estimate rather than a valid population correlation spectrum. PR is the spectral participation ratio, 3.57 on the nine margin traits and 3.62 on the eight accuracy traits after clipping that eigenvalue}{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {paragraph}{Associations with scoring format}{24}{figure.caption.16}\protected@file@percent }
+\newlabel{app:formatfit}{{C}{25}{A two-correlation fit}{section*.17}{}}
+\@writefile{toc}{\contentsline {paragraph}{A two-correlation fit}{25}{section*.17}\protected@file@percent }
+\newlabel{app:scale}{{C}{25}{Scoring-scale interventions}{section*.18}{}}
+\@writefile{toc}{\contentsline {paragraph}{Scoring-scale interventions}{25}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Performance correlation as a noise proxy}{26}{section*.19}\protected@file@percent }
+\newlabel{app:paired}{{C}{26}{Paired uncertainty for the prediction comparison}{section*.20}{}}
+\@writefile{toc}{\contentsline {paragraph}{Paired uncertainty for the prediction comparison}{26}{section*.20}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Mean squared prediction error of log aggregate standard deviation across five recipe folds, with paired recipe-bootstrap intervals for their differences given below. The rescaled plug-in is an exploratory addition to the original five-model comparison.}}{26}{table.caption.21}\protected@file@percent }
+\newlabel{tab:prediction}{{7}{26}{Mean squared prediction error of log aggregate standard deviation across five recipe folds, with paired recipe-bootstrap intervals for their differences given below. The rescaled plug-in is an exploratory addition to the original five-model comparison}{table.caption.21}{}}
+\@writefile{toc}{\contentsline {paragraph}{Recipe, size, and trait sensitivity}{27}{section*.22}\protected@file@percent }
+\newlabel{app:composition}{{C}{28}{Benchmark count, identity, and weights}{section*.23}{}}
+\@writefile{toc}{\contentsline {paragraph}{Benchmark count, identity, and weights}{28}{section*.23}\protected@file@percent }
 \citation{kish1965}
 \citation{cameron2008}
 \citation{bell2002}
-\@writefile{toc}{\contentsline {paragraph}{Interval construction and cluster sensitivity}{28}{section*.24}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Observed gaps and predicted rank reversals}{28}{section*.25}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Adjacent-checkpoint variation in PolyPythias}{29}{section*.26}\protected@file@percent }
-\newlabel{app:checkpoint}{{C}{29}{Adjacent-checkpoint variation in DataDecide}{section*.27}{}}
-\@writefile{toc}{\contentsline {paragraph}{Adjacent-checkpoint variation in DataDecide}{29}{section*.27}\protected@file@percent }
-\newlabel{app:calibration}{{C}{30}{Simulation and permutation calibration}{section*.28}{}}
-\@writefile{toc}{\contentsline {paragraph}{Simulation and permutation calibration}{30}{section*.28}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Coverage of nominal 95 percent intervals across 2,000 simulated populations per cell. Bias is the mean estimate minus the population $\Lambda $. Noise gives the item-noise standard deviation relative to unit run effects. Inversion is the centred cluster test-inversion interval, computed later on the same simulated moments. Every cell was afterwards repeated at 10,000 replicates, and the inversion range in the main text comes from that repeat, so it differs from this column by a few thousandths.}}{32}{table.caption.29}\protected@file@percent }
-\newlabel{tab:coverage}{{8}{32}{Coverage of nominal 95 percent intervals across 2,000 simulated populations per cell. Bias is the mean estimate minus the population $\Lambda $. Noise gives the item-noise standard deviation relative to unit run effects. Inversion is the centred cluster test-inversion interval, computed later on the same simulated moments. Every cell was afterwards repeated at 10,000 replicates, and the inversion range in the main text comes from that repeat, so it differs from this column by a few thousandths}{table.caption.29}{}}
-\@writefile{toc}{\contentsline {paragraph}{Availability of a separate competence measurement}{32}{section*.30}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Interval construction and cluster sensitivity}{29}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Observed gaps and predicted rank reversals}{29}{section*.25}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Adjacent-checkpoint variation in PolyPythias}{30}{section*.26}\protected@file@percent }
+\newlabel{app:checkpoint}{{C}{30}{Adjacent-checkpoint variation in DataDecide}{section*.27}{}}
+\@writefile{toc}{\contentsline {paragraph}{Adjacent-checkpoint variation in DataDecide}{30}{section*.27}\protected@file@percent }
+\newlabel{app:calibration}{{C}{31}{Simulation and permutation calibration}{section*.28}{}}
+\@writefile{toc}{\contentsline {paragraph}{Simulation and permutation calibration}{31}{section*.28}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Coverage of nominal 95 percent intervals across 2,000 simulated populations per cell. Bias is the mean estimate minus the population $\Lambda $. Noise gives the item-noise standard deviation relative to unit run effects. Inversion is the centred cluster test-inversion interval, computed later on the same simulated moments. Every cell was afterwards repeated at 10,000 replicates, and the inversion range in the main text comes from that repeat, so it differs from this column by a few thousandths.}}{33}{table.caption.29}\protected@file@percent }
+\newlabel{tab:coverage}{{8}{33}{Coverage of nominal 95 percent intervals across 2,000 simulated populations per cell. Bias is the mean estimate minus the population $\Lambda $. Noise gives the item-noise standard deviation relative to unit run effects. Inversion is the centred cluster test-inversion interval, computed later on the same simulated moments. Every cell was afterwards repeated at 10,000 replicates, and the inversion range in the main text comes from that repeat, so it differs from this column by a few thousandths}{table.caption.29}{}}
 \citation{karamcheti2021}
-\newlabel{app:proxy}{{C}{33}{Competence proxy audit and calibration}{section*.31}{}}
-\@writefile{toc}{\contentsline {paragraph}{Competence proxy audit and calibration}{33}{section*.31}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Inflation after each competence adjustment, observed and in simulated populations with 300 replicates each. Simulated columns give replicate means under independent seed deviations, a single common correlation whose population inflation equals each scale's observed value, and the nearest positive semidefinite matrix to the observed seed covariance.}}{34}{table.caption.32}\protected@file@percent }
-\newlabel{tab:proxy}{{9}{34}{Inflation after each competence adjustment, observed and in simulated populations with 300 replicates each. Simulated columns give replicate means under independent seed deviations, a single common correlation whose population inflation equals each scale's observed value, and the nearest positive semidefinite matrix to the observed seed covariance}{table.caption.32}{}}
-\newlabel{app:transport}{{C}{34}{Transport to PolyPythias}{section*.33}{}}
-\@writefile{toc}{\contentsline {paragraph}{Transport to PolyPythias}{34}{section*.33}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{External random-seed panel}{35}{section*.34}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Inflation estimates in the external random-seed panel across twenty checkpoints. The leave-one-out adjustment controls each trait deviation with the mean deviation of the other traits.}}{35}{table.caption.35}\protected@file@percent }
-\newlabel{tab:original12}{{10}{35}{Inflation estimates in the external random-seed panel across twenty checkpoints. The leave-one-out adjustment controls each trait deviation with the mean deviation of the other traits}{table.caption.35}{}}
-\@writefile{toc}{\contentsline {paragraph}{Gain calibration and recipe split sensitivity}{36}{section*.36}\protected@file@percent }
-\newlabel{app:heldout}{{C}{38}{Pre-specified held-out test}{section*.37}{}}
-\@writefile{toc}{\contentsline {paragraph}{Pre-specified held-out test}{38}{section*.37}\protected@file@percent }
-\newlabel{app:decision}{{C}{39}{Recipe decisions}{section*.39}{}}
-\@writefile{toc}{\contentsline {paragraph}{Recipe decisions}{39}{section*.39}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Runs per configuration}{39}{section*.41}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Median margin inflation over subsets of the original ten benchmarks, with the share of subsets whose nominal 95\% interval excludes one, at 530M and 750M, at 530M, 750M, and 1B, at 530M alone, and across all five sizes. Benchmark counts with more than 60 subsets use 60 sampled without replacement, and subsets whose bootstrap degenerates are left out of that share. The two-size rows were fixed before any 750M held-out score existed, the 530M rows came after the 530M interim result, and the three-size rows came after the full-scope result. These intervals use 1,999 wild draws, against 4,999 for the pre-specified test.}}{40}{table.caption.38}\protected@file@percent }
-\newlabel{tab:battery}{{11}{40}{Median margin inflation over subsets of the original ten benchmarks, with the share of subsets whose nominal 95\% interval excludes one, at 530M and 750M, at 530M, 750M, and 1B, at 530M alone, and across all five sizes. Benchmark counts with more than 60 subsets use 60 sampled without replacement, and subsets whose bootstrap degenerates are left out of that share. The two-size rows were fixed before any 750M held-out score existed, the 530M rows came after the 530M interim result, and the three-size rows came after the full-scope result. These intervals use 1,999 wild draws, against 4,999 for the pre-specified test}{table.caption.38}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Wrong-sign calls against the 1B ordering, as a share of calls on resolved pairs, under the independence and corrected rules. The call columns count calls on resolved pairs only, and the difference is the independence rate minus the corrected rate, with its recipe-bootstrap interval.}}{40}{table.caption.40}\protected@file@percent }
-\newlabel{tab:decision}{{12}{40}{Wrong-sign calls against the 1B ordering, as a share of calls on resolved pairs, under the independence and corrected rules. The call columns count calls on resolved pairs only, and the difference is the independence rate minus the corrected rate, with its recipe-bootstrap interval}{table.caption.40}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {D}Implementation details}{40}{appendix.D}\protected@file@percent }
-\newlabel{app:implementation}{{D}{40}{Implementation details}{appendix.D}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {D.1}Data streaming}{40}{subsection.D.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {D.2}Interval calculation}{41}{subsection.D.2}\protected@file@percent }
-\newlabel{eq:bootstrap}{{18}{41}{Interval calculation}{equation.18}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {D.3}Practical considerations}{42}{subsection.D.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {D.4}Compute}{42}{subsection.D.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Compute budget reported in the planning document for both analysis arms. These figures describe the plan rather than measured costs for every listed operation.}}{42}{table.caption.42}\protected@file@percent }
-\newlabel{tab:original15}{{13}{42}{Compute budget reported in the planning document for both analysis arms. These figures describe the plan rather than measured costs for every listed operation}{table.caption.42}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {D.5}Release provenance}{43}{subsection.D.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {D.6}Sensitivity to GPU architecture}{43}{subsection.D.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {D.7}Centring through run contrasts}{43}{subsection.D.7}\protected@file@percent }
-\newlabel{app:centring}{{D.7}{43}{Centring through run contrasts}{subsection.D.7}{}}
-\gdef \@abspage@last{43}
+\@writefile{toc}{\contentsline {paragraph}{Availability of a separate competence measurement}{34}{section*.30}\protected@file@percent }
+\newlabel{app:proxy}{{C}{34}{Competence proxy audit and calibration}{section*.31}{}}
+\@writefile{toc}{\contentsline {paragraph}{Competence proxy audit and calibration}{34}{section*.31}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Inflation after each competence adjustment, observed and in simulated populations with 300 replicates each. Simulated columns give replicate means under independent seed deviations, a single common correlation whose population inflation equals each scale's observed value, and the nearest positive semidefinite matrix to the observed seed covariance.}}{35}{table.caption.32}\protected@file@percent }
+\newlabel{tab:proxy}{{9}{35}{Inflation after each competence adjustment, observed and in simulated populations with 300 replicates each. Simulated columns give replicate means under independent seed deviations, a single common correlation whose population inflation equals each scale's observed value, and the nearest positive semidefinite matrix to the observed seed covariance}{table.caption.32}{}}
+\newlabel{app:transport}{{C}{35}{Transport to PolyPythias}{section*.33}{}}
+\@writefile{toc}{\contentsline {paragraph}{Transport to PolyPythias}{35}{section*.33}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{External random-seed panel}{36}{section*.34}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Inflation estimates in the external random-seed panel across twenty checkpoints. The leave-one-out adjustment controls each trait deviation with the mean deviation of the other traits.}}{37}{table.caption.35}\protected@file@percent }
+\newlabel{tab:original12}{{10}{37}{Inflation estimates in the external random-seed panel across twenty checkpoints. The leave-one-out adjustment controls each trait deviation with the mean deviation of the other traits}{table.caption.35}{}}
+\@writefile{toc}{\contentsline {paragraph}{Gain calibration and recipe split sensitivity}{37}{section*.36}\protected@file@percent }
+\citation{liu2020logiqa}
+\citation{wang2022lsat}
+\newlabel{app:heldout}{{C}{39}{Pre-specified held-out test}{section*.37}{}}
+\@writefile{toc}{\contentsline {paragraph}{Pre-specified held-out test}{39}{section*.37}\protected@file@percent }
+\newlabel{app:decision}{{C}{40}{Recipe decisions}{section*.39}{}}
+\@writefile{toc}{\contentsline {paragraph}{Recipe decisions}{40}{section*.39}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Runs per configuration}{40}{section*.41}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Median margin inflation over subsets of the original ten benchmarks, with the share of subsets whose nominal 95\% interval excludes one, at 530M and 750M, at 530M, 750M, and 1B, at 530M alone, and across all five sizes. Benchmark counts with more than 60 subsets use 60 sampled without replacement, and subsets whose bootstrap degenerates are left out of that share. The two-size rows were fixed before any 750M held-out score existed, the 530M rows came after the 530M interim result, and the three-size rows came after the full-scope result. These intervals use 1,999 wild draws, against 4,999 for the pre-specified test.}}{41}{table.caption.38}\protected@file@percent }
+\newlabel{tab:battery}{{11}{41}{Median margin inflation over subsets of the original ten benchmarks, with the share of subsets whose nominal 95\% interval excludes one, at 530M and 750M, at 530M, 750M, and 1B, at 530M alone, and across all five sizes. Benchmark counts with more than 60 subsets use 60 sampled without replacement, and subsets whose bootstrap degenerates are left out of that share. The two-size rows were fixed before any 750M held-out score existed, the 530M rows came after the 530M interim result, and the three-size rows came after the full-scope result. These intervals use 1,999 wild draws, against 4,999 for the pre-specified test}{table.caption.38}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Wrong-sign calls against the 1B ordering, as a share of calls on resolved pairs, under the independence and corrected rules. The call columns count calls on resolved pairs only, and the difference is the independence rate minus the corrected rate, with its recipe-bootstrap interval.}}{41}{table.caption.40}\protected@file@percent }
+\newlabel{tab:decision}{{12}{41}{Wrong-sign calls against the 1B ordering, as a share of calls on resolved pairs, under the independence and corrected rules. The call columns count calls on resolved pairs only, and the difference is the independence rate minus the corrected rate, with its recipe-bootstrap interval}{table.caption.40}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Implementation details}{41}{appendix.D}\protected@file@percent }
+\newlabel{app:implementation}{{D}{41}{Implementation details}{appendix.D}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.1}Data streaming}{41}{subsection.D.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.2}Interval calculation}{42}{subsection.D.2}\protected@file@percent }
+\newlabel{eq:bootstrap}{{18}{42}{Interval calculation}{equation.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.3}Practical considerations}{43}{subsection.D.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.4}Compute}{43}{subsection.D.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Compute budget reported in the planning document for both analysis arms. These figures describe the plan rather than measured costs for every listed operation.}}{43}{table.caption.42}\protected@file@percent }
+\newlabel{tab:original15}{{13}{43}{Compute budget reported in the planning document for both analysis arms. These figures describe the plan rather than measured costs for every listed operation}{table.caption.42}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.5}Release provenance}{44}{subsection.D.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.6}Sensitivity to GPU architecture}{44}{subsection.D.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.7}Centring through run contrasts}{44}{subsection.D.7}\protected@file@percent }
+\newlabel{app:centring}{{D.7}{44}{Centring through run contrasts}{subsection.D.7}{}}
+\gdef \@abspage@last{44}
