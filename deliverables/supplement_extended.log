@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  21 SEP 2026 22:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  23 SEP 2026 18:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -581,14 +581,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [33])
-(./references.tex [34] [35]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 91
-.
+(./references.tex [34] [35] [36]
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 11
+5.
 
 (/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/psnfss/t1pcr.
 fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-) [36] [37]) [38] (./supplement_extended.aux)
+) [37] [38]) [39] (./supplement_extended.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -597,13 +597,13 @@ Package rerunfilecheck Info: File `supplement_extended.out' has not changed.
 (rerunfilecheck)             Checksum: 81029B209DCF9C9C09C5F5EBD2863D93;1089.
  ) 
 Here is how much of TeX's memory you used:
- 13039 strings out of 467525
- 204220 string characters out of 5408440
- 657175 words of memory out of 5000000
- 41627 multiletter control sequences out of 15000+600000
+ 13150 strings out of 467525
+ 206642 string characters out of 5408440
+ 658790 words of memory out of 5000000
+ 41716 multiletter control sequences out of 15000+600000
  664893 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,13n,90p,3143b,649s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,13n,90p,3143b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fo
 nts/type1/public/amsfonts/cmextra/cmex9.pfb></opt/homebrew/Cellar/texlive/20260
@@ -626,10 +626,10 @@ onts/type1/urw/courier/ucrr8a.pfb></opt/homebrew/Cellar/texlive/20260301/share/
 texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></opt/homebrew/Cellar/texlive/20
 260301/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></opt/homebrew/Cellar/
 texlive/20260301/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on supplement_extended.pdf (38 pages, 402162 bytes).
+Output written on supplement_extended.pdf (39 pages, 407585 bytes).
 PDF statistics:
- 565 PDF objects out of 1000 (max. 8388607)
- 478 compressed objects within 5 object streams
- 146 named destinations out of 1000 (max. 500000)
+ 594 PDF objects out of 1000 (max. 8388607)
+ 505 compressed objects within 6 object streams
+ 168 named destinations out of 1000 (max. 500000)
  59 words of extra memory for PDF output out of 10000 (max. 10000000)
 

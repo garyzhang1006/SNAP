@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  23 SEP 2026 17:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  23 SEP 2026 18:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -459,7 +459,7 @@ Package: xr 2024-12-22 v6.00 eXternal References (DPC)
 )
 Package xr Info: IMPORTING LABELS FROM supplement_extended.aux on input line 11
 .
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 26
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 30
 .
 
 (/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/psnfss/t1ptm.
@@ -473,24 +473,24 @@ File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
 
 (/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/context/base/mkii/s
 upp-pdf.mkii
@@ -518,45 +518,50 @@ pstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 26.
+Package hyperref Info: Link coloring OFF on input line 30.
  (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 28.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
 
 
 (/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/amsfonts/umsa
 .fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 28.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 32.
 
 
 (/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/amsfonts/umsb
 .fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1{/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/pdftex/up
-dmap/pdftex.map}{/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/e
-nc/dvips/base/8r.enc}
+)
+<figures/teaser.pdf, id=163, 404.712pt x 75.8835pt>
+File: figures/teaser.pdf Graphic file (type pdf)
+<use figures/teaser.pdf>
+Package pdftex.def Info: figures/teaser.pdf  used on input line 41.
+(pdftex.def)             Requested size: 337.86465pt x 63.35263pt.
+ [1{/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/pdftex/upd
+map/pdftex.map}{/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/en
+c/dvips/base/8r.enc}
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [2]
-[3]
+ [2 <./figures/teaser.pdf>] [3]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 96.
+put line 107.
  [4] [5]
-<figures/composition.pdf, id=312, 505.89pt x 169.8345pt>
+<figures/composition.pdf, id=322, 505.89pt x 169.8345pt>
 File: figures/composition.pdf Graphic file (type pdf)
 <use figures/composition.pdf>
-Package pdftex.def Info: figures/composition.pdf  used on input line 165.
+Package pdftex.def Info: figures/composition.pdf  used on input line 176.
 (pdftex.def)             Requested size: 377.60951pt x 126.77174pt.
- [6] [7 <./figures/composition.pdf>] [8] [9] [10] (./references.tex
-[11] [12]
+ [6] [7 <./figures/composition.pdf>] [8] [9]
+[10] (./references.tex [11] [12]
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 11
 5.
 
@@ -571,36 +576,20 @@ Underfull \vbox (badness 1199) has occurred while \output is active []
 
  [20]
 [21] [22] [23]
-<figures/covariance.pdf, id=744, 279.0425pt x 116.435pt>
+<figures/covariance.pdf, id=712, 279.0425pt x 116.435pt>
 File: figures/covariance.pdf Graphic file (type pdf)
 <use figures/covariance.pdf>
 Package pdftex.def Info: figures/covariance.pdf  used on input line 122.
-(pdftex.def)             Requested size: 337.86465pt x 140.98448pt.
- [24 <./figures/covariance.pdf>]
-Underfull \vbox (badness 7433) has occurred while \output is active []
-
- [25]
-[26]
-Underfull \vbox (badness 5726) has occurred while \output is active []
-
- [27]
+(pdftex.def)             Requested size: 397.48499pt x 165.86296pt.
+ [24 <./figures/covariance.pdf>] [25] [26] [27]
 Underfull \vbox (badness 7944) has occurred while \output is active []
 
  [28]
-Underfull \vbox (badness 3849) has occurred while \output is active []
-
- [29]
-Underfull \vbox (badness 2368) has occurred while \output is active []
-
- [30]
-[31]
+[29] [30] [31]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [32]
-Underfull \vbox (badness 2245) has occurred while \output is active []
-
- [33]
-[34] [35]
+[33] [34] [35]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [36]
@@ -608,14 +597,17 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [38]
-[39]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [39]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [40]
-Underfull \vbox (badness 1009) has occurred while \output is active []
+[41]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [41]
-[42] [43] [44]) [45] (./main.aux)
+ [42]
+[43] [44]) [45] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -624,13 +616,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: A2456F71BCA9A17EEADDFE0139492EC8;7086.
  ) 
 Here is how much of TeX's memory you used:
- 13585 strings out of 467525
- 212477 string characters out of 5408440
- 656503 words of memory out of 5000000
- 42065 multiletter control sequences out of 15000+600000
+ 13618 strings out of 467525
+ 213152 string characters out of 5408440
+ 656374 words of memory out of 5000000
+ 42097 multiletter control sequences out of 15000+600000
  667951 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,90p,3231b,667s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,90p,3153b,671s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmbx10.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/20260301/
@@ -660,10 +652,10 @@ ve/20260301/share/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></opt/homebrew
 /Cellar/texlive/20260301/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></op
 t/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/urw/times/utmr8
 a.pfb>
-Output written on main.pdf (45 pages, 556237 bytes).
+Output written on main.pdf (45 pages, 605058 bytes).
 PDF statistics:
- 1075 PDF objects out of 1200 (max. 8388607)
- 906 compressed objects within 10 object streams
- 229 named destinations out of 1000 (max. 500000)
- 323 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1043 PDF objects out of 1200 (max. 8388607)
+ 912 compressed objects within 10 object streams
+ 230 named destinations out of 1000 (max. 500000)
+ 328 words of extra memory for PDF output out of 10000 (max. 10000000)
 

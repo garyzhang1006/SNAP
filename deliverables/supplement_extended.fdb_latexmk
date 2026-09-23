@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1790043435.00504 "supplement_extended.tex" "supplement_extended.pdf" "supplement_extended" 1790043435.56672 0
+["pdflatex"] 1790203272.76621 "supplement_extended.tex" "supplement_extended.pdf" "supplement_extended" 1790203273.2621 0
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1772380719 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/fontname/texfonts.map" 1772380719 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1772380719 5541360 f183aac233c4cd1e5ef882fcbe8e7096 ""
@@ -116,14 +116,14 @@
   "figures/calibration.pdf" 1789606883.48899 32836 ede8550f225b28526dbcd799103a8e2a ""
   "figures/prediction.pdf" 1789613624.93853 13791 a82d5ac440c5ebc14908c189649825d1 ""
   "iclr2027_conference.sty" 1789356740.9369 9025 1b4bb9c2e12c712c56f4eb1232b88dd6 ""
-  "main.aux" 1790043434.86811 27858 dc4436ad8f101381f7f8e29f44494764 ""
-  "main.tex" 1790040976.32586 43427 c5c54d9270382bd75a52748dd443c45c ""
+  "main.aux" 1790203038.79862 30733 4458a24dc8d1a212ad4ec3f2913344b4 ""
+  "main.tex" 1790203259.99317 49849 8e492037ef886a4c96ebc43464a1b110 ""
   "natbib.sty" 1789356740.9375 45154 40088ce024445d7ee2bca59e704cdd01 ""
-  "references.tex" 1789614423.12361 13344 66400a54d28fc49168e9d81a68768777 ""
-  "supplement_extended.aux" 1790043435.50818 25129 9c8fb707d556e5451ecdd8ecbfb79c3a "pdflatex"
-  "supplement_extended.out" 1790043435.5093 1089 81029b209dcf9c9c09c5f5ebd2863d93 "pdflatex"
-  "supplement_extended.tex" 1789970094.52723 1821 209e900dd47681d233d98374c6731380 ""
-  "supplement_extended_body.tex" 1790002393.26437 166474 74a0031c13dde78727394c1b0e4f3417 ""
+  "references.tex" 1790161172.13871 19640 4b37f8b628303788c738f5ae2a678de4 ""
+  "supplement_extended.aux" 1790203273.20525 26378 26503de69f192e95268251ec0ef8e113 "pdflatex"
+  "supplement_extended.out" 1790203273.20633 1089 81029b209dcf9c9c09c5f5ebd2863d93 "pdflatex"
+  "supplement_extended.tex" 1790203272.10564 1803 748e3f47b888f14bf1716dc90d94e32a ""
+  "supplement_extended_body.tex" 1790152144.19599 166490 103c5558b2cc36a905de05f2f12d16c5 ""
   (generated)
   "supplement_extended.aux"
   "supplement_extended.log"

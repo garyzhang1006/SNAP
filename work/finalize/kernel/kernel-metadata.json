@@ -1,0 +1,3 @@
+{"id": "garyzhang11111/snap-pythia-bank1-analysis", "title": "snap-pythia-bank1-analysis", "code_file": "snap-pythia-bank1-analysis.py", "language": "python", "kernel_type": "script",
+ "is_private": true, "enable_gpu": false, "enable_tpu": false, "enable_internet": true,
+ "dataset_sources": ["garyzhang11111/snap-pythia-bank1-scores"], "competition_sources": [], "kernel_sources": [], "model_sources": []}

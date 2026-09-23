@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 rates = {"Margin-like": (0.113, 0.051, 0.050), "Accuracy-like": (0.067, 0.052, 0.047)}
 rules = ("Independence", "SNAP plug-in", "Oracle")
 colors = ("#b2182b", "#2166ac", "#9e9e9e")
-plt.rcParams.update({"font.family": "serif", "font.serif": ["Times New Roman", "Times"], "font.size": 9})
+plt.rcParams.update({"font.family": "serif", "font.serif": ["Times New Roman", "Times"], "font.size": 9, "pdf.fonttype": 42})
 fig, ax = plt.subplots(figsize=(5.6, 1.05))
 w = 0.26
 for g, (pop, vals) in enumerate(rates.items()):
