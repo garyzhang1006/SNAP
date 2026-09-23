@@ -124,7 +124,7 @@ The planning document specifies eleven predictions and their rejection condition
 
 \citet{jordan2024} attributes much test-set variance to per-example variation across seeds, and its Appendix C compares run accuracy across five ImageNet evaluation sets with $R^2$ at most 0.14. Those comparisons concern shifted versions of one benchmark. \citet{bui2025} vary fine-tuning seeds, and \citet{hochlehnert2025} vary decoding seeds, which address different variance components from the pretraining-run variation examined here. \citet[Section 4.3]{dodge2020} ask whether a seed performs well across datasets and compare four GLUE task rankings without estimating a covariance matrix.
 
-\citet[Figure 3]{zhou2020} report a Spearman correlation matrix across datasets. Their standard block has correlations at least 0.95, while standard-to-analysis entries include 0.97 for STR-L and 0.30 for STR-O. These correlations compare checkpoints within runs and average across seeds, so they combine changes in checkpoint performance rather than isolating within-configuration seed deviations. \citet{dufour2026} separate training and sampling variation in FID, while \citet{miller2024} estimates item-level uncertainty for one model. \citet{zhao2026} report the three-seed standard deviation of a twelve-task average and combine twelve per-task Welch tests in their Appendix E.4 without estimating cross-task covariance.
+\citet[Figure 3]{zhou2020} report a Spearman correlation matrix across datasets. Their standard block has correlations at least 0.95, while standard-to-analysis entries include 0.97 for STR-L and 0.30 for STR-O. These correlations compare checkpoints within runs and average across seeds, so they combine changes in checkpoint performance rather than isolating within-configuration seed deviations. \citet{dufour2026} separate training and sampling variation in FID, while \citet{miller2024} treats item-sampling uncertainty with clustered and paired two-model comparisons while holding run variance fixed. \citet{zhao2026} report the three-seed standard deviation of a twelve-task average and combine twelve per-task Welch tests in their Appendix E.4 without estimating cross-task covariance.
 
 \citet{haupt2026} use the PolyPythias 410M panel to estimate per-item variation and prioritise items by welfare weight and improvability. Their per-item variance estimates and approximate item-independence assumption address a different quantity from the off-diagonal covariance of benchmark run effects. Their item-level estimates and our benchmark covariance therefore answer different questions using some of the same models.
 
@@ -713,7 +713,7 @@ Scope, configurations & Noise & 1.00 & 1.10 & 1.20 & 1.244 & 1.316 & 1.40 & 1.50
 \midrule
 One size, 25 & 0.73 & 0.011 & 0.088 & 0.318 & 0.454 & 0.681 & 0.884 & 0.974\\
 Two sizes, 50 & 0.73 & 0.016 & 0.180 & 0.600 & 0.785 & 0.945 & 0.995 & 1.000\\
-Three sizes, 75 & 0.73 & 0.019 & 0.258 & 0.792 & 0.926 & 0.992 & 1.000 & 1.000\\
+Three sizes, 75 & 0.73 & 0.019 & 0.258 & 0.792 & 0.927 & 0.992 & 1.000 & 1.000\\
 One size, 25 & 1.00 & 0.015 & 0.074 & 0.238 & 0.329 & 0.535 & 0.752 & 0.905\\
 Two sizes, 50 & 1.00 & 0.015 & 0.138 & 0.454 & 0.631 & 0.847 & 0.961 & 0.998\\
 Three sizes, 75 & 1.00 & 0.019 & 0.189 & 0.640 & 0.820 & 0.963 & 0.997 & 1.000\\

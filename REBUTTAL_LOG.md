@@ -540,3 +540,120 @@ CPU-feasible (queue as Kaggle CPU kernels next round, enable_gpu false): R1-08, 
 Carry-over for APP next round: supplement_extended_body.tex l.716 prints 0.926 where the results file gives 0.9265.
 
 Skills also applied in fix phase: stop-slop (every section fixer), superpowers:verification-before-completion (coordinator recompiled all six combos before claiming page 9).
+
+## Round 2, started 2026-09-23 01:32 EDT
+
+Pre-round snapshot: e33a01d. Skills run: superpowers:using-superpowers, aris:kill-argument, aris:paper-claim-audit, aris:citation-audit, paper-audit, academic-research-skills:academic-paper-reviewer (quick), stop-slop, superpowers:verification-before-completion; Kaggle CPU kernels for the round 1 CPU-feasible NEEDS-EXPERIMENT items. Raw outputs: work/rebuttal/r2/*.md
+
+### Merged findings (round 2)
+
+Merged 2026-09-23 from work/rebuttal/r2/{kill_argument (KA), claim_audit (CA), citation_audit (CI), paper_audit (PA), academic_reviewer (AR, seats S1 to S5)}.md. Every quote was checked against deliverables/*.tex at e33a01d. Four round-1 CPU kernels landed under results/ before this merge (snap-r2-r1-08, -r1-18, -r1-18b, -r1-20, -r1-50), and three of them change dispositions: R1-08 (fixed-bank inflation) and R1-18 (rule-two operating characteristics) make R2-12 and R2-05 text-fixable, while R1-20 (seed-mismatched pairs) and R1-18b (committed jackknife) contradict text the paper now prints (R2-07, R2-08, R2-06). Slices: A main.tex 28-49 (abstract and introduction, title at line 14), B 50-136 (Sections 2 and 3), C 137-204 (Section 4 up to sec:family), D 205-247 (sec:family through \label{maintext:end}, plus the statements at 248-255 for R2-39 only), APP appendix_a.tex, appendices_bcd.tex, references.tex, and for R2-41 supplement_extended_body.tex. Fix sketches are in work/rebuttal/r2/FIXER_BRIEF.md.
+
+| id | severity | sources | NEW/REPEAT | likely-lower | disposition | slice |
+|---|---|---|---|---|---|---|
+| R2-01 | critical | KA1+AR3+PA10+S5 | REPEAT R1-05 (residual) | yes | text-fixable | B |
+| R2-02 | critical | KA1 | REPEAT R1-05 (residual) | yes | NEEDS-EXPERIMENT (CPU) | none |
+| R2-03 | major | AR5 | REPEAT R1-17 (fix failed) | yes | text-fixable | A |
+| R2-04 | major | AR5+results/snap-r2-r1-18 | REPEAT R1-17 (fix failed) | yes | text-fixable | D |
+| R2-05 | major | AR4+KA3+PA19+S2+AR Q3,Q4 | REPEAT R1-18, R1-19 (residual) | yes | text-fixable | D |
+| R2-06 | major | results/snap-r2-r1-18b (merge check) | NEW | no | text-fixable | D |
+| R2-07 | major | KA2+PA2+AR14+S3+results/snap-r2-r1-20 | REPEAT R1-03 (fix failed) | yes | text-fixable | A |
+| R2-08 | major | KA2+S3+results/snap-r2-r1-20 | REPEAT R1-04, R1-21 (fix failed) | yes | text-fixable | D |
+| R2-09 | major | KA5+PA1+AR1+CA9+PA15 | REPEAT R1-04 (residual) | yes | text-fixable | D |
+| R2-10 | major | KA4+PA6+AR6+AR8+S1 | REPEAT R1-07, R1-02 (fix failed) | yes | text-fixable | A |
+| R2-11 | major | PA8+PA5+S1 | REPEAT R1-10, R1-12 (fix failed) | yes | text-fixable | A |
+| R2-12 | major | AR2+S3+AR Q1+results/snap-r2-r1-08 | REPEAT R1-08 (residual, now fixable) | yes | text-fixable | B |
+| R2-13 | major | AR7+S4+AR Q2 | NEW | yes | text-fixable | B |
+| R2-14 | major | KA P4+AR exp 1 | REPEAT R1-06 (open) | yes | NEEDS-EXPERIMENT (GPU) | none |
+| R2-15 | major | CA1 | REPEAT R1-49 (residual) | no | NEEDS-EXPERIMENT (outputs must land; manifest CPU) | none |
+| R2-16 | major | AR9 | REPEAT R1-01 | no | REJECTED | none |
+| R2-17 | moderate | AR10+KA3+CA2 | REPEAT R1-37, R1-49 (residual) | yes | text-fixable | B |
+| R2-18 | moderate | PA7+KA7+CA8 | NEW | no | text-fixable | A |
+| R2-19 | moderate | CA6+PA4 | NEW | no | text-fixable | C |
+| R2-20 | moderate | CA3 | NEW | no | text-fixable | C |
+| R2-21 | moderate | PA9 | NEW | no | text-fixable | C |
+| R2-22 | moderate | PA5+PA13 | NEW | no | text-fixable | D |
+| R2-23 | moderate | PA3 | NEW | no | text-fixable | D |
+| R2-24 | moderate | CI3+AR7 | REPEAT R1-53 (residual) | no | text-fixable | D |
+| R2-25 | moderate | CI1 | NEW | no | text-fixable | APP |
+| R2-26 | moderate | AR Q2+AR exp 2 | NEW | no | NEEDS-EXPERIMENT (CPU) | none |
+| R2-27 | minor | CA7 | NEW | no | text-fixable | B |
+| R2-28 | minor | CA10 | NEW | no | text-fixable | B |
+| R2-29 | minor | KA6 | NEW | no | text-fixable | B |
+| R2-30 | minor | PA15 | NEW | no | text-fixable | B |
+| R2-31 | minor | PA14+CI4 | NEW | no | text-fixable | A |
+| R2-32 | minor | PA11 | NEW | no | text-fixable | C |
+| R2-33 | minor | PA17 | REPEAT R1-11 (residual) | no | text-fixable | C |
+| R2-34 | minor | PA18 | NEW | no | text-fixable | C |
+| R2-35 | minor | CA5+AR11 | NEW | no | text-fixable | D |
+| R2-36 | minor | CA8 | NEW | no | text-fixable | D |
+| R2-37 | minor | CA11 | NEW | no | text-fixable | D |
+| R2-38 | minor | PA12 | NEW | no | text-fixable | D |
+| R2-39 | minor | PA16 | NEW | no | text-fixable | D (statements) |
+| R2-40 | minor | KA8+CA13+CA34 | NEW | no | text-fixable | APP |
+| R2-41 | minor | CI2+R1 carry-over | REPEAT R1-43 (residual) | no | text-fixable | APP |
+| R2-42 | minor | CI verdict notes | NEW | no | text-fixable | APP |
+| R2-43 | minor | CA4 | NEW | no | NEEDS-EXPERIMENT (CPU) | none |
+| R2-44 | minor | AR15 | REPEAT R1-35 | no | REJECTED | none |
+| R2-45 | minor | CA12+KA3 | NEW | no | REJECTED | none |
+| R2-46 | minor | AR12 | NEW | no | REJECTED | none |
+| R2-47 | minor | AR13 | NEW | no | REJECTED | none |
+| R2-48 | minor | PA script advisories | REPEAT R1-56, R1-62 | no | REJECTED | none |
+
+Totals: 48 findings, critical 2, major 14, moderate 10, minor 22. Dispositions: 37 text-fixable (A 6, B 8, C 6, D 13, APP 4), 5 NEEDS-EXPERIMENT (CPU: R2-02, R2-26, R2-43; GPU: R2-14; external outputs: R2-15), 6 REJECTED.
+
+New findings rated likely to lower the score: 1 (R2-13).
+
+#### Finding details (statement, current quote, relation to round 1)
+
+- R2-01. The shared-item alternative is answered only by an unshown claim, the mechanism is vague, and "diagnostic" is undefined at first use. Quote main.tex:75 "The cross-format pairs, averaging 0.007 with a diagnostic of 0.921 (Appendix~\ref{app:supplementary}), constrain a uniform component of that size and leave open one that follows scoring format." Round 1 added the example and this sentence but not the argument that centring removes any item effect constant across runs, so only a run-by-template effect can enter, and that effect recurs on any redrawn bank in the same format.
+- R2-02. The calculation behind "constrain a uniform component of that size" is missing: the cross-format diagnostic that a uniform 0.124 share would induce, set against 0.921 \ci{0.801}{1.035}. Quote main.tex:75 as above. CPU kernel on the saved per-item reductions.
+- R2-03. The abstract and introduction print "rejected" for an outcome whose rule only returns "not supported". Quotes main.tex:29 "with the shared-item explanation rejected" and main.tex:45 "that the shared-item explanation is \outcome{\Rtwocase}{1}{R2 not supported}{rejected}". Round 1 changed the branch paragraph but left the verdict word.
+- R2-04. The rule text says the check "rejects" the explanation, and results/snap-r2-r1-18/r1_18_rule_two.json shows the not-supported branch fires at 0.226 without a shared component and 0.205 with a 0.124 share, so it can't reject anything. Quote main.tex:207 "It rejects the shared-item explanation when that cross-bank interval sits above one".
+- R2-05. Neither confirmatory rule has its operating characteristics beside it: R1's power sits mid-paragraph, R2 has none, and the bound reading added after the rule was fixed reads as part of the rule. Quote main.tex:207 "At a true 1.244 it passes in 0.356 of 4,000 replicates". R1-18's kernel now supplies R2's rates.
+- R2-06. The printed R1 power (0.356) and null rate (0.026) come from research/outputs/snap-r1-power/r1_power.py, whose jackknife doesn't recentre the remaining seeds, while the committed estimates.seed_jackknife does, and on the same draws the committed rule passes in 0.2585 at a true 1.244 and 0.0155 at a diagonal null (results/snap-r2-r1-18b/r1_18b_jackknife_recentring.json; results/snap-r2-r1-18 independently gives 0.257 with 0 label mismatches against the committed function). Quote main.tex:207 "At a true 1.244 it passes in 0.356 of 4,000 replicates, with the middle 90\% of estimates between 1.026 and 1.456, and at independence in 0.026." The 1.026 to 1.456 range is a point-estimate range and survives (1.0258, 1.4563).
+- R2-07. Paragraph 1 closes by shrinking the stakes, and its seed-matching explanation is contradicted by results/snap-r2-r1-20, where seed-matched and seed-mismatched paired deviations differ by a factor of only 0.928 to 1.025. Quote main.tex:33 "which means the covariance matters more for one battery average's error bar than for seed-matched comparisons." The 0.113 has no pointer (AR14). Round 1 added this sentence (R1-03).
+- R2-08. Section 4.5 and the Discussion explain the few changed calls by seed matching, which the R1-20 kernel contradicts: single-run comparisons change the wrong-call rate by at most 0.019 when the runs share a seed label and 0.016 when they don't, every interval reaching zero. Quotes main.tex:228 "suggests that most of the covariance cancels in such seed-matched gaps, which would explain the few changed calls" and main.tex:245 "seed-matched paired comparisons need little correction, with median paired-difference ratio 1.024".
+- R2-09. The out-of-sample comparison reads as the method losing to a constant because its target (one noisy six-run ratio on the earlier three-size PolyPythias transfer runs) is unnamed and the pooled-target reversal is omitted. Quote main.tex:245 "Out of sample on margins, independence predicts a configuration's measured ratio with a mean absolute log error of 0.339 against 0.536 for the plug-in and 0.512 for our decomposition".
+- R2-10. The abstract leads with a 70-word identification caveat that quotes "our margin value" before any value, never says why the covariance matters, and doesn't scope the claim to a fixed battery of likelihood-scored multiple choice or name sigma_agg as the cross-battery quantity. Quote main.tex:29 "although an item effect shared across benchmarks and halves would enter the estimate, and a 0.124 share of item variance would reproduce our margin value." Round 1's R1-02 put the caveat here and R1-07's trim left the abstract number-saturated.
+- R2-11. The contribution list spills over two paragraphs, three of four items end on a limitation, and it repeats held-out numbers, the 0.113 to 0.051 result and the exploratory caveat. Quotes main.tex:47 "a within-battery count that doesn't rank batteries" and main.tex:49 "Apart from the registered test and the two PolyPythias rules, every analysis is exploratory." Round 1 inserted the K_eff caveat (R1-12).
+- R2-12. The main text never reports fixed-bank run variance, the quantity a practitioner re-running a released bank faces, and results/snap-r2-r1-08 now gives it. Quote main.tex:67 "so reproducibility on that fixed bank is a separate question".
+- R2-13. The paper doesn't say why it splits items rather than subtracting an analytic item-sampling variance from the full-data diagonal, which leaves the novelty over split-half and generalizability theory unstated. Quote main.tex:35 "We adapt the repeated-measurement construction of quantitative genetics to this setting and call it SNAP".
+- R2-14. The 375 DataDecide runs were never scored on bank two. Quote main.tex:241 "We didn't score the 375 DataDecide runs on the second bank". GPU inference, still blocked.
+- R2-15. No output in the repo backs the past-tense 45-run PolyPythias rescore, the byte-match check or the 6,808-item bank-two build. Quotes main.tex:45 "We therefore scored all 45 PolyPythias runs", main.tex:133, main.tex:135 "we built a second bank of 6,808 items". Scoring outputs arrive with the pending R1/R2 results, and the manifest is a CPU job.
+- R2-16. The default build ends the main text on page 10. main.aux `\newlabel{maintext:end}{{6}{10}...}`. Rejected because the default build prints every outcome variant and round 1 recompiled all six single-outcome builds to page 9; the brief requires the same check after this round.
+- R2-17. The failed-plan disclosure reads as a failed preregistration, and its enumeration range has no result file. Quote main.tex:129 "No estimation set reaches the plan's thresholds of 1.349 and 1.40, and an enumeration over the $\binom{25}{17}=1{,}081{,}575$ possible sets gives margin estimates from 1.037 to 1.317".
+- R2-18. Two one-sentence paragraphs list accuracy subsets that exclude one, which reads as a significance search, and the power figure is labelled "fitted accuracy cell" although it uses generic accuracy-like noise. Quote main.tex:41 "The accuracy interval no longer includes one under five of the 25 recipe removals".
+- R2-19. Table 1's caption points to gain and competence rows that no longer exist and calls the size-band rows wild bootstrap intervals, while research/outputs/snap-r6-twoway/r6_twoway.json computes cluster-robust t(4) intervals. Quote main.tex:144 "and the gain and competence adjustments are in Appendix~\ref{app:proxy}".
+- R2-20. The Dirichlet weighting sweep has no result file. Quote main.tex:167 "A sweep of 2,000 weightings from a flat Dirichlet leaves 0.817 of margin intervals excluding one." The appendix copy (appendices_bcd.tex:204) needs the CPU rerun and stays untouched this round.
+- R2-21. Permutation tail fractions read as non-significant p-values, the reverse of the intended point. Quote main.tex:165 "Across 2,000 such permutations 0.087 reach or exceed the observed margin estimate and 0.352 the observed accuracy estimate."
+- R2-22. Slice D repeats Section 4.1 word for word and leaves a dangling referent. Quotes main.tex:220 "averaging 0.624 within formats and 0.007 across them" (same wording at main.tex:163) and main.tex:241 "At a share of 0.05 only 0.007 of simulated replicates reach the observed margin value."
+- R2-23. The Discussion has text for the R2 not-supported branch only. Quote main.tex:241 "\outcome{\Rtwocase}{1}{R2 not supported}{ The cross-bank check in PolyPythias constrains that item effect in one family".
+- R2-24. Related work credits "variance-component ideas" to Spearman 1904 and Cronbach 1951, and generalizability theory (brennan2001, in references.tex) is absent from the main text. Quote main.tex:234 "the variance-component ideas of \citet{spearman1904}, \citet{cronbach1951}, and \citet{searle1992}".
+- R2-25. Zhao et al. are described as testing tasks one at a time. Quote appendices_bcd.tex:73 "\citet{zhao2026} test tasks one at a time without cross-task covariance."
+- R2-26. No efficiency comparison between the split-half estimate and an analytic diagonal correction that uses all items. CPU kernel on released reductions.
+- R2-27. "Covers well" overstates coverage that falls to 0.928. Quote main.tex:117 "We report the wild interval because it covers well across the twelve populations".
+- R2-28. The truncation subset also drops one 530M configuration. Quote main.tex:127 "Dropping the 26 severely truncated configurations removes the 750M band".
+- R2-29. The 33-configuration subset (1.082) invites a truncation reading that the near-final auxiliary contrast answers, and the text doesn't connect them. Quote main.tex:127 "On the 33 configurations that share a final step, margin inflation is 1.082 (\ci{0.121}{1.530})".
+- R2-30. Edit artefact. Quote main.tex:133 "Our earlier transfer check scored a nested sample of 4,755 items and stays in Appendix~\ref{app:transport}."
+- R2-31. DataDecide's description reads as the whole release, and "the same OLMES commit" has no antecedent. Quotes main.tex:37 "with 25 data recipes and five model sizes that each have three released replicates" and main.tex:45 "built at the same OLMES commit".
+- R2-32. Table 2 prints percentiles in confidence-interval brackets, on five sizes against three elsewhere. Quote main.tex:198 "Original, four-benchmark subsets, all sizes (percentiles) & Margin & 1.176 & \ci{0.982}{1.476}".
+- R2-33. Vague and defensive. Quote main.tex:181 "a power simulation that can't rescue the test". Round 1 kept this wording (R1-11).
+- R2-34. First figure reference doesn't say the figure is in the appendix. Quote main.tex:163 "(Figure~\ref{fig:covariance})".
+- R2-35. 0.821 appears in no result file, and the size-band interval that answers the anti-conservatism concern isn't mentioned. Quote main.tex:243 "take simulated margin coverage to 0.821 at a quarter of latent variance and 0.580 at a half".
+- R2-36. Two power figures from different simulated populations sit unlabelled. Quotes main.tex:239 "at a design that would detect a true ratio of 1.10 in 0.135 of replicates" and main.tex:245 "accuracy needs eight to reach 0.803".
+- R2-37. 6,808/37,682 is 0.181. Quote main.tex:217 "Bank two holds about a sixth of bank one's items".
+- R2-38. The heading promises a mechanism the section doesn't test. Quote main.tex:219 "\subsection{Scoring format and mechanism}".
+- R2-39. "This revision" exposes revision history in a blind submission, and "loss-proxy rescoring" is undefined. Quote main.tex:255 "come from earlier execution records that this revision didn't rerun, and the loss-proxy rescoring wasn't run."
+- R2-40. Several main-text numbers live only in the extended supplement. Quotes main.tex:47 "every recipe, recipe-pair and benchmark deletion" and main.tex:203 "Removing CoQA lowers held-out margin inflation to 1.090".
+- R2-41. Round-1 fixes not carried into the supplement. Quote supplement_extended_body.tex:127 "\citet{miller2024} estimates item-level uncertainty for one model." plus the 0.926 carry-over at supplement_extended_body.tex l.716.
+- R2-42. Optional bibliographic completeness. references.tex entries fehlauer2025 (Crossref pp. 32970--32979) and ruan2024 (volume 37).
+- R2-43. The 0.044 band-share bound and the 0.008 share have no stored output. Quote main.tex:243 "bounds that effect at 0.044 of the seed covariance on margins".
+- R2-44. Rejected: "trait" is defined once at main.tex:60 and indexes the appendix tables, and R1-35 already moved the genetics analogy out of the main text.
+- R2-45. Rejected: a commit hash in the text adds no independent corroboration, a third-party timestamp can't be made retroactive, and main.tex:255 already states the gap.
+- R2-46. Rejected: main.tex:127 already says the PolyPythias seeds avoid the schedule confound by sharing one final step.
+- R2-47. Rejected: main.tex:239 already names the accuracy cuts that exclude one (without BoolQ, adjacent checkpoint, held-out) and says they don't settle the bound.
+- R2-48. Rejected: `\citet` ties and unreferenced equation labels are cosmetic, and the long-paragraph flag at main.tex:207 is handled by R2-05.
+
+### Round 2 outcome, 2026-09-23 02:05 EDT
+FIXED 37 (slices A 6, B 8, C 6, D 13, APP 4); NEEDS-EXPERIMENT 5; REJECTED 6. All five round 1 CPU-feasible NEEDS-EXPERIMENT items (R1-08, R1-18, R1-20, R1-49, R1-50) ran as Kaggle CPU kernels (enable_gpu false, enable_tpu false); outputs in results/snap-r2-*/, summary results/snap-r2-SUMMARY.md. Three corrected paper claims: rule-one power 0.356/0.026 became 0.259/0.016 (recentred jackknife, snap-r2-r1-18b); the shared-item wording "rejected" became "not supported" (snap-r2-r1-18); the seed-matching explanation was dropped (snap-r2-r1-20). Coordinator edits after splice: removed the unsourced 0.00477 from appendices_bcd.tex, and restored the 1,081,575-set enumeration range in the appendix from snap-r2-r1-49. Compile clean, 0 undefined references, maintext:end on page 9 in all six (Ronecase, Rtwocase) combinations. New findings rated likely to lower the score this round: 1 (R2-13, fixed in slice B).

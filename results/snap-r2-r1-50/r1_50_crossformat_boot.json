@@ -1,0 +1,304 @@
+{
+ "results": {
+  "margin": {
+   "cross_format_all_ten": {
+    "traits": [
+     "arc_challenge",
+     "arc_easy",
+     "boolq",
+     "csqa",
+     "hellaswag",
+     "mmlu",
+     "openbookqa",
+     "piqa",
+     "socialiqa",
+     "winogrande"
+    ],
+    "retained_ordered_offdiag_pairs": 54,
+    "ordered_offdiag_pairs": 90,
+    "point": 0.9211891046274687,
+    "full_matrix_lambda_recomputed": 1.2439499117191137,
+    "sum_T_mask": 0.0022395692165892503,
+    "sum_U": 0.0026391671932770246,
+    "wild": {
+     "point": 0.9211891046274687,
+     "lo": 0.8006569396931505,
+     "hi": 1.034729865199787,
+     "se": 0.04389812746262408,
+     "method": "wild cluster bootstrap-t (G=25)",
+     "n_clusters": 25
+    },
+    "cluster_t": {
+     "point": 0.9211891046274687,
+     "lo": 0.8256315997832616,
+     "hi": 1.0077257535699122,
+     "se": 0.04389812746262408,
+     "method": "cluster-robust t(24)",
+     "n_clusters": 25
+    },
+    "config_boot": {
+     "point": 0.9211891046274687,
+     "lo": 0.7902117314120551,
+     "hi": 1.0426628773191176,
+     "se": 0.06513195226498082,
+     "method": "configuration percentile bootstrap",
+     "n_clusters": 125
+    }
+   },
+   "cross_format_no_boolq": {
+    "traits": [
+     "arc_challenge",
+     "arc_easy",
+     "csqa",
+     "hellaswag",
+     "mmlu",
+     "openbookqa",
+     "piqa",
+     "socialiqa",
+     "winogrande"
+    ],
+    "retained_ordered_offdiag_pairs": 36,
+    "ordered_offdiag_pairs": 72,
+    "point": 1.0055366289868073,
+    "full_matrix_lambda_recomputed": 1.785617464617265,
+    "sum_T_mask": 0.00105735502262333,
+    "sum_U": 0.0010457431821097203,
+    "wild": {
+     "point": 1.0055366289868073,
+     "lo": 0.9724471018843333,
+     "hi": 1.0386364291807133,
+     "se": 0.00960466906542884,
+     "method": "wild cluster bootstrap-t (G=25)",
+     "n_clusters": 25
+    },
+    "cluster_t": {
+     "point": 1.0055366289868073,
+     "lo": 0.9855142216169624,
+     "hi": 1.0251680562029903,
+     "se": 0.00960466906542884,
+     "method": "cluster-robust t(24)",
+     "n_clusters": 25
+    },
+    "config_boot": {
+     "point": 1.0055366289868073,
+     "lo": 0.9902872011443336,
+     "hi": 1.0246341318214096,
+     "se": 0.008672325421763374,
+     "method": "configuration percentile bootstrap",
+     "n_clusters": 125
+    }
+   },
+   "unrestricted_no_boolq": {
+    "traits": [
+     "arc_challenge",
+     "arc_easy",
+     "csqa",
+     "hellaswag",
+     "mmlu",
+     "openbookqa",
+     "piqa",
+     "socialiqa",
+     "winogrande"
+    ],
+    "retained_ordered_offdiag_pairs": 72,
+    "ordered_offdiag_pairs": 72,
+    "point": 1.785617464617265,
+    "full_matrix_lambda_recomputed": 1.785617464617265,
+    "sum_T_mask": 0.003334278651727164,
+    "sum_U": 0.0010457431821097203,
+    "wild": {
+     "point": 1.785617464617265,
+     "lo": 1.6891033385766652,
+     "hi": 1.876517417130866,
+     "se": 0.03583455482692803,
+     "method": "wild cluster bootstrap-t (G=25)",
+     "n_clusters": 25
+    },
+    "cluster_t": {
+     "point": 1.785617464617265,
+     "lo": 1.7100599908630312,
+     "hi": 1.8581050259718657,
+     "se": 0.03583455482692803,
+     "method": "cluster-robust t(24)",
+     "n_clusters": 25
+    },
+    "config_boot": {
+     "point": 1.785617464617265,
+     "lo": 1.674939376613257,
+     "hi": 1.8617297726894582,
+     "se": 0.04660228266462657,
+     "method": "configuration percentile bootstrap",
+     "n_clusters": 125
+    }
+   }
+  },
+  "accuracy": {
+   "cross_format_all_ten": {
+    "traits": [
+     "arc_challenge",
+     "arc_easy",
+     "boolq",
+     "csqa",
+     "hellaswag",
+     "mmlu",
+     "openbookqa",
+     "piqa",
+     "socialiqa",
+     "winogrande"
+    ],
+    "retained_ordered_offdiag_pairs": 54,
+    "ordered_offdiag_pairs": 90,
+    "point": 0.9651889498004318,
+    "full_matrix_lambda_recomputed": 1.0783733870898096,
+    "sum_T_mask": 0.002647629508204811,
+    "sum_U": 0.002842055341688305,
+    "wild": {
+     "point": 0.9651889498004318,
+     "lo": 0.8483992935798912,
+     "hi": 1.063438097874525,
+     "se": 0.046667765189171116,
+     "method": "wild cluster bootstrap-t (G=25)",
+     "n_clusters": 25
+    },
+    "cluster_t": {
+     "point": 0.9651889498004318,
+     "lo": 0.8635163408437319,
+     "hi": 1.057127687050894,
+     "se": 0.046667765189171116,
+     "method": "cluster-robust t(24)",
+     "n_clusters": 25
+    },
+    "config_boot": {
+     "point": 0.9651889498004318,
+     "lo": 0.8514228861439314,
+     "hi": 1.0652947793735565,
+     "se": 0.0536332013397556,
+     "method": "configuration percentile bootstrap",
+     "n_clusters": 125
+    }
+   },
+   "cross_format_no_boolq": {
+    "traits": [
+     "arc_challenge",
+     "arc_easy",
+     "csqa",
+     "hellaswag",
+     "mmlu",
+     "openbookqa",
+     "piqa",
+     "socialiqa",
+     "winogrande"
+    ],
+    "retained_ordered_offdiag_pairs": 36,
+    "ordered_offdiag_pairs": 72,
+    "point": 0.9720265119161223,
+    "full_matrix_lambda_recomputed": 1.5578291363266619,
+    "sum_T_mask": 0.0005174057896656617,
+    "sum_U": 0.0005476146565549847,
+    "wild": {
+     "point": 0.9720265119161223,
+     "lo": 0.8222542125946245,
+     "hi": 1.1011498688584853,
+     "se": 0.0695215523007443,
+     "method": "wild cluster bootstrap-t (G=25)",
+     "n_clusters": 25
+    },
+    "cluster_t": {
+     "point": 0.9720265119161223,
+     "lo": 0.8160222131226627,
+     "hi": 1.106245373968198,
+     "se": 0.0695215523007443,
+     "method": "cluster-robust t(24)",
+     "n_clusters": 25
+    },
+    "config_boot": {
+     "point": 0.9720265119161223,
+     "lo": 0.7776564240564938,
+     "hi": 1.1317033963026486,
+     "se": 0.0890890890806738,
+     "method": "configuration percentile bootstrap",
+     "n_clusters": 125
+    }
+   },
+   "unrestricted_no_boolq": {
+    "traits": [
+     "arc_challenge",
+     "arc_easy",
+     "csqa",
+     "hellaswag",
+     "mmlu",
+     "openbookqa",
+     "piqa",
+     "socialiqa",
+     "winogrande"
+    ],
+    "retained_ordered_offdiag_pairs": 72,
+    "ordered_offdiag_pairs": 72,
+    "point": 1.5578291363266619,
+    "full_matrix_lambda_recomputed": 1.5578291363266619,
+    "sum_T_mask": 0.0013289685630014263,
+    "sum_U": 0.0005476146565549847,
+    "wild": {
+     "point": 1.5578291363266619,
+     "lo": 1.4119121961052712,
+     "hi": 1.6870177418636014,
+     "se": 0.06591654353436376,
+     "method": "wild cluster bootstrap-t (G=25)",
+     "n_clusters": 25
+    },
+    "cluster_t": {
+     "point": 1.5578291363266619,
+     "lo": 1.4152602952291986,
+     "hi": 1.6884020648898497,
+     "se": 0.06591654353436376,
+     "method": "cluster-robust t(24)",
+     "n_clusters": 25
+    },
+    "config_boot": {
+     "point": 1.5578291363266619,
+     "lo": 1.398399910180819,
+     "hi": 1.7216510270367682,
+     "se": 0.08329346098127925,
+     "method": "configuration percentile bootstrap",
+     "n_clusters": 125
+    }
+   }
+  }
+ },
+ "formats": {
+  "arc_challenge": "mc",
+  "arc_easy": "mc",
+  "boolq": "yesno",
+  "csqa": "mc",
+  "hellaswag": "cloze",
+  "mmlu": "mc",
+  "openbookqa": "mc",
+  "piqa": "cloze",
+  "socialiqa": "mc",
+  "winogrande": "cloze"
+ },
+ "identity_check": "unmasked T and U equal seednoise.estimator.estimate T and U (rtol 1e-10)",
+ "paper_values": {
+  "margin": [
+   0.921,
+   0.801,
+   1.035
+  ],
+  "accuracy": [
+   0.965,
+   0.848,
+   1.063
+  ],
+  "margin_no_boolq_cross": [
+   1.006,
+   0.972,
+   1.039
+  ],
+  "margin_no_boolq_unrestricted": [
+   1.786,
+   1.689,
+   1.877
+  ]
+ },
+ "wall_seconds": 24.686295747756958
+}

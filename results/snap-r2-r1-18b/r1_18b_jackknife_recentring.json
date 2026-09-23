@@ -1,0 +1,18 @@
+{
+ "true": 1.2438424111019857,
+ "median_lambda": 1.2425201706800788,
+ "p5_p95": [
+  1.0258493043215269,
+  1.4563229880722668
+ ],
+ "pass_rate_r1_power_jackknife": 0.356,
+ "pass_rate_recentred_jackknife": 0.2585,
+ "median_se_theta_r1_power": 0.27850048588038917,
+ "median_se_theta_recentred": 0.3196669668973632,
+ "null_diagonal_sigma": {
+  "median_lambda": 0.9993252935857604,
+  "pass_rate_r1_power_jackknife": 0.02625,
+  "pass_rate_recentred_jackknife": 0.0155
+ },
+ "note": "null here uses diagonal Sigma_E with rng continued; RESULT.txt's null used an independent-seed covariance whose construction is not in r1_power.py"
+}

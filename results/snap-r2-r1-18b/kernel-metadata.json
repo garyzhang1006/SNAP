@@ -1,0 +1,15 @@
+{
+ "id": "garyzhang11111/snap-r2-r1-18b",
+ "title": "snap-r2-r1-18b",
+ "code_file": "r1_18b_recentring.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_tpu": false,
+ "enable_internet": false,
+ "dataset_sources": [],
+ "competition_sources": [],
+ "kernel_sources": [],
+ "model_sources": []
+}

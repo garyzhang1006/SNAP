@@ -1,0 +1,238 @@
+{
+ "results": {
+  "all_ten": {
+   "margin": {
+    "fixed_bank": {
+     "lambda": 1.2374541977737519,
+     "sigma_agg": 0.005773884373767987,
+     "sigma_indep": 0.004665937845744532,
+     "sum_T": 0.004167217595205268,
+     "sum_U": 0.00272137199754389,
+     "N": 125,
+     "K": 10,
+     "wild": {
+      "point": 1.2374541977737519,
+      "lo": 1.137034653717563,
+      "hi": 1.3312689586789275,
+      "se": 0.04459335158304847,
+      "method": "wild cluster bootstrap-t (G=25)",
+      "n_clusters": 25
+     },
+     "cluster_t": {
+      "point": 1.2374541977737519,
+      "lo": 1.1417144305333486,
+      "hi": 1.3263008490865376,
+      "se": 0.04459335158304847,
+      "method": "cluster-robust t(24)",
+      "n_clusters": 25
+     }
+    },
+    "split_half_snap": {
+     "lambda": 1.2439499117191137,
+     "sigma_agg": 0.005715856790482671,
+     "sigma_indep": 0.004594925194844438,
+     "sum_T": 0.004083877356163356,
+     "sum_U": 0.0026391671932770246,
+     "N": 125,
+     "K": 10,
+     "wild": {
+      "point": 1.2439499117191137,
+      "lo": 1.1429001912272694,
+      "hi": 1.3376841038790925,
+      "se": 0.04500996929632815,
+      "method": "wild cluster bootstrap-t (G=25)",
+      "n_clusters": 25
+     },
+     "cluster_t": {
+      "point": 1.2439499117191137,
+      "lo": 1.1472991823302268,
+      "hi": 1.3336143940271397,
+      "se": 0.04500996929632815,
+      "method": "cluster-robust t(24)",
+      "n_clusters": 25
+     }
+    },
+    "fixed_over_split_sigma_agg": 1.010152035891091,
+    "fixed_over_split_sigma_indep": 1.0154545825859735
+   },
+   "accuracy": {
+    "fixed_bank": {
+     "lambda": 1.0671540626751113,
+     "sigma_agg": 0.005599804291057398,
+     "sigma_indep": 0.005247418800074629,
+     "sum_T": 0.003919726012268105,
+     "sum_U": 0.003441925507922082,
+     "N": 125,
+     "K": 10,
+     "wild": {
+      "point": 1.0671540626751113,
+      "lo": 0.9937862154030236,
+      "hi": 1.1342970991529056,
+      "se": 0.03268113867821401,
+      "method": "wild cluster bootstrap-t (G=25)",
+      "n_clusters": 25
+     },
+     "cluster_t": {
+      "point": 1.0671540626751113,
+      "lo": 0.9974254486690377,
+      "hi": 1.1325979257068057,
+      "se": 0.03268113867821401,
+      "method": "cluster-robust t(24)",
+      "n_clusters": 25
+     }
+    },
+    "split_half_snap": {
+     "lambda": 1.0783733870898093,
+     "sigma_agg": 0.005141980439174602,
+     "sigma_indep": 0.004768274607602464,
+     "sum_T": 0.003304995354606779,
+     "sum_U": 0.002842055341688305,
+     "N": 125,
+     "K": 10,
+     "wild": {
+      "point": 1.0783733870898093,
+      "lo": 0.992604456794931,
+      "hi": 1.1566521851337637,
+      "se": 0.03770200091015883,
+      "method": "wild cluster bootstrap-t (G=25)",
+      "n_clusters": 25
+     },
+     "cluster_t": {
+      "point": 1.0783733870898093,
+      "lo": 0.9975299483311628,
+      "hi": 1.1535650506796413,
+      "se": 0.03770200091015883,
+      "method": "cluster-robust t(24)",
+      "n_clusters": 25
+     }
+    },
+    "fixed_over_split_sigma_agg": 1.0890364825962437,
+    "fixed_over_split_sigma_indep": 1.1004858637353279
+   }
+  },
+  "no_boolq": {
+   "margin": {
+    "fixed_bank": {
+     "lambda": 1.7344218743942301,
+     "sigma_agg": 0.005237165323009948,
+     "sigma_indep": 0.0030195452446303457,
+     "sum_T": 0.0034284875775672367,
+     "sum_U": 0.0011397066855462167,
+     "N": 125,
+     "K": 9,
+     "wild": {
+      "point": 1.7344218743942301,
+      "lo": 1.5904968130686679,
+      "hi": 1.865264720991082,
+      "se": 0.047037440040704856,
+      "method": "wild cluster bootstrap-t (G=25)",
+      "n_clusters": 25
+     },
+     "cluster_t": {
+      "point": 1.7344218743942301,
+      "lo": 1.6344608089594725,
+      "hi": 1.8289276477569951,
+      "se": 0.047037440040704856,
+      "method": "cluster-robust t(24)",
+      "n_clusters": 25
+     }
+    },
+    "split_half_snap": {
+     "lambda": 1.785617464617265,
+     "sigma_agg": 0.005164709983514787,
+     "sigma_indep": 0.0028923944158564825,
+     "sum_T": 0.003334278651727164,
+     "sum_U": 0.0010457431821097203,
+     "N": 125,
+     "K": 9,
+     "wild": {
+      "point": 1.785617464617265,
+      "lo": 1.689103338576665,
+      "hi": 1.8765174171308665,
+      "se": 0.03583455482692803,
+      "method": "wild cluster bootstrap-t (G=25)",
+      "n_clusters": 25
+     },
+     "cluster_t": {
+      "point": 1.785617464617265,
+      "lo": 1.7100599908630312,
+      "hi": 1.8581050259718657,
+      "se": 0.03583455482692803,
+      "method": "cluster-robust t(24)",
+      "n_clusters": 25
+     }
+    },
+    "fixed_over_split_sigma_agg": 1.01402892703103,
+    "fixed_over_split_sigma_indep": 1.0439604045965536
+   },
+   "accuracy": {
+    "fixed_bank": {
+     "lambda": 1.2851807718465011,
+     "sigma_agg": 0.004052050966785981,
+     "sigma_indep": 0.0031529035101919094,
+     "sum_T": 0.0020523896296789006,
+     "sum_U": 0.001242600068072558,
+     "N": 125,
+     "K": 9,
+     "wild": {
+      "point": 1.2851807718465011,
+      "lo": 1.1811523758136988,
+      "hi": 1.380602578243145,
+      "se": 0.04566135603758694,
+      "method": "wild cluster bootstrap-t (G=25)",
+      "n_clusters": 25
+     },
+     "cluster_t": {
+      "point": 1.2851807718465011,
+      "lo": 1.1872058364857863,
+      "hi": 1.3761982177222951,
+      "se": 0.04566135603758694,
+      "method": "cluster-robust t(24)",
+      "n_clusters": 25
+     }
+    },
+    "split_half_snap": {
+     "lambda": 1.5578291363266619,
+     "sigma_agg": 0.003260636211540841,
+     "sigma_indep": 0.0020930640822583234,
+     "sum_T": 0.0013289685630014263,
+     "sum_U": 0.0005476146565549847,
+     "N": 125,
+     "K": 9,
+     "wild": {
+      "point": 1.5578291363266619,
+      "lo": 1.411912196105271,
+      "hi": 1.6870177418636014,
+      "se": 0.06591654353436376,
+      "method": "wild cluster bootstrap-t (G=25)",
+      "n_clusters": 25
+     },
+     "cluster_t": {
+      "point": 1.5578291363266619,
+      "lo": 1.4152602952291986,
+      "hi": 1.6884020648898497,
+      "se": 0.06591654353436376,
+      "method": "cluster-robust t(24)",
+      "n_clusters": 25
+     }
+    },
+    "fixed_over_split_sigma_agg": 1.2427178942698272,
+    "fixed_over_split_sigma_indep": 1.5063578496794356
+   }
+  }
+ },
+ "population": {
+  "N": 125,
+  "R": 3,
+  "recipes": 25,
+  "sizes": [
+   "150M",
+   "300M",
+   "530M",
+   "750M",
+   "1B"
+  ]
+ },
+ "estimand": "sqrt(replicate variance of the full-bank battery average / independence value), same 375 runs, no item split",
+ "wall_seconds": 23.814590454101562
+}

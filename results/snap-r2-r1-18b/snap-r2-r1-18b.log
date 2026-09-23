@@ -1,0 +1,25 @@
+[{"stream_name":"stdout","time":9.949207724,"data":"{\n"}
+,{"stream_name":"stdout","time":9.949265406,"data":" \"true\": 1.2438424111019857,\n"}
+,{"stream_name":"stdout","time":9.949271905,"data":" \"median_lambda\": 1.2425201706800788,\n"}
+,{"stream_name":"stdout","time":9.949276597,"data":" \"p5_p95\": [\n"}
+,{"stream_name":"stdout","time":9.949280875,"data":"  1.0258493043215269,\n"}
+,{"stream_name":"stdout","time":9.949284725,"data":"  1.4563229880722668\n"}
+,{"stream_name":"stdout","time":9.949288718,"data":" ],\n"}
+,{"stream_name":"stdout","time":9.94929276,"data":" \"pass_rate_r1_power_jackknife\": 0.356,\n"}
+,{"stream_name":"stdout","time":9.949297501,"data":" \"pass_rate_recentred_jackknife\": 0.2585,\n"}
+,{"stream_name":"stdout","time":9.949302302,"data":" \"median_se_theta_r1_power\": 0.27850048588038917,\n"}
+,{"stream_name":"stdout","time":9.94930675,"data":" \"median_se_theta_recentred\": 0.3196669668973632,\n"}
+,{"stream_name":"stdout","time":9.949311376,"data":" \"null_diagonal_sigma\": {\n"}
+,{"stream_name":"stdout","time":9.949315934,"data":"  \"median_lambda\": 0.9993252935857604,\n"}
+,{"stream_name":"stdout","time":9.949320439,"data":"  \"pass_rate_r1_power_jackknife\": 0.02625,\n"}
+,{"stream_name":"stdout","time":9.949325086,"data":"  \"pass_rate_recentred_jackknife\": 0.0155\n"}
+,{"stream_name":"stdout","time":9.949329463,"data":" },\n"}
+,{"stream_name":"stdout","time":9.949333932,"data":" \"note\": \"null here uses diagonal Sigma_E with rng continued; RESULT.txt's null used an independent-seed covariance whose construction is not in r1_power.py\"\n"}
+,{"stream_name":"stdout","time":9.949339117,"data":"}\n"}
+,{"stream_name":"stderr","time":13.041562529,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":13.041618345,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":13.502432501,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":13.502460083,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":15.408732179,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":17.227402487,"data":"[NbConvertApp] Writing 301913 bytes to __results__.html\n"}
+]
