@@ -1,0 +1,1007 @@
+{
+ "design": "R5-07 (CPU, exploratory): false-positive rate of the two decision rules on null seed pairs in PolyPythias.\n\nDesign fixed before running (2026-09-23). The DataDecide decision study (compute extra/heldout/kaggle/\nk05-decision/k05-decision.py:87-116, reported at main.tex:222) calls a pair when its aggregate gap exceeds\ntwo standard errors, se = sqrt(2 / R) * sigma, with sigma either sigma_indep (the estimator's U) or\nsigma_agg (the estimator's T), estimated with the pair left out. There a wrong call can be a real rank\nchange, so it is no false-positive rate. PolyPythias gives nine seeds of one configuration per size, so any\ntwo disjoint sets of those seeds have a true gap of zero and every call on them is a false positive.\n\nInputs: the 45 runs-arm2 reductions of snap-r12-polypythias (five sizes, nine seeds, ten traits, step143000),\nbuilt with build_population exactly as snap-r12-analysis did. The 18 runs-adjacent reductions cover nine\ntraits and are not used, since build_population needs all ten.\n\nPer size and phenotype (margin, accuracy), the same aggregate and rule as k05:\n1. single_run: every one of the 36 seed pairs, R = 1 per side, sigmas from the other 7 seeds of that\n   configuration (N = 1, R = 7).\n2. three_run: every one of the 840 unordered pairs of disjoint seed triples, R = 3 per side as in k05,\n   sigmas from the remaining 3 seeds (N = 1, R = 3).\n3. in_sample_reference: the 36 single-run pairs with sigmas from all 9 seeds, pair included. It separates\n   the bias of each standard error from the noise of estimating it on few runs, and it leaves nothing out.\nReported: pairs, pairs with a defined sigma, calls, false-positive rate, the nominal two-sided rate at two\nknown standard errors, and calls made by independence that the corrected rule drops. A seed jackknife\n(rerun of design 1 on each set of eight seeds, sigmas from the other 6) gives a standard error that respects\nthe shared seeds. Everything here is exploratory.\n",
+ "population": {
+  "N": 5,
+  "R": 9,
+  "K": 10,
+  "configs": [
+   [
+    "pythia-14m",
+    "14m"
+   ],
+   [
+    "pythia-160m",
+    "160m"
+   ],
+   [
+    "pythia-31m",
+    "31m"
+   ],
+   [
+    "pythia-410m",
+    "410m"
+   ],
+   [
+    "pythia-70m",
+    "70m"
+   ]
+  ],
+  "margin_lambda": 1.2619855939956985,
+  "half_A_items": 2377,
+  "half_B_items": 2378
+ },
+ "results": {
+  "margin": {
+   "single_run": {
+    "14m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 0,
+      "false_positive_rate": 0.0
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 4,
+      "false_positive_rate": 0.1111111111111111
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 0,
+     "corrected_calls_not_made_by_independence": 4,
+     "rate_independence_minus_corrected_on_both_defined": -0.1111111111111111
+    },
+    "160m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 0,
+      "false_positive_rate": 0.0
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 3,
+      "false_positive_rate": 0.08333333333333333
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 0,
+     "corrected_calls_not_made_by_independence": 3,
+     "rate_independence_minus_corrected_on_both_defined": -0.08333333333333333
+    },
+    "31m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 4,
+      "false_positive_rate": 0.1111111111111111
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 3,
+      "false_positive_rate": 0.08333333333333333
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 1,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.027777777777777776
+    },
+    "410m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 12,
+      "false_positive_rate": 0.3333333333333333
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 6,
+      "false_positive_rate": 0.16666666666666666
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 6,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.16666666666666666
+    },
+    "70m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 8,
+      "false_positive_rate": 0.2222222222222222
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 8,
+      "false_positive_rate": 0.2222222222222222
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 0,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.0
+    },
+    "pooled_over_sizes": {
+     "pairs": 180,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 180,
+      "calls": 24,
+      "false_positive_rate": 0.13333333333333333
+     },
+     "corrected": {
+      "defined": 180,
+      "calls": 24,
+      "false_positive_rate": 0.13333333333333333
+     },
+     "both_defined": 180,
+     "independence_calls_dropped_by_correction": 7,
+     "corrected_calls_not_made_by_independence": 7,
+     "rate_independence_minus_corrected_on_both_defined": 0.0
+    }
+   },
+   "three_run": {
+    "14m": {
+     "pairs": 840,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 840,
+      "calls": 32,
+      "false_positive_rate": 0.0380952380952381
+     },
+     "corrected": {
+      "defined": 770,
+      "calls": 149,
+      "false_positive_rate": 0.19350649350649352
+     },
+     "both_defined": 770,
+     "independence_calls_dropped_by_correction": 11,
+     "corrected_calls_not_made_by_independence": 130,
+     "rate_independence_minus_corrected_on_both_defined": -0.15454545454545454
+    },
+    "160m": {
+     "pairs": 840,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 830,
+      "calls": 67,
+      "false_positive_rate": 0.08072289156626505
+     },
+     "corrected": {
+      "defined": 790,
+      "calls": 119,
+      "false_positive_rate": 0.15063291139240506
+     },
+     "both_defined": 790,
+     "independence_calls_dropped_by_correction": 18,
+     "corrected_calls_not_made_by_independence": 80,
+     "rate_independence_minus_corrected_on_both_defined": -0.07848101265822785
+    },
+    "31m": {
+     "pairs": 840,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 840,
+      "calls": 186,
+      "false_positive_rate": 0.22142857142857142
+     },
+     "corrected": {
+      "defined": 830,
+      "calls": 140,
+      "false_positive_rate": 0.1686746987951807
+     },
+     "both_defined": 830,
+     "independence_calls_dropped_by_correction": 50,
+     "corrected_calls_not_made_by_independence": 11,
+     "rate_independence_minus_corrected_on_both_defined": 0.046987951807228916
+    },
+    "410m": {
+     "pairs": 840,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 840,
+      "calls": 310,
+      "false_positive_rate": 0.36904761904761907
+     },
+     "corrected": {
+      "defined": 820,
+      "calls": 195,
+      "false_positive_rate": 0.23780487804878048
+     },
+     "both_defined": 820,
+     "independence_calls_dropped_by_correction": 111,
+     "corrected_calls_not_made_by_independence": 10,
+     "rate_independence_minus_corrected_on_both_defined": 0.12317073170731707
+    },
+    "70m": {
+     "pairs": 840,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 840,
+      "calls": 213,
+      "false_positive_rate": 0.25357142857142856
+     },
+     "corrected": {
+      "defined": 740,
+      "calls": 258,
+      "false_positive_rate": 0.34864864864864864
+     },
+     "both_defined": 740,
+     "independence_calls_dropped_by_correction": 2,
+     "corrected_calls_not_made_by_independence": 116,
+     "rate_independence_minus_corrected_on_both_defined": -0.15405405405405406
+    },
+    "pooled_over_sizes": {
+     "pairs": 4200,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 4190,
+      "calls": 808,
+      "false_positive_rate": 0.1928400954653938
+     },
+     "corrected": {
+      "defined": 3950,
+      "calls": 861,
+      "false_positive_rate": 0.2179746835443038
+     },
+     "both_defined": 3950,
+     "independence_calls_dropped_by_correction": 192,
+     "corrected_calls_not_made_by_independence": 347,
+     "rate_independence_minus_corrected_on_both_defined": -0.039240506329113925
+    }
+   },
+   "in_sample_reference": {
+    "14m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 0,
+      "false_positive_rate": 0.0
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 4,
+      "false_positive_rate": 0.1111111111111111
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 0,
+     "corrected_calls_not_made_by_independence": 4,
+     "rate_independence_minus_corrected_on_both_defined": -0.1111111111111111
+    },
+    "160m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 1,
+      "false_positive_rate": 0.027777777777777776
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 1,
+      "false_positive_rate": 0.027777777777777776
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 0,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.0
+    },
+    "31m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 3,
+      "false_positive_rate": 0.08333333333333333
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 1,
+      "false_positive_rate": 0.027777777777777776
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 2,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.05555555555555555
+    },
+    "410m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 12,
+      "false_positive_rate": 0.3333333333333333
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 1,
+      "false_positive_rate": 0.027777777777777776
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 11,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.3055555555555556
+    },
+    "70m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 6,
+      "false_positive_rate": 0.16666666666666666
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 2,
+      "false_positive_rate": 0.05555555555555555
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 4,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.1111111111111111
+    },
+    "pooled_over_sizes": {
+     "pairs": 180,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 180,
+      "calls": 22,
+      "false_positive_rate": 0.12222222222222222
+     },
+     "corrected": {
+      "defined": 180,
+      "calls": 9,
+      "false_positive_rate": 0.05
+     },
+     "both_defined": 180,
+     "independence_calls_dropped_by_correction": 17,
+     "corrected_calls_not_made_by_independence": 4,
+     "rate_independence_minus_corrected_on_both_defined": 0.07222222222222222
+    }
+   }
+  },
+  "accuracy": {
+   "single_run": {
+    "14m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 3,
+      "false_positive_rate": 0.08333333333333333
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 5,
+      "false_positive_rate": 0.1388888888888889
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 0,
+     "corrected_calls_not_made_by_independence": 2,
+     "rate_independence_minus_corrected_on_both_defined": -0.05555555555555555
+    },
+    "160m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 7,
+      "false_positive_rate": 0.19444444444444445
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 8,
+      "false_positive_rate": 0.2222222222222222
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 1,
+     "corrected_calls_not_made_by_independence": 2,
+     "rate_independence_minus_corrected_on_both_defined": -0.027777777777777776
+    },
+    "31m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 35,
+      "calls": 8,
+      "false_positive_rate": 0.22857142857142856
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 6,
+      "false_positive_rate": 0.16666666666666666
+     },
+     "both_defined": 35,
+     "independence_calls_dropped_by_correction": 2,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.05714285714285714
+    },
+    "410m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 35,
+      "calls": 11,
+      "false_positive_rate": 0.3142857142857143
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 8,
+      "false_positive_rate": 0.2222222222222222
+     },
+     "both_defined": 35,
+     "independence_calls_dropped_by_correction": 4,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.11428571428571428
+    },
+    "70m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 0,
+      "calls": 0,
+      "false_positive_rate": NaN
+     },
+     "corrected": {
+      "defined": 8,
+      "calls": 1,
+      "false_positive_rate": 0.125
+     },
+     "both_defined": 0,
+     "independence_calls_dropped_by_correction": 0,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": NaN
+    },
+    "pooled_over_sizes": {
+     "pairs": 180,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 142,
+      "calls": 29,
+      "false_positive_rate": 0.20422535211267606
+     },
+     "corrected": {
+      "defined": 152,
+      "calls": 28,
+      "false_positive_rate": 0.18421052631578946
+     },
+     "both_defined": 142,
+     "independence_calls_dropped_by_correction": 7,
+     "corrected_calls_not_made_by_independence": 4,
+     "rate_independence_minus_corrected_on_both_defined": 0.02112676056338028
+    }
+   },
+   "three_run": {
+    "14m": {
+     "pairs": 840,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 800,
+      "calls": 148,
+      "false_positive_rate": 0.185
+     },
+     "corrected": {
+      "defined": 670,
+      "calls": 120,
+      "false_positive_rate": 0.1791044776119403
+     },
+     "both_defined": 630,
+     "independence_calls_dropped_by_correction": 47,
+     "corrected_calls_not_made_by_independence": 51,
+     "rate_independence_minus_corrected_on_both_defined": -0.006349206349206349
+    },
+    "160m": {
+     "pairs": 840,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 840,
+      "calls": 243,
+      "false_positive_rate": 0.2892857142857143
+     },
+     "corrected": {
+      "defined": 710,
+      "calls": 136,
+      "false_positive_rate": 0.19154929577464788
+     },
+     "both_defined": 710,
+     "independence_calls_dropped_by_correction": 89,
+     "corrected_calls_not_made_by_independence": 32,
+     "rate_independence_minus_corrected_on_both_defined": 0.08028169014084507
+    },
+    "31m": {
+     "pairs": 840,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 630,
+      "calls": 143,
+      "false_positive_rate": 0.22698412698412698
+     },
+     "corrected": {
+      "defined": 740,
+      "calls": 142,
+      "false_positive_rate": 0.1918918918918919
+     },
+     "both_defined": 620,
+     "independence_calls_dropped_by_correction": 70,
+     "corrected_calls_not_made_by_independence": 14,
+     "rate_independence_minus_corrected_on_both_defined": 0.09032258064516129
+    },
+    "410m": {
+     "pairs": 840,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 560,
+      "calls": 270,
+      "false_positive_rate": 0.48214285714285715
+     },
+     "corrected": {
+      "defined": 780,
+      "calls": 266,
+      "false_positive_rate": 0.34102564102564104
+     },
+     "both_defined": 530,
+     "independence_calls_dropped_by_correction": 161,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.30377358490566037
+    },
+    "70m": {
+     "pairs": 840,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 70,
+      "calls": 53,
+      "false_positive_rate": 0.7571428571428571
+     },
+     "corrected": {
+      "defined": 410,
+      "calls": 54,
+      "false_positive_rate": 0.13170731707317074
+     },
+     "both_defined": 30,
+     "independence_calls_dropped_by_correction": 13,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.43333333333333335
+    },
+    "pooled_over_sizes": {
+     "pairs": 4200,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 2900,
+      "calls": 857,
+      "false_positive_rate": 0.29551724137931035
+     },
+     "corrected": {
+      "defined": 3310,
+      "calls": 718,
+      "false_positive_rate": 0.21691842900302113
+     },
+     "both_defined": 2520,
+     "independence_calls_dropped_by_correction": 380,
+     "corrected_calls_not_made_by_independence": 97,
+     "rate_independence_minus_corrected_on_both_defined": 0.1123015873015873
+    }
+   },
+   "in_sample_reference": {
+    "14m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 4,
+      "false_positive_rate": 0.1111111111111111
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 4,
+      "false_positive_rate": 0.1111111111111111
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 0,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.0
+    },
+    "160m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 6,
+      "false_positive_rate": 0.16666666666666666
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 4,
+      "false_positive_rate": 0.1111111111111111
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 2,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.05555555555555555
+    },
+    "31m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 8,
+      "false_positive_rate": 0.2222222222222222
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 2,
+      "false_positive_rate": 0.05555555555555555
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 6,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.16666666666666666
+    },
+    "410m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 36,
+      "calls": 13,
+      "false_positive_rate": 0.3611111111111111
+     },
+     "corrected": {
+      "defined": 36,
+      "calls": 5,
+      "false_positive_rate": 0.1388888888888889
+     },
+     "both_defined": 36,
+     "independence_calls_dropped_by_correction": 8,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.2222222222222222
+    },
+    "70m": {
+     "pairs": 36,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 0,
+      "calls": 0,
+      "false_positive_rate": NaN
+     },
+     "corrected": {
+      "defined": 0,
+      "calls": 0,
+      "false_positive_rate": NaN
+     },
+     "both_defined": 0,
+     "independence_calls_dropped_by_correction": 0,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": NaN
+    },
+    "pooled_over_sizes": {
+     "pairs": 180,
+     "nominal_rate": 0.04550026389635839,
+     "independence": {
+      "defined": 144,
+      "calls": 31,
+      "false_positive_rate": 0.2152777777777778
+     },
+     "corrected": {
+      "defined": 144,
+      "calls": 15,
+      "false_positive_rate": 0.10416666666666667
+     },
+     "both_defined": 144,
+     "independence_calls_dropped_by_correction": 16,
+     "corrected_calls_not_made_by_independence": 0,
+     "rate_independence_minus_corrected_on_both_defined": 0.1111111111111111
+    }
+   }
+  }
+ },
+ "jackknife_single_run": {
+  "margin": {
+   "14m": {
+    "independence": {
+     "leave_one_seed_rates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "jackknife_se": 0.0
+    },
+    "corrected": {
+     "leave_one_seed_rates": [
+      0.14285714285714285,
+      0.10714285714285714,
+      0.14285714285714285,
+      0.17857142857142858,
+      0.14285714285714285,
+      0.10714285714285714,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285
+     ],
+     "jackknife_se": 0.05723097262641254
+    }
+   },
+   "160m": {
+    "independence": {
+     "leave_one_seed_rates": [
+      0.07142857142857142,
+      0.03571428571428571,
+      0.0,
+      0.03571428571428571,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "jackknife_se": 0.06918887211969323
+    },
+    "corrected": {
+     "leave_one_seed_rates": [
+      0.10714285714285714,
+      0.07142857142857142,
+      0.10714285714285714,
+      0.07142857142857142,
+      0.07142857142857142,
+      0.10714285714285714,
+      0.14285714285714285,
+      0.10714285714285714,
+      0.10714285714285714
+     ],
+     "jackknife_se": 0.06349206349206349
+    }
+   },
+   "31m": {
+    "independence": {
+     "leave_one_seed_rates": [
+      0.10714285714285714,
+      0.14285714285714285,
+      0.10714285714285714,
+      0.10714285714285714,
+      0.10714285714285714,
+      0.10714285714285714,
+      0.10714285714285714,
+      0.10714285714285714,
+      0.14285714285714285
+     ],
+     "jackknife_se": 0.0419960525565808
+    },
+    "corrected": {
+     "leave_one_seed_rates": [
+      0.10714285714285714,
+      0.07142857142857142,
+      0.10714285714285714,
+      0.10714285714285714,
+      0.10714285714285714,
+      0.10714285714285714,
+      0.10714285714285714,
+      0.07142857142857142,
+      0.10714285714285714
+     ],
+     "jackknife_se": 0.041996052556580794
+    }
+   },
+   "410m": {
+    "independence": {
+     "leave_one_seed_rates": [
+      0.2857142857142857,
+      0.42857142857142855,
+      0.25,
+      0.39285714285714285,
+      0.2857142857142857,
+      0.2857142857142857,
+      0.2857142857142857,
+      0.35714285714285715,
+      0.2857142857142857
+     ],
+     "jackknife_se": 0.1610935169062257
+    },
+    "corrected": {
+     "leave_one_seed_rates": [
+      0.14285714285714285,
+      0.25,
+      0.25,
+      0.25,
+      0.17857142857142858,
+      0.14285714285714285,
+      0.17857142857142858,
+      0.14285714285714285,
+      0.17857142857142858
+     ],
+     "jackknife_se": 0.12598815766974242
+    }
+   },
+   "70m": {
+    "independence": {
+     "leave_one_seed_rates": [
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.0,
+      0.25,
+      0.25,
+      0.25,
+      0.25
+     ],
+     "jackknife_se": 0.2222222222222222
+    },
+    "corrected": {
+     "leave_one_seed_rates": [
+      0.25,
+      0.25,
+      0.25,
+      0.2222222222222222,
+      0.18518518518518517,
+      0.25,
+      0.25,
+      0.25,
+      0.2222222222222222
+     ],
+     "jackknife_se": 0.060621069393647066
+    }
+   }
+  },
+  "accuracy": {
+   "14m": {
+    "independence": {
+     "leave_one_seed_rates": [
+      0.14285714285714285,
+      0.10714285714285714,
+      0.07142857142857142,
+      0.07142857142857142,
+      0.07142857142857142,
+      0.14285714285714285,
+      0.07142857142857142,
+      0.07142857142857142,
+      0.07142857142857142
+     ],
+     "jackknife_se": 0.0839921051131616
+    },
+    "corrected": {
+     "leave_one_seed_rates": [
+      0.14814814814814814,
+      0.17857142857142858,
+      0.17857142857142858,
+      0.14285714285714285,
+      0.17857142857142858,
+      0.10714285714285714,
+      0.2222222222222222,
+      0.17857142857142858,
+      0.2222222222222222
+     ],
+     "jackknife_se": 0.09813000711451927
+    }
+   },
+   "160m": {
+    "independence": {
+     "leave_one_seed_rates": [
+      0.21428571428571427,
+      0.17857142857142858,
+      0.25,
+      0.21428571428571427,
+      0.21428571428571427,
+      0.17857142857142858,
+      0.21428571428571427,
+      0.17857142857142858,
+      0.21428571428571427
+     ],
+     "jackknife_se": 0.06349206349206347
+    },
+    "corrected": {
+     "leave_one_seed_rates": [
+      0.25,
+      0.2962962962962963,
+      0.14285714285714285,
+      0.2222222222222222,
+      0.14285714285714285,
+      0.21428571428571427,
+      0.25,
+      0.17857142857142858,
+      0.2222222222222222
+     ],
+     "jackknife_se": 0.13621159401190688
+    }
+   },
+   "31m": {
+    "independence": {
+     "leave_one_seed_rates": [
+      0.25925925925925924,
+      0.25,
+      0.25,
+      0.25925925925925924,
+      0.20833333333333334,
+      0.18518518518518517,
+      0.25925925925925924,
+      0.25,
+      0.16666666666666666
+     ],
+     "jackknife_se": 0.09531880511852238
+    },
+    "corrected": {
+     "leave_one_seed_rates": [
+      0.25,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.07142857142857142,
+      0.21428571428571427,
+      0.17857142857142858,
+      0.14285714285714285,
+      0.25
+     ],
+     "jackknife_se": 0.1563310762189858
+    }
+   },
+   "410m": {
+    "independence": {
+     "leave_one_seed_rates": [
+      0.37037037037037035,
+      0.37037037037037035,
+      0.0,
+      0.38095238095238093,
+      0.37037037037037035,
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+     ],
+     "jackknife_se": 0.31847769566972023
+    },
+    "corrected": {
+     "leave_one_seed_rates": [
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25
+     ],
+     "jackknife_se": 0.0
+    }
+   },
+   "70m": {
+    "independence": {
+     "leave_one_seed_rates": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN
+     ],
+     "jackknife_se": NaN
+    },
+    "corrected": {
+     "leave_one_seed_rates": [
+      0.0,
+      0.23076923076923078,
+      0.0,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.0,
+      0.14285714285714285,
+      0.0
+     ],
+     "jackknife_se": 0.23736464723268116
+    }
+   }
+  }
+ },
+ "status": "exploratory; null pairs share seeds, so pooled counts are not independent trials",
+ "wall_seconds": 16.479315042495728
+}

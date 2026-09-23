@@ -1,0 +1,26 @@
+[{"stream_name":"stdout","time":1.166005184,"data":"[env] python 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0] Linux-6.12.90+-x86_64-with-glibc2.35\n"}
+,{"stream_name":"stdout","time":27.620865028,"data":"[base] {\"n_config\": 125, \"n_runs_read\": 375, \"dropped_cells\": [], \"recipes\": [\"Falcon-with-cc-top-orig-10p\", \"Falcon-with-cc-top-tulu-10p\", \"c4\", \"dclm-baseline\", \"dclm-baseline-25p-dolma1.7-75p\", \"dclm-baseline-50p-dolma1.7-50p\", \"dclm-baseline-75p-dolma1.7-25p\", \"dclm-baseline-top-10p\", \"dclm-baseline-top-20p\", \"dclm-baseline-top-fw-10p\", \"dclm-baseline-top-fw-3p\", \"dclm-baseline-top-fw2-7p\", \"dclm-baseline-top-fw3-7p\", \"dolma1.6++\", \"dolma1.7\", \"dolma1.7-no-code\", \"dolma1.7-no-flan\", \"dolma1.7-no-math-no-code\", \"dolma1.7-no-reddit\", \"falcon\", \"falcon-with-cc\", \"falcon-with-cc-top-10p\", \"falcon-with-cc-top-20p\", \"fineweb-edu\", \"fineweb-pro\"], \"sizes\": [\"150M\", \"300M\", \"530M\", \"750M\", \"1B\"], \"half_A_items\": 18840, \"half_B_items\": 18842, \"split_seed\": 20260101}\n"}
+,{"stream_name":"stdout","time":79.959319278,"data":"[margin/dirichlet_flat] excl 0.8165 lam 0.976-1.991 52s\n"}
+,{"stream_name":"stdout","time":131.892940619,"data":"[margin/dirichlet_near_flat] excl 1.0000 lam 1.059-1.682 104s\n"}
+,{"stream_name":"stdout","time":184.29781876,"data":"[accuracy/dirichlet_flat] excl 0.3860 lam 0.416-3.792 52s\n"}
+,{"stream_name":"stdout","time":236.003043597,"data":"[accuracy/dirichlet_near_flat] excl 0.4020 lam 1.007-1.306 104s\n"}
+,{"stream_name":"stdout","time":236.003093994,"data":"[compare] margin flat-Dirichlet share excluding one: computed 0.8165 paper 0.817 diff -0.000500\n"}
+,{"stream_name":"stdout","time":236.003102975,"data":"[compare] margin flat-Dirichlet lambda min: computed 0.9758550126438125 paper 0.976 diff -0.000145\n"}
+,{"stream_name":"stdout","time":236.003108935,"data":"[compare] margin flat-Dirichlet lambda max: computed 1.9914293052702612 paper 1.991 diff +0.000429\n"}
+,{"stream_name":"stdout","time":236.003114771,"data":"[compare] margin flat-Dirichlet lambda p05: computed 0.998650040613674 paper 0.999 diff -0.000350\n"}
+,{"stream_name":"stdout","time":236.003120461,"data":"[compare] margin near-flat share excluding one (every one of 2,000): computed 1.0 paper 1.0 diff +0.000000\n"}
+,{"stream_name":"stdout","time":236.003126099,"data":"[compare] margin near-flat lambda min: computed 1.0588335836745433 paper 1.059 diff -0.000166\n"}
+,{"stream_name":"stdout","time":236.003131936,"data":"[compare] accuracy flat-Dirichlet share excluding one: computed 0.386 paper 0.386 diff +0.000000\n"}
+,{"stream_name":"stdout","time":236.003137848,"data":"[compare] accuracy near-flat share excluding one: computed 0.402 paper 0.402 diff +0.000000\n"}
+,{"stream_name":"stdout","time":236.003143757,"data":"[compare] accuracy flat-weight interval lo: computed 0.9926044567949307 paper 0.993 diff -0.000396\n"}
+,{"stream_name":"stdout","time":236.003149632,"data":"[compare] accuracy flat-weight interval hi: computed 1.1566521851337637 paper 1.157 diff -0.000348\n"}
+,{"stream_name":"stdout","time":236.003155401,"data":"[compare] margin flat rebuild gap: computed 1.0842021724855044e-19 paper order 1e-19\n"}
+,{"stream_name":"stdout","time":236.003161014,"data":"[compare] accuracy flat rebuild gap: computed 5.421010862427522e-20 paper order 1e-19\n"}
+,{"stream_name":"stdout","time":236.056530557,"data":"[done] 235s\n"}
+,{"stream_name":"stderr","time":239.096422108,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":239.09646462,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":239.466308699,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":239.466362316,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":240.404896879,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":242.193539784,"data":"[NbConvertApp] Writing 329647 bytes to __results__.html\n"}
+]

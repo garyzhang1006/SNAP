@@ -2,3 +2,35 @@
 
 - 2026-09-23 06:52 EDT snap-pythia-bank1-a: running 34538 s, output 0 B, 2x T4
 - 2026-09-23 06:52 EDT snap-pythia-bank1-b: running 34491 s, output 0 B, 2x T4
+- 2026-09-23 07:24 EDT snap-pythia-bank1-a: running 36793 s, output 0 B
+- 2026-09-23 07:24 EDT snap-pythia-bank1-b: running 36738 s, output 0 B
+- 2026-09-23 07:54 EDT snap-pythia-bank1-a: running 38593 s, output 0 B
+- 2026-09-23 07:54 EDT snap-pythia-bank1-b: running 38539 s, output 0 B
+- 2026-09-23 08:24 EDT snap-pythia-bank1-a: running 40393 s, output 0 B
+- 2026-09-23 08:24 EDT snap-pythia-bank1-b: running 40339 s, output 0 B
+- 2026-09-23 08:54 EDT snap-pythia-bank1-a: running 42193 s, output 0 B (near cap)
+- 2026-09-23 08:54 EDT snap-pythia-bank1-b: running 42139 s, output 0 B (near cap)
+- 2026-09-23 09:24 EDT snap-pythia-bank1-a: canceled at 43211.9 s (timeout, exit 137), output 5.64 MB, 7 of 25 runs scored: 160m seeds 1,3,5; 410m seeds 1,3,5,7
+- 2026-09-23 09:24 EDT snap-pythia-bank1-b: canceled at 43212.8 s (timeout, exit 137), output 8.87 MB, 11 of 20 runs scored: 160m seeds 2,4,6,8; 410m seeds 2,4,6,8; 70m seeds 2,4,8
+- Missing 27 of 45: 410m seed 9; 160m seeds 7,9; 70m seeds 1,3,5,6,7,9; all 9 seeds of 31m and 14m. Not downloaded (needs user yes).
+- 2026-09-23 09:40 EDT outputs saved to results/pythia-bank1-partial/{a,b}/ (32 files, 18 npz, sizes match Kaggle listing, frozen sha 3130d19f in both). Timings: 410m reference 16.5k-17.2k s, packed 5.2k s; 160m about 6.2k s; 70m about 2.9k s.
+- 2026-09-23 09:41 EDT snap-pythia-bank1-a Version 3 ("resume 4 runs") launched on GPU T4 x2 with filter run_key = 410m s9, 160m s7, 160m s9, 70m s1. Log confirms sha 3130d19f and "[plan] ... 4 runs, 4 still to score". Expected wall about 5 h (410m on one card), finish near 14:45 EDT. Quota before launch 24:04 / 30 h.
+- Still unscored after v3 (23 runs, about 13.5 GPU-h): 70m s3,5,6,7,9; 31m all 9 seeds; 14m all 9 seeds. Blocked on quota until reset Fri 2026-09-25 20:00 EDT. Plan: kernel A odd seeds (70m 3,5,7,9; 31m and 14m 1,3,5,7,9), kernel B even seeds (70m 6; 31m and 14m 2,4,6,8), each via a run_key filter on the jobs.json line.
+- 2026-09-23 09:55 EDT user asked for two kernels at once. Cancelled bank1-a Version 3 after 11 min (nothing scored). Launched bank1-a Version 4 (160m s7, s9; 70m s1, s3) and bank1-b Version 2 (70m s6; 31m s2, s4, s8; 14m s2, s4, s8), both GPU T4 x2, both logs show sha 3130d19f and the expected [plan] counts (4 and 7). Quota at launch 24:14 / 30 h. 410m s9 moved to Friday because it needs up to 4.8 h on one card and two sessions leave about 2.8 h.
+- Left for after the Fri 2026-09-25 20:00 EDT reset (16 runs): 410m s9; 70m s5, s7, s9; 31m s1, s3, s5, s6, s7, s9; 14m s1, s3, s5, s6, s7, s9.
+- 2026-09-23 10:19 EDT snap-pythia-bank1-a v4: running 1596 s, no [fail] in notebook log (worker [run] lines go to worker*.log)
+- 2026-09-23 10:19 EDT snap-pythia-bank1-b v2: running 1556 s, no [fail] in notebook log
+- 2026-09-23 10:49 EDT snap-pythia-bank1-a v4: running 3394 s, no [fail] in notebook log
+- 2026-09-23 10:49 EDT snap-pythia-bank1-b v2: running 3354 s, no [fail] in notebook log
+- 2026-09-23 11:19 EDT snap-pythia-bank1-a v4: running 5194 s, no [fail] in notebook log
+- 2026-09-23 11:19 EDT snap-pythia-bank1-b v2: running 5154 s, no [fail] in notebook log
+- 2026-09-23 11:49 EDT snap-pythia-bank1-a v4: running 6994 s, no [fail] in notebook log
+- 2026-09-23 11:49 EDT snap-pythia-bank1-b v2: running 6954 s, no [fail] in notebook log
+- 2026-09-23 12:19 EDT snap-pythia-bank1-a v4: running 8794 s, no [fail], workers not yet exited
+- 2026-09-23 12:19 EDT snap-pythia-bank1-b v2: running 8754 s, [worker 0] exit 0 at 8666 s, worker 1 still scoring
+- 2026-09-23 12:19 EDT quota 29:07 / 30 h, about 53 min left for two sessions (about 26 min wall); finished .npz files survived the earlier timeout kill, so a quota stop should keep completed runs
+- 2026-09-23 12:49 EDT snap-pythia-bank1-a v4 (session 352153203): Successfully ran in 9985.8 s, 4 of 4 scored, 0 failed (160m s7, s9; 70m s1, s3, all reference path). Saved to results/pythia-bank1-partial/a4/ (11 files, sizes match, frozen sha 3130d19f).
+- 2026-09-23 12:49 EDT snap-pythia-bank1-b v2: running 10557 s, worker 0 exit 0 at 8666 s, worker 1 still scoring. Scored so far across all versions: 22 of 45.
+- 2026-09-23 13:19 EDT snap-pythia-bank1-a v4: done earlier (4 of 4, saved to a4/).
+- 2026-09-23 13:19 EDT snap-pythia-bank1-b v2 (session 352153379): Successfully ran in 11163.8 s, 7 of 7 scored, 0 failed (70m s6; 31m s2, s4, s8; 14m s2, s4, s8, all reference path). Saved to results/pythia-bank1-partial/b2/ (14 files, sizes match, frozen sha 3130d19f). Measured 31m about 2460 s and 14m about 2240 s per run.
+- Total scored and saved: 29 of 45. Left for Fri 2026-09-25 20:12 EDT launch (16): 410m s9; 70m s5, s7, s9; 31m s1, s3, s5, s6, s7, s9; 14m s1, s3, s5, s6, s7, s9. Poll cron deleted.

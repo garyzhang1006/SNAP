@@ -950,3 +950,15 @@ New findings rated likely to lower the score: 4 (R7-01 to R7-04), all regression
 
 ### Round 7 outcome, 2026-09-23 07:12 EDT
 FIXED 13 (R7-01 to R7-13) with main-text net change of -1 word, applied by the coordinator directly since every fix was a same-length phrase swap; SKIPPED 3 for length (R7-14 to R7-16); REJECTED 1 (R7-17); NEEDS-EXPERIMENT carried over (R6-20 CPU, R6-S GPU). Compile clean, 0 undefined references or citations, no em or en dashes, maintext:end on page 9 in all six outcome combinations. New findings rated likely to lower the score this round: 4 (R7-01 to R7-04). The loop was stopped at the author's request after this round (cron cf2dbd6f deleted 06:44 EDT); the stop rule itself was not met.
+
+### Round 8 CPU experiments (2026-09-23), results added to the paper
+
+| ID | Kernel and result file | Outcome | Paper change |
+|---|---|---|---|
+| R5-07 | garyzhang11111/snap-r8-r5-07, results/snap-r8-r5-07/out/r5_07_null_pairs.json | Null seed pairs: single-seed margin calls 0.133 under both rules (nominal 0.046); with all nine seeds estimating sigma, corrected 0.050 against 0.122 | main.tex:222 one sentence; new appendix paragraph "Null seed pairs in PolyPythias" |
+| R5-09 | garyzhang11111/snap-r8-r5-09, results/snap-r8-r5-09/out/r5_09_pp_noise_power.json | PolyPythias item noise: rule one passes 0.205 to 0.257 at true 1.244 (same-draw DataDecide anchor 0.257), at most 0.015 at independence | app:transport sentences |
+| R5-20 | garyzhang11111/snap-r8-r5-20, results/snap-r8-r5-20/out/r5_20_rule_two_share.json | Share reproducing 1.244: 0.755 (DataDecide noise), 0.848 (PP bank one), 0.230 (PP 4,755); rule two supported 0.067 / 0.070 / 0.026 | main.tex:203 sentence replaced; app:transport sentences |
+| R6-20 | garyzhang11111/snap-r8-r6-20, results/snap-r8-r6-20/out/r8_r6_20.json | Rerun reproduces every Dirichlet figure to three decimals (original output also at git 0dc2561) | app sentence after the sweep |
+| R6-S (CPU part) | garyzhang11111/snap-r8-split-vs-rep, results/snap-r8-split-vs-rep/out/r8_split_vs_rep.json | Split makes 442 extra pair calls of 33,000, replicate none; 17 of 2,200 size steps; 34 of 220 seed counts, replicate always larger | new appendix paragraph "Split against replicate standard deviations" |
+
+All six outcome builds keep \label{maintext:end} on page 9. results/pythia-bank1-partial/ stays unanalysed.
