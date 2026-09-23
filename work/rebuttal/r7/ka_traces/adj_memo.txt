@@ -1,0 +1,86 @@
+### Point P_1: Headline Is Fixed-Battery
+
+Attack claim: Abstract foregrounds `1.244 \ci{1.143}{1.338}` as central result, but source limits it to DataDecide fixed ten-benchmark battery, not broader benchmark sequences.
+
+Verdict: partially_answered. Author-chosen position; sustainable only if paper sells finite-battery measurement, not transfer.
+
+Evidence: `deliverables/main.tex:29` headlines 375 DataDecide runs and `1.244`. `deliverables/main.tex:157` says factor “belongs to this battery.” `deliverables/appendix_a.tex:80` says current ten-benchmark study “doesn't estimate such a sequence.”
+
+Severity if unresolved: critical.
+
+Recommended fix: Rewrite abstract/introduction to state finite-battery DataDecide measurement first, with no implied broader benchmark-population claim.
+
+### Point P_2: Planned Holdout Collapsed
+
+Attack claim: Primary choices saw all 125 configurations because planned eight-screening/seventeen-estimation split was never drawn; in-sample tuning remains.
+
+Verdict: still_unresolved.
+
+Evidence: `deliverables/main.tex:123` states “every choice in the primary analysis could see all 125 configurations and no holdout survives.” Same line says planned thresholds were missed by every possible estimation set.
+
+Severity if unresolved: critical.
+
+Recommended fix: Remove any confirmatory framing for primary analysis; label it exploratory and move claim weight to genuinely pre-specified external checks.
+
+### Point P_3: Fresh Held-Out Test Failed
+
+Attack claim: Pre-specified held-out margin test required lower 95% limit above one and failed at full scope; interim scopes also failed; item count does not explain failure.
+
+Verdict: still_unresolved.
+
+Evidence: `deliverables/main.tex:173` says rule failed at `1.217 \ci{0.872}{1.498}`. `deliverables/main.tex:175` says every partial scope failed. `deliverables/appendices_bcd.tex:401` gives interim failures. `deliverables/appendices_bcd.tex:405` says item count does not explain four-task failure rate.
+
+Severity if unresolved: critical.
+
+Recommended fix: Put held-out failure in abstract’s first half and frame primary result as not passing its own transfer check.
+
+### Point P_4: PolyPythias Cannot Carry Current Claim
+
+Attack claim: Second-family evidence is pending and weakly powered; first rule passes only 0.259 at true 1.244, second rule is undecided in 0.761.
+
+Verdict: still_unresolved.
+
+Evidence: `deliverables/main.tex:43` contains pending PolyPythias values. `deliverables/main.tex:203` reports 0.259 first-rule pass rate and 0.761 second-rule undecided rate. `deliverables/appendices_bcd.tex:351` repeats this and says not-supported cannot exclude shared-item component.
+
+Severity if unresolved: critical.
+
+Recommended fix: Complete PolyPythias scoring, then make abstract conclusion conditional on actual rule outcomes.
+
+### Point P_5: Practical Payoff Small
+
+Attack claim: Correction changes few recipe calls, wrong-call intervals reach zero, so practical payoff is minimal.
+
+Verdict: partially_answered. Author-chosen position; sustainable only as uncertainty-reporting contribution, not decision-improvement claim.
+
+Evidence: `deliverables/main.tex:222` says correction removes 1 to 12 of 173 to 223 calls, changes wrong-call share by at most 0.009, and every interval reaches zero. `deliverables/main.tex:33` already reframes payoff as error bars and planning replicate runs.
+
+Severity if unresolved: major.
+
+Recommended fix: State “no demonstrated operational decision gain” and keep recommendation limited to reporting uncertainty, not improving recipe selection.
+
+### Summary counts
+
+answered_by_current_text: 0  
+partially_answered: 2  
+still_unresolved: 3
+
+### Net assessment
+
+Paper would not survive senior AC read of this memo in current form. Memo’s core rejection survives: primary result is transparent but in-sample; planned internal holdout failed before existing; fresh held-out margin test failed; PolyPythias evidence is pending and underpowered by paper’s own simulation; operational payoff is small. Current text is unusually candid, which helps credibility, but candor does not answer confirmatory failure. Survival path is reframing: methods/measurement paper with exploratory DataDecide result, not validated transfer claim.
+
+### Top 3 action items
+
+1. Rewrite abstract and introduction around failed held-out margin test, not headline `1.244`.
+2. Finish PolyPythias outcomes and delete pending branches before adjudication.
+3. Downgrade all “recommend” language to conditional finite-battery uncertainty reporting.
+
+### Other defects
+
+1. `deliverables/main.tex:29`: over-compressed abstract with live conditional macros. Quote: `\outcome{\Ronecase}{1}{R1 pass}{...}`. This is not submission-ready prose.
+
+2. `deliverables/main.tex:43`: introduction reports pending results as if section can resolve them. Quote: `margin inflation there is \pending{R1 lambda}`.
+
+3. `deliverables/main.tex:127`: current-tense scoring claim conflicts with pending outcome text. Quote: “we score all 45 runs at the shared final step 143,000 on all 37,682 items.”
+
+4. `deliverables/main.tex:45`: contribution list is too dense and buries caveat. Quote: “the split adds per-benchmark run variances net of item noise and a redrawn-bank target, untested on DataDecide.”
+

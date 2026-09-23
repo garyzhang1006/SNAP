@@ -1,0 +1,5 @@
+You are simulating a hostile ICLR reviewer. This is a kill-argument adversarial check: your task is NOT a balanced review but the single strongest argument for rejecting this paper.
+
+Files to read: deliverables/main.tex (main text ends at \label{maintext:end}, 9-page limit), deliverables/appendix_a.tex, deliverables/appendices_bcd.tex, deliverables/references.tex. Compiled PDF: deliverables/main.pdf. Do NOT read REBUTTAL_LOG.md, work/, or any prior reviews. Note: macros \pending, \outcome, \Ronecase, \Rtwocase are intentional placeholders for a replication bank still being scored; do not attack their existence per se, but you may attack what the paper claims pending them.
+
+Construct the single best argument to reject this paper in about 200 words (max 250). Focus on the most damaging combination of: assumption-vs-claim mismatch, claim-vs-evidence gap, scope overclaim, missing obligations, statistical validity. Single argument, not a list. Cite file:line locations. Dispassionate, uncompromising, no hedging, no acknowledging mitigations. Output just the rejection memo.

@@ -917,3 +917,36 @@ New findings rated likely to lower the score: 4 (R6-01, R6-02, R6-03, R6-04), al
 
 ### Round 6 outcome, 2026-09-23 05:47 EDT
 FIXED 22 of 26 text-fixable (R6-01 to R6-05, R6-08 to R6-19, R6-21, R6-23, R6-25 to R6-27; slices A 6, B 5, C 2, D 9, APP 5, some spanning slices); SKIPPED 4 for page length (R6-06, R6-07, R6-22, R6-24); NEEDS-EXPERIMENT: R6-20 (CPU, Dirichlet sweep source, open since R2-20) and the structural repeats under R6-S (GPU: R1-06/R5-11, R4-13, R5-26; CPU exploratory: a decision where the split and the replicate SD disagree); REJECTED none this round. Slice D found that "the plug-in" at the prediction paragraph is the three-run estimate (snap-r12-predict-pooled.py:56-69), so it used that wording instead of the reviewer's. Olmo 3 (olmo2025olmo3) added at appendices_bcd.tex:399, verified by this round's citation audit. Every slice ended at its word cap, so the main text has no measured slack left. Compile clean with 0 undefined references or citations, no em or en dashes, and maintext:end on page 9 in all six outcome combinations. New findings rated likely to lower the score this round: 4 (R6-01, R6-02, R6-03, R6-04).
+
+## Round 7, started 2026-09-23 06:31 EDT
+Pre-round snapshot: ae6d8c6 (tree clean, no new commit). Skills run: superpowers:using-superpowers, aris:kill-argument, aris:paper-claim-audit, aris:citation-audit, paper-audit, academic-research-skills:academic-paper-reviewer (quick), stop-slop, superpowers:verification-before-completion. Raw outputs: work/rebuttal/r7/*.md. The main text has no measured page slack, so every fix this round must be length-neutral.
+
+### Merged findings (round 7)
+
+Merged 2026-09-23 07:10 EDT from work/rebuttal/r7/*.md. Panel mean unchanged (4.4 under rule-one fail, 5.2 under pass; kill-argument 5). Every number changed in round 6 traced to its file. The kill-argument codex attack repeated R6-S, R5-07, R5-08 and R3-45 and re-raised nothing new.
+
+| ID | Sources | Location | Finding | Likely to lower score | Disposition |
+|---|---|---|---|---|---|
+| R7-01 | AR1, PA2 | main.tex:29 R1-fail branch | post hoc failure reading presented as the consequence of the pre-specified rule | yes (round 6 regression) | FIXED: "and, under a later reading, \pending{...}"; "On a second family," cut |
+| R7-02 | AR2, CA1 | main.tex:123 | G5 six percent printed without the 61 percent default value or the sensitivity caveat, reading as a rescue | yes (round 6 regression) | FIXED: "failed at about 61 percent under the plan's default simulator against eight under a later one matched to benchmark variance components, a simulator sensitivity" (appendices_bcd.tex:64) |
+| R7-03 | PA1, CA4 | main.tex:203 | 0.124 said to reproduce 1.244 "at simulated margin noise" beside a median of 1.046 | yes (round 6 regression) | FIXED: "reproduces 1.244 only in the population of Appendix~\ref{app:calibration}" |
+| R7-04 | KA1, CA2, AR5 | main.tex:239 | "the three-run estimate" reads as the recommended replicate SD losing to independence; "margin" dropped | yes (round 6 regression) | FIXED: "predicted margin inflation", "the phenotypic plug-in" |
+| R7-05 | KA4, CA3 | main.tex:237 | "puts that effect below an anti-conservative bound" | no | FIXED: "gives that effect an anti-conservative upper bound of 0.044" |
+| R7-06 | KA3, CA6, PA6 | main.tex:29 | "corrected" missing from the 1B resolution rule | no | FIXED |
+| R7-07 | KA5 | main.tex:192 | percentile row printed as an interval | no | FIXED: "0.982 to 1.476" |
+| R7-08 | PA3 | main.tex:237 | "covering 0.935 and 0.898" misparses | no | FIXED: "(coverage 0.935 and 0.898)" |
+| R7-09 | PA4 | main.tex:157 | "excluding ... and BoolQ" garden path | no | FIXED: sentence split |
+| R7-10 | AR4 | main.tex:43 | "so" makes the reading follow from power figures | no | FIXED: sentence split |
+| R7-11 | PA7, CA5, KA6 | appendices_bcd.tex:261 | "acts alone", "the margin value", seed/run drift | no | FIXED |
+| R7-12 | PA9 | appendices_bcd.tex:34 | caption pairs "cross-half" with "one item half" | no | FIXED |
+| R7-13 | CI1, AR6 | references.tex | bare 2025 and 2023 years for the OLMo and Burnell pairs | no | FIXED: 2023a/b, 2025a/b in the entries |
+| R7-14 | PA5 | main.tex:121 | "margin influence" undefined | no | SKIPPED: fix costs +2 and needs a cut of round 6 text |
+| R7-15 | PA10, KA2 | main.tex:29 | "cross-format inflation" undefined in the abstract; zero-covariance premise sits beside 0.921 | no | SKIPPED for length (+2); main.tex:71 carries the definition and the offset caveat |
+| R7-16 | AR3 | main.tex:71 | no concrete example of the shared-content nuisance | no | SKIPPED for length (+4) |
+| R7-17 | AR7 | main.tex:49 and three more | "batch component" reads as training batch | no | REJECTED: the appendix uses batch offset and the N6 batch-offset null throughout, and main.tex:49 now defines the term |
+| R7-S | AR-S1 to AR-S6, KA strongest argument | structural | repeats of R6-S | repeats | NEEDS-EXPERIMENT as logged |
+
+New findings rated likely to lower the score: 4 (R7-01 to R7-04), all regressions from round 6 edits and all fixed length-neutrally.
+
+### Round 7 outcome, 2026-09-23 07:12 EDT
+FIXED 13 (R7-01 to R7-13) with main-text net change of -1 word, applied by the coordinator directly since every fix was a same-length phrase swap; SKIPPED 3 for length (R7-14 to R7-16); REJECTED 1 (R7-17); NEEDS-EXPERIMENT carried over (R6-20 CPU, R6-S GPU). Compile clean, 0 undefined references or citations, no em or en dashes, maintext:end on page 9 in all six outcome combinations. New findings rated likely to lower the score this round: 4 (R7-01 to R7-04). The loop was stopped at the author's request after this round (cron cf2dbd6f deleted 06:44 EDT); the stop rule itself was not met.
