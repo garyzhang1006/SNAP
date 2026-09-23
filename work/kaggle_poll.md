@@ -34,3 +34,5 @@
 - 2026-09-23 13:19 EDT snap-pythia-bank1-a v4: done earlier (4 of 4, saved to a4/).
 - 2026-09-23 13:19 EDT snap-pythia-bank1-b v2 (session 352153379): Successfully ran in 11163.8 s, 7 of 7 scored, 0 failed (70m s6; 31m s2, s4, s8; 14m s2, s4, s8, all reference path). Saved to results/pythia-bank1-partial/b2/ (14 files, sizes match, frozen sha 3130d19f). Measured 31m about 2460 s and 14m about 2240 s per run.
 - Total scored and saved: 29 of 45. Left for Fri 2026-09-25 20:12 EDT launch (16): 410m s9; 70m s5, s7, s9; 31m s1, s3, s5, s6, s7, s9; 14m s1, s3, s5, s6, s7, s9. Poll cron deleted.
+- 2026-09-23 18:06 EDT joshkerr1111/snap-pythia-bank1-a v1 running 3147 s on 2x T4, SNAP 6cfedee, frozen sha 3130d19f confirmed, "[plan] ... 6 runs, 6 still to score" (410m s9; 70m s5; 31m s1,s3; 14m s1,s3). Expected finish about 01:20 EDT.
+- 2026-09-23 18:06 EDT joshkerr1111/snap-pythia-bank1-b v1 (scriptVersionId 352241704) running 2441 s on 2x T4, same checks, "[plan] ... 10 runs, 10 still to score" (70m s7,s9; 31m s5,s6,s7,s9; 14m s5,s6,s7,s9). Expected finish about 00:15 EDT.
