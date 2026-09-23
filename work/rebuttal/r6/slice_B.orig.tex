@@ -1,0 +1,85 @@
+\section{Estimand and estimator}
+\label{sec:estimator}
+\subsection{Runs and score scales}
+Let $c$ index configurations, $r$ index their $R$ replicate runs, and $j$ index benchmarks, where a configuration fixes a data recipe, model size, and nominal hyperparameters, and Table~\ref{tab:notation} collects the symbols. We call the set of benchmarks the battery and the set of items the bank. DataDecide's seed controls initialisation and data order together. Each configuration has one default and two auxiliary runs, and below 1B the auxiliary runs stop at 25 percent of the 1B compute budget, which adds run variation beyond the seed. For item $i$, define the per-byte margin and corresponding correctness indicator by
+\begin{equation}
+m_{crji}=\frac{\ell(\mathrm{gold}_i)}{\mathrm{bytes}(\mathrm{gold}_i)}-
+\max_{v\ne\mathrm{gold}_i}\frac{\ell(v_i)}{\mathrm{bytes}(v_i)},
+\qquad a_{crji}=\mathbf{1}\{m_{crji}>0\}.
+\label{eq:scores}
+\end{equation}
+Here $\ell$ is the summed answer log-likelihood and $v$ ranges over alternatives, with a zero margin treated as incorrect. Items are averaged within each benchmark, with MMLU macro-averaged over its 57 subjects, and we denote the resulting margin and accuracy scores by $y^{\mathrm{marg}}$ and $y^{\mathrm{acc}}$, calling each benchmark-level score a trait.
+
+For each half $H\in\{A,B\}$, our measurement model is
+\begin{equation}
+y^H_{crj}=\mu^H_{cj}+E_{crj}+\varepsilon^H_{crj}.
+\label{eq:model}
+\end{equation}
+A half-specific mean lets the two item sets differ in difficulty, the component $E_{crj}$ is the run deviation shared by the two item populations, and $\varepsilon^H_{crj}$ carries the remaining item-dependent variation. When deriving unbiasedness we assume independent, identically distributed run effects within a configuration, which Section~\ref{sec:data} shows the released runs only approximate, and we write their covariance as $\Sigma_{E,c}$. This target is defined for a redrawn or extended item bank, while a run's item-specific deviations on the released bank fall into $\varepsilon$, so reproducibility on that fixed bank is a separate question.
+
+\subsection{Cross-half covariance}
+We partition each benchmark's items into disjoint halves with a frozen random seed and reuse that assignment for its replicate runs. We centre each half score across replicate runs, giving $d^H_{crj}=y^H_{crj}-R^{-1}\sum_s y^H_{csj}$. If the item errors have conditional mean zero and zero covariance between the two halves across the relevant runs and benchmarks, then
+\begin{equation}
+\mathbb{E}[d^A_{crj}d^B_{crk}]=(1-1/R)\Sigma_{E,c}(j,k).
+\label{eq:identity}
+\end{equation}
+Equation~\ref{eq:identity} covers diagonal entries without requiring Gaussian run effects. Disjoint item identifiers alone don't establish the required independence, since shared passages and duplicate content can connect the halves, and Section~\ref{sec:composition} checks the one benchmark with documented shared passages by keeping each passage in one half. Centring removes item effects constant across runs. A run's deviation on every item of one prompt template recurs on any redrawn bank in that format and belongs to run covariance of the fixed battery. We identify the estimate only up to a deviation tied to items that both halves share. Cross-format inflation, which keeps only the diagonal and the covariances between benchmarks of different scoring formats, is 0.921 \ci{0.801}{1.035}. A uniform component shared across benchmarks and acting alone would lift it to 1.113 if it carried the whole margin excess of 0.244 above one, and the upper limit admits at most 0.319 of that excess, although negative run covariance across formats, which 0.921 below one implies, could offset a larger component (Appendix~\ref{app:calibration}). A component that follows scoring format is untested in DataDecide, and Section~\ref{sec:family}'s cross-bank rule tests it in PolyPythias. The fixed-bank inflation reported below needs no halves and no cross-half assumption, so only the split's redrawn-bank target and the per-benchmark run variances rest on it.
+
+We write the average centred score as $g^H_{cr}=K^{-1}\sum_j d^H_{crj}$ and compute
+\begin{equation}
+T_c=\frac{1}{R-1}\sum_r g^A_{cr}g^B_{cr},\qquad
+U_c=\frac{1}{K^2(R-1)}\sum_{j,r}d^A_{crj}d^B_{crj}.
+\label{eq:tu}
+\end{equation}
+The two statistics in Equation~\ref{eq:tu} have expectations $K^{-2}\mathbf{1}^{\mathsf T}\Sigma_{E,c}\mathbf{1}$ and $K^{-2}\operatorname{tr}\Sigma_{E,c}$. We sum each across configurations before dividing, which gives
+\begin{equation}
+\widehat\Lam=\sqrt{\frac{\sum_c T_c}{\sum_c U_c}},\qquad
+\Lam^2=\frac{\mathbf{1}^{\mathsf T}\Sig\mathbf{1}}{\operatorname{tr}\Sig}
+=1+(K-1)\bar r_E,\qquad K_{\mathrm{eff}}=\frac{K}{\Lam^2},
+\label{eq:lambda}
+\end{equation}
+where $\Sig=N^{-1}\sum_c\Sigma_{E,c}$ is the covariance matrix averaged over the $N$ configurations, whose off-diagonal contribution we express through the effective coefficient
+\begin{equation}
+\bar r_E=\frac{\sum_{j\ne k}\Sigma_E(j,k)}{(K-1)\operatorname{tr}\Sig}.
+\label{eq:effective}
+\end{equation}
+This coefficient equals the mean off-diagonal correlation only when the marginal variances are equal (Appendix~\ref{app:derivations}). Our $K_{\mathrm{eff}}$ compares this battery with independent benchmarks of the same average variance and doesn't count independent information sources. Because $\Lam$ and $\bar r_E$ normalise by the battery's own trace, they can rise when removing a high-variance benchmark lowers $\sigma_{\mathrm{agg}}$, and we compare batteries through $\sigma_{\mathrm{agg}}$ (Table~\ref{tab:primary}).
+
+Either pooled sum can be nonpositive in a finite sample, and our calibration simulations check the bias of the ratio. Subtracting item-sampling variance from the full-data diagonal instead needs a model of item-by-run noise, and on the released runs it gives 1.246 \ci{1.144}{1.340} against 1.244 on margins (Appendix~\ref{app:implementation}). On the released bank, the replicate standard deviation of the full-bank average gives inflation 1.237 \ci{1.137}{1.331} on margins and 1.067 \ci{0.994}{1.134} on accuracy, against 1.244 and 1.078 from the split. Its denominator sums per-benchmark replicate variances, so any item component the halves share counts as fixed-bank run variance. Under that item-by-run model, item noise is 0.037 of the full-bank margin diagonal and 0.186 of the accuracy one, and the two targets nearly coincide, while without BoolQ it is 0.578 of the accuracy diagonal and fixed-bank accuracy inflation of 1.285 falls below the split's 1.558.
+
+\begin{algorithm}[t]
+\caption{SNAP measurement recipe for a fixed battery of $K$ benchmarks scored on $R$ replicate runs per configuration.}
+\label{alg:snap}
+\begin{algorithmic}[1]
+\STATE Score every replicate run $r$ of every configuration $c$ on every item of the $K$ benchmarks.
+\STATE Assign each benchmark's items to halves $A$ and $B$ once, with a frozen seed, and reuse that assignment for every run.
+\STATE Average items within each half to obtain $y^A_{crj}$ and $y^B_{crj}$, then centre across the $R$ runs within each configuration to obtain $d^H_{crj}$.
+\STATE Form the battery averages $g^H_{cr}$ and the statistics $T_c$ and $U_c$ of Equation~\ref{eq:tu}.
+\STATE Pool over configurations and report $\widehat\Lam=\sqrt{\sum_c T_c/\sum_c U_c}$ and $K_{\mathrm{eff}}=K/\widehat\Lam^2$.
+\STATE Report a wild cluster bootstrap-$t$ interval over the recipe clusters (Appendix~\ref{app:implementation}) and repeat the split to measure re-split variation.
+\STATE Recompute $\widehat\Lam$ after removing each benchmark and each cluster in turn, and report that spread beside the interval, since the factor belongs to the battery.
+\end{algorithmic}
+\end{algorithm}
+
+
+\subsection{Interval inference}
+We report nominal 95\% wild cluster bootstrap-$t$ intervals over the 25 recipe clusters, using 4,999 Rademacher draws, a linearisation of the squared ratio, and the observed denominator held fixed during resampling (Appendix~\ref{app:implementation}).
+
+The wild interval's coverage across the twelve populations of Table~\ref{tab:coverage}, at 2,000 replicates each, runs from 0.928 to 0.954, while a configuration percentile bootstrap that ignores recipe dependence drops to 0.872 under recipe-shared effects. Within-benchmark cross-half error correlation of 0.1 and the accuracy-like null population bias the estimate down by 0.011 to 0.016, so in these populations finite-sample bias works against finding an excess.
+
+\section{Data and analysis scope}
+\label{sec:data}
+DataDecide supplies the ten benchmarks ARC-Challenge and ARC-Easy \citep{clark2018arc}, BoolQ \citep{clark2019boolq}, CommonsenseQA \citep{talmor2019commonsenseqa}, HellaSwag \citep{zellers2019hellaswag}, MMLU \citep{hendrycks2021mmlu}, OpenBookQA \citep{mihaylov2018openbookqa}, PIQA \citep{bisk2020piqa}, Social IQa \citep{sap2019socialiqa}, and WinoGrande \citep{sakaguchi2020winogrande}. We analyse 37,682 items per run across 25 recipes at 150M, 300M, 530M, 750M, and 1B parameters, since smaller released models lack per-item replicate coverage. Replicate seed labels are $\{2,14,15\}$ below 1B and $\{2,4,5\}$ at 1B.
+
+In each configuration we select the largest checkpoint step that all three runs share. The release's checkpoint index puts this step at 41.5\% of the 750M default runs' final step on average and 87\% at 530M. In 26 configurations, one at 530M and 25 at 750M, the largest final step exceeds the smallest by more than a factor of 1.5. At 750M the default runs stop short of their released final models while the auxiliary runs sit near their final steps in all but one configuration.
+
+We interpret the full estimate as covariance among the released runs at the selected steps, and the auxiliary-run contrast (1.256 in Table~\ref{tab:primary}) removes the default-versus-auxiliary batch component. Dropping the 26 severely truncated configurations removes the 750M band and one 530M configuration, giving margin inflation 1.276 (\ci{1.114}{1.420}) and accuracy inflation 1.120 (\ci{1.020}{1.208}), a subset we chose after seeing the full-sample estimates. On the 33 configurations that share a final step, margin inflation is 1.082 (\ci{0.121}{1.530}) and accuracy 1.129 (\ci{0.769}{1.397}), intervals too wide to separate the value one from the full-sample estimates, although the full-sample margin auxiliary contrast, whose runs sit near their final steps, still excludes one. A configuration's influence on the margin estimate has Spearman correlation $-0.036$ with truncation (Appendix~\ref{app:schedule}). At the adjacent earlier shared step the accuracy interval is \ci{1.044}{1.210} and excludes one, and across the 123 configurations with such a step the paired change in accuracy inflation is 0.048 (\ci{-0.022}{0.130}, Appendix~\ref{app:checkpoint}). That check can't see an offset shared by every configuration, and the auxiliary contrast doesn't remove differences shared with the checkpoint schedules, which the PolyPythias seeds avoid by sharing one final step (Section~\ref{sec:family}). We therefore read our accuracy bound as conditional on the checkpoint we scored.
+
+We never drew the analysis plan's split of eight screening and seventeen estimation recipes, so every choice in the primary analysis could see all 125 configurations and no holdout survives (Appendix~\ref{app:design}). The plan also predicted margin inflation above 1.349 and accuracy inflation above 1.40, which none of its $\binom{25}{17}=1{,}081{,}575$ possible estimation sets reaches, and its check G5, that a run-level multiplicative gain explains under half the margin excess, failed under the plan's default simulation settings.
+
+We retain the full battery for our primary estimand, including benchmarks with negative estimated diagonal covariance, since an unbiased moment estimate can be negative near zero and deleting such a benchmark would change the estimand.
+
+We add a second model family whose replicate design DataDecide lacks. PolyPythias \citep{vanderwal2025} trains nine seeds at each of 14M, 31M, 70M, 160M, and 410M parameters with shared code, data, and hyperparameters and a seed that sets initialisation and data order together, and we score all 45 runs at the shared final step 143,000 on all 37,682 items. We took the request text from the DataDecide release, so every prompt matches its scoring byte for byte. Appendix~\ref{app:transport} reports an earlier transfer check on 4,755 items.
+
+For the identification check we built a second bank of 6,808 items from the same ten benchmarks with OLMES at a pinned commit, taking the train split for eight benchmarks and the validation split for OpenBookQA and MMLU. We dropped any item whose context matches a bank-one context or whose question appears among its own few-shot exemplars, and we capped each benchmark at 600 items apart from MMLU. Both rules of Section~\ref{sec:family} were committed to the repository before scoring of either bank began.
+

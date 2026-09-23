@@ -1,0 +1,11 @@
+# Status, slice APP (round 6)
+
+Words (raw `wc -w`): appendices_bcd.tex 18038 before, 18061 after (+23); references.tex 2307 before, 2328 after (+21). appendix_a.tex needed no change, since it carries none of the flagged phrases ("acting alone", the 0.319 bound, Gen2MC tasks). No number was added; 1.035 is the printed upper limit of \ci{0.801}{1.035} already on appendices_bcd.tex:261.
+
+- R6-01 FIXED (appendices_bcd.tex:261). Old: "Under the same zero-seed-covariance model the largest share the upper limit allows is 0.420, which on its own carries 0.319". New: "Under zero cross-format seed covariance the largest share that keeps the cross-format diagnostic within the observed upper limit of 1.035 is 0.420, which carries 0.319". The offset caveat after it is unchanged, and "acts alone" stays only in the closing sentence, which concerns the whole-excess 1.113 case. Sentence 37 to 49 words.
+- R6-21 FIXED (appendices_bcd.tex:261). Old: "at 1.113 under noise-proportional scaling and at the 1.153 of equal pair weights (Appendix". New: "at 1.113 under noise-proportional scaling, and the margin value also falls below the 1.153 reference for uniformly spread covariance (Appendix". Clause 16 to 23 words.
+- R6-18 FIXED (appendices_bcd.tex:34, tab:original3 caption). New: "Cross-half reliability of run deviations for one item half, across all 25 recipes." +4 words.
+- R6-26 FIXED (appendices_bcd.tex:399). New: "the rule replaced them in its listed order with the Gen2MC multiple-choice versions of DROP and CoQA \citep{olmo2025olmo3}, whose distractors an LLM generated, and it reads accuracy only." +8 words plus the citation. references.tex: teamolmo2025 relabelled to "Team OLMo et~al.(2025a)", and the bibitem from citation_audit.md, "\bibitem[Team Olmo et~al.(2025b)]{olmo2025olmo3} Team Olmo, Allyson Ettinger, Amanda Bertsch, Bailey Kuehl, David Graham, David Heineman, et al. Olmo 3. arXiv:2512.13961, 2025.", inserted directly after it. olmo2025olmo3 is cited once and defined once.
+- R6-27 FIXED (references.tex karamcheti2021). New title: "Mistral: A journey towards reproducible language model training."
+
+Not compiled here, per the brief's no-compute rule; the coordinator's six-build compile checks the new citation and the (2025a)/(2025b) labels.

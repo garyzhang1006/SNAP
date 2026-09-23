@@ -1,0 +1,5 @@
+# Slice C status (main.tex 131-198), wc -w before 1149, after 1153, cap 1154
+
+- R6-25 FIXED (+0 words): table row now reads "Original, four-benchmark subsets, all sizes (percentiles) & Margin & 1.176 & \ci{0.982}{1.476}\\", matching the other rows' \ci intervals and removing the en dash. No number changed.
+- R6-19 FIXED (+4 words): main.tex:157 now reads "averaging 0.624 within formats and 0.007 across them, excluding WinoGrande's undefined correlations (Figure~\ref{fig:covariance} ...)". Source: appendices_bcd.tex:132 ("Among the nine traits with defined margin correlations, excluding WinoGrande") and claim_audit.md CA5 (WinoGrande correlations are NaN because its seed variance is negative). The reviewer's longer wording ("among the nine benchmarks with positive seed variance", +7) did not fit the +5 cap. No number added or moved.
+- stop-slop check on line 27: no dashes, no contrast construction, no banned vocabulary; the edit adds one clause to an existing sentence and changes nothing else.

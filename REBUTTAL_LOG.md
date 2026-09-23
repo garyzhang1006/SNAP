@@ -874,3 +874,46 @@ New findings rated likely to lower the score: 11 (R5-01, R5-03, R5-12, R5-13, R5
 
 ### Round 5 outcome, 2026-09-23 05:02 EDT
 FIXED 29 of 31 text-fixable (slices A 12, B 8, C 2, D 7, APP 5, some spanning slices), with R5-28 fixed in part (the sigma_agg definition clause skipped for length); SKIPPED 2 for page length (R5-36, R5-37); NEEDS-EXPERIMENT 5 (CPU, exploratory: R5-07, R5-09, R5-20; GPU: R5-11, R5-26); REJECTED 15. The shared-component defence now says "acting alone" and cites the snap-r5-shared-bound share 0.420 and 0.319 of the excess. No text added in rounds 1 to 4 was cut, per the round 5 brief. Slice B runs 21 words over its cap, and the page check absorbs it. Compile clean with 0 undefined references or citations, no em or en dashes, and maintext:end on page 9 in all six outcome combinations. New findings rated likely to lower the score this round: 11 (R5-01, R5-03, R5-12, R5-13, R5-14, R5-15, R5-16, R5-17, R5-18, R5-19, R5-27).
+
+## Round 6, started 2026-09-23 05:31 EDT
+Pre-round snapshot: 73277c2 (tree clean, so "pre-round snapshot" made no new commit). Skills run: superpowers:using-superpowers, aris:kill-argument, aris:paper-claim-audit, aris:citation-audit, paper-audit, academic-research-skills:academic-paper-reviewer (quick), stop-slop, superpowers:verification-before-completion. Raw outputs: work/rebuttal/r6/*.md
+
+### Merged findings (round 6)
+
+Merged 2026-09-23 05:52 EDT from work/rebuttal/r6/{kill_argument (KA), claim_audit (CA), citation_audit (CI), paper_audit (PA), academic_reviewer (AR)}.md. Panel estimates: academic reviewer mean 4.4 under rule-one fail and 5.2 under pass; kill-argument 5 (about 6 on a pass, 4 on a fail). Every round 5 number the claim audit traced matched its file. Page slack measured at 73277c2 by appending filler to main.tex:242: maintext:end stays on page 9 in all six outcome builds with 80 filler words and moves to page 10 in two builds at 110, so this round's net main-text budget is about +55 real words.
+
+| ID | Sev | Sources | Location | Finding | Likely to lower score | Disposition |
+|---|---|---|---|---|---|---|
+| R6-01 | major | PA1, CA1, KA1, AR4 | main.tex:29, :71, :235; appendices_bcd.tex:261 | "Acting alone" reads as "sole cause", which makes "at most about a third" self-contradictory; the bound's real premise is zero cross-format run covariance; the abstract drops the offset caveat and leaves "inflation across scoring formats" and "leaves" an interval unresolved | yes (new, round 5 regression) | text: A, B, D, APP |
+| R6-02 | moderate | PA2, KA2, AR3, CA7, AR8 | main.tex:45, :216 | "the two part" misparses; 1.285 and 1.558 unlabelled; bare 1.285 collides with the format-fit 1.285 | yes (new, round 5 regression) | text: A, D |
+| R6-03 | moderate | PA3 | main.tex:123 | the new G5 definition makes the failed check read as a gain explaining over half the excess, without the matched simulator's six percent (appendices_bcd.tex:62) | yes (new, round 5 regression) | text: B |
+| R6-04 | moderate | AR1 | main.tex:43, :29 fail branch, :203 | the introduction presents the rule-one failure reading as design although main.tex:203 says it was added after the rule was fixed; the abstract fail branch gives a design clause and no verdict | yes (new) | text: A |
+| R6-05 | moderate | PA4, KA3 | main.tex:239 | "the default simulator" returns undefined in the planning sentence | no | text: D |
+| R6-06 | moderate | PA5 | main.tex:43 | the rules sentence gives power for rules the introduction never describes; "the shared-item question" has no antecedent; 0.761 loses its no-shared-component condition | no | text: A |
+| R6-07 | moderate | CA2 | main.tex:45 (iii) | "near-nominal intervals unless a run effect follows the size band" names one failure mode as the only one (appendices_bcd.tex:391 lists item noise 3.00, five recipes, noise ramp) | no | text: A |
+| R6-08 | moderate | AR2 | main.tex:71, :129, :201 | "tests it" overclaims whether a template-tied component is reachable; whether bank two shares bank one's prompt templates is not stated or recorded in the manifest | no | text: B (wording only; template identity unverified) |
+| R6-09 | minor | KA4, AR6, PA12 | main.tex:239, :241 | main text ends on an uninterpreted result where SNAP loses to independence; "the plug-in" and "item noise added to both sides" undefined; "margin ratio" then accuracy errors | no | text: D |
+| R6-10 | minor | KA5, PA10 | main.tex:29 | "the correction", "calls" and "resolved 1B ordering" undefined in the abstract | no | text: A |
+| R6-11 | minor | PA6 | main.tex:203 | 0.124 orphaned | no | text: D |
+| R6-12 | minor | PA7 | main.tex:203 | 75-word sentence with ambiguous "that range" | no | text: D |
+| R6-13 | minor | PA8, CA9 | main.tex:121 | Spearman -0.036 printed against "truncation", while the appendix correlates with the selected step's share of the default final step | no | text: B |
+| R6-14 | minor | PA9, CA8 | main.tex:251 | "500 and 2,000 permutation replicates for the two permutation checks" miscounts | no | text: D (reproducibility statement) |
+| R6-15 | minor | PA11 | main.tex:45 (iv) | "it" points at the algorithm | no | text: A |
+| R6-16 | minor | PA13 | main.tex:49, :121, :205 | "batch component" undefined in the main text | no | text: B |
+| R6-17 | minor | CA3 | main.tex:237 | 0.044 "bounds" omits the appendix's anti-conservative caveat | no | text: D |
+| R6-18 | minor | CA4 | main.tex:37; appendices_bcd.tex:34 | reliabilities 0.652 and 0.324 are one-half values | no | text: A, APP |
+| R6-19 | minor | CA5 | main.tex:157 | 0.624 and 0.007 exclude WinoGrande (negative seed variance) | no | text: C |
+| R6-20 | minor | CA6 | appendices_bcd.tex:204 | flat and near-flat Dirichlet sweep figures have no result file (R2-20 open since round 2) | no | NEEDS-EXPERIMENT (CPU) |
+| R6-21 | minor | CA10 | appendices_bcd.tex:261 | 1.153 is the uniform-contribution reference, printed as a second shared-component value | no | text: APP |
+| R6-22 | minor | KA6 | main.tex:71, :157 | positive mean cross-format correlation beside net negative cross-format covariance, unexplained | no | text: B (only from numbers already printed) |
+| R6-23 | minor | AR5 | main.tex:237 | coverage of the size-band-clustered interval not given in the main text | no | text: D, lowest priority |
+| R6-24 | minor | AR7 | main.tex:29 R2-supported branch | branch does not say the within-bank value can overstate run covariance | no | text: A (inside branch) |
+| R6-25 | minor | AR9 | main.tex:192 | "0.982--1.476" renders an en dash | no | text: C |
+| R6-26 | moderate | CI1 | main.tex:41, :175; appendices_bcd.tex:399 | Gen2MC multiple-choice DROP and CoQA (LLM-written distractors) unattributed; Olmo 3 bibitem VERIFIED by this round's citation audit | no | text: APP |
+| R6-27 | low | CI2 | references.tex karamcheti2021 | title case | no | text: APP |
+| R6-S | major | AR-S1 to AR-S6, KA strongest argument | structural | replicate SD needs no split; confirmatory record failed or underpowered; no DataDecide bank-two check; checkpoint confound; battery dependence; accuracy only a bound | repeats of logged items, not new | NEEDS-EXPERIMENT (GPU: R1-06/R5-11, R4-13, R5-26; CPU exploratory: split-versus-replicate decision case) or REJECTED as in R3-13 to R5-10 |
+
+New findings rated likely to lower the score: 4 (R6-01, R6-02, R6-03, R6-04), all text-fixable and three of them regressions from round 5 edits.
+
+### Round 6 outcome, 2026-09-23 05:47 EDT
+FIXED 22 of 26 text-fixable (R6-01 to R6-05, R6-08 to R6-19, R6-21, R6-23, R6-25 to R6-27; slices A 6, B 5, C 2, D 9, APP 5, some spanning slices); SKIPPED 4 for page length (R6-06, R6-07, R6-22, R6-24); NEEDS-EXPERIMENT: R6-20 (CPU, Dirichlet sweep source, open since R2-20) and the structural repeats under R6-S (GPU: R1-06/R5-11, R4-13, R5-26; CPU exploratory: a decision where the split and the replicate SD disagree); REJECTED none this round. Slice D found that "the plug-in" at the prediction paragraph is the three-run estimate (snap-r12-predict-pooled.py:56-69), so it used that wording instead of the reviewer's. Olmo 3 (olmo2025olmo3) added at appendices_bcd.tex:399, verified by this round's citation audit. Every slice ended at its word cap, so the main text has no measured slack left. Compile clean with 0 undefined references or citations, no em or en dashes, and maintext:end on page 9 in all six outcome combinations. New findings rated likely to lower the score this round: 4 (R6-01, R6-02, R6-03, R6-04).
