@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{iclr2027_conference,times}
+\usepackage{amsmath,amssymb,booktabs,array,graphicx,hyperref,url,algorithm,algorithmic}
+\usepackage{caption,needspace,flafter}
+\captionsetup{labelsep=period,font=normalsize}
+\brokenpenalty=10000
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\ci}[2]{\ensuremath{[#1,\,#2]}}
+\usepackage{xr}\externaldocument[S-]{supplement_extended}
+\newcommand{\suptab}[1]{Table~\ref{S-#1} of the extended supplement}
+\newcommand{\supfig}[1]{Figure~\ref{S-#1} of the extended supplement}
+\hypersetup{pdfauthor={},pdftitle={Estimating run-to-run covariance across language model benchmarks}}
+\title{Estimating Run-to-Run Covariance\\Across Language Model Benchmarks}
+\author{Anonymous authors}
+\newcommand{\Lam}{\Lambda}
+\newcommand{\Sig}{\Sigma_E}
+\usepackage{xcolor}
+\newcommand{\pending}[1]{\textcolor{red}{[#1]}}
+% compute2 outcomes, set from analysis/estimates.py verdicts once scoring ends.
+% \Ronecase: 0 pending (prints every variant, labelled), 1 pass, 2 fail.
+% \Rtwocase: 0 pending, 1 not supported, 2 supported, 3 undecided.
+\newcommand{\Ronecase}{0}
+\newcommand{\Rtwocase}{0}
+\newcommand{\outcome}[4]{\ifnum#1=0 \pending{#3} #4\else\ifnum#1=#2 #4\fi\fi}
+\begin{document}
+\maketitle

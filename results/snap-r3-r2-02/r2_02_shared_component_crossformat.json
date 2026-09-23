@@ -1,0 +1,187 @@
+{
+ "results": {
+  "margin": {
+   "observed": {
+    "lambda_full": 1.2439499117191137,
+    "cross_format_point": 0.9211891046274687,
+    "cross_format_wild": {
+     "point": 0.9211891046274687,
+     "lo": 0.8006569396931508,
+     "hi": 1.034729865199787,
+     "se": 0.04389812746262408,
+     "method": "wild cluster bootstrap-t (G=25)",
+     "n_clusters": 25
+    }
+   },
+   "item_noise_per_half_v_k": {
+    "arc_challenge": 1.0975650016693278e-05,
+    "arc_easy": 6.508128000680367e-06,
+    "boolq": 9.750986373286861e-06,
+    "csqa": 3.283837843669993e-05,
+    "hellaswag": 2.1601742605356862e-07,
+    "mmlu": 2.314209878027623e-06,
+    "openbookqa": 5.057569345672146e-05,
+    "piqa": 1.92890624177918e-06,
+    "socialiqa": 1.2402962497411248e-05,
+    "winogrande": 3.996823624890543e-06
+   },
+   "seed_variance_sigma_e2_k": {
+    "arc_challenge": 1.541203397079491e-05,
+    "arc_easy": 8.218152975902235e-05,
+    "boolq": 0.0014336921726145206,
+    "csqa": 0.00043401417193271745,
+    "hellaswag": 6.725403188176813e-07,
+    "mmlu": 1.4206256491125401e-05,
+    "openbookqa": 3.2551475547040406e-05,
+    "piqa": 7.256542069493735e-07,
+    "socialiqa": 9.819296896820308e-05,
+    "winogrande": -3.150491875720262e-07
+   },
+   "negative_v_clipped_to_zero": 0,
+   "explain": {
+    "implied_share_q_star": 1.4224827977168986,
+    "induced_cross_format_diagnostic": 1.1133002034300643,
+    "equal_pair_weight_check": 1.152582678040753,
+    "excluded_by_observed_wild_interval": true
+   },
+   "q0124": {
+    "share": 0.124,
+    "induced_full_matrix_lambda": 1.0235813045684434,
+    "induced_cross_format_diagnostic": 1.0103821649301887,
+    "diag_share_of_U": 0.007723535751930749,
+    "U_seed_after_removing_share": 0.0026187834911044266,
+    "excluded_by_observed_wild_interval": false
+   },
+   "additive": {
+    "share": 0.124,
+    "full_matrix_lambda": 1.261177541331366,
+    "cross_format_point": 0.9329855182388246,
+    "cross_format_wild": {
+     "point": 0.9329855182388246,
+     "lo": 0.8078566893264059,
+     "hi": 1.0499780043117386,
+     "se": 0.04476078679263145,
+     "method": "wild cluster bootstrap-t (G=25)",
+     "n_clusters": 25
+    }
+   },
+   "sums": {
+    "sum_T": 0.004083877356163356,
+    "sum_U": 0.0026391671932770246,
+    "sum_T_cross_mask": 0.0022395692165892503,
+    "N": 125,
+    "per_config_offdiag_all_sqrtvv_over_K2": 8.125006025830938e-06,
+    "per_config_offdiag_cross_sqrtvv_over_K2": 3.5538717593935325e-06,
+    "per_config_diag_v_over_K2": 1.3150775595224405e-06
+   }
+  },
+  "accuracy": {
+   "observed": {
+    "lambda_full": 1.0783733870898096,
+    "cross_format_point": 0.9651889498004318,
+    "cross_format_wild": {
+     "point": 0.9651889498004318,
+     "lo": 0.8483992935798913,
+     "hi": 1.0634380978745253,
+     "se": 0.046667765189171116,
+     "method": "wild cluster bootstrap-t (G=25)",
+     "n_clusters": 25
+    }
+   },
+   "item_noise_per_half_v_k": {
+    "arc_challenge": 9.945369194748917e-05,
+    "arc_easy": 6.0406723425803356e-05,
+    "boolq": 5.909117264727153e-05,
+    "csqa": 0.00011500747305924543,
+    "hellaswag": 7.698080331081891e-06,
+    "mmlu": 1.515896279209469e-05,
+    "openbookqa": 0.00023155199999999989,
+    "piqa": 5.4049381868213236e-05,
+    "socialiqa": 6.962177157530039e-05,
+    "winogrande": 0.0002477853180160241
+   },
+   "seed_variance_sigma_e2_k": {
+    "arc_challenge": 2.530800203458007e-05,
+    "arc_easy": 9.129170492806857e-05,
+    "boolq": 0.0019187899759030124,
+    "csqa": 0.00018333467485891628,
+    "hellaswag": 6.2903567084235445e-06,
+    "mmlu": 3.3528889356289293e-07,
+    "openbookqa": 2.314666666666667e-05,
+    "piqa": -1.493478071250398e-06,
+    "socialiqa": 4.954206035996116e-05,
+    "winogrande": -2.2900978931298647e-05
+   },
+   "negative_v_clipped_to_zero": 0,
+   "explain": {
+    "implied_share_q_star": 0.052558551570596315,
+    "induced_cross_format_diagnostic": 1.0468755758040358,
+    "equal_pair_weight_check": 1.0477277781896064,
+    "excluded_by_observed_wild_interval": false
+   },
+   "q0124": {
+    "share": 0.124,
+    "induced_full_matrix_lambda": 1.1765628286473924,
+    "induced_cross_format_diagnostic": 1.1074153192467189,
+    "diag_share_of_U": 0.052346907903388556,
+    "U_seed_after_removing_share": 0.0026932825324606138,
+    "excluded_by_observed_wild_interval": true
+   },
+   "additive": {
+    "share": 0.124,
+    "full_matrix_lambda": 1.2328707996560306,
+    "cross_format_point": 1.0724276531171766,
+    "cross_format_wild": {
+     "point": 1.0724276531171766,
+     "lo": 0.9725297671574318,
+     "hi": 1.1615153413419927,
+     "se": 0.042467941613611185,
+     "method": "wild cluster bootstrap-t (G=25)",
+     "n_clusters": 25
+    }
+   },
+   "sums": {
+    "sum_T": 0.00330499535460678,
+    "sum_U": 0.002842055341688305,
+    "sum_T_cross_mask": 0.002647629508204811,
+    "N": 125,
+    "per_config_offdiag_all_sqrtvv_over_K2": 7.046465309024463e-05,
+    "per_config_offdiag_cross_sqrtvv_over_K2": 4.150660274984629e-05,
+    "per_config_diag_v_over_K2": 9.598245756625237e-06
+   }
+  }
+ },
+ "formats": {
+  "arc_challenge": "mc",
+  "arc_easy": "mc",
+  "boolq": "yesno",
+  "csqa": "mc",
+  "hellaswag": "cloze",
+  "mmlu": "mc",
+  "openbookqa": "mc",
+  "piqa": "cloze",
+  "socialiqa": "mc",
+  "winogrande": "cloze"
+ },
+ "injection_model": "per-half item noise on trait k is sigma_k (sqrt(q) f + sqrt(1-q) z_k); f is one scalar per run shared by all ten benchmarks and identical in both halves (rho_f = 1); z_k independent. Adds q sigma_j sigma_k to every cross-half covariance entry, diagonal included. sigma_k^2 = seednoise.reliability.variance_components(pop, name).noise2 (population-level, per half). Generator from snap-r6-sharednoise (seed 20260920), where q = 0.1242 reproduced 1.2439 at noise 0.73 on a unit-variance latent.",
+ "readings": {
+  "explain": "no off-diagonal seed covariance; the shared component carries the whole observed excess of the full-matrix ratio; share q* solved from sum T - sum U",
+  "q0124": "no off-diagonal seed covariance; q fixed at 0.124 on the released v_k",
+  "additive": "q = 0.124 added to the observed per-configuration T and U"
+ },
+ "paper_values": {
+  "cross_format_margin": [
+   0.921,
+   0.801,
+   1.035
+  ],
+  "cross_format_accuracy": [
+   0.965,
+   0.848,
+   1.063
+  ],
+  "share_reproducing_margin": 0.124,
+  "share_reproducing_accuracy": 0.009
+ },
+ "wall_seconds": 19.07052230834961
+}

@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1790143052.65928 "main.tex" "main.pdf" "main" 1790143053.19542 0
+["pdflatex"] 1790146567.94462 "main.tex" "main.pdf" "main" 1790146568.46894 0
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1772380719 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/fontname/texfonts.map" 1772380719 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1772380719 5541360 f183aac233c4cd1e5ef882fcbe8e7096 ""
@@ -129,15 +129,15 @@
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/xcolor/xcolor.sty" 1772380719 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/web2c/texmf.cnf" 1772380719 43633 14bbc273cebd985e64ab1a698333eaf9 ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1772380719 3636956 5168b884cb430e6a6336cfea08fa659a ""
-  "appendices_bcd.tex" 1790143051.96072 115668 433a91a1fa7c43ec0774aa2dfba74507 ""
-  "appendix_a.tex" 1790138989.81031 16264 05bbc117fc7cc77c2b06a641e5ea9382 ""
+  "appendices_bcd.tex" 1790146430.09747 118429 df8ff0aeae2512c7df31cd9ba6d8b73b ""
+  "appendix_a.tex" 1790146414.61497 16257 46a0fb29e7bfe930e6e4450b44b14f8e ""
   "fancyhdr.sty" 1789356740.9372 20521 e5d13d98d57bd53d4fed3aa61bd29c86 ""
   "figures/composition.pdf" 1790014699.2886 22100 10ca1607b3dfb8c7026874094246bf12 ""
   "figures/covariance.pdf" 1789606883.48734 80152 2990523da84a92ffd4ded57ac9c5a0e9 ""
   "iclr2027_conference.sty" 1789356740.9369 9025 1b4bb9c2e12c712c56f4eb1232b88dd6 ""
-  "main.aux" 1790143053.12932 28575 fbb3f9375860d8ce6b480dce7dd9c4c4 "pdflatex"
-  "main.out" 1790143053.13061 7061 34e2d58d1ea610cd757981beeaa0d702 "pdflatex"
-  "main.tex" 1790143051.96417 47182 56cc6118d22613bff73ab0908992f186 ""
+  "main.aux" 1790146568.4046 28673 0b3ccb01a462eba741465a5f82792c03 "pdflatex"
+  "main.out" 1790146568.4058 7076 aac588744de04dc45b0b8a21d6c35802 "pdflatex"
+  "main.tex" 1790146567.27239 47374 01d88d29a819adac3a4e2d0546cb9b78 ""
   "natbib.sty" 1789356740.9375 45154 40088ce024445d7ee2bca59e704cdd01 ""
   "references.tex" 1790142809.8544 14128 f61d57f56feab08ebbeaf107c662369f ""
   "supplement_extended.aux" 1790043435.50818 25129 9c8fb707d556e5451ecdd8ecbfb79c3a ""
