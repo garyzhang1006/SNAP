@@ -1,0 +1,1074 @@
+ 
+ 
+ 
+ Model Similarity Mitigates Test Set Overuse 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report GitHub Issue 
+ × 
+ 
+
+ 
+ Title: 
+ 
+
+ Content selection saved. Describe the issue below: 
+
+ Description: 
+ 
+ 
+
+ 
+ Submit without GitHub 
+ Submit in GitHub 
+ 
+ 
+ 
+ 
+ arXiv is now an independent nonprofit! 
+ Learn more 
+ × 
+ 
+
+ 
+ 
+ 
+ Back to arXiv 
+ 
+ 
+ 
+ 
+ Why HTML? 
+ 
+ 
+ Report Issue 
+ 
+ 
+ 
+ Back to Abstract 
+ 
+ 
+ 
+ 
+ Download PDF 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Abstract 
+ 1 Introduction 
+ 
+ 1.1 Our contributions 
+ 1.2 Related work 
+ 
+ 2 Problem setup 
+ 3 Non-adaptive classification 
+ 4 Adaptive classification 
+ 5 Empirical results 
+ 
+ 5.1 Similarities on Imagenet 
+ 
+ Standard union bound. 
+ Similarity Union Bound. 
+ Similarity union bound with a Naive Bayes assumption. 
+ 
+ 5.2 Similarities on CIFAR-10 
+ 
+ Random hyperparameter search. 
+ Neural architecture search. 
+ 
+ 
+ 6 Conclusions and future work 
+ 
+ Acknowledgements. 
+ 
+ References 
+ A Proofs for Section 
+ B Tail probability of two dependent binomials 
+ 
+ Similarity Union Bound. 
+ Similarity union bound with a Naive Bayes assumption. 
+ 
+ C Empirical distribution of image difficulty in ImageNet 
+ D CIFAR-10 random hyperparameter grid search 
+ 
+ 
+ 
+ 
+ 
+ License: arXiv.org perpetual non-exclusive license
+ 
+ 
+arXiv:1905.12580v1 [cs.LG] 29 May 2019 
+ 
+ 
+ Model Similarity Mitigates Test Set Overuse 
+ 
+ 
+ Horia Mania
+ 
+    
+ John Miller
+ 
+    
+ Ludwig Schmidt
+ 
+    
+ Moritz Hardt
+ 
+    
+ Benjamin Recht
+ 
+ Affiliation:  University of California, Berkeley
+ 
+
+ Abstract 
+ 
+ Excessive reuse of test data has become commonplace in today’s machine learning workflows. Popular benchmarks, competitions, industrial scale tuning, among other applications, all involve test data reuse beyond guidance by statistical confidence bounds. Nonetheless, recent replication studies give evidence that popular benchmarks continue to support progress despite years of extensive reuse. We proffer a new explanation for the apparent longevity of test data: Many proposed models are similar in their predictions and we prove that this similarity mitigates overfitting. Specifically, we show empirically that models proposed for the ImageNet ILSVRC benchmark agree in their predictions well beyond what we can conclude from their accuracy levels alone. Likewise, models created by large scale hyperparameter search enjoy high levels of similarity. Motivated by these empirical observations, we give a non-asymptotic generalization bound that takes similarity into account, leading to meaningful confidence bounds in practical settings. 
+ 
+ 
+ 
+ 1 Introduction 
+
+ 
+ Be it validation sets for model tuning, popular benchmark data, or machine learning competitions, the holdout method is central to the scientific and industrial activities of the machine learning community. As compute resources scale, a growing number of practitioners evaluate an unprecedented number of models against various holdout sets.
+These practices, collectively, put significant pressure on the statistical guarantees of the holdout method. Theory suggests that for models chosen independently of test data points, the holdout method provides valid risk estimates for each of these models up to a deviation on the order of 
+But this bound is the consequence of an unrealistic assumption.
+In practice, models incorporate prior information about the available test data since human analysts choose models in a manner guided by previous results.
+Adaptive hyperparameter search algorithms similarly evolve models on the basis of past trials. 
+ 
+ 
+ Adaptivity significantly complicates the theoretical guarantees of the holdout method. A simple adaptive strategy, resembling the practice of selectively ensembling models, can bias the holdout method by as much as . If this bound were attained in practice, holdout data across the board would rapidly lose its value over time. Nonetheless, recent replication studies give evidence that popular benchmarks continue to support progress despite years of extensive reuse [ 14 , 19 ] . 
+ 
+ 
+ In this work, we contribute a new explanation for why the adaptive bound is not attained in practice and why even the standard non-adaptive bound is more pessimistic than it needs to be. Our explanation centers around the phenomenon of model similarity . Practitioners evaluate models that incorporate common priors, past experiences, and standard practices. As we show empirically, this results in models that exhibit significant agreement in their predictions, well beyond what would follow from their accuracy values alone. Complementing our empirical investigation of model similarity, we provide a new theoretical analysis of the holdout method that takes model similarity into account, vastly improving over known bounds in the adaptive and non-adaptive cases when model similarity is high. 
+ 
+ 
+ 1.1 Our contributions 
+
+ 
+ Our contributions are two-fold. On the empirical side, we demonstrate that a large number of proposed ImageNet [ 3 , 15 ] and CIFAR-10 [ 9 ] models exhibit a high degree of similarity: Their predictions agree far more than we would be able to deduce from their accuracy levels alone. Complementing our empirical findings, we give new generalization bounds that incorporate a measure of similarity. Our generalization bounds help to explain why holdout data has much greater longevity than prior bounds suggest when models are highly similar, as is the case in practice. Figure  1 summarizes these two complementary developments. 
+ 
+ 
+ 
+ Figure 1 : (a) shows the empirical pairwise similarity between Imagenet models and the hypothetical similarity between models if they were making mistakes independently. (b) plots the number of testable models on Imagenet such that the population error rates for all models are estimated up to error with probability . We compare the guarantee of the standard union bound with that of a union bound which considers model similarities. 
+ 
+ 
+ Underlying Figure  1(a) is a family of representative ImageNet models whose pairwise similarity we evaluate. The mean level of similarity of these models, together with a refined union bound, offers a improvement
+over a carefully optimized baseline bound that does not take model similarity into account.
+In Figure  1(b) we compare our guarantee on the number of holdout reuses with the baseline bound.
+This illustrates that our bound is not just asymptotic, but concrete—it gives meaningful values in the practical regime. Moreover, in Section  5 we discuss how an additional assumption on model predictions can boost the similarity based guarantee by multiple orders of magnitude. 
+ 
+ 
+ Investigating model similarity in practice further, we evaluate similarity of models encountered during the course of a large random hyperparamter search and a large neural architecture search for the CIFAR-10 dataset. We find that the pairwise model similarities throughout both procedures remain high. The similarity provides a counterweight to the massive number of model evaluations, limiting the amount of overfitting we observe. 
+ 
+ 
+ 
+ 1.2 Related work 
+
+ 
+ Recht et al. [14] recently created new test sets for ImageNet and CIFAR10, carefully following the original test set creation processes.
+Reevaluating all proposed models on the new test sets showed that while there was generally an absolute performance drop, the effect of overfitting due to adaptive behavior was limited to non-existent.
+Indeed, newer and better models on the old test set also performed better on the new test set, even though they had in principle more time to adapt to the test set. Also, Yadav and Bottou [19] recently released a new test set for the seminal MNIST task, on which they observed no overfitting. 
+ 
+ 
+ Dwork et al. [5] recognized the issue of adaptivity in holdout reuse and provided new holdout mechanisms based on noise addition that support quadratically more queries than the standard method in the worse case. There is a rich line of work on adaptive data analysis; Smith [17] offers a comprehensive survey of the field. 
+ 
+ 
+ We are not the first to proffer an explanation for the apparent lack of overfitting in machine learning benchmarks. Blum and Hardt [2] argued that if analysts only check if they improved on the previous best model, while ignoring models that did not improve, better adaptive generalization bounds are possible. Zrnic and Hardt [20] offered improved guarantees for adaptive analysts that satisfy natural assumptions, e.g. the analyst is unable to arbitrarily use information from queries asked far in the past.
+More recently, Feldman et al. [6] gave evidence that the number of classes in a classification problem helps mitigate overfitting in benchmarks. We see these different explanations as playing together in what is likely the full explanation of the available empirical evidence.
+In parallel to our work, Yadav and Bottou [19] discussed the advantages of comparing models on the same test set; pairing tests can provide tighter confidence bounds for model comparisons in this setting than individual confidence intervals for each model. 
+ 
+ 
+ 
+ 
+ 2 Problem setup 
+
+ 
+ Let be a classifier mapping examples from domain to a label from the set .
+Moreover, we consider a test set of examples sampled i.i.d. from a data distribution .
+The main quantity we aim to analyze is the gap between the accuracy of the classifier on the test set and the population accuracy of the same classifier under the distribution .
+If the gap between the two accuracies is large, we say overfit to the test set. 
+ 
+ 
+ As is commonly done in the adaptive data analysis literature [ 1 ] , we formalize interactions with the test set via statistical queries .
+In our case, the queries are -valued; given a classifier we consider the query defined by , where .
+Then, we denote the empirical mean of query on the test set (i.e., ’s test error) by .
+The population mean (population error) is accordingly defined as . 
+ 
+ 
+ When discussing overfitting, we are usually interested in a set of classifiers, e.g., obtained via a hyperparameter search.
+Let be such a set of classifiers and be the set of corresponding queries.
+To quantify the probability that overfitting occurs (i.e., one of the has a large deviation between test and population accuracy), we would like to upper bound the probability 
+ 
+ A standard way to bound ( 1 ) is to invoke the union bound and treat each query separately: 
+ 
+ We can then utilize standard concentration results to bound the right hand side.
+However, such an approach inherently cannot capture dependencies between the queries (or classifiers ).
+In particular, we are interested in the similarity between two queries and measued by (the probability of agreement between the 0-1 losses of the corresponding two classifiers).
+The main goal of this paper is to understand how high similarity can lead to better bounds on ( 1 ), both in theory and in numerical experiments with real data from ImageNet and CIFAR-10. 
+ 
+ 
+ 
+ 3 Non-adaptive classification 
+
+ 
+ We begin by analyzing the effect of the classifier similarity when the classifiers to be evaluated are chosen non-adaptively .
+For instance, this is the case when the algorithm designer fixes a grid of hyperparameters to be explored before evaluating any of the classifiers on the test set.
+To draw valid gains from the hyperparameter search, it is important that the resulting test accuracies reflect the true population accuracies, i.e., probability ( 1 ) is small. 
+ 
+ 
+ Bound ( 2 ) is sharp when the events are almost disjoint, which is not true when the queries are similar to each other.
+To address this issue, we modify our use of the union bound.
+We consider the left tails . For any , we obtain 
+ 
+ Intuitively, the terms are small when the queries and are similar:
+if is large, we cannot simultaneously have and since the deviations go into opposite directions.
+In the rest of this section, we make this intuition precise in and derive an upper bound on ( 1 ) in terms of the query similarities.
+Before we state our main result, we introduce the following notion of a similarity covering. 
+ 
+ 
+ Definition 1 . 
+ 
+ Let be a set of queries. We say a query set is a similarity
+cover of if for any query there exist such that , ,
+ , and ( does not necessarily have to be a subset of ). Let
+ denote the size of a minimal similarity cover of
+ (when the query set is clear from context we use the simpler notation ). 
+ 
+ 
+ 
+ Theorem 2 . 
+ 
+ Let be a collection of queries independent of the test set . Then, for any we have 
+ 
+ Then, for all , we have with probability 
+ 
+ Moreover, if and , we have with probability 
+ 
+ 
+ 
+ 
+ The proof starts with the refined union bound ( 3 ), or a standard triangle inequality, and then applies the
+Chernoff concentration bound shown in Lemma  3 for random variables
+which take values in .
+We defer the proof details of both the lemma and the theorem to Appendix A . 
+ 
+ 
+ Lemma 3 . 
+ 
+ Suppose are i.i.d. discrete random variables which take values , , and with probabilities , , and respectively, and hence . Then, for any such that we have 
+ 
+ 
+ 
+ 
+ Discretization arguments based on coverings are standard in statistical learning theory. Covers based on the population Hamming distance have been previously studied [ 4 , 11 ] (note that for -valued queries the Hamming distance is equal to the and distances). An important distinction between our result and prior work is that prior work requires to be greater than .
+Theorem  2 can offer an improvement over the standard guarantee even when is much smaller than .
+First of all note that ( 5 ) holds for bounded away from one.
+Moreover, since , if (the choice of is somewhat arbitrary), we see the requirement on for ( 6 ) is satisfied when is on the order of . 
+ 
+ 
+ 
+ 4 Adaptive classification 
+
+ 
+ In the previous section, we showed similarity can prevent overfitting when the
+sequence of queries is chosen non-adaptively , i.e. when the queries
+ are fixed independently of the test set . In the
+ adaptive setting, we assume the query can be selected as a function
+of the previous queries and estimates
+ . Even when queries are
+chosen adaptively, we show leveraging similarity can provide sharper bounds on
+the probability of overfitting, . 
+ 
+ 
+ In the adaptive setting, the field of adaptive data analysis offers a rich
+technical repertoire to address overfitting [ 5 , 17 ] . In this
+framework, analogous to the typical machine learning workflow, an analyst
+iteratively selects a classifier and then queries a mechanism to provide an
+estimate of test-set performance. In practice, the mechanism often used is the
+ Trivial Mechanism which computes the empirical mean of the query on the
+test set and returns the exact value to the analyst. For simplicity, we study
+how similarity improves the performance of the trivial mechanism. 
+ 
+ 
+ The empirical mean of any query can take at most 
+values, and thus a deterministic analyst might ask at most 
+queries in rounds of interaction with the Trivial Mechanism. Let 
+denote the set of possible queries. Then, we apply Theorem  2 to . 
+ 
+ 
+ Corollary 4 . 
+ 
+ Let be the set of queries that a fixed analyst might query the
+Trivial Mechanism. We assume that the Trivial Mechanism has access to a test
+set of size . Let , 
+ 
+ and . If
+ , we have with probability 
+ 
+ for any queries , , … chosen adaptively by . 
+ 
+ 
+ 
+ Proof. 
+ 
+ Note that when 
+we have . Then, the result follows from the first part of
+Theorem  2 .
+∎ 
+ 
+ 
+ 
+ Corollary  4 always applies with , in which case the
+bound matches standard results for the trivial mechanism with . However, if permits 
+for and some , we obtain a super
+linear improvement in the dependence on . For instance, if , then , and we obtain a quadratic improvement in the
+number of queries for a fixed sample size, an improvement similar to that achieved by
+the Gaussian mechanism [ 1 , 5 ] .
+Moreover, since our technique is essentially tightening a union bound, this improvement easily
+extends to other mechanisms that rely on compression-based arguments, for instance,
+the Ladder Mechanism [ 2 ] . 
+ 
+ 
+ 
+ 5 Empirical results 
+
+ 
+ So far, we have established theoretically that similarity between classifiers allows us to evaluate a larger number of classifiers on the test set without overfitting.
+In this section, we investigate whether these improvements already occur in the regime of contemporary machine learning.
+We specifically focus on ImageNet and CIFAR-10, two widely used machine learning benchmarks that have recently been shown to exhibit little to no adaptive overfitting in spite of almost a decade of test set re-use [ 14 ] .
+For both datasets, we empirically measure two main quantities:
+(i) The similarity between a wide range of models, some of them arising from hyperparameter search experiments.
+(ii) The resulting increase in the number of models we can evaluate in a non-adaptive setting compared to a baseline that does not utilize the model similarities. 
+ 
+ 
+ 5.1 Similarities on Imagenet 
+
+ 
+ We utilize the model testbed from Recht et al. [14] , 
+ 1 
+ 
+ 
+ 
+ Available at https://github.com/modestyachts/ImageNetV2 . who collected a dataset of 66 image classifiers that includes a wide range of standard ImageNet models such as AlexNet [ 10 ] , ResNets [ 7 ] , DenseNets [ 8 ] , VGG [ 16 ] , Inception [ 18 ] , and several other models.
+As a baseline for the observed similarities between these models, we compare them to classifiers with the same accuracy but otherwise random predictions:
+given two models and with population error rates and , we know that the similarity equals if the random variables and are independent.
+Figure 1(a) in the introduction shows these model similarities assuming the models make independent mistakes and also the empirical data for the pairs of models.
+We see that the empirical similarities are significantly higher than the random baseline (mean 0.85 vs 0.62). 
+ 
+ 
+ The corresponding Figure  1(b) shows two lower bounds on the number of models that can be evaluated for the empirical ImageNet data.
+In particular, we use (the size of the ImageNet validation set) and a target probability for the overfitting event ( 1 )
+with error .
+We compare two methods for computing the number of non-adaptively testable models: a guarantee based on the simple union bound ( 2 ) and a guarantee based on our more refined union bound derived from our theoretical analysis in Section 3 .
+Later in this section, we introduce an even stronger bound that utilizes higher-order interactions between the model similarities and yields significantly larger improvements under an assumption on the structure among the classifiers. 
+ 
+ 
+ To obtain meaningful quantities in the regime of ImageNet, all bounds here require significantly sharper numerical calculations than the standard theoretical tools such as Chernoff bounds.
+We now describe these calculations at a high level and defer the details to Appendix B .
+After introducing the three methods, we compare them on the ImageNet data. 
+ 
+ 
+ Standard union bound. 
+
+ 
+ Given , , and the population error rate of all models , we can compute the right hand side of ( 2 ) exactly. 
+ 2 
+ 
+ 
+ 
+ After an additional union bound to decouple the left and right tails. 
+It is well known that higher accuracies lead to smaller probability of error and hence allow for a larger number of test set reuses.
+We assume all models have population accuracy , the average top-1 accuracy of the Imagenet models.
+In this case, the vanilla union bound ( 2 ) guarantees that models can be evaluated on a test set of size so that their empirical accuracies would lie in the confidence interval with probability at least . 
+ 
+ 
+ 
+ Similarity Union Bound. 
+
+ 
+ While the union bound ( 2 ) is easy to use, it does not leverage the dependencies between the random variables for .
+To exploit this property, we utilize the refined union bound ( 3 ) which is guaranteed to be an improvement over ( 2 ) when the parameter is optimized.
+In order to use ( 3 ), we must compute the probabilities 
+ 
+ for given , , , , and similarity .
+In Appendix  B , we show that we can compute these probabilities efficiently by assigning success probabilities to three independent Bernoulli random variables , , and such that is equal to in distribution. Let .
+Then, given i.i.d. draws , , and , we condition on the values of to express probability ( 8 ) as 
+ 
+ We refer the reader to Appendix  B for more details.
+The two tail probabilities for and can be computed efficiently with the use of beta functions.
+Using ( 9 ) and ( 3 ) with a binary search over , we can compute the probability of making an error when estimating the population error rates of models with given error rates and pairwise similarities.
+Figure  1(b) shows the maximum number of models that can be evaluated on the same test set so that the probability of making an error in estimating all their error rates is at most when the models satisfy and for all .
+The figure shows that our new bound offers a significant improvement over the guarantee given by the standard union bound ( 2 ). 
+ 
+ 
+ 
+ Similarity union bound with a Naive Bayes assumption. 
+
+ 
+ While the previous computation uses the pairwise similarities observed empirically to offer an improved guarantee on the number of allowed test set reuses, it does not take into account higher order dependencies between the models. In particular,
+Figure  4 in Appendix C shows that of test images are correctly classified by all the models, of test images are correctly classified by of the models considered, and of test images are incorrectly classified by all the models. We now show how this kind of agreement between models enables a larger number of test set reuses.
+Inspired by the coupling used in ( 9 ), we make the following assumption. 
+ 
+ 
+ Assumption A1 (Naive Bayes) . 
+ 
+ Let , , … be a collection of queries such that and for some and , for all . We say such a collection
+has a Naive Bayes structure if there exist and in such that is equal to in distribution, where , , … are independent
+Bernoulli random variables with and for all . 
+ 
+ 
+ 
+ Intuitively, a collection of queries has a Naive Bayes structure if the data distribution generates easy examples with probability such that all the models classify correctly, and if an example is not easy, the models make mistakes independently. As mentioned before, Figure  4 supports the existence of such an easy set.
+When a test point in the ImageNet test set is not an easy example, the models do not make mistakes independently. Therefore, Assumption  A1 is not exactly satisfied by existing ImageNet models.
+However, we know that independent Bernoulli trials saturate the standard union bound ( 2 ). This effect can also be observed in Figure  2 . As the similarity between the models decreases, i.e. decreases, the models make mistakes independently and the guarantee with Assumption  A1 converges to the standard union bound guarantee.
+So while Assumption  A1 is not exactly satisfied in practice, the violation among the ImageNet classifiers likely implies an even better lower bound on the number of testable models. 
+ 
+ 
+ Assumption  A1 is computationally advantageous.
+It allows us to compute the overfitting probability ( 1 ) exactly, as we detail in Appendix  B .
+Figure  2 is an extension of
+Figure  1(b) ; it shows the relative improvement of our
+bounds over the standard union bound in terms of the number of testable models
+when and . Moreover,
+Figure  2 also shows that the relative improvement of our
+bounds increases quickly with . According to Figure  2 , Assumption  A1 implies that we can evaluate models on the test set in the regime of ImageNet without overfitting. While this number of models might seem unnecessarily large, in Section  4 we saw that when models are chosen adaptively we must consider a tree of possible models, which can easily contain models. 
+ 
+ 
+ 
+ Figure 2 : Left figure shows the multiplicative gains in the number of testable models, as a function of model similarity, over the
+guarantee offered by the standard union plus binomial bound, with and . Right figure shows the
+same multiplicative gains, but as a function of , when and the pairwise similarity is . 
+ 
+ 
+ 
+ 
+ 5.2 Similarities on CIFAR-10 
+
+ 
+ Practitioners often evaluate many more models than the handful that ultimately
+appear in publication. The choice of architecture is the result of a
+long period of iterative refinement, and the hyperparameters for any fixed
+architecture are often chosen by evaluating a large grid of plausible models.
+Using data from CIFAR-10, we demonstrate these common practices both generate
+large classes of very similar models. 
+ 
+ 
+ Random hyperparameter search. 
+
+ 
+ To understand the similarity between models evaluated in hyperparameter search,
+we ran our own random search to choose hyperparameters for a ResNet-110. The
+grid included properties of the achitecture (e.g. type of residual block), the
+optimization algorithm (e.g. choice of optimizer), and the data distribution
+(e.g. data augmentation strategies). A full specification of the grid is included
+in Appendix  D . We sample and train 320 models, and,
+for each model, we select 10 checkpoints evenly spaced throughout training. The
+best model considered achieves accuracy of 96.6%, and, after restricting to
+models with accuracy at least 50%, we are left with 1,235 model checkpoints.
+In Figure  3 , we show the similarity for each pair
+of checkpoints and compute an upper bound on the corresponding similarity
+covering number for each possible value of . As in the
+case of ImageNet, CIFAR10 models found by random search are significantly more
+similar than random chance would suggest. 
+ 
+ 
+ 
+ Figure 3 : Model similarities and covering numbers for random hyperparameter search on CIFAR10. 
+ 
+ 
+ 
+ Neural architecture search. 
+
+ 
+ In the random search experiment, all of the models were chosen
+non-adaptively—the grid of models is fixed in advance. However, similarity
+protects against overfitting also in the adaptive setting. To illustrate this, we
+compute the similarity for models evaluated by automatic neural architecture
+search. In particular, we ran the DARTS neural architecture search pipeline to
+adaptively evaluate a large number of plausible models in search of promising
+configurations [ 12 , 13 ] .
+In Table  1 ,
+we report the mean accuracies and pairwise similarities for randomly selected
+configurations evaluated by DARTS, as well as the top scoring configurations
+according to DARTS internal scoring mechanism. Table  1 also
+shows the multiplicative gains in the number of testable models offered by our similarity bound (SB)
+and our naive Bayes bound (NBB) over the standard union bound are between one and four orders of magnitude.
+Therefore, even in a high accuracy regime we can guarantee a significantly higher number of test set reuses without
+overfitting when taking into account model similarities. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 6 Conclusions and future work 
+
+ 
+ We have shown that contemporary image classification models are highly similar, and that this similarity increases the longevity of the test set both in theory and in experiment.
+It is worth noting that model similarity does not preclude progress on the test set: two models that are 85% similar can differ by as much as 15% in accuracy (for context: the top-5 accuracy improvement from the seminal AlexNet to the current state of the art on ImageNet is about 17%).
+In addition, it is well known that higher model accuracy implies a larger number of test set reuses without overfitting.
+So as the machine learning practitioner explores increasingly better performing models that also become more similar, it can actually become harder to overfit. 
+ 
+ 
+ There are multiple important avenues for future work.
+First, one natural question is why the classification models turn out to be so similar.
+In addition, it would be insightful to understand whether the similarity phenomenon is specific to image classification or also arises in other classification tasks.
+There may also be further structural dependencies between models that mitigate the amount of overfitting.
+Finally, it would be ideal to have a statistical procedure that leverages such model structure to provide reliable and accurate performance bounds for test set re-use. 
+ 
+ 
+ Acknowledgements. 
+
+ 
+ We thank Vitaly Feldman for helpful discussions.
+This work is generously supported in part by ONR awards N00014-17-1-2191, N00014-17-1-2401, and N00014-18-1-2833, the DARPA Assured Autonomy (FA8750-18-C-0101) and Lagrange (W911NF-16-1-0552) programs, a Siemens Futuremakers Fellowship, an Amazon AWS AI Research Award, a gift from Microsoft Research, and the National Science Foundation Graduate Research Fellowship Program under Grant No. DGE 1752814. 
+ 
+ 
+ 
+ 
+ References 
+
+ 
+ 
+ [1] 
+ 
+R. Bassily, K. Nissim, A. Smith, T. Steinke, U. Stemmer, and J. Ullman.
+
+ 
+ Algorithmic stability for adaptive data analysis.
+
+ 
+ In Symposium on Theory of Computing (STOC) , 2016.
+
+ 
+ https://arxiv.org/abs/1511.02513 .
+
+ 
+ 
+ [2] 
+ 
+A. Blum and M. Hardt.
+
+ 
+ The Ladder: A reliable leaderboard for machine learning
+competitions.
+
+ 
+ In International Conference on Machine Learning (ICML) , 2015.
+
+ 
+ https://arxiv.org/abs/1502.04585 .
+
+ 
+ 
+ [3] 
+ 
+J. Deng, W. Dong, R. Socher, L.-J. Li, K. Li, and L. Fei-Fei.
+
+ 
+ ImageNet: A large-scale hierarchical image database.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2009.
+
+ 
+ http://www.image-net.org/papers/imagenet_cvpr09.pdf .
+
+ 
+ 
+ [4] 
+ 
+L. Devroye, L. Györfi, and G. Lugosi.
+
+ 
+ A probabilistic theory of pattern recognition .
+
+ 
+ Springer, 1996.
+
+ 
+ http://www.szit.bme.hu/~gyorfi/pbook.pdf .
+
+ 
+ 
+ [5] 
+ 
+C. Dwork, V. Feldman, M. Hardt, T. Pitassi, O. Reingold, and A. L. Roth.
+
+ 
+ Preserving statistical validity in adaptive data analysis.
+
+ 
+ In Symposium on Theory of computing (STOC) , 2015.
+
+ 
+ https://arxiv.org/abs/1411.2664 .
+
+ 
+ 
+ [6] 
+ 
+V. Feldman, R. Frostig, and M. Hardt.
+
+ 
+ The advantages of multiple classes for reducing overfitting from test
+set reuse.
+
+ 
+ In International Conference on Machine Learning (ICML) , 2019.
+
+ 
+ https://arxiv.org/abs/1905.10360 .
+
+ 
+ 
+ [7] 
+ 
+K. He, X. Zhang, S. Ren, and J. Sun.
+
+ 
+ Deep residual learning for image recognition.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2016.
+
+ 
+ https://arxiv.org/abs/1512.03385 .
+
+ 
+ 
+ [8] 
+ 
+G. Huang, Z. Liu, K. Q. Weinberger, and L. van der Maaten.
+
+ 
+ Densely connected convolutional networks.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2017.
+
+ 
+ https://arxiv.org/abs/1608.06993 .
+
+ 
+ 
+ [9] 
+ 
+A. Krizhevsky.
+
+ 
+ Learning multiple layers of features from tiny images, 2009.
+
+ 
+ https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf .
+
+ 
+ 
+ [10] 
+ 
+A. Krizhevsky, I. Sutskever, and G. E. Hinton.
+
+ 
+ Imagenet classification with deep convolutional neural networks.
+
+ 
+ In Advances in Neural Information Processing Systems (NIPS) ,
+2012.
+
+ 
+ https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks .
+
+ 
+ 
+ [11] 
+ 
+J. Langford.
+
+ 
+ Quantitatively Tight Sample Complexity Bounds .
+
+ 
+ PhD thesis, Carnegie Mellon University, 2002.
+
+ 
+ http://hunch.net/~jl/projects/prediction_bounds/thesis/thesis.pdf .
+
+ 
+ 
+ [12] 
+ 
+L. Li and A. Talwalkar.
+
+ 
+ Random search and reproducibility for neural architecture search.
+
+ 
+ In Conference on Uncertainty in Artificial Intelligence (UAI) ,
+2019.
+
+ 
+ https://arxiv.org/abs/1902.07638 .
+
+ 
+ 
+ [13] 
+ 
+H. Liu, K. Simonyan, and Y. Yang.
+
+ 
+ Darts: Differentiable architecture search.
+
+ 
+ In International Conference on Learning Representations
+(ICLR) , 2019.
+
+ 
+ https://arxiv.org/abs/1806.09055 .
+
+ 
+ 
+ [14] 
+ 
+B. Recht, R. Roelofs, L. Schmidt, and V. Shankar.
+
+ 
+ Do ImageNet classifiers generalize to ImageNet?
+
+ 
+ In International Conference on Machine Learning (ICML) , 2019.
+
+ 
+ https://arxiv.org/abs/1902.10811 .
+
+ 
+ 
+ [15] 
+ 
+O. Russakovsky, J. Deng, H. Su, J. Krause, S. Satheesh, S. Ma, Z. Huang,
+A. Karpathy, A. Khosla, M. Bernstein, A. C. Berg, and F.-F. Li.
+
+ 
+ ImageNet large scale visual recognition challenge.
+
+ 
+ International Journal of Computer Vision , 2015.
+
+ 
+ https://arxiv.org/abs/1409.0575 .
+
+ 
+ 
+ [16] 
+ 
+K. Simonyan and A. Zisserman.
+
+ 
+ Very deep convolutional networks for large-scale image recognition.
+
+ 
+ 2014.
+
+ 
+ https://arxiv.org/abs/1409.1556 .
+
+ 
+ 
+ [17] 
+ 
+A. Smith.
+
+ 
+ Information, privacy and stability in adaptive data analysis, 2017.
+
+ 
+ https://arxiv.org/abs/1706.00820 .
+
+ 
+ 
+ [18] 
+ 
+C. Szegedy, W. Liu, Y. Jia, P. Sermanet, S. Reed, D. Anguelov, D. Erhan,
+V. Vanhoucke, and A. Rabinovich.
+
+ 
+ Going deeper with convolutions.
+
+ 
+ In Conference on Computer Vision and Pattern Recognition
+(CVPR) , 2015.
+
+ 
+ https://arxiv.org/abs/1409.4842v1 .
+
+ 
+ 
+ [19] 
+ 
+C. Yadav and L. Bottou.
+
+ 
+ Cold Case: The Lost MNIST Digits.
+
+ 
+ 2019.
+
+ 
+ https://arxiv.org/abs/1905.10498 .
+
+ 
+ 
+ [20] 
+ 
+T. Zrnic and M. Hardt.
+
+ 
+ Natural analysts in adaptive data analysis.
+
+ 
+ In International Conference on Machine Learning (ICML) , 2019.
+
+ 
+ https://arxiv.org/abs/1901.11143 .
+
+ 
+ 
+ 
+ 
+ 
+ Appendix A Proofs for Section 3 
+
+ 
+ See 3 
+ 
+ 
+ Proof. 
+ 
+ We assume . The result follows by continuity when . We prove the more general case since the first part of the lemma is a particular case. By standard Chernoff methods we have 
+ 
+ for any . Let to be chosen later. Now, we would like to choose to be nonnegative and as large as possible so that 
+ 
+ By changing variables to for some we want to find as large as possible so that 
+ 
+ Then, by Bernoulli’s inequality it suffices if satisfies the inequality 
+ 
+ which is equivalent to 
+ 
+ Hence, the desired inequality ( 10 ) is satisfied if , which can be satisfied by choosing when . In this case, we would be able to set and obtain 
+ 
+ Set and by the assumption on we are guaranteed that and . The conclusion follows.
+∎ 
+ 
+ 
+ 
+ See 2 
+ 
+ 
+ Proof. 
+ 
+ First we prove  ( 4 ) and we start with the right tails. We have 
+ 
+ where is a minimal similarity cover of . Then, there exists a partition of into subsets , with , such that for any there exists such that , ], and . Since is a partition of , we have . Therefore, following the same argument as in ( 3 ), we have 
+ 
+ Now, for every and any we use a standard Chernoff bound and Lemma  3 to show 
+ 
+ To see why we can apply Lemma  3 note that takes values in with the probability of being at least , and by the choice of the covering set. Since and since , we find 
+ 
+ An analogous argument for the left tails yields ( 4 ).
+Now, we turn to showing ( 5 ). The goal is to find such that 
+ 
+ The first inequality is satisfied if . To find that satisfies the second condition we make use of the inequality for all . We search for that also satisfies . Then, 
+ 
+ and we would like the right hand side to be at least . If we choose 
+ 
+ the condition is satisfied because of the assumption on . In this case, both conditions ( 11 ) are satisfied and ( 5 ) is proven.
+Finally, note that when we have 
+ 
+ Then, ( 6 ) follows by choosing . This completes the proof. 
+ 
+ 
+ ∎ 
+ 
+ 
+ 
+ 
+ Appendix B Tail probability of two dependent binomials 
+
+ 
+ In this section we detail the computations of the two similarity union bounds (with and without the Naive Bayes assumption). 
+ 
+ 
+ Similarity Union Bound. 
+
+ 
+ We wish to compute the probability 
+ 
+ where and have some joint distribution over . Let use denote , , and respectively. These three quantities fully determine the joint probability distribution of and . Specifically, we have 
+ 
+ We denote these four probabilities by , , , and respectively. We aim to find three independent Bernoulli random variables , , and such that equals in distribution. It turns out we can achieve this whenever , a condition that is always satisfied in the settings we consider, by setting 
+ 
+ Then, given i.i.d. draws , , and , probability ( 8 ) equals 
+ 
+ Denote . Then, we condition on the possible values of to obtain 
+ 
+ The two tail probabilities for and can be computed efficiently with the use of beta functions. 
+ 
+ 
+ 
+ Similarity union bound with a Naive Bayes assumption. 
+
+ 
+ In this section we wish to compute directly the overfitting probability 
+ 
+ when the query vector is equal in distribution to for some independent Bernoulli random variables , , … . Recall that we assume that all queries have equal error rates ; let us denote it . Moreover, for any two queries and we have . 
+ 
+ 
+ Suppose we are given i.i.d. draws and i.i.d. draws for and . Then, if , by conditioning on the values of the random variables we obtain 
+ 
+ The random variables have the same distribution for all and are independent. Then, 
+ 
+ Therefore, we have 
+ 
+ 
+ 
+ 
+ 
+ Appendix C Empirical distribution of image difficulty in ImageNet 
+
+ 
+ 
+ 
+ Appendix D CIFAR-10 random hyperparameter grid search 
+
+ 
+ We conducted a large hyperparameter search on a ResNet110. All of our
+experiments build on the ResNet implementation and training code provided by
+ https://github.com/hysts/pytorch_image_classification . In
+Table  2 , we specify the grid used in the experiments. If
+not explicitly stated, all other hyperparameters are set to their default
+settings. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Experimental support, please
+ view the build logs 
+ for errors. Generated by
+ 
+ 
+ L
+ A 
+ T
+ E 
+ 
+ xml 
+ 
+ .
+ 
+ 
+ Instructions for reporting errors 
+ We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+ support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+ methods listed below: 
+ 
+ Click the "Report Issue" ( ) button, located in the page header. 
+ 
+ Tip: You can select the relevant text first, to include it in your report. 
+ Our team has already identified the following issues . We appreciate your time reviewing and reporting rendering errors we
+ may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+ should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+ all. 
+ Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion , and welcome developer contributions . 
+ 
+ 
+ 
+ 
+ 
+ We gratefully acknowledge support from
+ our major funders ,
+ member institutions , ,
+ and all contributors.
+ 
+ 
+ About 
+ · 
+ Help 
+ · 
+ Contact 
+ · 
+ Subscribe 
+ · 
+ Copyright 
+ · 
+ Privacy 
+ · 
+ Accessibility 
+ · 
+ Operational Status (opens in new tab) 
+ 
+ 
+
+ 
+ Major funding support from 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

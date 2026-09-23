@@ -1,0 +1,12 @@
+[worker] {'torch': '2.10.0+cu128', 'transformers': '4.57.1', 'huggingface_hub': '0.36.2', 'gpu': 'Tesla T4'} 4000 items
+`torch_dtype` is deprecated! Use `dtype` instead!
+[run] dclm-baseline-top-fw-10p__1B__seed-5__step-69369 packed score 2256s download 44s check {'packed': 5.9604644775390625e-05}
+[run] dclm-baseline-top-fw-3p__1B__seed-4__step-69369 packed score 2261s download 25s check {'packed': 5.054473876953125e-05}
+[run] dclm-baseline-top-fw2-7p__1B__seed-2__step-69369 packed score 2264s download 26s check {'packed': 2.574920654296875e-05}
+[run] dclm-baseline-top-fw2-7p__1B__seed-5__step-69369 packed score 2267s download 29s check {'packed': 3.62396240234375e-05}
+[run] dclm-baseline-top-fw3-7p__1B__seed-4__step-69369 packed score 2261s download 15s check {'packed': 3.695487976074219e-05}
+[run] dolma1.6++__1B__seed-2__step-69369 packed score 2256s download 16s check {'packed': 3.24249267578125e-05}
+[run] dolma1.6++__1B__seed-5__step-69369 packed score 2274s download 16s check {'packed': 7.534027099609375e-05}
+[run] dolma1.7__1B__seed-4__step-69369 packed score 2266s download 15s check {'packed': 3.170967102050781e-05}
+[run] dolma1.7-no-code__1B__seed-2__step-69369 packed score 2262s download 16s check {'packed': 6.532669067382812e-05}
+[run] dolma1.7-no-code__1B__seed-5__step-69369 packed score 2263s download 27s check {'packed': 7.009506225585938e-05}

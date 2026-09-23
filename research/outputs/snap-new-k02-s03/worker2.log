@@ -1,0 +1,10 @@
+[worker] {'torch': '2.14.0+cu130', 'transformers': '4.57.1', 'huggingface_hub': '0.36.2', 'gpu': 'NVIDIA GeForce RTX 3090'} 4000 items
+`torch_dtype` is deprecated! Use `dtype` instead!
+[worker] {'torch': '2.14.0+cu130', 'transformers': '4.57.1', 'huggingface_hub': '0.36.2', 'gpu': 'NVIDIA GeForce RTX 3090'} 4000 items
+`torch_dtype` is deprecated! Use `dtype` instead!
+[run] dolma1.7-no-math-no-code__1B__seed-2__step-57500 packed score 463s download 160s check {'packed': 4.1484832763671875e-05}
+[run] dolma1.7-no-reddit__1B__seed-2__step-69369 packed score 466s download 54s check {'packed': 4.57763671875e-05}
+[run] falcon__1B__seed-2__step-69369 packed score 466s download 58s check {'packed': 3.2395124435424805e-05}
+[run] falcon-with-cc__1B__seed-2__step-69369 packed score 465s download 99s check {'packed': 4.935264587402344e-05}
+[run] falcon-with-cc-top-10p__1B__seed-2__step-69369 packed score 467s download 90s check {'packed': 4.601478576660156e-05}
+[run] falcon-with-cc-top-20p__1B__seed-2__step-69369 packed score 468s download 56s check {'packed': 3.3974647521972656e-05}

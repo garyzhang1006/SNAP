@@ -1,0 +1,84 @@
+% Draft text for the PolyPythias bank-1 run (R1) and the disjoint-bank check (R2).
+% Nothing here is in main.tex yet. Numbers are \pending{...} placeholders until the
+% Kaggle kernels A and B (bank 1) and snap-pythia-bank2 finish and
+% analysis/estimates.py writes results/*.json. Pick one variant per rule from the
+% verdicts in results, delete the others, then paste at the marked insertion points.
+% Rules quoted from compute2/README.md at SNAP commit 6cfedee (2026-09-21 16:57 EDT),
+% before any score existed. Fill in the first scoring timestamp from the kernel logs.
+% Needs \usepackage{xcolor} and
+% \newcommand{\pending}[1]{\textcolor{red}{[#1]}}
+% while placeholders remain.
+
+% =====================================================================
+% INSERT 1. Section "Data and analysis scope", replaces main.tex line 129
+% ("We use PolyPythias ... precise population comparison.")
+% =====================================================================
+
+We add a second model family whose replicate design DataDecide lacks. PolyPythias \citep{vanderwal2025} trains nine seeds at each of 14M, 31M, 70M, 160M, and 410M parameters with the same code, data, and hyperparameters, where the seed sets initialisation and data order together, and we score all 45 runs at the shared final step 143,000 on the full battery of 37,682 items. The request text comes from the DataDecide release itself, so every prompt matches the one the DataDecide checkpoints were scored with byte for byte. Our earlier transfer check scored a nested sample of 4,755 items and stays in Appendix~\ref{app:transport}.
+
+For the identification check we built a second bank of 6,808 items from the same ten benchmarks with OLMES at the commit DataDecide used, taking the train split for eight benchmarks and the validation split for OpenBookQA and MMLU. We dropped any item whose context matches a bank-one context or whose question appears among its own few-shot exemplars, and we capped each benchmark at 600 items apart from MMLU. Both reading rules in Section~\ref{sec:family} were committed to the repository before any of these runs was scored, and like the protocol's, that commit time isn't independently corroborated.
+
+% =====================================================================
+% INSERT 2. New results subsection, after "A registered test on unseen
+% tasks" (main.tex line 197) and before "Mechanism, calibration, and
+% external checks".
+% =====================================================================
+
+\subsection{A second family and a disjoint item bank}
+\label{sec:family}
+Two rules that we fixed before scoring decide what these runs can show. The first reads margin inflation across the 45 PolyPythias runs from a delete-one-seed jackknife with eight degrees of freedom and passes when the lower endpoint exceeds one, since nine seeds are the replicate unit and five size clusters are too few for the wild bootstrap. The second puts every bank-one item in half $A$ and every bank-two item in half $B$ on the same runs, which removes any component the two halves share only because they come from one item set. It rejects the shared-item explanation when that cross-bank interval sits above one and the jackknife interval for the within-minus-cross difference in log inflation includes zero. It supports the explanation when the difference is positive and the cross-bank interval covers one, and we report any other pattern as undecided.
+
+% ---- R1, variant PASS (use when R1_pythia_replicates_margin.pass is true) ----
+The second family replicates the margin result. Margin inflation across the 45 runs is \pending{R1 lambda} with jackknife interval \ci{\pending{lo}}{\pending{hi}}, against 1.244 on DataDecide, and accuracy gives \pending{acc lambda} with interval \ci{\pending{lo}}{\pending{hi}}. Each PolyPythias seed is a clean rerun of one training recipe, which means the default-versus-auxiliary batch component behind our auxiliary contrast has no counterpart here. The per-size jackknives run from \pending{min} at \pending{size} to \pending{max} at \pending{size} (Appendix~\ref{app:transport}). Without BoolQ margin inflation is \pending{noBoolQ lambda} with interval \ci{\pending{lo}}{\pending{hi}}, \pending{pick one: which moves in the same direction as on DataDecide / which doesn't move the way it does on DataDecide}.
+
+% ---- R1, variant FAIL (use when the lower endpoint is at or below one) ----
+The second family doesn't replicate the margin result at the rule's threshold. Margin inflation across the 45 runs is \pending{R1 lambda} with jackknife interval \ci{\pending{lo}}{\pending{hi}}, which includes one, and accuracy gives \pending{acc lambda} with interval \ci{\pending{lo}}{\pending{hi}}. Five sizes with nine seeds each give 40 within-configuration contrasts against 250 in DataDecide, and on a synthetic population with a true ratio of 1.24 this design returns estimates between 0.94 and 1.36. % VERIFY against compute2/tests before submission
+A failure at this design bounds the effect in this family more than it shows the effect is absent. The per-size jackknives run from \pending{min} at \pending{size} to \pending{max} at \pending{size}, which shows where the estimate sits (Appendix~\ref{app:transport}).
+
+% ---- R2, variant NOT SUPPORTED (shared_item_explanation == "not supported") ----
+The shared-item explanation fails its rule in this family. With bank one as half $A$ and bank two as half $B$ on the same 45 runs, margin inflation is \pending{cross lambda} with interval \ci{\pending{lo}}{\pending{hi}}, and the within-minus-cross difference in log inflation has interval \ci{\pending{lo}}{\pending{hi}}, which includes zero. A component that the halves of one item set share can't account for the inflation we measure on PolyPythias. The two banks also differ in split, in item count, and in exemplar overlap, and whatever covariance those differences carry enters the cross-bank estimate along with the run covariance.
+
+% ---- R2, variant SUPPORTED (shared_item_explanation == "supported") ----
+The shared-item explanation passes its rule in this family. With bank one as half $A$ and bank two as half $B$ on the same 45 runs, margin inflation is \pending{cross lambda} with interval \ci{\pending{lo}}{\pending{hi}}, which covers one, and the within-minus-cross difference in log inflation is positive with interval \ci{\pending{lo}}{\pending{hi}}. At least part of the within-bank inflation in PolyPythias comes from a component the two halves of one item set share, and the cross-bank value of \pending{cross lambda} is the one we'd report for its run covariance. We can't say whether DataDecide carries the same component, because its cross-bank run needs GPU time we didn't have.
+
+% ---- R2, variant UNDECIDED (shared_item_explanation == "undecided") ----
+The identification check is undecided under its rule. With bank one as half $A$ and bank two as half $B$ on the same 45 runs, margin inflation is \pending{cross lambda} with interval \ci{\pending{lo}}{\pending{hi}}, and the within-minus-cross difference in log inflation has interval \ci{\pending{lo}}{\pending{hi}}. Neither branch of the rule claims this pattern, and we report it without reading it in either direction. Bank two holds about a sixth of bank one's items, which widens both intervals.
+
+% =====================================================================
+% INSERT 3. Abstract. Add after "... leaves an interval that excludes one."
+% Keep only the sentence that matches the verdicts.
+% =====================================================================
+
+% R1 pass, R2 not supported:
+Under rules fixed before scoring, nine seeds at five PolyPythias sizes give margin inflation of \pending{R1 lambda} with interval \ci{\pending{lo}}{\pending{hi}}, and pairing that battery with a disjoint item bank leaves \pending{cross lambda} with the shared-item explanation rejected.
+
+% R1 pass, R2 supported or undecided:
+Under a rule fixed before scoring, nine seeds at five PolyPythias sizes give margin inflation of \pending{R1 lambda} with interval \ci{\pending{lo}}{\pending{hi}}, although a disjoint item bank \pending{supports a shared item component / leaves the source of that inflation undecided}.
+
+% R1 fail:
+On a second family, nine seeds at five PolyPythias sizes give margin inflation of \pending{R1 lambda} with interval \ci{\pending{lo}}{\pending{hi}}, which fails a rule fixed before scoring at a design with 40 within-size contrasts.
+
+% =====================================================================
+% INSERT 4. Introduction. New paragraph after main.tex line 35 (the
+% registered-test paragraph).
+% =====================================================================
+
+A single model family and a seed label that also changes the training batch leave open whether the inflation belongs to DataDecide's design. We therefore scored all 45 PolyPythias runs at five sizes on the same 37,682 items, where each of nine seeds reruns one recipe, and paired that battery with a disjoint bank of 6,808 items built at the same OLMES commit. Two rules fixed before scoring read the results, and Section~\ref{sec:family} reports that margin inflation there is \pending{R1 lambda} with interval \ci{\pending{lo}}{\pending{hi}} and that the shared-item explanation is \pending{rejected / supported / undecided}.
+
+% =====================================================================
+% INSERT 5. Discussion and limitations. Replace the opening of main.tex
+% line 245 ("Apart from the registered test, which failed at its
+% registered scope, our empirical study remains exploratory.")
+% =====================================================================
+
+Apart from the registered test, which failed at its registered scope, and the two PolyPythias rules fixed before scoring, our empirical study remains exploratory. We didn't score the 375 DataDecide runs on the second bank, which leaves the 1.244 untested on fresh items and the shared-item check unrun in the family that supplies our headline.
+
+% Add to the end of main.tex line 245 only if R2 is "not supported":
+The cross-bank check in PolyPythias constrains that item effect in one family, and it can't reach an item effect that the two banks share.
+
+% =====================================================================
+% INSERT 6. Reproducibility statement. Add before "The protocol's commit
+% times aren't corroborated by an independent source." (main.tex line 259)
+% =====================================================================
+
+The PolyPythias battery and the second bank were scored in float32 with transformers 4.57.1 on Kaggle T4 cards, each run checking its cached scores against an uncached reference on 24 items to within 0.001 nats, and the release ships the frozen hashes of both request files with the kernels that scored them.

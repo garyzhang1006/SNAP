@@ -1,0 +1,467 @@
+ 
+ 
+ 
+ [1907.06902] Are We Really Making Much Progress? A Worrying Analysis of Recent Neural Recommendation Approaches 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Are We Really Making Much Progress? A Worrying Analysis of Recent Neural Recommendation Approaches Conference:  Thirteenth ACM Conference on Recommender Systems; September 16–20, 2019; Copenhagen, Denmark Thirteenth ACM Conference on Recommender Systems (RecSys ’19), September 16–20, 2019, Copenhagen, Denmark Price:  15.00 DOI:  10.1145/3298689.3347058 ISBN:  978-1-4503-6243-6/19/09 CCS:  Information systems Collaborative filtering CCS:  Information systems Recommender systems CCS:  General and reference Evaluation 
+ 
+ 
+ Maurizio Ferrari Dacrema
+ 
+ OrcID: 0000-0001-7103-2788 
+ 
+ Affiliation:  Politecnico di Milano, Italy 
+ 
+ 
+ email: maurizio.ferrari@polimi.it 
+ 
+ , 
+ Paolo Cremonesi
+ 
+ OrcID: 0000-0002-1253-8081 
+ 
+ Affiliation:  Politecnico di Milano, Italy 
+ 
+ 
+ email: paolo.cremonesi@polimi.it 
+ 
+ and 
+ Dietmar Jannach
+ 
+ OrcID: 0000-0002-4698-8507 
+ 
+ Affiliation:  University of Klagenfurt, Austria 
+ 
+ 
+ email: dietmar.jannach@aau.at 
+ 
+ 2019 © , 2019 ; 
+
+ Abstract. 
+ 
+ Deep learning techniques have become the method of choice for researchers working on algorithmic aspects of recommender systems. With the strongly increased interest in machine learning in general, it has, as a result, become difficult to keep track of what represents the state-of-the-art at the moment, e.g., for top-n recommendation tasks.
+At the same time, several recent publications point out problems in today’s research practice in applied machine learning, e.g., in terms of the reproducibility of the results or the choice of the baselines when proposing new models. 
+ 
+ In this work, we report the results of a systematic analysis of algorithmic proposals for top-n recommendation tasks.
+Specifically, we considered 18 algorithms that were presented at top-level research conferences in the last years.
+Only 7 of them could be reproduced with reasonable effort.
+For these methods, it however turned out that 6 of them can often be outperformed with comparably simple heuristic methods, e.g., based on nearest-neighbor or graph-based techniques.
+The remaining one clearly outperformed the baselines
+but did not consistently outperform a well-tuned non-neural linear ranking method.
+Overall, our work sheds light on a number of potential problems in today’s machine learning scholarship and calls for improved scientific practices in this area. 
+ 
+ 
+ 
+ Keywords:  Recommender Systems; Deep Learning; Evaluation; Reproducibility 
+ 
+ 
+ 1. Introduction 
+
+ 
+ Within only a few years, deep learning techniques have started to dominate the landscape of algorithmic research in recommender systems. Novel methods were
+proposed for a variety of settings and algorithmic tasks, including top-n recommendation based on long-term preference profiles or for session-based recommendation scenarios ( QuadranaetalCSUR2018 ) .
+Given the increased interest in machine learning in general, the corresponding number of recent research publications, and the success of deep learning techniques in other fields like vision or language processing, one could expect that substantial progress resulted from these works
+also in the field of recommender systems.
+However, indications exist in other application areas of machine learning that the achieved progress—measured in terms of accuracy improvements over existing models—is not always as strong as expected. 
+ 
+ 
+ Lin ( Lin:2019:NHC:3308774.3308781 ) , for example, discusses two recent neural approaches in the field of information retrieval that were published at top-level conferences. His analysis reveals that the new methods do not significantly outperform existing baseline methods when these are carefully tuned. In the context of recommender systems, an in-depth analysis presented in ( Ludewig2018 ) shows that even a very recent neural method for session-based recommendation can, in most cases, be outperformed by very simple methods based, e.g., on nearest-neighbor techniques. Generally, questions regarding the true progress that is achieved in such applied machine learning settings are not new, nor tied to research based on deep learning. Already in 2009, Armstrong et al.  ( Armstrong:2009:IDA:1645953.1646031 ) concluded from an analysis in the context of ad-hoc retrieval tasks that, despite many papers being published, the reported improvements “don’t add up”. 
+ 
+ 
+ Different factors contribute to such phenomena, including (i) weak baselines; (ii) establishment of weak methods as new baselines; and (iii) difficulties in comparing or reproducing results across papers.
+One first problem lies in the choice of the baselines that are used in the comparisons.
+Sometimes, baselines are chosen that are too weak in general for the given task and dataset, and sometimes the baselines are not properly fine-tuned.
+Other times, baselines are chosen from the same family as the newly proposed algorithm, e.g., when a new deep learning algorithm is compared only against other deep learning baselines.
+This behaviour enforces the propagation of weak baselines. When previous deep learning algorithms were evaluated against too weak baselines, the new deep learning algorithm will not necessarily improve over strong non-neural baselines. Furthermore, with the constant flow of papers being published in recent years, keeping track of what represents a state-of-the-art baseline becomes increasingly challenging. 
+ 
+ 
+ Besides issues related to the baselines, an additional challenge is that researchers use various types of datasets, evaluation protocols, performance measures, and data preprocessing steps, which makes it difficult to conclude which method is the best across different application scenarios. This is in particular problematic when source code and data are not shared.
+While we observe an increasing trend that researchers publish the source code of their algorithms, this is not the common rule today even for top-level publication outlets. And even in cases when the code is published, it is sometimes incomplete and, for instance, does not include the code for data preprocessing, parameter tuning, or the exact evaluation procedures, as pointed out also in ( DBLP:conf/aaai/0002IBPPM18 ) . 
+ 
+ 
+ Finally, another general problem might lie in today’s research practice in applied machine learning in general. Several “troubling trends” are discussed in ( troubling-trends-1807.03341 ) , including the thinness of reviewer pools or misaligned incentives for authors that might stimulate certain types of research. Earlier work ( DBLP:journals/corr/abs-1206-4656 ) also discusses the community’s focus on abstract accuracy measures or the narrow focus of machine learning research in terms of what is “publishable” at top publication outlets. 
+ 
+ 
+ With this research work, our goal is to shed light on the question if the problems reported above also exist in the domain of deep learning-based recommendation algorithms. Specifically, we address two main research questions: 
+ 
+ (1) 
+ 
+ Reproducibility : To what extent is recent research in the area reproducible (with reasonable effort)? 
+ 
+ (2) 
+ 
+ Progress : To what extent are recent algorithms actually leading to better performance results when compared to relatively simple, but well-tuned, baseline methods? 
+ 
+ 
+ To answer these questions, we conducted a systematic study in which we analyzed research papers that proposed new algorithmic approaches for top-n recommendation tasks using deep learning methods. To that purpose, we scanned the recent conference proceedings of KDD, SIGIR, TheWebConf (WWW), and RecSys for corresponding research works. We identified 18 relevant papers. 
+ 
+ 
+ In a first step, we tried to reproduce the results reported in the paper for those cases where the source code was made available by the authors and where we had access to the data used in the experiments. In the end, we could reproduce the published results with an acceptable degree of certainty for only 7 papers. A first contribution of our work is therefore an assessment of the reproducibility level of current research in the area. 
+ 
+ 
+ In the second part of our study, we re-executed the experiments reported in the original papers, but also included additional baseline methods in the comparison. Specifically, we used heuristic methods based on user-based and item-based nearest neighbors as well as two variants of a simple graph-based approach.
+Our study, to some surprise, revealed that in the large majority of the investigated cases (6 out of 7) the proposed deep learning techniques did not consistently outperform the simple, but fine-tuned, baseline methods. In one case, even a non-personalized method that recommends the most popular items to everyone was the best one in terms of certain accuracy measures. Our second contribution therefore lies in the identification of a potentially more far-reaching problem related to current research practices in machine learning. 
+ 
+ 
+ The paper is organized as follows. Next, in Section 2 , we describe our research method and how we reproduced existing works.
+The results of re-executing the experiments while including additional baselines are provided in Section 3 . We finally discuss the implications of our research in Section . 
+ 
+ 
+ 
+ 2. Research Method 
+
+ 
+ 2.1. Collecting Reproducible Papers 
+
+ 
+ To make sure that our work is not only based on individual examples of recently published research, we systematically scanned the proceedings of scientific conferences for relevant long papers in a manual process.
+Specifically, we included long papers in our analysis that appeared between 2015 and 2018 in the following four conference series: KDD, SIGIR, TheWebConf (WWW), and RecSys. 
+ 1 
+ 
+ 
+ 
+ All of the conferences are either considered A* in the Australian Core Ranking or specifically dedicated to research in recommender systems. We considered a paper to be relevant if it (a) proposed a deep learning based technique and (b) focused on the top-n recommendation problem. Papers on other recommendation tasks, e.g., group recommendation or session-based recommendation, were not considered in our analysis.
+Given our interest in top-n recommendation, we considered only papers that used for evaluation classification or ranking metrics, such as Precision, Recall, MAP.
+After this screening process, we ended up with a collection of 18 relevant papers. 
+ 
+ 
+ In a next step, we tried to reproduce 
+ 2 
+ 
+ 
+ 
+ Precisely speaking, we used a mix of replication and reproduction ( Plesser2018 ; ACMreproducibilty2016 ) , i.e., we used both artifacts provided by the authors and our own artifacts. For the sake of readability, we will only use the term “reproducibility” in this paper. the results reported in these papers. Our approach to reproducibility is to rely as much as possible on the artifacts provided by the authors themselves, i.e., their source code and the data used in the experiments. In theory, it should be possible to reproduce published results using only the technical descriptions in the papers. In reality, there are, however many tiny details regarding the implementation of the algorithms and the evaluation procedure, e.g., regarding data splitting, that can have an impact on the experiment outcomes ( Said:2014:RTF:2645710.2645712 ) . 
+ 
+ 
+ We therefore tried to obtain the code and the data for all relevant papers from the authors. In case these artifacts were not already publicly provided, we contacted all authors of the papers and waited 30 days for a response. In the end, we considered a paper to be reproducible , if the following conditions were met: 
+ 
+ • 
+ 
+ A working version of the source code is available or the code only has to be modified in minimal ways to work correctly. 
+ 3 
+ 
+ 
+ 
+ We did not apply modifications to the core algorithms. 
+ 
+ • 
+ 
+ At least one dataset used in the original paper is available. A further requirement here is that either the originally-used train-test splits are publicly available or that they can be reconstructed based on the information in the paper. 
+ 
+ 
+ 
+ 
+ Otherwise, we consider a paper to be non-reproducible given our specific reproduction approach. Note that we also considered works to be non-reproducible when the source code was published but contained only a skeleton version of the model with many parts and details missing. Concerning the datasets, research based solely on non-public data owned by companies or data that was gathered in some form from the web but not shared publicly, was also not considered reproducible. 
+ 
+ 
+ The fraction of papers that were reproducible according to our relatively strict criteria per conference series
+are shown in Table 1 . 
+ 
+ 
+ 
+ Overall, we could reproduce only about one third of the works, which confirms previous discussions about limited reproducibility, see, e.g., ( Beel2016 ) .
+The sample size is too small to make reliable conclusions regarding the difference between conference series. The detailed statistics per year—not shown here for space reasons—however indicate that the reproducibility rate increased over the years. 
+ 
+ 
+ 
+ 2.2. Evaluation Methodology 
+
+ 
+ Measurement Method 
+
+ 
+ The validation of the progress that is achieved through new methods against a set of baselines can be done in at least two ways. One is to evaluate all considered methods within the same defined environment, using the same datasets and the exact same evaluation procedure for all algorithms as done in ( Ludewig2018 ) . While such an approach helps us obtain a picture of how different methods compare across datasets, the implemented evaluation procedure might be slightly different from the one used in the original papers. As such, this approach would not allow us to exactly reproduce what has been originally reported, which is the goal in this present work. 
+ 
+ 
+ In this work, we therefore reproduce the work by refactoring the original implementations in a way that allows us to apply the same evaluation procedure that was used in the original papers. Specifically, refactoring is done in a way that the original code for training, hyper-parameter optimization and prediction are separated from the evaluation code. This evaluation code is then also used for the baselines. 
+ 
+ 
+ For all reproduced algorithms considered in the individual experiments, we used the optimal hyper-parameters that were reported by the authors in the original papers for each dataset. This is appropriate because we used the same datasets, algorithm implementation, and evaluation procedure as in the original papers. 
+ 4 
+ 
+ 
+ 
+ We will re-run parameter optimization for the reproduced algorithms as part of our future work in order to validate the parameter optimization procedures used by the authors. This step was, however, outside the scope of our current work. We share all the code and data used in our experiments as well as details of the final algorithm (hyper-)parameters of our baselines along with the full experiment results online. 
+ 5 
+ 
+ 
+ 
+ https://github.com/MaurizioFD/RecSys2019_DeepLearning_Evaluation 
+ 
+ 
+ 
+ Baselines 
+
+ 
+ We considered the following baseline methods in our experiments, all of which are conceptually simple. 
+ 
+ TopPopular:: 
+ 
+ 
+ A non-personalized method that recommends the most popular items to everyone. Popularity is measured by the number of explicit or implicit ratings. 
+ 
+ ItemKNN:: 
+ 
+ 
+ A traditional Collaborative-Filtering (CF) approach based on -nearest-neighborhood (KNN) and item-item similarities ( wang2006unifying ) .
+We used the cosine similarity between items and computed as 
+ 
+ where vectors represent the implicit ratings of a user for items and , respectively, and
+ is the number of users.
+Ratings can be optionally weighted either with TF-IDF or BM25, as described in ( wang2008probabilistic ) . Furthermore the similarity may or not be normalized via the product of vector norms.
+Parameter (the shrink term ) is used to lower the similarity between items having only few interactions ( bell2007improved ) .
+The other parameter of the method is the neighborhood size . 
+ 
+ UserKNN:: 
+ 
+ 
+ A neighborhood-based method using collaborative user-user similarities.
+Hyper-parameters are the same as used for ItemKNN ( sarwar2001item ) . 
+ 
+ ItemKNN-CBF:: 
+ 
+ 
+ A neighborhood content-based-filtering (CBF) approach with item similarities computed by using item content features (attributes) 
+ 
+ where vectors describe the features of items and , respectively, and
+ is the number of features.
+Features can be optionally weighted either with TF-IDF or BM25.
+Other parameters are the same used for ItemKNN ( lops2011content ) . 
+ 
+ ItemKNN-CFCBF:: 
+ 
+ 
+ A hybrid CF+CFB algorithm based on item-item similarities.
+The similarity is computed by first concatenating, for each item , the vector of ratings and the vector of features –
+ – and by later computing the cosine similarity between the concatenated vectors.
+Hyper-parameters are the same used for ItemKNN, plus a parameter that weights the content features with respect to the ratings. 
+ 
+ :: 
+ 
+ 
+ A simple graph-based algorithm which implements a random walk between users and items ( cooper2014P3alpha ) .
+Items for user are ranked based on the probability of a random walk with three steps starting from user .
+The probability to jump from user to item is computed from the implicit user-rating-matrix as
+ , where is the rating of user on item , is the number of ratings of user and is a damping factor.
+The probability to jump backward is computed as , where is the number of ratings for item .
+The method is equivalent to a KNN item-based CF algorithm, with the similarity matrix defined as 
+ 
+ 
+ 
+ The parameters of the method are the numbers of neighbors and the value of .
+We include this algorithm because it provides good recommendation quality at a low computational cost. 
+ 
+ :: 
+ 
+ 
+ A version of  proposed in ( paudel2017Rp3beta ) . Here, the outcomes of  are modified by dividing the similarities by each item’s popularity raised to the power of a coefficient . If is 0, the algorithm is equivalent to .
+Its parameters are the numbers of neighbors and the values for and . 
+ 
+ 
+ 
+ 
+ For all baseline algorithms and datasets, we determined the optimal parameters via Bayesian search ( antenucci2018artist ) using the implementation of Scikit-Optimize 
+ 6 
+ 
+ 
+ 
+ https://scikit-optimize.github.io/ .
+We explored 35 cases for each algorithm, where the first 5 were used for the initial random points.
+We considered neighborhood sizes from 5 to 800; the shrink term was between 0 and 1000; and and took real values between 0 and 2. 
+ 
+ 
+ 
+ 
+ 
+ 3. Validation Against Baselines 
+
+ 
+ This section summarizes the results of comparing the reproducible works with the described baseline methods. We share the detailed statistics, results, and final parameters online. 
+ 
+ 
+ 3.1. Collaborative Memory Networks (CMN) 
+
+ 
+ The CMN method was presented at SIGIR ’18 and combines memory networks and neural attention mechanisms with latent factor and neighborhood models ( ebesu2018collaborative ) . To evaluate their approach, the authors compare it with different matrix factorization and neural recommendation approaches as well as with an ItemKNN algorithm (with no shrinkage ). Three datasets are used for evaluation: Epinions, CiteULike-a, and Pinterest. Optimal hyper-parameters for the proposed method are reported, but no information is provided on how the baselines are tuned. Hit rate and NDCG are the performance measures used in a leave-one-out procedure. The reported results show that CMNs outperform all other baselines on all measures. 
+ 
+ 
+ We were able to reproduce their experiments for all their datasets. For our additional experiments with the simple baselines, we optimized the parameters of our baselines for the hit rate (HR@5) metric. The results for the three datasets are shown in Table 2 . 
+ 
+ 
+ 
+ Our analysis shows that, after optimization of the baselines, CMN 
+ 7 
+ 
+ 
+ 
+ We report the results for CMN-3 as the version with the best results. is in no single case the best-performing method on any of the datasets. For the CiteULike-a and Pinterest datasets, at least two of the personalized baseline techniques outperformed the CMN method on any measure. Often, even all personalized baselines were better than CMN. For the Epinions dataset, to some surprise, the unpersonalized TopPopular method, which was not included in the original paper, was better than all other algorithms by a large margin. On this dataset, CMN was indeed much better than our baselines. The success of CMN on this comparably small and very sparse dataset with about 660k observations could therefore be tied to the particularities of the dataset or to a popularity bias of CMN. An analysis reveals that the Epinions dataset has indeed a much more uneven popularity distribution than the other datasets (Gini index of 0.69 vs. 0.37 for CiteULike-a). For this dataset, CMN also recommends in its top-n lists items that are, on average, 8% to 25% more popular than the items recommended by our baselines. 
+ 
+ 
+ 
+ 3.2. Metapath based Context for RECommendation (MCRec) 
+
+ 
+ MCRec ( hu2018leveragingmetapathcontext ) , presented at KDD ’18, is a meta-path based model that leverages auxiliary information like movie genres for top-n recommendation. From a technical perspective, the authors propose a priority-based sampling technique to select higher-quality path instances and propose a novel co-attention mechanism to improve the representations of meta-path based context, users, and items. 
+ 
+ 
+ The authors benchmark four variants of their method against a variety of models of different complexity on three small datasets (MovieLens100k, LastFm, and Yelp). The evaluation is done by creating 80/20 random training-test splits and by executing 10 of such evaluation runs. The evaluation procedure could be reproduced; public training-test splits were provided only for the MovieLens dataset. For the MF and NeuMF ( he2017neural ) baselines used in their paper, the architecture and hyper-parameters were taken from the original papers; no information about hyper-parameter tuning is provided for the other baselines. Precision, Recall, and the NDCG are used as performance measures, with a recommendation list of length 10. The NDCG measure is however implemented in an uncommon and questionable way, which is not mentioned in the paper. Here, we therefore use a standard version of the NDCG. 
+ 
+ 
+ In the publicly shared software, the meta-paths are hard-coded for MovieLens, and no code for preprocessing and constructing the meta-paths is provided. Here, we therefore only provide the results for the MovieLens dataset in detail. We optimized our baselines for Precision, as was apparently done in ( hu2018leveragingmetapathcontext ) . For MCRec, the results for the complete model are reported. 
+ 
+ 
+ 
+ Table 3 shows that the traditional ItemKNN method, when configured correctly, outperforms MCRec on all performance measures. 
+ 
+ 
+ Besides the use of an uncommon NDCG measure, we found other potential methodological issues in this paper. Hyper-parameters for the MF and NeuMF baselines were, as mentioned, not optimized for the given datasets but taken from the original paper ( hu2018leveragingmetapathcontext ) .
+In addition, looking at the provided source code, it can be seen that the authors report the best results of their method for each metric across different epochs chosen on the test set, which is inappropriate. 
+ 8 
+ 
+ 
+ 
+ In our evaluations, we did not use this form of measurement. 
+ 
+ 
+ 
+ 3.3. Collaborative Variational Autoencoder (CVAE) 
+
+ 
+ The CVAE method ( li2017collaborativevariationalautoencoder ) , presented at KDD ’18, is a hybrid technique that considers both content as well as rating information. The model learns deep latent representations from content data in an unsupervised manner and also learns implicit relationships between items and users from both content and ratings. 
+ 
+ 
+ The method is evaluated on two comparably small CiteULike datasets (135k and 205k interactions).
+For both datasets, a sparse and a dense version is tested. The baselines in ( li2017collaborativevariationalautoencoder ) include three recent deep learning models and as well as Collaborative Topic Regression (CTR).
+The parameters for each method are tuned based on a validation set.
+Recall at different list lengths (50 to 300) is used as an evaluation measure. Random train-test data splitting is applied and the measurements are repeated five times. 
+ 
+ 
+ 
+ We could reproduce their results using their code and evaluation procedure. The datasets are also shared by the authors. Fine-tuning our baselines led to the results shown in Table 4 for the dense CiteULike-a dataset from ( wang2011collaborativetopicmodeling ) .
+For the shortest list length of 50, even the majority of the pure CF baselines outperformed the CVAE method on this dataset. At longer list lengths, the hybrid ItemKNN-CFCBF method led to the best results. Similar results were obtained for the sparse CiteULike-t dataset. Generally, at list length 50, ItemKNN-CFCBF was consistently outperforming CVAE in all tested configurations. Only at longer list lengths (100 and beyond), CVAE was able to outperform our methods on two datasets. 
+ 
+ 
+ Overall, CVAE was only favorable over the baselines in certain configurations and at comparably long and rather uncommon recommendation cutoff thresholds. The use of such long list sizes was however not justified in the paper. 
+ 
+ 
+ 
+ 3.4. Collaborative Deep Learning (CDL) 
+
+ 
+ The discussed CVAE method considers the earlier and often-cited CDL method ( wang2015collaborativedeeplearning ) from KDD ’15 as one of their baselines, and the authors also use the same evaluation procedure and CiteULike datasets. CDL is a probabilistic feed-forward model for joint learning of stacked denoising autoencoders (SDAE) and
+collaborative filtering. It applies deep learning techniques to jointly learn a deep representation of content information and collaborative information.
+The evaluation of CDL in ( wang2015collaborativedeeplearning ) showed that it is favorable in particular compared to the widely referenced CTR method ( wang2011collaborativetopicmodeling ) , especially in sparse data situations. 
+ 
+ 
+ 
+ We reproduced the research in ( wang2015collaborativedeeplearning ) , leading to the results shown in Table 5 for the dense CiteULike-a dataset. Not surprisingly, the baselines that were better than CVAE in the previous section are also better than CDL, and again for short list lengths, already the pure CF methods were better than the hybrid CDL approach. Again, however, CDL leads to higher Recall for list lengths beyond 100 in two out of four dataset configurations. Comparing the detailed results for CVAE and CDL, we see that the newer CVAE method is indeed always better than CDL, which indicates that progress was made. Both methods, however, are not better than one of the simple baselines in the majority of the cases. 
+ 
+ 
+ 
+ 3.5. Neural Collaborative Filtering (NCF) 
+
+ 
+ Neural network-based Collaborative Filtering ( he2017neural ) , presented at WWW ’17, generalizes Matrix Factorization by replacing the inner product with a neural architecture that can learn an arbitrary function from the data. The proposed hybrid method (NeuMF) was evaluated on two datasets (MovieLens1M and Pinterest), containing 1 million and 1.5 million interactions, respectively. A leave-one out procedure is used in the evaluation and the original data splits are publicly shared by the authors. Their results show that NeuMF is favorable, e.g., over existing matrix factorization models, when using the hit rate
+and the NDCG as an evaluation measure using different list lengths up to 10. 
+ 
+ 
+ Parameter optimization is done on a validation set created from the training set. Similar to the implementation of MCRec above,
+the provided source code shows that the authors chose the number of epochs based on the results obtained for the test set.
+Since the number of epochs, however, is a parameter to tune and should not be determined based on the test set, we use a more appropriate implementation that finds this parameter with the validation set. For the ItemKNN method, the authors only varied the neighborhood sizes but did not test other variations. 
+ 
+ 
+ 
+ Given the publicly shared information, we could reproduce the results from ( he2017neural ) . The outcomes of the experiment are shown in Table 6 .
+On the Pinterest dataset, two of the personalized baselines were better than NeuMF on all metrics.
+For the MovieLens dataset, NeuMF outperformed our simple baselines quite clearly. 
+ 
+ 
+ Since the MovieLens dataset has been extensively used over the last decades for evaluating new models, we made additional experiments with SLIM , a simple linear method described in ( ning2011SLIM ) .
+To implement SLIM , we took the standard Elastic Net implementation provided in the scikit-learn package for Python ( ElasticNet ).
+To tune the hyper-parameters on the validation set, we considered neighborhood sizes as in the other baselines; the ratio of l1 and l2 regularization between and ; and the regularization magnitude coefficient between and .
+Table 6 shows that SLIM is indeed better than our baselines, as expected, but also outperforms NeuMF on this dataset. 
+ 
+ 
+ 
+ 3.6. Spectral Collaborative Filtering (SpectralCF) 
+
+ 
+ SpectralCF ( Zheng:2018:SCF:3240323.3240343 ) , presented at RecSys ’18, was designed to specifically address the cold-start problem and is based on concepts of Spectral Graph Theory. Its recommendations are based on the bipartite user-item relationship graph and a novel convolution operation, which is used to make collaborative recommendations directly in the spectral domain .
+The method was evaluated on three public datasets (MovieLens1M, HetRec, and Amazon Instant Video) and benchmarked against a variety of methods, including recent neural approaches and established factorization and ranking techniques. The evaluation was based on randomly created 80/20 training-test splits and using Recall and the Mean Average Precision (MAP) at different cutoffs. 
+ 9 
+ 
+ 
+ 
+ To assess the cold-start behavior, additional experiments are performed with fewer data points per user in the training set. 
+ 
+ 
+ For the MovieLens dataset, the training and test datasets used by the authors were shared along with the code. For the other datasets, the data splits were not published therefore we created the splits by ourself following the descriptions in the paper. 
+ 
+ 
+ Somehow surprisingly, the authors report only one set of hyper-parameter values in the paper, which they apparently used for all datasets. We therefore ran the code both with the provided hyper-parameters and with hyper-parameter settings that we determined by our own on all datasets. For the HetRec and Amazon Instant Video datasets, all our baselines, to our surprise also including the TopPoular method, outperformed SpectralCF on all measures. However, when running the code on the provided MovieLens data splits, we found that SpectralCF was better than all our baselines by a huge margin. Recall@20 was, for example, 50% higher than our best baseline. 
+ 
+ 
+ We therefore analyzed the published train-test split for the MovieLens dataset and observed that the popularity distribution of the items in the test set is very different from a distribution that would likely result from a random sampling procedure. 
+ 10 
+ 
+ 
+ 
+ We contacted the authors on this issue, but did not receive an explanation for this phenomenon. We then ran experiments with our own train-test splits also for the MovieLens dataset, using the splitting procedure described in the paper. We optimized the parameters for our data split to ensure a fair comparison.
+The results of the experiment are shown in Table 7 . When using data splits that were created as described in the original paper, the results for the MovieLens dataset are in line with our own experiments for the other two datasets, i.e., SpectralCF in all configurations performed worse than our baseline methods and was outperformed even by the TopPopular method. 
+ 
+ 
+ 
+ Figure visualizes the data splitting problem. The blue data points show the normalized popularity values for each item in the training set, with the most popular item in the corresponding split having the value 1, ordered by decreasing popularity values. In case of random sampling of ratings, the orange points from the test set would mostly be very close to the corresponding blue ones. Here, however, we see that the popularity values of many items in the test set differ largely. An analysis of the distributions with measures like the Gini index or Shannon entropy confirms that the dataset characteristics of the shared test set diverge largely from a random split. The Gini index of a true random split lies at around 0.79 for both the training and test split. While the Gini index for the provided training split is similar to ours, the Gini index of the provided test split is much higher (0.92), which means that the distribution has a much higher popularity bias than a random split. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+Conversion to HTML had a Fatal error and exited abruptly. This document may be truncated or damaged.
+ 
+ 
+ ◄ 
+ 
+ Feeling lucky? 
+ 
+ Conversion report 
+ Report an issue 
+ View original on arXiv ► 
+ 
+ 
+ Copyright 
+ Privacy Policy 
+
+ Generated by L a T e XML oxide 
+ 
+
+ 
+ 
+ 
+ 

@@ -1,0 +1,341 @@
+# Exploration Tree - Estimating Run-to-Run Covariance Across Language Model Benchmarks (SNAP)
+# Research DAG: nested tree with cross-edges (also_depends_on).
+# Node types: question | experiment | dead_end | decision | pivot
+# Every node is reconstructed from main.tex, appendix_a.tex, appendices_bcd.tex and the
+# extended supplement. Explicit nodes cite source sections; nothing here is a session log.
+# Nodes N33 and N34 are pending in the source (\pending placeholders, outcome switches at 0).
+
+tree:
+  - id: N01
+    type: question
+    support_level: explicit
+    source_refs: ["Abstract", "§1"]
+    title: "Does run covariance between benchmarks inflate the run variance of a benchmark average, and can it be estimated free of item-sampling noise?"
+    description: "Independence-based standard errors use K^-2 tr(Sigma_E) and omit off-diagonal terms; in simulation with margin-like covariance an independence rule declares a zero gap in 0.113 of replicates against a nominal 0.05."
+    children:
+
+      - id: N02
+        type: decision
+        support_level: explicit
+        source_refs: ["§2.2", "Appendix A.3", "Algorithm 1"]
+        title: "Estimate item-general run covariance from cross-half products of run-centred scores (SNAP)"
+        choice: "Split each benchmark's items into two frozen halves, centre half scores across replicate runs within a configuration, and pool cross-half products T_c and U_c into Lambda = sqrt(sum T / sum U)."
+        alternatives:
+          - "Per-benchmark seed variance only (independence), as in prior seed-variance studies"
+          - "Raw sample covariance of benchmark scores across runs, which mixes item noise into the estimate"
+        evidence: [C01, "Equation 3", "Appendix A.3"]
+        children:
+
+          - id: N03
+            type: decision
+            support_level: explicit
+            source_refs: ["Appendix A.5", "Appendix D.7"]
+            title: "Pool sums before the ratio and centre through run contrasts"
+            choice: "Sum T_c and U_c across configurations before dividing; project onto an orthonormal basis of mean-zero run contrasts."
+            alternatives:
+              - "Average per-configuration ratios, which gives unstable two-degree-of-freedom denominators disproportionate influence"
+              - "Raw uncentred products, which the analysis record reports can inflate the ratio by roughly three orders of magnitude"
+            evidence: "Appendix A.5 pooling rationale; Appendix D.7 centring checks"
+
+          - id: N04
+            type: experiment
+            support_level: explicit
+            source_refs: ["§2.3", "Table 9", "Supplement Table 9"]
+            title: "Calibration simulations of bias and interval coverage"
+            result: "Wild recipe-cluster bootstrap-t covers 0.928 to 0.954 across twelve populations; configuration percentile bootstrap drops to 0.872 under recipe-shared effects; mean inflation under independence 1.0009 (margins) and 1.0004 (accuracy); cross-half error correlation 0.1 biases estimates by -0.014 and -0.016."
+            evidence: [C01, C09, "Table 9"]
+            children:
+
+              - id: N05
+                type: decision
+                support_level: explicit
+                source_refs: ["§2.3", "Appendix C 'Simulation and permutation calibration'"]
+                title: "Ship the wild recipe-cluster bootstrap-t; report later constructions beside it"
+                choice: "Report the wild interval throughout; add a centred test inversion (margin lower endpoint 1.095) and report a residual-scaled variant without adopting it."
+                alternatives:
+                  - "Residual-scaled wild interval (coverage 0.943 to 0.958), rejected as primary because it was chosen after seeing four cells"
+                  - "Configuration percentile bootstrap, which ignores recipe dependence"
+                  - "Size-band clustering, too few clusters (five)"
+                evidence: [C09, "Table 9"]
+
+      - id: N06
+        type: decision
+        support_level: explicit
+        source_refs: ["§3", "Appendix B.6"]
+        title: "Use DataDecide's released per-item outputs as the primary population"
+        choice: "375 DataDecide runs (25 recipes, 150M to 1B, three replicates) at the largest checkpoint common to each configuration; no model inference needed."
+        alternatives:
+          - "MultiBERTs (25 seeds, one configuration)"
+          - "McCoy et al. BERT runs (fine-tuning from one checkpoint)"
+          - "Pythia size ladder (no seed replicates)"
+          - "OLMo-2 checkpoints (no replicates at matched steps)"
+        evidence: "Excluded populations lack matched replicates or item outputs (Appendix B.6)"
+        children:
+
+          - id: N07
+            type: dead_end
+            support_level: explicit
+            source_refs: ["§3", "Appendix B.2", "Appendix D.2"]
+            title: "Planned eight-recipe screening / seventeen-recipe estimation split"
+            hypothesis: "Choosing reliabilities and decisions on eight screening recipes would keep a seventeen-recipe estimation set untouched."
+            failure_mode: "The partition was never drawn; every choice in the primary analysis could see all 125 configurations, and no contemporaneous split artifact was recovered."
+            lesson: "The empirical study is exploratory; a retrospective enumeration of all 1,081,575 estimation sets can't restore a holdout."
+
+          - id: N08
+            type: dead_end
+            support_level: explicit
+            source_refs: ["§1", "Appendix B.4", "Reproducibility statement", "§3"]
+            title: "Relying on the analysis plan and protocol timestamps as preregistration"
+            hypothesis: "The planning document (claimed September 5, 2026) and the protocol commits establish what was fixed before data were seen."
+            failure_mode: "Neither the analysis plan nor the protocol's registration nor the R1/R2 rule commit carries an independently corroborated timestamp; the plan has no supplied original file."
+            lesson: "The plan is treated as a reported plan and its checks as exploratory assessments; only the registered test and the two PolyPythias rules are read as fixed before scoring, with that caveat stated."
+
+          - id: N09
+            type: experiment
+            support_level: explicit
+            source_refs: ["Table 1", "§4.1"]
+            title: "Primary full-battery margin estimate"
+            result: "Margin inflation 1.244 with interval [1.143, 1.338], excluding one; K_eff 6.46; auxiliary contrast 1.256 [1.090, 1.400]; exploratory."
+            evidence: [C02, C03, "Table 1"]
+            also_depends_on: [N03, N05]
+            children:
+
+              - id: N10
+                type: experiment
+                support_level: explicit
+                source_refs: ["§4.1", "Figure 1", "Supplement Table 11", "Supplement Table 12", "Appendix C"]
+                title: "Recipe, recipe-pair, size, benchmark and weight deletions"
+                result: "Every recipe, recipe-pair and benchmark deletion leaves a margin interval excluding one; 530M band removal gives 1.178 [0.993, 1.338]; BoolQ holds 68% of the margin trace and its removal gives 1.786 [1.689, 1.877]; 0.817 of flat-Dirichlet weightings exclude one."
+                evidence: [C04, C06, "Figure 1"]
+                children:
+
+                  - id: N11
+                    type: decision
+                    support_level: explicit
+                    source_refs: ["§4.1", "Algorithm 1", "Appendix C 'Recipe, size, and trait sensitivity'"]
+                    title: "Treat the battery as fixed with flat weights and report the removal spread beside the interval"
+                    choice: "Keep the flat ten-benchmark weighting as the estimand and report benchmark-removal sensitivity, since the factor belongs to the battery."
+                    alternatives:
+                      - "Down-weight BoolQ (interval on accuracy stops including one at weight 0.0867)"
+                      - "Item-count weighting (margin 1.119 [1.068, 1.170])"
+                      - "Treat benchmark-removal spread as sampling uncertainty over batteries"
+                    evidence: [C06, "The release gives no basis for singling out BoolQ"]
+
+              - id: N12
+                type: experiment
+                support_level: explicit
+                source_refs: ["§4.4", "Appendix C 'Associations with scoring format'", "Appendix C 'A two-correlation fit'"]
+                title: "Covariance structure by scoring format"
+                result: "Margin correlations average 0.624 within formats and 0.007 across; cross-format diagnostic 0.921 [0.801, 1.035]; two-correlation fit gives 1.285 against 1.244."
+                evidence: [C11, "Figure 2"]
+
+          - id: N13
+            type: experiment
+            support_level: explicit
+            source_refs: ["Table 1", "§1", "§4.1", "Appendix C"]
+            title: "Primary full-battery accuracy estimate"
+            result: "Accuracy inflation 1.078 with interval [0.993, 1.157], including one; design detects a true 1.10 in 0.135 of replicates."
+            evidence: [C05, "Table 1"]
+            also_depends_on: [N03, N05]
+            children:
+
+              - id: N14
+                type: pivot
+                support_level: explicit
+                source_refs: ["§1", "§6", "Supplement Table 5"]
+                title: "Accuracy read as a bound rather than as a test of independence"
+                from: "Planned reading with accuracy inflation above 1.40 and a lower limit above one (prediction 1), with accuracy expected to retain at least 0.8 of margin inflation"
+                to: "Accuracy primary result reported as an upper bound of 1.157 (r_E < 0.038, K_eff > 7.47) under a low-powered design, not as evidence of independence"
+                trigger: "Interval includes one while five recipe deletions, 750M removal and WinoGrande or BoolQ removal each put the interval above one; power at 1.10 is 0.135"
+                children:
+
+                  - id: N15
+                    type: experiment
+                    support_level: explicit
+                    source_refs: ["§3", "Table 5", "Supplement Table 13"]
+                    title: "Checkpoint and truncation sensitivity"
+                    result: "At the adjacent earlier shared step the accuracy interval is [1.044, 1.210]; paired change 0.048 [-0.022, 0.130]; without severe truncation margin 1.276 [1.114, 1.420] and accuracy 1.120 [1.020, 1.208]; exploratory, subsets chosen after seeing results."
+                    evidence: [C13, "Table 5"]
+
+          - id: N16
+            type: dead_end
+            support_level: explicit
+            source_refs: ["§3", "Supplement Table 18", "Supplement Table 5"]
+            title: "Planned point thresholds of 1.349 (margin) and 1.40 (accuracy)"
+            hypothesis: "Planning prediction 1: margin inflation above 1.349 and accuracy above 1.40 with lower limits above one."
+            failure_mode: "No seventeen-recipe estimation set reaches either threshold; margin estimates run 1.037 to 1.317 and accuracy 0.963 to 1.191 across all 1,081,575 sets."
+            lesson: "The plan overestimated the effect (planning Lambda^2 = 1.819); the realised estimate is reported against independence, not against the planning threshold."
+
+          - id: N17
+            type: experiment
+            support_level: explicit
+            source_refs: ["§4.1", "Appendix A.3", "Appendix C 'Simulation and permutation calibration'"]
+            title: "Item-dependence checks: passage-aware split, within-group permutation, shared item-effect sweep"
+            result: "Passage-aware BoolQ split changes estimates by -0.0002 and -0.0001; permutation puts item-level sharing at about 0.001 (margin) and 0.002 (accuracy); a benchmark-wide scalar item effect at share 0.124 would reproduce 1.244 and is unmeasured."
+            evidence: [C10]
+            also_depends_on: [N09]
+
+          - id: N18
+            type: dead_end
+            support_level: explicit
+            source_refs: ["§4.4", "Appendix C 'Competence proxy audit and calibration'", "Supplement Table 4 (G5)"]
+            title: "Gain adjustment as a mechanism test"
+            hypothesis: "Regressing out a gain covariate (mean per-byte answer log-likelihood) would leave more than 0.70 of the accuracy excess and reduce margin inflation if gain drives the covariance."
+            failure_mode: "Gain adjustment leaves margin inflation at 1.275; the gain covariate shares item noise with the outcomes; gate G5 fails with a default-simulator share of 0.61 against 0.08 under a matched simulator."
+            lesson: "Adjustments built from the same benchmark scores can't be read mechanistically; simulator assumptions dominate gain-share estimates."
+
+          - id: N19
+            type: dead_end
+            support_level: explicit
+            source_refs: ["§4.4", "Appendix A.7", "Appendix C 'Competence proxy audit and calibration'", "Table 10"]
+            title: "Shipped leave-one-benchmark-out competence proxy"
+            hypothesis: "An opposite-half competence proxy standardised by seed SDs would isolate a shared competence factor."
+            failure_mode: "The variance floor binds for WinoGrande (margin variance estimate -3.15 x 10^-7), which then supplies more than 99.99% of the squared standardised inputs; split-half correlation of the proxy is -0.086 on margins; repaired proxies fall below one even in simulations with no competence variable."
+            lesson: "Every proxy averages the seed deviations it adjusts; a competence adjustment needs a measurement outside the benchmark scores, such as held-out loss."
+
+          - id: N20
+            type: pivot
+            support_level: explicit
+            source_refs: ["Appendix C 'Availability of a separate competence measurement'", "Appendix C 'Competence proxy audit and calibration'", "Reproducibility statement"]
+            title: "From benchmark-derived proxies to an external held-out-loss measurement (not run)"
+            from: "Competence and gain proxies computed from the benchmark scores"
+            to: "Held-out loss on the same checkpoints; all 375 runs reach public commits with weights, but the loss-proxy rescoring wasn't run"
+            trigger: "Degenerate shipped proxy and gain covariate sharing item noise; DataDecide fields and the Mistral release lack paired held-out loss and benchmark scores"
+            also_depends_on: [N18, N19]
+
+          - id: N21
+            type: experiment
+            support_level: explicit
+            source_refs: ["§4.5", "Table 8", "Appendix C 'Paired uncertainty'"]
+            title: "Prediction of aggregate uncertainty across recipe folds"
+            result: "Rank-one, rank-one plus gain and full models lower margin MSE by about 0.03 from 0.0358 with intervals excluding zero when held-out marginals are supplied; no separation on accuracy or in the operational comparison; phenotypic plug-in worst on both scales."
+            evidence: [C17, "Table 8"]
+
+          - id: N22
+            type: experiment
+            support_level: explicit
+            source_refs: ["§4.5", "Table 3", "Appendix C 'Recipe decisions'", "Appendix C 'Observed gaps and predicted rank reversals'"]
+            title: "Decision impact on simulated and real recipe comparisons"
+            result: "Simulated correction returns false-positive rate from 0.113 to 0.051 (0.101 when transferred to a battery at 1.5); on real recipe pairs the wrong-call rate changes by at most 0.009 with every interval reaching zero."
+            evidence: [C18, "Table 3"]
+
+          - id: N23
+            type: experiment
+            support_level: explicit
+            source_refs: ["§6", "Appendix C 'Gain calibration and recipe split sensitivity'"]
+            title: "Band-shared run effect test and size-band clustering"
+            result: "Batch-slot permutation bounds the band-shared share at 0.044 of margin seed covariance (power 0.490 at the bound); size-band clusters give margin [1.030, 1.426] and accuracy [0.961, 1.184]."
+            evidence: [C19]
+
+      - id: N24
+        type: question
+        support_level: explicit
+        source_refs: ["§1", "§4.2", "§4.3"]
+        title: "Does the inflation hold beyond the ten benchmarks and beyond DataDecide's design?"
+        description: "The estimator was built on the same ten benchmarks, in one family whose seed label also changes the training batch."
+        children:
+
+          - id: N25
+            type: experiment
+            support_level: explicit
+            source_refs: ["§4.2", "Table 2", "Appendix C 'Registered held-out test'"]
+            title: "Registered test on four unseen tasks (SciQ, MedMCQA, MC DROP, MC CoQA) at 530M, 750M, 1B"
+            result: "Held-out margin inflation 1.217 with interval [0.872, 1.498]; the registered rule (lower limit above one) fails; the original ten on the same runs give 1.240 [1.054, 1.397] and pass."
+            evidence: [C07, "Table 2"]
+            also_depends_on: [N09]
+            children:
+
+              - id: N26
+                type: decision
+                support_level: explicit
+                source_refs: ["§4.2", "Appendix C 'Registered held-out test'"]
+                title: "Apply the registered replacement rule as written"
+                choice: "Replace LogiQA-en (0.269 vs bar 0.270) and LSAT-LR (0.219 vs 0.220) with multiple-choice DROP and CoQA in the listed order."
+                alternatives:
+                  - "Keep the two AGIEval tasks, whose misses were about a thousandth, inside the pilot SE of about 0.010"
+                evidence: "The rule rather than the evidence decided the swap"
+
+              - id: N27
+                type: decision
+                support_level: explicit
+                source_refs: ["§4.2", "Appendix C 'Registered held-out test'", "Reproducibility statement"]
+                title: "Limit the registered test to 225 runs at the primary analysis steps"
+                choice: "Score 530M, 750M and 1B only, triggered by the protocol's scope rule after pilot timing projected 66.0 session hours for all 375 runs and 54.9 for the 225 in scope."
+                alternatives:
+                  - "All 375 released checkpoints (GPU budget couldn't cover it)"
+                  - "A six-task secondary analysis, withdrawn for budget"
+                evidence: "GPU budget; weekly Kaggle quota exhausted before the last 20 runs, which were scored on three RTX 3090 cards"
+
+              - id: N28
+                type: dead_end
+                support_level: explicit
+                source_refs: ["§4.2", "Table 2", "Supplement Table 19", "Appendix C 'Registered held-out test'"]
+                title: "Registered prediction: held-out margin lower limit above one"
+                hypothesis: "Margin inflation on four unseen tasks would have a lower 95% limit above one at the registered scope."
+                failure_mode: "Lower limit 0.872; the held-out interval is 0.626 wide against 0.343 for the original battery; three earlier interim results also failed (1.198, 1.201, 1.181); simulated pass rate at a true 1.244 is 0.926 under margin-like noise but 0.262 at the post hoc noise level 2.00."
+                lesson: "Four 1,000-item tasks give intervals too wide for a lower-limit rule; the point estimate (0.024 below the original) does not decide the verdict, and the later power calculation can't rescue the registered test."
+
+              - id: N29
+                type: experiment
+                support_level: explicit
+                source_refs: ["§4.2", "Table 2", "Supplement Table 20"]
+                title: "Held-out accuracy and leave-one-task-out (exploratory)"
+                result: "Held-out accuracy inflation 1.220 [1.066, 1.359] excludes one; removing CoQA lowers held-out margin inflation to 1.090, other removals leave 1.120 to 1.213."
+                evidence: [C08, "Table 2"]
+
+          - id: N30
+            type: experiment
+            support_level: explicit
+            source_refs: ["§4.4", "Appendix C 'Transport to PolyPythias'"]
+            title: "Earlier PolyPythias transfer on a nested 4,755-item battery"
+            result: "Margin 1.406 at three planned sizes and 1.262 [0.927, 1.537] on a five-size rescore; accuracy 1.711 [0.869, 2.428], unbounded under test inversion; gate G6 fails upward under a post hoc excess-ratio reading."
+            evidence: [C15]
+
+          - id: N31
+            type: pivot
+            support_level: explicit
+            source_refs: ["§1", "§3", "§4.3", "Appendix C 'Transport to PolyPythias'"]
+            title: "From a nested transfer sample to full-battery second-family scoring with a disjoint item bank"
+            from: "Nested 4,755-item transfer on three or five PolyPythias configurations"
+            to: "All 45 PolyPythias runs (nine clean seeds, five sizes, step 143,000) on the full 37,682-item bank 1, paired with a disjoint 6,808-item bank 2"
+            trigger: "A single model family and a seed label that also changes the training batch leave open whether the inflation belongs to DataDecide's design; transfer intervals include one"
+            also_depends_on: [N30, N17]
+            children:
+
+              - id: N32
+                type: decision
+                support_level: explicit
+                source_refs: ["§4.3", "§3"]
+                title: "Fix two reading rules before scoring, with a delete-one-seed jackknife as primary interval"
+                choice: "R1: jackknife t(8) lower endpoint above one; R2: cross-bank and within-minus-cross log-difference rule with three verdicts."
+                alternatives:
+                  - "Wild bootstrap over five size clusters, too few clusters"
+                  - "Read results without a pre-fixed rule"
+                evidence: "Nine seeds are the replicate unit; rule commit time not independently corroborated"
+                children:
+
+                  - id: N33
+                    type: experiment
+                    support_level: explicit
+                    source_refs: ["§4.3", "Abstract", "§1"]
+                    title: "R1: PolyPythias bank-1 replication of margin inflation"
+                    result: "Not available: scoring in progress (source values are \\pending placeholders; outcome switch set to pending)."
+                    evidence: [C20]
+                    also_depends_on: [N09]
+
+                  - id: N34
+                    type: experiment
+                    support_level: explicit
+                    source_refs: ["§4.3", "§6"]
+                    title: "R2: disjoint-bank check against a shared item component"
+                    result: "Not available: scoring in progress (source values are \\pending placeholders; outcome switch set to pending)."
+                    evidence: [C21]
+                    also_depends_on: [N33]
+
+          - id: N35
+            type: experiment
+            support_level: explicit
+            source_refs: ["§4.4", "Table 11"]
+            title: "External random-seed panel (Heineman et al., 2025)"
+            result: "Bits-per-byte inflation 1.705 and 1.625 on eighteen traits; accuracy per character 0.989 and 0.868 on eight traits; no cross-half correction or intervals."
+            evidence: [C16, "Table 11"]

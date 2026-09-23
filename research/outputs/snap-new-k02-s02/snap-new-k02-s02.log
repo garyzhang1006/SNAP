@@ -1,0 +1,45 @@
+[{"stream_name":"stdout","time":3.997671416,"data":"     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.0/44.0 kB 2.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":4.662325006,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.0/12.0 MB 104.3 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":4.685527675,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 566.4/566.4 kB 35.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":20.933102099,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 144.9/144.9 MB 12.5 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":26.01510701,"data":"name, memory.total [MiB], driver_version\n"}
+,{"stream_name":"stdout","time":26.015145125,"data":"Tesla T4, 15360 MiB, 580.159.04\n"}
+,{"stream_name":"stdout","time":26.015152459,"data":"Tesla T4, 15360 MiB, 580.159.04\n"}
+,{"stream_name":"stdout","time":26.015157449,"data":"\n"}
+,{"stream_name":"stdout","time":26.01542378,"data":"[plan] snap-new-k02-s02: 20 runs, estimated GPU seconds per card {'0': 22136.910883723893, '1': 22136.910883723893}\n"}
+,{"stream_name":"stdout","time":24019.6552255,"data":"[worker 0] exit 0\n"}
+,{"stream_name":"stdout","time":24019.655787128,"data":"[worker] {'torch': '2.10.0+cu128', 'transformers': '4.57.1', 'huggingface_hub': '0.36.2', 'gpu': 'Tesla T4'} 4000 items\n"}
+,{"stream_name":"stdout","time":24019.655802967,"data":"`torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stdout","time":24019.655809612,"data":"[run] dclm-baseline-top-fw-10p__1B__seed-5__step-69369 packed score 2256s download 44s check {'packed': 5.9604644775390625e-05}\n"}
+,{"stream_name":"stdout","time":24019.655815741,"data":"[run] dclm-baseline-top-fw-3p__1B__seed-4__step-69369 packed score 2261s download 25s check {'packed': 5.054473876953125e-05}\n"}
+,{"stream_name":"stdout","time":24019.655821814,"data":"[run] dclm-baseline-top-fw2-7p__1B__seed-2__step-69369 packed score 2264s download 26s check {'packed': 2.574920654296875e-05}\n"}
+,{"stream_name":"stdout","time":24019.655827959,"data":"[run] dclm-baseline-top-fw2-7p__1B__seed-5__step-69369 packed score 2267s download 29s check {'packed': 3.62396240234375e-05}\n"}
+,{"stream_name":"stdout","time":24019.655834065,"data":"[run] dclm-baseline-top-fw3-7p__1B__seed-4__step-69369 packed score 2261s download 15s check {'packed': 3.695487976074219e-05}\n"}
+,{"stream_name":"stdout","time":24019.655840163,"data":"[run] dolma1.6++__1B__seed-2__step-69369 packed score 2256s download 16s check {'packed': 3.24249267578125e-05}\n"}
+,{"stream_name":"stdout","time":24019.655846314,"data":"[run] dolma1.6++__1B__seed-5__step-69369 packed score 2274s download 16s check {'packed': 7.534027099609375e-05}\n"}
+,{"stream_name":"stdout","time":24019.65585239,"data":"[run] dolma1.7__1B__seed-4__step-69369 packed score 2266s download 15s check {'packed': 3.170967102050781e-05}\n"}
+,{"stream_name":"stdout","time":24019.655858498,"data":"[run] dolma1.7-no-code__1B__seed-2__step-69369 packed score 2262s download 16s check {'packed': 6.532669067382812e-05}\n"}
+,{"stream_name":"stdout","time":24019.655864639,"data":"[run] dolma1.7-no-code__1B__seed-5__step-69369 packed score 2263s download 27s check {'packed': 7.009506225585938e-05}\n"}
+,{"stream_name":"stdout","time":24019.655870777,"data":"\n"}
+,{"stream_name":"stdout","time":29199.438429942,"data":"[worker 1] exit 0\n"}
+,{"stream_name":"stdout","time":29199.438937415,"data":"[worker] {'torch': '2.10.0+cu128', 'transformers': '4.57.1', 'huggingface_hub': '0.36.2', 'gpu': 'Tesla T4'} 4000 items\n"}
+,{"stream_name":"stdout","time":29199.438985145,"data":"`torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stdout","time":29199.438991238,"data":"[run] dclm-baseline-top-fw-3p__1B__seed-2__step-69369 packed score 2781s download 44s check {'packed': 2.765655517578125e-05}\n"}
+,{"stream_name":"stdout","time":29199.438995733,"data":"[run] dclm-baseline-top-fw-3p__1B__seed-5__step-69369 packed score 2768s download 27s check {'packed': 3.528594970703125e-05}\n"}
+,{"stream_name":"stdout","time":29199.439000186,"data":"[run] dclm-baseline-top-fw2-7p__1B__seed-4__step-69369 packed score 2770s download 14s check {'packed': 6.771087646484375e-05}\n"}
+,{"stream_name":"stdout","time":29199.43900454,"data":"[run] dclm-baseline-top-fw3-7p__1B__seed-2__step-69369 packed score 2769s download 25s check {'packed': 7.2479248046875e-05}\n"}
+,{"stream_name":"stdout","time":29199.43900844,"data":"[run] dclm-baseline-top-fw3-7p__1B__seed-5__step-69369 packed score 2771s download 25s check {'packed': 3.0994415283203125e-05}\n"}
+,{"stream_name":"stdout","time":29199.439012586,"data":"[run] dolma1.6++__1B__seed-4__step-69369 packed score 2773s download 30s check {'packed': 4.0531158447265625e-05}\n"}
+,{"stream_name":"stdout","time":29199.439016537,"data":"[run] dolma1.7__1B__seed-2__step-69369 packed score 2769s download 16s check {'packed': 4.414469003677368e-05}\n"}
+,{"stream_name":"stdout","time":29199.439020716,"data":"[run] dolma1.7__1B__seed-5__step-69369 packed score 2770s download 15s check {'packed': 5.435943603515625e-05}\n"}
+,{"stream_name":"stdout","time":29199.439024325,"data":"[run] dolma1.7-no-code__1B__seed-4__step-69369 packed score 2773s download 29s check {'packed': 9.250640869140625e-05}\n"}
+,{"stream_name":"stdout","time":29199.439028438,"data":"[run] dolma1.7-no-flan__1B__seed-2__step-69369 packed score 2776s download 14s check {'packed': 4.4345855712890625e-05}\n"}
+,{"stream_name":"stdout","time":29199.439032239,"data":"\n"}
+,{"stream_name":"stdout","time":29199.441073756,"data":"[done] 20 scored, 0 failed, 0 not started, 29199s\n"}
+,{"stream_name":"stderr","time":29201.633106446,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":29201.633163995,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":29201.868716797,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":29201.868743204,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":29202.519521954,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":29203.418943133,"data":"[NbConvertApp] Writing 319319 bytes to __results__.html\n"}
+]

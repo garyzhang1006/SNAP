@@ -1,0 +1,828 @@
+ 
+ 
+ 
+ Showing Your Work Doesn’t Always Work 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report GitHub Issue 
+ × 
+ 
+
+ 
+ Title: 
+ 
+
+ Content selection saved. Describe the issue below: 
+
+ Description: 
+ 
+ 
+
+ 
+ Submit without GitHub 
+ Submit in GitHub 
+ 
+ 
+ 
+ 
+ arXiv is now an independent nonprofit! 
+ Learn more 
+ × 
+ 
+
+ 
+ 
+ 
+ Back to arXiv 
+ 
+ 
+ 
+ 
+ Why HTML? 
+ 
+ 
+ Report Issue 
+ 
+ 
+ 
+ Back to Abstract 
+ 
+ 
+ 
+ 
+ Download PDF 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Abstract 
+ 1 Introduction 
+ 2 Background and Related Work 
+ 3 Analysis of Showing Your Work 
+ 
+ 3.1 Pitfalls and Caveats 
+ 
+ 4 Experiments 
+ 
+ 4.1 Experimental Setup 
+ 4.2 Experimental Test Battery 
+ 4.3 Results 
+ 
+ 5 Conclusions 
+ References 
+ A Cautionary Notes 
+ B Proof of Theorem 2 
+ C Experimental Settings 
+ 
+ 
+ 
+ 
+ 
+ License: arXiv.org perpetual non-exclusive license
+ 
+ 
+arXiv:2004.13705v1 [cs.CL] 28 Apr 2020 
+ 
+ 
+ Showing Your Work Doesn’t Always Work 
+ 
+ 
+ Raphael Tang
+ 
+    
+ Jaejun Lee
+ 
+ Affiliation: David R. Cheriton School of Computer Science, University of Waterloo
+ 
+ Affiliation: Vector Institute for Artificial Intelligence
+ 
+    
+ Ji Xin
+ 
+ Affiliation: David R. Cheriton School of Computer Science, University of Waterloo
+ 
+    
+ Xinyu Liu
+ 
+ Affiliation: David R. Cheriton School of Computer Science, University of Waterloo
+ 
+ Affiliation: Vector Institute for Artificial Intelligence
+ 
+    
+ Yaoliang Yu, and Jimmy Lin
+ 
+ Affiliation: David R. Cheriton School of Computer Science, University of Waterloo
+ 
+ Affiliation: Vector Institute for Artificial Intelligence
+ 
+
+ Abstract 
+ 
+ In natural language processing, a recently popular line of work explores how to best report the experimental results of neural networks.
+One exemplar publication, titled “Show Your Work: Improved Reporting of Experimental Results” Dodge et al. (2019) , advocates for reporting the expected validation effectiveness of the best-tuned model, with respect to the computational budget.
+In the present work, we critically examine this paper.
+As far as statistical generalizability is concerned, we find unspoken pitfalls and caveats with this approach.
+We analytically show that their estimator is biased and uses error-prone assumptions.
+We find that the estimator favors negative errors and yields poor bootstrapped confidence intervals.
+We derive an unbiased alternative and bolster our claims with empirical evidence from statistical simulation.
+Our codebase is at https://github.com/castorini/meanmax . 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 1 Introduction 
+
+ 
+ Questionable answers and irreproducible results represent a formidable beast in natural language processing research.
+Worryingly, countless experimental papers lack empirical rigor, disregarding necessities such as the reporting of statistical significance tests Dror et al. (2018) and computational environments Crane (2018) .
+As Forde and Paganini (2019) concisely lament, explorimentation , the act of tinkering with metaparameters and praying for success, while helpful in brainstorming, does not constitute a rigorous scientific effort. 
+ 
+ 
+ Against the crashing wave of explorimentation, though, a few brave souls have resisted the urge to feed the beast.
+ Reimers and Gurevych (2017) argue for the reporting of neural network score distributions.
+ Gorman and Bedrick (2019) demonstrate that deterministic dataset splits yield less robust results than random ones for neural networks.
+ Dodge et al. (2019) advocate for reporting the expected validation quality as a function of the computation budget used for hyperparameter tuning, which is paramount to robust conclusions. 
+ 
+ 
+ But carefully tread we must.
+Papers that advocate for scientific rigor must be held to the very same standards that they espouse, lest they birth a new beast altogether.
+In this work, we critically examine one such paper from Dodge et al. (2019) .
+We acknowledge the validity of their technical contribution, but we find several notable caveats, as far as statistical generalizability is concerned.
+Analytically, we show that their estimator is negatively biased and uses assumptions that are subject to large errors.
+Based on our theoretical results, we hypothesize that this estimator strongly prefers underestimates to overestimates and yields poor confidence intervals with the common bootstrap method Efron (1982) . 
+ 
+ 
+ Our main contributions are as follows: First, we prove that their estimator is biased under weak conditions and provide an unbiased solution.
+Second, we show that one of their core approximations often contains large errors, leading to poorly controlled bootstrapped confidence intervals.
+Finally, we empirically confirm the practical hypothesis using the results of neural networks for document classification and sentiment analysis. 
+ 
+ 
+ 
+ 2 Background and Related Work 
+
+ 
+ Notation. 
+We describe our notation of fundamental concepts in probability theory.
+First, the cumulative distribution function (CDF) of a random variable (RV) is defined as .
+Given a sample drawn from , the empirical CDF (ECDF) is then ,
+where denotes the indicator function.
+Note that we pick “ ” instead of “ ” to be consistent with Dodge et al. (2019) .
+The error of the ECDF is popularly characterized by the Kolmogorov–Smirnov (KS) distance between the ECDF and CDF: 
+ 
+ Naturally, by definition of the CDF and ECDF, .
+Using the CDF, the expectation for both discrete and continuous (cts.) RVs is 
+ 
+ defined using the Riemann–Stieltjes integral. 
+ 
+ 
+ We write the order statistic of independent and identically distributed (i.i.d.) as .
+Recall that the order statistic is an RV representing the smallest value if the RVs were sorted. 
+ 
+ 
+ Hyperparameter tuning. 
+In random search, a probability distribution is first defined over a -tuple hyperparameter configuration , which can include both cts. and discrete variables, such as the learning rate and random seed of the experimental environment.
+Commonly, researchers choose the uniform distribution over a bounded support for each hyperparameter Bergstra and Bengio (2012) .
+Combined with the appropriate model family and dataset —split into training and validation sets, respectively—a configuration then yields a numeric score on .
+Finally, after sampling i.i.d. configurations, we obtain the scores and pick the hyperparameter configuration associated with the best one. 
+ 
+ 
+ 
+ 3 Analysis of Showing Your Work 
+
+ 
+ In “Show Your Work: Improved Reporting of Experimental Results,” Dodge et al. (2019) realize the ramifications of underreporting the hyperparameter tuning policy and its associated budget.
+One of their key findings is that, given different computation quotas for hyperparameter tuning, researchers may arrive at drastically different conclusions for the same model.
+Given a small tuning budget, a researcher may conclude that a smaller model outperforms a bigger one, while they may reach the opposite conclusion for a larger budget. 
+ 
+ 
+ To ameliorate this issue, Dodge et al. (2019) argue for fully reporting the expected maximum of the score as a function of the budget.
+Concretely, the parameters of interest are , where 
+for .
+In other words, is precisely the expected value of the order statistic for a sample of size drawn i.i.d. at tuning time.
+For this quantity, they propose an estimator, derived as follows: first, observe that the CDF of is 
+ 
+ which we denote as . Then 
+ 
+ For approximating the CDF, Dodge et al. (2019) use the ECDF , constructed from some sample , i.e., 
+ 
+ The first identity in Eq. ( 3.4 ) is clear from Eq. ( 3.2 ).
+Without loss of generality, assume .
+To construct an estimator for , Dodge et al. (2019) then replace the CDF with the ECDF: 
+ 
+ which, by definition, evaluates to 
+ 
+ where, with some abuse of notation, is a dummy variable and .
+We henceforth refer to as the MeanMax estimator.
+ Dodge et al. (2019) recommend plotting the number of trials on the -axis and on the -axis. 
+ 
+ 
+ 3.1 Pitfalls and Caveats 
+
+ 
+ We find two unspoken caveats in Dodge et al. (2019) : first, the MeanMax estimator is statistically biased, under weak conditions.
+Second, the ECDF, as formulated, is a poor drop-in replacement for the true CDF, in the sense that the finite sample error can be unacceptable if certain, realistic conditions are unmet. 
+ 
+ 
+ Estimator bias. 
+The bias of an estimator is defined as the difference between its expectation and its estimand : .
+An estimator is said to be unbiased if its bias is zero; otherwise, it is biased .
+We make the following claim: 
+ 
+ 
+ Theorem 1 . 
+ 
+ Let be an i.i.d. sample (of size ) from an unknown distribution on the real line.
+Then, for all , , with strict inequality iff with nonzero probability.
+In particular, if , then while if with continuous or discrete but non-degenerate, then . 
+ 
+ 
+ 
+ Proof. 
+ 
+ Let . We are interested in estimating the expectation of the maximum of the i.i.d. samples: 
+ 
+ An obvious unbiased estimator, based on the given sample of size , is the following: 
+ 
+ This estimator is obviously unbiased since 
+ 
+ due to the i.i.d. assumption on the sample. 
+ 
+ 
+ A second, biased estimator is the following: 
+ 
+ This estimator is only asymptotically unbiased when is fixed while tends to . In fact, we will prove below that for all : 
+ 
+ with strict inequality iff , where is defined as the smallest order statistic of the sample.
+We start with simplifying the calculation of the two estimators.
+It is easy to see that the following holds: 
+ 
+ where we basically enumerate all possibilities for . By convention, if so the above summation effectively goes from to , but our convention will make it more convenient for comparison. Similarly, 
+ 
+ 
+ 
+ We make an important observation that connects our estimators to that of Dodge et al. Let be the empirical distribution of the sample. Then, the plug-in estimator, where we replace with , is 
+ 
+ since if there are no ties in the sample. The formula continues to hold even if there are ties, in which case we simply collapse the ties, using the fact that when 
+ 
+ 
+ Now, we are ready to prove Eq. ( 3.8 ). All we need to do is to compare the cumulative sums of the coefficients in the two estimators: 
+ 
+ We need only consider (the case is trivial). One can easily verify the following expression backwards: 
+ 
+ where the last inequality follows from and .
+Thus, we have verified the following for all : 
+ 
+ Eq. ( 3.8 ) now follows since lies in the isotonic cone while we have proved the difference of the two coefficients lies in the dual cone of the isotonic cone.
+An elementary way to see this is to first compare the coefficients in front of : clearly, ’s is larger since it has smaller sum of all coefficients (but the one in front of ; take ) whereas the total sum is always one.
+Repeat this comparison for . 
+ 
+ 
+ Lastly, if , then there exists a subset (with repetition) such that . For instance, setting would suffice. Since puts positive mass on every subset of elements (with repetitions allowed), the strict inequality follows.
+We note that if is continuous, or if is discrete but non-degenerate, then with nonzero probability, hence 
+ 
+ The proof is now complete.
+∎ 
+ 
+ 
+ 
+ For further caveats, see Appendix A.
+The practical implication is that researchers may falsely conclude, on average, that a method is worse than it is, since the MeanMax estimator is negatively biased.
+In the context of environmental consciousness Schwartz et al. (2019) , more computation than necessary is used to make a conclusion. 
+ 
+ 
+ ECDF error. 
+The finite sample error (Eq. 2.1 ) of approximating the CDF with the ECDF (Eq. 3.4 ) can become unacceptable as increases: 
+ 
+ 
+ Theorem 2 . 
+ 
+ If the sample does not contain the population maximum, exponentially quickly as and increase. 
+ 
+ 
+ 
+ Proof. 
+ 
+ See Appendix B.
+∎ 
+ 
+ 
+ 
+ Notably, this result always holds for cts. distributions, since the population maximum is never in the sample.
+Practically, this theorem suggests the failure of bootstrapping Efron (1982) for statistical hypothesis testing and constructing confidence intervals (CIs) of the expected maximum, since the bootstrap requires a good approximation of the CDF Canty et al. (2006) .
+Thus, relying on the bootstrap method for constructing confidence intervals of the expected maximum, as in Lucic et al. (2018) , may lead to poor coverage of the true parameter. 
+ 
+ 
+ 
+ 
+ 4 Experiments 
+
+ 
+ 4.1 Experimental Setup 
+
+ 
+ To support the validity of our conclusions, we opt for cleanroom Monte Carlo simulations, which enable us to determine the true parameter and draw millions of samples.
+To maintain the realism of our study, we apply kernel density estimation to actual results, using the resulting probability density (or discretized mass) function as the ground truth distribution.
+Specifically, we examine the experimental results of the following neural networks: 
+ 
+ 
+ Document classification. 
+We first conduct hyperparameter search over neural networks for document classification, namely a multilayer perceptron (MLP) and a long short-term memory (LSTM; Hochreiter and Schmidhuber, 1997 ) model representing state of the art (for LSTMs) from Adhikari et al. (2019) .
+For our dataset and evaluation metric, we choose Reuters Apté et al. (1994) and the F 1 score, respectively.
+Next, we fit discretized kernel density estimators to the results—see the appendix for experimental details.
+We name the distributions after their models, MLP and LSTM. 
+ 
+ 
+ Sentiment analysis. 
+Similar to Dodge et al. (2019) , on the task of sentiment analysis, we tune the hyperparameters of two LSTMs—one ingesting embeddings from language models (ELMo; Peters et al., 2018 ), the other shallow word vectors (GloVe; Pennington et al., 2014 ).
+We choose the binary Stanford Sentiment Treebank Socher et al. (2013) dataset and apply the same kernel density estimation method.
+We denote the distributions by their embedding types, GloVe and ELMo. 
+ 
+ 
+ 
+ 4.2 Experimental Test Battery 
+
+ 
+ False conclusion probing. 
+To assess the impact of the estimator bias, we measure the probability of researchers falsely concluding that one method underperforms its true value for a given .
+The unbiased estimator has an expectation of , preferring neither underestimates nor overestimates. 
+ 
+ 
+ Concretely, denote the true -run expected maxima of the method as and the estimator as .
+We iterate and report the proportion of samples (of size ) where . We compute the true parameter using 1,000,000 iterations of Monte Carlo simulation and estimate the proportion with 5,000 samples for each . 
+ 
+ 
+ CI coverage. 
+To evaluate the validity of bootstrapping the expected maximum, we measure the coverage probability of CIs constructed using the percentile bootstrap method Efron (1982) .
+Specifically, we set and iterate .
+For each , across samples, we compare the empirical coverage probability (ECP) to the nominal coverage rate of 95 , with CIs constructed using bootstrapped resamples.
+The ECP is computed as 
+ 
+ where CI i is the CI of the sample. 
+ 
+ 
+ 
+ 4.3 Results 
+
+ 
+ 
+ 
+ Following Dodge et al. (2019) , we present the budget–quality curves for each model pair in Figure 1 .
+For each number of trials, we vertically average each curve across the 5,000 samples.
+We construct CIs but do not display them, since the estimate is precise (standard error ).
+For document classification, we observe that the LSTM is more difficult to tune but achieves higher quality after some effort.
+For sentiment analysis, using ELMo consistently attains better accuracy with the same number of trials—we do not consider the wall clock time. 
+ 
+ 
+ In Figure 2 , we show a failure case of biased estimation in the document classification task.
+At , from to , the averaged estimate yields the wrong conclusion that the MLP outperforms the LSTM—see the true LSTM line, which is above the true MLP line, compared to its estimate, which is below. 
+ 
+ 
+ 
+ 
+ False conclusions probing. 
+Figure 3 shows the results of our false conclusion probing experiment.
+We find that the estimator quickly prefers negative errors as increases.
+The curves are mostly similar for both tasks, except the MLP fares worse.
+This requires further analysis, though we conjecture that the reason is lower estimator variance, which would result in more consistent errors. 
+ 
+ 
+ CI coverage. 
+We present the results of the CI coverage experiment results in Figure 4 .
+We find that the bootstrapped confidence intervals quickly fail to contain the true parameter at the nominal coverage rate of , decreasing to an ECP of by .
+Since the underlying ECDF is the same, this result extends to Lucic et al. (2018) , who construct CIs for the expected maximum. 
+ 
+ 
+ 
+ 
+ 5 Conclusions 
+
+ 
+ In this work, we provide a dual-pronged theoretical and empirical analysis of Dodge et al. (2019) .
+We find unspoken caveats in their work—namely, that the estimator is statistically biased under weak conditions and uses an ECDF assumption that is subject to large errors.
+We empirically study its practical effects on tasks in document classification and sentiment analysis.
+We demonstrate that it prefers negative errors and that bootstrapping leads to poorly controlled confidence intervals. 
+ 
+ 
+ 
+ Acknowledgments 
+
+ 
+ This research was supported by the Natural Sciences and Engineering Research Council (NSERC) of Canada. 
+ 
+ 
+ 
+ References 
+
+ 
+ 
+ Adhikari et al. (2019) 
+ 
+Ashutosh Adhikari, Achyudh Ram, Raphael Tang, and Jimmy Lin. 2019.
+
+ 
+ Rethinking complex neural network architectures for document
+classification.
+
+ 
+ In Proceedings of the 2019 Conference of the North American
+Chapter of the Association for Computational Linguistics: Human Language
+Technologies , pages 4046–4051.
+
+ 
+ 
+ Apté et al. (1994) 
+ 
+Chidanand Apté, Fred Damerau, and Sholom M. Weiss. 1994.
+
+ 
+ Automated learning of decision rules for text categorization.
+
+ 
+ ACM Transactions on Information Systems , 12(3):233–251.
+
+ 
+ 
+ Bergstra and Bengio (2012) 
+ 
+James Bergstra and Yoshua Bengio. 2012.
+
+ 
+ Random search for hyper-parameter optimization.
+
+ 
+ Journal of Machine Learning Research , 13(Feb):281–305.
+
+ 
+ 
+ Canty et al. (2006) 
+ 
+Angelo J. Canty, Anthony C. Davison, David V. Hinkley, and Valérie Ventura.
+2006.
+
+ 
+ Bootstrap diagnostics and remedies.
+
+ 
+ Canadian Journal of Statistics , 34(1):5–27.
+
+ 
+ 
+ Crane (2018) 
+ 
+Matt Crane. 2018.
+
+ 
+ Questionable answers in question answering research: Reproducibility
+and variability of published results.
+
+ 
+ Transactions of the Association for Computational Linguistics ,
+6:241–252.
+
+ 
+ 
+ Dodge et al. (2019) 
+ 
+Jesse Dodge, Suchin Gururangan, Dallas Card, Roy Schwartz, and Noah A. Smith.
+2019.
+
+ 
+ Show your work: Improved reporting of experimental results.
+
+ 
+ In Proceedings of the 2019 Conference on Empirical Methods in
+Natural Language Processing and the 9th International Joint Conference on
+Natural Language Processing , pages 2185–2194.
+
+ 
+ 
+ Dror et al. (2018) 
+ 
+Rotem Dror, Gili Baumer, Segev Shlomov, and Roi Reichart. 2018.
+
+ 
+ The hitchhiker’s guide to testing statistical significance in
+natural language processing.
+
+ 
+ In Proceedings of the 56th Annual Meeting of the Association
+for Computational Linguistics , pages 1383–1392.
+
+ 
+ 
+ Efron (1982) 
+ 
+Bradley Efron. 1982.
+
+ 
+ The Jackknife, the Bootstrap and other resampling plans.
+
+ 
+ In CBMS-NSF Regional Conference Series in Applied Mathematics,
+Philadelphia: Society for Industrial and Applied Mathematics .
+
+ 
+ 
+ Forde and Paganini (2019) 
+ 
+Jessica Forde and Michela Paganini. 2019.
+
+ 
+ The scientific method in the science of machine learning.
+
+ 
+ arXiv:1904.10922 .
+
+ 
+ 
+ Gorman and Bedrick (2019) 
+ 
+Kyle Gorman and Steven Bedrick. 2019.
+
+ 
+ We need to talk about standard splits.
+
+ 
+ In Proceedings of the 57th Annual Meeting of the Association
+for Computational Linguistics , pages 2786–2791.
+
+ 
+ 
+ Hochreiter and Schmidhuber (1997) 
+ 
+Sepp Hochreiter and Jürgen Schmidhuber. 1997.
+
+ 
+ Long short-term memory.
+
+ 
+ Neural Computation , 9(8):1735–1780.
+
+ 
+ 
+ Lucic et al. (2018) 
+ 
+Mario Lucic, Karol Kurach, Marcin Michalski, Sylvain Gelly, and Olivier
+Bousquet. 2018.
+
+ 
+ Are GANs created equal? A large-scale study.
+
+ 
+ In Advances in Neural Information Processing Systems , pages
+700–709.
+
+ 
+ 
+ Pennington et al. (2014) 
+ 
+Jeffrey Pennington, Richard Socher, and Christopher D. Manning. 2014.
+
+ 
+ GloVe: Global vectors for word representation.
+
+ 
+ In Proceedings of the 2014 Conference on Empirical Methods in
+Natural Language Processing , pages 1532–1543.
+
+ 
+ 
+ Peters et al. (2018) 
+ 
+Matthew Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark,
+Kenton Lee, and Luke Zettlemoyer. 2018.
+
+ 
+ Deep contextualized word representations.
+
+ 
+ In Proceedings of the 2018 Conference of the North American
+Chapter of the Association for Computational Linguistics: Human Language
+Technologies , pages 2227–2237.
+
+ 
+ 
+ Reimers and Gurevych (2017) 
+ 
+Nils Reimers and Iryna Gurevych. 2017.
+
+ 
+ Reporting score distributions makes a difference: Performance study
+of LSTM-networks for sequence tagging.
+
+ 
+ In Proceedings of the 2017 Conference on Empirical Methods in
+Natural Language Processing , pages 338–348.
+
+ 
+ 
+ Schwartz et al. (2019) 
+ 
+Roy Schwartz, Jesse Dodge, Noah A. Smith, and Oren Etzioni. 2019.
+
+ 
+ Green AI.
+
+ 
+ arXiv:1907.10597 .
+
+ 
+ 
+ Socher et al. (2013) 
+ 
+Richard Socher, Alex Perelygin, Jean Wu, Jason Chuang, Christopher D. Manning,
+Andrew Ng, and Christopher Potts. 2013.
+
+ 
+ Recursive deep models for semantic compositionality over a sentiment
+treebank.
+
+ 
+ In Proceedings of the 2013 Conference on Empirical Methods in
+Natural Language Processing , pages 1631–1642.
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Appendix A Cautionary Notes 
+
+ 
+ We caution that the estimator described in the text of Dodge et al. is .
+This is clear from their equation (7) where the empirical distribution is defined over the first samples, instead of the samples that we use here.
+In other words, they claim, at least in the text, to use instead of for their estimator .
+Clearly, the estimator is (much) worse than since the latter exploits all samples while the former only looks at the first samples.
+However, close examination of their codebase 
+ 1 
+ 
+ 
+ 
+ https://github.com/allenai/allentune reveals that they use , so the paper discrepancy is a simple notation error. 
+ 
+ 
+ Lastly, we mention that our notation for and is motivated by the fact that the former is a -statistic while the latter is a -statistic. The relation between the two has been heavily studied in statistics since Hoeffding’s seminar work. For us, it suffices to point out that , with the latter being unbiased while the former is only asymptotically unbiased.
+The difference between the two is more pronounced when is close to .
+We note that can be computed by a reasonable approximation of the binomial coefficients, using say Stirling’s formula. 
+ 
+ 
+ 
+ Appendix B Proof of Theorem 2 
+
+ 
+ Theorem 3 . 
+ 
+ If the sample does not contain the population maximum, exponentially quickly as and increase. 
+ 
+ 
+ 
+ Proof. 
+ 
+ Suppose is not in the sample , where .
+Then 
+ 
+ From Equation 2.1, , hence 
+ 
+ Thus concluding the proof.
+∎ 
+ 
+ 
+ 
+ 
+ Appendix C Experimental Settings 
+
+ 
+ 
+ 
+ We present hyperparameters in Tables 1 and 2 and Figure 5 .
+We conduct all GloVe and ELMo experiments using PyTorch 1.3.0 with CUDA 10.0 and cuDNN 7.6.3, running on NVIDIA Titan RTX, Titan V, and RTX 2080 Ti graphics accelerators. Our MLP and LSTM experiments use PyTorch 0.4.1 with CUDA 9.2 and cuDNN 7.1.4, running on RTX 2080 Ti’s. We use Hedwig 
+ 2 
+ 
+ 
+ 
+ https://github.com/castorini/hedwig for the document classification experiments and the Show Your Work codebase (see link in Table 1 ) for the sentiment classification ones. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Experimental support, please
+ view the build logs 
+ for errors. Generated by
+ 
+ 
+ L
+ A 
+ T
+ E 
+ 
+ xml 
+ 
+ .
+ 
+ 
+ Instructions for reporting errors 
+ We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+ support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+ methods listed below: 
+ 
+ Click the "Report Issue" ( ) button, located in the page header. 
+ 
+ Tip: You can select the relevant text first, to include it in your report. 
+ Our team has already identified the following issues . We appreciate your time reviewing and reporting rendering errors we
+ may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+ should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+ all. 
+ Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion , and welcome developer contributions . 
+ 
+ 
+ 
+ 
+ 
+ We gratefully acknowledge support from
+ our major funders ,
+ member institutions , ,
+ and all contributors.
+ 
+ 
+ About 
+ · 
+ Help 
+ · 
+ Contact 
+ · 
+ Subscribe 
+ · 
+ Copyright 
+ · 
+ Privacy 
+ · 
+ Accessibility 
+ · 
+ Operational Status (opens in new tab) 
+ 
+ 
+
+ 
+ Major funding support from 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

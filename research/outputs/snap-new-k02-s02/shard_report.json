@@ -1,0 +1,215 @@
+{
+ "done": [
+  "dclm-baseline-top-fw-10p__1B__seed-5__step-69369",
+  "dclm-baseline-top-fw-3p__1B__seed-2__step-69369",
+  "dclm-baseline-top-fw-3p__1B__seed-4__step-69369",
+  "dclm-baseline-top-fw-3p__1B__seed-5__step-69369",
+  "dclm-baseline-top-fw2-7p__1B__seed-2__step-69369",
+  "dclm-baseline-top-fw2-7p__1B__seed-4__step-69369",
+  "dclm-baseline-top-fw2-7p__1B__seed-5__step-69369",
+  "dclm-baseline-top-fw3-7p__1B__seed-2__step-69369",
+  "dclm-baseline-top-fw3-7p__1B__seed-4__step-69369",
+  "dclm-baseline-top-fw3-7p__1B__seed-5__step-69369",
+  "dolma1.6++__1B__seed-2__step-69369",
+  "dolma1.6++__1B__seed-4__step-69369",
+  "dolma1.6++__1B__seed-5__step-69369",
+  "dolma1.7-no-code__1B__seed-2__step-69369",
+  "dolma1.7-no-code__1B__seed-4__step-69369",
+  "dolma1.7-no-code__1B__seed-5__step-69369",
+  "dolma1.7-no-flan__1B__seed-2__step-69369",
+  "dolma1.7__1B__seed-2__step-69369",
+  "dolma1.7__1B__seed-4__step-69369",
+  "dolma1.7__1B__seed-5__step-69369"
+ ],
+ "exit_codes": {
+  "0": 0,
+  "1": 0
+ },
+ "failed": [],
+ "not_started": [],
+ "requests_sha256": "77118327b441931a17a2d2e90ee8e162c0192c99b472f2eedf0bad99a0025c43",
+ "shard": "snap-new-k02-s02",
+ "timing": {
+  "dclm-baseline-top-fw-10p__1B__seed-5__step-69369": {
+   "check": {
+    "packed": 5.9604644775390625e-05
+   },
+   "download": 44.19014573097229,
+   "load": 61.78521776199341,
+   "mode": "packed",
+   "score": 2255.535599708557
+  },
+  "dclm-baseline-top-fw-3p__1B__seed-2__step-69369": {
+   "check": {
+    "packed": 2.765655517578125e-05
+   },
+   "download": 43.81504511833191,
+   "load": 62.09533452987671,
+   "mode": "packed",
+   "score": 2781.3815038204193
+  },
+  "dclm-baseline-top-fw-3p__1B__seed-4__step-69369": {
+   "check": {
+    "packed": 5.054473876953125e-05
+   },
+   "download": 25.18253779411316,
+   "load": 1.7642340660095215,
+   "mode": "packed",
+   "score": 2261.1856129169464
+  },
+  "dclm-baseline-top-fw-3p__1B__seed-5__step-69369": {
+   "check": {
+    "packed": 3.528594970703125e-05
+   },
+   "download": 27.431248903274536,
+   "load": 1.7515897750854492,
+   "mode": "packed",
+   "score": 2768.244334936142
+  },
+  "dclm-baseline-top-fw2-7p__1B__seed-2__step-69369": {
+   "check": {
+    "packed": 2.574920654296875e-05
+   },
+   "download": 26.116928577423096,
+   "load": 1.8077383041381836,
+   "mode": "packed",
+   "score": 2264.472487926483
+  },
+  "dclm-baseline-top-fw2-7p__1B__seed-4__step-69369": {
+   "check": {
+    "packed": 6.771087646484375e-05
+   },
+   "download": 14.398535966873169,
+   "load": 1.8622303009033203,
+   "mode": "packed",
+   "score": 2770.1412827968597
+  },
+  "dclm-baseline-top-fw2-7p__1B__seed-5__step-69369": {
+   "check": {
+    "packed": 3.62396240234375e-05
+   },
+   "download": 28.594138383865356,
+   "load": 1.7818934917449951,
+   "mode": "packed",
+   "score": 2266.92001080513
+  },
+  "dclm-baseline-top-fw3-7p__1B__seed-2__step-69369": {
+   "check": {
+    "packed": 7.2479248046875e-05
+   },
+   "download": 24.884676694869995,
+   "load": 1.816267967224121,
+   "mode": "packed",
+   "score": 2768.9748203754425
+  },
+  "dclm-baseline-top-fw3-7p__1B__seed-4__step-69369": {
+   "check": {
+    "packed": 3.695487976074219e-05
+   },
+   "download": 14.91664457321167,
+   "load": 1.8389158248901367,
+   "mode": "packed",
+   "score": 2260.8239920139313
+  },
+  "dclm-baseline-top-fw3-7p__1B__seed-5__step-69369": {
+   "check": {
+    "packed": 3.0994415283203125e-05
+   },
+   "download": 24.89733099937439,
+   "load": 1.8127613067626953,
+   "mode": "packed",
+   "score": 2771.3530802726746
+  },
+  "dolma1.6++__1B__seed-2__step-69369": {
+   "check": {
+    "packed": 3.24249267578125e-05
+   },
+   "download": 15.800798416137695,
+   "load": 1.8872888088226318,
+   "mode": "packed",
+   "score": 2255.663320541382
+  },
+  "dolma1.6++__1B__seed-4__step-69369": {
+   "check": {
+    "packed": 4.0531158447265625e-05
+   },
+   "download": 29.5529842376709,
+   "load": 1.763859748840332,
+   "mode": "packed",
+   "score": 2772.7939207553864
+  },
+  "dolma1.6++__1B__seed-5__step-69369": {
+   "check": {
+    "packed": 7.534027099609375e-05
+   },
+   "download": 15.565289735794067,
+   "load": 1.9010553359985352,
+   "mode": "packed",
+   "score": 2273.811606645584
+  },
+  "dolma1.7-no-code__1B__seed-2__step-69369": {
+   "check": {
+    "packed": 6.532669067382812e-05
+   },
+   "download": 15.535971403121948,
+   "load": 1.9143798351287842,
+   "mode": "packed",
+   "score": 2262.4034185409546
+  },
+  "dolma1.7-no-code__1B__seed-4__step-69369": {
+   "check": {
+    "packed": 9.250640869140625e-05
+   },
+   "download": 29.262521743774414,
+   "load": 1.7958626747131348,
+   "mode": "packed",
+   "score": 2772.854466676712
+  },
+  "dolma1.7-no-code__1B__seed-5__step-69369": {
+   "check": {
+    "packed": 7.009506225585938e-05
+   },
+   "download": 27.00161838531494,
+   "load": 1.8680429458618164,
+   "mode": "packed",
+   "score": 2262.8441569805145
+  },
+  "dolma1.7-no-flan__1B__seed-2__step-69369": {
+   "check": {
+    "packed": 4.4345855712890625e-05
+   },
+   "download": 14.106205940246582,
+   "load": 1.8644497394561768,
+   "mode": "packed",
+   "score": 2776.1349210739136
+  },
+  "dolma1.7__1B__seed-2__step-69369": {
+   "check": {
+    "packed": 4.414469003677368e-05
+   },
+   "download": 16.290465593338013,
+   "load": 1.9421756267547607,
+   "mode": "packed",
+   "score": 2768.867326259613
+  },
+  "dolma1.7__1B__seed-4__step-69369": {
+   "check": {
+    "packed": 3.170967102050781e-05
+   },
+   "download": 15.088510513305664,
+   "load": 1.9384973049163818,
+   "mode": "packed",
+   "score": 2265.604153394699
+  },
+  "dolma1.7__1B__seed-5__step-69369": {
+   "check": {
+    "packed": 5.435943603515625e-05
+   },
+   "download": 15.069258451461792,
+   "load": 1.965728759765625,
+   "mode": "packed",
+   "score": 2769.8262248039246
+  }
+ },
+ "wall_seconds": 29198.710587978363
+}

@@ -1,0 +1,338 @@
+{
+  "artifact": "ara_snap",
+  "artifact_dir": "/Users/garyzhang/Documents/ChatGPT/iclr main track/work/ara_snap",
+  "review_version": "3.0.0",
+  "prerequisite": "Level 1 passed",
+
+  "overall": {
+    "grade": "Accept",
+    "mean_score": 3.83,
+    "one_line_summary": "A carefully scoped estimator artifact whose claims carry exploratory labels, calibration evidence and a documented failed registered test, held back mainly by falsification rules for the second-family checks that cannot count against the headline and by two claims (the accuracy bound and the decision-impact null) stated more precisely than their own sensitivity analyses allow.",
+    "strengths_summary": [
+      "Scope discipline is unusually strong: every empirical claim repeats its exploratory or registered status, the estimand is repeatedly narrowed to covariance among released runs at the selected steps, and constraints.md lists identification, power and provenance limits with numbers.",
+      "Negative results are first-class: the failed registered held-out test (C07), unreachable planning thresholds (C14), degenerate competence proxy (C12) and never-formed screening split are recorded as claims and as dead ends with concrete failure modes.",
+      "Inference is calibrated in simulation across twelve populations with bias, coverage and competing interval constructions, and deletion, weighting, checkpoint and clustering sensitivities are reported beside the headline interval."
+    ],
+    "weaknesses_summary": [
+      "The headline reading of 1.244 as run covariance depends on assumption A2, and the only design that targets the benchmark-wide shared item effect (R2) runs on PolyPythias, so the headline family is left without that check even after scoring finishes.",
+      "The R1 and R2 rules are asymmetric: a failed R1 is pre-declared to bound rather than refute, and the R2 'not supported' verdict rests on a difference interval including zero with no equivalence margin, and neither rule reports pre-scoring power or jackknife coverage.",
+      "C05's accuracy bound of 1.157 and C18's 'at most 0.009' change are stated more tightly than the artifact's own auxiliary-contrast, adjacent-checkpoint and bootstrap-interval results support."
+    ]
+  },
+
+  "dimensions": {
+    "D1_evidence_relevance": {
+      "score": 4,
+      "strengths": [
+        "Every supported claim links to experiments whose procedures address the statement directly: E02 for the headline estimate, E03 for deletion claims, E04 for the registered test, E05 for item dependence, E13 for decision impact.",
+        "Claim types match designs well: the descriptive and composition claims (C04, C06) rest on exhaustive deletions and subset enumeration, the calibration claim (C09) on twelve heterogeneous simulated populations, and the negative mechanism claim (C12) on simulations with no competence variable.",
+        "Several claims draw on multiple independent constructions (C02 cites wild bootstrap, test inversion, Beran prepivoting, residual-scaled wild, a separate implementation and a trait-specific permutation null)."
+      ],
+      "weaknesses": [
+        "C02's interpretation as run covariance relies on the zero cross-half item covariance assumption; E05 tests only sub-benchmark sharing, and the design aimed at the benchmark-wide shared item effect (E16) is on a different model family.",
+        "C04's recipe-pair deletion result is asserted in the claim but no evidence file carries recipe or recipe-pair deletion values; E03's evidence map covers benchmark and size removal only."
+      ],
+      "suggestions": [
+        "Score the DataDecide runs (or a subset of configurations) on bank 2 so the disjoint-bank identification check covers the headline family, or state in C02 that its run-covariance reading is conditional on A2 at the benchmark-wide level.",
+        "Add an evidence table for recipe and recipe-pair deletions (estimate and interval per deletion, or at least the minimum lower endpoint)."
+      ]
+    },
+    "D2_falsifiability": {
+      "score": 3,
+      "strengths": [
+        "Most exploratory claims give measurable, independently executable criteria with thresholds taken from the artifact itself (C10 names re-split SDs of 0.002 and 0.008, C04 names any deletion interval including one, C18 names an interval for the wrong-call change excluding zero).",
+        "The registered and pre-fixed rules (held-out test, R1, R2) are mechanical and name the interval that decides them, and the three R2 verdicts are mutually exclusive.",
+        "Refuted claims (C07, C14) honestly state that the verdict changes only if the registered computation is shown wrong or that the enumeration is exhaustive."
+      ],
+      "weaknesses": [
+        "C20's pre-written fail branch says a failure would bound the effect rather than show it absent, so R1 can confirm but not disconfirm, and no pre-scoring pass probability or jackknife coverage at nine seeds is recorded.",
+        "C21's 'not supported' verdict accepts the no-shared-item reading when a jackknife difference interval includes zero, with no equivalence margin and confounded bank differences.",
+        "C09's criterion uses 'well below 0.95' without a threshold, and its 'positive bias under null populations' branch is technically met by the reported null mean of 1.0009 on margins.",
+        "C01's simulation-based falsifier draws data from the assumed measurement model, so it can detect algebra or code errors but not failure of the identifying assumptions.",
+        "C05's second falsifier (a power calculation) would change the interpretation of the bound, not falsify it."
+      ],
+      "suggestions": [
+        "For R1, register an upper-side rule before scoring (for example, a jackknife upper endpoint below a stated value counts as non-replication) and record the simulated pass rate and coverage of the t(8) jackknife at the 45-run design.",
+        "For R2, fix an equivalence margin on the log difference so 'not supported' requires the difference interval to sit inside it, and state the simulated verdict distribution under zero and under a 0.124 shared-item share.",
+        "Give C09 a numeric coverage floor (for example below 0.90) and a Monte Carlo tolerance for null bias.",
+        "Replace C01's simulation falsifier with one that targets the assumption, such as a disjoint-bank estimate differing from the within-bank estimate beyond its interval."
+      ]
+    },
+    "D3_scope_calibration": {
+      "score": 4,
+      "strengths": [
+        "Universal language is largely absent; statements carry their population, score scale, checkpoint rule and exploratory status, and C10, C15, C16 and C19 downgrade to hypothesis or low-powered bound where evidence is thin.",
+        "Assumptions A1-A8 are explicit, including the ones the data cannot satisfy (A1 i.i.d. run effects, A4 recipe clustering), and constraints.md states what the factor does not mean (not seed-only covariance, not a count of independent information sources, not a distribution over batteries).",
+        "C06 and H08 frame the benchmark-removal spread as a property of this battery rather than sampling uncertainty over batteries."
+      ],
+      "weaknesses": [
+        "C05 presents 1.157 as the accuracy bound, yet the auxiliary contrast upper limit is 1.207 (Table 1), the adjacent checkpoint upper limit is 1.210 (C13) and the original ten at the registered scope reach 1.246 (Table 2).",
+        "C18 reads non-significant wrong-call differences as 'barely changes', although at 300M margins the interval runs to 0.049 against a rate of 0.060.",
+        "C07 reports that the original ten pass at the registered scope but omits that the original auxiliary contrast at that scope gives [0.738, 1.629], which would also fail the rule.",
+        "C10 fuses a supported sub-benchmark finding and an untested benchmark-wide hypothesis under one status.",
+        "C04's interpretation 'and all of its neighbourhood' is not defined by any reported quantity."
+      ],
+      "suggestions": [
+        "Qualify C05 as 'at the selected checkpoint under the three-run contrast' and report the range of upper limits across the artifact's own constructions.",
+        "Recast C18 with an equivalence framing (the largest change consistent with the data is 0.049) or state the smallest effect the design could detect.",
+        "Add the auxiliary-contrast rows to C07's statement or interpretation.",
+        "Split C10 into a supported claim and a separate hypothesis claim linked to C21.",
+        "Replace 'all of its neighbourhood' with the near-flat Dirichlet result it presumably refers to."
+      ]
+    },
+    "D4_argument_coherence": {
+      "score": 4,
+      "strengths": [
+        "The arc from O2 (item noise contaminates naive covariance) and O3 (replicates exist) to the cross-half insight, the pipeline in architecture.md and C01-C03 is tight, with each component traceable to an equation.",
+        "Every gap maps to claims: G1 to C01-C03, G2 to C09 and C19, G3 to C10 and C21, G4 to C07, C15, C16 and C20, G5 to C18.",
+        "Claims, tree and evidence agree numerically across layers (for example 1.244 [1.143, 1.338], 1.786 without BoolQ, 1.217 [0.872, 1.498])."
+      ],
+      "weaknesses": [
+        "G3 and G4 are motivated for the DataDecide headline but their planned resolutions (R2, R1) run on PolyPythias, so even completed results address the headline family only by analogy."
+      ],
+      "suggestions": [
+        "State in problem.md how a PolyPythias R2 verdict would transfer to the DataDecide estimate, or add the planned R3 (headline on fresh items) as an experiment with its own rule."
+      ]
+    },
+    "D5_exploration_integrity": {
+      "score": 4,
+      "strengths": [
+        "Six dead ends carry specific failure modes with numbers (for example N16's enumeration range 1.037 to 1.317, N19's WinoGrande share above 99.99%) and transferable lessons.",
+        "Pivots (N14, N20, N31) state their triggers, and N20 records a pivot whose follow-up was not run instead of omitting it.",
+        "No claim advocates a rejected branch; C12 and C14 record the dead ends as negative results."
+      ],
+      "weaknesses": [
+        "The tree is reconstructed from the paper rather than from contemporaneous records, so its ordering and alternatives can reflect post hoc framing.",
+        "Some decisions list one alternative (N26) or alternatives that are weak by construction (N32's 'read results without a pre-fixed rule')."
+      ],
+      "suggestions": [
+        "Where execution records exist (queue logs, commit history), add timestamps or record identifiers to nodes so the order of events can be checked.",
+        "Add a genuine competing option to N32, such as a wild bootstrap over seeds or a permutation test over seed labels."
+      ]
+    },
+    "D6_methodological_rigor": {
+      "score": 4,
+      "strengths": [
+        "Interval constructions are compared against configuration and recipe percentile bootstraps and cluster t in simulation, with 2,000 and 10,000 replicate repeats.",
+        "Baselines are appropriate for the estimand: independence, auxiliary-run contrast, same-scope original battery for the held-out test, four-benchmark subsets, and independence and phenotypic plug-in models for prediction.",
+        "Reproducibility signals are strong: master split seed 20260101, bootstrap seed 0, 4,999 draws, pinned transformers and torch versions, float precision, and reference-path checks within 0.001 nats."
+      ],
+      "weaknesses": [
+        "E15 and E16 use a delete-one-seed t(8) jackknife whose coverage on a ratio at nine seeds is not calibrated anywhere in the artifact, unlike the wild bootstrap in E01.",
+        "E04 mixes hardware and torch versions across runs (T4 versus RTX 3090 for the last 20 at 1B), and constraints.md reports that such changes flip accuracy bits.",
+        "Many interval constructions and sensitivity subsets are reported, some added after seeing data, with no summary of how the primary conclusion would fare under a pre-declared primary alone."
+      ],
+      "suggestions": [
+        "Run the E01 calibration grid for the seed jackknife at the 45-run PolyPythias design before R1 and R2 are read.",
+        "Report the held-out estimate without the 20 RTX 3090 runs, or rescore a few of them on a T4 to bound the hardware effect.",
+        "Add a short table listing which constructions were planned and which were added later, with each one's verdict on excluding one."
+      ]
+    }
+  },
+
+  "findings": [
+    {
+      "finding_id": "F01",
+      "dimension": "D1_evidence_relevance",
+      "severity": "major",
+      "target_file": "logic/solution/constraints.md",
+      "target_entity": "C02",
+      "evidence_span": "DataDecide was not scored on the second bank, so 1.244 is untested on fresh items and the shared-item check is unrun in the headline family",
+      "observation": "C02 reads the 1.244 excess as run covariance, C10 states that a benchmark-wide shared item effect at a share of 0.124 would reproduce it and has not been measured, and the only design that targets that effect (E16/R2) scores PolyPythias rather than DataDecide.",
+      "reasoning": "The headline's substantive interpretation rests on A2 at the benchmark-wide level; E05's passage and permutation checks cannot see an effect carried by every item of a benchmark, and a PolyPythias R2 verdict transfers to DataDecide only by analogy.",
+      "suggestion": "Score some or all DataDecide configurations on bank 2 and apply the R2 rule there, or restate C02 as 'the cross-half ratio exceeds one' with the run-covariance reading explicitly conditional on A2."
+    },
+    {
+      "finding_id": "F02",
+      "dimension": "D2_falsifiability",
+      "severity": "major",
+      "target_file": "logic/claims.md",
+      "target_entity": "C20",
+      "evidence_span": "so a failure would bound the effect more than show it absent",
+      "observation": "R1 passes when the jackknife lower endpoint exceeds one, while its pre-written fail branch says a failure would only bound the effect; the design's synthetic range of 0.94 to 1.36 around a true 1.24 implies a sizable chance of failure even when the effect is present, and no pass probability or jackknife coverage is recorded.",
+      "reasoning": "A replication rule that can confirm but not disconfirm has weak evidential value in one direction, and the registered held-out test already showed that lower-limit rules at reduced scope fail on width rather than on the effect.",
+      "suggestion": "Before scoring completes, record the simulated R1 pass rate at true values of 1.0, 1.1 and 1.24 and the t(8) jackknife coverage, and add a pre-fixed non-replication condition such as a jackknife upper endpoint below a stated value."
+    },
+    {
+      "finding_id": "F03",
+      "dimension": "D3_scope_calibration",
+      "severity": "major",
+      "target_file": "logic/claims.md",
+      "target_entity": "C05",
+      "evidence_span": "so the primary analysis bounds accuracy inflation at 1.157 (r_E < 0.038, K_eff > 7.47)",
+      "observation": "The artifact's own sensitivity results exceed the stated bound: the accuracy auxiliary contrast gives [0.939, 1.207] (Table 1), the adjacent earlier checkpoint gives [1.044, 1.210] (C13), and the original ten at the registered scope give [0.922, 1.246] (Table 2).",
+      "reasoning": "C05 and the PAPER.md summary present 1.157 as the accuracy bound, but it is the upper limit of one construction at one checkpoint; readers using it as a ceiling would understate plausible accuracy inflation by about 0.05.",
+      "suggestion": "Qualify the bound as 'at the selected checkpoint under the three-run contrast' and report the range of upper limits across auxiliary contrast, adjacent checkpoint and registered scope beside it."
+    },
+    {
+      "finding_id": "F04",
+      "dimension": "D3_scope_calibration",
+      "severity": "major",
+      "target_file": "logic/claims.md",
+      "target_entity": "C18",
+      "evidence_span": "changes the wrong-call rate by at most 0.009, from rates between 0.029 and 0.070, with every recipe-bootstrap interval for that change reaching zero",
+      "observation": "The claim title says the correction 'barely changes real recipe decisions', but Table 3's difference intervals reach 0.049 at 300M margins and 0.024 at 150M margins and 530M accuracy, against wrong-call rates of 0.051 to 0.070.",
+      "reasoning": "'At most 0.009' describes point estimates; intervals that include zero do not show the change is small when their upper ends approach the size of the rates themselves, so the null is read as evidence of absence.",
+      "suggestion": "State the largest change consistent with each interval, fix a practically negligible margin in advance and test equivalence against it, or reword the title to 'no detectable change at this design'."
+    },
+    {
+      "finding_id": "F05",
+      "dimension": "D2_falsifiability",
+      "severity": "minor",
+      "target_file": "logic/claims.md",
+      "target_entity": "C21",
+      "evidence_span": "the jackknife interval for the within-minus-cross difference in log inflation includes zero",
+      "observation": "R2's 'not supported' verdict requires the within-minus-cross difference interval to include zero, with no equivalence margin; the banks differ in split, item count (6,808 against 37,682) and exemplar overlap, and no pre-scoring verdict distribution is given.",
+      "reasoning": "With 40 within-configuration contrasts and a smaller second bank the difference interval is likely wide, so inclusion of zero is weak evidence against a shared-item component, and any positive difference cannot be attributed to that component alone given the bank confounds.",
+      "suggestion": "Fix an equivalence margin for the log difference, simulate the verdict distribution under shares 0 and 0.124 at this design, and name which bank difference would be checked if the 'supported' branch fires."
+    },
+    {
+      "finding_id": "F06",
+      "dimension": "D1_evidence_relevance",
+      "severity": "minor",
+      "target_file": "logic/claims.md",
+      "target_entity": "C04",
+      "evidence_span": "Recomputing the shipped margin interval after deleting each recipe, each recipe pair and each benchmark leaves an interval that excludes one every time",
+      "observation": "E03's evidence files (supp_table11, supp_table12, figure1, table7, supp_table7) cover benchmark, subset and size removal; no evidence file reports recipe or recipe-pair deletion estimates or intervals, only the prose range 1.207 to 1.256 for single recipes.",
+      "reasoning": "Support should flow through evidence/; the recipe-pair part of C04 is currently asserted without a traceable table of 300 deletions.",
+      "suggestion": "Add a derived evidence file with the minimum lower endpoint and the full distribution for recipe and recipe-pair deletions."
+    },
+    {
+      "finding_id": "F07",
+      "dimension": "D3_scope_calibration",
+      "severity": "minor",
+      "target_file": "logic/claims.md",
+      "target_entity": "C07",
+      "evidence_span": "the original ten benchmarks on the same runs give 1.240 with [1.054, 1.397] and pass",
+      "observation": "Table 2 also reports the original ten under the auxiliary contrast at the registered scope as 1.273 [0.738, 1.629], which would fail the registered rule, but C07 does not mention it.",
+      "reasoning": "The contrast between held-out failure and original pass is less clean than stated, since the original battery at 75 configurations also fails once the default-versus-auxiliary batch component is removed.",
+      "suggestion": "Add the auxiliary-contrast comparison to C07's evidence basis or interpretation, noting that at this scope both batteries fail under that contrast."
+    },
+    {
+      "finding_id": "F08",
+      "dimension": "D2_falsifiability",
+      "severity": "minor",
+      "target_file": "logic/claims.md",
+      "target_entity": "C09",
+      "evidence_span": "Coverage well below 0.95 in populations resembling the data, or positive bias under null populations.",
+      "observation": "'Well below' has no threshold and 'populations resembling the data' is undefined; the second branch is technically met by C01's reported null mean of 1.0009 on margins.",
+      "reasoning": "A criterion that is already satisfied as written, or that has no stated failure threshold, cannot discriminate between a working and a failing interval construction.",
+      "suggestion": "State a coverage floor (for example 0.90), define resembling populations by reference to the two fitted scenarios, and add a Monte Carlo tolerance to the null-bias branch."
+    },
+    {
+      "finding_id": "F09",
+      "dimension": "D2_falsifiability",
+      "severity": "minor",
+      "target_file": "logic/claims.md",
+      "target_entity": "C01",
+      "evidence_span": "or calibration simulations under independent noise returning mean inflation away from one beyond Monte Carlo error",
+      "observation": "E01 generates half scores from the same measurement model whose assumptions C01 states, so its simulation branch checks algebra and code rather than the identifying assumptions.",
+      "reasoning": "C01 is a conditional derivation; the empirically interesting failure is A2 not holding on real items, which the simulation cannot detect.",
+      "suggestion": "Keep the simulation as an implementation check and add an assumption-level falsifier, such as a cross-bank estimate on the same runs differing from the within-bank estimate beyond its interval."
+    },
+    {
+      "finding_id": "F10",
+      "dimension": "D2_falsifiability",
+      "severity": "minor",
+      "target_file": "logic/claims.md",
+      "target_entity": "C05",
+      "evidence_span": "or a power calculation showing high detection probability at 1.10",
+      "observation": "The second falsifier would alter the interpretation of the interval including one (low power), not the bound of 1.157 that the claim states.",
+      "reasoning": "A falsifier should target the asserted quantity; this one targets the reason for reading the result as a bound.",
+      "suggestion": "Replace it with a recomputation or independent design whose accuracy interval upper limit exceeds the stated bound at the same checkpoint and contrast."
+    },
+    {
+      "finding_id": "F11",
+      "dimension": "D6_methodological_rigor",
+      "severity": "minor",
+      "target_file": "logic/experiments.md",
+      "target_entity": "E04",
+      "evidence_span": "Hardware: 205 runs on Kaggle T4 cards; last 20 at 1B on three RTX 3090 cards",
+      "observation": "The registered test's last 20 runs used different hardware and torch 2.14.0 against 2.10.0, and constraints.md reports that a Turing-versus-Ada comparison changed 18 of 4,755 accuracy bits.",
+      "reasoning": "A hardware effect shared by the 20 runs could align with run or recipe structure at 1B and enter the cross-benchmark products; the 0.001-nat reference check bounds per-item drift but not its aggregate covariance contribution.",
+      "suggestion": "Report the held-out estimate excluding those 20 runs, or rescore several of them on a T4 and report the change in the 1B contribution."
+    },
+    {
+      "finding_id": "F12",
+      "dimension": "D3_scope_calibration",
+      "severity": "minor",
+      "target_file": "logic/claims.md",
+      "target_entity": "C10",
+      "evidence_span": "supported for the sub-benchmark checks; hypothesis (untested) for the benchmark-wide item effect",
+      "observation": "C10 carries two different epistemic statuses for two different propositions in one claim.",
+      "reasoning": "Downstream readers and C21's dependency on C10 cannot tell which half they rely on, and the untested half is the one that matters for C02.",
+      "suggestion": "Split C10 into a supported sub-benchmark claim and a separate hypothesis claim for the benchmark-wide effect that C21 tests."
+    },
+    {
+      "finding_id": "F13",
+      "dimension": "D3_scope_calibration",
+      "severity": "minor",
+      "target_file": "logic/claims.md",
+      "target_entity": "C04",
+      "evidence_span": "it covers four fifths of the weight simplex and all of its neighbourhood",
+      "observation": "'All of its neighbourhood' is not tied to a reported quantity; the only near-flat result mentioned elsewhere is the 2,000 flat and near-flat Dirichlet weightings in E03.",
+      "reasoning": "An unquantified universal in an interpretation reads as broader than the evidence.",
+      "suggestion": "Replace it with the near-flat Dirichlet concentration and the share of those intervals that exclude one."
+    },
+    {
+      "finding_id": "F14",
+      "dimension": "D5_exploration_integrity",
+      "severity": "suggestion",
+      "target_file": "trace/exploration_tree.yaml",
+      "target_entity": "N32",
+      "evidence_span": "Every node is reconstructed from main.tex, appendix_a.tex, appendices_bcd.tex and the",
+      "observation": "The tree is a reconstruction from the paper and supplement, and N32's second alternative (reading results without a pre-fixed rule) is a strawman.",
+      "reasoning": "Reconstruction from the final paper tends to present the path in its final framing; timestamps or record identifiers would let readers check the sequence the paper asserts, which matters here because registration times are uncorroborated.",
+      "suggestion": "Attach execution-record or commit identifiers to nodes where they exist, and give N32 a real competing option such as a seed-label permutation test."
+    },
+    {
+      "finding_id": "F15",
+      "dimension": "D6_methodological_rigor",
+      "severity": "suggestion",
+      "target_file": "logic/claims.md",
+      "target_entity": "C02",
+      "evidence_span": "a cluster test-inversion interval added later gives [1.095, 1.323]",
+      "observation": "C02 reports six interval constructions, some added after the data were seen, and many sensitivity subsets appear across C04-C13.",
+      "reasoning": "The margin conclusion holds under all of them, but readers cannot see at a glance which were planned, which is the protection against forking-path selection in an analysis the paper labels exploratory.",
+      "suggestion": "Add one evidence table listing each construction, whether it was planned or added later, and its verdict on excluding one, on both scales."
+    },
+    {
+      "finding_id": "F16",
+      "dimension": "D6_methodological_rigor",
+      "severity": "suggestion",
+      "target_file": "logic/claims.md",
+      "target_entity": "C11",
+      "evidence_span": "a practitioner could approximate inflation for a new battery from its formats and seed variances, untested on any other battery",
+      "observation": "The two-correlation fit is evaluated in sample and by leave-one-benchmark-out on the same ten benchmarks, while the four held-out tasks from E04 are already scored with known formats.",
+      "reasoning": "An out-of-battery test is available from existing data and would turn C11's practical suggestion from untested to tested.",
+      "suggestion": "Predict held-out inflation from the fitted within- and cross-format correlations and the held-out seed variances, and compare it with the observed 1.217."
+    }
+  ],
+
+  "questions_for_authors": [
+    "What pass probability does R1 have at the 45-run design if the true PolyPythias inflation equals 1.244, and what is the empirical coverage of the t(8) delete-one-seed jackknife on the squared ratio?",
+    "If R2 returns 'not supported' on PolyPythias, what argument carries that verdict to the DataDecide headline, given that DataDecide was not scored on bank 2?",
+    "Is there any external estimate or argument that makes a benchmark-wide shared item effect at 0.124 of item-noise variance implausible for these ten benchmarks?",
+    "Why is 1.157 preferred as the accuracy bound over the auxiliary-contrast upper limit of 1.207, given that the auxiliary contrast removes a batch component the three-run estimate carries?",
+    "Were the held-out estimates recomputed without the 20 runs scored on RTX 3090 cards?"
+  ],
+
+  "read_order": [
+    "PAPER.md",
+    "logic/claims.md",
+    "logic/experiments.md",
+    "logic/problem.md",
+    "logic/concepts.md",
+    "logic/solution/architecture.md",
+    "logic/solution/algorithm.md",
+    "logic/solution/constraints.md",
+    "logic/solution/heuristics.md",
+    "logic/related_work.md",
+    "trace/exploration_tree.yaml",
+    "evidence/README.md",
+    "evidence/tables/table1_primary_inflation.md",
+    "evidence/tables/table2_registered_heldout_test.md",
+    "evidence/tables/table3_wrong_call_rates.md",
+    "evidence/tables/pending_sec4_3_second_family_results.md"
+  ]
+}

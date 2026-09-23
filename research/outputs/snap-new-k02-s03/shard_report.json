@@ -1,0 +1,216 @@
+{
+ "done": [
+  "dolma1.7-no-flan__1B__seed-4__step-69369",
+  "dolma1.7-no-flan__1B__seed-5__step-69369",
+  "dolma1.7-no-math-no-code__1B__seed-2__step-57500",
+  "dolma1.7-no-math-no-code__1B__seed-4__step-57500",
+  "dolma1.7-no-math-no-code__1B__seed-5__step-57500",
+  "dolma1.7-no-reddit__1B__seed-2__step-69369",
+  "dolma1.7-no-reddit__1B__seed-4__step-69369",
+  "dolma1.7-no-reddit__1B__seed-5__step-69369",
+  "falcon-with-cc-top-10p__1B__seed-2__step-69369",
+  "falcon-with-cc-top-10p__1B__seed-4__step-69369",
+  "falcon-with-cc-top-10p__1B__seed-5__step-69369",
+  "falcon-with-cc-top-20p__1B__seed-2__step-69369",
+  "falcon-with-cc-top-20p__1B__seed-4__step-69369",
+  "falcon-with-cc-top-20p__1B__seed-5__step-69369",
+  "falcon-with-cc__1B__seed-2__step-69369",
+  "falcon-with-cc__1B__seed-4__step-69369",
+  "falcon-with-cc__1B__seed-5__step-69369",
+  "falcon__1B__seed-2__step-69369",
+  "falcon__1B__seed-4__step-69369",
+  "falcon__1B__seed-5__step-69369"
+ ],
+ "exit_codes": {
+  "0": 0,
+  "1": 0,
+  "2": 0
+ },
+ "failed": [],
+ "not_started": [],
+ "requests_sha256": "77118327b441931a17a2d2e90ee8e162c0192c99b472f2eedf0bad99a0025c43",
+ "shard": "s03",
+ "timing": {
+  "dolma1.7-no-flan__1B__seed-4__step-69369": {
+   "check": {
+    "packed": 3.55839729309082e-05
+   },
+   "download": 164.1254951953888,
+   "load": 25.718276262283325,
+   "mode": "packed",
+   "score": 735.6766664981842
+  },
+  "dolma1.7-no-flan__1B__seed-5__step-69369": {
+   "check": {
+    "packed": 3.4809112548828125e-05
+   },
+   "download": 162.95306277275085,
+   "load": 25.665530920028687,
+   "mode": "packed",
+   "score": 642.5653052330017
+  },
+  "dolma1.7-no-math-no-code__1B__seed-2__step-57500": {
+   "check": {
+    "packed": 4.1484832763671875e-05
+   },
+   "download": 159.78529143333435,
+   "load": 31.514905214309692,
+   "mode": "packed",
+   "score": 462.50238609313965
+  },
+  "dolma1.7-no-math-no-code__1B__seed-4__step-57500": {
+   "check": {
+    "packed": 8.153915405273438e-05
+   },
+   "download": 54.69373083114624,
+   "load": 6.3855531215667725,
+   "mode": "packed",
+   "score": 775.0073230266571
+  },
+  "dolma1.7-no-math-no-code__1B__seed-5__step-57500": {
+   "check": {
+    "packed": 4.00543212890625e-05
+   },
+   "download": 54.74552083015442,
+   "load": 8.078912019729614,
+   "mode": "packed",
+   "score": 673.8588631153107
+  },
+  "dolma1.7-no-reddit__1B__seed-2__step-69369": {
+   "check": {
+    "packed": 4.57763671875e-05
+   },
+   "download": 53.677929401397705,
+   "load": 9.020143747329712,
+   "mode": "packed",
+   "score": 466.3554792404175
+  },
+  "dolma1.7-no-reddit__1B__seed-4__step-69369": {
+   "check": {
+    "packed": 5.340576171875e-05
+   },
+   "download": 102.78061366081238,
+   "load": 6.460982084274292,
+   "mode": "packed",
+   "score": 764.4621396064758
+  },
+  "dolma1.7-no-reddit__1B__seed-5__step-69369": {
+   "check": {
+    "packed": 3.814697265625e-05
+   },
+   "download": 56.30837941169739,
+   "load": 8.199798822402954,
+   "mode": "packed",
+   "score": 681.1609621047974
+  },
+  "falcon-with-cc-top-10p__1B__seed-2__step-69369": {
+   "check": {
+    "packed": 4.601478576660156e-05
+   },
+   "download": 89.84702897071838,
+   "load": 10.142940044403076,
+   "mode": "packed",
+   "score": 467.17963218688965
+  },
+  "falcon-with-cc-top-10p__1B__seed-4__step-69369": {
+   "check": {
+    "packed": 2.8133392333984375e-05
+   },
+   "download": 54.59485197067261,
+   "load": 6.396956920623779,
+   "mode": "packed",
+   "score": 723.6951887607574
+  },
+  "falcon-with-cc-top-10p__1B__seed-5__step-69369": {
+   "check": {
+    "packed": 5.2034854888916016e-05
+   },
+   "download": 60.84545636177063,
+   "load": 8.328705072402954,
+   "mode": "packed",
+   "score": 560.3599529266357
+  },
+  "falcon-with-cc-top-20p__1B__seed-2__step-69369": {
+   "check": {
+    "packed": 3.3974647521972656e-05
+   },
+   "download": 55.88202261924744,
+   "load": 9.865297794342041,
+   "mode": "packed",
+   "score": 467.7354838848114
+  },
+  "falcon-with-cc-top-20p__1B__seed-4__step-69369": {
+   "check": {
+    "packed": 4.458427429199219e-05
+   },
+   "download": 54.04555630683899,
+   "load": 6.402568340301514,
+   "mode": "packed",
+   "score": 649.6990950107574
+  },
+  "falcon-with-cc-top-20p__1B__seed-5__step-69369": {
+   "check": {
+    "packed": 5.602836608886719e-05
+   },
+   "download": 53.61142587661743,
+   "load": 8.619806051254272,
+   "mode": "packed",
+   "score": 560.2382476329803
+  },
+  "falcon-with-cc__1B__seed-2__step-69369": {
+   "check": {
+    "packed": 4.935264587402344e-05
+   },
+   "download": 99.27525115013123,
+   "load": 16.313528537750244,
+   "mode": "packed",
+   "score": 464.63630747795105
+  },
+  "falcon-with-cc__1B__seed-4__step-69369": {
+   "check": {
+    "packed": 3.1948089599609375e-05
+   },
+   "download": 57.8810772895813,
+   "load": 6.396166801452637,
+   "mode": "packed",
+   "score": 734.7469613552094
+  },
+  "falcon-with-cc__1B__seed-5__step-69369": {
+   "check": {
+    "packed": 2.9921531677246094e-05
+   },
+   "download": 54.359071493148804,
+   "load": 8.284441471099854,
+   "mode": "packed",
+   "score": 661.5161209106445
+  },
+  "falcon__1B__seed-2__step-69369": {
+   "check": {
+    "packed": 3.2395124435424805e-05
+   },
+   "download": 57.77486252784729,
+   "load": 9.508699178695679,
+   "mode": "packed",
+   "score": 465.71565532684326
+  },
+  "falcon__1B__seed-4__step-69369": {
+   "check": {
+    "packed": 4.76837158203125e-05
+   },
+   "download": 58.047441244125366,
+   "load": 6.407130479812622,
+   "mode": "packed",
+   "score": 783.6367049217224
+  },
+  "falcon__1B__seed-5__step-69369": {
+   "check": {
+    "packed": 3.4332275390625e-05
+   },
+   "download": 101.30286026000977,
+   "load": 8.490404844284058,
+   "mode": "packed",
+   "score": 671.3579449653625
+  }
+ },
+ "wall_seconds": 6068.224524974823
+}
