@@ -1,0 +1,8 @@
+# Status, section APP (round 1)
+
+Files edited: deliverables/appendices_bcd.tex only (111,240 to 111,624 characters); deliverables/appendix_a.tex untouched (15,622), since no APP finding points into it.
+
+- R1-42: FIXED (appendices_bcd.tex:73, Zhou et al. Figure 3 now described as averaging per-seed Spearman correlations over training checkpoints, which measures co-movement along a trajectory with no seed deviations at a fixed step).
+- R1-43: FIXED (appendices_bcd.tex:73, Miller 2024 now described as item-sampling uncertainty with clustered and paired two-model comparisons while holding run variance fixed; Dufour and Zhao clauses kept in meaning, split out of the respectively-list).
+- R1-54: FIXED (four edits in appendices_bcd.tex: :70 OLMo 2 lacks pretraining-seed replicates since the midtraining soup ingredients share one stage-1 checkpoint and vary only data order; :75 Messing now decomposes variance from prompt and judge choice, separate from the three dependence papers; :77 cross-half identity credited to the repeated-measurement correction of spearman1904 and the split-half construction of spearman1910 and brown1910, with the following sentence renamed "The Spearman--Brown formula" to avoid a repeat cite; :213 bootstrap-t now cited to cameron2008, with bell2002 cited for few-cluster bias in sandwich variances). All keys already in references.tex and verified KEEP in citation_audit.md.
+- R1-59: REJECTED (confirmed: app:derivations and tab:notation are defined in appendix_a.tex, app:design and app:supplementary in appendices_bcd.tex, aliases in supplement_extended.tex, and deliverables/main.log has 0 "undefined" lines; the script reads main.tex alone).

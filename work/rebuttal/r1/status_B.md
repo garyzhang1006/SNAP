@@ -1,0 +1,17 @@
+# Section B status, round 1
+
+Slice length: 13,625 chars in, 13,624 out (slice_B.new.tex). No paragraph moved; cuts C6, C7 and C14 inside this section are left for the page-cut pass.
+
+- R1-05: FIXED. The identification paragraph now gives the prompt-format artefact as the operational example of a shared item effect, calls the 0.124 share a sensitivity parameter, and adds that the cross-format pairs (0.007, diagnostic 0.921, both from main.tex:226 and appendices_bcd.tex:128-132) constrain a uniform component and leave a format-following one open. The l.271 share-of-0.05 sentence stays in Section E's text since there was no room.
+- R1-08: NEEDS-EXPERIMENT. The fixed-bank inflation value (replicate SD of the full-bank battery average against independence, margins and accuracy, from released per-item scores) needs a CPU Kaggle kernel. The text part is done: Sec 2.1 now says the target transfers to a redrawn or extended bank and that item-specific run deviations on the released bank belong to the separate fixed-bank question (pointer to app:derivations).
+- R1-14: FIXED. Added after the K_eff sentence that both quantities normalise by the battery's own trace, so they can rise when removing a high-variance benchmark lowers sigma_agg, and that batteries are compared through sigma_agg (Table tab:primary).
+- R1-16: FIXED. The 33-configuration intervals are now called too wide to separate one from the full-sample estimates (no new numbers, so the 1.41 and 0.195 widths were not written), the auxiliary contrast now cites 1.256 from Table tab:primary, and the schedule caveat notes that the PolyPythias seeds share one final step (sec:family).
+- R1-36: FIXED. Replaced the self-weakening sentence with a clause saying the iid run-effect assumption holds only approximately for the released runs, pointing to Section 3, which now carries \label{sec:data}.
+- R1-37: FIXED. Deleted "The plan also has neither a supplied original file nor an independently corroborated date." and the "like the protocol's, that commit time isn't independently corroborated" clause. The enumeration sentence stays in place for the cut pass (C14).
+- R1-48: FIXED. "there" is now "at 4,000 replicates" (appendices_bcd.tex:251).
+- R1-49: NEEDS-EXPERIMENT. The bank-two manifest (6,808 items, per-benchmark counts) and the 1,081,575-set enumeration rerun both need result files, which means a CPU job on saved outputs. Text unchanged.
+- R1-56: FIXED. Added \label{eq:model} to the measurement model and dropped the unused \label{eq:effective} and \label{eq:information} (grep over deliverables/ found no \ref to either).
+- R1-57: FIXED. Named the recipe as dolma1.7-no-math-no-code. research/outputs/snap-r6-leave-one-out/r6_leave_one_out.json gives recipe index 17 a margin change of -0.036779, matching change_for_top_influence_recipe 0.036779 in research/outputs/snap-r6-influence/r6_influence.json, and the recipe list in snap-r6-leave-one-out.log maps index 17 to that name.
+- R1-61: REJECTED. The flagged strings (PIQA, MMLU) are benchmark proper names, and the sentence already lists them by name.
+
+Tightening edits that offset the added text, with no meaning change: shorter notation-table pointer, merged passage-independence sentence, r_E sentence reduced to its equal-variance condition, "Our remaining checks leave both verdicts in place" cut, the derivable "moves the margin lower endpoint down by 0.048" clause cut, and small wording trims in Secs 2.3 and 3. All \ci values, \ref targets and environments are kept.
