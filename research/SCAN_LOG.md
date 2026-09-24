@@ -3983,3 +3983,7 @@ This scan reviews Scan 118, which changed no text, and takes on appendix contras
 ## Scan 120 (01:27 EDT, 2026-09-24)
 
 Appendix A, which the scanner under-counts at 673 words because most of its 2,046 words sit in derivations. Its prose used "therefore" six times, so I read each one. Four carry a derivational step (half sizes differing, the variance-ratio bound, validity needing exchangeability, and the common-step target) and stay. Two only restate a conclusion the previous sentence already reached, "the null result above is therefore what..." and "the record therefore reads as one draw", and lost the word. The gate is clean. Ranking unchanged.
+
+## Scan 121 (01:31 EDT, 2026-09-24)
+
+This scan checks terms and notation for first use without a definition in the main text. Three items were used before or without a gloss. "Check G5" is now "gain-simulator check G5", after appendix C's description of G5 as the gain-simulator specification. The "rescaled plug-in" of Section 4.5 is now a "rescaled plug-in of observed score correlations", which is what the appendix table calls the phenotypic correlation plug-in, so the later "phenotypic plug-in" in Related work and the discussion has an antecedent. The contributions paragraph's "run effect follows the size band", used before Section 3 defines the bands, now reads "is shared within a model size". Λ, K_eff, r̄_E, trait, battery and bank are all defined before use. The decided variants still end on page 9. Ranking unchanged.
