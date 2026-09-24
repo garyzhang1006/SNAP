@@ -4022,3 +4022,6 @@ superpowers:using-superpowers re-run. paper-audit gate (ICLR venue) and pre_subm
 
 ## Scan 127 (2026-09-24 04:05 EDT)
 Reviews Scan 126 and applies the last open writing-only item of the ARS roadmap: contribution (iii) now states the planning result (with generic item noise, three runs per configuration resolve margin inflation and accuracy needs eight), scoped to the Discussion's simulation. Gates: claim_trace 0 unmatched, humanizer 100/100, clause-join rates within caps, seven variants end on page 9. Ranking unchanged at 3 of 10, since this improves the first read and moves no evidence.
+
+## Paper locked (2026-09-24 07:10 EDT)
+The user approved the DataDecide bank-two job, then cancelled it once the sizing showed it can't finish before the deadline: about 35 RTX 3090 card-hours in compute2/README.md, or about 119 T4 card-hours at the measured 3.4x T4 ratio, against a 30-hour weekly Kaggle cap per account that resets Friday 20:00 EDT, and the user's rule against dropping sizes. The paper is locked at commit 10603e0 plus this log entry, at an honest 3 of 10. No GPU time was spent.
