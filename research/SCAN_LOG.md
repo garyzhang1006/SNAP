@@ -3979,3 +3979,7 @@ Tables and derived arithmetic, no text change. K_eff in Table 1 equals ten over 
 ## Scan 119 (01:24 EDT, 2026-09-24)
 
 This scan reviews Scan 118, which changed no text, and takes on appendix contrast joins. appendices_bcd.tex ran while/although/whereas at 3.83 per thousand words (corpus4 maximum 3.32) and "however" at 0.06 (corpus4 minimum 0.39). Thirteen ", while" joins became a split with "however" (seven), a plain split (four) or "but" (two), in work/goal/edits_scan119.py. One split left "It beats the plug-in on every set" at seven words. It now reads "on every one of these sets", which I chose over "every set of runs" because the sets are size and scale groupings, not run sets. The gate shows no number change and no short prose sentences, all builds compile, and the decided variants end on page 9. Ranking unchanged.
+
+## Scan 120 (01:27 EDT, 2026-09-24)
+
+Appendix A, which the scanner under-counts at 673 words because most of its 2,046 words sit in derivations. Its prose used "therefore" six times, so I read each one. Four carry a derivational step (half sizes differing, the variance-ratio bound, validity needing exchangeability, and the common-step target) and stay. Two only restate a conclusion the previous sentence already reached, "the null result above is therefore what..." and "the record therefore reads as one draw", and lost the word. The gate is clean. Ranking unchanged.
