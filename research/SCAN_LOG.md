@@ -3937,3 +3937,7 @@ Ranking holds at 3 to 3.5. The fix answers the "so what" point of the external r
 ## Scan 109 (00:31 EDT, 2026-09-24)
 
 The paper-claim-audit skill, run in session (work/goal/audits/PAPER_CLAIM_AUDIT.md), gave PASS. Every main-text decimal matches some result leaf, which is weak evidence at 477 thousand leaves, and fifteen load-bearing numbers trace to named keys with correct rounding, including held-out 1.21651 shown as 1.217 and rule one at 1.30222 [0.92066, 1.59498]. One provenance gap remains: the practitioner simulation's 0.113 traces only to the LEDGER entry for snap-r9-decision. No text change, and the ranking is unchanged.
+
+## Scan 110 (00:36 EDT, 2026-09-24)
+
+A citation pass against the seven earlier citation audits and today's proceedings checks. The MultiBERTs entry listed Ian Tenney eleventh, while the ICLR 2022 page lists him third after Sellam and Yadlowsky, so the author order is now fixed. Summers and Dinneen (ICML 2021, PMLR 139, pp. 9913 to 9922, details copied from the PMLR page) compare sources of run-to-run nondeterminism, and the r1 audit had flagged them as a likely reviewer ask, so they now join the seed-variability sentence in Related work. MultiBERTs had been cited only in the appendix and now gets one clause in the main text, since a reviewer who knows it would expect it there. Reimers and Gurevych's pages (338 to 348) match the ACL Anthology bibtex. All eight builds compile with zero undefined references, and the decided variants end on page 9. Ranking unchanged.
