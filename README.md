@@ -1,20 +1,32 @@
-# SNAP 
+# SNAP
 
-Code for *The seed is the nonshared environment*, which treats the training seed
-of a language model the way behaviour genetics treats the part of the environment
-siblings do not share, and estimates the nonshared-environmental correlation
-matrix `R_E` across a battery of benchmarks without any measurement-error
-correction to argue about.
+Code for *Error Bars on Benchmark Averages Can Miss Run Covariance*. Error bars
+on a language model's benchmark average usually add up per-benchmark variances
+and leave out the covariance between benchmarks across training runs. The paper
+measures how much that covariance widens the average's standard deviation, and
+it estimates the covariance with SNAP, a cross-half estimator whose item halves
+are disjoint so that item-sampling noise drops out.
 
-The package is called `seednoise`. It reduces the DataDecide per-instance release
-to two phenotypes per item, splits every benchmark into two disjoint halves,
-estimates `Sigma_E` from the cross-half product of within-configuration
-deviations, and runs the four experiments the paper reports. Every number in the
-paper comes out of `seednoise` and nothing is hand-transcribed.
+The results the paper reports from this code:
+
+| quantity | value |
+|---|---|
+| margin inflation on 375 DataDecide runs | 1.244 [1.143, 1.338] |
+| accuracy inflation on the same runs | 1.078 [0.993, 1.157] |
+| replicate standard deviation of the full-bank average, margins | 1.237 [1.137, 1.331] |
+| pre-specified held-out test on four tasks (fails) | 1.217 [0.872, 1.498] |
+| PolyPythias, 45 runs, first pre-specified rule (fails) | 1.302 [0.921, 1.595] |
+| PolyPythias on a disjoint 6,808-item bank, second rule (undecided) | 1.293 [0.920, 1.580] |
+
+The Python package keeps its original name, `seednoise`, from an earlier
+framing of the project that treated the training seed as a source of
+environmental variance. The estimator and every table come from it, and no
+number in the paper is transcribed by hand.
 
 ## What the code computes
 
-Each run is scored on 37,682 items across ten traits. For item `i` with gold
+Each run is scored on 37,682 items across ten benchmarks, which the code calls
+traits. For item `i` with gold
 answer `g`, the two co-primary phenotypes are the per-byte margin
 `m = l(g)/bytes(g) - max_{k != g} l(k)/bytes(k)` and the accuracy `1[m > 0]`, so
 accuracy is the thresholded image of the margin and both come from one pass over
@@ -36,9 +48,8 @@ with `T_c` the cross-half product of the aggregate contrast and `U_c` the mean o
 the same product taken trait by trait. `Lambda^2 = 1 + (K-1) rbar_E` and
 `K_eff = K / Lambda^2`, so `Lambda = 1` is exactly the null of independent
 per-trait seed effects and needs no calibration constant. Everything is an average
-over an orthonormal basis of the mean-zero contrast space, and because every basis
-row is orthogonal to the all-ones vector, the raw-score failure that Remark 2
-describes cannot occur here.
+over an orthonormal basis of the mean-zero contrast space, and every basis row is
+orthogonal to the all-ones vector.
 
 Two confounds get their own machinery. The token budget is handled by scoring
 every configuration at the largest step all of its seeds reached, and by a
@@ -52,15 +63,15 @@ wild cluster bootstrap-t over the recipes with `t(G-1)` critical values, where
 a configuration bootstrap beside it, and `DEFF = 1 + 4 rho_ICC` reported so the
 effective sample size is visible.
 
-## Where the code departs from the registration
+## Where the code departs from the planning document
 
-The registration described eight screening recipes that would carry every design
+The planning document described eight screening recipes that would carry every design
 decision and 17 estimation recipes, 85 configurations, opened only once the gates
 had fired, with the partition fixed in a hashed plan. None of that exists in the
 code. Nothing draws the partition, no plan or hash was ever written, and every
 table under `results/datadecide` runs the gates and the headline on all 25
 recipes and 125 configurations; `tab_gates.csv` records `estimation_configs` as
-125 for that reason. The paper's text has to say so.
+125 for that reason. The paper's appendices say so.
 
 What can be recovered is the range the headline would have taken. Each
 configuration's `T_c` and `U_c` do not depend on which other configurations are
@@ -73,12 +84,12 @@ seednoise splitsweep --runs runs --out results
 ```
 
 writes `tab_splitsweep.csv` (minimum, quantiles, maximum, the share of subsets
-above the registered predictions of 1.349 on the margin and 1.40 on accuracy,
+above the planned predictions of 1.349 on the margin and 1.40 on accuracy,
 and the value the `split_seed` would have drawn had a seeded partition been
 implemented), `tab_splitsweep_recipes.csv` (per-recipe `T` and `U`, from which
 any subset can be recomputed by hand) and `splitsweep_source.json`. Every number
 in those files is post hoc and labelled as such; the seeded partition in
-particular is a reconstruction of a rule the registration never spelled out.
+particular is a reconstruction of a rule the planning document never spelled out.
 
 ## Install
 
@@ -190,6 +201,15 @@ tokens on the 50k Pythia vocabulary put about 12 GB of temporaries on top of the
 model and ran the 410M checkpoints out of memory on 22 GB cards. Lower
 `--max-tokens` if a card still fills.
 
+## compute2: the second family and the disjoint bank
+
+`compute2/` scores what the paper's pre-specified rules read. It builds the two
+request banks, checks each against its recorded hash, scores the 45 PolyPythias runs (nine seeds at 14M, 31M, 70M, 160M and 410M, step
+143,000) on the release's own items and on the disjoint bank, and applies the
+reading rules fixed before any run was scored. `compute2/README.md` has the
+jobs, their cost and the rules. The DataDecide job on bank two was not run, so
+the 1.244 headline has not been reproduced on fresh items.
+
 ## Notebooks
 
 `notebooks/` holds three Kaggle notebooks: one that fetches and reduces the
@@ -199,9 +219,9 @@ their outputs to `/kaggle/working`.
 
 ## Slurm
 
-`slurm/` holds sbatch scripts for the SCU cluster (Slurm, `scu-cpu` and
-`scu-gpu` partitions, Lustre scratch under `/athena/accardilab/scratch`), with
-the same split as the notebooks: a CPU array that fetches and reduces the
+`slurm/` holds sbatch scripts for a Slurm cluster with separate CPU and GPU
+partitions, with the same split as the notebooks: a CPU array that fetches and
+reduces the
 release, the registered analysis, the split sweep, the E5 sensitivity checks and
 their merge, a prefetch of the Hugging Face cache, a 27-task GPU array for arm 2
 and the G6 analysis on top of it. `bash slurm/pipeline.sh` submits the lot with
@@ -231,12 +251,16 @@ at once).
     compute extra/     every piece of compute, and the only folder a scoring run needs
       score_shard.py         scores one shard of checkpoints, one worker per GPU
       make_kaggle_shard.py   turns a shard into a private Kaggle kernel
-      shards/                the shard definitions; s03 is the one still unscored
+      shards/                the shard definitions
       common/ config/ data/  the scorer, its settings and the frozen request file
       heldout/               the registered held-out test and its k01 to k12 kernels
       research_kernels/      the kernels behind the appendices
       primary/               the primary reduction the supplement ships
       cluster/               the retired Slurm scripts, kept for the record
+
+    compute2/          the PolyPythias and bank-two scoring behind the pre-specified rules
+    kaggle/            standalone fetch and analysis scripts for Kaggle kernels
+    results/datadecide the tables and matrices the paper cites
 
 The submission source and built PDFs stay out of this repository while the paper
 is under review.
