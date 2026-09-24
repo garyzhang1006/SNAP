@@ -3933,3 +3933,7 @@ Ran the kill-argument skill's attack and adjudication myself (work/goal/audits/K
 Applied the P5 fix. Contribution (ii) now states that the split and the replicate standard deviation part ways when item noise is large, with DataDecide accuracy without BoolQ at 1.285 against 1.558 as the case. The discussion's recommendation paragraph says the split departs most from the replicate value when item noise fills much of the replicate variance. Both numbers were already in the paper (lines 108 and 172). Page 9 still has about twelve lines of room in the longest decided variant.
 
 Ranking holds at 3 to 3.5. The fix answers the "so what" point of the external review in part, but a reviewer weighing P1 won't move for it.
+
+## Scan 109 (01:35 EDT, 2026-09-24)
+
+The paper-claim-audit skill, run in session (work/goal/audits/PAPER_CLAIM_AUDIT.md), gave PASS. Every main-text decimal matches some result leaf, which is weak evidence at 477 thousand leaves, and fifteen load-bearing numbers trace to named keys with correct rounding, including held-out 1.21651 shown as 1.217 and rule one at 1.30222 [0.92066, 1.59498]. One provenance gap remains: the practitioner simulation's 0.113 traces only to the LEDGER entry for snap-r9-decision. No text change, and the ranking is unchanged.
