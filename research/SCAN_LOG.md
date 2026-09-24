@@ -3906,11 +3906,11 @@ The appendix register workflow was stopped on the user's instruction with 40 wri
 
 Appendix A on work/profile_tex.py before and after: ", so" 4.68 to 0.58 per thousand words, ", which" 4.68 to 0.58, while and although and whereas 7.02 to 4.65, "our" 0 to 2.32, "we" 4.68 to 5.81, median 16 to 17, standard deviation 7.2 to 7.4, 98 to 95 sentences; appendices B to D moved only in the four units. Gates: main and supplement build exit 0, maintext:end page 9, statements page 10, undefined 0 in both logs, colons 0 and uncontracted 0 and fragments 0 in the main text and Appendix A, the 18 table-label colons in the other appendices as before, minimum sentence eight words, identity scan clean, supplement zip rebuilt. Grade unchanged at 4.
 
-## Baseline before Scan 106 (00:30 EDT, 2026-09-24)
+## Baseline before Scan 106 (00:22 EDT, 2026-09-24)
 
 Honest grade at the start of the goal, taken from the pasted external review of b9a1934 and not re-scored upward, is 3 to 3.5 of 10 for ICLR main track. Both tests fixed before scoring that have resolved failed (held-out at 1.217 \[0.872, 1.498\], PolyPythias rule one at 1.302 \[0.921, 1.595\]), rule two waits on the bank-two GPU kernels, and the paper's positive result rests on one released population with 25 recipe clusters. No prose change can move those facts, so the scans below target what reviewers can still hold against the text: claims beyond evidence, post-hoc readings, and machine rhythm.
 
-## Scan 106 (00:40 EDT, 2026-09-24)
+## Scan 106 (00:24 EDT, 2026-09-24)
 
 Mechanical sub-scans by work/goal/scan.py (twenty purposes, P01 to P20) against the twelve verified corpus3 papers, whose clause-join maxima I measured on their text this session: ", so" 0.88 per thousand words, ", which" 2.23, ", and the" 0.91, therefore/thus/hence 1.82, because 1.44. The main text ran 3.80, 6.47, 2.66, 0.38 and 0.76 before the scan, so the consequence-after-every-fact habit recorded in memory had come back through the round-11 rewrites.
 
@@ -3918,7 +3918,7 @@ Applied 58 exact-match edits (work/goal/edits_scan106.py plus five therefore rem
 
 Ranking after Scan 106 is unchanged at 3 to 3.5, because removing the post-hoc reading answers review point three but nothing else a reviewer weighs has moved.
 
-## Scan 107 (01:05 EDT, 2026-09-24)
+## Scan 107 (00:27 EDT, 2026-09-24)
 
 The goal asks for at least twenty naturally written accepted papers. I confirmed nine corpus2 papers on ACL Anthology and PMLR pages and six more without local text (research/style_study/corpus4_verified.md), and research/style_study/analyze4.py now profiles all 21 measured papers against the main text. Scan 106's edits had pushed while/although/whereas to 5.01 per thousand words against a corpus4 maximum of 3.32, and sentences carrying a Figure, Table, Section or Appendix pointer ran at 0.288 against a maximum of 0.22.
 
@@ -3926,7 +3926,7 @@ Applied 30 edits (work/goal/edits_scan107.py and edits_scan107b.py). Fourteen co
 
 Ranking unchanged at 3 to 3.5, since these are readability changes a reviewer won't score.
 
-## Scan 108 (01:20 EDT, 2026-09-24)
+## Scan 108 (00:29 EDT, 2026-09-24)
 
 Ran the kill-argument skill's attack and adjudication myself (work/goal/audits/KILL_ARGUMENT.md). This wasn't the cross-model run the skill specifies, since no codex tool exists here and the goal rules out agents. Verdict FAIL, unresolved_critical. P1 is that both resolved tests fixed before scoring failed, which is research-level. P5 is that the paper's own recommendation, the replicate standard deviation, needs no SNAP, and it could be answered from numbers already in Section 2.
 
@@ -3934,6 +3934,6 @@ Applied the P5 fix. Contribution (ii) now states that the split and the replicat
 
 Ranking holds at 3 to 3.5. The fix answers the "so what" point of the external review in part, but a reviewer weighing P1 won't move for it.
 
-## Scan 109 (01:35 EDT, 2026-09-24)
+## Scan 109 (00:31 EDT, 2026-09-24)
 
 The paper-claim-audit skill, run in session (work/goal/audits/PAPER_CLAIM_AUDIT.md), gave PASS. Every main-text decimal matches some result leaf, which is weak evidence at 477 thousand leaves, and fifteen load-bearing numbers trace to named keys with correct rounding, including held-out 1.21651 shown as 1.217 and rule one at 1.30222 [0.92066, 1.59498]. One provenance gap remains: the practitioner simulation's 0.113 traces only to the LEDGER entry for snap-r9-decision. No text change, and the ranking is unchanged.
