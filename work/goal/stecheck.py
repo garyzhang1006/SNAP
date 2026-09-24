@@ -47,7 +47,8 @@ def paragraphs(name):
     lines = prose_lines(name)
     paras, cur, last = [], [], None
     for ln, text in lines:
-        if last is not None and ln != last + 1:
+        # a \cparagraph heading or a display equation starts a new paragraph in LaTeX
+        if last is not None and (ln != last + 1 or text.lstrip().startswith(("\\cparagraph", "\\[", "\\paragraph"))):
             paras.append(cur)
             cur = []
         cur.append((ln, text))
@@ -105,7 +106,7 @@ def main():
         for k, v in out.items():
             print(f"  {k}: {len(v)}")
             if detail:
-                for x in v[:60]:
+                for x in (v if "--all" in sys.argv else v[:60]):
                     print("     ", x)
 
 
