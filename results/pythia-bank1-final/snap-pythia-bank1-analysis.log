@@ -1,0 +1,150 @@
+[{"stream_name":"stdout","time":0.817970683,"data":"+ git clone -q https://github.com/garyzhang1006/SNAP.git /tmp/SNAP\n"}
+,{"stream_name":"stdout","time":2.3200263899999998,"data":"+ git -C /tmp/SNAP checkout -q 6cfedee87ac52695f96665ecc0a62ecdc97e1c35\n"}
+,{"stream_name":"stdout","time":2.358987426,"data":"+ python requests/build_bank1.py\n"}
+,{"stream_name":"stderr","time":3.914233582,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":5.841730096,"data":"[task] arc_challenge: 1172 docs\n"}
+,{"stream_name":"stdout","time":6.6761021419999995,"data":"[task] arc_easy: 2376 docs\n"}
+,{"stream_name":"stdout","time":8.958016731,"data":"[task] boolq: 3270 docs\n"}
+,{"stream_name":"stdout","time":11.0205834,"data":"[task] csqa: 1221 docs\n"}
+,{"stream_name":"stdout","time":13.982013781,"data":"[task] hellaswag: 10042 docs\n"}
+,{"stream_name":"stdout","time":14.335394589,"data":"[task] mmlu_abstract_algebra: 100 docs\n"}
+,{"stream_name":"stdout","time":14.679045739,"data":"[task] mmlu_anatomy: 135 docs\n"}
+,{"stream_name":"stdout","time":15.823709068,"data":"[task] mmlu_astronomy: 152 docs\n"}
+,{"stream_name":"stdout","time":16.761534295,"data":"[task] mmlu_business_ethics: 100 docs\n"}
+,{"stream_name":"stdout","time":17.917498102,"data":"[task] mmlu_clinical_knowledge: 265 docs\n"}
+,{"stream_name":"stdout","time":18.25955647,"data":"[task] mmlu_college_biology: 144 docs\n"}
+,{"stream_name":"stdout","time":18.598998248,"data":"[task] mmlu_college_chemistry: 100 docs\n"}
+,{"stream_name":"stdout","time":19.144662544,"data":"[task] mmlu_college_computer_science: 100 docs\n"}
+,{"stream_name":"stdout","time":19.48615322,"data":"[task] mmlu_college_mathematics: 100 docs\n"}
+,{"stream_name":"stdout","time":20.662036228,"data":"[task] mmlu_college_medicine: 173 docs\n"}
+,{"stream_name":"stdout","time":21.003234316,"data":"[task] mmlu_college_physics: 102 docs\n"}
+,{"stream_name":"stdout","time":21.347868619,"data":"[task] mmlu_computer_security: 100 docs\n"}
+,{"stream_name":"stdout","time":21.696861679,"data":"[task] mmlu_conceptual_physics: 235 docs\n"}
+,{"stream_name":"stdout","time":22.039350453,"data":"[task] mmlu_econometrics: 114 docs\n"}
+,{"stream_name":"stdout","time":22.994197927,"data":"[task] mmlu_electrical_engineering: 145 docs\n"}
+,{"stream_name":"stdout","time":23.377828541,"data":"[task] mmlu_elementary_mathematics: 378 docs\n"}
+,{"stream_name":"stdout","time":23.721522038,"data":"[task] mmlu_formal_logic: 126 docs\n"}
+,{"stream_name":"stdout","time":24.06082326,"data":"[task] mmlu_global_facts: 100 docs\n"}
+,{"stream_name":"stdout","time":25.229649354,"data":"[task] mmlu_high_school_biology: 310 docs\n"}
+,{"stream_name":"stdout","time":25.579905476,"data":"[task] mmlu_high_school_chemistry: 203 docs\n"}
+,{"stream_name":"stdout","time":25.920692436,"data":"[task] mmlu_high_school_computer_science: 100 docs\n"}
+,{"stream_name":"stdout","time":26.365476141,"data":"[task] mmlu_high_school_european_history: 165 docs\n"}
+,{"stream_name":"stdout","time":26.710420134,"data":"[task] mmlu_high_school_geography: 198 docs\n"}
+,{"stream_name":"stdout","time":27.056858345,"data":"[task] mmlu_high_school_government_and_politics: 193 docs\n"}
+,{"stream_name":"stdout","time":27.429662782,"data":"[task] mmlu_high_school_macroeconomics: 390 docs\n"}
+,{"stream_name":"stdout","time":27.793221979,"data":"[task] mmlu_high_school_mathematics: 270 docs\n"}
+,{"stream_name":"stdout","time":28.15478115,"data":"[task] mmlu_high_school_microeconomics: 238 docs\n"}
+,{"stream_name":"stdout","time":28.504750909,"data":"[task] mmlu_high_school_physics: 151 docs\n"}
+,{"stream_name":"stdout","time":28.906418554,"data":"[task] mmlu_high_school_psychology: 545 docs\n"}
+,{"stream_name":"stdout","time":29.267333997,"data":"[task] mmlu_high_school_statistics: 216 docs\n"}
+,{"stream_name":"stdout","time":29.708664663,"data":"[task] mmlu_high_school_us_history: 204 docs\n"}
+,{"stream_name":"stdout","time":30.356680572,"data":"[task] mmlu_high_school_world_history: 237 docs\n"}
+,{"stream_name":"stdout","time":30.706438148,"data":"[task] mmlu_human_aging: 223 docs\n"}
+,{"stream_name":"stdout","time":31.048641935,"data":"[task] mmlu_human_sexuality: 131 docs\n"}
+,{"stream_name":"stdout","time":31.393185333,"data":"[task] mmlu_international_law: 121 docs\n"}
+,{"stream_name":"stdout","time":31.736624276,"data":"[task] mmlu_jurisprudence: 108 docs\n"}
+,{"stream_name":"stdout","time":32.083386686,"data":"[task] mmlu_logical_fallacies: 163 docs\n"}
+,{"stream_name":"stdout","time":32.423892739,"data":"[task] mmlu_machine_learning: 112 docs\n"}
+,{"stream_name":"stdout","time":32.758699022,"data":"[task] mmlu_management: 103 docs\n"}
+,{"stream_name":"stdout","time":33.116553837,"data":"[task] mmlu_marketing: 234 docs\n"}
+,{"stream_name":"stdout","time":33.45241372,"data":"[task] mmlu_medical_genetics: 100 docs\n"}
+,{"stream_name":"stdout","time":33.871702364,"data":"[task] mmlu_miscellaneous: 783 docs\n"}
+,{"stream_name":"stdout","time":34.447397163,"data":"[task] mmlu_moral_disputes: 346 docs\n"}
+,{"stream_name":"stdout","time":34.921885045,"data":"[task] mmlu_moral_scenarios: 895 docs\n"}
+,{"stream_name":"stdout","time":35.289308978,"data":"[task] mmlu_nutrition: 306 docs\n"}
+,{"stream_name":"stdout","time":35.655696575,"data":"[task] mmlu_philosophy: 311 docs\n"}
+,{"stream_name":"stdout","time":36.022832931,"data":"[task] mmlu_prehistory: 324 docs\n"}
+,{"stream_name":"stdout","time":36.40373453,"data":"[task] mmlu_professional_accounting: 282 docs\n"}
+,{"stream_name":"stdout","time":37.254863148,"data":"[task] mmlu_professional_law: 1534 docs\n"}
+,{"stream_name":"stdout","time":37.655664316,"data":"[task] mmlu_professional_medicine: 272 docs\n"}
+,{"stream_name":"stdout","time":38.086345784,"data":"[task] mmlu_professional_psychology: 612 docs\n"}
+,{"stream_name":"stdout","time":38.42451314,"data":"[task] mmlu_public_relations: 110 docs\n"}
+,{"stream_name":"stdout","time":38.795972277,"data":"[task] mmlu_security_studies: 245 docs\n"}
+,{"stream_name":"stdout","time":39.198702512,"data":"[task] mmlu_sociology: 201 docs\n"}
+,{"stream_name":"stdout","time":39.552671981,"data":"[task] mmlu_us_foreign_policy: 100 docs\n"}
+,{"stream_name":"stdout","time":39.897875409,"data":"[task] mmlu_virology: 166 docs\n"}
+,{"stream_name":"stdout","time":40.241849577,"data":"[task] mmlu_world_religions: 171 docs\n"}
+,{"stream_name":"stdout","time":40.611576487,"data":"[task] openbookqa: 500 docs\n"}
+,{"stream_name":"stdout","time":41.054738948,"data":"[task] piqa: 1838 docs\n"}
+,{"stream_name":"stdout","time":41.623100721,"data":"[task] socialiqa: 1954 docs\n"}
+,{"stream_name":"stdout","time":41.986548519,"data":"[task] winogrande: 1267 docs\n"}
+,{"stream_name":"stdout","time":46.247038302,"data":"{\n"}
+,{"stream_name":"stdout","time":46.247075734,"data":" \"items\": 37682,\n"}
+,{"stream_name":"stdout","time":46.247087654,"data":" \"per_trait\": {\n"}
+,{"stream_name":"stdout","time":46.247093122,"data":"  \"arc_challenge\": 1172,\n"}
+,{"stream_name":"stdout","time":46.247098119,"data":"  \"arc_easy\": 2376,\n"}
+,{"stream_name":"stdout","time":46.247102832,"data":"  \"boolq\": 3270,\n"}
+,{"stream_name":"stdout","time":46.247124657,"data":"  \"csqa\": 1221,\n"}
+,{"stream_name":"stdout","time":46.247129036,"data":"  \"hellaswag\": 10042,\n"}
+,{"stream_name":"stdout","time":46.247132521,"data":"  \"mmlu\": 14042,\n"}
+,{"stream_name":"stdout","time":46.247136185,"data":"  \"openbookqa\": 500,\n"}
+,{"stream_name":"stdout","time":46.247140089,"data":"  \"piqa\": 1838,\n"}
+,{"stream_name":"stdout","time":46.247142822,"data":"  \"socialiqa\": 1954,\n"}
+,{"stream_name":"stdout","time":46.247145348,"data":"  \"winogrande\": 1267\n"}
+,{"stream_name":"stdout","time":46.247147886,"data":" },\n"}
+,{"stream_name":"stdout","time":46.247150371,"data":" \"sha256\": \"3130d19f88c2cb5dd040ff203200a9a3464e29b873635c1cd7768704b19fbcaf\"\n"}
+,{"stream_name":"stdout","time":46.247153208,"data":"}\n"}
+,{"stream_name":"stdout","time":46.425800671,"data":"+ python requests/freeze.py\n"}
+,{"stream_name":"stdout","time":47.832349298,"data":"[freeze] bank1: 37682 items, sha256 3130d19f88c2cb5dd040ff203200a9a3464e29b873635c1cd7768704b19fbcaf\n"}
+,{"stream_name":"stdout","time":49.291460311,"data":"45 score files match MANIFEST.sha256\n"}
+,{"stream_name":"stdout","time":49.291487713,"data":"+ python reduce.py --job pythia_bank1_final\n"}
+,{"stream_name":"stdout","time":80.41423365,"data":"[reduce] pythia_bank1_final: 45 reduced, 0 already present, under /tmp/SNAP/compute2/reduced/pythia_bank1_final\n"}
+,{"stream_name":"stdout","time":80.519413411,"data":"+ python analysis/estimates.py --release-runs /nonexistent --out /kaggle/working/results\n"}
+,{"stream_name":"stdout","time":83.219278614,"data":"[analysis] verify: not run\n"}
+,{"stream_name":"stdout","time":83.964690065,"data":"[analysis] pythia: ok\n"}
+,{"stream_name":"stdout","time":83.96491697,"data":"[analysis] datadecide: not run\n"}
+,{"stream_name":"stdout","time":83.966049417,"data":"{\n"}
+,{"stream_name":"stdout","time":83.966079741,"data":" \"V0_verification\": {\n"}
+,{"stream_name":"stdout","time":83.966086236,"data":"  \"pass\": null,\n"}
+,{"stream_name":"stdout","time":83.966091301,"data":"  \"status\": \"not run\",\n"}
+,{"stream_name":"stdout","time":83.966096225,"data":"  \"rule\": \"every verify run reproduces the release margins within the nats thresholds and agrees on correctness for at least the threshold fraction of items\"\n"}
+,{"stream_name":"stdout","time":83.966107241,"data":" },\n"}
+,{"stream_name":"stdout","time":83.966112063,"data":" \"R1_pythia_replicates_margin\": {\n"}
+,{"stream_name":"stdout","time":83.966117002,"data":"  \"lambda\": 1.3022243165382272,\n"}
+,{"stream_name":"stdout","time":83.966122162,"data":"  \"lo\": 0.9206589861012651,\n"}
+,{"stream_name":"stdout","time":83.966126974,"data":"  \"hi\": 1.5949806809105547,\n"}
+,{"stream_name":"stdout","time":83.966132124,"data":"  \"interval\": \"delete-one-seed jackknife t(8)\",\n"}
+,{"stream_name":"stdout","time":83.966137781,"data":"  \"pass\": false,\n"}
+,{"stream_name":"stdout","time":83.966142585,"data":"  \"rule\": \"nine-seed PolyPythias at one matched step, jackknife lower endpoint above one\"\n"}
+,{"stream_name":"stdout","time":83.966147799,"data":" },\n"}
+,{"stream_name":"stdout","time":83.96615228900001,"data":" \"R1_pythia_replicates_accuracy\": {\n"}
+,{"stream_name":"stdout","time":83.966157029,"data":"  \"lambda\": 1.4814118469703015,\n"}
+,{"stream_name":"stdout","time":83.966161982,"data":"  \"lo\": 0.5605288217300143,\n"}
+,{"stream_name":"stdout","time":83.966166518,"data":"  \"hi\": 2.018655384333315,\n"}
+,{"stream_name":"stdout","time":83.966169595,"data":"  \"interval\": \"delete-one-seed jackknife t(8)\",\n"}
+,{"stream_name":"stdout","time":83.966187603,"data":"  \"pass\": false,\n"}
+,{"stream_name":"stdout","time":83.966190325,"data":"  \"rule\": \"nine-seed PolyPythias at one matched step, jackknife lower endpoint above one\"\n"}
+,{"stream_name":"stdout","time":83.966192933,"data":" }\n"}
+,{"stream_name":"stdout","time":83.966195258,"data":"}\n"}
+,{"stream_name":"stdout","time":84.187856342,"data":"+ python analysis/report.py --results /kaggle/working/results\n"}
+,{"stream_name":"stdout","time":84.472132201,"data":"wrote /kaggle/working/results/RESULTS.md\n"}
+,{"stream_name":"stdout","time":84.524644563,"data":"{\n"}
+,{"stream_name":"stdout","time":84.524679578,"data":" \"V0_verification\": {\n"}
+,{"stream_name":"stdout","time":84.524685499,"data":"  \"pass\": null,\n"}
+,{"stream_name":"stdout","time":84.52469003,"data":"  \"status\": \"not run\",\n"}
+,{"stream_name":"stdout","time":84.524694561,"data":"  \"rule\": \"every verify run reproduces the release margins within the nats thresholds and agrees on correctness for at least the threshold fraction of items\"\n"}
+,{"stream_name":"stdout","time":84.524699067,"data":" },\n"}
+,{"stream_name":"stdout","time":84.524702884,"data":" \"R1_pythia_replicates_margin\": {\n"}
+,{"stream_name":"stdout","time":84.524705955,"data":"  \"lambda\": 1.3022243165382272,\n"}
+,{"stream_name":"stdout","time":84.524708417,"data":"  \"lo\": 0.9206589861012651,\n"}
+,{"stream_name":"stdout","time":84.524711177,"data":"  \"hi\": 1.5949806809105547,\n"}
+,{"stream_name":"stdout","time":84.524713615,"data":"  \"interval\": \"delete-one-seed jackknife t(8)\",\n"}
+,{"stream_name":"stdout","time":84.524716423,"data":"  \"pass\": false,\n"}
+,{"stream_name":"stdout","time":84.524718961,"data":"  \"rule\": \"nine-seed PolyPythias at one matched step, jackknife lower endpoint above one\"\n"}
+,{"stream_name":"stdout","time":84.524721642,"data":" },\n"}
+,{"stream_name":"stdout","time":84.524723976,"data":" \"R1_pythia_replicates_accuracy\": {\n"}
+,{"stream_name":"stdout","time":84.524726506,"data":"  \"lambda\": 1.4814118469703015,\n"}
+,{"stream_name":"stdout","time":84.524728861,"data":"  \"lo\": 0.5605288217300143,\n"}
+,{"stream_name":"stdout","time":84.5247314,"data":"  \"hi\": 2.018655384333315,\n"}
+,{"stream_name":"stdout","time":84.52473474600001,"data":"  \"interval\": \"delete-one-seed jackknife t(8)\",\n"}
+,{"stream_name":"stdout","time":84.524739067,"data":"  \"pass\": false,\n"}
+,{"stream_name":"stdout","time":84.524742751,"data":"  \"rule\": \"nine-seed PolyPythias at one matched step, jackknife lower endpoint above one\"\n"}
+,{"stream_name":"stdout","time":84.524746499,"data":" }\n"}
+,{"stream_name":"stdout","time":84.524749655,"data":"}\n"}
+,{"stream_name":"stderr","time":88.14032168,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":88.140368545,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":88.723546059,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":88.723588862,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":91.386051893,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":94.192686307,"data":"[NbConvertApp] Writing 287251 bytes to __results__.html\n"}
+]

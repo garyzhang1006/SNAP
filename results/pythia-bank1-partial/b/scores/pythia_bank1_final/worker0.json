@@ -1,0 +1,78 @@
+{
+ "done": [
+  "polypythias__410m__seed-2__step-143000",
+  "polypythias__410m__seed-6__step-143000",
+  "polypythias__160m__seed-2__step-143000",
+  "polypythias__160m__seed-6__step-143000",
+  "polypythias__70m__seed-2__step-143000"
+ ],
+ "failed": [],
+ "not_started": [],
+ "timing": {
+  "polypythias__410m__seed-2__step-143000": {
+   "download": 26.085278272628784,
+   "load": 32.54285931587219,
+   "score": 17149.836179971695,
+   "mode": "reference",
+   "check": {
+    "packed": 0.003459930419921875,
+    "unpadded": 0.0024862289428710938
+   },
+   "tokens": 17657002,
+   "size": "410m",
+   "family": "gptneox"
+  },
+  "polypythias__410m__seed-6__step-143000": {
+   "download": 17560.994737625122,
+   "load": 1.8119277954101562,
+   "score": 5936.9537127017975,
+   "mode": "unpadded",
+   "check": {
+    "packed": 0.0021963119506835938,
+    "unpadded": 0.0009608268737792969
+   },
+   "tokens": 17657002,
+   "size": "410m",
+   "family": "gptneox"
+  },
+  "polypythias__160m__seed-2__step-143000": {
+   "download": 6349.430989742279,
+   "load": 0.8327658176422119,
+   "score": 6336.157497406006,
+   "mode": "reference",
+   "check": {
+    "packed": 0.004374027252197266,
+    "unpadded": 0.0034208297729492188
+   },
+   "tokens": 17657002,
+   "size": "160m",
+   "family": "gptneox"
+  },
+  "polypythias__160m__seed-6__step-143000": {
+   "download": 6732.882448911667,
+   "load": 0.7642910480499268,
+   "score": 6282.643634796143,
+   "mode": "reference",
+   "check": {
+    "packed": 0.007559776306152344,
+    "unpadded": 0.005254268646240234
+   },
+   "tokens": 17657002,
+   "size": "160m",
+   "family": "gptneox"
+  },
+  "polypythias__70m__seed-2__step-143000": {
+   "download": 6645.32763171196,
+   "load": 0.4040050506591797,
+   "score": 2927.2900133132935,
+   "mode": "reference",
+   "check": {
+    "packed": 0.009537696838378906,
+    "unpadded": 0.007732033729553223
+   },
+   "tokens": 17657002,
+   "size": "70m",
+   "family": "gptneox"
+  }
+ }
+}

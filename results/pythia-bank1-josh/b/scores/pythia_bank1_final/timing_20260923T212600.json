@@ -1,0 +1,132 @@
+{
+ "polypythias__14m__seed-5__step-143000": {
+  "check": {
+   "packed": 0.01080322265625,
+   "unpadded": 0.01140594482421875
+  },
+  "download": 2965.224781513214,
+  "family": "gptneox",
+  "load": 0.26850295066833496,
+  "mode": "reference",
+  "score": 2479.3060431480408,
+  "size": "14m",
+  "tokens": 17657002
+ },
+ "polypythias__14m__seed-6__step-143000": {
+  "check": {
+   "packed": 0.017274856567382812,
+   "unpadded": 0.012569904327392578
+  },
+  "download": 2993.4838576316833,
+  "family": "gptneox",
+  "load": 0.26332569122314453,
+  "mode": "reference",
+  "score": 2501.805369615555,
+  "size": "14m",
+  "tokens": 17657002
+ },
+ "polypythias__14m__seed-7__step-143000": {
+  "check": {
+   "packed": 0.015023231506347656,
+   "unpadded": 0.01638317108154297
+  },
+  "download": 2879.6963744163513,
+  "family": "gptneox",
+  "load": 0.25194716453552246,
+  "mode": "reference",
+  "score": 2403.160189628601,
+  "size": "14m",
+  "tokens": 17657002
+ },
+ "polypythias__14m__seed-9__step-143000": {
+  "check": {
+   "packed": 0.007489204406738281,
+   "unpadded": 0.0075054168701171875
+  },
+  "download": 2911.3854928016663,
+  "family": "gptneox",
+  "load": 0.2613952159881592,
+  "mode": "reference",
+  "score": 2434.9899060726166,
+  "size": "14m",
+  "tokens": 17657002
+ },
+ "polypythias__31m__seed-5__step-143000": {
+  "check": {
+   "packed": 0.015171527862548828,
+   "unpadded": 0.017552852630615234
+  },
+  "download": 3282.8900129795074,
+  "family": "gptneox",
+  "load": 0.36038851737976074,
+  "mode": "reference",
+  "score": 2663.277806997299,
+  "size": "31m",
+  "tokens": 17657002
+ },
+ "polypythias__31m__seed-6__step-143000": {
+  "check": {
+   "packed": 0.007645606994628906,
+   "unpadded": 0.00951385498046875
+  },
+  "download": 3327.3891248703003,
+  "family": "gptneox",
+  "load": 0.34323811531066895,
+  "mode": "reference",
+  "score": 2691.235066652298,
+  "size": "31m",
+  "tokens": 17657002
+ },
+ "polypythias__31m__seed-7__step-143000": {
+  "check": {
+   "packed": 0.012358665466308594,
+   "unpadded": 0.010583877563476562
+  },
+  "download": 3044.157007217407,
+  "family": "gptneox",
+  "load": 0.3639712333679199,
+  "mode": "reference",
+  "score": 2580.818306684494,
+  "size": "31m",
+  "tokens": 17657002
+ },
+ "polypythias__31m__seed-9__step-143000": {
+  "check": {
+   "packed": 0.009194374084472656,
+   "unpadded": 0.010618209838867188
+  },
+  "download": 3071.46906208992,
+  "family": "gptneox",
+  "load": 0.3574814796447754,
+  "mode": "reference",
+  "score": 2609.8401453495026,
+  "size": "31m",
+  "tokens": 17657002
+ },
+ "polypythias__70m__seed-7__step-143000": {
+  "check": {
+   "packed": 0.01195383071899414,
+   "unpadded": 0.01050567626953125
+  },
+  "download": 22.619482040405273,
+  "family": "gptneox",
+  "load": 8.613919019699097,
+  "mode": "reference",
+  "score": 2929.9915721416473,
+  "size": "70m",
+  "tokens": 17657002
+ },
+ "polypythias__70m__seed-9__step-143000": {
+  "check": {
+   "packed": 0.01331329345703125,
+   "unpadded": 0.015170812606811523
+  },
+  "download": 4.096391201019287,
+  "family": "gptneox",
+  "load": 26.15407967567444,
+  "mode": "reference",
+  "score": 2974.6438014507294,
+  "size": "70m",
+  "tokens": 17657002
+ }
+}

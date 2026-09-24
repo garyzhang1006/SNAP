@@ -1,0 +1,114 @@
+{
+ "bank": "bank1",
+ "done": [
+  "polypythias__14m__seed-2__step-143000",
+  "polypythias__14m__seed-4__step-143000",
+  "polypythias__14m__seed-8__step-143000",
+  "polypythias__31m__seed-2__step-143000",
+  "polypythias__31m__seed-4__step-143000",
+  "polypythias__31m__seed-8__step-143000",
+  "polypythias__70m__seed-6__step-143000"
+ ],
+ "exit_codes": {
+  "0": 0,
+  "1": 0
+ },
+ "failed": [],
+ "job": "pythia_bank1_final",
+ "not_started": [],
+ "requests_sha256": "3130d19f88c2cb5dd040ff203200a9a3464e29b873635c1cd7768704b19fbcaf",
+ "timing": {
+  "polypythias__14m__seed-2__step-143000": {
+   "check": {
+    "packed": 0.012996673583984375,
+    "unpadded": 0.01248931884765625
+   },
+   "download": 3354.09681558609,
+   "family": "gptneox",
+   "load": 0.24911975860595703,
+   "mode": "reference",
+   "score": 2242.827066421509,
+   "size": "14m",
+   "tokens": 17657002
+  },
+  "polypythias__14m__seed-4__step-143000": {
+   "check": {
+    "packed": 0.009195327758789062,
+    "unpadded": 0.014125823974609375
+   },
+   "download": 2610.003704071045,
+   "family": "gptneox",
+   "load": 0.23213720321655273,
+   "mode": "reference",
+   "score": 2240.540698289871,
+   "size": "14m",
+   "tokens": 17657002
+  },
+  "polypythias__14m__seed-8__step-143000": {
+   "check": {
+    "packed": 0.020043283700942993,
+    "unpadded": 0.014878928661346436
+   },
+   "download": 2822.216641187668,
+   "family": "gptneox",
+   "load": 0.2271728515625,
+   "mode": "reference",
+   "score": 2214.8733315467834,
+   "size": "14m",
+   "tokens": 17657002
+  },
+  "polypythias__31m__seed-2__step-143000": {
+   "check": {
+    "packed": 0.007772922515869141,
+    "unpadded": 0.009110450744628906
+   },
+   "download": 2.0840516090393066,
+   "family": "gptneox",
+   "load": 34.99434304237366,
+   "mode": "reference",
+   "score": 2454.8168001174927,
+   "size": "31m",
+   "tokens": 17657002
+  },
+  "polypythias__31m__seed-4__step-143000": {
+   "check": {
+    "packed": 0.006230354309082031,
+    "unpadded": 0.007153511047363281
+   },
+   "download": 2827.055564403534,
+   "family": "gptneox",
+   "load": 0.34362053871154785,
+   "mode": "reference",
+   "score": 2461.996211528778,
+   "size": "31m",
+   "tokens": 17657002
+  },
+  "polypythias__31m__seed-8__step-143000": {
+   "check": {
+    "packed": 0.012026786804199219,
+    "unpadded": 0.008908271789550781
+   },
+   "download": 2827.9860405921936,
+   "family": "gptneox",
+   "load": 0.3394429683685303,
+   "mode": "reference",
+   "score": 2453.547245979309,
+   "size": "31m",
+   "tokens": 17657002
+  },
+  "polypythias__70m__seed-6__step-143000": {
+   "check": {
+    "packed": 0.008648157119750977,
+    "unpadded": 0.009188175201416016
+   },
+   "download": 33.94231367111206,
+   "family": "gptneox",
+   "load": 8.43571949005127,
+   "mode": "reference",
+   "score": 2978.165990591049,
+   "size": "70m",
+   "tokens": 17657002
+  }
+ },
+ "wall_seconds": 11083.514899969101
+}

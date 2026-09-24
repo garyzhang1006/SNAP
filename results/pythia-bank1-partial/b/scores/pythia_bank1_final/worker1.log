@@ -1,0 +1,18 @@
+[worker] {'torch': '2.10.0+cu128', 'transformers': '4.57.1', 'huggingface_hub': '0.36.2', 'gpu': 'Tesla T4', 'cuda': '12.8'} 37682 items
+`torch_dtype` is deprecated! Use `dtype` instead!
+[run] polypythias__410m__seed-4__step-143000 packed score 5158s (3423 tok/s) download 16s check {'packed': 8.20159912109375e-05}
+  packed path disagrees with the reference path by 0.00243 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00238 nats, trying the next path
+[run] polypythias__410m__seed-8__step-143000 reference score 16489s (1071 tok/s) download 5564s check {'packed': 0.00243377685546875, 'unpadded': 0.0023751258850097656}
+  packed path disagrees with the reference path by 0.00748 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00423 nats, trying the next path
+[run] polypythias__160m__seed-4__step-143000 reference score 6204s (2846 tok/s) download 16870s check {'packed': 0.007482051849365234, 'unpadded': 0.004228115081787109}
+  packed path disagrees with the reference path by 0.00363 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00485 nats, trying the next path
+[run] polypythias__160m__seed-8__step-143000 reference score 6195s (2850 tok/s) download 6592s check {'packed': 0.0036258697509765625, 'unpadded': 0.0048542022705078125}
+  packed path disagrees with the reference path by 0.0255 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.0149 nats, trying the next path
+[run] polypythias__70m__seed-4__step-143000 reference score 2905s (6078 tok/s) download 6557s check {'packed': 0.02554851770401001, 'unpadded': 0.014914512634277344}
+  packed path disagrees with the reference path by 0.0105 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.0172 nats, trying the next path
+[run] polypythias__70m__seed-8__step-143000 reference score 2931s (6024 tok/s) download 3255s check {'packed': 0.010478019714355469, 'unpadded': 0.017210960388183594}

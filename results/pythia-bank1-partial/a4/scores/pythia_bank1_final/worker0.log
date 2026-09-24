@@ -1,0 +1,8 @@
+[worker] {'torch': '2.10.0+cu128', 'transformers': '4.57.1', 'huggingface_hub': '0.36.2', 'gpu': 'Tesla T4', 'cuda': '12.8'} 37682 items
+`torch_dtype` is deprecated! Use `dtype` instead!
+  packed path disagrees with the reference path by 0.00512 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00353 nats, trying the next path
+[run] polypythias__160m__seed-7__step-143000 reference score 6079s (2904 tok/s) download 4s check {'packed': 0.005115509033203125, 'unpadded': 0.00353240966796875}
+  packed path disagrees with the reference path by 0.00664 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.0107 nats, trying the next path
+[run] polypythias__70m__seed-1__step-143000 reference score 2911s (6065 tok/s) download 6435s check {'packed': 0.0066356658935546875, 'unpadded': 0.010747909545898438}

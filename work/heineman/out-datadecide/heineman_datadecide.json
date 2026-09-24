@@ -1,0 +1,1557 @@
+{
+ "source": "allenai/signal-and-noise datadecide_intermediate",
+ "bootstrap_draws": 5000,
+ "results": [
+  {
+   "metric": "primary_metric",
+   "window": 5,
+   "scope": "150M",
+   "models": 75,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.0818289904429428,
+    "ci95": [
+     1.0038592448789627,
+     1.1618739182691638
+    ]
+   },
+   "detrend": {
+    "lam": 1.0221544322854659,
+    "ci95": [
+     0.9638042806140784,
+     1.0819085677934572
+    ]
+   }
+  },
+  {
+   "metric": "primary_metric",
+   "window": 5,
+   "scope": "300M",
+   "models": 75,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.080523540093733,
+    "ci95": [
+     0.984126571740396,
+     1.1597195775046294
+    ]
+   },
+   "detrend": {
+    "lam": 1.0782885674949343,
+    "ci95": [
+     0.979371900330488,
+     1.1462541930955492
+    ]
+   }
+  },
+  {
+   "metric": "primary_metric",
+   "window": 5,
+   "scope": "530M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.0405801707372815,
+    "ci95": [
+     0.9453644538174751,
+     1.151560062423065
+    ]
+   },
+   "detrend": {
+    "lam": 1.0402533571176922,
+    "ci95": [
+     0.9415323906680156,
+     1.1365344290777664
+    ]
+   }
+  },
+  {
+   "metric": "primary_metric",
+   "window": 5,
+   "scope": "750M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.0827983739395795,
+    "ci95": [
+     0.9251733628722513,
+     1.2582650534226194
+    ]
+   },
+   "detrend": {
+    "lam": 1.1527290753606012,
+    "ci95": [
+     1.0258199984674197,
+     1.275440090274182
+    ]
+   }
+  },
+  {
+   "metric": "primary_metric",
+   "window": 5,
+   "scope": "1B",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.2486592023260945,
+    "ci95": [
+     1.0659612975712476,
+     1.4894412903678824
+    ]
+   },
+   "detrend": {
+    "lam": 1.1357102440403042,
+    "ci95": [
+     0.9448077839757759,
+     1.379618922955527
+    ]
+   }
+  },
+  {
+   "metric": "primary_metric",
+   "window": 5,
+   "scope": "all",
+   "models": 225,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.1043778098559927,
+    "ci95": [
+     1.0573161322719056,
+     1.1555303835218986
+    ]
+   },
+   "detrend": {
+    "lam": 1.0748314959665621,
+    "ci95": [
+     1.014821441537446,
+     1.1298970139337208
+    ]
+   }
+  },
+  {
+   "metric": "primary_metric",
+   "window": 10,
+   "scope": "150M",
+   "models": 75,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.2722518296734344,
+    "ci95": [
+     1.1777054253306338,
+     1.37413445467106
+    ]
+   },
+   "detrend": {
+    "lam": 1.0409792569395442,
+    "ci95": [
+     0.9933471902541984,
+     1.0913420767437185
+    ]
+   }
+  },
+  {
+   "metric": "primary_metric",
+   "window": 10,
+   "scope": "300M",
+   "models": 74,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.2433460891628216,
+    "ci95": [
+     1.152046697114815,
+     1.3368866416091183
+    ]
+   },
+   "detrend": {
+    "lam": 1.0697929214888815,
+    "ci95": [
+     1.0268668507879921,
+     1.1122734215206647
+    ]
+   }
+  },
+  {
+   "metric": "primary_metric",
+   "window": 10,
+   "scope": "530M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.258269767602999,
+    "ci95": [
+     1.1773914234304819,
+     1.3562424534085975
+    ]
+   },
+   "detrend": {
+    "lam": 1.0724309617735677,
+    "ci95": [
+     0.9895986874325008,
+     1.1636619079704404
+    ]
+   }
+  },
+  {
+   "metric": "primary_metric",
+   "window": 10,
+   "scope": "750M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.133489835906578,
+    "ci95": [
+     0.9859037744088234,
+     1.283967068147691
+    ]
+   },
+   "detrend": {
+    "lam": 1.00904878851892,
+    "ci95": [
+     0.9329471786712785,
+     1.0843318383512544
+    ]
+   }
+  },
+  {
+   "metric": "primary_metric",
+   "window": 10,
+   "scope": "1B",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.613691455018654,
+    "ci95": [
+     1.3626707784544732,
+     1.9137345745503316
+    ]
+   },
+   "detrend": {
+    "lam": 1.0779853887071207,
+    "ci95": [
+     0.9732733122644073,
+     1.2140452009172789
+    ]
+   }
+  },
+  {
+   "metric": "primary_metric",
+   "window": 10,
+   "scope": "all",
+   "models": 224,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.3204716636402247,
+    "ci95": [
+     1.234991946726969,
+     1.41791644672017
+    ]
+   },
+   "detrend": {
+    "lam": 1.0571123262688176,
+    "ci95": [
+     1.0275751416647212,
+     1.0893795786587226
+    ]
+   }
+  },
+  {
+   "metric": "margin_per_byte",
+   "window": 5,
+   "scope": "150M",
+   "models": 75,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.1030831393066867,
+    "ci95": [
+     0.9363790497385185,
+     1.827305749158307
+    ]
+   },
+   "detrend": {
+    "lam": 1.0872907578321394,
+    "ci95": [
+     0.9761786129017321,
+     1.8365369828623037
+    ]
+   }
+  },
+  {
+   "metric": "margin_per_byte",
+   "window": 5,
+   "scope": "300M",
+   "models": 75,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.5637432999213485,
+    "ci95": [
+     0.9871713333624303,
+     1.5828088486546918
+    ]
+   },
+   "detrend": {
+    "lam": 1.3756590730488,
+    "ci95": [
+     0.9685746048949995,
+     1.4906187554764834
+    ]
+   }
+  },
+  {
+   "metric": "margin_per_byte",
+   "window": 5,
+   "scope": "530M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.5971270513495779,
+    "ci95": [
+     1.1568447869438032,
+     1.7238665618774485
+    ]
+   },
+   "detrend": {
+    "lam": 1.539990326127087,
+    "ci95": [
+     1.1928381863543411,
+     1.5814082910477814
+    ]
+   }
+  },
+  {
+   "metric": "margin_per_byte",
+   "window": 5,
+   "scope": "750M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.131279759982429,
+    "ci95": [
+     0.9883463290359598,
+     1.2881923162657933
+    ]
+   },
+   "detrend": {
+    "lam": 1.1945104026635698,
+    "ci95": [
+     1.0371803900235936,
+     1.3821455433252001
+    ]
+   }
+  },
+  {
+   "metric": "margin_per_byte",
+   "window": 5,
+   "scope": "1B",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.8320680496540518,
+    "ci95": [
+     1.100695844703566,
+     2.0343487851276087
+    ]
+   },
+   "detrend": {
+    "lam": 1.9823604158241805,
+    "ci95": [
+     1.1098085338221495,
+     2.170862042584392
+    ]
+   }
+  },
+  {
+   "metric": "margin_per_byte",
+   "window": 5,
+   "scope": "all",
+   "models": 225,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.5740019598863007,
+    "ci95": [
+     1.0576486628571637,
+     1.6243690922032257
+    ]
+   },
+   "detrend": {
+    "lam": 1.4991050364755425,
+    "ci95": [
+     1.0628138180244615,
+     1.5508072350508355
+    ]
+   }
+  },
+  {
+   "metric": "margin_per_byte",
+   "window": 10,
+   "scope": "150M",
+   "models": 75,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 0.941377002914502,
+    "ci95": [
+     0.7312659561276486,
+     1.59255584458059
+    ]
+   },
+   "detrend": {
+    "lam": 1.073992400208216,
+    "ci95": [
+     0.8728824766121236,
+     1.630507453508846
+    ]
+   }
+  },
+  {
+   "metric": "margin_per_byte",
+   "window": 10,
+   "scope": "300M",
+   "models": 74,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.6086017215733108,
+    "ci95": [
+     0.9106153372731267,
+     1.6694449703795116
+    ]
+   },
+   "detrend": {
+    "lam": 1.315134542323693,
+    "ci95": [
+     0.9315566891027722,
+     1.3785689597252406
+    ]
+   }
+  },
+  {
+   "metric": "margin_per_byte",
+   "window": 10,
+   "scope": "530M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.404032261569799,
+    "ci95": [
+     1.0022372938238486,
+     1.542492466159023
+    ]
+   },
+   "detrend": {
+    "lam": 1.253746317432051,
+    "ci95": [
+     0.9905714113145592,
+     1.5810629309695738
+    ]
+   }
+  },
+  {
+   "metric": "margin_per_byte",
+   "window": 10,
+   "scope": "750M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.2649110762831437,
+    "ci95": [
+     1.0425291863763357,
+     1.5333821704793313
+    ]
+   },
+   "detrend": {
+    "lam": 1.2828541347182416,
+    "ci95": [
+     0.9487630722238393,
+     1.6341400221311604
+    ]
+   }
+  },
+  {
+   "metric": "margin_per_byte",
+   "window": 10,
+   "scope": "1B",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.629604632704882,
+    "ci95": [
+     0.965782173792083,
+     1.799457123876316
+    ]
+   },
+   "detrend": {
+    "lam": 1.4993149232601968,
+    "ci95": [
+     0.9944694337659983,
+     1.6517468316579489
+    ]
+   }
+  },
+  {
+   "metric": "margin_per_byte",
+   "window": 10,
+   "scope": "all",
+   "models": 224,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.4292262928905504,
+    "ci95": [
+     0.9894534584186245,
+     1.6071674609472504
+    ]
+   },
+   "detrend": {
+    "lam": 1.2574310255548233,
+    "ci95": [
+     1.0850155779019242,
+     1.35433561771397
+    ]
+   }
+  },
+  {
+   "metric": "acc_per_char",
+   "window": 5,
+   "scope": "150M",
+   "models": 75,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.0239732523565404,
+    "ci95": [
+     0.9487108053819219,
+     1.124757045307977
+    ]
+   },
+   "detrend": {
+    "lam": 1.0295084873028464,
+    "ci95": [
+     0.954321818624558,
+     1.1180117382687973
+    ]
+   }
+  },
+  {
+   "metric": "acc_per_char",
+   "window": 5,
+   "scope": "300M",
+   "models": 75,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.065088742435666,
+    "ci95": [
+     0.9465018144621654,
+     1.1776771764247935
+    ]
+   },
+   "detrend": {
+    "lam": 1.06334049753332,
+    "ci95": [
+     0.9607358837778331,
+     1.1544965875567648
+    ]
+   }
+  },
+  {
+   "metric": "acc_per_char",
+   "window": 5,
+   "scope": "530M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.0974672219910837,
+    "ci95": [
+     0.9499439444939191,
+     1.258707775187182
+    ]
+   },
+   "detrend": {
+    "lam": 0.9778133346430055,
+    "ci95": [
+     0.8965815526411072,
+     1.092642068974239
+    ]
+   }
+  },
+  {
+   "metric": "acc_per_char",
+   "window": 5,
+   "scope": "750M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.2217441251241525,
+    "ci95": [
+     1.0613164140536882,
+     1.3681895116990133
+    ]
+   },
+   "detrend": {
+    "lam": 1.2143175437475984,
+    "ci95": [
+     1.0291135916537717,
+     1.3561628134903987
+    ]
+   }
+  },
+  {
+   "metric": "acc_per_char",
+   "window": 5,
+   "scope": "1B",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.4472282763578685,
+    "ci95": [
+     1.285816468647971,
+     1.6109830085391805
+    ]
+   },
+   "detrend": {
+    "lam": 1.2592290134016384,
+    "ci95": [
+     1.041613337980059,
+     1.4176826015827455
+    ]
+   }
+  },
+  {
+   "metric": "acc_per_char",
+   "window": 5,
+   "scope": "all",
+   "models": 225,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.1037740188564806,
+    "ci95": [
+     1.0472558528927454,
+     1.1678237197417098
+    ]
+   },
+   "detrend": {
+    "lam": 1.0779636817826725,
+    "ci95": [
+     1.0193204584511344,
+     1.1462654973719741
+    ]
+   }
+  },
+  {
+   "metric": "acc_per_char",
+   "window": 10,
+   "scope": "150M",
+   "models": 75,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.2112017348353945,
+    "ci95": [
+     1.1193537334163688,
+     1.3368829888617357
+    ]
+   },
+   "detrend": {
+    "lam": 1.019500375361247,
+    "ci95": [
+     0.9781579408964033,
+     1.0784010533852095
+    ]
+   }
+  },
+  {
+   "metric": "acc_per_char",
+   "window": 10,
+   "scope": "300M",
+   "models": 74,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.2669233058874534,
+    "ci95": [
+     1.1563303412731791,
+     1.4035212693650165
+    ]
+   },
+   "detrend": {
+    "lam": 1.0546289108342892,
+    "ci95": [
+     0.9931443776673112,
+     1.1275317874495894
+    ]
+   }
+  },
+  {
+   "metric": "acc_per_char",
+   "window": 10,
+   "scope": "530M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.243718373824709,
+    "ci95": [
+     1.12231415113977,
+     1.3920028882527653
+    ]
+   },
+   "detrend": {
+    "lam": 1.0309790286698155,
+    "ci95": [
+     0.9371075123502025,
+     1.1879263228157428
+    ]
+   }
+  },
+  {
+   "metric": "acc_per_char",
+   "window": 10,
+   "scope": "750M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.3427906835719148,
+    "ci95": [
+     1.194066622989231,
+     1.5050739858976108
+    ]
+   },
+   "detrend": {
+    "lam": 1.1508215414430034,
+    "ci95": [
+     1.0507269655075606,
+     1.240187214479027
+    ]
+   }
+  },
+  {
+   "metric": "acc_per_char",
+   "window": 10,
+   "scope": "1B",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.8723362721451973,
+    "ci95": [
+     1.6212365517163556,
+     2.1804678534635475
+    ]
+   },
+   "detrend": {
+    "lam": 1.1795160831051743,
+    "ci95": [
+     1.0731835560503777,
+     1.3494486789055928
+    ]
+   }
+  },
+  {
+   "metric": "acc_per_char",
+   "window": 10,
+   "scope": "all",
+   "models": 224,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.3437246955309883,
+    "ci95": [
+     1.2482589565715416,
+     1.4709139281225512
+    ]
+   },
+   "detrend": {
+    "lam": 1.0552061415849672,
+    "ci95": [
+     1.022490767478536,
+     1.0985178348239657
+    ]
+   }
+  },
+  {
+   "metric": "bits_per_byte_corr",
+   "window": 5,
+   "scope": "150M",
+   "models": 75,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.8501460606579374,
+    "ci95": [
+     1.8501460606579374,
+     1.8501460606579376
+    ]
+   },
+   "detrend": {
+    "lam": 0.6500605503116874,
+    "ci95": [
+     0.6500605503116874,
+     0.6500605503116876
+    ]
+   }
+  },
+  {
+   "metric": "bits_per_byte_corr",
+   "window": 5,
+   "scope": "300M",
+   "models": 75,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.8189760322545714,
+    "ci95": [
+     1.1644531949217585,
+     1.8333396025532185
+    ]
+   },
+   "detrend": {
+    "lam": 2.14509797619533,
+    "ci95": [
+     0.8234997969551665,
+     2.173318166380192
+    ]
+   }
+  },
+  {
+   "metric": "bits_per_byte_corr",
+   "window": 5,
+   "scope": "530M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.2441292629139495,
+    "ci95": [
+     1.2441292629139495,
+     1.2441292629139495
+    ]
+   },
+   "detrend": {
+    "lam": 0.49564531993977307,
+    "ci95": [
+     0.49564531993977307,
+     0.4956453199397734
+    ]
+   }
+  },
+  {
+   "metric": "bits_per_byte_corr",
+   "window": 5,
+   "scope": "750M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.7455305553996723,
+    "ci95": [
+     1.7455305553996723,
+     1.7455305553996727
+    ]
+   },
+   "detrend": {
+    "lam": 1.6753546290252792,
+    "ci95": [
+     1.6753546290252792,
+     1.6753546290252792
+    ]
+   }
+  },
+  {
+   "metric": "bits_per_byte_corr",
+   "window": 5,
+   "scope": "1B",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 2.9671615869062244,
+    "ci95": [
+     2.8319093763003313,
+     3.1185133455299745
+    ]
+   },
+   "detrend": {
+    "lam": 2.9512208493231293,
+    "ci95": [
+     2.8319570503909737,
+     3.1183639377801073
+    ]
+   }
+  },
+  {
+   "metric": "bits_per_byte_corr",
+   "window": 5,
+   "scope": "all",
+   "models": 225,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 2.966841526211573,
+    "ci95": [
+     2.8315694772958753,
+     3.1146340092071063
+    ]
+   },
+   "detrend": {
+    "lam": 2.9510462229842838,
+    "ci95": [
+     2.8317206536064017,
+     3.115514873815711
+    ]
+   }
+  },
+  {
+   "metric": "bits_per_byte_corr",
+   "window": 10,
+   "scope": "150M",
+   "models": 75,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 2.383346603539425,
+    "ci95": [
+     2.383346603539425,
+     2.383346603539425
+    ]
+   },
+   "detrend": {
+    "lam": 1.5563013971473232,
+    "ci95": [
+     1.5563013971473232,
+     1.5563013971473234
+    ]
+   }
+  },
+  {
+   "metric": "bits_per_byte_corr",
+   "window": 10,
+   "scope": "300M",
+   "models": 74,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 2.152282315434956,
+    "ci95": [
+     2.152282315434956,
+     2.152282315434956
+    ]
+   },
+   "detrend": {
+    "lam": 1.2785454553665072,
+    "ci95": [
+     1.278545455366507,
+     1.2785454553665074
+    ]
+   }
+  },
+  {
+   "metric": "bits_per_byte_corr",
+   "window": 10,
+   "scope": "530M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 1.2453105155920716,
+    "ci95": [
+     1.2453105155920716,
+     1.2453105155920716
+    ]
+   },
+   "detrend": {
+    "lam": 0.7418854372589476,
+    "ci95": [
+     0.7418854372589476,
+     0.7418854372589476
+    ]
+   }
+  },
+  {
+   "metric": "bits_per_byte_corr",
+   "window": 10,
+   "scope": "750M",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 2.3118213632066174,
+    "ci95": [
+     2.3118213632066174,
+     2.3118213632066174
+    ]
+   },
+   "detrend": {
+    "lam": 1.5390454369975979,
+    "ci95": [
+     1.5390454369975979,
+     1.5390454369975979
+    ]
+   }
+  },
+  {
+   "metric": "bits_per_byte_corr",
+   "window": 10,
+   "scope": "1B",
+   "models": 25,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 2.9860163077210577,
+    "ci95": [
+     2.9175228688613037,
+     3.062329638200678
+    ]
+   },
+   "detrend": {
+    "lam": 2.995848422436588,
+    "ci95": [
+     2.943276856933195,
+     3.0545344980713804
+    ]
+   }
+  },
+  {
+   "metric": "bits_per_byte_corr",
+   "window": 10,
+   "scope": "all",
+   "models": 224,
+   "tasks": [
+    "arc_challenge",
+    "arc_easy",
+    "boolq",
+    "csqa",
+    "hellaswag",
+    "mmlu",
+    "openbookqa",
+    "piqa",
+    "socialiqa",
+    "winogrande"
+   ],
+   "demean": {
+    "lam": 2.9858749396986717,
+    "ci95": [
+     2.9191725629451186,
+     3.0594202574771185
+    ]
+   },
+   "detrend": {
+    "lam": 2.995714956727926,
+    "ci95": [
+     2.9426088438592255,
+     3.054869876775212
+    ]
+   }
+  }
+ ],
+ "checks": {
+  "macro_avg_tasks": [
+   "arc_challenge",
+   "arc_easy",
+   "boolq",
+   "csqa",
+   "hellaswag",
+   "mmlu",
+   "openbookqa",
+   "piqa",
+   "socialiqa",
+   "winogrande"
+  ],
+  "macro_avg_max_abs_diff": 2.220446049250313e-16
+ }
+}

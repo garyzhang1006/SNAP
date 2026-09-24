@@ -1,0 +1,36 @@
+{
+ "done": [
+  "polypythias__410m__seed-1__step-143000",
+  "polypythias__410m__seed-5__step-143000"
+ ],
+ "failed": [],
+ "not_started": [],
+ "timing": {
+  "polypythias__410m__seed-1__step-143000": {
+   "download": 26.2173855304718,
+   "load": 25.356128931045532,
+   "score": 16724.63624191284,
+   "mode": "reference",
+   "check": {
+    "packed": 0.0014476776123046875,
+    "unpadded": 0.0014562606811523438
+   },
+   "tokens": 17657002,
+   "size": "410m",
+   "family": "gptneox"
+  },
+  "polypythias__410m__seed-5__step-143000": {
+   "download": 17141.01627969742,
+   "load": 1.7703807353973389,
+   "score": 16905.713071107864,
+   "mode": "reference",
+   "check": {
+    "packed": 0.0021033287048339844,
+    "unpadded": 0.0020923614501953125
+   },
+   "tokens": 17657002,
+   "size": "410m",
+   "family": "gptneox"
+  }
+ }
+}

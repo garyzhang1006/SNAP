@@ -1,0 +1,15 @@
+[worker] {'torch': '2.10.0+cu128', 'transformers': '4.57.1', 'huggingface_hub': '0.36.2', 'gpu': 'Tesla T4', 'cuda': '12.8'} 37682 items
+`torch_dtype` is deprecated! Use `dtype` instead!
+[run] polypythias__410m__seed-3__step-143000 packed score 4931s (3581 tok/s) download 20s check {'packed': 0.00011157989501953125}
+  packed path disagrees with the reference path by 0.00272 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00161 nats, trying the next path
+[run] polypythias__410m__seed-7__step-143000 reference score 15765s (1120 tok/s) download 5335s check {'packed': 0.0027227401733398438, 'unpadded': 0.0016148090362548828}
+  packed path disagrees with the reference path by 0.00597 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00345 nats, trying the next path
+[run] polypythias__160m__seed-1__step-143000 reference score 6137s (2877 tok/s) download 16147s check {'packed': 0.005970001220703125, 'unpadded': 0.0034542083740234375}
+  packed path disagrees with the reference path by 0.00406 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00317 nats, trying the next path
+[run] polypythias__160m__seed-3__step-143000 reference score 6098s (2895 tok/s) download 6573s check {'packed': 0.004064321517944336, 'unpadded': 0.0031652450561523438}
+  packed path disagrees with the reference path by 0.00537 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.0058 nats, trying the next path
+[run] polypythias__160m__seed-5__step-143000 reference score 6177s (2858 tok/s) download 6467s check {'packed': 0.005370616912841797, 'unpadded': 0.005802154541015625}

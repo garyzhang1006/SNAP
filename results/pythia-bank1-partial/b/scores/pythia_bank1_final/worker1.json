@@ -1,0 +1,96 @@
+{
+ "done": [
+  "polypythias__410m__seed-4__step-143000",
+  "polypythias__410m__seed-8__step-143000",
+  "polypythias__160m__seed-4__step-143000",
+  "polypythias__160m__seed-8__step-143000",
+  "polypythias__70m__seed-4__step-143000",
+  "polypythias__70m__seed-8__step-143000"
+ ],
+ "failed": [],
+ "not_started": [
+  "polypythias__31m__seed-4__step-143000",
+  "polypythias__31m__seed-8__step-143000",
+  "polypythias__14m__seed-4__step-143000",
+  "polypythias__14m__seed-8__step-143000"
+ ],
+ "timing": {
+  "polypythias__410m__seed-4__step-143000": {
+   "download": 16.0738627910614,
+   "load": 42.62153124809265,
+   "score": 5158.18136882782,
+   "mode": "packed",
+   "check": {
+    "packed": 8.20159912109375e-05
+   },
+   "tokens": 17657002,
+   "size": "410m",
+   "family": "gptneox"
+  },
+  "polypythias__410m__seed-8__step-143000": {
+   "download": 5563.769589424133,
+   "load": 1.7816176414489746,
+   "score": 16489.261202335358,
+   "mode": "reference",
+   "check": {
+    "packed": 0.00243377685546875,
+    "unpadded": 0.0023751258850097656
+   },
+   "tokens": 17657002,
+   "size": "410m",
+   "family": "gptneox"
+  },
+  "polypythias__160m__seed-4__step-143000": {
+   "download": 16870.331120967865,
+   "load": 0.7768723964691162,
+   "score": 6203.53910946846,
+   "mode": "reference",
+   "check": {
+    "packed": 0.007482051849365234,
+    "unpadded": 0.004228115081787109
+   },
+   "tokens": 17657002,
+   "size": "160m",
+   "family": "gptneox"
+  },
+  "polypythias__160m__seed-8__step-143000": {
+   "download": 6592.3293969631195,
+   "load": 0.7509708404541016,
+   "score": 6195.366379499435,
+   "mode": "reference",
+   "check": {
+    "packed": 0.0036258697509765625,
+    "unpadded": 0.0048542022705078125
+   },
+   "tokens": 17657002,
+   "size": "160m",
+   "family": "gptneox"
+  },
+  "polypythias__70m__seed-4__step-143000": {
+   "download": 6557.441577911377,
+   "load": 0.37958264350891113,
+   "score": 2905.093645334244,
+   "mode": "reference",
+   "check": {
+    "packed": 0.02554851770401001,
+    "unpadded": 0.014914512634277344
+   },
+   "tokens": 17657002,
+   "size": "70m",
+   "family": "gptneox"
+  },
+  "polypythias__70m__seed-8__step-143000": {
+   "download": 3255.2180845737457,
+   "load": 0.3738746643066406,
+   "score": 2930.9227905273438,
+   "mode": "reference",
+   "check": {
+    "packed": 0.010478019714355469,
+    "unpadded": 0.017210960388183594
+   },
+   "tokens": 17657002,
+   "size": "70m",
+   "family": "gptneox"
+  }
+ }
+}
