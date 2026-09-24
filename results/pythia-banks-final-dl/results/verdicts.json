@@ -1,0 +1,43 @@
+{
+ "V0_verification": {
+  "pass": null,
+  "status": "not run",
+  "rule": "every verify run reproduces the release margins within the nats thresholds and agrees on correctness for at least the threshold fraction of items"
+ },
+ "R1_pythia_replicates_margin": {
+  "lambda": 1.3022243165382272,
+  "lo": 0.9206589861012651,
+  "hi": 1.5949806809105547,
+  "interval": "delete-one-seed jackknife t(8)",
+  "pass": false,
+  "rule": "nine-seed PolyPythias at one matched step, jackknife lower endpoint above one"
+ },
+ "R1_pythia_replicates_accuracy": {
+  "lambda": 1.4814118469703015,
+  "lo": 0.5605288217300143,
+  "hi": 2.018655384333315,
+  "interval": "delete-one-seed jackknife t(8)",
+  "pass": false,
+  "rule": "nine-seed PolyPythias at one matched step, jackknife lower endpoint above one"
+ },
+ "R2_pythia_identification_margin": {
+  "cross_lambda": 1.2927062502373492,
+  "cross_lo": 0.9203132984532629,
+  "cross_hi": 1.5796209455105017,
+  "within_minus_cross_log_theta": 0.014671851506020128,
+  "diff_lo": -0.03519325515121176,
+  "diff_hi": 0.06453695816325201,
+  "shared_item_explanation": "undecided",
+  "rule": "cross-bank interval above one and the within-minus-cross difference including zero rejects the item explanation; a positive difference interval with a cross-bank interval covering one supports it"
+ },
+ "R2_pythia_identification_accuracy": {
+  "cross_lambda": 1.529946907717057,
+  "cross_lo": 0.4412188509576661,
+  "cross_hi": 2.1182070263375032,
+  "within_minus_cross_log_theta": -0.06447490050772009,
+  "diff_lo": -0.17391558798775664,
+  "diff_hi": 0.04496578697231646,
+  "shared_item_explanation": "undecided",
+  "rule": "cross-bank interval above one and the within-minus-cross difference including zero rejects the item explanation; a positive difference interval with a cross-bank interval covering one supports it"
+ }
+}

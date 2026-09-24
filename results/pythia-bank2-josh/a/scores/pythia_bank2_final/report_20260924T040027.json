@@ -1,0 +1,126 @@
+{
+ "bank": "bank2",
+ "done": [
+  "polypythias__410m__seed-1__step-143000",
+  "polypythias__410m__seed-2__step-143000",
+  "polypythias__410m__seed-3__step-143000",
+  "polypythias__410m__seed-4__step-143000",
+  "polypythias__410m__seed-5__step-143000",
+  "polypythias__410m__seed-6__step-143000",
+  "polypythias__410m__seed-7__step-143000",
+  "polypythias__410m__seed-8__step-143000"
+ ],
+ "exit_codes": {
+  "0": 0,
+  "1": 0
+ },
+ "failed": [],
+ "job": "pythia_bank2_final",
+ "not_started": [],
+ "requests_sha256": "6190e0b24324ca357b3515206165acb6f024c310005d36fcf17fb2807cbc81d1",
+ "timing": {
+  "polypythias__410m__seed-1__step-143000": {
+   "check": {
+    "packed": 0.0011446475982666016,
+    "unpadded": 0.000675201416015625
+   },
+   "download": 18.257758140563965,
+   "family": "gptneox",
+   "load": 33.938358545303345,
+   "mode": "unpadded",
+   "score": 865.5004794597626,
+   "size": "410m",
+   "tokens": 2465295
+  },
+  "polypythias__410m__seed-2__step-143000": {
+   "check": {
+    "packed": 0.0044019222259521484,
+    "unpadded": 0.001903533935546875
+   },
+   "download": 24.553765058517456,
+   "family": "gptneox",
+   "load": 27.812745571136475,
+   "mode": "reference",
+   "score": 2562.457363843918,
+   "size": "410m",
+   "tokens": 2465295
+  },
+  "polypythias__410m__seed-3__step-143000": {
+   "check": {
+    "packed": 6.961822509765625e-05
+   },
+   "download": 981.569329738617,
+   "family": "gptneox",
+   "load": 2.35048246383667,
+   "mode": "packed",
+   "score": 787.8143014907837,
+   "size": "410m",
+   "tokens": 2465295
+  },
+  "polypythias__410m__seed-4__step-143000": {
+   "check": {
+    "packed": 4.9591064453125e-05
+   },
+   "download": 2679.012800216675,
+   "family": "gptneox",
+   "load": 1.9884974956512451,
+   "mode": "packed",
+   "score": 834.3994090557098,
+   "size": "410m",
+   "tokens": 2465295
+  },
+  "polypythias__410m__seed-5__step-143000": {
+   "check": {
+    "packed": 0.0012392997741699219,
+    "unpadded": 0.001255035400390625
+   },
+   "download": 852.6574397087097,
+   "family": "gptneox",
+   "load": 2.2612972259521484,
+   "mode": "reference",
+   "score": 2411.191182613373,
+   "size": "410m",
+   "tokens": 2465295
+  },
+  "polypythias__410m__seed-6__step-143000": {
+   "check": {
+    "packed": 0.0019578933715820312,
+    "unpadded": 0.001979827880859375
+   },
+   "download": 902.8510236740112,
+   "family": "gptneox",
+   "load": 1.767479658126831,
+   "mode": "reference",
+   "score": 2556.7681317329407,
+   "size": "410m",
+   "tokens": 2465295
+  },
+  "polypythias__410m__seed-7__step-143000": {
+   "check": {
+    "packed": 0.0013818740844726562,
+    "unpadded": 0.0011396408081054688
+   },
+   "download": 2484.1841266155243,
+   "family": "gptneox",
+   "load": 2.1626017093658447,
+   "mode": "reference",
+   "score": 2419.114857673645,
+   "size": "410m",
+   "tokens": 2465295
+  },
+  "polypythias__410m__seed-8__step-143000": {
+   "check": {
+    "packed": 0.0021886825561523438,
+    "unpadded": 0.0008764266967773438
+   },
+   "download": 2626.1985487937927,
+   "family": "gptneox",
+   "load": 1.5508818626403809,
+   "mode": "unpadded",
+   "score": 925.0990941524506,
+   "size": "410m",
+   "tokens": 2465295
+  }
+ },
+ "wall_seconds": 7212.928061723709
+}

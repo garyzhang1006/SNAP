@@ -4025,3 +4025,6 @@ Reviews Scan 126 and applies the last open writing-only item of the ARS roadmap:
 
 ## Paper locked (2026-09-24 07:10 EDT)
 The user approved the DataDecide bank-two job, then cancelled it once the sizing showed it can't finish before the deadline: about 35 RTX 3090 card-hours in compute2/README.md, or about 119 T4 card-hours at the measured 3.4x T4 ratio, against a 30-hour weekly Kaggle cap per account that resets Friday 20:00 EDT, and the user's rule against dropping sizes. The paper is locked at commit 10603e0 plus this log entry, at an honest 3 of 10. No GPU time was spent.
+
+## Repo and deliverables synced (2026-09-24 07:50 EDT)
+Both PDFs were rebuilt from the locked sources, and main.pdf has 0 undefined references and carries the cross-bank 1.293. SNAP_supplement.zip now holds a polypythias folder with the four kernels, the analysis scripts, the bank-one and bank-two RESULTS.md and verdicts.json, and the 45 score files per bank, and every account name and repo URL in it was replaced with an anonymous form. A scan of the archive text and both PDFs finds no author identifiers, since the one name hit is a cited author. The zip stays out of git through .git/info/exclude because of its 102 MB size, and the raw bank score folders and staging directories are committed here.

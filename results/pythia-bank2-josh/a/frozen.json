@@ -1,0 +1,17 @@
+{
+ "banks": {
+  "bank1": {
+   "file": "bank1_requests.jsonl.gz",
+   "items": 37682,
+   "sha256": "3130d19f88c2cb5dd040ff203200a9a3464e29b873635c1cd7768704b19fbcaf"
+  },
+  "bank2": {
+   "file": "bank2_requests.jsonl.gz",
+   "items": 6808,
+   "sha256": "6190e0b24324ca357b3515206165acb6f024c310005d36fcf17fb2807cbc81d1"
+  }
+ },
+ "frozen_utc": "2026-09-24T04:00:26Z",
+ "history": [],
+ "schema": "snap-compute2-frozen-v1"
+}

@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1790206207.70433 "main.tex" "main.pdf" "main" 1790206208.26667 0
+["pdflatex"] 1790250242.17726 "main.tex" "main.pdf" "main" 1790250242.71311 0
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1772380719 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/fontname/texfonts.map" 1772380719 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1772380719 5541360 f183aac233c4cd1e5ef882fcbe8e7096 ""
@@ -129,17 +129,18 @@
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/xcolor/xcolor.sty" 1772380719 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/web2c/texmf.cnf" 1772380719 43633 14bbc273cebd985e64ab1a698333eaf9 ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1772380719 3636956 5168b884cb430e6a6336cfea08fa659a ""
-  "appendices_bcd.tex" 1790206162.33428 125621 eb2cb5c6c9ca5883c306e3133519181b ""
-  "appendix_a.tex" 1790146414.61497 16257 46a0fb29e7bfe930e6e4450b44b14f8e ""
+  "appendices_bcd.tex" 1790226073.86422 128143 bd527742963cb9caadaffa7005a648f5 ""
+  "appendix_a.tex" 1790226005.54809 16235 2f6f590009f9dfcd92f40c2a9c44e3c7 ""
   "fancyhdr.sty" 1789356740.9372 20521 e5d13d98d57bd53d4fed3aa61bd29c86 ""
   "figures/composition.pdf" 1790203546.7622 43477 2a212a52b662b02c68611aac36267e08 ""
   "figures/covariance.pdf" 1789606883.48734 80152 2990523da84a92ffd4ded57ac9c5a0e9 ""
   "iclr2027_conference.sty" 1789356740.9369 9025 1b4bb9c2e12c712c56f4eb1232b88dd6 ""
-  "main.aux" 1790206208.19739 31693 1204695a2653693c0eedabf399791c6c "pdflatex"
-  "main.out" 1790206208.19885 7086 a2456f71bca9a17eeaddfe0139492ec8 "pdflatex"
-  "main.tex" 1790206195.67078 49353 d7c4ffefe4bf9f516e6bb104191d1eef ""
+  "main.aux" 1790250242.64728 32064 111eba7e14102681f66d842744f4f5c7 "pdflatex"
+  "main.out" 1790250242.64865 7086 a2456f71bca9a17eeaddfe0139492ec8 "pdflatex"
+  "main.tex" 1790235224.13843 47886 91ad04284393460603054b54bf7d242d ""
   "natbib.sty" 1789356740.9375 45154 40088ce024445d7ee2bca59e704cdd01 ""
-  "references.tex" 1790161172.13871 19640 4b37f8b628303788c738f5ae2a678de4 ""
+  "pythia_values.tex" 1790234971.78664 1320 f55dbca205d47ec972f399b9abad152c ""
+  "references.tex" 1790224340.26023 19944 8b9cb8bbc750cba9aa88a1fc17729007 ""
   "supplement_extended.aux" 1790203273.20525 26378 26503de69f192e95268251ec0ef8e113 ""
   "supplement_extended.tex" 1790203272.10564 1803 748e3f47b888f14bf1716dc90d94e32a ""
   (generated)

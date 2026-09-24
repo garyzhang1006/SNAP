@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  23 SEP 2026 18:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  24 SEP 2026 07:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -505,44 +505,58 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
 (/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/amsfonts/umsb
 .fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./supplement_extended_body.tex [1{/opt/homebrew/Cellar/texlive/20260301/shar
-e/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}{/opt/homebrew/Cellar/texlive/2
-0260301/share/texmf-dist/fonts/enc/dvips/base/8r.enc}
+) (./supplement_extended_body.tex
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 5077) has occurred while \output is active []
+
+ [1{/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/pdftex/upd
+map/pdftex.map}{/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/en
+c/dvips/base/8r.enc}
 
 ] [2] [3] [4]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5]
 [6]
-<figures/calibration.pdf, id=224, 396.48125pt x 184.69pt>
-File: figures/calibration.pdf Graphic file (type pdf)
-<use figures/calibration.pdf>
-Package pdftex.def Info: figures/calibration.pdf  used on input line 210.
-(pdftex.def)             Requested size: 397.48499pt x 185.16016pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 4084) has occurred while \output is active []
 
  [7]
-[8 <./figures/calibration.pdf>] [9]
-<figures/prediction.pdf, id=258, 397.485pt x 198.7425pt>
+<figures/calibration.pdf, id=227, 396.48125pt x 184.69pt>
+File: figures/calibration.pdf Graphic file (type pdf)
+<use figures/calibration.pdf>
+Package pdftex.def Info: figures/calibration.pdf  used on input line 218.
+(pdftex.def)             Requested size: 397.48499pt x 185.16016pt.
+
+[8] [9 <./figures/calibration.pdf>]
+<figures/prediction.pdf, id=256, 397.485pt x 198.7425pt>
 File: figures/prediction.pdf Graphic file (type pdf)
 <use figures/prediction.pdf>
-Package pdftex.def Info: figures/prediction.pdf  used on input line 317.
+Package pdftex.def Info: figures/prediction.pdf  used on input line 327.
 (pdftex.def)             Requested size: 397.48499pt x 198.74806pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [10]
-[11 <./figures/prediction.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11 <./figures/prediction.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [12]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [13]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [14]
-[15]
 Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [15]
+Underfull \vbox (badness 1292) has occurred while \output is active []
 
  [16]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -554,12 +568,19 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [19]
-[20]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [21]
-[22] [23] [24] [25]
+ [20]
+[21]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[22]
 Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [23]
+[24] [25]
+Underfull \vbox (badness 2547) has occurred while \output is active []
 
  [26]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -577,18 +598,27 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [31]
-[32]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [33])
-(./references.tex [34] [35] [36]
+ [32]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [33]
+Underfull \vbox (badness 5726) has occurred while \output is active []
+
+ [34])
+(./references.tex [35]
+
+LaTeX Warning: Text page 36 contains only floats.
+
+[36] [37] [38]
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 11
 5.
 
 (/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/psnfss/t1pcr.
 fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-) [37] [38]) [39] (./supplement_extended.aux)
+) [39] [40]) [41] (./supplement_extended.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -597,13 +627,13 @@ Package rerunfilecheck Info: File `supplement_extended.out' has not changed.
 (rerunfilecheck)             Checksum: 81029B209DCF9C9C09C5F5EBD2863D93;1089.
  ) 
 Here is how much of TeX's memory you used:
- 13150 strings out of 467525
- 206642 string characters out of 5408440
- 658790 words of memory out of 5000000
- 41716 multiletter control sequences out of 15000+600000
+ 13160 strings out of 467525
+ 206793 string characters out of 5408440
+ 660118 words of memory out of 5000000
+ 41723 multiletter control sequences out of 15000+600000
  664893 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,13n,90p,3143b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,13n,90p,1236b,687s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fo
 nts/type1/public/amsfonts/cmextra/cmex9.pfb></opt/homebrew/Cellar/texlive/20260
@@ -626,10 +656,10 @@ onts/type1/urw/courier/ucrr8a.pfb></opt/homebrew/Cellar/texlive/20260301/share/
 texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></opt/homebrew/Cellar/texlive/20
 260301/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></opt/homebrew/Cellar/
 texlive/20260301/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on supplement_extended.pdf (39 pages, 407585 bytes).
+Output written on supplement_extended.pdf (41 pages, 409324 bytes).
 PDF statistics:
- 594 PDF objects out of 1000 (max. 8388607)
- 505 compressed objects within 6 object streams
- 168 named destinations out of 1000 (max. 500000)
+ 602 PDF objects out of 1000 (max. 8388607)
+ 511 compressed objects within 6 object streams
+ 171 named destinations out of 1000 (max. 500000)
  59 words of extra memory for PDF output out of 10000 (max. 10000000)
 

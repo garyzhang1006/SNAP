@@ -1,0 +1,108 @@
+
+
+
+
+
+
+
+SNAP abbreviates Seed Noise Across Phenotypes, and a phenotype here denotes a benchmark score that the rest of the paper calls a trait. Our estimation target is the covariance of run deviations that generalise across item halves. DataDecide replicates vary initialisation and data order together, and auxiliary runs below 1B use shortened training schedules. Common-step scoring aligns the observation step, while schedule differences remain within the full-set target. We therefore use run covariance for our empirical estimate, and we keep a seed-only interpretation for designs with matched training conditions.
+
+The item-general estimate can differ from the run variance of a fixed evaluation bank. A run can perform differently on particular items and keep its expected score over an item population, and under the measurement model that variation enters the item error and doesn't contribute to the cross-half covariance target. Repeated evaluation of a fixed item bank can retain this component. Its run variance needn't equal the item-general variance estimated here.
+
+The analogy with quantitative genetics distinguishes covariance between configurations from residual covariance within them, and it doesn't identify separate additive-genetic and shared-environment components in a model-training experiment. Between-configuration correlation mathematical-expression reflects differences in recipe and model size, and within-configuration covariance mathematical-expression concerns replicate deviations. The plug-in comparison asks whether the first correlation structure predicts the second once we supply marginal run variances.
+
+
+
+
+ 
+
+
+
+
+Fix a configuration and suppress its index for clarity. Write the half-score model as mathematical-expression , so centring across runs gives
+
+
+
+Assume that run-effect vectors are independent draws with covariance mathematical-expression . Conditional on those effects, assume zero-mean item errors and zero covariance between mathematical-expression and mathematical-expression for the run and benchmark pairs in the calculation. The expansion of mathematical-expression then removes its error cross terms in expectation and leaves
+
+
+
+A sum across runs divided by mathematical-expression gives the unbiased covariance moment. We symmetrise the two half orderings for the matrix estimate,
+
+
+
+Symmetry follows from this construction, while positive semidefiniteness doesn't follow for a finite sample. A negative diagonal moment near zero doesn't by itself falsify the identity, although it prevents ordinary correlation normalisation for that trait.
+
+Different item identifiers can still refer to items with dependent errors, because shared source passages, duplicate questions, and overlapping content can create cross-half covariance. A fixed finite item bank split without replacement also requires a model for its sampling dependence. The available item-half assignment alone can't verify these conditions.
+
+BoolQ has documented shared passages, and we check them directly through the release's request files that carry each question's passage. All 3,270 question passages match the google/boolq validation split exactly, and they give 2,938 passages with 578 questions in passages of two or more. A passage-aware split assigns whole passages to halves and then averages questions. Half sizes therefore differ by a few items, and the equal-half derivation doesn't hold exactly. On one such split the margin and accuracy estimates are 1p248 and 1p097 against 1p244 and 1p078 on the frozen split. Across fifty paired re-splits the passage-aware and item-level rules differ by mathematical-expression and mathematical-expression on average, with standard deviations 0p0017 and 0p0060.
+
+The BoolQ diagonal moves by 0p03 percent and 0p15 percent. A simulation matched to the observed passage-size histogram adds a run-by-passage interaction shared by the questions on a passage, using 500 replicates at each of five interaction scales, with standard deviation from zero up to the item-noise scale. Across those scales the passage-level and item-level splits differ in mathematical-expression by between mathematical-expression and mathematical-expression on average, within Monte Carlo error of zero. The observed histogram puts about 240 same-passage question pairs across the halves out of about 2p7 million cross-half pairs, and a leaked interaction can't move the diagonal by more than about 0p01 percent even at that scale. The null result above is what this benchmark's passage structure implies, and it isn't evidence of a sensitive test. Outside BoolQ, the request files show two question stems shared across traits and repeated question stems within benchmarks, for example 62 of 1,838 PIQA items, which we haven't grouped.
+
+For a diagonal additional covariance mathematical-expression with nonnegative trace, the inflation ratio becomes
+
+
+
+This ratio lies between mathematical-expression and one when the denominators are positive, and that explains the attenuation toward one under that restricted model. However, no general upper or lower bound follows once shared-item effects also contribute off-diagonal covariance. Bounding fixed-battery inflation by the item-general factor needs the same restriction.
+
+
+
+
+Let mathematical-expression and mathematical-expression whenever both variances are positive. For this finite battery, the variance ratio therefore satisfies
+
+
+
+The normalised weighted mean correlation instead divides the numerator by mathematical-expression , and for a positive denominator the two coefficients are related by
+
+
+
+For nonnegative standard deviations, mathematical-expression lies between zero and one, and both coefficients coincide once the marginal variances are equal. Two perfectly correlated traits with standard deviations one and two give an effective coefficient of 0p8 against a weighted mean correlation of one.
+
+With average marginal variance mathematical-expression , the variance of the benchmark average satisfies
+
+
+
+Independent benchmark deviations at the same average variance give mathematical-expression , making the factor we report mathematical-expression . A nonzero asymptotic floor follows only for a sequence of batteries whose average variance and effective coefficient converge to suitable limits, and bounded variances alone don't imply that convergence. Our present ten-benchmark study doesn't estimate such a sequence, and we use the finite-battery identity for the reported effective counts.
+
+Our reported effective margin coefficients are 0p0608, 0p0695, and 0p0641 for the raw, gain-adjusted, and auxiliary-contrast rows, with corresponding accuracy coefficients of 0p0181, 0p0225, and 0p0194, retaining the covariance normalisation of Equation 1 .
+
+For positive aggregate variance, mathematical-expression compares the measured average with an independent average having the same marginal RMS deviation. Negative aggregate off-diagonal covariance can push the effective count above the benchmark count, and then mathematical-expression is possible. A single positive-variance benchmark has mathematical-expression , although its off-diagonal coefficient is undefined because mathematical-expression . This arithmetic count also differs from a spectral participation ratio.
+
+
+
+
+We pool mathematical-expression and mathematical-expression across configurations before taking their ratio, because each individual denominator uses two replicate degrees of freedom and can approach zero or become negative. Averaging individual ratios would instead give those unstable denominators disproportionate influence. Pooling reduces that problem but doesn't remove the effect of configurations with large covariance contributions.
+
+Recomputing the recipe influences from the cluster linearisation gives participation ratios of 3p08 for margins and 9p02 for accuracy. We find that one recipe, dolma1p7-no-math-no-code, contributes 0p520 of the squared margin influence, and removing that recipe moves the estimate by 0p037, the largest change any single recipe produces. A leverage-corrected influence divides each recipe residual by one minus that recipe's share of the denominator sum, raising the share to 0p538 and lowering the two ratios to 2p92 and 8p56, with the concentration figure depending on the correction a reader assumes. These quantities describe influence concentration, and aren't literal counts of independent clusters for inference. Recomputing the permutation experiment ten times at the record's own 1,000 replicates gives margin coverage between 0p915 and 0p942 with a mean of 0p931. The recorded 0p925 sits inside that seed-to-seed spread. The record reads as one draw at a replicate count too coarse to separate these values, while the ten runs together put margin coverage 0p019 below nominal.
+
+The covariance moments are unbiased under their assumptions, but the pooled ratio has a random denominator and its square root introduces a second nonlinear transformation. Thus neither of these two transformations inherits exact unbiasedness. A finite implementation must also specify what happens when a pooled sum is nonpositive. The reported data give finite full-battery estimates, though that observation doesn't establish finite estimates for arbitrary input populations.
+
+
+
+
+For each configuration and trait, we apply a uniform permutation mathematical-expression of run labels to both halves together. The diagonal products then sum to the same value, leaving mathematical-expression unchanged, and independent permutations across traits give zero expected off-diagonal products because each centred deviation sums to zero. Conditional on a positive fixed pooled denominator, this implies
+
+
+
+This expectation for the squared ratio doesn't imply that mathematical-expression . If all permuted ratios are nonnegative, concavity of the square root gives an expectation no larger than one, with strict inequality for a nonconstant ratio. For example, equally likely ratios of 0p5 and 1p5 average to one, while their square roots average to about 0p966.
+
+A common permutation across all traits preserves their pairings and can't remove cross-trait association. Independent trait permutations avoid that problem, and because the identity belongs in the uniform permutation sample space, its chance of reproducing the observation doesn't invalidate a permutation procedure. The construction preserves marginal score values and cluster membership, although it can alter dependence of run alignments across configurations. Validity as a test therefore requires an exchangeability assumption beyond zero mean covariance.
+
+
+
+
+Our planning power calculation assumes approximately Gaussian half-score deviations. With mathematical-expression , mathematical-expression , independent errors mathematical-expression , and mathematical-expression , the product variance is
+
+
+
+Here mathematical-expression is the aggregate reliability, with mathematical-expression the item-noise contribution on that scale. The planning values used two replicate degrees of freedom per configuration and design effect 1p60. Appendix 1 preserves the resulting values for the intended 85-configuration analysis. That intended analysis differs from the realised 125-configuration study, and we don't infer realised power from the observed effect.
+
+For an infinitesimal additive shift in Gaussian item margins, the ratio of accuracy to margin noise per unit squared sensitivity is
+
+
+
+At an illustrative accuracy of mathematical-expression this model gives about 1p66, and its minimum is mathematical-expression , which means the planned lower threshold of 1p4 for per-trait ratios couldn't falsify the model (prediction eight of the plan, Appendix 1 ). The calculation describes only this location-shift model and shows no empirical advantage for other margin distributions.
+
+For the information calculation, let item margins follow a Gaussian location model with standard deviation mathematical-expression . An infinitesimal shift mathematical-expression changes accuracy by mathematical-expression , while it changes the mean margin by mathematical-expression . Under independent item sampling, the item-noise variances are mathematical-expression and mathematical-expression , with the Gaussian model giving mathematical-expression . Dividing noise by squared local sensitivity yields Equation 1 , and both the scale cancellation and minimum mathematical-expression require the Gaussian location model used in this calculation.
+
+The competence and gain adjustments carry further measurement limitations. The opposite-half competence proxy uses estimated seed standard deviations, including a mathematical-expression floor where the margin variance estimate for WinoGrande is mathematical-expression . The gain covariate uses both halves, and that lets its item noise correlate with the outcome errors. The reported zero-mediation simulation treats this shared item component differently from the observed regression. Its margin reference begins at 1p24502 instead of the observed 1p24395, and moves to 1p0910 with standard deviation 0p096 against the fully adjusted observed value of 1p276. The accuracy reference begins at 1p11831, above the observed 1p07837, and ends at 1p1045 against an adjusted 1p094. These mismatches prevent a calibrated causal interpretation of the residualisation comparisons.

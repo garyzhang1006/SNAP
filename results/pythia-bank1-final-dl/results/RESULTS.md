@@ -1,0 +1,68 @@
+# compute2 results
+
+Every number below is exploratory and post hoc with respect to the paper's registration; the reading rules were fixed in README.md before any run was scored.
+
+## Verification gate
+
+Not run: reduced/verify has no runs
+
+## PolyPythias, nine seeds per size at one matched step, the paper's items and prompts
+
+Items 37682, final step 143000, split seednoise.halves.split_items(seed=20260101).
+
+### Within bank 1 (the paper's design on the replicate family)
+
+| battery | phenotype | contrast | Lambda | K_eff | primary interval | wild (recipe/size) | cluster t | config boot |
+|---|---|---|---|---|---|---|---|---|
+| full | margin | all | 1.302 | 5.897 | [0.921, 1.595] | [nan, 2.063] | [0.826, 1.646] | [1.045, 1.506] |
+| full | accuracy | all | 1.481 | 4.557 | [0.561, 2.019] | [nan, 2.523] | [nan, 2.159] | [0.933, 1.976] |
+| no_boolq | margin | all | 2.273 | 1.743 | [1.553, 2.814] | [1.917, 2.580] | [1.938, 2.564] | [1.394, 2.369] |
+| no_boolq | accuracy | all | 2.500 | 1.440 | [2.367, 2.625] | [2.473, 2.526] | [2.415, 2.581] | [nan, 4.253] |
+
+Per size (one configuration, nine seeds, jackknife):
+
+| size | margin Lambda | jackknife | accuracy Lambda | jackknife |
+|---|---|---|---|---|
+| 14m | 1.203 | [nan, 2.284] | 1.029 | [0.464, 1.379] |
+| 31m | 1.096 | [0.802, 1.327] | 1.142 | [0.990, 1.276] |
+| 70m | 1.198 | [nan, 1.737] | 2.353 | [nan, 3.902] |
+| 160m | 0.997 | [nan, 1.465] | 0.815 | [0.474, 1.050] |
+| 410m | 1.576 | [0.841, 2.064] | 2.140 | [1.444, 2.659] |
+
+Cross-bank not run: reduced/pythia_bank2_final has no runs
+
+Cross-format not run: reduced/pythia_bank2zs_final has no runs
+
+Curve not run: reduced/pythia_bank1_curve has no runs
+
+## DataDecide, 375 runs, bank 1 from the release and bank 2 scored here
+
+Not run: reduced/datadecide_bank2 has no runs
+
+## Verdicts under the pre-specified reading rules
+
+```json
+{
+ "V0_verification": {
+  "pass": null,
+  "status": "not run",
+  "rule": "every verify run reproduces the release margins within the nats thresholds and agrees on correctness for at least the threshold fraction of items"
+ },
+ "R1_pythia_replicates_margin": {
+  "lambda": 1.3022243165382272,
+  "lo": 0.9206589861012651,
+  "hi": 1.5949806809105547,
+  "interval": "delete-one-seed jackknife t(8)",
+  "pass": false,
+  "rule": "nine-seed PolyPythias at one matched step, jackknife lower endpoint above one"
+ },
+ "R1_pythia_replicates_accuracy": {
+  "lambda": 1.4814118469703015,
+  "lo": 0.5605288217300143,
+  "hi": 2.018655384333315,
+  "interval": "delete-one-seed jackknife t(8)",
+  "pass": false,
+  "rule": "nine-seed PolyPythias at one matched step, jackknife lower endpoint above one"
+ }
+}
+```

@@ -1,0 +1,23 @@
+{
+ "V0_verification": {
+  "pass": null,
+  "status": "not run",
+  "rule": "every verify run reproduces the release margins within the nats thresholds and agrees on correctness for at least the threshold fraction of items"
+ },
+ "R1_pythia_replicates_margin": {
+  "lambda": 1.3022243165382272,
+  "lo": 0.9206589861012651,
+  "hi": 1.5949806809105547,
+  "interval": "delete-one-seed jackknife t(8)",
+  "pass": false,
+  "rule": "nine-seed PolyPythias at one matched step, jackknife lower endpoint above one"
+ },
+ "R1_pythia_replicates_accuracy": {
+  "lambda": 1.4814118469703015,
+  "lo": 0.5605288217300143,
+  "hi": 2.018655384333315,
+  "interval": "delete-one-seed jackknife t(8)",
+  "pass": false,
+  "rule": "nine-seed PolyPythias at one matched step, jackknife lower endpoint above one"
+ }
+}

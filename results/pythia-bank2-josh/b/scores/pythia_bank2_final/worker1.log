@@ -1,0 +1,62 @@
+[worker] {'torch': '2.10.0+cu128', 'transformers': '4.57.1', 'huggingface_hub': '0.36.2', 'gpu': 'Tesla T4', 'cuda': '12.8'} 6808 items
+`torch_dtype` is deprecated! Use `dtype` instead!
+  packed path disagrees with the reference path by 0.00409 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00566 nats, trying the next path
+[run] polypythias__160m__seed-1__step-143000 reference score 834s (2957 tok/s) download 8s check {'packed': 0.004085540771484375, 'unpadded': 0.005657196044921875}
+  packed path disagrees with the reference path by 0.00213 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00349 nats, trying the next path
+[run] polypythias__160m__seed-2__step-143000 reference score 833s (2961 tok/s) download 929s check {'packed': 0.002128005027770996, 'unpadded': 0.00348663330078125}
+  packed path disagrees with the reference path by 0.00184 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00415 nats, trying the next path
+[run] polypythias__160m__seed-3__step-143000 reference score 832s (2964 tok/s) download 886s check {'packed': 0.0018393993377685547, 'unpadded': 0.004150390625}
+  packed path disagrees with the reference path by 0.00565 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00564 nats, trying the next path
+[run] polypythias__160m__seed-5__step-143000 reference score 847s (2909 tok/s) download 885s check {'packed': 0.005647182464599609, 'unpadded': 0.00563812255859375}
+  packed path disagrees with the reference path by 0.00263 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00234 nats, trying the next path
+[run] polypythias__160m__seed-7__step-143000 reference score 842s (2928 tok/s) download 899s check {'packed': 0.0026302337646484375, 'unpadded': 0.0023431777954101562}
+  packed path disagrees with the reference path by 0.00364 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00381 nats, trying the next path
+[run] polypythias__160m__seed-9__step-143000 reference score 838s (2942 tok/s) download 894s check {'packed': 0.0036368370056152344, 'unpadded': 0.003811359405517578}
+  packed path disagrees with the reference path by 0.00937 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00808 nats, trying the next path
+[run] polypythias__70m__seed-3__step-143000 reference score 466s (5294 tok/s) download 890s check {'packed': 0.009371280670166016, 'unpadded': 0.008077621459960938}
+  packed path disagrees with the reference path by 0.0116 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.0106 nats, trying the next path
+[run] polypythias__70m__seed-5__step-143000 reference score 465s (5297 tok/s) download 513s check {'packed': 0.011552810668945312, 'unpadded': 0.010590553283691406}
+  packed path disagrees with the reference path by 0.0113 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.0109 nats, trying the next path
+[run] polypythias__70m__seed-7__step-143000 reference score 463s (5327 tok/s) download 513s check {'packed': 0.01127004623413086, 'unpadded': 0.010949134826660156}
+  packed path disagrees with the reference path by 0.0105 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.0075 nats, trying the next path
+[run] polypythias__70m__seed-9__step-143000 reference score 470s (5241 tok/s) download 511s check {'packed': 0.010546207427978516, 'unpadded': 0.00749969482421875}
+  packed path disagrees with the reference path by 0.0139 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.0121 nats, trying the next path
+[run] polypythias__31m__seed-2__step-143000 reference score 435s (5666 tok/s) download 517s check {'packed': 0.01394033432006836, 'unpadded': 0.012134313583374023}
+  packed path disagrees with the reference path by 0.00507 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00584 nats, trying the next path
+[run] polypythias__31m__seed-4__step-143000 reference score 431s (5723 tok/s) download 485s check {'packed': 0.005066871643066406, 'unpadded': 0.0058441162109375}
+  packed path disagrees with the reference path by 0.00465 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00579 nats, trying the next path
+[run] polypythias__31m__seed-6__step-143000 reference score 435s (5665 tok/s) download 482s check {'packed': 0.004645824432373047, 'unpadded': 0.005792379379272461}
+  packed path disagrees with the reference path by 0.00506 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.0115 nats, trying the next path
+[run] polypythias__31m__seed-8__step-143000 reference score 423s (5833 tok/s) download 486s check {'packed': 0.005059719085693359, 'unpadded': 0.01151132583618164}
+  packed path disagrees with the reference path by 0.0134 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00763 nats, trying the next path
+[run] polypythias__14m__seed-1__step-143000 reference score 397s (6210 tok/s) download 473s check {'packed': 0.01343679428100586, 'unpadded': 0.007625579833984375}
+  packed path disagrees with the reference path by 0.0081 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.0194 nats, trying the next path
+[run] polypythias__14m__seed-2__step-143000 reference score 396s (6232 tok/s) download 446s check {'packed': 0.008095264434814453, 'unpadded': 0.0194394588470459}
+  packed path disagrees with the reference path by 0.00849 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.0162 nats, trying the next path
+[run] polypythias__14m__seed-3__step-143000 reference score 393s (6275 tok/s) download 445s check {'packed': 0.00849008560180664, 'unpadded': 0.016172409057617188}
+  packed path disagrees with the reference path by 0.01 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00863 nats, trying the next path
+[run] polypythias__14m__seed-5__step-143000 reference score 394s (6255 tok/s) download 443s check {'packed': 0.010006427764892578, 'unpadded': 0.008629322052001953}
+  packed path disagrees with the reference path by 0.0119 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.00577 nats, trying the next path
+[run] polypythias__14m__seed-7__step-143000 reference score 395s (6248 tok/s) download 443s check {'packed': 0.011875629425048828, 'unpadded': 0.005766868591308594}
+  packed path disagrees with the reference path by 0.00704 nats, trying the next path
+  unpadded path disagrees with the reference path by 0.0038 nats, trying the next path
+[run] polypythias__14m__seed-9__step-143000 reference score 390s (6315 tok/s) download 444s check {'packed': 0.007044792175292969, 'unpadded': 0.0037970542907714844}

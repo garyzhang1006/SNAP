@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1790203272.76621 "supplement_extended.tex" "supplement_extended.pdf" "supplement_extended" 1790203273.2621 0
+["pdflatex"] 1790250243.31229 "supplement_extended.tex" "supplement_extended.pdf" "supplement_extended" 1790250243.8164 0
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1772380719 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/fontname/texfonts.map" 1772380719 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1772380719 5541360 f183aac233c4cd1e5ef882fcbe8e7096 ""
@@ -116,14 +116,14 @@
   "figures/calibration.pdf" 1789606883.48899 32836 ede8550f225b28526dbcd799103a8e2a ""
   "figures/prediction.pdf" 1789613624.93853 13791 a82d5ac440c5ebc14908c189649825d1 ""
   "iclr2027_conference.sty" 1789356740.9369 9025 1b4bb9c2e12c712c56f4eb1232b88dd6 ""
-  "main.aux" 1790203038.79862 30733 4458a24dc8d1a212ad4ec3f2913344b4 ""
-  "main.tex" 1790203259.99317 49849 8e492037ef886a4c96ebc43464a1b110 ""
+  "main.aux" 1790250242.64728 32064 111eba7e14102681f66d842744f4f5c7 ""
+  "main.tex" 1790235224.13843 47886 91ad04284393460603054b54bf7d242d ""
   "natbib.sty" 1789356740.9375 45154 40088ce024445d7ee2bca59e704cdd01 ""
-  "references.tex" 1790161172.13871 19640 4b37f8b628303788c738f5ae2a678de4 ""
-  "supplement_extended.aux" 1790203273.20525 26378 26503de69f192e95268251ec0ef8e113 "pdflatex"
-  "supplement_extended.out" 1790203273.20633 1089 81029b209dcf9c9c09c5f5ebd2863d93 "pdflatex"
+  "references.tex" 1790224340.26023 19944 8b9cb8bbc750cba9aa88a1fc17729007 ""
+  "supplement_extended.aux" 1790250243.75542 26405 6fc6a93a38d066cae0a677f31c3a5c48 "pdflatex"
+  "supplement_extended.out" 1790250243.7567 1089 81029b209dcf9c9c09c5f5ebd2863d93 "pdflatex"
   "supplement_extended.tex" 1790203272.10564 1803 748e3f47b888f14bf1716dc90d94e32a ""
-  "supplement_extended_body.tex" 1790152144.19599 166490 103c5558b2cc36a905de05f2f12d16c5 ""
+  "supplement_extended_body.tex" 1790226955.47248 166535 103db6b205f94f8557e82b3e14c0d288 ""
   (generated)
   "supplement_extended.aux"
   "supplement_extended.log"

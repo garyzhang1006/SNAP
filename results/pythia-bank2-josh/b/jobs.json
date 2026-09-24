@@ -1,0 +1,145 @@
+{
+ "jobs": [
+  {
+   "bank": "bank1",
+   "filter": {
+    "recipe": [
+     "c4"
+    ],
+    "size": [
+     "150M",
+     "1B"
+    ]
+   },
+   "name": "verify",
+   "purpose": "bank-1 scores must reproduce the release's per-item margins (gate for everything below)",
+   "runs": "runs_datadecide.json",
+   "tasks": [
+    "arc_easy",
+    "csqa",
+    "openbookqa",
+    "piqa",
+    "winogrande"
+   ]
+  },
+  {
+   "bank": "bank1",
+   "filter": {
+    "step": [
+     143000
+    ]
+   },
+   "name": "pythia_bank1_final",
+   "purpose": "replicate design, nine seeds per size at one step, the paper's exact items and prompts",
+   "runs": "runs_pythia.json"
+  },
+  {
+   "bank": "bank2",
+   "filter": {
+    "step": [
+     143000
+    ],
+    "seed": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9
+    ],
+    "run_key": [
+     "polypythias__410m__seed-9__step-143000",
+     "polypythias__160m__seed-1__step-143000",
+     "polypythias__160m__seed-2__step-143000",
+     "polypythias__160m__seed-3__step-143000",
+     "polypythias__160m__seed-4__step-143000",
+     "polypythias__160m__seed-5__step-143000",
+     "polypythias__160m__seed-6__step-143000",
+     "polypythias__160m__seed-7__step-143000",
+     "polypythias__160m__seed-8__step-143000",
+     "polypythias__160m__seed-9__step-143000",
+     "polypythias__70m__seed-1__step-143000",
+     "polypythias__70m__seed-2__step-143000",
+     "polypythias__70m__seed-3__step-143000",
+     "polypythias__70m__seed-4__step-143000",
+     "polypythias__70m__seed-5__step-143000",
+     "polypythias__70m__seed-6__step-143000",
+     "polypythias__70m__seed-7__step-143000",
+     "polypythias__70m__seed-8__step-143000",
+     "polypythias__70m__seed-9__step-143000",
+     "polypythias__31m__seed-1__step-143000",
+     "polypythias__31m__seed-2__step-143000",
+     "polypythias__31m__seed-3__step-143000",
+     "polypythias__31m__seed-4__step-143000",
+     "polypythias__31m__seed-5__step-143000",
+     "polypythias__31m__seed-6__step-143000",
+     "polypythias__31m__seed-7__step-143000",
+     "polypythias__31m__seed-8__step-143000",
+     "polypythias__31m__seed-9__step-143000",
+     "polypythias__14m__seed-1__step-143000",
+     "polypythias__14m__seed-2__step-143000",
+     "polypythias__14m__seed-3__step-143000",
+     "polypythias__14m__seed-4__step-143000",
+     "polypythias__14m__seed-5__step-143000",
+     "polypythias__14m__seed-6__step-143000",
+     "polypythias__14m__seed-7__step-143000",
+     "polypythias__14m__seed-8__step-143000",
+     "polypythias__14m__seed-9__step-143000"
+    ]
+   },
+   "name": "pythia_bank2_final",
+   "purpose": "disjoint items on the same runs, for the cross-bank estimate",
+   "runs": "runs_pythia.json"
+  },
+  {
+   "bank": "bank2",
+   "name": "datadecide_bank2",
+   "purpose": "disjoint items on all 375 DataDecide runs; bank 1 comes from the release",
+   "runs": "runs_datadecide.json"
+  },
+  {
+   "bank": "bank1",
+   "filter": {
+    "step": [
+     4000,
+     16000,
+     36000,
+     72000,
+     108000
+    ]
+   },
+   "name": "pythia_bank1_curve",
+   "optional": true,
+   "purpose": "the inflation factor across training at exactly matched steps",
+   "runs": "runs_pythia.json"
+  },
+  {
+   "bank": "bank2zs",
+   "filter": {
+    "step": [
+     143000
+    ]
+   },
+   "name": "pythia_bank2zs_final",
+   "optional": true,
+   "purpose": "same disjoint items without exemplars, for the cross-format estimate",
+   "runs": "runs_pythia.json"
+  },
+  {
+   "bank": "bank2zs",
+   "filter": {
+    "size": [
+     "1B"
+    ]
+   },
+   "name": "datadecide_bank2zs_1B",
+   "optional": true,
+   "purpose": "cross-format estimate on the 1B band of DataDecide",
+   "runs": "runs_datadecide.json"
+  }
+ ],
+ "schema": "snap-compute2-jobs-v1"
+}

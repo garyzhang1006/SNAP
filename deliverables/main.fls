@@ -136,6 +136,9 @@ INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/tools/xr.
 INPUT ./supplement_extended.tex
 INPUT ./supplement_extended.tex
 INPUT supplement_extended.aux
+INPUT ./pythia_values.tex
+INPUT ./pythia_values.tex
+INPUT pythia_values.tex
 INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/psnfss/t1ptm.fd
 INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/psnfss/t1ptm.fd
 INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/psnfss/t1ptm.fd
@@ -204,11 +207,11 @@ INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/tfm/adobe/tim
 INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
+INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/vf/adobe/times/ptmrc8t.vf
+INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
 INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
-INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/vf/adobe/times/ptmrc8t.vf
-INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm
 INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/tfm/public/cm/cmr6.tfm

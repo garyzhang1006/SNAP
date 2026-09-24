@@ -1,0 +1,78 @@
+"""Scan 114: the 32 appendix uses of "rather than", which the paper's style rule bans, rewritten
+one by one with varied constructions. Each pair must match exactly once in its file."""
+from pathlib import Path
+D = Path(__file__).resolve().parents[2] / "deliverables"
+E = {"appendix_a.tex": [
+("is therefore what this benchmark's passage structure implies rather than evidence of a sensitive test.",
+ "is therefore what this benchmark's passage structure implies, and it isn't evidence of a sensitive test."),
+("Its margin reference begins at 1.24502 rather than the observed 1.24395,",
+ "Its margin reference begins at 1.24502 instead of the observed 1.24395,"),
+("The accuracy reference begins at 1.11831 rather than the observed 1.07837,",
+ "The accuracy reference begins at 1.11831, above the observed 1.07837,"),
+], "appendices_bcd.tex": [
+("The replicated sizes begin at 150M rather than 4M.",
+ "The replicated sizes begin at 150M, and none of the smaller models has replicates."),
+("so they describe sensitivity rather than testing a hypothesis.",
+ "so they describe sensitivity and test no hypothesis."),
+("We retain the original planning calculations rather than calculating power from the estimated effect after observing",
+ "We retain the original planning calculations and don't recompute power from the estimated effect after observing"),
+("describe ability structures across models rather than within-configuration noise covariance.",
+ "describe ability structures across models, a different object from within-configuration noise covariance."),
+("came from a separate analysis of the per-run reductions rather than the original pipeline.",
+ "came from a separate analysis of the per-run reductions, outside the original pipeline."),
+("as the composition sensitivity reappearing at size resolution rather than as independent support for the pooled estimate,",
+ "as the composition sensitivity reappearing at size resolution, and not as independent support for the pooled estimate,"),
+("should be read as estimates with wide uncertainty rather than as intervals carrying their nominal level.",
+ "should be read as estimates with wide uncertainty, since they don't carry their nominal level as intervals."),
+("the bands describe simulated estimator dispersion rather than confidence-interval coverage.",
+ "the bands describe simulated estimator dispersion and say nothing about confidence-interval coverage."),
+("N2 was proposed as an estimator-bias check rather than the primary inferential procedure.",
+ "N2 was proposed as an estimator-bias check and was never the primary inferential procedure."),
+("its spectrum is a diagnostic of the moment estimate rather than a valid population correlation spectrum.",
+ "its spectrum is a diagnostic of the moment estimate and isn't a valid population correlation spectrum."),
+("the nine-trait reference is 1.219 rather than the ten-trait 1.244,",
+ "the nine-trait reference is 1.219 against the ten-trait 1.244,"),
+("This comparison uses 1,800 rather than 4,755 items,",
+ "This comparison uses 1,800 items instead of 4,755,"),
+("The shortfall belongs to the construction rather than to one set of draws.",
+ "The shortfall belongs to the construction and doesn't come from one set of draws."),
+("confirm it on the same generator family rather than test it independently,",
+ "confirm it on the same generator family without testing it independently,"),
+("concerns simulated versus conditional permutation populations rather than an error in the observed bootstrap scale.",
+ "concerns simulated versus conditional permutation populations and points to no error in the observed bootstrap scale."),
+("answers a missing repository with HTTP 401 rather than 404,",
+ "answers a missing repository with HTTP 401 instead of 404,"),
+("We simulated a run effect that follows the size band rather than the recipe,",
+ "We simulated a run effect that follows the size band instead of the recipe,"),
+("Missing cells and missing seeds cost width and power rather than coverage.",
+ "Missing cells and missing seeds cost width and power but leave coverage intact."),
+("so the loudest band breaks the estimator rather than the unevenness.",
+ "so the loudest band breaks the estimator and the unevenness itself doesn't."),
+("The rule rather than the evidence therefore decided the swap,",
+ "The rule therefore decided the swap, and the evidence didn't,"),
+("which means shard order rather than any 1B number fixed the interim's recipe set.",
+ "which means shard order fixed the interim's recipe set and no 1B number did."),
+("The uncapped entry therefore uses the kernel's own split rather than the primary one.",
+ "The uncapped entry therefore uses the kernel's own split in place of the primary one."),
+("The split uses that permutation rather than a hash of item identifiers,",
+ "The split uses that permutation instead of a hash of item identifiers,"),
+("The PolyPythias subsample therefore has its own split, rather than an item-hash split shared across arms.",
+ "The PolyPythias subsample therefore has its own split and doesn't share an item-hash split across arms."),
+("is recorded as missing rather than truncated,",
+ "is recorded as missing and isn't truncated,"),
+("raw products would include a large contribution from mean competence rather than measuring covariance of deviations.",
+ "raw products would include a large contribution from mean competence and wouldn't measure covariance of deviations."),
+("These figures describe the plan rather than measured costs for every listed operation.",
+ "These figures describe the plan and aren't measured costs for every listed operation."),
+("fifty re-splits rather than the 200 budgeted,",
+ "fifty re-splits instead of the 200 budgeted,"),
+("below one card-hour rather than the budgeted six.",
+ "below one card-hour against the budgeted six."),
+]}
+for f, pairs in E.items():
+    p = D / f; s = p.read_text()
+    for a, b in pairs:
+        assert s.count(a) == 1, (f, s.count(a), a[:70])
+        s = s.replace(a, b)
+    p.write_text(s)
+print(sum(len(v) for v in E.values()), "edits")

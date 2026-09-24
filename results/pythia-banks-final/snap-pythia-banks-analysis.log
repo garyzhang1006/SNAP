@@ -1,0 +1,710 @@
+[{"stream_name":"stdout","time":0.958219727,"data":"+ git clone -q https://github.com/garyzhang1006/SNAP.git /tmp/SNAP\n"}
+,{"stream_name":"stdout","time":2.1135495,"data":"+ git -C /tmp/SNAP checkout -q 6cfedee87ac52695f96665ecc0a62ecdc97e1c35\n"}
+,{"stream_name":"stdout","time":2.19783802,"data":"+ python requests/build_bank1.py\n"}
+,{"stream_name":"stdout","time":4.813454921,"data":"[task] arc_challenge: 1172 docs\n"}
+,{"stream_name":"stderr","time":4.877333094,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":5.551007414,"data":"[task] arc_easy: 2376 docs\n"}
+,{"stream_name":"stdout","time":6.15837894,"data":"[task] boolq: 3270 docs\n"}
+,{"stream_name":"stdout","time":6.553568128,"data":"[task] csqa: 1221 docs\n"}
+,{"stream_name":"stdout","time":8.842289661,"data":"[task] hellaswag: 10042 docs\n"}
+,{"stream_name":"stdout","time":9.111528965,"data":"[task] mmlu_abstract_algebra: 100 docs\n"}
+,{"stream_name":"stdout","time":9.399830094,"data":"[task] mmlu_anatomy: 135 docs\n"}
+,{"stream_name":"stdout","time":9.678303403,"data":"[task] mmlu_astronomy: 152 docs\n"}
+,{"stream_name":"stdout","time":9.95443188,"data":"[task] mmlu_business_ethics: 100 docs\n"}
+,{"stream_name":"stdout","time":10.248163932,"data":"[task] mmlu_clinical_knowledge: 265 docs\n"}
+,{"stream_name":"stdout","time":10.526258078,"data":"[task] mmlu_college_biology: 144 docs\n"}
+,{"stream_name":"stdout","time":10.801583422,"data":"[task] mmlu_college_chemistry: 100 docs\n"}
+,{"stream_name":"stdout","time":11.087172016,"data":"[task] mmlu_college_computer_science: 100 docs\n"}
+,{"stream_name":"stdout","time":11.365565578,"data":"[task] mmlu_college_mathematics: 100 docs\n"}
+,{"stream_name":"stdout","time":11.651723423,"data":"[task] mmlu_college_medicine: 173 docs\n"}
+,{"stream_name":"stdout","time":11.929312016,"data":"[task] mmlu_college_physics: 102 docs\n"}
+,{"stream_name":"stdout","time":12.203310157,"data":"[task] mmlu_computer_security: 100 docs\n"}
+,{"stream_name":"stdout","time":12.488190782,"data":"[task] mmlu_conceptual_physics: 235 docs\n"}
+,{"stream_name":"stdout","time":12.766385636,"data":"[task] mmlu_econometrics: 114 docs\n"}
+,{"stream_name":"stdout","time":13.040815859,"data":"[task] mmlu_electrical_engineering: 145 docs\n"}
+,{"stream_name":"stdout","time":13.34501754,"data":"[task] mmlu_elementary_mathematics: 378 docs\n"}
+,{"stream_name":"stdout","time":13.642409655,"data":"[task] mmlu_formal_logic: 126 docs\n"}
+,{"stream_name":"stdout","time":13.916877382,"data":"[task] mmlu_global_facts: 100 docs\n"}
+,{"stream_name":"stdout","time":14.221569791,"data":"[task] mmlu_high_school_biology: 310 docs\n"}
+,{"stream_name":"stdout","time":14.511349693,"data":"[task] mmlu_high_school_chemistry: 203 docs\n"}
+,{"stream_name":"stdout","time":14.79426692,"data":"[task] mmlu_high_school_computer_science: 100 docs\n"}
+,{"stream_name":"stdout","time":15.182345813,"data":"[task] mmlu_high_school_european_history: 165 docs\n"}
+,{"stream_name":"stdout","time":15.46935887,"data":"[task] mmlu_high_school_geography: 198 docs\n"}
+,{"stream_name":"stdout","time":15.75547311,"data":"[task] mmlu_high_school_government_and_politics: 193 docs\n"}
+,{"stream_name":"stdout","time":16.064136602,"data":"[task] mmlu_high_school_macroeconomics: 390 docs\n"}
+,{"stream_name":"stdout","time":16.370964163,"data":"[task] mmlu_high_school_mathematics: 270 docs\n"}
+,{"stream_name":"stdout","time":16.66291194,"data":"[task] mmlu_high_school_microeconomics: 238 docs\n"}
+,{"stream_name":"stdout","time":16.955241787,"data":"[task] mmlu_high_school_physics: 151 docs\n"}
+,{"stream_name":"stdout","time":17.28837286,"data":"[task] mmlu_high_school_psychology: 545 docs\n"}
+,{"stream_name":"stdout","time":17.605640099,"data":"[task] mmlu_high_school_statistics: 216 docs\n"}
+,{"stream_name":"stdout","time":17.979004112,"data":"[task] mmlu_high_school_us_history: 204 docs\n"}
+,{"stream_name":"stdout","time":18.340791664,"data":"[task] mmlu_high_school_world_history: 237 docs\n"}
+,{"stream_name":"stdout","time":18.624824255,"data":"[task] mmlu_human_aging: 223 docs\n"}
+,{"stream_name":"stdout","time":18.901801808,"data":"[task] mmlu_human_sexuality: 131 docs\n"}
+,{"stream_name":"stdout","time":19.180156994,"data":"[task] mmlu_international_law: 121 docs\n"}
+,{"stream_name":"stdout","time":19.45463892,"data":"[task] mmlu_jurisprudence: 108 docs\n"}
+,{"stream_name":"stdout","time":19.73720862,"data":"[task] mmlu_logical_fallacies: 163 docs\n"}
+,{"stream_name":"stdout","time":20.015982781,"data":"[task] mmlu_machine_learning: 112 docs\n"}
+,{"stream_name":"stdout","time":20.293739792,"data":"[task] mmlu_management: 103 docs\n"}
+,{"stream_name":"stdout","time":20.582699861000002,"data":"[task] mmlu_marketing: 234 docs\n"}
+,{"stream_name":"stdout","time":20.856669088,"data":"[task] mmlu_medical_genetics: 100 docs\n"}
+,{"stream_name":"stdout","time":21.199075337,"data":"[task] mmlu_miscellaneous: 783 docs\n"}
+,{"stream_name":"stdout","time":21.514003383,"data":"[task] mmlu_moral_disputes: 346 docs\n"}
+,{"stream_name":"stdout","time":21.919234904,"data":"[task] mmlu_moral_scenarios: 895 docs\n"}
+,{"stream_name":"stdout","time":22.231752989,"data":"[task] mmlu_nutrition: 306 docs\n"}
+,{"stream_name":"stdout","time":22.552694503,"data":"[task] mmlu_philosophy: 311 docs\n"}
+,{"stream_name":"stdout","time":22.855709215,"data":"[task] mmlu_prehistory: 324 docs\n"}
+,{"stream_name":"stdout","time":23.167169618,"data":"[task] mmlu_professional_accounting: 282 docs\n"}
+,{"stream_name":"stdout","time":23.938242676,"data":"[task] mmlu_professional_law: 1534 docs\n"}
+,{"stream_name":"stdout","time":24.274277804,"data":"[task] mmlu_professional_medicine: 272 docs\n"}
+,{"stream_name":"stdout","time":24.627513032,"data":"[task] mmlu_professional_psychology: 612 docs\n"}
+,{"stream_name":"stdout","time":24.900070865,"data":"[task] mmlu_public_relations: 110 docs\n"}
+,{"stream_name":"stdout","time":25.206168034,"data":"[task] mmlu_security_studies: 245 docs\n"}
+,{"stream_name":"stdout","time":25.491488071,"data":"[task] mmlu_sociology: 201 docs\n"}
+,{"stream_name":"stdout","time":25.764553934,"data":"[task] mmlu_us_foreign_policy: 100 docs\n"}
+,{"stream_name":"stdout","time":26.04596669,"data":"[task] mmlu_virology: 166 docs\n"}
+,{"stream_name":"stdout","time":26.333708482,"data":"[task] mmlu_world_religions: 171 docs\n"}
+,{"stream_name":"stdout","time":26.64294445,"data":"[task] openbookqa: 500 docs\n"}
+,{"stream_name":"stdout","time":27.020828013,"data":"[task] piqa: 1838 docs\n"}
+,{"stream_name":"stdout","time":27.510483669,"data":"[task] socialiqa: 1954 docs\n"}
+,{"stream_name":"stdout","time":27.809702131,"data":"[task] winogrande: 1267 docs\n"}
+,{"stream_name":"stdout","time":31.876686916,"data":"{\n"}
+,{"stream_name":"stdout","time":31.876724738,"data":" \"items\": 37682,\n"}
+,{"stream_name":"stdout","time":31.876730314,"data":" \"per_trait\": {\n"}
+,{"stream_name":"stdout","time":31.876734942,"data":"  \"arc_challenge\": 1172,\n"}
+,{"stream_name":"stdout","time":31.876739653,"data":"  \"arc_easy\": 2376,\n"}
+,{"stream_name":"stdout","time":31.876744147,"data":"  \"boolq\": 3270,\n"}
+,{"stream_name":"stdout","time":31.876763412,"data":"  \"csqa\": 1221,\n"}
+,{"stream_name":"stdout","time":31.876766919,"data":"  \"hellaswag\": 10042,\n"}
+,{"stream_name":"stdout","time":31.876770231,"data":"  \"mmlu\": 14042,\n"}
+,{"stream_name":"stdout","time":31.876773498,"data":"  \"openbookqa\": 500,\n"}
+,{"stream_name":"stdout","time":31.876777062,"data":"  \"piqa\": 1838,\n"}
+,{"stream_name":"stdout","time":31.876780309,"data":"  \"socialiqa\": 1954,\n"}
+,{"stream_name":"stdout","time":31.876783738,"data":"  \"winogrande\": 1267\n"}
+,{"stream_name":"stdout","time":31.876787158,"data":" },\n"}
+,{"stream_name":"stdout","time":31.876790363,"data":" \"sha256\": \"3130d19f88c2cb5dd040ff203200a9a3464e29b873635c1cd7768704b19fbcaf\"\n"}
+,{"stream_name":"stdout","time":31.876794025,"data":"}\n"}
+,{"stream_name":"stdout","time":32.021044158,"data":"+ python requests/build_bank2.py\n"}
+,{"stream_name":"stdout","time":37.21538569,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.5/20.5 MB 77.2 MB/s eta 0:00:00\n"}
+,{"stream_name":"stderr","time":40.240743699,"data":"warning: The `--system` flag has no effect, `uv venv` always ignores virtual environments when finding a Python interpreter; did you mean `--no-managed-python`?\n"}
+,{"stream_name":"stderr","time":40.364728666,"data":"Using CPython 3.12.13 interpreter at: /usr/bin/python3\n"}
+,{"stream_name":"stderr","time":40.364766301,"data":"Creating virtual environment at: tmp/olmes/olmes-env\n"}
+,{"stream_name":"stderr","time":40.370045856,"data":"Activate with: source tmp/olmes/olmes-env/bin/activate\n"}
+,{"stream_name":"stderr","time":135.192005459,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:1348: SyntaxWarning: invalid escape sequence '\\$'\n"}
+,{"stream_name":"stderr","time":135.19233132,"data":"  \"answer_format_regex\": \"(?i)Answer[ \\t]*:[ \\t]*\\$?([A-D])\\$?\",\n"}
+,{"stream_name":"stderr","time":135.200715265,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:3570: SyntaxWarning: invalid escape sequence '\\s'\n"}
+,{"stream_name":"stderr","time":135.201407037,"data":"  \"[\\s\\S]*?\\\\\\\\boxed\\\\{(.*?)\\\\}[\\s\\S]*?\",\n"}
+,{"stream_name":"stderr","time":135.201429218,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:3571: SyntaxWarning: invalid escape sequence '\\.'\n"}
+,{"stream_name":"stderr","time":135.202120024,"data":"  \"(.*)\\.?\",\n"}
+,{"stream_name":"stderr","time":135.202296929,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:3616: SyntaxWarning: invalid escape sequence '\\s'\n"}
+,{"stream_name":"stderr","time":135.203045323,"data":"  \"[\\s\\S]*?\\\\\\\\boxed\\\\{(.*?)\\\\}[\\s\\S]*?\",\n"}
+,{"stream_name":"stderr","time":135.203062436,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:3617: SyntaxWarning: invalid escape sequence '\\.'\n"}
+,{"stream_name":"stderr","time":135.203729756,"data":"  \"(.*)\\.?\",\n"}
+,{"stream_name":"stderr","time":135.203913147,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:3662: SyntaxWarning: invalid escape sequence '\\s'\n"}
+,{"stream_name":"stderr","time":135.204651368,"data":"  \"[\\s\\S]*?\\\\\\\\boxed\\\\{(.*?)\\\\}[\\s\\S]*?\",\n"}
+,{"stream_name":"stderr","time":135.204668565,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:3663: SyntaxWarning: invalid escape sequence '\\.'\n"}
+,{"stream_name":"stderr","time":135.205313361,"data":"  \"(.*)\\.?\",\n"}
+,{"stream_name":"stderr","time":135.211818472,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:4496: SyntaxWarning: invalid escape sequence '\\s'\n"}
+,{"stream_name":"stderr","time":135.212689778,"data":"  \"[\\s\\S]*?\\\\\\\\boxed\\\\{(.*?)\\\\}[\\s\\S]*?\",\n"}
+,{"stream_name":"stderr","time":135.21271663,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:4497: SyntaxWarning: invalid escape sequence '\\.'\n"}
+,{"stream_name":"stderr","time":135.213430272,"data":"  \"(.*)\\.?\",\n"}
+,{"stream_name":"stderr","time":135.213713521,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:4537: SyntaxWarning: invalid escape sequence '\\s'\n"}
+,{"stream_name":"stderr","time":135.214556939,"data":"  \"[\\s\\S]*?\\\\\\\\boxed\\\\{(.*?)\\\\}[\\s\\S]*?\",\n"}
+,{"stream_name":"stderr","time":135.214568875,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:4538: SyntaxWarning: invalid escape sequence '\\.'\n"}
+,{"stream_name":"stderr","time":135.215386493,"data":"  \"(.*)\\.?\",\n"}
+,{"stream_name":"stderr","time":135.215778494,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:4584: SyntaxWarning: invalid escape sequence '\\s'\n"}
+,{"stream_name":"stderr","time":135.216650685,"data":"  \"[\\s\\S]*?\\\\\\\\boxed\\\\{(.*?)\\\\}[\\s\\S]*?\",\n"}
+,{"stream_name":"stderr","time":135.21666718,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:4585: SyntaxWarning: invalid escape sequence '\\.'\n"}
+,{"stream_name":"stderr","time":135.217461825,"data":"  \"(.*)\\.?\",\n"}
+,{"stream_name":"stderr","time":135.223930225,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:5814: SyntaxWarning: invalid escape sequence '\\s'\n"}
+,{"stream_name":"stderr","time":135.225047862,"data":"  \"[\\s\\S]*?\\\\\\\\boxed\\\\{(.*?)\\\\}[\\s\\S]*?\",\n"}
+,{"stream_name":"stderr","time":135.22506468,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:5816: SyntaxWarning: invalid escape sequence '\\.'\n"}
+,{"stream_name":"stderr","time":135.226202928,"data":"  \"(.*)\\.?\",\n"}
+,{"stream_name":"stderr","time":135.226409403,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:5863: SyntaxWarning: invalid escape sequence '\\s'\n"}
+,{"stream_name":"stderr","time":135.22751212,"data":"  \"[\\s\\S]*?\\\\\\\\boxed\\\\{(.*?)\\\\}[\\s\\S]*?\",\n"}
+,{"stream_name":"stderr","time":135.22752753,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:5865: SyntaxWarning: invalid escape sequence '\\.'\n"}
+,{"stream_name":"stderr","time":135.228602842,"data":"  \"(.*)\\.?\",\n"}
+,{"stream_name":"stderr","time":135.228789481,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:5912: SyntaxWarning: invalid escape sequence '\\s'\n"}
+,{"stream_name":"stderr","time":135.229921129,"data":"  \"[\\s\\S]*?\\\\\\\\boxed\\\\{(.*?)\\\\}[\\s\\S]*?\",\n"}
+,{"stream_name":"stderr","time":135.229934445,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:5914: SyntaxWarning: invalid escape sequence '\\.'\n"}
+,{"stream_name":"stderr","time":135.230965704,"data":"  \"(.*)\\.?\",\n"}
+,{"stream_name":"stderr","time":135.231161064,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:5958: SyntaxWarning: invalid escape sequence '\\s'\n"}
+,{"stream_name":"stderr","time":135.232255753,"data":"  \"[\\s\\S]*?\\\\\\\\boxed\\\\{(.*?)\\\\}[\\s\\S]*?\",\n"}
+,{"stream_name":"stderr","time":135.23227019,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:5960: SyntaxWarning: invalid escape sequence '\\.'\n"}
+,{"stream_name":"stderr","time":135.233357866,"data":"  \"(.*)\\.?\",\n"}
+,{"stream_name":"stderr","time":135.233530042,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:6005: SyntaxWarning: invalid escape sequence '\\s'\n"}
+,{"stream_name":"stderr","time":135.234647098,"data":"  \"[\\s\\S]*?\\\\\\\\boxed\\\\{(.*?)\\\\}[\\s\\S]*?\",\n"}
+,{"stream_name":"stderr","time":135.234669383,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:6007: SyntaxWarning: invalid escape sequence '\\.'\n"}
+,{"stream_name":"stderr","time":135.235709737,"data":"  \"(.*)\\.?\",\n"}
+,{"stream_name":"stderr","time":135.235926914,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:6058: SyntaxWarning: invalid escape sequence '\\s'\n"}
+,{"stream_name":"stderr","time":135.237047213,"data":"  \"[\\s\\S]*?\\\\\\\\boxed\\\\{(.*?)\\\\}[\\s\\S]*?\",\n"}
+,{"stream_name":"stderr","time":135.237059998,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/oe_eval/configs/tasks.py:6060: SyntaxWarning: invalid escape sequence '\\.'\n"}
+,{"stream_name":"stderr","time":135.238111992,"data":"  \"(.*)\\.?\",\n"}
+,{"stream_name":"stderr","time":155.891054037,"data":"Skipping import of cpp extensions due to incompatible torch version 2.8.0+cu128 for torchao version 0.15.0             Please see https://github.com/pytorch/ao/issues/2919 for more info\n"}
+,{"stream_name":"stderr","time":156.928589841,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/torchao/quantization/quant_api.py:2525: SyntaxWarning: invalid escape sequence '\\.'\n"}
+,{"stream_name":"stderr","time":156.928640869,"data":"  * regex for parameter names, must start with `re:`, e.g. `re:language\\.layers\\..+\\.q_proj.weight`.\n"}
+,{"stream_name":"stderr","time":162.390583238,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/lm_eval/filters/extraction.py:98: SyntaxWarning: invalid escape sequence '\\s'\n"}
+,{"stream_name":"stderr","time":162.390690008,"data":"  - step 2 : We parse the choice with regex :[\\s]*([A-?]), where ? varies by number of choices.\n"}
+,{"stream_name":"stderr","time":162.390996155,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/lm_eval/filters/extraction.py:168: SyntaxWarning: invalid escape sequence '\\s'\n"}
+,{"stream_name":"stderr","time":162.391011625,"data":"  f\":[\\s]*({without_paren_fallback_regex})\"\n"}
+,{"stream_name":"stderr","time":162.404627293,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/lm_eval/tasks/hendrycks_math/utils.py:199: SyntaxWarning: invalid escape sequence '\\%'\n"}
+,{"stream_name":"stderr","time":162.404660033,"data":"  string = string.replace(\"\\%\", \"\")  # noqa: W605\n"}
+,{"stream_name":"stderr","time":162.837475452,"data":"/tmp/SNAP/compute2/tmp/olmes/olmes-env/lib/python3.12/site-packages/alpaca_eval/utils.py:20: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools\u003c81.\n"}
+,{"stream_name":"stderr","time":162.837507664,"data":"  import pkg_resources\n"}
+,{"stream_name":"stderr","time":173.578812816,"data":"2026-09-24:07:26:09,923 INFO     [rouge_scorer.py:83] Using default tokenizer.\n"}
+,{"stream_name":"stderr","time":180.171769215,"data":"\rGenerating train split:   0%|          | 0/1119 [00:00\u003c?, ? examples/s]\rGenerating train split: 100%|██████████| 1119/1119 [00:00\u003c00:00, 106605.78 examples/s]\n"}
+,{"stream_name":"stderr","time":180.18032477,"data":"\rGenerating test split:   0%|          | 0/1172 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 1172/1172 [00:00\u003c00:00, 148983.92 examples/s]\n"}
+,{"stream_name":"stderr","time":180.185095441,"data":"\rGenerating validation split:   0%|          | 0/299 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 299/299 [00:00\u003c00:00, 73027.25 examples/s]\n"}
+,{"stream_name":"stderr","time":180.19504242,"data":"2026-09-24:07:26:16,539 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stdout","time":180.316189765,"data":"[task] arc_challenge:rc::olmes split=train shots=5: 1119 docs\n"}
+,{"stream_name":"stderr","time":181.698183421,"data":"\rGenerating train split:   0%|          | 0/2251 [00:00\u003c?, ? examples/s]\rGenerating train split: 100%|██████████| 2251/2251 [00:00\u003c00:00, 259871.14 examples/s]\n"}
+,{"stream_name":"stderr","time":181.706359987,"data":"\rGenerating test split:   0%|          | 0/2376 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 2376/2376 [00:00\u003c00:00, 313375.88 examples/s]\n"}
+,{"stream_name":"stderr","time":181.711488035,"data":"\rGenerating validation split:   0%|          | 0/570 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 570/570 [00:00\u003c00:00, 126971.87 examples/s]\n"}
+,{"stream_name":"stderr","time":181.721394353,"data":"2026-09-24:07:26:18,066 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stdout","time":182.428073409,"data":"[task] arc_easy:rc::olmes split=train shots=5: 2251 docs\n"}
+,{"stream_name":"stderr","time":184.06269297,"data":"\rGenerating train split:   0%|          | 0/9427 [00:00\u003c?, ? examples/s]\rGenerating train split: 100%|██████████| 9427/9427 [00:00\u003c00:00, 226289.00 examples/s]\n"}
+,{"stream_name":"stderr","time":184.076002137,"data":"\rGenerating validation split:   0%|          | 0/3270 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 3270/3270 [00:00\u003c00:00, 258225.22 examples/s]\n"}
+,{"stream_name":"stderr","time":184.08975368,"data":"\rGenerating test split:   0%|          | 0/3245 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 3245/3245 [00:00\u003c00:00, 247171.82 examples/s]\n"}
+,{"stream_name":"stderr","time":184.098074757,"data":"2026-09-24:07:26:20,442 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stdout","time":185.382710225,"data":"[task] boolq:rc::olmes split=train shots=5: 9427 docs\n"}
+,{"stream_name":"stderr","time":186.62249521,"data":"\rGenerating train split:   0%|          | 0/9741 [00:00\u003c?, ? examples/s]\rGenerating train split: 100%|██████████| 9741/9741 [00:00\u003c00:00, 481789.52 examples/s]\n"}
+,{"stream_name":"stderr","time":186.628579549,"data":"\rGenerating validation split:   0%|          | 0/1221 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 1221/1221 [00:00\u003c00:00, 223732.86 examples/s]\n"}
+,{"stream_name":"stderr","time":186.634294169,"data":"\rGenerating test split:   0%|          | 0/1140 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 1140/1140 [00:00\u003c00:00, 223403.57 examples/s]\n"}
+,{"stream_name":"stderr","time":186.646022273,"data":"2026-09-24:07:26:22,990 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stdout","time":188.151561277,"data":"[task] csqa:rc::olmes split=train shots=5: 9741 docs\n"}
+,{"stream_name":"stderr","time":190.200635425,"data":"\rGenerating train split:   0%|          | 0/39905 [00:00\u003c?, ? examples/s]\rGenerating train split:  63%|██████▎   | 25000/39905 [00:00\u003c00:00, 243920.69 examples/s]\rGenerating train split: 100%|██████████| 39905/39905 [00:00\u003c00:00, 248685.73 examples/s]\n"}
+,{"stream_name":"stderr","time":190.245310843,"data":"\rGenerating test split:   0%|          | 0/10003 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 10003/10003 [00:00\u003c00:00, 227427.64 examples/s]\n"}
+,{"stream_name":"stderr","time":190.288254731,"data":"\rGenerating validation split:   0%|          | 0/10042 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 10042/10042 [00:00\u003c00:00, 237288.60 examples/s]\n"}
+,{"stream_name":"stderr","time":190.300728378,"data":"2026-09-24:07:26:26,645 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stdout","time":208.376431231,"data":"[task] hellaswag:rc::olmes split=train shots=5: 39905 docs\n"}
+,{"stream_name":"stderr","time":209.944134642,"data":"\rGenerating test split:   0%|          | 0/100 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 100/100 [00:00\u003c00:00, 18605.79 examples/s]\n"}
+,{"stream_name":"stderr","time":209.947578824,"data":"\rGenerating validation split:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 11/11 [00:00\u003c00:00, 3868.31 examples/s]\n"}
+,{"stream_name":"stderr","time":209.951027478,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1776.80 examples/s]\n"}
+,{"stream_name":"stderr","time":209.958978205,"data":"2026-09-24:07:26:46,303 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":209.973956433,"data":"\rMap:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 11/11 [00:00\u003c00:00, 1420.05 examples/s]\n"}
+,{"stream_name":"stdout","time":210.014812687,"data":"[task] mmlu_abstract_algebra:rc::olmes split=validation shots=5: 11 docs\n"}
+,{"stream_name":"stderr","time":211.094412203,"data":"\rGenerating test split:   0%|          | 0/135 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 135/135 [00:00\u003c00:00, 39897.90 examples/s]\n"}
+,{"stream_name":"stderr","time":211.097896426,"data":"\rGenerating validation split:   0%|          | 0/14 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 14/14 [00:00\u003c00:00, 4873.05 examples/s]\n"}
+,{"stream_name":"stderr","time":211.101204049,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1816.35 examples/s]\n"}
+,{"stream_name":"stderr","time":211.109739856,"data":"2026-09-24:07:26:47,454 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":211.124430378,"data":"\rMap:   0%|          | 0/14 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 14/14 [00:00\u003c00:00, 2001.17 examples/s]\n"}
+,{"stream_name":"stdout","time":211.126669398,"data":"[task] mmlu_anatomy:rc::olmes split=validation shots=5: 14 docs\n"}
+,{"stream_name":"stderr","time":212.275867099,"data":"\rGenerating test split:   0%|          | 0/152 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 152/152 [00:00\u003c00:00, 42262.79 examples/s]\n"}
+,{"stream_name":"stderr","time":212.279740752,"data":"\rGenerating validation split:   0%|          | 0/16 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 16/16 [00:00\u003c00:00, 4995.45 examples/s]\n"}
+,{"stream_name":"stderr","time":212.283388661,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1635.46 examples/s]\n"}
+,{"stream_name":"stderr","time":212.292176837,"data":"2026-09-24:07:26:48,637 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":212.305627388,"data":"\rMap:   0%|          | 0/16 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 16/16 [00:00\u003c00:00, 2344.50 examples/s]\n"}
+,{"stream_name":"stdout","time":212.308325357,"data":"[task] mmlu_astronomy:rc::olmes split=validation shots=5: 16 docs\n"}
+,{"stream_name":"stderr","time":213.344007606,"data":"\rGenerating test split:   0%|          | 0/100 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 100/100 [00:00\u003c00:00, 32039.60 examples/s]\n"}
+,{"stream_name":"stderr","time":213.347060967,"data":"\rGenerating validation split:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 11/11 [00:00\u003c00:00, 4238.23 examples/s]\n"}
+,{"stream_name":"stderr","time":213.350179683,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1943.97 examples/s]\n"}
+,{"stream_name":"stderr","time":213.358379611,"data":"2026-09-24:07:26:49,703 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":213.371098163,"data":"\rMap:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 11/11 [00:00\u003c00:00, 1741.69 examples/s]\n"}
+,{"stream_name":"stdout","time":213.373243281,"data":"[task] mmlu_business_ethics:rc::olmes split=validation shots=5: 11 docs\n"}
+,{"stream_name":"stderr","time":214.448191974,"data":"\rGenerating test split:   0%|          | 0/265 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 265/265 [00:00\u003c00:00, 79871.41 examples/s]\n"}
+,{"stream_name":"stderr","time":214.451231239,"data":"\rGenerating validation split:   0%|          | 0/29 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 29/29 [00:00\u003c00:00, 11421.11 examples/s]\n"}
+,{"stream_name":"stderr","time":214.454125128,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 2127.14 examples/s]\n"}
+,{"stream_name":"stderr","time":214.462452323,"data":"2026-09-24:07:26:50,807 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":214.477290847,"data":"\rMap:   0%|          | 0/29 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 29/29 [00:00\u003c00:00, 3657.97 examples/s]\n"}
+,{"stream_name":"stdout","time":214.481273204,"data":"[task] mmlu_clinical_knowledge:rc::olmes split=validation shots=5: 29 docs\n"}
+,{"stream_name":"stderr","time":215.586693458,"data":"\rGenerating test split:   0%|          | 0/144 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 144/144 [00:00\u003c00:00, 46310.36 examples/s]\n"}
+,{"stream_name":"stderr","time":215.590667935,"data":"\rGenerating validation split:   0%|          | 0/16 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 16/16 [00:00\u003c00:00, 4869.31 examples/s]\n"}
+,{"stream_name":"stderr","time":215.594141224,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1778.30 examples/s]\n"}
+,{"stream_name":"stderr","time":215.602954163,"data":"2026-09-24:07:26:51,947 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":215.61724929,"data":"\rMap:   0%|          | 0/16 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 16/16 [00:00\u003c00:00, 2226.35 examples/s]\n"}
+,{"stream_name":"stdout","time":215.620159274,"data":"[task] mmlu_college_biology:rc::olmes split=validation shots=5: 16 docs\n"}
+,{"stream_name":"stderr","time":216.730776793,"data":"\rGenerating test split:   0%|          | 0/100 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 100/100 [00:00\u003c00:00, 30546.24 examples/s]\n"}
+,{"stream_name":"stderr","time":216.73483728,"data":"\rGenerating validation split:   0%|          | 0/8 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 8/8 [00:00\u003c00:00, 2300.93 examples/s]\n"}
+,{"stream_name":"stderr","time":216.738724312,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1648.83 examples/s]\n"}
+,{"stream_name":"stderr","time":216.747999968,"data":"2026-09-24:07:26:53,092 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":216.76151585,"data":"\rMap:   0%|          | 0/8 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 8/8 [00:00\u003c00:00, 1225.20 examples/s]\n"}
+,{"stream_name":"stdout","time":216.763223319,"data":"[task] mmlu_college_chemistry:rc::olmes split=validation shots=5: 8 docs\n"}
+,{"stream_name":"stderr","time":217.857880746,"data":"\rGenerating test split:   0%|          | 0/100 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 100/100 [00:00\u003c00:00, 27935.95 examples/s]\n"}
+,{"stream_name":"stderr","time":217.862057124,"data":"\rGenerating validation split:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 11/11 [00:00\u003c00:00, 3227.52 examples/s]\n"}
+,{"stream_name":"stderr","time":217.8664328,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1399.59 examples/s]\n"}
+,{"stream_name":"stderr","time":217.87613745,"data":"2026-09-24:07:26:54,220 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":217.89000792,"data":"\rMap:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 11/11 [00:00\u003c00:00, 1619.82 examples/s]\n"}
+,{"stream_name":"stdout","time":217.892579937,"data":"[task] mmlu_college_computer_science:rc::olmes split=validation shots=5: 11 docs\n"}
+,{"stream_name":"stderr","time":218.895720402,"data":"\rGenerating test split:   0%|          | 0/100 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 100/100 [00:00\u003c00:00, 29024.32 examples/s]\n"}
+,{"stream_name":"stderr","time":218.900072985,"data":"\rGenerating validation split:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 11/11 [00:00\u003c00:00, 3414.04 examples/s]\n"}
+,{"stream_name":"stderr","time":218.903171565,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1719.82 examples/s]\n"}
+,{"stream_name":"stderr","time":218.91188333,"data":"2026-09-24:07:26:55,256 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":218.925158894,"data":"\rMap:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 11/11 [00:00\u003c00:00, 1675.83 examples/s]\n"}
+,{"stream_name":"stdout","time":218.928607659,"data":"[task] mmlu_college_mathematics:rc::olmes split=validation shots=5: 11 docs\n"}
+,{"stream_name":"stderr","time":219.958379394,"data":"\rGenerating test split:   0%|          | 0/173 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 173/173 [00:00\u003c00:00, 50205.12 examples/s]\n"}
+,{"stream_name":"stderr","time":219.962294536,"data":"\rGenerating validation split:   0%|          | 0/22 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 22/22 [00:00\u003c00:00, 6899.04 examples/s]\n"}
+,{"stream_name":"stderr","time":219.96583189,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1677.86 examples/s]\n"}
+,{"stream_name":"stderr","time":219.97480148,"data":"2026-09-24:07:26:56,319 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":219.989329115,"data":"\rMap:   0%|          | 0/22 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 22/22 [00:00\u003c00:00, 2890.54 examples/s]\n"}
+,{"stream_name":"stdout","time":219.992789268,"data":"[task] mmlu_college_medicine:rc::olmes split=validation shots=5: 22 docs\n"}
+,{"stream_name":"stderr","time":221.522346699,"data":"\rGenerating test split:   0%|          | 0/102 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 102/102 [00:00\u003c00:00, 31367.33 examples/s]\n"}
+,{"stream_name":"stderr","time":221.526264437,"data":"\rGenerating validation split:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 11/11 [00:00\u003c00:00, 3558.88 examples/s]\n"}
+,{"stream_name":"stderr","time":221.529801373,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1684.87 examples/s]\n"}
+,{"stream_name":"stderr","time":221.539047978,"data":"2026-09-24:07:26:57,883 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":221.552550901,"data":"\rMap:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 11/11 [00:00\u003c00:00, 1583.03 examples/s]\n"}
+,{"stream_name":"stdout","time":221.555082847,"data":"[task] mmlu_college_physics:rc::olmes split=validation shots=5: 11 docs\n"}
+,{"stream_name":"stderr","time":222.721685847,"data":"\rGenerating test split:   0%|          | 0/100 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 100/100 [00:00\u003c00:00, 30310.04 examples/s]\n"}
+,{"stream_name":"stderr","time":222.725053321,"data":"\rGenerating validation split:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 11/11 [00:00\u003c00:00, 3947.07 examples/s]\n"}
+,{"stream_name":"stderr","time":222.728334921,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1843.16 examples/s]\n"}
+,{"stream_name":"stderr","time":222.737320982,"data":"2026-09-24:07:26:59,082 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":222.75057504,"data":"\rMap:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 11/11 [00:00\u003c00:00, 1652.60 examples/s]\n"}
+,{"stream_name":"stdout","time":222.752763705,"data":"[task] mmlu_computer_security:rc::olmes split=validation shots=5: 11 docs\n"}
+,{"stream_name":"stderr","time":223.817368914,"data":"\rGenerating test split:   0%|          | 0/235 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 235/235 [00:00\u003c00:00, 68009.48 examples/s]\n"}
+,{"stream_name":"stderr","time":223.821154418,"data":"\rGenerating validation split:   0%|          | 0/26 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 26/26 [00:00\u003c00:00, 8236.55 examples/s]\n"}
+,{"stream_name":"stderr","time":223.824497098,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1798.74 examples/s]\n"}
+,{"stream_name":"stderr","time":223.833366067,"data":"2026-09-24:07:27:00,178 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":223.847846084,"data":"\rMap:   0%|          | 0/26 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 26/26 [00:00\u003c00:00, 3502.10 examples/s]\n"}
+,{"stream_name":"stdout","time":223.852203179,"data":"[task] mmlu_conceptual_physics:rc::olmes split=validation shots=5: 26 docs\n"}
+,{"stream_name":"stderr","time":224.896531237,"data":"\rGenerating test split:   0%|          | 0/114 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 114/114 [00:00\u003c00:00, 31411.82 examples/s]\n"}
+,{"stream_name":"stderr","time":224.901349738,"data":"\rGenerating validation split:   0%|          | 0/12 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 12/12 [00:00\u003c00:00, 2974.68 examples/s]\n"}
+,{"stream_name":"stderr","time":224.905203632,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1577.99 examples/s]\n"}
+,{"stream_name":"stderr","time":224.915164213,"data":"2026-09-24:07:27:01,259 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":224.930499938,"data":"\rMap:   0%|          | 0/12 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 12/12 [00:00\u003c00:00, 1701.37 examples/s]\n"}
+,{"stream_name":"stdout","time":224.93302099,"data":"[task] mmlu_econometrics:rc::olmes split=validation shots=5: 12 docs\n"}
+,{"stream_name":"stderr","time":225.969188515,"data":"\rGenerating test split:   0%|          | 0/145 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 145/145 [00:00\u003c00:00, 46266.57 examples/s]\n"}
+,{"stream_name":"stderr","time":225.972557318,"data":"\rGenerating validation split:   0%|          | 0/16 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 16/16 [00:00\u003c00:00, 5612.99 examples/s]\n"}
+,{"stream_name":"stderr","time":225.975881496,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1871.96 examples/s]\n"}
+,{"stream_name":"stderr","time":225.984603406,"data":"2026-09-24:07:27:02,329 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":225.998547939,"data":"\rMap:   0%|          | 0/16 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 16/16 [00:00\u003c00:00, 2215.47 examples/s]\n"}
+,{"stream_name":"stdout","time":226.001294025,"data":"[task] mmlu_electrical_engineering:rc::olmes split=validation shots=5: 16 docs\n"}
+,{"stream_name":"stderr","time":227.06388108,"data":"\rGenerating test split:   0%|          | 0/378 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 378/378 [00:00\u003c00:00, 92494.42 examples/s]\n"}
+,{"stream_name":"stderr","time":227.067553038,"data":"\rGenerating validation split:   0%|          | 0/41 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 41/41 [00:00\u003c00:00, 13557.75 examples/s]\n"}
+,{"stream_name":"stderr","time":227.071168165,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1707.92 examples/s]\n"}
+,{"stream_name":"stderr","time":227.080125825,"data":"2026-09-24:07:27:03,424 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":227.095524529,"data":"\rMap:   0%|          | 0/41 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 41/41 [00:00\u003c00:00, 4675.03 examples/s]\n"}
+,{"stream_name":"stdout","time":227.100877673,"data":"[task] mmlu_elementary_mathematics:rc::olmes split=validation shots=5: 41 docs\n"}
+,{"stream_name":"stderr","time":228.176230157,"data":"\rGenerating test split:   0%|          | 0/126 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 126/126 [00:00\u003c00:00, 35868.22 examples/s]\n"}
+,{"stream_name":"stderr","time":228.180074903,"data":"\rGenerating validation split:   0%|          | 0/14 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 14/14 [00:00\u003c00:00, 4398.85 examples/s]\n"}
+,{"stream_name":"stderr","time":228.183693808,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1696.31 examples/s]\n"}
+,{"stream_name":"stderr","time":228.193598661,"data":"2026-09-24:07:27:04,538 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":228.207336028,"data":"\rMap:   0%|          | 0/14 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 14/14 [00:00\u003c00:00, 2016.84 examples/s]\n"}
+,{"stream_name":"stdout","time":228.210191877,"data":"[task] mmlu_formal_logic:rc::olmes split=validation shots=5: 14 docs\n"}
+,{"stream_name":"stderr","time":229.211308371,"data":"\rGenerating test split:   0%|          | 0/100 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 100/100 [00:00\u003c00:00, 26964.35 examples/s]\n"}
+,{"stream_name":"stderr","time":229.215313789,"data":"\rGenerating validation split:   0%|          | 0/10 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 10/10 [00:00\u003c00:00, 3016.83 examples/s]\n"}
+,{"stream_name":"stderr","time":229.219196982,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1553.56 examples/s]\n"}
+,{"stream_name":"stderr","time":229.228363138,"data":"2026-09-24:07:27:05,573 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":229.241256646,"data":"\rMap:   0%|          | 0/10 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 10/10 [00:00\u003c00:00, 1595.58 examples/s]\n"}
+,{"stream_name":"stdout","time":229.243054712,"data":"[task] mmlu_global_facts:rc::olmes split=validation shots=5: 10 docs\n"}
+,{"stream_name":"stderr","time":230.551079651,"data":"\rGenerating test split:   0%|          | 0/310 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 310/310 [00:00\u003c00:00, 77961.04 examples/s]\n"}
+,{"stream_name":"stderr","time":230.555188123,"data":"\rGenerating validation split:   0%|          | 0/32 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 32/32 [00:00\u003c00:00, 9377.99 examples/s]\n"}
+,{"stream_name":"stderr","time":230.559081758,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1555.87 examples/s]\n"}
+,{"stream_name":"stderr","time":230.569242165,"data":"2026-09-24:07:27:06,914 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":230.584473358,"data":"\rMap:   0%|          | 0/32 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 32/32 [00:00\u003c00:00, 4025.85 examples/s]\n"}
+,{"stream_name":"stdout","time":230.589989426,"data":"[task] mmlu_high_school_biology:rc::olmes split=validation shots=5: 32 docs\n"}
+,{"stream_name":"stderr","time":231.686527699,"data":"\rGenerating test split:   0%|          | 0/203 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 203/203 [00:00\u003c00:00, 56725.10 examples/s]\n"}
+,{"stream_name":"stderr","time":231.690283907,"data":"\rGenerating validation split:   0%|          | 0/22 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 22/22 [00:00\u003c00:00, 7024.57 examples/s]\n"}
+,{"stream_name":"stderr","time":231.694233847,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1565.39 examples/s]\n"}
+,{"stream_name":"stderr","time":231.703123457,"data":"2026-09-24:07:27:08,047 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":231.717338107,"data":"\rMap:   0%|          | 0/22 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 22/22 [00:00\u003c00:00, 2865.50 examples/s]\n"}
+,{"stream_name":"stdout","time":231.721405452,"data":"[task] mmlu_high_school_chemistry:rc::olmes split=validation shots=5: 22 docs\n"}
+,{"stream_name":"stderr","time":232.715223234,"data":"\rGenerating test split:   0%|          | 0/100 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 100/100 [00:00\u003c00:00, 31425.07 examples/s]\n"}
+,{"stream_name":"stderr","time":232.718510441,"data":"\rGenerating validation split:   0%|          | 0/9 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 9/9 [00:00\u003c00:00, 3218.96 examples/s]\n"}
+,{"stream_name":"stderr","time":232.721832388,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1851.63 examples/s]\n"}
+,{"stream_name":"stderr","time":232.730447038,"data":"2026-09-24:07:27:09,075 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":232.743599142,"data":"\rMap:   0%|          | 0/9 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 9/9 [00:00\u003c00:00, 1420.35 examples/s]\n"}
+,{"stream_name":"stdout","time":232.746071828,"data":"[task] mmlu_high_school_computer_science:rc::olmes split=validation shots=5: 9 docs\n"}
+,{"stream_name":"stderr","time":233.760254853,"data":"\rGenerating test split:   0%|          | 0/165 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 165/165 [00:00\u003c00:00, 30370.83 examples/s]\n"}
+,{"stream_name":"stderr","time":233.763971249,"data":"\rGenerating validation split:   0%|          | 0/18 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 18/18 [00:00\u003c00:00, 5732.10 examples/s]\n"}
+,{"stream_name":"stderr","time":233.767220101,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1830.77 examples/s]\n"}
+,{"stream_name":"stderr","time":233.776163431,"data":"2026-09-24:07:27:10,121 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":233.791272212,"data":"\rMap:   0%|          | 0/18 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 18/18 [00:00\u003c00:00, 2142.87 examples/s]\n"}
+,{"stream_name":"stdout","time":233.797694628,"data":"[task] mmlu_high_school_european_history:rc::olmes split=validation shots=5: 18 docs\n"}
+,{"stream_name":"stderr","time":234.835960044,"data":"\rGenerating test split:   0%|          | 0/198 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 198/198 [00:00\u003c00:00, 61221.69 examples/s]\n"}
+,{"stream_name":"stderr","time":234.839469771,"data":"\rGenerating validation split:   0%|          | 0/22 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 22/22 [00:00\u003c00:00, 7640.53 examples/s]\n"}
+,{"stream_name":"stderr","time":234.842943156,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1738.36 examples/s]\n"}
+,{"stream_name":"stderr","time":234.85152756,"data":"2026-09-24:07:27:11,196 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":234.866024526,"data":"\rMap:   0%|          | 0/22 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 22/22 [00:00\u003c00:00, 2987.69 examples/s]\n"}
+,{"stream_name":"stdout","time":234.869294657,"data":"[task] mmlu_high_school_geography:rc::olmes split=validation shots=5: 22 docs\n"}
+,{"stream_name":"stderr","time":235.870564884,"data":"\rGenerating test split:   0%|          | 0/193 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 193/193 [00:00\u003c00:00, 57916.63 examples/s]\n"}
+,{"stream_name":"stderr","time":235.874007375,"data":"\rGenerating validation split:   0%|          | 0/21 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 21/21 [00:00\u003c00:00, 7401.71 examples/s]\n"}
+,{"stream_name":"stderr","time":235.877398546,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1770.20 examples/s]\n"}
+,{"stream_name":"stderr","time":235.886216846,"data":"2026-09-24:07:27:12,231 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":235.901091434,"data":"\rMap:   0%|          | 0/21 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 21/21 [00:00\u003c00:00, 2569.51 examples/s]\n"}
+,{"stream_name":"stdout","time":235.904571192,"data":"[task] mmlu_high_school_government_and_politics:rc::olmes split=validation shots=5: 21 docs\n"}
+,{"stream_name":"stderr","time":236.922571466,"data":"\rGenerating test split:   0%|          | 0/390 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 390/390 [00:00\u003c00:00, 88901.01 examples/s]\n"}
+,{"stream_name":"stderr","time":236.9261627,"data":"\rGenerating validation split:   0%|          | 0/43 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 43/43 [00:00\u003c00:00, 14491.01 examples/s]\n"}
+,{"stream_name":"stderr","time":236.929635598,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1750.54 examples/s]\n"}
+,{"stream_name":"stderr","time":236.938412297,"data":"2026-09-24:07:27:13,283 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":236.953856012,"data":"\rMap:   0%|          | 0/43 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 43/43 [00:00\u003c00:00, 4914.98 examples/s]\n"}
+,{"stream_name":"stdout","time":236.959301122,"data":"[task] mmlu_high_school_macroeconomics:rc::olmes split=validation shots=5: 43 docs\n"}
+,{"stream_name":"stderr","time":238.189797917,"data":"\rGenerating test split:   0%|          | 0/270 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 270/270 [00:00\u003c00:00, 72394.18 examples/s]\n"}
+,{"stream_name":"stderr","time":238.193607435,"data":"\rGenerating validation split:   0%|          | 0/29 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 29/29 [00:00\u003c00:00, 9255.43 examples/s]\n"}
+,{"stream_name":"stderr","time":238.197078798,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1793.20 examples/s]\n"}
+,{"stream_name":"stderr","time":238.205848287,"data":"2026-09-24:07:27:14,550 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":238.220081105,"data":"\rMap:   0%|          | 0/29 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 29/29 [00:00\u003c00:00, 3712.57 examples/s]\n"}
+,{"stream_name":"stdout","time":238.224341209,"data":"[task] mmlu_high_school_mathematics:rc::olmes split=validation shots=5: 29 docs\n"}
+,{"stream_name":"stderr","time":239.775711255,"data":"\rGenerating test split:   0%|          | 0/238 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 238/238 [00:00\u003c00:00, 67576.79 examples/s]\n"}
+,{"stream_name":"stderr","time":239.779228261,"data":"\rGenerating validation split:   0%|          | 0/26 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 26/26 [00:00\u003c00:00, 8941.61 examples/s]\n"}
+,{"stream_name":"stderr","time":239.782727607,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1729.61 examples/s]\n"}
+,{"stream_name":"stderr","time":239.791672895,"data":"2026-09-24:07:27:16,136 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":239.805735224,"data":"\rMap:   0%|          | 0/26 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 26/26 [00:00\u003c00:00, 3458.45 examples/s]\n"}
+,{"stream_name":"stdout","time":239.810353381,"data":"[task] mmlu_high_school_microeconomics:rc::olmes split=validation shots=5: 26 docs\n"}
+,{"stream_name":"stderr","time":240.871112872,"data":"\rGenerating test split:   0%|          | 0/151 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 151/151 [00:00\u003c00:00, 44391.95 examples/s]\n"}
+,{"stream_name":"stderr","time":240.874599856,"data":"\rGenerating validation split:   0%|          | 0/17 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 17/17 [00:00\u003c00:00, 5803.61 examples/s]\n"}
+,{"stream_name":"stderr","time":240.878341376,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1624.69 examples/s]\n"}
+,{"stream_name":"stderr","time":240.887854442,"data":"2026-09-24:07:27:17,232 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":240.901677883,"data":"\rMap:   0%|          | 0/17 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 17/17 [00:00\u003c00:00, 2336.43 examples/s]\n"}
+,{"stream_name":"stdout","time":240.904711888,"data":"[task] mmlu_high_school_physics:rc::olmes split=validation shots=5: 17 docs\n"}
+,{"stream_name":"stderr","time":241.948538933,"data":"\rGenerating test split:   0%|          | 0/545 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 545/545 [00:00\u003c00:00, 147734.48 examples/s]\n"}
+,{"stream_name":"stderr","time":241.95222914,"data":"\rGenerating validation split:   0%|          | 0/60 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 60/60 [00:00\u003c00:00, 19837.48 examples/s]\n"}
+,{"stream_name":"stderr","time":241.955647345,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1770.65 examples/s]\n"}
+,{"stream_name":"stderr","time":241.964809686,"data":"2026-09-24:07:27:18,309 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":241.980872292,"data":"\rMap:   0%|          | 0/60 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 60/60 [00:00\u003c00:00, 6338.68 examples/s]\n"}
+,{"stream_name":"stdout","time":241.988258911,"data":"[task] mmlu_high_school_psychology:rc::olmes split=validation shots=5: 60 docs\n"}
+,{"stream_name":"stderr","time":242.979740714,"data":"\rGenerating test split:   0%|          | 0/216 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 216/216 [00:00\u003c00:00, 45848.67 examples/s]\n"}
+,{"stream_name":"stderr","time":242.983267132,"data":"\rGenerating validation split:   0%|          | 0/23 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 23/23 [00:00\u003c00:00, 7906.65 examples/s]\n"}
+,{"stream_name":"stderr","time":242.986993489,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1607.75 examples/s]\n"}
+,{"stream_name":"stderr","time":242.996027796,"data":"2026-09-24:07:27:19,340 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":243.009964936,"data":"\rMap:   0%|          | 0/23 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 23/23 [00:00\u003c00:00, 3104.79 examples/s]\n"}
+,{"stream_name":"stdout","time":243.014050773,"data":"[task] mmlu_high_school_statistics:rc::olmes split=validation shots=5: 23 docs\n"}
+,{"stream_name":"stderr","time":244.109947601,"data":"\rGenerating test split:   0%|          | 0/204 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 204/204 [00:00\u003c00:00, 49438.84 examples/s]\n"}
+,{"stream_name":"stderr","time":244.113705594,"data":"\rGenerating validation split:   0%|          | 0/22 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 22/22 [00:00\u003c00:00, 7248.60 examples/s]\n"}
+,{"stream_name":"stderr","time":244.117666776,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1524.31 examples/s]\n"}
+,{"stream_name":"stderr","time":244.126701607,"data":"2026-09-24:07:27:20,471 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":244.140513555,"data":"\rMap:   0%|          | 0/22 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 22/22 [00:00\u003c00:00, 2999.34 examples/s]\n"}
+,{"stream_name":"stdout","time":244.147326953,"data":"[task] mmlu_high_school_us_history:rc::olmes split=validation shots=5: 22 docs\n"}
+,{"stream_name":"stderr","time":245.192019067,"data":"\rGenerating test split:   0%|          | 0/237 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 237/237 [00:00\u003c00:00, 42271.22 examples/s]\n"}
+,{"stream_name":"stderr","time":245.195758883,"data":"\rGenerating validation split:   0%|          | 0/26 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 26/26 [00:00\u003c00:00, 8288.51 examples/s]\n"}
+,{"stream_name":"stderr","time":245.199194206,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1762.76 examples/s]\n"}
+,{"stream_name":"stderr","time":245.207705353,"data":"2026-09-24:07:27:21,552 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":245.22357207,"data":"\rMap:   0%|          | 0/26 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 26/26 [00:00\u003c00:00, 2864.66 examples/s]\n"}
+,{"stream_name":"stdout","time":245.230370197,"data":"[task] mmlu_high_school_world_history:rc::olmes split=validation shots=5: 26 docs\n"}
+,{"stream_name":"stderr","time":246.435894675,"data":"\rGenerating test split:   0%|          | 0/223 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 223/223 [00:00\u003c00:00, 66919.21 examples/s]\n"}
+,{"stream_name":"stderr","time":246.439362471,"data":"\rGenerating validation split:   0%|          | 0/23 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 23/23 [00:00\u003c00:00, 7900.17 examples/s]\n"}
+,{"stream_name":"stderr","time":246.442513897,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1927.00 examples/s]\n"}
+,{"stream_name":"stderr","time":246.450816132,"data":"2026-09-24:07:27:22,795 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":246.466037643,"data":"\rMap:   0%|          | 0/23 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 23/23 [00:00\u003c00:00, 3031.33 examples/s]\n"}
+,{"stream_name":"stdout","time":246.469560287,"data":"[task] mmlu_human_aging:rc::olmes split=validation shots=5: 23 docs\n"}
+,{"stream_name":"stderr","time":247.476727134,"data":"\rGenerating test split:   0%|          | 0/131 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 131/131 [00:00\u003c00:00, 41761.33 examples/s]\n"}
+,{"stream_name":"stderr","time":247.480223022,"data":"\rGenerating validation split:   0%|          | 0/12 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 12/12 [00:00\u003c00:00, 4127.91 examples/s]\n"}
+,{"stream_name":"stderr","time":247.484022512,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1549.77 examples/s]\n"}
+,{"stream_name":"stderr","time":247.493291948,"data":"2026-09-24:07:27:23,838 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":247.507333199,"data":"\rMap:   0%|          | 0/12 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 12/12 [00:00\u003c00:00, 1781.40 examples/s]\n"}
+,{"stream_name":"stdout","time":247.509651705,"data":"[task] mmlu_human_sexuality:rc::olmes split=validation shots=5: 12 docs\n"}
+,{"stream_name":"stderr","time":248.509497069,"data":"\rGenerating test split:   0%|          | 0/121 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 121/121 [00:00\u003c00:00, 34730.09 examples/s]\n"}
+,{"stream_name":"stderr","time":248.513185479,"data":"\rGenerating validation split:   0%|          | 0/13 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 13/13 [00:00\u003c00:00, 4298.80 examples/s]\n"}
+,{"stream_name":"stderr","time":248.516832189,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1676.92 examples/s]\n"}
+,{"stream_name":"stderr","time":248.526076032,"data":"2026-09-24:07:27:24,870 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":248.540045077,"data":"\rMap:   0%|          | 0/13 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 13/13 [00:00\u003c00:00, 1802.09 examples/s]\n"}
+,{"stream_name":"stdout","time":248.543206555,"data":"[task] mmlu_international_law:rc::olmes split=validation shots=5: 13 docs\n"}
+,{"stream_name":"stderr","time":249.540581836,"data":"\rGenerating test split:   0%|          | 0/108 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 108/108 [00:00\u003c00:00, 34949.84 examples/s]\n"}
+,{"stream_name":"stderr","time":249.544290277,"data":"\rGenerating validation split:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 11/11 [00:00\u003c00:00, 3634.87 examples/s]\n"}
+,{"stream_name":"stderr","time":249.547762775,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1729.75 examples/s]\n"}
+,{"stream_name":"stderr","time":249.557002441,"data":"2026-09-24:07:27:25,901 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":249.570395317,"data":"\rMap:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 11/11 [00:00\u003c00:00, 1640.26 examples/s]\n"}
+,{"stream_name":"stdout","time":249.572779592,"data":"[task] mmlu_jurisprudence:rc::olmes split=validation shots=5: 11 docs\n"}
+,{"stream_name":"stderr","time":250.568517871,"data":"\rGenerating test split:   0%|          | 0/163 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 163/163 [00:00\u003c00:00, 44605.70 examples/s]\n"}
+,{"stream_name":"stderr","time":250.572561376,"data":"\rGenerating validation split:   0%|          | 0/18 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 18/18 [00:00\u003c00:00, 5514.39 examples/s]\n"}
+,{"stream_name":"stderr","time":250.576241118,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1640.71 examples/s]\n"}
+,{"stream_name":"stderr","time":250.58541850699999,"data":"2026-09-24:07:27:26,930 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":250.599192,"data":"\rMap:   0%|          | 0/18 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 18/18 [00:00\u003c00:00, 2568.73 examples/s]\n"}
+,{"stream_name":"stdout","time":250.602119016,"data":"[task] mmlu_logical_fallacies:rc::olmes split=validation shots=5: 18 docs\n"}
+,{"stream_name":"stderr","time":251.734880813,"data":"\rGenerating test split:   0%|          | 0/112 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 112/112 [00:00\u003c00:00, 36074.49 examples/s]\n"}
+,{"stream_name":"stderr","time":251.738313286,"data":"\rGenerating validation split:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 11/11 [00:00\u003c00:00, 3865.39 examples/s]\n"}
+,{"stream_name":"stderr","time":251.741927535,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1695.49 examples/s]\n"}
+,{"stream_name":"stderr","time":251.751102576,"data":"2026-09-24:07:27:28,095 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":251.764516025,"data":"\rMap:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 11/11 [00:00\u003c00:00, 1650.12 examples/s]\n"}
+,{"stream_name":"stdout","time":251.766724166,"data":"[task] mmlu_machine_learning:rc::olmes split=validation shots=5: 11 docs\n"}
+,{"stream_name":"stderr","time":252.763662127,"data":"\rGenerating test split:   0%|          | 0/103 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 103/103 [00:00\u003c00:00, 29930.26 examples/s]\n"}
+,{"stream_name":"stderr","time":252.767428451,"data":"\rGenerating validation split:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 11/11 [00:00\u003c00:00, 3524.36 examples/s]\n"}
+,{"stream_name":"stderr","time":252.771088672,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1646.37 examples/s]\n"}
+,{"stream_name":"stderr","time":252.780567321,"data":"2026-09-24:07:27:29,125 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":252.793500924,"data":"\rMap:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 11/11 [00:00\u003c00:00, 1664.17 examples/s]\n"}
+,{"stream_name":"stdout","time":252.79559602,"data":"[task] mmlu_management:rc::olmes split=validation shots=5: 11 docs\n"}
+,{"stream_name":"stderr","time":253.777385382,"data":"\rGenerating test split:   0%|          | 0/234 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 234/234 [00:00\u003c00:00, 67196.16 examples/s]\n"}
+,{"stream_name":"stderr","time":253.780869421,"data":"\rGenerating validation split:   0%|          | 0/25 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 25/25 [00:00\u003c00:00, 8665.92 examples/s]\n"}
+,{"stream_name":"stderr","time":253.784270272,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1796.43 examples/s]\n"}
+,{"stream_name":"stderr","time":253.793232567,"data":"2026-09-24:07:27:30,138 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":253.807162202,"data":"\rMap:   0%|          | 0/25 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 25/25 [00:00\u003c00:00, 3454.26 examples/s]\n"}
+,{"stream_name":"stdout","time":253.811076554,"data":"[task] mmlu_marketing:rc::olmes split=validation shots=5: 25 docs\n"}
+,{"stream_name":"stderr","time":254.778917908,"data":"\rGenerating test split:   0%|          | 0/100 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 100/100 [00:00\u003c00:00, 31378.05 examples/s]\n"}
+,{"stream_name":"stderr","time":254.782404578,"data":"\rGenerating validation split:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 11/11 [00:00\u003c00:00, 3804.20 examples/s]\n"}
+,{"stream_name":"stderr","time":254.785704784,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1824.88 examples/s]\n"}
+,{"stream_name":"stderr","time":254.79458909,"data":"2026-09-24:07:27:31,139 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":254.807512118,"data":"\rMap:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 11/11 [00:00\u003c00:00, 1731.43 examples/s]\n"}
+,{"stream_name":"stdout","time":254.809571413,"data":"[task] mmlu_medical_genetics:rc::olmes split=validation shots=5: 11 docs\n"}
+,{"stream_name":"stderr","time":256.40292578,"data":"\rGenerating test split:   0%|          | 0/783 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 783/783 [00:00\u003c00:00, 206770.76 examples/s]\n"}
+,{"stream_name":"stderr","time":256.406872018,"data":"\rGenerating validation split:   0%|          | 0/86 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 86/86 [00:00\u003c00:00, 25818.49 examples/s]\n"}
+,{"stream_name":"stderr","time":256.41043195,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1738.36 examples/s]\n"}
+,{"stream_name":"stderr","time":256.41924067,"data":"2026-09-24:07:27:32,764 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":256.437964823,"data":"\rMap:   0%|          | 0/86 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 86/86 [00:00\u003c00:00, 7441.00 examples/s]\n"}
+,{"stream_name":"stdout","time":256.447404036,"data":"[task] mmlu_miscellaneous:rc::olmes split=validation shots=5: 86 docs\n"}
+,{"stream_name":"stderr","time":257.474022363,"data":"\rGenerating test split:   0%|          | 0/346 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 346/346 [00:00\u003c00:00, 99528.78 examples/s]\n"}
+,{"stream_name":"stderr","time":257.477641219,"data":"\rGenerating validation split:   0%|          | 0/38 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 38/38 [00:00\u003c00:00, 12670.61 examples/s]\n"}
+,{"stream_name":"stderr","time":257.481202078,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1770.50 examples/s]\n"}
+,{"stream_name":"stderr","time":257.489774729,"data":"2026-09-24:07:27:33,834 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":257.505184966,"data":"\rMap:   0%|          | 0/38 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 38/38 [00:00\u003c00:00, 4494.36 examples/s]\n"}
+,{"stream_name":"stdout","time":257.51053371,"data":"[task] mmlu_moral_disputes:rc::olmes split=validation shots=5: 38 docs\n"}
+,{"stream_name":"stderr","time":258.53594406,"data":"\rGenerating test split:   0%|          | 0/895 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 895/895 [00:00\u003c00:00, 189533.58 examples/s]\n"}
+,{"stream_name":"stderr","time":258.54002706,"data":"\rGenerating validation split:   0%|          | 0/100 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 100/100 [00:00\u003c00:00, 29388.34 examples/s]\n"}
+,{"stream_name":"stderr","time":258.543727422,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1620.05 examples/s]\n"}
+,{"stream_name":"stderr","time":258.552066523,"data":"2026-09-24:07:27:34,896 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":258.571253284,"data":"\rMap:   0%|          | 0/100 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 100/100 [00:00\u003c00:00, 8275.24 examples/s]\n"}
+,{"stream_name":"stdout","time":258.584401567,"data":"[task] mmlu_moral_scenarios:rc::olmes split=validation shots=5: 100 docs\n"}
+,{"stream_name":"stderr","time":259.576541955,"data":"\rGenerating test split:   0%|          | 0/306 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 306/306 [00:00\u003c00:00, 87031.74 examples/s]\n"}
+,{"stream_name":"stderr","time":259.580250508,"data":"\rGenerating validation split:   0%|          | 0/33 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 33/33 [00:00\u003c00:00, 10566.61 examples/s]\n"}
+,{"stream_name":"stderr","time":259.583689969,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1751.71 examples/s]\n"}
+,{"stream_name":"stderr","time":259.592698305,"data":"2026-09-24:07:27:35,937 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":259.607730601,"data":"\rMap:   0%|          | 0/33 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 33/33 [00:00\u003c00:00, 3893.88 examples/s]\n"}
+,{"stream_name":"stdout","time":259.612537045,"data":"[task] mmlu_nutrition:rc::olmes split=validation shots=5: 33 docs\n"}
+,{"stream_name":"stderr","time":260.68310444,"data":"\rGenerating test split:   0%|          | 0/311 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 311/311 [00:00\u003c00:00, 93830.28 examples/s]\n"}
+,{"stream_name":"stderr","time":260.686398946,"data":"\rGenerating validation split:   0%|          | 0/34 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 34/34 [00:00\u003c00:00, 12414.58 examples/s]\n"}
+,{"stream_name":"stderr","time":260.690012766,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1651.43 examples/s]\n"}
+,{"stream_name":"stderr","time":260.698526761,"data":"2026-09-24:07:27:37,043 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":260.713190566,"data":"\rMap:   0%|          | 0/34 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 34/34 [00:00\u003c00:00, 4207.92 examples/s]\n"}
+,{"stream_name":"stdout","time":260.717847062,"data":"[task] mmlu_philosophy:rc::olmes split=validation shots=5: 34 docs\n"}
+,{"stream_name":"stderr","time":261.720028444,"data":"\rGenerating test split:   0%|          | 0/324 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 324/324 [00:00\u003c00:00, 88583.18 examples/s]\n"}
+,{"stream_name":"stderr","time":261.724225727,"data":"\rGenerating validation split:   0%|          | 0/35 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 35/35 [00:00\u003c00:00, 10112.33 examples/s]\n"}
+,{"stream_name":"stderr","time":261.727590645,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1788.62 examples/s]\n"}
+,{"stream_name":"stderr","time":261.736523969,"data":"2026-09-24:07:27:38,081 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":261.751245776,"data":"\rMap:   0%|          | 0/35 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 35/35 [00:00\u003c00:00, 4384.86 examples/s]\n"}
+,{"stream_name":"stdout","time":261.755888643,"data":"[task] mmlu_prehistory:rc::olmes split=validation shots=5: 35 docs\n"}
+,{"stream_name":"stderr","time":262.8151789,"data":"\rGenerating test split:   0%|          | 0/282 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 282/282 [00:00\u003c00:00, 67257.69 examples/s]\n"}
+,{"stream_name":"stderr","time":262.819299334,"data":"\rGenerating validation split:   0%|          | 0/31 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 31/31 [00:00\u003c00:00, 9585.92 examples/s]\n"}
+,{"stream_name":"stderr","time":262.823017153,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1627.47 examples/s]\n"}
+,{"stream_name":"stderr","time":262.832193912,"data":"2026-09-24:07:27:39,176 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":262.846506339,"data":"\rMap:   0%|          | 0/31 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 31/31 [00:00\u003c00:00, 3926.18 examples/s]\n"}
+,{"stream_name":"stdout","time":262.851754393,"data":"[task] mmlu_professional_accounting:rc::olmes split=validation shots=5: 31 docs\n"}
+,{"stream_name":"stderr","time":263.898924858,"data":"\rGenerating test split:   0%|          | 0/1534 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 1534/1534 [00:00\u003c00:00, 114515.66 examples/s]\n"}
+,{"stream_name":"stderr","time":263.90321179,"data":"\rGenerating validation split:   0%|          | 0/170 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 170/170 [00:00\u003c00:00, 45798.17 examples/s]\n"}
+,{"stream_name":"stderr","time":263.906653814,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1768.85 examples/s]\n"}
+,{"stream_name":"stderr","time":263.915643602,"data":"2026-09-24:07:27:40,260 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":263.940037442,"data":"\rMap:   0%|          | 0/170 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 170/170 [00:00\u003c00:00, 9496.71 examples/s]\n"}
+,{"stream_name":"stdout","time":263.970938115,"data":"[task] mmlu_professional_law:rc::olmes split=validation shots=5: 170 docs\n"}
+,{"stream_name":"stderr","time":264.969163422,"data":"\rGenerating test split:   0%|          | 0/272 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 272/272 [00:00\u003c00:00, 68548.38 examples/s]\n"}
+,{"stream_name":"stderr","time":264.97321169,"data":"\rGenerating validation split:   0%|          | 0/31 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 31/31 [00:00\u003c00:00, 9118.69 examples/s]\n"}
+,{"stream_name":"stderr","time":264.976801025,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1673.57 examples/s]\n"}
+,{"stream_name":"stderr","time":264.985959081,"data":"2026-09-24:07:27:41,330 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":265.002730541,"data":"\rMap:   0%|          | 0/31 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 31/31 [00:00\u003c00:00, 3261.51 examples/s]\n"}
+,{"stream_name":"stdout","time":265.009005451,"data":"[task] mmlu_professional_medicine:rc::olmes split=validation shots=5: 31 docs\n"}
+,{"stream_name":"stderr","time":266.110632343,"data":"\rGenerating test split:   0%|          | 0/612 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 612/612 [00:00\u003c00:00, 138534.95 examples/s]\n"}
+,{"stream_name":"stderr","time":266.11474853,"data":"\rGenerating validation split:   0%|          | 0/69 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 69/69 [00:00\u003c00:00, 20100.50 examples/s]\n"}
+,{"stream_name":"stderr","time":266.119057342,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1404.00 examples/s]\n"}
+,{"stream_name":"stderr","time":266.129006504,"data":"2026-09-24:07:27:42,473 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":266.146902649,"data":"\rMap:   0%|          | 0/69 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 69/69 [00:00\u003c00:00, 6355.29 examples/s]\n"}
+,{"stream_name":"stdout","time":266.157583922,"data":"[task] mmlu_professional_psychology:rc::olmes split=validation shots=5: 69 docs\n"}
+,{"stream_name":"stderr","time":267.243514738,"data":"\rGenerating test split:   0%|          | 0/110 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 110/110 [00:00\u003c00:00, 34158.10 examples/s]\n"}
+,{"stream_name":"stderr","time":267.246923622,"data":"\rGenerating validation split:   0%|          | 0/12 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 12/12 [00:00\u003c00:00, 4229.19 examples/s]\n"}
+,{"stream_name":"stderr","time":267.250314752,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1801.21 examples/s]\n"}
+,{"stream_name":"stderr","time":267.258730067,"data":"2026-09-24:07:27:43,603 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":267.271744373,"data":"\rMap:   0%|          | 0/12 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 12/12 [00:00\u003c00:00, 1869.19 examples/s]\n"}
+,{"stream_name":"stdout","time":267.274179628,"data":"[task] mmlu_public_relations:rc::olmes split=validation shots=5: 12 docs\n"}
+,{"stream_name":"stderr","time":268.293555337,"data":"\rGenerating test split:   0%|          | 0/245 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 245/245 [00:00\u003c00:00, 55167.47 examples/s]\n"}
+,{"stream_name":"stderr","time":268.297350783,"data":"\rGenerating validation split:   0%|          | 0/27 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 27/27 [00:00\u003c00:00, 8481.59 examples/s]\n"}
+,{"stream_name":"stderr","time":268.30067538,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1870.62 examples/s]\n"}
+,{"stream_name":"stderr","time":268.309130541,"data":"2026-09-24:07:27:44,654 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":268.322836768,"data":"\rMap:   0%|          | 0/27 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 27/27 [00:00\u003c00:00, 3752.36 examples/s]\n"}
+,{"stream_name":"stdout","time":268.327172195,"data":"[task] mmlu_security_studies:rc::olmes split=validation shots=5: 27 docs\n"}
+,{"stream_name":"stderr","time":269.349721381,"data":"\rGenerating test split:   0%|          | 0/201 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 201/201 [00:00\u003c00:00, 59948.45 examples/s]\n"}
+,{"stream_name":"stderr","time":269.353289615,"data":"\rGenerating validation split:   0%|          | 0/22 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 22/22 [00:00\u003c00:00, 7358.43 examples/s]\n"}
+,{"stream_name":"stderr","time":269.356748111,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1756.41 examples/s]\n"}
+,{"stream_name":"stderr","time":269.365807807,"data":"2026-09-24:07:27:45,710 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":269.379903838,"data":"\rMap:   0%|          | 0/22 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 22/22 [00:00\u003c00:00, 2945.53 examples/s]\n"}
+,{"stream_name":"stdout","time":269.383374687,"data":"[task] mmlu_sociology:rc::olmes split=validation shots=5: 22 docs\n"}
+,{"stream_name":"stderr","time":270.358571612,"data":"\rGenerating test split:   0%|          | 0/100 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 100/100 [00:00\u003c00:00, 33070.28 examples/s]\n"}
+,{"stream_name":"stderr","time":270.362347195,"data":"\rGenerating validation split:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 11/11 [00:00\u003c00:00, 3511.75 examples/s]\n"}
+,{"stream_name":"stderr","time":270.366236603,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1556.44 examples/s]\n"}
+,{"stream_name":"stderr","time":270.374734633,"data":"2026-09-24:07:27:46,719 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":270.387861876,"data":"\rMap:   0%|          | 0/11 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 11/11 [00:00\u003c00:00, 1720.96 examples/s]\n"}
+,{"stream_name":"stdout","time":270.389699689,"data":"[task] mmlu_us_foreign_policy:rc::olmes split=validation shots=5: 11 docs\n"}
+,{"stream_name":"stderr","time":271.389407251,"data":"\rGenerating test split:   0%|          | 0/166 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 166/166 [00:00\u003c00:00, 50314.67 examples/s]\n"}
+,{"stream_name":"stderr","time":271.393256694,"data":"\rGenerating validation split:   0%|          | 0/18 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 18/18 [00:00\u003c00:00, 5637.93 examples/s]\n"}
+,{"stream_name":"stderr","time":271.396788274,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 1703.89 examples/s]\n"}
+,{"stream_name":"stderr","time":271.406004352,"data":"2026-09-24:07:27:47,750 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":271.41936452,"data":"\rMap:   0%|          | 0/18 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 18/18 [00:00\u003c00:00, 2680.35 examples/s]\n"}
+,{"stream_name":"stdout","time":271.422191725,"data":"[task] mmlu_virology:rc::olmes split=validation shots=5: 18 docs\n"}
+,{"stream_name":"stderr","time":272.415589783,"data":"\rGenerating test split:   0%|          | 0/171 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 171/171 [00:00\u003c00:00, 55972.06 examples/s]\n"}
+,{"stream_name":"stderr","time":272.41867602,"data":"\rGenerating validation split:   0%|          | 0/19 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 19/19 [00:00\u003c00:00, 7389.82 examples/s]\n"}
+,{"stream_name":"stderr","time":272.421473243,"data":"\rGenerating dev split:   0%|          | 0/5 [00:00\u003c?, ? examples/s]\rGenerating dev split: 100%|██████████| 5/5 [00:00\u003c00:00, 2160.90 examples/s]\n"}
+,{"stream_name":"stderr","time":272.429651118,"data":"2026-09-24:07:27:48,774 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":272.442630387,"data":"\rMap:   0%|          | 0/19 [00:00\u003c?, ? examples/s]\rMap: 100%|██████████| 19/19 [00:00\u003c00:00, 2884.35 examples/s]\n"}
+,{"stream_name":"stdout","time":272.445436233,"data":"[task] mmlu_world_religions:rc::olmes split=validation shots=5: 19 docs\n"}
+,{"stream_name":"stderr","time":273.649030085,"data":"\rGenerating train split:   0%|          | 0/4957 [00:00\u003c?, ? examples/s]\rGenerating train split: 100%|██████████| 4957/4957 [00:00\u003c00:00, 585287.42 examples/s]\n"}
+,{"stream_name":"stderr","time":273.653467437,"data":"\rGenerating validation split:   0%|          | 0/500 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 500/500 [00:00\u003c00:00, 129509.79 examples/s]\n"}
+,{"stream_name":"stderr","time":273.657850705,"data":"\rGenerating test split:   0%|          | 0/500 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 500/500 [00:00\u003c00:00, 134493.17 examples/s]\n"}
+,{"stream_name":"stderr","time":273.667377413,"data":"2026-09-24:07:27:50,012 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stdout","time":274.214181034,"data":"[task] openbookqa:rc::olmes split=validation shots=5: 500 docs\n"}
+,{"stream_name":"stderr","time":274.857092303,"data":"\rDownloading data:   0%|          | 0.00/1.82M [00:00\u003c?, ?B/s]\rDownloading data: 100%|██████████| 1.82M/1.82M [00:00\u003c00:00, 152MB/s]\n"}
+,{"stream_name":"stderr","time":275.151519211,"data":"\rDownloading data:   0%|          | 0.00/220k [00:00\u003c?, ?B/s]\rDownloading data: 815kB [00:00, 30.4MB/s]                   \n"}
+,{"stream_name":"stderr","time":275.611012488,"data":"\rGenerating train split:   0%|          | 0/16113 [00:00\u003c?, ? examples/s]\rGenerating train split:  21%|██        | 3414/16113 [00:00\u003c00:00, 34027.59 examples/s]\rGenerating train split:  46%|████▌     | 7417/16113 [00:00\u003c00:00, 37547.12 examples/s]\rGenerating train split:  73%|███████▎  | 11719/16113 [00:00\u003c00:00, 40043.00 examples/s]\rGenerating train split:  99%|█████████▉| 15915/16113 [00:00\u003c00:00, 40797.78 examples/s]\rGenerating train split: 100%|██████████| 16113/16113 [00:00\u003c00:00, 39124.31 examples/s]\n"}
+,{"stream_name":"stderr","time":275.686104519,"data":"\rGenerating test split:   0%|          | 0/3084 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 3084/3084 [00:00\u003c00:00, 41426.82 examples/s]\n"}
+,{"stream_name":"stderr","time":275.73470027,"data":"\rGenerating validation split:   0%|          | 0/1838 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 1838/1838 [00:00\u003c00:00, 38323.38 examples/s]\n"}
+,{"stream_name":"stderr","time":275.74406321,"data":"2026-09-24:07:27:52,088 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":276.667520458,"data":"\rMap:   0%|          | 0/16113 [00:00\u003c?, ? examples/s]\rMap:  12%|█▏        | 2000/16113 [00:00\u003c00:00, 17819.48 examples/s]\rMap:  25%|██▍       | 4000/16113 [00:00\u003c00:00, 17804.59 examples/s]\rMap:  37%|███▋      | 6000/16113 [00:00\u003c00:00, 17904.83 examples/s]\rMap:  50%|████▉     | 8000/16113 [00:00\u003c00:00, 18053.40 examples/s]\rMap:  66%|██████▌   | 10574/16113 [00:00\u003c00:00, 17663.00 examples/s]\rMap:  77%|███████▋  | 12374/16113 [00:00\u003c00:00, 17759.60 examples/s]\rMap:  93%|█████████▎| 15020/16113 [00:00\u003c00:00, 17709.64 examples/s]\rMap: 100%|██████████| 16113/16113 [00:00\u003c00:00, 17566.01 examples/s]\n"}
+,{"stream_name":"stdout","time":278.273346946,"data":"[task] piqa:rc::olmes split=train shots=5: 16113 docs\n"}
+,{"stream_name":"stderr","time":278.877901963,"data":"\rDownloading data:   0%|          | 0.00/2.20M [00:00\u003c?, ?B/s]\rDownloading data: 100%|██████████| 2.20M/2.20M [00:00\u003c00:00, 127MB/s]\n"}
+,{"stream_name":"stderr","time":279.967563747,"data":"\rGenerating train split:   0%|          | 0/33410 [00:00\u003c?, ? examples/s]\rGenerating train split:   9%|▉         | 3000/33410 [00:00\u003c00:01, 29567.54 examples/s]\rGenerating train split:  19%|█▉        | 6435/33410 [00:00\u003c00:00, 32359.46 examples/s]\rGenerating train split:  29%|██▉       | 9715/33410 [00:00\u003c00:00, 32555.06 examples/s]\rGenerating train split:  39%|███▉      | 13000/33410 [00:00\u003c00:00, 32216.58 examples/s]\rGenerating train split:  49%|████▉     | 16425/33410 [00:00\u003c00:00, 32939.59 examples/s]\rGenerating train split:  59%|█████▉    | 19814/33410 [00:00\u003c00:00, 33117.03 examples/s]\rGenerating train split:  74%|███████▍  | 24730/33410 [00:00\u003c00:00, 32691.92 examples/s]\rGenerating train split:  89%|████████▉ | 29834/33410 [00:00\u003c00:00, 33056.08 examples/s]\rGenerating train split: 100%|██████████| 33410/33410 [00:01\u003c00:00, 32664.36 examples/s]\rGenerating train split: 100%|██████████| 33410/33410 [00:01\u003c00:00, 32506.28 examples/s]\n"}
+,{"stream_name":"stderr","time":280.028836309,"data":"\rGenerating validation split:   0%|          | 0/1954 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 1954/1954 [00:00\u003c00:00, 32265.15 examples/s]\n"}
+,{"stream_name":"stderr","time":280.035806866,"data":"2026-09-24:07:27:56,380 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":282.31966283,"data":"\rMap:   0%|          | 0/33410 [00:00\u003c?, ? examples/s]\rMap:   5%|▍         | 1589/33410 [00:00\u003c00:02, 15707.26 examples/s]\rMap:  12%|█▏        | 3869/33410 [00:00\u003c00:01, 15347.64 examples/s]\rMap:  18%|█▊        | 6049/33410 [00:00\u003c00:01, 14946.00 examples/s]\rMap:  23%|██▎       | 7657/33410 [00:00\u003c00:01, 15304.62 examples/s]\rMap:  30%|██▉       | 9975/33410 [00:00\u003c00:01, 15361.17 examples/s]\rMap:  36%|███▋      | 12156/33410 [00:00\u003c00:01, 15056.48 examples/s]\rMap:  43%|████▎     | 14266/33410 [00:00\u003c00:01, 14713.37 examples/s]\rMap:  49%|████▊     | 16226/33410 [00:01\u003c00:01, 14168.14 examples/s]\rMap:  53%|█████▎    | 17697/33410 [00:01\u003c00:01, 14209.65 examples/s]\rMap:  59%|█████▉    | 19873/33410 [00:01\u003c00:00, 14082.20 examples/s]\rMap:  64%|██████▎   | 21297/33410 [00:01\u003c00:00, 14118.60 examples/s]\rMap:  69%|██████▊   | 22911/33410 [00:01\u003c00:00, 14632.69 examples/s]\rMap:  75%|███████▌  | 25072/33410 [00:01\u003c00:00, 14547.78 examples/s]\rMap:  80%|███████▉  | 26645/33410 [00:01\u003c00:00, 14844.69 examples/s]\rMap:  86%|████████▋ | 28893/33410 [00:01\u003c00:00, 14891.79 examples/s]\rMap:  93%|█████████▎| 31043/33410 [00:02\u003c00:00, 14702.81 examples/s]\rMap:  98%|█████████▊| 32644/33410 [00:02\u003c00:00, 15017.34 examples/s]\rMap: 100%|██████████| 33410/33410 [00:02\u003c00:00, 14661.07 examples/s]\n"}
+,{"stream_name":"stdout","time":287.304474196,"data":"[task] socialiqa:rc::olmes split=train shots=5: 33410 docs\n"}
+,{"stream_name":"stderr","time":289.111275461,"data":"\rGenerating train split:   0%|          | 0/40398 [00:00\u003c?, ? examples/s]\rGenerating train split: 100%|██████████| 40398/40398 [00:00\u003c00:00, 1321779.00 examples/s]\n"}
+,{"stream_name":"stderr","time":289.1160424,"data":"\rGenerating test split:   0%|          | 0/1767 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 1767/1767 [00:00\u003c00:00, 424548.04 examples/s]\n"}
+,{"stream_name":"stderr","time":289.120550442,"data":"\rGenerating validation split:   0%|          | 0/1267 [00:00\u003c?, ? examples/s]\rGenerating validation split: 100%|██████████| 1267/1267 [00:00\u003c00:00, 325903.54 examples/s]\n"}
+,{"stream_name":"stderr","time":289.129210002,"data":"2026-09-24:07:28:05,474 INFO     [datasets_wrapper.py:500] Non-HF cache (for datasets) case: NonHfCacheCase.NOT_USED_BC_CACHE_UNAVAILABLE\n"}
+,{"stream_name":"stderr","time":291.463375014,"data":"\rMap:   0%|          | 0/40398 [00:00\u003c?, ? examples/s]\rMap:   6%|▌         | 2227/40398 [00:00\u003c00:01, 20489.60 examples/s]\rMap:  12%|█▏        | 4710/40398 [00:00\u003c00:01, 22949.34 examples/s]\rMap:  18%|█▊        | 7219/40398 [00:00\u003c00:01, 22358.33 examples/s]\rMap:  24%|██▍       | 9798/40398 [00:00\u003c00:01, 23640.16 examples/s]\rMap:  33%|███▎      | 13415/40398 [00:00\u003c00:01, 22840.36 examples/s]\rMap:  39%|███▉      | 15821/40398 [00:00\u003c00:01, 23190.87 examples/s]\rMap:  48%|████▊     | 19270/40398 [00:00\u003c00:00, 22151.39 examples/s]\rMap:  54%|█████▍    | 21788/40398 [00:00\u003c00:00, 22933.96 examples/s]\rMap:  60%|█████▉    | 24185/40398 [00:01\u003c00:00, 22381.35 examples/s]\rMap:  66%|██████▌   | 26551/40398 [00:01\u003c00:00, 22724.94 examples/s]\rMap:  72%|███████▏  | 29000/40398 [00:01\u003c00:00, 22320.58 examples/s]\rMap:  78%|███████▊  | 31415/40398 [00:01\u003c00:00, 22825.46 examples/s]\rMap:  84%|████████▍ | 33900/40398 [00:01\u003c00:00, 23397.43 examples/s]\rMap:  93%|█████████▎| 37417/40398 [00:01\u003c00:00, 22733.35 examples/s]\rMap:  99%|█████████▊| 39852/40398 [00:01\u003c00:00, 23151.25 examples/s]\rMap: 100%|██████████| 40398/40398 [00:02\u003c00:00, 17350.12 examples/s]\n"}
+,{"stream_name":"stdout","time":294.924727891,"data":"[task] winogrande:rc::olmes split=train shots=5: 40398 docs\n"}
+,{"stream_name":"stdout","time":302.525369944,"data":"[short] arc_challenge: bank 2 has 600 items against bank 1's 1172\n"}
+,{"stream_name":"stdout","time":302.525425345,"data":"[short] arc_easy: bank 2 has 600 items against bank 1's 2376\n"}
+,{"stream_name":"stdout","time":302.525432021,"data":"[short] boolq: bank 2 has 600 items against bank 1's 3270\n"}
+,{"stream_name":"stdout","time":302.525439686,"data":"[short] csqa: bank 2 has 600 items against bank 1's 1221\n"}
+,{"stream_name":"stdout","time":302.525443172,"data":"[short] hellaswag: bank 2 has 600 items against bank 1's 10042\n"}
+,{"stream_name":"stdout","time":302.525446297,"data":"[short] mmlu: bank 2 has 1508 items against bank 1's 14042\n"}
+,{"stream_name":"stdout","time":302.525449399,"data":"[short] piqa: bank 2 has 600 items against bank 1's 1838\n"}
+,{"stream_name":"stdout","time":302.525452372,"data":"[short] socialiqa: bank 2 has 600 items against bank 1's 1954\n"}
+,{"stream_name":"stdout","time":302.525455458,"data":"[short] winogrande: bank 2 has 600 items against bank 1's 1267\n"}
+,{"stream_name":"stdout","time":303.076497158,"data":"{\n"}
+,{"stream_name":"stdout","time":303.076532369,"data":" \"items\": 6808,\n"}
+,{"stream_name":"stdout","time":303.076539253,"data":" \"per_trait\": {\n"}
+,{"stream_name":"stdout","time":303.076545793,"data":"  \"arc_challenge\": 600,\n"}
+,{"stream_name":"stdout","time":303.076552234,"data":"  \"arc_easy\": 600,\n"}
+,{"stream_name":"stdout","time":303.076558643,"data":"  \"boolq\": 600,\n"}
+,{"stream_name":"stdout","time":303.076565158,"data":"  \"csqa\": 600,\n"}
+,{"stream_name":"stdout","time":303.076572436,"data":"  \"hellaswag\": 600,\n"}
+,{"stream_name":"stdout","time":303.076579399,"data":"  \"mmlu\": 1508,\n"}
+,{"stream_name":"stdout","time":303.076585853,"data":"  \"openbookqa\": 500,\n"}
+,{"stream_name":"stdout","time":303.07660742,"data":"  \"piqa\": 600,\n"}
+,{"stream_name":"stdout","time":303.07666043,"data":"  \"socialiqa\": 600,\n"}
+,{"stream_name":"stdout","time":303.076665773,"data":"  \"winogrande\": 600\n"}
+,{"stream_name":"stdout","time":303.076670421,"data":" },\n"}
+,{"stream_name":"stdout","time":303.076674817,"data":" \"dropped\": {\n"}
+,{"stream_name":"stdout","time":303.076679544,"data":"  \"arc_challenge:in_fewshot\": 5,\n"}
+,{"stream_name":"stdout","time":303.076684546,"data":"  \"arc_challenge:in_bank1\": 6,\n"}
+,{"stream_name":"stdout","time":303.076689157,"data":"  \"arc_easy:in_fewshot\": 5,\n"}
+,{"stream_name":"stdout","time":303.076693899,"data":"  \"arc_easy:in_bank1\": 8,\n"}
+,{"stream_name":"stdout","time":303.076698586,"data":"  \"boolq:in_fewshot\": 5,\n"}
+,{"stream_name":"stdout","time":303.076703217,"data":"  \"csqa:in_fewshot\": 5,\n"}
+,{"stream_name":"stdout","time":303.076707799,"data":"  \"hellaswag:in_fewshot\": 7,\n"}
+,{"stream_name":"stdout","time":303.076712527,"data":"  \"hellaswag:in_bank1\": 14,\n"}
+,{"stream_name":"stdout","time":303.07671742,"data":"  \"mmlu_college_physics:in_bank1\": 6,\n"}
+,{"stream_name":"stdout","time":303.076722265,"data":"  \"mmlu_college_physics:in_fewshot\": 1,\n"}
+,{"stream_name":"stdout","time":303.076726999,"data":"  \"mmlu_high_school_chemistry:in_bank1\": 1,\n"}
+,{"stream_name":"stdout","time":303.076732248,"data":"  \"mmlu_high_school_computer_science:in_bank1\": 1,\n"}
+,{"stream_name":"stdout","time":303.076737222,"data":"  \"mmlu_high_school_european_history:in_bank1\": 1,\n"}
+,{"stream_name":"stdout","time":303.07674204,"data":"  \"mmlu_high_school_macroeconomics:in_bank1\": 1,\n"}
+,{"stream_name":"stdout","time":303.076746655,"data":"  \"mmlu_high_school_mathematics:in_bank1\": 2,\n"}
+,{"stream_name":"stdout","time":303.076751402,"data":"  \"mmlu_high_school_psychology:in_bank1\": 1,\n"}
+,{"stream_name":"stdout","time":303.076756329,"data":"  \"mmlu_high_school_statistics:in_bank1\": 1,\n"}
+,{"stream_name":"stdout","time":303.076761224,"data":"  \"mmlu_miscellaneous:in_bank1\": 1,\n"}
+,{"stream_name":"stdout","time":303.076765789,"data":"  \"mmlu_moral_disputes:in_bank1\": 1,\n"}
+,{"stream_name":"stdout","time":303.076770564,"data":"  \"mmlu_nutrition:in_bank1\": 1,\n"}
+,{"stream_name":"stdout","time":303.076775198,"data":"  \"mmlu_professional_psychology:in_bank1\": 3,\n"}
+,{"stream_name":"stdout","time":303.076779991,"data":"  \"mmlu_public_relations:in_bank1\": 2,\n"}
+,{"stream_name":"stdout","time":303.076784782,"data":"  \"piqa:in_fewshot\": 5,\n"}
+,{"stream_name":"stdout","time":303.076789522,"data":"  \"piqa:in_bank1\": 552,\n"}
+,{"stream_name":"stdout","time":303.076794312,"data":"  \"socialiqa:in_fewshot\": 5,\n"}
+,{"stream_name":"stdout","time":303.076799228,"data":"  \"winogrande:in_bank1\": 18,\n"}
+,{"stream_name":"stdout","time":303.076804018,"data":"  \"winogrande:in_fewshot\": 6\n"}
+,{"stream_name":"stdout","time":303.076808944,"data":" },\n"}
+,{"stream_name":"stdout","time":303.076813638,"data":" \"sha256\": \"6190e0b24324ca357b3515206165acb6f024c310005d36fcf17fb2807cbc81d1\"\n"}
+,{"stream_name":"stdout","time":303.076818766,"data":"}\n"}
+,{"stream_name":"stdout","time":303.076823565,"data":"[done] 271s\n"}
+,{"stream_name":"stdout","time":303.30055031,"data":"+ python requests/freeze.py\n"}
+,{"stream_name":"stdout","time":304.758393439,"data":"[freeze] bank1: 37682 items, sha256 3130d19f88c2cb5dd040ff203200a9a3464e29b873635c1cd7768704b19fbcaf\n"}
+,{"stream_name":"stdout","time":304.758426173,"data":"[freeze] bank2: 6808 items, sha256 6190e0b24324ca357b3515206165acb6f024c310005d36fcf17fb2807cbc81d1\n"}
+,{"stream_name":"stdout","time":304.802642544,"data":"bank2 sha256 6190e0b24324ca357b3515206165acb6f024c310005d36fcf17fb2807cbc81d1\n"}
+,{"stream_name":"stdout","time":305.962432972,"data":"bank1: 45 score files match MANIFEST.sha256\n"}
+,{"stream_name":"stdout","time":305.962470911,"data":"+ python reduce.py --job pythia_bank1_final\n"}
+,{"stream_name":"stdout","time":333.012478143,"data":"[reduce] pythia_bank1_final: 45 reduced, 0 already present, under /tmp/SNAP/compute2/reduced/pythia_bank1_final\n"}
+,{"stream_name":"stdout","time":333.616503719,"data":"bank2: 45 score files match MANIFEST.sha256\n"}
+,{"stream_name":"stdout","time":333.616555836,"data":"+ python reduce.py --job pythia_bank2_final\n"}
+,{"stream_name":"stdout","time":338.554858915,"data":"[reduce] pythia_bank2_final: 45 reduced, 0 already present, under /tmp/SNAP/compute2/reduced/pythia_bank2_final\n"}
+,{"stream_name":"stdout","time":338.601547706,"data":"+ python analysis/estimates.py --release-runs /nonexistent --out /kaggle/working/results\n"}
+,{"stream_name":"stdout","time":341.126553337,"data":"[analysis] verify: not run\n"}
+,{"stream_name":"stdout","time":342.359882083,"data":"[analysis] pythia: ok\n"}
+,{"stream_name":"stdout","time":342.360223828,"data":"[analysis] datadecide: not run\n"}
+,{"stream_name":"stdout","time":342.361170581,"data":"{\n"}
+,{"stream_name":"stdout","time":342.36119636,"data":" \"V0_verification\": {\n"}
+,{"stream_name":"stdout","time":342.361203396,"data":"  \"pass\": null,\n"}
+,{"stream_name":"stdout","time":342.3612087,"data":"  \"status\": \"not run\",\n"}
+,{"stream_name":"stdout","time":342.361214014,"data":"  \"rule\": \"every verify run reproduces the release margins within the nats thresholds and agrees on correctness for at least the threshold fraction of items\"\n"}
+,{"stream_name":"stdout","time":342.361219603,"data":" },\n"}
+,{"stream_name":"stdout","time":342.361224318,"data":" \"R1_pythia_replicates_margin\": {\n"}
+,{"stream_name":"stdout","time":342.361229182,"data":"  \"lambda\": 1.3022243165382272,\n"}
+,{"stream_name":"stdout","time":342.361234176,"data":"  \"lo\": 0.9206589861012651,\n"}
+,{"stream_name":"stdout","time":342.361238975,"data":"  \"hi\": 1.5949806809105547,\n"}
+,{"stream_name":"stdout","time":342.361243995,"data":"  \"interval\": \"delete-one-seed jackknife t(8)\",\n"}
+,{"stream_name":"stdout","time":342.361249032,"data":"  \"pass\": false,\n"}
+,{"stream_name":"stdout","time":342.361253862,"data":"  \"rule\": \"nine-seed PolyPythias at one matched step, jackknife lower endpoint above one\"\n"}
+,{"stream_name":"stdout","time":342.361259236,"data":" },\n"}
+,{"stream_name":"stdout","time":342.361262401,"data":" \"R1_pythia_replicates_accuracy\": {\n"}
+,{"stream_name":"stdout","time":342.361265445,"data":"  \"lambda\": 1.4814118469703015,\n"}
+,{"stream_name":"stdout","time":342.361268562,"data":"  \"lo\": 0.5605288217300143,\n"}
+,{"stream_name":"stdout","time":342.36127153,"data":"  \"hi\": 2.018655384333315,\n"}
+,{"stream_name":"stdout","time":342.361274702,"data":"  \"interval\": \"delete-one-seed jackknife t(8)\",\n"}
+,{"stream_name":"stdout","time":342.361278292,"data":"  \"pass\": false,\n"}
+,{"stream_name":"stdout","time":342.361281425,"data":"  \"rule\": \"nine-seed PolyPythias at one matched step, jackknife lower endpoint above one\"\n"}
+,{"stream_name":"stdout","time":342.361284585,"data":" },\n"}
+,{"stream_name":"stdout","time":342.361287526,"data":" \"R2_pythia_identification_margin\": {\n"}
+,{"stream_name":"stdout","time":342.361290825,"data":"  \"cross_lambda\": 1.2927062502373492,\n"}
+,{"stream_name":"stdout","time":342.361307598,"data":"  \"cross_lo\": 0.9203132984532629,\n"}
+,{"stream_name":"stdout","time":342.361310257,"data":"  \"cross_hi\": 1.5796209455105017,\n"}
+,{"stream_name":"stdout","time":342.361312878,"data":"  \"within_minus_cross_log_theta\": 0.014671851506020128,\n"}
+,{"stream_name":"stdout","time":342.361315318,"data":"  \"diff_lo\": -0.03519325515121176,\n"}
+,{"stream_name":"stdout","time":342.36131779,"data":"  \"diff_hi\": 0.06453695816325201,\n"}
+,{"stream_name":"stdout","time":342.361320266,"data":"  \"shared_item_explanation\": \"undecided\",\n"}
+,{"stream_name":"stdout","time":342.361322813,"data":"  \"rule\": \"cross-bank interval above one and the within-minus-cross difference including zero rejects the item explanation; a positive difference interval with a cross-bank interval covering one supports it\"\n"}
+,{"stream_name":"stdout","time":342.361325574,"data":" },\n"}
+,{"stream_name":"stdout","time":342.361327936,"data":" \"R2_pythia_identification_accuracy\": {\n"}
+,{"stream_name":"stdout","time":342.361330323,"data":"  \"cross_lambda\": 1.529946907717057,\n"}
+,{"stream_name":"stdout","time":342.361332885,"data":"  \"cross_lo\": 0.4412188509576661,\n"}
+,{"stream_name":"stdout","time":342.361335249,"data":"  \"cross_hi\": 2.1182070263375032,\n"}
+,{"stream_name":"stdout","time":342.36133769,"data":"  \"within_minus_cross_log_theta\": -0.06447490050772009,\n"}
+,{"stream_name":"stdout","time":342.361340093,"data":"  \"diff_lo\": -0.17391558798775664,\n"}
+,{"stream_name":"stdout","time":342.361342476,"data":"  \"diff_hi\": 0.04496578697231646,\n"}
+,{"stream_name":"stdout","time":342.361344803,"data":"  \"shared_item_explanation\": \"undecided\",\n"}
+,{"stream_name":"stdout","time":342.361347271,"data":"  \"rule\": \"cross-bank interval above one and the within-minus-cross difference including zero rejects the item explanation; a positive difference interval with a cross-bank interval covering one supports it\"\n"}
+,{"stream_name":"stdout","time":342.361350005,"data":" }\n"}
+,{"stream_name":"stdout","time":342.36135247,"data":"}\n"}
+,{"stream_name":"stdout","time":342.517313157,"data":"+ python analysis/report.py --results /kaggle/working/results\n"}
+,{"stream_name":"stdout","time":342.715849327,"data":"wrote /kaggle/working/results/RESULTS.md\n"}
+,{"stream_name":"stdout","time":342.761106752,"data":"{\n"}
+,{"stream_name":"stdout","time":342.761139508,"data":" \"V0_verification\": {\n"}
+,{"stream_name":"stdout","time":342.761144201,"data":"  \"pass\": null,\n"}
+,{"stream_name":"stdout","time":342.761147219,"data":"  \"status\": \"not run\",\n"}
+,{"stream_name":"stdout","time":342.761150025,"data":"  \"rule\": \"every verify run reproduces the release margins within the nats thresholds and agrees on correctness for at least the threshold fraction of items\"\n"}
+,{"stream_name":"stdout","time":342.761153147,"data":" },\n"}
+,{"stream_name":"stdout","time":342.761155574,"data":" \"R1_pythia_replicates_margin\": {\n"}
+,{"stream_name":"stdout","time":342.761158277,"data":"  \"lambda\": 1.3022243165382272,\n"}
+,{"stream_name":"stdout","time":342.761160898,"data":"  \"lo\": 0.9206589861012651,\n"}
+,{"stream_name":"stdout","time":342.761163398,"data":"  \"hi\": 1.5949806809105547,\n"}
+,{"stream_name":"stdout","time":342.761165742,"data":"  \"interval\": \"delete-one-seed jackknife t(8)\",\n"}
+,{"stream_name":"stdout","time":342.761168415,"data":"  \"pass\": false,\n"}
+,{"stream_name":"stdout","time":342.761170877,"data":"  \"rule\": \"nine-seed PolyPythias at one matched step, jackknife lower endpoint above one\"\n"}
+,{"stream_name":"stdout","time":342.761173588,"data":" },\n"}
+,{"stream_name":"stdout","time":342.761187566,"data":" \"R1_pythia_replicates_accuracy\": {\n"}
+,{"stream_name":"stdout","time":342.7611902,"data":"  \"lambda\": 1.4814118469703015,\n"}
+,{"stream_name":"stdout","time":342.76119262,"data":"  \"lo\": 0.5605288217300143,\n"}
+,{"stream_name":"stdout","time":342.76119503,"data":"  \"hi\": 2.018655384333315,\n"}
+,{"stream_name":"stdout","time":342.761197405,"data":"  \"interval\": \"delete-one-seed jackknife t(8)\",\n"}
+,{"stream_name":"stdout","time":342.761200135,"data":"  \"pass\": false,\n"}
+,{"stream_name":"stdout","time":342.761202554,"data":"  \"rule\": \"nine-seed PolyPythias at one matched step, jackknife lower endpoint above one\"\n"}
+,{"stream_name":"stdout","time":342.761205317,"data":" },\n"}
+,{"stream_name":"stdout","time":342.761207608,"data":" \"R2_pythia_identification_margin\": {\n"}
+,{"stream_name":"stdout","time":342.76121002,"data":"  \"cross_lambda\": 1.2927062502373492,\n"}
+,{"stream_name":"stdout","time":342.761212464,"data":"  \"cross_lo\": 0.9203132984532629,\n"}
+,{"stream_name":"stdout","time":342.761214928,"data":"  \"cross_hi\": 1.5796209455105017,\n"}
+,{"stream_name":"stdout","time":342.761217259,"data":"  \"within_minus_cross_log_theta\": 0.014671851506020128,\n"}
+,{"stream_name":"stdout","time":342.76121986,"data":"  \"diff_lo\": -0.03519325515121176,\n"}
+,{"stream_name":"stdout","time":342.761222257,"data":"  \"diff_hi\": 0.06453695816325201,\n"}
+,{"stream_name":"stdout","time":342.761224752,"data":"  \"shared_item_explanation\": \"undecided\",\n"}
+,{"stream_name":"stdout","time":342.761227861,"data":"  \"rule\": \"cross-bank interval above one and the within-minus-cross difference including zero rejects the item explanation; a positive difference interval with a cross-bank interval covering one supports it\"\n"}
+,{"stream_name":"stdout","time":342.761230777,"data":" },\n"}
+,{"stream_name":"stdout","time":342.761233041,"data":" \"R2_pythia_identification_accuracy\": {\n"}
+,{"stream_name":"stdout","time":342.761235497,"data":"  \"cross_lambda\": 1.529946907717057,\n"}
+,{"stream_name":"stdout","time":342.761237861,"data":"  \"cross_lo\": 0.4412188509576661,\n"}
+,{"stream_name":"stdout","time":342.761240406,"data":"  \"cross_hi\": 2.1182070263375032,\n"}
+,{"stream_name":"stdout","time":342.761242829,"data":"  \"within_minus_cross_log_theta\": -0.06447490050772009,\n"}
+,{"stream_name":"stdout","time":342.761245338,"data":"  \"diff_lo\": -0.17391558798775664,\n"}
+,{"stream_name":"stdout","time":342.761247735,"data":"  \"diff_hi\": 0.04496578697231646,\n"}
+,{"stream_name":"stdout","time":342.761250144,"data":"  \"shared_item_explanation\": \"undecided\",\n"}
+,{"stream_name":"stdout","time":342.761252677,"data":"  \"rule\": \"cross-bank interval above one and the within-minus-cross difference including zero rejects the item explanation; a positive difference interval with a cross-bank interval covering one supports it\"\n"}
+,{"stream_name":"stdout","time":342.761255416,"data":" }\n"}
+,{"stream_name":"stdout","time":342.76125779,"data":"}\n"}
+,{"stream_name":"stderr","time":345.56953126,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":345.569585359,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":345.979792836,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":345.979832472,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":346.997170035,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":348.795030525,"data":"[NbConvertApp] Writing 290926 bytes to __results__.html\n"}
+]
