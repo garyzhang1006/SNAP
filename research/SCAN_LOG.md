@@ -3925,3 +3925,11 @@ The goal asks for at least twenty naturally written accepted papers. I confirmed
 Applied 30 edits (work/goal/edits_scan107.py and edits_scan107b.py). Fourteen contrast joins that carried two separate results became two sentences or took "however" or "but", thirteen pointers that repeated one a sentence away or aimed at a float on the same page were dropped, and three agentless steps went into the passive. After: while/although/whereas inside the range, reference share 0.221, passive 1.76 (corpus4 minimum 2.23, still low because the text prefers "we"), sentence median 21 and share over 35 words 0.15. Remaining out-of-range measures are the user's house rules (contractions, no colons or semicolons, the eight-word floor) plus "note" markers such as "for example", which I didn't force in. All eight builds compile with zero undefined references, and the six decided variants end on page 9.
 
 Ranking unchanged at 3 to 3.5, since these are readability changes a reviewer won't score.
+
+## Scan 108 (01:20 EDT, 2026-09-24)
+
+Ran the kill-argument skill's attack and adjudication myself (work/goal/audits/KILL_ARGUMENT.md). This wasn't the cross-model run the skill specifies, since no codex tool exists here and the goal rules out agents. Verdict FAIL, unresolved_critical. P1 is that both resolved tests fixed before scoring failed, which is research-level. P5 is that the paper's own recommendation, the replicate standard deviation, needs no SNAP, and it could be answered from numbers already in Section 2.
+
+Applied the P5 fix. Contribution (ii) now states that the split and the replicate standard deviation part ways when item noise is large, with DataDecide accuracy without BoolQ at 1.285 against 1.558 as the case. The discussion's recommendation paragraph says the split departs most from the replicate value when item noise fills much of the replicate variance. Both numbers were already in the paper (lines 108 and 172). Page 9 still has about twelve lines of room in the longest decided variant.
+
+Ranking holds at 3 to 3.5. The fix answers the "so what" point of the external review in part, but a reviewer weighing P1 won't move for it.
