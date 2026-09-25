@@ -29,7 +29,7 @@ The largest scientific risk is unresolved dependence between BoolQ questions sha
 
 The competence proxy uses a tiny floor for negative variance estimates, allowing one trait to dominate. Fixing that proxy requires an explicitly chosen measurement method and a rerun. The full-versus-rank-one comparison also needs paired fold or resampling uncertainty, with its held-out scale estimation and clipping convention accounted for. The bootstrap should be checked under relevant nonzero effects and observed influence concentration, rather than only its conditional permutation reference.
 
-The source data, analysis code, selected-checkpoint table, and complete anonymous supplement still need verification. The paper reports those assets and execution outcomes, but a PDF assertion isn't execution evidence. The revised AI disclosure preserves the substantial AI involvement already described and adds this technical revision. Authors must verify its account of simulation work and complete the submission-form disclosure.
+The source data, analysis code, selected-checkpoint table, and complete anonymous supplement still need verification. The paper reports those assets and execution outcomes, but a PDF assertion isn't execution evidence. The AI use statement says that AI tools were used only to polish wording, find related work, and give minor help with analysis code, and the submission-form disclosure should tick the same three uses.
 
 Author-level requirements remain outside the PDF audit. Verify the complete author list, OpenReview profiles, reviewer eligibility or exemption, submission quotas, and absence of overlapping archival submissions. Check the final supplement for names, identifying links, and metadata before upload.
 
