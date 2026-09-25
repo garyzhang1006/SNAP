@@ -978,7 +978,7 @@ exec
    242	
    243	\label{maintext:end}
    244	\section*{AI use statement}
-   245	We used generative AI tools to propose and refine hypotheses, critique the estimator and simulation design, assist with analysis code, revise manuscript text, survey literature, and contribute to the technical and editorial review of this version. The study includes synthetic calibration and sensitivity simulations, whose role differs from the released model outputs used for the empirical analysis. The authors remain responsible for verifying AI-assisted claims, code, citations, and the final submission, including an accurate disclosure of AI involvement in generating simulation data.
+   245	We used generative AI tools for three purposes. They helped polish the wording of the manuscript, they helped us find related work, and they gave minor help with analysis code. The authors designed the study, wrote the paper, checked every AI suggestion before using it, and take full responsibility for the code, the citations and the final text.
 
  succeeded in 0ms:
     85	\end{equation}

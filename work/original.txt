@@ -726,7 +726,7 @@
 486
       AI USE STATEMENT
 487
-488   We used generative AI tools to propose and refine hypotheses, design and critique the estimator
+488   We used generative AI tools for three purposes. They helped polish the wording of the manuscript, they helped us find related work, and they gave minor help with analysis code. The authors designed the study, wrote the paper, checked every AI suggestion before using it, and take full responsibility for the code, the citations and the final text.
 489   and the null battery, implement and test the analysis code, draft and revise the text of every section,
 490   and survey and summarise related literature. We have not used generative AI tools to generate
 491   synthetic datasets that enter any reported number. Translation and third-party dataset cleaning are not

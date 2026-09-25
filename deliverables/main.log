@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  24 SEP 2026 22:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  25 SEP 2026 07:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -564,10 +564,7 @@ Underfull \hbox (badness 1137) in paragraph at lines 45--45
 ap/pdftex.map}{/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/enc
 /dvips/base/8r.enc}
 
-]
-Underfull \vbox (badness 3179) has occurred while \output is active []
-
- [2 <./figures/covariance.pdf>] [3]
+] [2 <./figures/covariance.pdf>] [3]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 113.
 
@@ -575,7 +572,7 @@ Underfull \vbox (badness 1590) has occurred while \output is active []
 
  [4]
 [5]
-<figures/composition.pdf, id=324, 505.89pt x 169.8345pt>
+<figures/composition.pdf, id=323, 505.89pt x 169.8345pt>
 File: figures/composition.pdf Graphic file (type pdf)
 <use figures/composition.pdf>
 Package pdftex.def Info: figures/composition.pdf  used on input line 184.
@@ -590,11 +587,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [9]
-(./references.tex
-Underfull \vbox (badness 2865) has occurred while \output is active []
-
- [10]
-[11] [12]
+(./references.tex [10] [11] [12]
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 11
 5.
 
@@ -672,7 +665,7 @@ Here is how much of TeX's memory you used:
  42126 multiletter control sequences out of 15000+600000
  667951 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,90p,2533b,685s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,90p,2533b,687s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmbx10.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/20260301/
@@ -702,10 +695,10 @@ ve/20260301/share/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></opt/homebrew
 /Cellar/texlive/20260301/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></op
 t/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/urw/times/utmr8
 a.pfb>
-Output written on main.pdf (47 pages, 581234 bytes).
+Output written on main.pdf (47 pages, 581193 bytes).
 PDF statistics:
- 1077 PDF objects out of 1200 (max. 8388607)
- 946 compressed objects within 10 object streams
+ 1076 PDF objects out of 1200 (max. 8388607)
+ 945 compressed objects within 10 object streams
  260 named destinations out of 1000 (max. 500000)
  329 words of extra memory for PDF output out of 10000 (max. 10000000)
 

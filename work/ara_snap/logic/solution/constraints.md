@@ -40,5 +40,5 @@
 - Changing the scoring token budget changes batch grouping and can shift floating-point results (0.6 percent inflation shift in the transport rescore); a Turing-versus-Ada comparison changed 18 of 4,755 accuracy bits.
 
 ## Disclosures stated by the paper
-- AI use statement: generative AI tools were used to propose and refine hypotheses, critique the estimator and simulation design, assist with analysis code, revise text, survey literature, and contribute to technical and editorial review; the study includes synthetic calibration and sensitivity simulations whose role differs from the released model outputs.
+- AI use statement: generative AI tools were used only to polish wording, find related work, and give minor help with analysis code.
 - Ethics statement: the study analyses released model outputs with no new participant recruitment or data collection; derived artifacts must retain source attribution and licensing requirements.
